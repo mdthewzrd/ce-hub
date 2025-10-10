@@ -1,0 +1,98 @@
+{
+  "version": "1.0.0",
+  "description": "Claude Code configuration for Context Engineering Hub",
+  "permissions": {
+    "allow": [
+      "Read(//Users/michaeldurante/ai dev/ce-hub/**)",
+      "Write(//Users/michaeldurante/ai dev/ce-hub/**)",
+      "Edit(//Users/michaeldurante/ai dev/ce-hub/**)"
+    ],
+    "deny": [
+      "//Users/michaeldurante/ai dev/ce-hub/.claude/settings.local.json"
+    ],
+    "ask": [
+      "//Users/michaeldurante/ai dev/ce-hub/.env*",
+      "//Users/michaeldurante/ai dev/ce-hub/config/**/secrets*"
+    ]
+  },
+  "behavior": {
+    "auto_save": true,
+    "confirm_destructive_operations": true,
+    "use_structured_output": true,
+    "enable_agent_coordination": true
+  },
+  "context_engineering": {
+    "enable_prp_template": true,
+    "auto_route_to_specialists": true,
+    "maintain_decision_log": true,
+    "enforce_quality_gates": true
+  },
+  "agent_coordination": {
+    "orchestrator_required": true,
+    "parallel_execution_allowed": true,
+    "context_sharing_enabled": true,
+    "handoff_validation": true
+  },
+  "quality_assurance": {
+    "require_documentation": true,
+    "validate_requirements": true,
+    "track_metrics": true,
+    "enable_continuous_improvement": true
+  },
+  "documentation": {
+    "auto_update_decision_log": true,
+    "maintain_architecture_docs": true,
+    "enforce_style_guide": true,
+    "version_control_integration": true
+  },
+  "security": {
+    "validate_inputs": true,
+    "sanitize_outputs": true,
+    "respect_access_controls": true,
+    "audit_significant_operations": true
+  },
+  "performance": {
+    "optimize_context_usage": true,
+    "enable_parallel_processing": true,
+    "cache_frequent_operations": true,
+    "monitor_resource_usage": true
+  },
+  "chat_knowledge_system": {
+    "enabled": true,
+    "auto_accept_commands": false,
+    "require_plan_mode": true,
+    "default_project": "ce-hub",
+    "commands": {
+      "new-chat": {
+        "script": "scripts/chat_manager.py",
+        "command": "new-chat",
+        "description": "Create new chat file with structured metadata",
+        "plan_mode_required": false
+      },
+      "load-chat": {
+        "script": "scripts/chat_manager.py",
+        "command": "load-chat",
+        "description": "Load existing chat with context integration",
+        "plan_mode_required": false
+      },
+      "summarize-chat": {
+        "script": "scripts/chat_manager.py",
+        "command": "summarize-chat",
+        "description": "Create structured summary for Archon ingestion",
+        "plan_mode_required": true
+      },
+      "weekly-ingest": {
+        "script": "scripts/weekly_ingest.py",
+        "command": "",
+        "description": "Ingest chat summaries into Archon knowledge graph",
+        "plan_mode_required": true
+      },
+      "monthly-prune": {
+        "script": "scripts/monthly_prune.py",
+        "command": "",
+        "description": "Archive old chat files and cleanup",
+        "plan_mode_required": true
+      }
+    }
+  }
+}

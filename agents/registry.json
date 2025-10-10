@@ -1,0 +1,275 @@
+{
+  "version": "1.0.0",
+  "description": "Agent registry for CE-Hub specialization and routing",
+  "lastUpdated": "2024-10-09",
+  "agents": {
+    "orchestrator": {
+      "name": "Orchestrator",
+      "description": "Central coordination agent for task routing and workflow management",
+      "specializations": [
+        "task_analysis",
+        "workflow_coordination",
+        "context_management",
+        "agent_routing",
+        "quality_assurance"
+      ],
+      "capabilities": {
+        "taskManagement": {
+          "intake": true,
+          "decomposition": true,
+          "scheduling": true,
+          "monitoring": true
+        },
+        "agentCoordination": {
+          "selection": true,
+          "communication": true,
+          "conflictResolution": true,
+          "performanceMonitoring": true
+        },
+        "contextSynthesis": {
+          "aggregation": true,
+          "validation": true,
+          "transformation": true,
+          "optimization": true
+        }
+      },
+      "preferredFor": [
+        "complex_multi_agent_tasks",
+        "workflow_management",
+        "context_coordination",
+        "quality_oversight"
+      ],
+      "limitations": [
+        "not_for_specialized_technical_implementation",
+        "requires_other_agents_for_execution"
+      ]
+    },
+    "researcher": {
+      "name": "Researcher",
+      "description": "Information gathering, analysis, and knowledge synthesis specialist",
+      "specializations": [
+        "information_gathering",
+        "data_analysis",
+        "knowledge_synthesis",
+        "context_discovery"
+      ],
+      "capabilities": {
+        "searchAndDiscovery": {
+          "fileSystemAnalysis": true,
+          "codeAnalysis": true,
+          "documentationReview": true,
+          "dependencyMapping": true
+        },
+        "informationProcessing": {
+          "patternRecognition": true,
+          "relevanceFiltering": true,
+          "qualityAssessment": true,
+          "gapAnalysis": true
+        },
+        "knowledgeOrganization": {
+          "categorization": true,
+          "prioritization": true,
+          "summarization": true,
+          "crossReferencing": true
+        }
+      },
+      "preferredFor": [
+        "information_gathering_tasks",
+        "system_analysis",
+        "requirement_discovery",
+        "knowledge_synthesis"
+      ],
+      "limitations": [
+        "cannot_create_new_information",
+        "limited_to_available_sources",
+        "no_subjective_judgments_without_criteria"
+      ]
+    },
+    "engineer": {
+      "name": "Engineer",
+      "description": "Technical implementation, code development, and system configuration specialist",
+      "specializations": [
+        "code_implementation",
+        "system_configuration",
+        "architecture_design",
+        "technical_integration"
+      ],
+      "capabilities": {
+        "developmentSkills": {
+          "multiLanguageProficiency": true,
+          "frameworkExpertise": true,
+          "databaseIntegration": true,
+          "apiDevelopment": true
+        },
+        "systemOperations": {
+          "environmentSetup": true,
+          "buildSystems": true,
+          "containerization": true,
+          "cloudIntegration": true
+        },
+        "codeQuality": {
+          "testing": true,
+          "codeReview": true,
+          "refactoring": true,
+          "documentation": true
+        }
+      },
+      "preferredFor": [
+        "code_development",
+        "technical_implementation",
+        "system_configuration",
+        "architecture_tasks"
+      ],
+      "limitations": [
+        "requires_clear_technical_requirements",
+        "limited_by_available_tools_and_permissions",
+        "cannot_make_business_decisions"
+      ]
+    },
+    "tester": {
+      "name": "Tester",
+      "description": "Quality assurance, validation, and verification specialist",
+      "specializations": [
+        "test_planning",
+        "test_execution",
+        "quality_assurance",
+        "defect_management"
+      ],
+      "capabilities": {
+        "testingTypes": {
+          "functionalTesting": true,
+          "integrationTesting": true,
+          "performanceTesting": true,
+          "securityTesting": true,
+          "usabilityTesting": true,
+          "regressionTesting": true
+        },
+        "testAutomation": {
+          "frameworkDevelopment": true,
+          "scriptDevelopment": true,
+          "cicdIntegration": true,
+          "reporting": true
+        },
+        "qualityAnalysis": {
+          "codeReview": true,
+          "requirementsAnalysis": true,
+          "riskAssessment": true,
+          "metricsAnalysis": true
+        }
+      },
+      "preferredFor": [
+        "quality_assurance_tasks",
+        "test_planning_and_execution",
+        "validation_and_verification",
+        "defect_identification"
+      ],
+      "limitations": [
+        "requires_testable_requirements",
+        "limited_by_available_testing_environments",
+        "cannot_fix_defects_only_identify"
+      ]
+    },
+    "documenter": {
+      "name": "Documenter",
+      "description": "Knowledge capture, documentation creation, and information organization specialist",
+      "specializations": [
+        "documentation_creation",
+        "knowledge_management",
+        "content_maintenance",
+        "information_architecture"
+      ],
+      "capabilities": {
+        "documentationTypes": {
+          "technicalDocumentation": true,
+          "userDocumentation": true,
+          "processDocumentation": true,
+          "referenceDocumentation": true
+        },
+        "contentCreation": {
+          "writingAndEditing": true,
+          "visualDocumentation": true,
+          "interactiveContent": true,
+          "multimediaIntegration": true
+        },
+        "organizationAndStructure": {
+          "informationArchitecture": true,
+          "navigationDesign": true,
+          "searchOptimization": true,
+          "versionManagement": true
+        }
+      },
+      "preferredFor": [
+        "documentation_creation",
+        "knowledge_capture",
+        "content_organization",
+        "information_architecture"
+      ],
+      "limitations": [
+        "requires_subject_matter_expert_input",
+        "limited_by_available_information",
+        "cannot_create_technical_content_without_guidance"
+      ]
+    }
+  },
+  "routingRules": {
+    "taskTypes": {
+      "analysis": ["researcher", "orchestrator"],
+      "implementation": ["engineer", "orchestrator"],
+      "testing": ["tester", "orchestrator"],
+      "documentation": ["documenter", "orchestrator"],
+      "coordination": ["orchestrator"],
+      "research": ["researcher"],
+      "development": ["engineer"],
+      "quality_assurance": ["tester"],
+      "knowledge_management": ["documenter"]
+    },
+    "complexity": {
+      "simple": "single_agent",
+      "moderate": "orchestrator_plus_specialist",
+      "complex": "orchestrator_plus_multiple_specialists"
+    },
+    "priority": {
+      "high": "orchestrator_coordination_required",
+      "medium": "specialist_with_orchestrator_oversight",
+      "low": "specialist_autonomous"
+    }
+  },
+  "integrationPatterns": {
+    "sequential": {
+      "description": "Tasks executed in sequence with clear handoffs",
+      "example": "research -> engineer -> tester -> documenter"
+    },
+    "parallel": {
+      "description": "Independent tasks executed simultaneously",
+      "example": "engineer + documenter working on different aspects"
+    },
+    "collaborative": {
+      "description": "Agents working together on shared deliverables",
+      "example": "engineer + tester for test-driven development"
+    },
+    "iterative": {
+      "description": "Repeated cycles with refinement",
+      "example": "research -> engineer -> tester -> refine -> repeat"
+    }
+  },
+  "performanceMetrics": {
+    "effectiveness": [
+      "task_completion_rate",
+      "requirement_satisfaction",
+      "user_satisfaction",
+      "error_rates"
+    ],
+    "efficiency": [
+      "time_to_completion",
+      "resource_utilization",
+      "context_reuse",
+      "coordination_overhead"
+    ],
+    "quality": [
+      "output_quality_scores",
+      "defect_rates",
+      "maintainability_metrics",
+      "documentation_completeness"
+    ]
+  }
+}
