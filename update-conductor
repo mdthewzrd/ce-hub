@@ -1,0 +1,4 @@
+#!/bin/bash
+# CE-Hub Update Conductor - Easy sync command
+cd "/Users/michaeldurante/ai dev/ce-hub"
+python3 scripts/sync_to_conductor.py "$@"
