@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TipTap HTML Display Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    typography: {
+                        invert: {
+                            css: {
+                                '--tw-prose-body': '#e5e5e5',
+                                '--tw-prose-headings': '#e5e5e5',
+                                '--tw-prose-lead': '#666666',
+                                '--tw-prose-links': '#d4a574',
+                                '--tw-prose-bold': '#e5e5e5',
+                                '--tw-prose-counters': '#666666',
+                                '--tw-prose-bullets': '#666666',
+                                '--tw-prose-hr': '#1a1a1a',
+                                '--tw-prose-quotes': '#e5e5e5',
+                                '--tw-prose-quote-borders': '#1a1a1a',
+                                '--tw-prose-captions': '#666666',
+                                '--tw-prose-code': '#e5e5e5',
+                                '--tw-prose-pre-code': '#666666',
+                                '--tw-prose-pre-bg': '#111111',
+                                '--tw-prose-th-borders': '#1a1a1a',
+                                '--tw-prose-td-borders': '#1a1a1a',
+                            },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">TipTap Rich Text Editor - HTML Display Test</h1>
+
+        <div class="space-y-8">
+            <!-- Test 1: Mock Journal Entry Content -->
+            <div class="bg-gray-800 rounded-lg p-6">
+                <h2 class="text-xl font-semibold mb-4">Test 1: Mock Journal Entry Content</h2>
+                <div class="prose prose-invert max-w-none">
+                    <p>Perfect setup today on YIBO. Stock showed strong pre-market activity with heavy volume. Entered on the breakout above $49.80 resistance level.</p>
+
+                    <p><strong>Setup Analysis:</strong></p>
+                    <ul>
+                    <li>Pre-market volume 3x normal</li>
+                    <li>Clean breakout above resistance</li>
+                    <li>Strong sector momentum in biotech</li>
+                    </ul>
+
+                    <p><strong>Execution:</strong></p>
+                    <ul>
+                    <li>Entry at $49.86 was precise</li>
+                    <li>Used 1% position size</li>
+                    <li>Stop loss at $49.20</li>
+                    </ul>
+
+                    <p><strong>Outcome:</strong></p>
+                    <ul>
+                    <li>Stock moved as expected to $51.52</li>
+                    <li>Exited when momentum started to fade</li>
+                    <li>Profit of $531.20 (3.33% gain)</li>
+                    </ul>
+
+                    <p><strong>Lessons:</strong></p>
+                    <ul>
+                    <li>Pre-market volume was key indicator</li>
+                    <li>Patience paid off waiting for clean breakout</li>
+                    <li>Exit timing was good, avoided the pullback</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Test 2: Template Content -->
+            <div class="bg-gray-800 rounded-lg p-6">
+                <h2 class="text-xl font-semibold mb-4">Test 2: Template Content</h2>
+                <div class="prose prose-invert max-w-none">
+                    <h1>Setup Analysis</h1>
+                    <ul>
+                    <li>Market conditions:</li>
+                    <li>Key levels identified:</li>
+                    <li>Volume analysis:</li>
+                    <li>Risk/reward assessment:</li>
+                    </ul>
+
+                    <h1>Execution</h1>
+                    <ul>
+                    <li>Entry strategy:</li>
+                    <li>Position sizing:</li>
+                    <li>Stop loss placement:</li>
+                    <li>Target levels:</li>
+                    </ul>
+
+                    <h1>Outcome</h1>
+                    <ul>
+                    <li>What happened:</li>
+                    <li>Exit reasoning:</li>
+                    <li>Performance vs plan:</li>
+                    </ul>
+
+                    <h1>Lessons Learned</h1>
+                    <ul>
+                    <li>What worked well:</li>
+                    <li>Areas for improvement:</li>
+                    <li>Future applications:</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Test 3: Comparison - Raw vs Formatted -->
+            <div class="bg-gray-800 rounded-lg p-6">
+                <h2 class="text-xl font-semibold mb-4">Test 3: Before vs After Comparison</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-medium mb-3 text-red-400">❌ Before (Raw Markdown)</h3>
+                        <div class="bg-gray-900 p-4 rounded font-mono text-sm">
+                            **Setup Analysis:**<br>
+                            - Pre-market volume 3x normal<br>
+                            - Clean breakout above resistance<br>
+                            - Strong sector momentum in biotech<br><br>
+                            **Execution:**<br>
+                            - Entry at $49.86 was precise<br>
+                            - Used 1% position size<br>
+                            - Stop loss at $49.20
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-medium mb-3 text-green-400">✅ After (Formatted HTML)</h3>
+                        <div class="bg-gray-900 p-4 rounded">
+                            <div class="prose prose-invert prose-sm max-w-none">
+                                <p><strong>Setup Analysis:</strong></p>
+                                <ul>
+                                <li>Pre-market volume 3x normal</li>
+                                <li>Clean breakout above resistance</li>
+                                <li>Strong sector momentum in biotech</li>
+                                </ul>
+
+                                <p><strong>Execution:</strong></p>
+                                <ul>
+                                <li>Entry at $49.86 was precise</li>
+                                <li>Used 1% position size</li>
+                                <li>Stop loss at $49.20</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

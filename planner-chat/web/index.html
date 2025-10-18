@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CE-Hub Planner Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Project Tree Sidebar -->
+        <aside id="project-sidebar" class="project-sidebar">
+            <div class="sidebar-header">
+                <h3>📁 Projects</h3>
+                <div class="header-actions">
+                    <button id="new-chat-btn" class="new-chat-btn hidden" title="New Chat in Selected Project">
+                        <span>💬</span>
+                    </button>
+                    <button id="new-project-btn" class="new-project-btn" title="New Project">
+                        <span>➕</span>
+                    </button>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <div id="project-tree" class="project-tree">
+                    <!-- Project tree will be loaded here -->
+                    <div class="loading-tree">
+                        <span>🔄</span> Loading projects...
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="tree-stats">
+                    <span id="tree-stats-text">0 projects, 0 chats</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="chat-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="sidebar-toggle-btn">
+                        <span>☰</span>
+                    </button>
+                    <div class="header-left-content">
+                        <h1 class="app-title">
+                            <span class="title-icon">🧩</span>
+                            CE-Hub Planner
+                        </h1>
+                        <span class="subtitle">Strategic Planning & Research Assistant</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="model-selector">
+                        <select id="model-select" class="model-select">
+                            <option value="">Loading models...</option>
+                        </select>
+                    </div>
+                    <button id="export-btn" class="export-btn" disabled title="Complete your planning session to export">
+                        <span>📤</span> Export to Archon
+                    </button>
+                    <div class="status-indicator">
+                        <span id="connection-status" class="status-dot offline"></span>
+                        <span id="status-text">Connecting...</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Chat Container -->
+        <main class="chat-container">
+            <!-- Messages Area -->
+            <div id="messages" class="messages-area">
+                <div class="welcome-message">
+                    <div class="welcome-icon">🎯</div>
+                    <h2>Welcome to CE-Hub Planner Chat</h2>
+                    <p>I'm your specialized planning and research assistant. I help you:</p>
+                    <ul>
+                        <li>🔍 <strong>Strategic Planning</strong> - Break down complex projects into actionable phases</li>
+                        <li>📚 <strong>Research Synthesis</strong> - Organize knowledge and identify information gaps</li>
+                        <li>🏗️ <strong>Agent Development Planning</strong> - Design agent capabilities and workflows</li>
+                        <li>📋 <strong>Knowledge Organization</strong> - Structure requirements and decision documentation</li>
+                    </ul>
+                    <div class="planning-constraint">
+                        <strong>⚠️ Planning Focus:</strong> I specialize in planning and research only - I don't implement or write code, but I'll help you create comprehensive plans for implementation.
+                    </div>
+                    <div class="starting-points">
+                        <p><strong>How would you like to start?</strong></p>
+                        <div class="start-options">
+                            <div class="start-option">💭 <strong>Spitball ideas</strong> - brainstorm from scratch</div>
+                            <div class="start-option">📄 <strong>Upload existing documents</strong> - you already have materials</div>
+                            <div class="start-option">💡 <strong>Use inspiration</strong> - base it on something you've seen</div>
+                            <div class="start-option">💬 <strong>Just chat through it</strong> - discuss and iterate conversationally</div>
+                        </div>
+                    </div>
+                    <p>Tell me what you'd like to plan and which approach sounds right!</p>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div id="typing-indicator" class="typing-indicator hidden">
+                <div class="typing-avatar">🤖</div>
+                <div class="typing-text">
+                    <span>Planner is thinking</span>
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <textarea
+                            id="message-input"
+                            placeholder="Describe what you'd like to plan or research..."
+                            rows="1"
+                            maxlength="4000"
+                        ></textarea>
+                        <div id="uploaded-files" class="uploaded-files hidden"></div>
+                        <div class="input-actions">
+                            <div class="input-left">
+                                <input type="file" id="file-input" accept="image/*,.pdf,.txt,.md,.csv,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt,.ods,.odp,.json,.xml,.html,.css,.js,.ts,.py,.java,.c,.cpp,.cs,.php,.rb,.go,.rs,.yml,.yaml,.toml,.ini,.log,.zip,.rar,.7z,.rtf,.tsv" multiple style="display: none;">
+                                <button id="file-upload" class="action-btn" title="Upload files or images">
+                                    <span>📎</span>
+                                </button>
+                                <button id="stt-toggle" class="action-btn" title="Speech-to-Text (Not available)">
+                                    <span>🎤</span>
+                                </button>
+                                <span id="char-count" class="char-count">0/4000</span>
+                            </div>
+                            <div class="input-right">
+                                <button id="tts-toggle" class="action-btn" title="Text-to-Speech (Not available)">
+                                    <span>🔊</span>
+                                </button>
+                                <button id="send-btn" class="send-btn" disabled>
+                                    <span>⚡</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Artifact Panel -->
+        <aside id="artifact-panel" class="artifact-panel hidden">
+            <div class="panel-header">
+                <h3 id="artifact-title">📄 Document Artifact</h3>
+                <div class="panel-actions">
+                    <button id="download-artifact" class="action-btn" title="Download Document">
+                        <span>💾</span>
+                    </button>
+                    <button id="copy-artifact" class="action-btn" title="Copy to Clipboard">
+                        <span>📋</span>
+                    </button>
+                    <button id="toggle-artifact" class="toggle-artifact-btn" title="Hide Artifact">
+                        <span>👁️</span>
+                    </button>
+                </div>
+            </div>
+            <div class="panel-content">
+                <div id="artifact-content" class="artifact-content">
+                    <div class="no-artifact">
+                        <span class="no-artifact-icon">📄</span>
+                        <p>No document artifact active</p>
+                        <small>Start a planning conversation to create an artifact</small>
+                    </div>
+                </div>
+                <div class="artifact-status" id="artifact-status">
+                    <span class="status-text">Ready</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Chat Details Panel (now hidden by default) -->
+        <aside id="details-panel" class="details-panel hidden">
+            <div class="panel-header">
+                <h3>💬 Chat Details</h3>
+                <button id="toggle-details" class="toggle-details-btn" title="Hide Details">
+                    <span>👁️</span>
+                </button>
+            </div>
+            <div class="panel-content">
+                <div id="chat-details" class="chat-details">
+                    <div class="no-chat-selected">
+                        <span class="no-chat-icon">📝</span>
+                        <p>Select a chat to view details</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay for mobile -->
+        <div id="sidebar-overlay" class="sidebar-overlay hidden"></div>
+
+        <!-- Export Modal -->
+        <div id="export-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>📤 Export Planning Document</h3>
+                    <button id="close-modal" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="export-form">
+                        <div class="form-group">
+                            <label for="doc-title">Document Title</label>
+                            <input type="text" id="doc-title" placeholder="Enter document title..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-select">Target Project</label>
+                            <select id="project-select" required>
+                                <option value="">Loading projects...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="doc-tags">Tags (comma-separated)</label>
+                            <input type="text" id="doc-tags" placeholder="planning, research, strategy...">
+                            <small>Suggested: planning, research, strategy, agent-development</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="planning-type">Planning Type</label>
+                            <select id="planning-type">
+                                <option value="strategic">Strategic Planning</option>
+                                <option value="research">Research Plan</option>
+                                <option value="agent-development">Agent Development</option>
+                                <option value="project-roadmap">Project Roadmap</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" id="cancel-export" class="btn-secondary">Cancel</button>
+                            <button type="submit" id="confirm-export" class="btn-primary">
+                                <span>🚀</span> Export to Archon
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div id="success-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>✅ Export Successful</h3>
+                    <button id="close-success" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="success-content">
+                        <div class="success-icon">🎉</div>
+                        <p>Your planning document has been successfully exported to Archon!</p>
+                        <div class="export-details">
+                            <div class="detail-item">
+                                <strong>Source ID:</strong> <code id="export-source-id"></code>
+                            </div>
+                            <div class="detail-item">
+                                <strong>Method:</strong> <span id="export-method"></span>
+                            </div>
+                        </div>
+                        <button id="start-new-session" class="btn-primary">
+                            <span>✨</span> Start New Planning Session
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Choice Modal -->
+        <div id="upload-choice-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>📎 Add Content</h3>
+                    <button id="close-upload-choice" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="upload-options">
+                        <button id="choose-file-upload" class="upload-option-btn">
+                            <div class="option-icon">📁</div>
+                            <div class="option-text">
+                                <h4>Upload File</h4>
+                                <p>Choose files from your computer</p>
+                            </div>
+                        </button>
+                        <button id="choose-paste-text" class="upload-option-btn">
+                            <div class="option-icon">📝</div>
+                            <div class="option-text">
+                                <h4>Paste Text</h4>
+                                <p>Paste text content as a document</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paste Text Modal -->
+        <div id="paste-text-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>📝 Paste Text Content</h3>
+                    <button id="close-paste-text" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="paste-text-form">
+                        <div class="form-group">
+                            <label for="text-filename">Filename (optional)</label>
+                            <input type="text" id="text-filename" placeholder="my-document.txt">
+                        </div>
+                        <div class="form-group">
+                            <label for="text-content">Content</label>
+                            <textarea
+                                id="text-content"
+                                placeholder="Paste your text content here..."
+                                rows="15"
+                                required
+                            ></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" id="cancel-paste-text" class="btn-secondary">Cancel</button>
+                            <button type="submit" id="confirm-paste-text" class="btn-primary">
+                                <span>📄</span> Add Text Document
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

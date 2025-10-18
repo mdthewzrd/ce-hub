@@ -1,0 +1,166 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - heading "📁 Projects" [level=3] [ref=e5]
+      - generic [ref=e6]:
+        - button "💬" [ref=e7] [cursor=pointer]:
+          - generic [ref=e8]: 💬
+        - button "➕" [ref=e9] [cursor=pointer]:
+          - generic [ref=e10]: ➕
+    - generic [ref=e12]:
+      - generic [ref=e14] [cursor=pointer]:
+        - generic [ref=e15]: 📁
+        - generic [ref=e16]: Personal Scratch
+      - generic [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: 📁
+        - generic [ref=e20]: Trading Journal
+      - generic [ref=e21] [cursor=pointer]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: 📁
+          - generic [ref=e24]: Testing Workflows
+        - generic [ref=e25]:
+          - generic [ref=e26]: Spitball Ideas Workflow
+          - generic [ref=e27]: Upload Documents Workflow
+          - generic [ref=e28]: Use Inspiration Workflow
+          - generic [ref=e29]: Conversational Workflow
+    - generic [ref=e32]: 3 projects, 7 chats
+  - generic [ref=e33]:
+    - banner [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - button "☰" [ref=e37] [cursor=pointer]:
+            - generic [ref=e38]: ☰
+          - generic [ref=e39]:
+            - heading "🧩 CE-Hub Planner" [level=1] [ref=e40]:
+              - generic [ref=e41]: 🧩
+              - text: CE-Hub Planner
+            - generic [ref=e42]: Strategic Planning & Research Assistant
+        - generic [ref=e43]:
+          - combobox [ref=e45] [cursor=pointer]:
+            - option "🏆 Llama 3.2 3B Instruct (Free) - Meta" [selected]
+            - option "🏆 Gemma 2 9B Instruct (Free) - Google"
+            - option "🏆 Qwen 2.5 7B Instruct ($0.07/1M) - Alibaba"
+            - option "🏆 GLM-4 9B Chat ($0.10/1M) - Zhipu AI"
+            - option "🏆 Qwen 2.5 72B Instruct ($0.56/1M) - Alibaba"
+            - option "🏆 Gemma 2 27B Instruct ($0.27/1M) - Google"
+            - option "🏆 GPT-4o Mini ($0.60/1M) - OpenAI"
+            - option "🏆 Claude 3.5 Sonnet ($15.00/1M) - Anthropic"
+            - option "🏆 GPT-4o ($15.00/1M) - OpenAI"
+            - option "⭐ Llama 3.2 3B Instruct (Free) - Meta"
+            - option "⭐ Qwen 2.5 7B Instruct ($0.07/1M) - Alibaba"
+            - option "⭐ GLM-4 9B Chat ($0.10/1M) - Zhipu AI"
+            - option "⭐ Qwen 2.5 72B Instruct ($0.56/1M) - Alibaba"
+            - option "⭐ Gemma 2 27B Instruct ($0.27/1M) - Google"
+            - option "⭐ GPT-4o Mini ($0.60/1M) - OpenAI"
+            - option "⭐ Claude 3.5 Sonnet ($15.00/1M) - Anthropic"
+            - option "Llama 3.2 3B Instruct - Meta"
+            - option "Llama 3.2 1B Instruct - Meta"
+            - option "Gemma 2 9B Instruct - Google"
+            - option "Zephyr 7B Beta - HuggingFace"
+            - option "Phi-3 Mini 128K Instruct - Microsoft"
+            - option "Qwen 2.5 7B Instruct ($0.07/1M) - Alibaba"
+            - option "Qwen 2 7B Instruct ($0.07/1M) - Alibaba"
+            - option "GLM-4 9B Chat ($0.10/1M) - Zhipu AI"
+            - option "Phi-3 Medium 128K ($0.14/1M) - Microsoft"
+            - option "Llama 3.1 8B Instruct ($0.18/1M) - Meta"
+            - option "Llama 3 8B Instruct ($0.18/1M) - Meta"
+            - option "Mistral 7B Instruct ($0.18/1M) - Mistral"
+            - option "OpenChat 7B ($0.18/1M) - OpenChat"
+            - option "MythoMist 7B ($0.18/1M) - Gryphe"
+            - option "Toppy M 7B ($0.18/1M) - Undi95"
+            - option "Nous Capybara 7B ($0.18/1M) - NousResearch"
+            - option "Qwen 2.5 72B Instruct ($0.56/1M) - Alibaba"
+            - option "Gemma 2 27B Instruct ($0.27/1M) - Google"
+            - option "Mistral Nemo ($0.27/1M) - Mistral"
+            - option "Qwen 2.5 32B Instruct ($0.30/1M) - Alibaba"
+            - option "Qwen 2 72B Instruct ($0.56/1M) - Alibaba"
+            - option "DeepSeek Coder ($0.14/1M) - DeepSeek"
+            - option "Dolphin Mixtral 8x7B ($0.50/1M) - Cognitive Computations"
+            - option "Mixtral 8x7B Instruct ($0.54/1M) - Mistral"
+            - option "LZLV 70B ($0.59/1M) - Lizpreciatior"
+            - option "GPT-4o Mini ($0.60/1M) - OpenAI"
+            - option "Gemini Flash 1.5 ($0.75/1M) - Google"
+            - option "Nemotron 70B Instruct ($0.86/1M) - NVIDIA"
+            - option "Llama 3.1 70B Instruct ($0.88/1M) - Meta"
+            - option "Claude 3 Haiku ($1.25/1M) - Anthropic"
+            - option "Command R ($1.50/1M) - Cohere"
+            - option "Sonar Large 128K Online ($1.00/1M) - Perplexity"
+            - option "Claude 3 Sonnet ($3.00/1M) - Anthropic"
+            - option "Gemini Pro 1.5 ($7.00/1M) - Google"
+            - option "Mistral Large ($8.00/1M) - Mistral"
+            - option "Command R+ ($3.00/1M) - Cohere"
+            - option "GPT-4 (undefined) - OpenAI"
+            - option "GPT-4 Turbo (undefined) - OpenAI"
+            - option "GPT-3.5 Turbo (undefined) - OpenAI"
+            - option "Claude 3 Sonnet (undefined) - Anthropic"
+            - option "Claude 3 Haiku (undefined) - Anthropic"
+            - option "Claude 3.5 Sonnet ($15.00/1M) - Anthropic"
+            - option "GPT-4o ($15.00/1M) - OpenAI"
+            - option "GPT-4 Turbo ($10.00/1M) - OpenAI"
+            - option "GPT-4 ($30.00/1M) - OpenAI"
+            - option "Claude 3 Opus ($75.00/1M) - Anthropic"
+            - option "o1-preview ($150.00/1M) - OpenAI"
+            - option "o1-mini ($30.00/1M) - OpenAI"
+          - button "📤 Export to Archon" [disabled] [ref=e46]:
+            - generic [ref=e47]: 📤
+            - text: Export to Archon
+          - generic [ref=e50]: Connected
+    - main [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e54]: I need help with knowledge management for my team. Everything is scattered.
+        - generic [ref=e56]:
+          - text: As a Planning and Research Assistant, I can help you organize your team's knowledge and create a knowledge management system that suits your needs.
+          - text: "To get started, let's break down the key components of a knowledge management system:"
+          - text: "1."
+          - strong [ref=e57]: Knowledge Capture
+          - text: ": Identifying and documenting existing knowledge within your team."
+          - text: "2."
+          - strong [ref=e58]: Knowledge Organization
+          - text: ": Structuring and categorizing captured knowledge for easy access."
+          - text: "3."
+          - strong [ref=e59]: Knowledge Sharing
+          - text: ": Disseminating knowledge to team members and stakeholders."
+          - text: "4."
+          - strong [ref=e60]: Knowledge Retrieval
+          - text: ": Enabling team members to find and retrieve relevant knowledge."
+          - text: "Let's focus on the first two components: Knowledge Capture and Knowledge Organization."
+          - strong [ref=e61]: Knowledge Capture
+          - text: "To capture knowledge, you'll need to identify what information is already available within your team. This can include:"
+          - text: "* Documented procedures and processes"
+          - text: "* Meeting minutes and notes"
+          - text: "* Project reports and deliverables"
+          - text: "* Expert interviews and conversations"
+          - text: "* Existing knowledge bases and wikis"
+          - strong [ref=e62]: Knowledge Organization
+          - text: "Once you have a good understanding of what knowledge exists, it's time to organize it. Here are some ideas to get you started:"
+          - text: "1."
+          - strong [ref=e63]: Create categories and subcategories
+          - text: ": Use a hierarchical structure to group related knowledge into categories (e.g., \"Project Management,\" \"Technical Processes,\" etc.)."
+          - text: "2."
+          - strong [ref=e64]: Use tags and keywords
+          - text: ": Assign relevant tags and keywords to each piece of knowledge to enable easy searching and retrieval."
+          - text: "3."
+          - strong [ref=e65]: Develop an ontology
+          - text: ": Create a conceptual framework to understand how different pieces of knowledge relate t|"
+      - generic [ref=e68]:
+        - textbox "Describe what you'd like to plan or research..." [ref=e69]
+        - generic [ref=e70]:
+          - generic [ref=e71]:
+            - button "📎" [ref=e72] [cursor=pointer]
+            - button "🎤" [ref=e73] [cursor=pointer]
+            - generic [ref=e74]: 0/4000
+          - generic [ref=e75]:
+            - button "🔊" [ref=e76] [cursor=pointer]
+            - button "⚡" [disabled] [ref=e77]:
+              - generic [ref=e78]: ⚡
+    - complementary [ref=e79]:
+      - generic [ref=e80]:
+        - heading "💬 Chat Details" [level=3] [ref=e81]
+        - button "👁️" [ref=e82] [cursor=pointer]
+      - generic [ref=e85]:
+        - generic [ref=e86]: 📝
+        - paragraph [ref=e87]: Select a chat to view details
+```

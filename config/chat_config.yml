@@ -1,0 +1,55 @@
+# CE-Hub Chat Knowledge System Configuration
+# Archon-First Protocol compliant chat management
+
+# Default project settings
+default_project: "ce-hub"
+projects:
+  ce-hub:
+    description: "Context Engineering Hub - Master Operating System"
+    domain: "context-engineering"
+    tags:
+      - "scope:project"
+      - "type:summary"
+      - "domain:context-engineering"
+
+# Archon MCP connection settings
+archon:
+  host: "localhost"
+  port: 8051
+  timeout: 30
+  retry_attempts: 3
+  retry_delay: 2
+
+# File management settings
+file_management:
+  active_retention_days: 30
+  summary_batch_size: 10
+  archive_compression: false
+  backup_before_prune: true
+
+# Chat file settings
+chat_format:
+  timestamp_format: "%Y-%m-%d %H:%M"
+  entry_prefix: "  - "
+  max_tail_entries: 50
+  default_tail: 20
+
+# Tag taxonomy for Archon ingestion
+tag_schema:
+  required:
+    - "type:summary"
+    - "scope:project"
+  optional_domains:
+    - "context-engineering"
+    - "frontend"
+    - "backend"
+    - "ai-integration"
+    - "testing"
+    - "devops"
+    - "ce-hub"
+
+# Logging configuration
+logging:
+  level: "INFO"
+  format: "[%(asctime)s] %(levelname)s: %(message)s"
+  file: "chats/chat_system.log"

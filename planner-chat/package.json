@@ -1,0 +1,39 @@
+{
+  "name": "ce-hub-planner-chat",
+  "version": "1.0.0",
+  "description": "Specialized planning and research chat interface for CE-Hub with Archon integration",
+  "main": "server/main.js",
+  "scripts": {
+    "dev": "node server/main.js",
+    "start": "node server/main.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "chat",
+    "planning",
+    "research",
+    "archon",
+    "ce-hub"
+  ],
+  "author": "CE-Hub Digital Team",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.3",
+    "@playwright/test": "^1.56.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "openai": "^4.20.1",
+    "playwright": "^1.56.0",
+    "uploadthing": "^6.13.2",
+    "uuid": "^9.0.1",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

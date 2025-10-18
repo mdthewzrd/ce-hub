@@ -1,0 +1,10 @@
+{
+  "projectsRoot": "./projects",
+  "defaultProject": "personal-scratch",
+  "maxFolderDepth": 3,
+  "autoSaveInterval": 30000,
+  "exportedBadgeColor": "#10B981",
+  "archonBaseUrl": "http://localhost:8051",
+  "indexRebuildOnStart": true,
+  "version": "1.0.0"
+}

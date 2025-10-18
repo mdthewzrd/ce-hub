@@ -1,0 +1,181 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - heading "📁 Projects" [level=3] [ref=e5]
+      - generic [ref=e6]:
+        - button "💬" [ref=e7] [cursor=pointer]:
+          - generic [ref=e8]: 💬
+        - button "➕" [ref=e9] [cursor=pointer]:
+          - generic [ref=e10]: ➕
+    - generic [ref=e12]:
+      - generic [ref=e14] [cursor=pointer]:
+        - generic [ref=e15]: 📁
+        - generic [ref=e16]: Personal Scratch
+      - generic [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: 📁
+        - generic [ref=e20]: Trading Journal
+      - generic [ref=e21] [cursor=pointer]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: 📁
+          - generic [ref=e24]: Testing Workflows
+        - generic [ref=e25]:
+          - generic [ref=e26]: Spitball Ideas Workflow
+          - generic [ref=e27]: Upload Documents Workflow
+          - generic [ref=e28]: Use Inspiration Workflow
+          - generic [ref=e29]: Conversational Workflow
+    - generic [ref=e32]: 3 projects, 7 chats
+  - generic [ref=e33]:
+    - banner [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - button "☰" [ref=e37] [cursor=pointer]:
+            - generic [ref=e38]: ☰
+          - generic [ref=e39]:
+            - heading "🧩 CE-Hub Planner" [level=1] [ref=e40]:
+              - generic [ref=e41]: 🧩
+              - text: CE-Hub Planner
+            - generic [ref=e42]: Strategic Planning & Research Assistant
+        - generic [ref=e43]:
+          - combobox [ref=e45] [cursor=pointer]:
+            - option "🏆 Llama 3.2 3B Instruct (Free) - Meta" [selected]
+            - option "🏆 Gemma 2 9B Instruct (Free) - Google"
+            - option "🏆 Qwen 2.5 7B Instruct ($0.07/1M) - Alibaba"
+            - option "🏆 GLM-4 9B Chat ($0.10/1M) - Zhipu AI"
+            - option "🏆 Qwen 2.5 72B Instruct ($0.56/1M) - Alibaba"
+            - option "🏆 Gemma 2 27B Instruct ($0.27/1M) - Google"
+            - option "🏆 GPT-4o Mini ($0.60/1M) - OpenAI"
+            - option "🏆 Claude 3.5 Sonnet ($15.00/1M) - Anthropic"
+            - option "🏆 GPT-4o ($15.00/1M) - OpenAI"
+            - option "⭐ Llama 3.2 3B Instruct (Free) - Meta"
+            - option "⭐ Qwen 2.5 7B Instruct ($0.07/1M) - Alibaba"
+            - option "⭐ GLM-4 9B Chat ($0.10/1M) - Zhipu AI"
+            - option "⭐ Qwen 2.5 72B Instruct ($0.56/1M) - Alibaba"
+            - option "⭐ Gemma 2 27B Instruct ($0.27/1M) - Google"
+            - option "⭐ GPT-4o Mini ($0.60/1M) - OpenAI"
+            - option "⭐ Claude 3.5 Sonnet ($15.00/1M) - Anthropic"
+            - option "Llama 3.2 3B Instruct - Meta"
+            - option "Llama 3.2 1B Instruct - Meta"
+            - option "Gemma 2 9B Instruct - Google"
+            - option "Zephyr 7B Beta - HuggingFace"
+            - option "Phi-3 Mini 128K Instruct - Microsoft"
+            - option "Qwen 2.5 7B Instruct ($0.07/1M) - Alibaba"
+            - option "Qwen 2 7B Instruct ($0.07/1M) - Alibaba"
+            - option "GLM-4 9B Chat ($0.10/1M) - Zhipu AI"
+            - option "Phi-3 Medium 128K ($0.14/1M) - Microsoft"
+            - option "Llama 3.1 8B Instruct ($0.18/1M) - Meta"
+            - option "Llama 3 8B Instruct ($0.18/1M) - Meta"
+            - option "Mistral 7B Instruct ($0.18/1M) - Mistral"
+            - option "OpenChat 7B ($0.18/1M) - OpenChat"
+            - option "MythoMist 7B ($0.18/1M) - Gryphe"
+            - option "Toppy M 7B ($0.18/1M) - Undi95"
+            - option "Nous Capybara 7B ($0.18/1M) - NousResearch"
+            - option "Qwen 2.5 72B Instruct ($0.56/1M) - Alibaba"
+            - option "Gemma 2 27B Instruct ($0.27/1M) - Google"
+            - option "Mistral Nemo ($0.27/1M) - Mistral"
+            - option "Qwen 2.5 32B Instruct ($0.30/1M) - Alibaba"
+            - option "Qwen 2 72B Instruct ($0.56/1M) - Alibaba"
+            - option "DeepSeek Coder ($0.14/1M) - DeepSeek"
+            - option "Dolphin Mixtral 8x7B ($0.50/1M) - Cognitive Computations"
+            - option "Mixtral 8x7B Instruct ($0.54/1M) - Mistral"
+            - option "LZLV 70B ($0.59/1M) - Lizpreciatior"
+            - option "GPT-4o Mini ($0.60/1M) - OpenAI"
+            - option "Gemini Flash 1.5 ($0.75/1M) - Google"
+            - option "Nemotron 70B Instruct ($0.86/1M) - NVIDIA"
+            - option "Llama 3.1 70B Instruct ($0.88/1M) - Meta"
+            - option "Claude 3 Haiku ($1.25/1M) - Anthropic"
+            - option "Command R ($1.50/1M) - Cohere"
+            - option "Sonar Large 128K Online ($1.00/1M) - Perplexity"
+            - option "Claude 3 Sonnet ($3.00/1M) - Anthropic"
+            - option "Gemini Pro 1.5 ($7.00/1M) - Google"
+            - option "Mistral Large ($8.00/1M) - Mistral"
+            - option "Command R+ ($3.00/1M) - Cohere"
+            - option "GPT-4 (undefined) - OpenAI"
+            - option "GPT-4 Turbo (undefined) - OpenAI"
+            - option "GPT-3.5 Turbo (undefined) - OpenAI"
+            - option "Claude 3 Sonnet (undefined) - Anthropic"
+            - option "Claude 3 Haiku (undefined) - Anthropic"
+            - option "Claude 3.5 Sonnet ($15.00/1M) - Anthropic"
+            - option "GPT-4o ($15.00/1M) - OpenAI"
+            - option "GPT-4 Turbo ($10.00/1M) - OpenAI"
+            - option "GPT-4 ($30.00/1M) - OpenAI"
+            - option "Claude 3 Opus ($75.00/1M) - Anthropic"
+            - option "o1-preview ($150.00/1M) - OpenAI"
+            - option "o1-mini ($30.00/1M) - OpenAI"
+          - button "📤 Export to Archon" [disabled] [ref=e46]:
+            - generic [ref=e47]: 📤
+            - text: Export to Archon
+          - generic [ref=e50]: Connected
+    - main [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e54]: I want to plan a SaaS feature and I have research documents to upload.
+        - generic [ref=e56]:
+          - text: Let's structure your planning document to ensure it's comprehensive, actionable, and ready for Archon knowledge management.
+          - text: "Here's a suggested outline for your SaaS feature planning document:"
+          - code [ref=e57]
+          - text: "`markdown"
+          - text: "# [Feature Name] Planning Document"
+          - text: "## Feature Overview"
+          - text: "-"
+          - strong [ref=e58]: Objective
+          - text: ": Clear, measurable goal"
+          - text: "-"
+          - strong [ref=e59]: Scope
+          - text: ": What's included and excluded"
+          - text: "-"
+          - strong [ref=e60]: Success Criteria
+          - text: ": How to measure completion"
+          - text: "## Research and Analysis"
+          - text: "-"
+          - strong [ref=e61]: Existing Research Documents
+          - text: ": Upload your research documents here"
+          - text: "-"
+          - strong [ref=e62]: Research Gaps
+          - text: ": What we need to learn"
+          - text: "-"
+          - strong [ref=e63]: Dependencies
+          - text: ": What other features or research we depend on"
+          - text: "## Requirements Analysis"
+          - text: "-"
+          - strong [ref=e64]: Functional Requirements
+          - text: ": What the feature needs to do"
+          - text: "-"
+          - strong [ref=e65]: Non-Functional Requirements
+          - text: ": Performance, security, scalability, etc."
+          - text: "-"
+          - strong [ref=e66]: User Stories
+          - text: ": What the feature should improve for users"
+          - text: "-"
+          - strong [ref=e67]: Acceptance Criteria
+          - text: ": How we know the feature is complete"
+          - text: "## Design and Architecture"
+          - text: "-"
+          - strong [ref=e68]: High-Level Design
+          - text: ": Overview of the feature's architecture"
+          - text: "-"
+          - strong [ref=e69]: Component Breakdown
+          - text: ": Detailed description of individual components"
+          - text: "-"
+          - emphasis
+          - text: Interacti|
+      - generic [ref=e72]:
+        - textbox "Describe what you'd like to plan or research..." [ref=e73]
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - button "📎" [ref=e76] [cursor=pointer]
+            - button "🎤" [ref=e77] [cursor=pointer]
+            - generic [ref=e78]: 0/4000
+          - generic [ref=e79]:
+            - button "🔊" [ref=e80] [cursor=pointer]
+            - button "⚡" [disabled] [ref=e81]:
+              - generic [ref=e82]: ⚡
+    - complementary [ref=e83]:
+      - generic [ref=e84]:
+        - heading "💬 Chat Details" [level=3] [ref=e85]
+        - button "👁️" [ref=e86] [cursor=pointer]
+      - generic [ref=e89]:
+        - generic [ref=e90]: 📝
+        - paragraph [ref=e91]: Select a chat to view details
+```

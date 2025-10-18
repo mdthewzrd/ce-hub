@@ -1,0 +1,9 @@
+This is a test text file for testing the file preview functionality.
+
+Features to test:
+1. Upload queue preview - clicking files before sending
+2. Message attachment preview - clicking files after sending
+3. Image preview modal for images
+4. File details modal for documents
+
+The file preview should work correctly for both scenarios now!

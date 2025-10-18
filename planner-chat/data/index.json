@@ -1,0 +1,151 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-10-13T02:19:58.274Z",
+  "projects": [
+    {
+      "id": "personal-scratch-001",
+      "slug": "personal-scratch",
+      "title": "Personal Scratch",
+      "path": "projects/personal-scratch",
+      "isDefault": true,
+      "folders": [
+        {
+          "id": "f074d83c31c3",
+          "name": "ideas",
+          "path": "folders/ideas",
+          "chats": []
+        },
+        {
+          "id": "176585e8f4f2",
+          "name": "research",
+          "path": "folders/research",
+          "chats": []
+        }
+      ],
+      "chats": [
+        {
+          "id": "38f56a60e0c4",
+          "title": "Test Planning Session",
+          "filePath": "projects/personal-scratch/chats/2025-10-11_test-planning-session.md",
+          "projectId": "personal-scratch-001",
+          "folderPath": null,
+          "exported": false,
+          "archonSourceId": null,
+          "lastUpdated": "2025-10-13T02:19:58.271Z",
+          "messageCount": 0,
+          "wordCount": 19
+        }
+      ]
+    },
+    {
+      "id": "c2699fc02c9c",
+      "slug": "testing-workflows",
+      "title": "Testing Workflows",
+      "path": "projects/testing-workflows",
+      "isDefault": false,
+      "folders": [],
+      "chats": [
+        {
+          "id": "cbf7b21602ff",
+          "title": "Just Chat Through It Workflow Test",
+          "filePath": "projects/testing-workflows/chats/2025-10-12_chat-conversational-workflow.md",
+          "projectId": "c2699fc02c9c",
+          "folderPath": null,
+          "exported": false,
+          "archonSourceId": null,
+          "lastUpdated": "2025-10-13T02:19:58.272Z",
+          "messageCount": 0,
+          "wordCount": 877
+        },
+        {
+          "id": "3108a5ac5c8b",
+          "title": "Spitball Ideas Workflow Test",
+          "filePath": "projects/testing-workflows/chats/2025-10-12_spitball-ideas-workflow.md",
+          "projectId": "c2699fc02c9c",
+          "folderPath": null,
+          "exported": false,
+          "archonSourceId": null,
+          "lastUpdated": "2025-10-13T02:19:58.272Z",
+          "messageCount": 0,
+          "wordCount": 582
+        },
+        {
+          "id": "4f3ca7f07ba1",
+          "title": "Upload Existing Documents Workflow Test",
+          "filePath": "projects/testing-workflows/chats/2025-10-12_upload-documents-workflow.md",
+          "projectId": "c2699fc02c9c",
+          "folderPath": null,
+          "exported": false,
+          "archonSourceId": null,
+          "lastUpdated": "2025-10-13T02:19:58.273Z",
+          "messageCount": 0,
+          "wordCount": 678
+        },
+        {
+          "id": "389a5b525b72",
+          "title": "Use Inspiration Workflow Test",
+          "filePath": "projects/testing-workflows/chats/2025-10-12_use-inspiration-workflow.md",
+          "projectId": "c2699fc02c9c",
+          "folderPath": null,
+          "exported": false,
+          "archonSourceId": null,
+          "lastUpdated": "2025-10-13T02:19:58.273Z",
+          "messageCount": 0,
+          "wordCount": 637
+        }
+      ]
+    },
+    {
+      "id": "7366cbdc16f8",
+      "slug": "trading-journal",
+      "title": "Trading Journal",
+      "path": "projects/trading-journal",
+      "isDefault": false,
+      "folders": [],
+      "chats": [
+        {
+          "id": "56e393a6fcbb",
+          "title": "Trading journal v1",
+          "filePath": "projects/trading-journal/chats/2025-10-12_trading-journal-v1.md",
+          "projectId": "7366cbdc16f8",
+          "folderPath": null,
+          "exported": false,
+          "archonSourceId": null,
+          "lastUpdated": "2025-10-13T02:19:58.274Z",
+          "messageCount": 0,
+          "wordCount": 16
+        },
+        {
+          "id": "4e329780ab46",
+          "title": "trading journal v2",
+          "filePath": "projects/trading-journal/chats/2025-10-12_trading-journal-v2.md",
+          "projectId": "7366cbdc16f8",
+          "folderPath": null,
+          "exported": false,
+          "archonSourceId": null,
+          "lastUpdated": "2025-10-13T02:19:58.274Z",
+          "messageCount": 0,
+          "wordCount": 16
+        },
+        {
+          "id": "43908a2c080d",
+          "title": "Trading Strategy Discussion",
+          "filePath": "projects/trading-journal/chats/2025-10-12_trading-strategy-discussion.md",
+          "projectId": "7366cbdc16f8",
+          "folderPath": null,
+          "exported": false,
+          "archonSourceId": null,
+          "lastUpdated": "2025-10-13T02:19:58.274Z",
+          "messageCount": 0,
+          "wordCount": 21
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "totalProjects": 3,
+    "totalFolders": 2,
+    "totalChats": 8,
+    "exportedChats": 0
+  }
+}

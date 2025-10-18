@@ -1,0 +1,431 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - main [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - navigation [ref=e6]:
+            - generic [ref=e7]:
+              - generic [ref=e8]:
+                - img [ref=e9]
+                - generic [ref=e19]: Traderra
+              - generic [ref=e20]:
+                - link "Dashboard" [ref=e21] [cursor=pointer]:
+                  - /url: /dashboard
+                  - img [ref=e22]
+                  - generic [ref=e24]: Dashboard
+                - link "Trades" [ref=e25] [cursor=pointer]:
+                  - /url: /trades
+                  - img [ref=e26]
+                  - generic [ref=e29]: Trades
+                - link "Stats" [ref=e30] [cursor=pointer]:
+                  - /url: /statistics
+                  - img [ref=e31]
+                  - generic [ref=e33]: Stats
+                - link "Calendar" [ref=e34] [cursor=pointer]:
+                  - /url: /calendar
+                  - img [ref=e35]
+                  - generic [ref=e37]: Calendar
+                - link "Journal" [ref=e38] [cursor=pointer]:
+                  - /url: /journal
+                  - img [ref=e39]
+                  - generic [ref=e42]: Journal
+                - link "Settings" [ref=e43] [cursor=pointer]:
+                  - /url: /settings
+                  - img [ref=e44]
+                  - generic [ref=e47]: Settings
+            - generic [ref=e48]:
+              - button "Renata" [ref=e49] [cursor=pointer]:
+                - img [ref=e50]
+                - generic [ref=e60]: Renata
+              - generic [ref=e61]:
+                - generic [ref=e63]: T
+                - generic [ref=e64]: Demo Account
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - generic [ref=e68]:
+                - img [ref=e69]
+                - heading "Trading Journal" [level=1] [ref=e72]
+              - generic [ref=e73]:
+                - button "Classic" [ref=e74] [cursor=pointer]:
+                  - img [ref=e75]
+                  - generic [ref=e76]: Classic
+                - button "Enhanced" [ref=e77] [cursor=pointer]:
+                  - img [ref=e78]
+                  - generic [ref=e81]: Enhanced
+            - generic [ref=e82]:
+              - button "Import" [ref=e83] [cursor=pointer]:
+                - img [ref=e84]
+                - generic [ref=e87]: Import
+              - button "Export" [ref=e88] [cursor=pointer]:
+                - img [ref=e89]
+                - generic [ref=e92]: Export
+          - generic [ref=e93]:
+            - generic [ref=e94]:
+              - generic [ref=e95]:
+                - generic [ref=e96]:
+                  - generic [ref=e97]:
+                    - img [ref=e98]
+                    - heading "Journal" [level=1] [ref=e101]
+                  - button "Collapse sidebar" [ref=e102] [cursor=pointer]:
+                    - img [ref=e103]
+                - button "New Folder" [ref=e106] [cursor=pointer]:
+                  - img [ref=e107]
+                  - generic [ref=e108]: New Folder
+              - tree [ref=e111]:
+                - heading "Folders" [level=3] [ref=e113]
+                - generic [ref=e114]:
+                  - treeitem "Trading Journal 3 Create subfolder Folder options" [ref=e116] [cursor=pointer]:
+                    - generic "Click to expand folder" [ref=e117]:
+                      - img [ref=e118]
+                    - img [ref=e121]
+                    - generic [ref=e124]: Trading Journal
+                    - generic [ref=e125]: "3"
+                    - generic [ref=e126]:
+                      - button "Create subfolder" [ref=e127]:
+                        - img [ref=e128]
+                      - button "Folder options" [ref=e129]:
+                        - img [ref=e130]
+                  - treeitem "Strategies 2 Create subfolder Folder options" [ref=e135] [cursor=pointer]:
+                    - generic "Click to expand folder" [ref=e136]:
+                      - img [ref=e137]
+                    - img [ref=e140]
+                    - generic [ref=e144]: Strategies
+                    - generic [ref=e145]: "2"
+                    - generic [ref=e146]:
+                      - button "Create subfolder" [ref=e147]:
+                        - img [ref=e148]
+                      - button "Folder options" [ref=e149]:
+                        - img [ref=e150]
+                  - treeitem "Research 1 Create subfolder Folder options" [ref=e155] [cursor=pointer]:
+                    - img [ref=e157]
+                    - generic [ref=e160]: Research
+                    - generic [ref=e161]: "1"
+                    - generic [ref=e162]:
+                      - button "Create subfolder" [ref=e163]:
+                        - img [ref=e164]
+                      - button "Folder options" [ref=e165]:
+                        - img [ref=e166]
+              - generic [ref=e171]:
+                - generic [ref=e172]: Traderra Journal
+                - button [ref=e173] [cursor=pointer]:
+                  - img [ref=e174]
+            - generic [ref=e177]:
+              - generic [ref=e179]:
+                - generic [ref=e180]:
+                  - img [ref=e181]
+                  - heading "Daily Trades" [level=2] [ref=e183]
+                  - generic [ref=e184]: 2 items
+                  - generic [ref=e185]: ✓ Selected
+                - generic [ref=e186]:
+                  - generic [ref=e187]:
+                    - button "Grid view" [ref=e188] [cursor=pointer]:
+                      - img [ref=e189]
+                    - button "List view" [ref=e191] [cursor=pointer]:
+                      - img [ref=e192]
+                  - button "Toggle filters" [ref=e193] [cursor=pointer]:
+                    - img [ref=e194]
+                  - button "New Entry" [ref=e196] [cursor=pointer]:
+                    - img [ref=e197]
+                    - generic [ref=e198]: New Entry
+                  - button [ref=e199] [cursor=pointer]:
+                    - img [ref=e200]
+              - generic [ref=e206]:
+                - generic [ref=e208]:
+                  - button "7d" [ref=e209] [cursor=pointer]
+                  - button "30d" [ref=e210] [cursor=pointer]
+                  - button "90d" [ref=e211] [cursor=pointer]
+                  - button "All" [ref=e212] [cursor=pointer]
+                  - button "Custom" [ref=e213] [cursor=pointer]
+                - generic [ref=e214]:
+                  - generic [ref=e216]: Showing 2 entries in "Daily Trades"
+                  - generic [ref=e217]:
+                    - generic [ref=e218]:
+                      - generic [ref=e219]:
+                        - generic [ref=e220]:
+                          - generic [ref=e221]:
+                            - heading "Strong Momentum Play on YIBO" [level=3] [ref=e222]
+                            - generic [ref=e223]:
+                              - img [ref=e224]
+                              - img [ref=e226]
+                              - img [ref=e228]
+                              - img [ref=e230]
+                              - img [ref=e232]
+                          - generic [ref=e234]:
+                            - generic [ref=e235]:
+                              - img [ref=e236]
+                              - generic [ref=e238]: 1/28/2024
+                            - generic [ref=e240]: Long
+                            - generic [ref=e241]:
+                              - img [ref=e242]
+                              - generic [ref=e244]: +$531.20
+                        - generic [ref=e245]:
+                          - button "Edit entry" [ref=e246] [cursor=pointer]:
+                            - img [ref=e247]
+                          - button "Delete entry" [ref=e250] [cursor=pointer]:
+                            - img [ref=e251]
+                      - generic [ref=e254]:
+                        - generic [ref=e255]:
+                          - img [ref=e256]
+                          - text: momentum
+                        - generic [ref=e259]:
+                          - img [ref=e260]
+                          - text: breakout
+                        - generic [ref=e263]:
+                          - img [ref=e264]
+                          - text: pre-market
+                      - generic [ref=e267]:
+                        - generic [ref=e269]: Setup
+                        - generic [ref=e271]: Bias
+                        - generic [ref=e272]:
+                          - generic [ref=e273]: Emotion
+                          - generic [ref=e274]: confident
+                        - generic [ref=e275]:
+                          - generic [ref=e276]: Category
+                          - generic [ref=e277]: win
+                      - generic [ref=e280]: Perfect setup today on YIBO. Stock showed strong pre-market activity with heavy volume. Entered on the breakout above $49.80 resistance level. **Setup Analysis:** - Pre-market volume 3x normal - Clean breakout above resistance - Strong sector momentum in biotech **Execution:** - Entry at $49.86 wa...
+                      - button "Read More" [ref=e281] [cursor=pointer]
+                    - generic [ref=e282]:
+                      - generic [ref=e283]:
+                        - generic [ref=e284]:
+                          - generic [ref=e285]:
+                            - heading "Quick Loss on YIBO Reversal" [level=3] [ref=e286]
+                            - generic [ref=e287]:
+                              - img [ref=e288]
+                              - img [ref=e290]
+                              - img [ref=e292]
+                              - img [ref=e294]
+                              - img [ref=e296]
+                          - generic [ref=e298]:
+                            - generic [ref=e299]:
+                              - img [ref=e300]
+                              - generic [ref=e302]: 1/28/2024
+                            - generic [ref=e304]: Long
+                            - generic [ref=e305]:
+                              - img [ref=e306]
+                              - generic [ref=e308]: $-84.00
+                        - generic [ref=e309]:
+                          - button "Edit entry" [ref=e310] [cursor=pointer]:
+                            - img [ref=e311]
+                          - button "Delete entry" [ref=e314] [cursor=pointer]:
+                            - img [ref=e315]
+                      - generic [ref=e318]:
+                        - generic [ref=e319]:
+                          - img [ref=e320]
+                          - text: reversal
+                        - generic [ref=e323]:
+                          - img [ref=e324]
+                          - text: mistake
+                        - generic [ref=e327]:
+                          - img [ref=e328]
+                          - text: fomo
+                      - generic [ref=e331]:
+                        - generic [ref=e333]: Setup
+                        - generic [ref=e335]: Bias
+                        - generic [ref=e336]:
+                          - generic [ref=e337]: Emotion
+                          - generic [ref=e338]: frustrated
+                        - generic [ref=e339]:
+                          - generic [ref=e340]: Category
+                          - generic [ref=e341]: loss
+                      - generic [ref=e344]: Made a mistake here. Chased YIBO after missing the initial move. **Setup Analysis:** - Stock already extended from the breakout - No clear setup, just FOMO - Should have waited for pullback **Execution:** - Entry at $52.15 was too high - Position size was appropriate - Quick stop at $51.45 limited...
+                      - button "Read More" [ref=e345] [cursor=pointer]
+          - region "Notifications alt+T"
+        - generic [ref=e349]:
+          - generic [ref=e350]:
+            - generic [ref=e351]:
+              - heading "Journal Entry" [level=2] [ref=e352]
+              - generic [ref=e353]:
+                - img [ref=e354]
+                - generic [ref=e356]: Trading Analysis
+              - button "Edit Mode" [ref=e357] [cursor=pointer]:
+                - img [ref=e358]
+                - generic [ref=e361]: Edit Mode
+            - button [ref=e362] [cursor=pointer]:
+              - img [ref=e363]
+          - generic [ref=e367]:
+            - generic [ref=e368]:
+              - generic [ref=e369]:
+                - generic [ref=e370]:
+                  - heading "Strong Momentum Play on YIBO" [level=1] [ref=e371]
+                  - generic [ref=e373]:
+                    - img [ref=e374]
+                    - generic [ref=e376]: 1/28/2024
+                - generic [ref=e377]:
+                  - img [ref=e378]
+                  - img [ref=e380]
+                  - img [ref=e382]
+                  - img [ref=e384]
+                  - img [ref=e386]
+              - generic [ref=e388]:
+                - generic [ref=e389]:
+                  - img [ref=e390]
+                  - text: momentum
+                - generic [ref=e393]:
+                  - img [ref=e394]
+                  - text: breakout
+                - generic [ref=e397]:
+                  - img [ref=e398]
+                  - text: pre-market
+            - generic [ref=e401]:
+              - generic [ref=e402]:
+                - generic [ref=e403]: Market Bias
+                - generic [ref=e404]: Long
+              - generic [ref=e405]:
+                - generic [ref=e406]: P&L ($)
+                - generic [ref=e407]: +$531.20
+              - generic [ref=e408]:
+                - generic [ref=e409]: Emotion
+                - generic [ref=e410]: confident
+              - generic [ref=e411]:
+                - generic [ref=e412]: Category
+                - generic [ref=e413]: win
+            - generic [ref=e414]:
+              - heading "Content" [level=3] [ref=e415]
+              - generic [ref=e417]:
+                - paragraph [ref=e418]: Perfect setup today on YIBO. Stock showed strong pre-market activity with heavy volume. Entered on the breakout above $49.80 resistance level.
+                - paragraph [ref=e419]:
+                  - strong [ref=e420]: "Setup Analysis:"
+                - list [ref=e421]:
+                  - listitem [ref=e422]: Pre-market volume 3x normal
+                  - listitem [ref=e423]: Clean breakout above resistance
+                  - listitem [ref=e424]: Strong sector momentum in biotech
+                - paragraph [ref=e425]:
+                  - strong [ref=e426]: "Execution:"
+                - list [ref=e427]:
+                  - listitem [ref=e428]: Entry at $49.86 was precise
+                  - listitem [ref=e429]: Used 1% position size
+                  - listitem [ref=e430]: Stop loss at $49.20
+                - paragraph [ref=e431]:
+                  - strong [ref=e432]: "Outcome:"
+                - list [ref=e433]:
+                  - listitem [ref=e434]: Stock moved as expected to $51.52
+                  - listitem [ref=e435]: Exited when momentum started to fade
+                  - listitem [ref=e436]: Profit of $531.20 (3.33% gain)
+                - paragraph [ref=e437]:
+                  - strong [ref=e438]: "Lessons:"
+                - list [ref=e439]:
+                  - listitem [ref=e440]: Pre-market volume was key indicator
+                  - listitem [ref=e441]: Patience paid off waiting for clean breakout
+                  - listitem [ref=e442]: Exit timing was good, avoided the pullback
+            - generic [ref=e443]:
+              - button "Close" [ref=e444] [cursor=pointer]
+              - button "Edit Entry" [ref=e445] [cursor=pointer]
+        - generic [ref=e447]:
+          - generic [ref=e448]:
+            - generic [ref=e449]:
+              - img [ref=e451]
+              - generic [ref=e462]:
+                - heading "Renata" [level=3] [ref=e463]
+                - paragraph [ref=e464]: Coach Mode • Offline
+            - button [ref=e465] [cursor=pointer]:
+              - img [ref=e466]
+          - generic [ref=e469]:
+            - generic [ref=e470]:
+              - button "Analyst" [ref=e471] [cursor=pointer]
+              - button "Coach" [ref=e472] [cursor=pointer]
+              - button "Mentor" [ref=e473] [cursor=pointer]
+            - paragraph [ref=e474]: Constructive guidance
+          - generic [ref=e476]:
+            - img [ref=e477]
+            - generic [ref=e479]: Backend connection unavailable
+          - generic [ref=e481]:
+            - generic [ref=e485]:
+              - paragraph [ref=e486]: Coach Mode
+              - paragraph [ref=e487]: I'm here to help you improve your trading. Ask me about your performance or specific concerns.
+            - generic [ref=e488]:
+              - paragraph [ref=e489]: Quick Actions
+              - generic [ref=e490]:
+                - button "📊 Analyze this week's performance" [ref=e491] [cursor=pointer]
+                - button "🎯 Review risk management" [ref=e492] [cursor=pointer]
+                - button "📝 Discuss latest journal entries" [ref=e493] [cursor=pointer]
+                - button "🔍 Identify improvement areas" [ref=e494] [cursor=pointer]
+          - generic [ref=e495]:
+            - generic [ref=e496]:
+              - textbox [ref=e497]:
+                - generic [ref=e498]:
+                  - generic:
+                    - generic:
+                      - generic: Ask Renata (Coach mode) about your trading...
+                - text: CopilotKit
+              - button [ref=e499] [cursor=pointer]:
+                - img [ref=e500]
+            - generic [ref=e503]:
+              - generic [ref=e504]: Press Enter to send, Shift+Enter for new line
+              - generic [ref=e507]: Offline
+    - contentinfo [ref=e508]:
+      - generic [ref=e509]:
+        - generic [ref=e510]:
+          - generic [ref=e511]:
+            - generic [ref=e512]:
+              - img [ref=e514]
+              - generic [ref=e517]:
+                - heading "Traderra" [level=3] [ref=e518]
+                - paragraph [ref=e519]: AI-Powered Trading Intelligence
+            - paragraph [ref=e520]: Professional trading journal and performance analysis platform powered by Renata AI. Transform your trading data into actionable insights with advanced analytics and AI-driven coaching.
+            - generic [ref=e521]:
+              - generic [ref=e522]:
+                - img [ref=e523]
+                - generic [ref=e533]: Powered by Renata AI
+              - generic [ref=e534]:
+                - img [ref=e535]
+                - generic [ref=e537]: Enterprise Security
+          - generic [ref=e538]:
+            - heading "Platform" [level=4] [ref=e539]
+            - list [ref=e540]:
+              - listitem [ref=e541]:
+                - link "Performance Dashboard" [ref=e542] [cursor=pointer]:
+                  - /url: /dashboard
+                  - img [ref=e543]
+                  - generic [ref=e546]: Performance Dashboard
+              - listitem [ref=e547]:
+                - link "AI Journal Analysis" [ref=e548] [cursor=pointer]:
+                  - /url: /journal
+                  - img [ref=e549]
+                  - generic [ref=e559]: AI Journal Analysis
+              - listitem [ref=e560]:
+                - link "Advanced Analytics" [ref=e561] [cursor=pointer]:
+                  - /url: /analytics
+                  - img [ref=e562]
+                  - generic [ref=e564]: Advanced Analytics
+              - listitem [ref=e565]:
+                - link "Security Settings" [ref=e566] [cursor=pointer]:
+                  - /url: /settings
+                  - img [ref=e567]
+                  - generic [ref=e569]: Security Settings
+          - generic [ref=e570]:
+            - heading "Resources" [level=4] [ref=e571]
+            - list [ref=e572]:
+              - listitem [ref=e573]:
+                - link "Documentation" [ref=e574] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e575]:
+                - link "API Reference" [ref=e576] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e577]:
+                - link "Trading Guides" [ref=e578] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e579]:
+                - link "Support Center" [ref=e580] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e581]:
+          - paragraph [ref=e583]: © 2025 Traderra. Professional trading analytics platform.
+          - generic [ref=e584]:
+            - link "Privacy Policy" [ref=e585] [cursor=pointer]:
+              - /url: "#"
+            - link "Terms of Service" [ref=e586] [cursor=pointer]:
+              - /url: "#"
+            - link "Security" [ref=e587] [cursor=pointer]:
+              - /url: "#"
+        - generic [ref=e588]:
+          - generic [ref=e591]: System Operational
+          - generic [ref=e594]: Renata AI Online
+          - generic [ref=e597]: Real-time Data
+  - alert [ref=e598]
+  - button "× bd5c9079-929b-4d55-bdc9-16d1c8181b71 !" [ref=e599]:
+    - generic "Hide Inspector" [ref=e600] [cursor=pointer]: ×
+    - img "bd5c9079-929b-4d55-bdc9-16d1c8181b71" [ref=e602]
+    - generic [ref=e606]: "!"
+```
