@@ -148,3 +148,6 @@ docs/site/
 *.tar.gz
 *.zip
 *.rar
+
+# Exclude unrelated projects
+traderra/
