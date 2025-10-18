@@ -1,3 +1,10 @@
+# CE-Hub Git Ignore Configuration
+
+# Chat system logs and temporary files
+chats/chat_system.log
+chats/active/*temp*
+chats/summaries/*temp*
+chats/archive/.backup*
 # Python
 __pycache__/
 *.py[cod]
@@ -22,20 +29,31 @@ share/python-wheels/
 *.egg
 MANIFEST
 
-# Virtual Environment
+# Virtual environments
+.env
 .venv/
 venv/
 ENV/
 env/
+env.bak/
+venv.bak/
 
-# IDE
+# IDE and editor files
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+# Claude Code settings (keep main settings, ignore local)
+.claude/settings.local.json
+.claude/cache/
+.claude/temp/
 
-# OS Files
+# Archon connection cache
+.archon-cache/
+.mcp-cache/
+
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -47,6 +65,7 @@ Thumbs.db
 # Logs
 *.log
 logs/
+*.out
 
 # Cache
 *.cache
@@ -60,16 +79,19 @@ logs/
 tmp/
 temp/
 *.tmp
+*.temp
 
 # Environment variables
-.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Node modules (for any JS dependencies)
+# Node modules (for any frontend tooling)
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Coverage reports
 htmlcov/
@@ -78,6 +100,8 @@ htmlcov/
 coverage.xml
 *.cover
 .hypothesis/
+.tox/
+.nox/
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -101,3 +125,21 @@ models/
 secrets.json
 credentials.json
 *_key.json
+
+# Backup files
+*.bak
+*.backup
+
+# Config files with secrets (examples should be kept)
+config/secrets.*
+config/production.*
+!config/*.example.*
+
+# Documentation build artifacts
+docs/_build/
+docs/site/
+
+# Package files
+*.tar.gz
+*.zip
+*.rar

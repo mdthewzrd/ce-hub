@@ -1,9 +1,10 @@
 # 🚀 CE-Hub: The Master Operating System for Intelligent Agent Creation
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/Version-2.0.0-blue.svg)](https://github.com/your-username/ce-hub)
+[![Version](https://img.shields.io/badge/Version-2.0.0-blue.svg)](https://github.com/mdthewzrd/ce-hub)
 [![Vision Enabled](https://img.shields.io/badge/Vision-Enabled-green.svg)](docs/VISION_CAPABILITIES.md)
 [![MCP Protocol](https://img.shields.io/badge/MCP-Compatible-purple.svg)](https://modelcontextprotocol.io/)
+[![Archon-First](https://img.shields.io/badge/Protocol-Archon--First-green.svg)](docs/ARCHITECTURE.md)
 
 The definitive platform for Context Engineering and intelligent agent ecosystem development with integrated computer vision capabilities, knowledge graph management, and systematic workflow orchestration.
 
@@ -62,8 +63,9 @@ CE-Hub now includes **comprehensive computer vision capabilities** powered by ad
 ## 🔧 **Installation & Setup**
 
 ### Prerequisites
-- Python 3.11+ with virtual environment
-- Claude Desktop with MCP support
+- Python 3.8+ with standard library
+- [Archon MCP Server](https://github.com/yourusername/archon) running on `localhost:8051`
+- Claude Desktop with MCP support for vision capabilities
 - Git for version control
 - 4GB+ RAM for vision processing
 
@@ -71,10 +73,10 @@ CE-Hub now includes **comprehensive computer vision capabilities** powered by ad
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/ce-hub.git
+git clone https://github.com/mdthewzrd/ce-hub.git
 cd ce-hub
 
-# Set up Python environment
+# Set up Python environment (for vision capabilities)
 python3 -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
@@ -85,6 +87,11 @@ pip install mcp-vision torch transformers pillow
 cd /tmp && git clone https://github.com/groundlight/mcp-vision.git
 cd mcp-vision && pip install -e .
 ```
+
+### Configuration
+1. **Archon Integration**: Ensure Archon MCP is running at `localhost:8051`
+2. **Claude Code Setup**: Open repository in Claude Code for full integration
+3. **Chat System**: Initialize with `/new-chat "Getting Started" --project ce-hub`
 
 ### Claude Desktop Configuration
 
@@ -121,6 +128,23 @@ python3 -c "from mcp_vision import main; print('Vision server ready')"
 # Test complete setup
 python3 -c "import torch, transformers, PIL; print('All dependencies ready')"
 ```
+
+## 💬 Chat Knowledge System
+
+CE-Hub includes a lightweight chat knowledge system for seamless context continuity across Claude Code sessions:
+
+### Core Commands
+- **`/new-chat "<topic>" [--project <name>]`** - Create structured conversation files
+- **`/load-chat "<topic|recent>" [--tail N]`** - Load conversations with context integration
+- **`/summarize-chat "<topic>"`** - Generate Archon-ready summaries
+- **`/weekly-ingest`** - Ingest summaries into Archon knowledge graph
+- **`/monthly-prune`** - Archive old conversations with safety checks
+
+### Workflow Integration
+1. **End session**: `/summarize-chat "Your Topic" --project ce-hub`
+2. **Weekly sync**: `/weekly-ingest --project ce-hub`
+3. **New session**: `/load-chat "Your Topic" --project ce-hub`
+4. **Continue seamlessly**: Full context restored from Archon or local files
 
 ## 🎨 **Vision Capabilities in Action**
 
@@ -369,6 +393,65 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
+## 🗂️ Repository Structure
+
+```
+ce-hub/
+├── docs/                    # Canonical documentation (Vision Artifact aligned)
+│   ├── VISION_ARTIFACT.md   # Foundational authority
+│   ├── VISION_CAPABILITIES.md # Computer vision integration guide
+│   ├── ARCHITECTURE.md      # Technical specifications
+│   ├── CE_GUIDE.md         # Operations manual
+│   ├── CE_RULES.md         # Governance framework
+│   └── DECISIONS.md        # Design decision authority
+├── chats/                   # Chat knowledge system
+│   ├── active/              # Current conversation threads
+│   ├── summaries/           # Archon-ready knowledge summaries
+│   └── archive/             # Organized historical conversations
+├── scripts/                 # Chat management and automation
+│   ├── chat_manager.py      # Core conversation management
+│   ├── weekly_ingest.py     # Archon knowledge ingestion
+│   └── monthly_prune.py     # Automated archival and cleanup
+├── agents/                  # Digital team specifications
+├── prompts/                 # System prompts and integration guides
+├── setup/                   # Installation and configuration scripts
+├── tools/                   # Workflow automation and templates
+├── config/                  # System configuration
+├── .claude/                 # Claude Code IDE integration
+└── CLAUDE.md               # Master orchestrator configuration
+```
+
+## 🤝 Contributing
+
+CE-Hub follows the **Plan → Research → Produce → Ingest** methodology for all contributions:
+
+1. **Plan**: Use PRP template for systematic requirement definition
+2. **Research**: Query Archon knowledge graph for existing patterns
+3. **Produce**: Implement with full Vision Artifact alignment
+4. **Ingest**: Submit learnings for knowledge graph enhancement
+
+See [CE_GUIDE.md](docs/CE_GUIDE.md) for detailed contribution guidelines.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🔗 Related Projects
+
+- **[Archon MCP Server](https://github.com/yourusername/archon)** - Knowledge graph and MCP gateway
+- **[Claude Code](https://claude.com/claude-code)** - Recommended development environment
+- **[Context Engineering Templates](tools/)** - Reusable workflow patterns
+
+## 📞 Support
+
+For questions, issues, or contributions:
+- **Documentation**: Start with [CE_GUIDE.md](docs/CE_GUIDE.md)
+- **Issues**: Use GitHub Issues with appropriate labels
+- **Discussions**: GitHub Discussions for community interaction
+- **Architecture Questions**: Reference [ARCHITECTURE.md](docs/ARCHITECTURE.md)
+
+---
+
 **CE-Hub**: Where intelligent agents meet computer vision for unprecedented development capabilities. 🚀✨
 
-*Built with ❤️ for the future of AI-powered development*
+*Built with ❤️ for the future of AI-powered development and powered by the Archon-First Protocol.*

@@ -92,12 +92,6 @@
         "command": "",
         "description": "Archive old chat files and cleanup",
         "plan_mode_required": true
-      },
-      "agent": {
-        "script": "scripts/agent_manager.py",
-        "command": "",
-        "description": "Access and interact with CE-Hub digital team agents",
-        "plan_mode_required": false
       }
     }
   }

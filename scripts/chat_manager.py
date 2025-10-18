@@ -351,38 +351,6 @@ class ChatManager:
         except Exception as e:
             self.logger.warning(f"Could not update chat metadata: {e}")
 
-    def save_chat(self, topic: str, content: str, project: Optional[str] = None, dry_run: bool = False) -> str:
-        """Save current conversation to a chat file for future loading"""
-        project = project or self.config['default_project']
-        filename = self._generate_filename(topic, project)
-        filepath = self.active_dir / filename
-
-        # Create YAML frontmatter
-        frontmatter = {
-            'topic': topic,
-            'project': project,
-            'created': datetime.now().isoformat(),
-            'last_updated': datetime.now().isoformat(),
-            'status': 'active',
-            'version': 1,
-            'tags': self._get_project_tags(project)
-        }
-
-        # Format the content with frontmatter
-        formatted_content = f"---\n{yaml.dump(frontmatter, default_flow_style=False)}---\n\n# {topic}\n\n{content}\n"
-
-        if dry_run:
-            self.logger.info(f"DRY RUN - Would save chat: {filepath}")
-            self.logger.info(f"Content preview:\n{formatted_content[:500]}...")
-            return str(filepath)
-
-        # Write file
-        with open(filepath, 'w') as f:
-            f.write(formatted_content)
-
-        self.logger.info(f"Saved chat: {filepath}")
-        return str(filepath)
-
 def main():
     """Command line interface for chat management"""
     parser = argparse.ArgumentParser(description="CE-Hub Chat Knowledge System Manager")
@@ -406,13 +374,6 @@ def main():
     sum_parser.add_argument('--project', help='Project name')
     sum_parser.add_argument('--dry-run', action='store_true', help='Show what would be created')
 
-    # save-chat command
-    save_parser = subparsers.add_parser('save-chat', help='Save current conversation to chat file')
-    save_parser.add_argument('topic', help='Chat topic')
-    save_parser.add_argument('content', help='Chat content to save')
-    save_parser.add_argument('--project', help='Project name')
-    save_parser.add_argument('--dry-run', action='store_true', help='Show what would be created')
-
     args = parser.parse_args()
 
     if not args.command:
@@ -434,10 +395,6 @@ def main():
         elif args.command == 'summarize-chat':
             result = manager.summarize_chat(args.topic, args.project, args.dry_run)
             print(f"✅ Summary file: {result}")
-
-        elif args.command == 'save-chat':
-            result = manager.save_chat(args.topic, args.content, args.project, args.dry_run)
-            print(f"✅ Chat saved: {result}")
 
     except Exception as e:
         print(f"❌ Error: {e}")
