@@ -72,8 +72,8 @@ logs/
 .cache/
 .pytest_cache/
 
-# Next.js build cache (large files)
-.next/cache/
+# Next.js build and cache (exclude entirely)
+.next/
 *.pack
 *.pack.gz
 
