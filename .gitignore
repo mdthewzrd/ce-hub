@@ -72,6 +72,11 @@ logs/
 .cache/
 .pytest_cache/
 
+# Next.js build cache (large files)
+.next/cache/
+*.pack
+*.pack.gz
+
 # Model Cache (HuggingFace)
 .cache/huggingface/
 
