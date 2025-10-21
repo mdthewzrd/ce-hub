@@ -149,5 +149,9 @@ docs/site/
 *.zip
 *.rar
 
+# Git worktrees (Crystal)
+/worktrees/
+/worktree-*/
+
 # Exclude unrelated projects
 traderra/
