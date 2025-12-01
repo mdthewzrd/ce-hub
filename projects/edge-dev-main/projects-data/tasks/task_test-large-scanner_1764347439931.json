@@ -1,0 +1,10 @@
+{
+  "id": "task_test-large-scanner_1764347439931",
+  "project_id": "edge-dev-project-dGVzdCBs",
+  "title": "Integrate Test Large Scanner Scanner",
+  "description": "Format and integrate the Test Large Scanner trading scanner into the edge.dev dashboard system with AI enhancement and parameter integrity preservation.",
+  "status": "done",
+  "scanner_name": "Test Large Scanner",
+  "created_at": "2025-11-28T16:30:39.931Z",
+  "completed_at": "2025-11-28T16:30:39.931Z"
+}

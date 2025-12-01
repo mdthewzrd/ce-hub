@@ -1,0 +1,1992 @@
+{
+  "config": {
+    "configFile": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/playwright.config.js",
+    "rootDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/setup/global-setup.js",
+    "globalTeardown": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/setup/global-teardown.js",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "platform": "Edge.dev Trading Platform",
+      "version": "1.0.0",
+      "environment": "test",
+      "timestamp": "2025-11-26T18:07:36.353Z",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "test-results/html-report",
+          "open": "on-failure"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/junit.xml"
+        }
+      ],
+      [
+        "line",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-11-26T18:07:36.353Z",
+          "actualWorkers": 1
+        },
+        "id": "chromium-desktop",
+        "name": "chromium-desktop",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-11-26T18:07:36.353Z",
+          "actualWorkers": 1
+        },
+        "id": "firefox-desktop",
+        "name": "firefox-desktop",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-11-26T18:07:36.353Z",
+          "actualWorkers": 1
+        },
+        "id": "webkit-desktop",
+        "name": "webkit-desktop",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-11-26T18:07:36.353Z",
+          "actualWorkers": 1
+        },
+        "id": "mobile-chrome",
+        "name": "mobile-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-11-26T18:07:36.353Z",
+          "actualWorkers": 1
+        },
+        "id": "mobile-safari",
+        "name": "mobile-safari",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-11-26T18:07:36.353Z",
+          "actualWorkers": 1
+        },
+        "id": "tablet-chrome",
+        "name": "tablet-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-11-26T18:07:36.353Z",
+          "actualWorkers": 1
+        },
+        "id": "high-dpi-chrome",
+        "name": "high-dpi-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-11-26T18:07:36.353Z",
+          "actualWorkers": 1
+        },
+        "id": "ultrawide-chrome",
+        "name": "ultrawide-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-11-26T18:07:36.353Z",
+          "actualWorkers": 1
+        },
+        "id": "performance-chrome",
+        "name": "performance-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-11-26T18:07:36.353Z",
+          "actualWorkers": 1
+        },
+        "id": "visual-chrome",
+        "name": "visual-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 6,
+    "webServer": {
+      "command": "npm run dev -- -p 5656",
+      "port": 5656,
+      "reuseExistingServer": true,
+      "timeout": 120000,
+      "env": {
+        "NODE_ENV": "test"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "e2e/chatgpt-file-attachment-test.spec.js",
+      "file": "e2e/chatgpt-file-attachment-test.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ChatGPT-style file attachment interface test",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium-desktop",
+              "projectName": "chromium-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 22748,
+                  "error": {
+                    "message": "TimeoutError: locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-copilot-textarea], .copilot-textarea').first() to be visible\u001b[22m\n",
+                    "stack": "TimeoutError: locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-copilot-textarea], .copilot-textarea').first() to be visible\u001b[22m\n\n    at /Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/e2e/chatgpt-file-attachment-test.spec.js:50:25",
+                    "location": {
+                      "file": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/e2e/chatgpt-file-attachment-test.spec.js",
+                      "column": 25,
+                      "line": 50
+                    },
+                    "snippet": "  48 |   // Find CopilotTextarea\n  49 |   const copilotTextarea = await page.locator('[data-copilot-textarea], .copilot-textarea').first();\n> 50 |   await copilotTextarea.waitFor({ timeout: 15000 });\n     |                         ^\n  51 |   console.log('✅ CopilotTextarea found');\n  52 |\n  53 |   // Read the user's file content"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/e2e/chatgpt-file-attachment-test.spec.js",
+                        "column": 25,
+                        "line": 50
+                      },
+                      "message": "TimeoutError: locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-copilot-textarea], .copilot-textarea').first() to be visible\u001b[22m\n\n\n  48 |   // Find CopilotTextarea\n  49 |   const copilotTextarea = await page.locator('[data-copilot-textarea], .copilot-textarea').first();\n> 50 |   await copilotTextarea.waitFor({ timeout: 15000 });\n     |                         ^\n  51 |   console.log('✅ CopilotTextarea found');\n  52 |\n  53 |   // Read the user's file content\n    at /Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/e2e/chatgpt-file-attachment-test.spec.js:50:25"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "🧪 Testing new ChatGPT-style file attachment interface...\n"
+                    },
+                    {
+                      "text": "✅ User file found: /Users/michaeldurante/Downloads/backside para b copy.py\n"
+                    },
+                    {
+                      "text": "📊 File size: \u001b[33m10991\u001b[39m bytes\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🔧 EDGE-DEV CACHE BUSTER ACTIVE: 2025-11-18-TRADERRA-STYLING-MIGRATION\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🔧 FRONTEND VERSION: EDGE_DEV_TRADERRA_v2.0\n"
+                    },
+                    {
+                      "text": "🖥️  log:   NEW VERSION DETECTED - CLEARING CACHE\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🔧 EDGE-DEV CACHE BUSTER ACTIVE: 2025-11-18-TRADERRA-STYLING-MIGRATION\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🔧 FRONTEND VERSION: EDGE_DEV_TRADERRA_v2.0\n"
+                    },
+                    {
+                      "text": "🖥️  info: %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold\n"
+                    },
+                    {
+                      "text": "🖥️  log: [HMR] connected\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Running BULLETPROOF Trading Day Validation...\n"
+                    },
+                    {
+                      "text": "🖥️  log: \n================================================================================\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 BULLETPROOF TRADING DAY VALIDATION REPORT\n"
+                    },
+                    {
+                      "text": "🖥️  log: ================================================================================\n"
+                    },
+                    {
+                      "text": "🖥️  log:   VALIDATING TRADING DAY LOGIC FOR 2024:\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📅 Found 10 market holidays for 2024:\n"
+                    },
+                    {
+                      "text": "🖥️  log:    1. New Year's Day: Mon Jan 01 2024 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    2. Martin Luther King Jr. Day: Mon Jan 15 2024 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    3. Presidents' Day: Mon Feb 19 2024 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    4. Good Friday: Fri Mar 29 2024 (Friday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    5. Memorial Day: Mon May 27 2024 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    6. Juneteenth: Wed Jun 19 2024 (Wednesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    7. Independence Day: Thu Jul 04 2024 (Thursday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    8. Labor Day: Mon Sep 02 2024 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    9. Thanksgiving: Thu Nov 28 2024 (Thursday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    10. Christmas Day: Wed Dec 25 2024 (Wednesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Weekend Detection Tests:\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Saturday Sat Jan 06 2024: isWeekend=true, isTradingDay=false\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sunday Sun Jan 07 2024: isWeekend=true, isTradingDay=false\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Trading Day Progression Test (first 30 days of 2024):\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Mon Jan 01 2024 (Monday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Tue Jan 02 2024 (Tuesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Wed Jan 03 2024 (Wednesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Thu Jan 04 2024 (Thursday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Fri Jan 05 2024 (Friday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sat Jan 06 2024 (Saturday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sun Jan 07 2024 (Sunday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Mon Jan 08 2024 (Monday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Tue Jan 09 2024 (Tuesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Wed Jan 10 2024 (Wednesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 Trading Day Stats (first 30 days): 20 trading days, max consecutive: 5\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Trading Day Arithmetic Test:\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Friday: Fri Jan 05 2024\n"
+                    },
+                    {
+                      "text": "🖥️  log:    +1 trading day: Mon Jan 08 2024 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    -1 trading day: Thu Jan 04 2024 (Thursday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   ALL TESTS PASSED - Trading day logic is bulletproof!\n"
+                    },
+                    {
+                      "text": "🖥️  log: ================================================================================\n\n"
+                    },
+                    {
+                      "text": "🖥️  log: \n================================================================================\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 BULLETPROOF TRADING DAY VALIDATION REPORT\n"
+                    },
+                    {
+                      "text": "🖥️  log: ================================================================================\n"
+                    },
+                    {
+                      "text": "🖥️  log:   VALIDATING TRADING DAY LOGIC FOR 2023:\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📅 Found 10 market holidays for 2023:\n"
+                    },
+                    {
+                      "text": "🖥️  log:    1. New Year's Day: Mon Jan 02 2023 (Monday) [Original: Sun Jan 01 2023]\n"
+                    },
+                    {
+                      "text": "🖥️  log:    2. Martin Luther King Jr. Day: Mon Jan 16 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    3. Presidents' Day: Mon Feb 20 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    4. Good Friday: Fri Apr 07 2023 (Friday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    5. Memorial Day: Mon May 29 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    6. Juneteenth: Mon Jun 19 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    7. Independence Day: Tue Jul 04 2023 (Tuesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    8. Labor Day: Mon Sep 04 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    9. Thanksgiving: Thu Nov 23 2023 (Thursday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    10. Christmas Day: Mon Dec 25 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Weekend Detection Tests:\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Saturday Sat Jan 07 2023: isWeekend=true, isTradingDay=false\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sunday Sun Jan 01 2023: isWeekend=true, isTradingDay=false\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Trading Day Progression Test (first 30 days of 2023):\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sun Jan 01 2023 (Sunday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Mon Jan 02 2023 (Monday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Tue Jan 03 2023 (Tuesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Wed Jan 04 2023 (Wednesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Thu Jan 05 2023 (Thursday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Fri Jan 06 2023 (Friday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sat Jan 07 2023 (Saturday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sun Jan 08 2023 (Sunday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Mon Jan 09 2023 (Monday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Tue Jan 10 2023 (Tuesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 Trading Day Stats (first 30 days): 19 trading days, max consecutive: 5\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Trading Day Arithmetic Test:\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Friday: Fri Jan 06 2023\n"
+                    },
+                    {
+                      "text": "🖥️  log:    +1 trading day: Mon Jan 09 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    -1 trading day: Thu Jan 05 2023 (Thursday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   ALL TESTS PASSED - Trading day logic is bulletproof!\n"
+                    },
+                    {
+                      "text": "🖥️  log: ================================================================================\n\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Loading historical LC scan results and populating cache...\n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: undefined → undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: undefined to undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: undefined → undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: undefined to undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing loading legend\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing loading legend\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: undefined → undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: undefined to undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: undefined → undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: undefined to undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing loading legend\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing loading legend\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Loaded 3 historical LC results\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 Top results: AAPL (8.5%), GOOGL (5.2%), MSFT (3.8%)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Dashboard loaded with 3 historical results and cache populated\n"
+                    },
+                    {
+                      "text": "🖥️  log:   CHART DATA FETCH: SPY | Day 0 | Base: Wed Nov 26 2025 (Wednesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   TRADING DAY NAVIGATION: Fetching data for SPY on Day 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:   BASE DATE: Wed Nov 26 2025 (Wednesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   TARGET DATE: Wed Nov 26 2025 (Wednesday) - 0 trading days\n"
+                    },
+                    {
+                      "text": "🖥️  log:   DAY NAVIGATION: Target date 2025-11-26 is END DATE. Range: 2025-03-31 to 2025-11-26\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 Fetching SPY LC navigation data: 2025-03-31 to 2025-11-26 (LC anchor: 2025-11-26)\n"
+                    },
+                    {
+                      "text": "🖥️  log: Fetching daily data: SPY from 2025-03-31 to 2025-11-26\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log:   CHART DATA FETCH: SPY | Day 0 | Base: Wed Nov 26 2025 (Wednesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   TRADING DAY NAVIGATION: Fetching data for SPY on Day 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:   BASE DATE: Wed Nov 26 2025 (Wednesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   TARGET DATE: Wed Nov 26 2025 (Wednesday) - 0 trading days\n"
+                    },
+                    {
+                      "text": "🖥️  log:   DAY NAVIGATION: Target date 2025-11-26 is END DATE. Range: 2025-03-31 to 2025-11-26\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 Fetching SPY LC navigation data: 2025-03-31 to 2025-11-26 (LC anchor: 2025-11-26)\n"
+                    },
+                    {
+                      "text": "🖥️  log: Fetching daily data: SPY from 2025-03-31 to 2025-11-26\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 122ms\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 190ms\n"
+                    },
+                    {
+                      "text": "🖥️  log: Received 168 daily bars\n"
+                    },
+                    {
+                      "text": "🖥️  warning: Removing spike at index 93: price=644.89, prev=642.69, typical_range=0.09999999999990905\n"
+                    },
+                    {
+                      "text": "🖥️  warning: Removing spike at index 119: price=663.7, prev=662.26, typical_range=0.05999999999994543\n"
+                    },
+                    {
+                      "text": "🖥️  log: Processing 166 bars for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 60\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 60\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: Received 168 daily bars\n"
+                    },
+                    {
+                      "text": "🖥️  warning: Removing spike at index 93: price=644.89, prev=642.69, typical_range=0.09999999999990905\n"
+                    },
+                    {
+                      "text": "🖥️  warning: Removing spike at index 119: price=663.7, prev=662.26, typical_range=0.05999999999994543\n"
+                    },
+                    {
+                      "text": "🖥️  log: Processing 166 bars for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 60\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 60\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "✅ Page loaded\n"
+                    },
+                    {
+                      "text": "⏳ Waiting for CopilotTextarea to initialize...\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 852ms\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🔧 Adding native Plotly.js hover debugging for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Native Plotly.js event listeners attached\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Chart Initialized: {tracesCount: 3, layoutDefined: true, globalTemplateApplied: true, timeframeConfig: Daily candlestick chart (60 days) - Direct OHLC}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🔧 Adding native Plotly.js hover debugging for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Native Plotly.js event listeners attached\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Chart Initialized: {tracesCount: 3, layoutDefined: true, globalTemplateApplied: true, timeframeConfig: Daily candlestick chart (60 days) - Direct OHLC}\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 187ms\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 152ms\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 140ms\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 419ms\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-26T18:07:49.403Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/e2e/chatgpt-file-attachment-test.spec.js",
+                    "column": 25,
+                    "line": 50
+                  }
+                },
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 22795,
+                  "error": {
+                    "message": "TimeoutError: locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-copilot-textarea], .copilot-textarea').first() to be visible\u001b[22m\n",
+                    "stack": "TimeoutError: locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-copilot-textarea], .copilot-textarea').first() to be visible\u001b[22m\n\n    at /Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/e2e/chatgpt-file-attachment-test.spec.js:50:25",
+                    "location": {
+                      "file": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/e2e/chatgpt-file-attachment-test.spec.js",
+                      "column": 25,
+                      "line": 50
+                    },
+                    "snippet": "  48 |   // Find CopilotTextarea\n  49 |   const copilotTextarea = await page.locator('[data-copilot-textarea], .copilot-textarea').first();\n> 50 |   await copilotTextarea.waitFor({ timeout: 15000 });\n     |                         ^\n  51 |   console.log('✅ CopilotTextarea found');\n  52 |\n  53 |   // Read the user's file content"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/e2e/chatgpt-file-attachment-test.spec.js",
+                        "column": 25,
+                        "line": 50
+                      },
+                      "message": "TimeoutError: locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-copilot-textarea], .copilot-textarea').first() to be visible\u001b[22m\n\n\n  48 |   // Find CopilotTextarea\n  49 |   const copilotTextarea = await page.locator('[data-copilot-textarea], .copilot-textarea').first();\n> 50 |   await copilotTextarea.waitFor({ timeout: 15000 });\n     |                         ^\n  51 |   console.log('✅ CopilotTextarea found');\n  52 |\n  53 |   // Read the user's file content\n    at /Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/e2e/chatgpt-file-attachment-test.spec.js:50:25"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "🧪 Testing new ChatGPT-style file attachment interface...\n"
+                    },
+                    {
+                      "text": "✅ User file found: /Users/michaeldurante/Downloads/backside para b copy.py\n"
+                    },
+                    {
+                      "text": "📊 File size: \u001b[33m10991\u001b[39m bytes\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🔧 EDGE-DEV CACHE BUSTER ACTIVE: 2025-11-18-TRADERRA-STYLING-MIGRATION\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🔧 FRONTEND VERSION: EDGE_DEV_TRADERRA_v2.0\n"
+                    },
+                    {
+                      "text": "🖥️  log:   NEW VERSION DETECTED - CLEARING CACHE\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🔧 EDGE-DEV CACHE BUSTER ACTIVE: 2025-11-18-TRADERRA-STYLING-MIGRATION\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🔧 FRONTEND VERSION: EDGE_DEV_TRADERRA_v2.0\n"
+                    },
+                    {
+                      "text": "🖥️  info: %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold\n"
+                    },
+                    {
+                      "text": "🖥️  log: [HMR] connected\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Running BULLETPROOF Trading Day Validation...\n"
+                    },
+                    {
+                      "text": "🖥️  log: \n================================================================================\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 BULLETPROOF TRADING DAY VALIDATION REPORT\n"
+                    },
+                    {
+                      "text": "🖥️  log: ================================================================================\n"
+                    },
+                    {
+                      "text": "🖥️  log:   VALIDATING TRADING DAY LOGIC FOR 2024:\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📅 Found 10 market holidays for 2024:\n"
+                    },
+                    {
+                      "text": "🖥️  log:    1. New Year's Day: Mon Jan 01 2024 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    2. Martin Luther King Jr. Day: Mon Jan 15 2024 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    3. Presidents' Day: Mon Feb 19 2024 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    4. Good Friday: Fri Mar 29 2024 (Friday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    5. Memorial Day: Mon May 27 2024 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    6. Juneteenth: Wed Jun 19 2024 (Wednesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    7. Independence Day: Thu Jul 04 2024 (Thursday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    8. Labor Day: Mon Sep 02 2024 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    9. Thanksgiving: Thu Nov 28 2024 (Thursday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    10. Christmas Day: Wed Dec 25 2024 (Wednesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Weekend Detection Tests:\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Saturday Sat Jan 06 2024: isWeekend=true, isTradingDay=false\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sunday Sun Jan 07 2024: isWeekend=true, isTradingDay=false\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Trading Day Progression Test (first 30 days of 2024):\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Mon Jan 01 2024 (Monday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Tue Jan 02 2024 (Tuesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Wed Jan 03 2024 (Wednesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Thu Jan 04 2024 (Thursday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Fri Jan 05 2024 (Friday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sat Jan 06 2024 (Saturday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sun Jan 07 2024 (Sunday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Mon Jan 08 2024 (Monday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Tue Jan 09 2024 (Tuesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Wed Jan 10 2024 (Wednesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 Trading Day Stats (first 30 days): 20 trading days, max consecutive: 5\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Trading Day Arithmetic Test:\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Friday: Fri Jan 05 2024\n"
+                    },
+                    {
+                      "text": "🖥️  log:    +1 trading day: Mon Jan 08 2024 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    -1 trading day: Thu Jan 04 2024 (Thursday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   ALL TESTS PASSED - Trading day logic is bulletproof!\n"
+                    },
+                    {
+                      "text": "🖥️  log: ================================================================================\n\n"
+                    },
+                    {
+                      "text": "🖥️  log: \n================================================================================\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 BULLETPROOF TRADING DAY VALIDATION REPORT\n"
+                    },
+                    {
+                      "text": "🖥️  log: ================================================================================\n"
+                    },
+                    {
+                      "text": "🖥️  log:   VALIDATING TRADING DAY LOGIC FOR 2023:\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📅 Found 10 market holidays for 2023:\n"
+                    },
+                    {
+                      "text": "🖥️  log:    1. New Year's Day: Mon Jan 02 2023 (Monday) [Original: Sun Jan 01 2023]\n"
+                    },
+                    {
+                      "text": "🖥️  log:    2. Martin Luther King Jr. Day: Mon Jan 16 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    3. Presidents' Day: Mon Feb 20 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    4. Good Friday: Fri Apr 07 2023 (Friday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    5. Memorial Day: Mon May 29 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    6. Juneteenth: Mon Jun 19 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    7. Independence Day: Tue Jul 04 2023 (Tuesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    8. Labor Day: Mon Sep 04 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    9. Thanksgiving: Thu Nov 23 2023 (Thursday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    10. Christmas Day: Mon Dec 25 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Weekend Detection Tests:\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Saturday Sat Jan 07 2023: isWeekend=true, isTradingDay=false\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sunday Sun Jan 01 2023: isWeekend=true, isTradingDay=false\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Trading Day Progression Test (first 30 days of 2023):\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sun Jan 01 2023 (Sunday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Mon Jan 02 2023 (Monday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Tue Jan 03 2023 (Tuesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Wed Jan 04 2023 (Wednesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Thu Jan 05 2023 (Thursday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Fri Jan 06 2023 (Friday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sat Jan 07 2023 (Saturday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Sun Jan 08 2023 (Sunday): NON-TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Mon Jan 09 2023 (Monday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Tue Jan 10 2023 (Tuesday): TRADING\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 Trading Day Stats (first 30 days): 19 trading days, max consecutive: 5\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🚀 Trading Day Arithmetic Test:\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Friday: Fri Jan 06 2023\n"
+                    },
+                    {
+                      "text": "🖥️  log:    +1 trading day: Mon Jan 09 2023 (Monday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:    -1 trading day: Thu Jan 05 2023 (Thursday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   ALL TESTS PASSED - Trading day logic is bulletproof!\n"
+                    },
+                    {
+                      "text": "🖥️  log: ================================================================================\n\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Loading historical LC scan results and populating cache...\n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: undefined → undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: undefined to undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: undefined → undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: undefined to undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing loading legend\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing loading legend\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: undefined → undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: undefined to undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: undefined → undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: undefined to undefined\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing loading legend\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing loading legend\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Loaded 3 historical LC results\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 Top results: AAPL (8.5%), GOOGL (5.2%), MSFT (3.8%)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Dashboard loaded with 3 historical results and cache populated\n"
+                    },
+                    {
+                      "text": "🖥️  log:   CHART DATA FETCH: SPY | Day 0 | Base: Wed Nov 26 2025 (Wednesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   TRADING DAY NAVIGATION: Fetching data for SPY on Day 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:   BASE DATE: Wed Nov 26 2025 (Wednesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   TARGET DATE: Wed Nov 26 2025 (Wednesday) - 0 trading days\n"
+                    },
+                    {
+                      "text": "🖥️  log:   DAY NAVIGATION: Target date 2025-11-26 is END DATE. Range: 2025-03-31 to 2025-11-26\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 Fetching SPY LC navigation data: 2025-03-31 to 2025-11-26 (LC anchor: 2025-11-26)\n"
+                    },
+                    {
+                      "text": "🖥️  log: Fetching daily data: SPY from 2025-03-31 to 2025-11-26\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log:   CHART DATA FETCH: SPY | Day 0 | Base: Wed Nov 26 2025 (Wednesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   TRADING DAY NAVIGATION: Fetching data for SPY on Day 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:   BASE DATE: Wed Nov 26 2025 (Wednesday)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   TARGET DATE: Wed Nov 26 2025 (Wednesday) - 0 trading days\n"
+                    },
+                    {
+                      "text": "🖥️  log:   DAY NAVIGATION: Target date 2025-11-26 is END DATE. Range: 2025-03-31 to 2025-11-26\n"
+                    },
+                    {
+                      "text": "🖥️  log: 📊 Fetching SPY LC navigation data: 2025-03-31 to 2025-11-26 (LC anchor: 2025-11-26)\n"
+                    },
+                    {
+                      "text": "🖥️  log: Fetching daily data: SPY from 2025-03-31 to 2025-11-26\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 141ms\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 143ms\n"
+                    },
+                    {
+                      "text": "🖥️  log: Received 168 daily bars\n"
+                    },
+                    {
+                      "text": "🖥️  warning: Removing spike at index 93: price=644.89, prev=642.69, typical_range=0.09999999999990905\n"
+                    },
+                    {
+                      "text": "🖥️  warning: Removing spike at index 119: price=663.7, prev=662.26, typical_range=0.05999999999994543\n"
+                    },
+                    {
+                      "text": "🖥️  log: Processing 166 bars for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 60\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 60\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: Received 168 daily bars\n"
+                    },
+                    {
+                      "text": "🖥️  warning: Removing spike at index 93: price=644.89, prev=642.69, typical_range=0.09999999999990905\n"
+                    },
+                    {
+                      "text": "🖥️  warning: Removing spike at index 119: price=663.7, prev=662.26, typical_range=0.05999999999994543\n"
+                    },
+                    {
+                      "text": "🖥️  log: Processing 166 bars for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 60\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Layout generated for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Dynamic Chart Analysis:\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Data points: 60\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z\n"
+                    },
+                    {
+                      "text": "🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Daily padding: 1 days padding\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Traces: 3\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Market session shapes: 0\n"
+                    },
+                    {
+                      "text": "🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC\n"
+                    },
+                    {
+                      "text": "🖥️  log:      UNIFIED Global Template:  \n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "🖥️  log: RenataPopup render - isOpen: false\n"
+                    },
+                    {
+                      "text": "✅ Page loaded\n"
+                    },
+                    {
+                      "text": "⏳ Waiting for CopilotTextarea to initialize...\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🔧 Adding native Plotly.js hover debugging for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Native Plotly.js event listeners attached\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Chart Initialized: {tracesCount: 3, layoutDefined: true, globalTemplateApplied: true, timeframeConfig: Daily candlestick chart (60 days) - Direct OHLC}\n"
+                    },
+                    {
+                      "text": "🖥️  log: 🔧 Adding native Plotly.js hover debugging for SPY day\n"
+                    },
+                    {
+                      "text": "🖥️  log:   Native Plotly.js event listeners attached\n"
+                    },
+                    {
+                      "text": "🖥️  log:   SPY day Chart Initialized: {tracesCount: 3, layoutDefined: true, globalTemplateApplied: true, timeframeConfig: Daily candlestick chart (60 days) - Direct OHLC}\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 126ms\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 165ms\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 182ms\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] rebuilding\n"
+                    },
+                    {
+                      "text": "🖥️  log: [Fast Refresh] done in 241ms\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2025-11-26T18:08:12.901Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/e2e/chatgpt-file-attachment-test.spec.js",
+                    "column": 25,
+                    "line": 50
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "95b16fd9476503228716-f034b26adda340287e22",
+          "file": "e2e/chatgpt-file-attachment-test.spec.js",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-26T18:07:36.357Z",
+    "duration": 59595.875,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

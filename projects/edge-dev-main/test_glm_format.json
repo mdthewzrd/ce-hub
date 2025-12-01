@@ -1,0 +1,7 @@
+{
+  "source_code": "def simple_scan(data):\n    if data['close'] > data['sma_20']:\n        return True\n    return False",
+  "format_type": "scan_optimization",
+  "preserve_logic": true,
+  "add_documentation": true,
+  "optimize_performance": true
+}

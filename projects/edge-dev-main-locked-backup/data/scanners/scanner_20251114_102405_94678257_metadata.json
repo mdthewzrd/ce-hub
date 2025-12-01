@@ -1,0 +1,10 @@
+{
+  "scanner_id": "scanner_20251114_102405_94678257",
+  "scanner_name": "backside para b copy_formatted",
+  "user_id": "default_user",
+  "created_at": "2025-11-14T10:24:05.546912",
+  "parameters_count": 15,
+  "code_length": 11447,
+  "status": "ready",
+  "extraction_method": "multi_scanner_separation"
+}

@@ -1,0 +1,18 @@
+{
+  "test_timestamp": "2025-11-27T21:20:35.617045",
+  "execution_time_seconds": 4.512052059173584,
+  "test_results": {
+    "build_status": false,
+    "service_status": true,
+    "glm_integration": true,
+    "file_upload": false,
+    "ai_formatting": true,
+    "workflow_execution": true,
+    "trading_opportunities": 10,
+    "no_fallbacks": true,
+    "overall_status": "FAILED"
+  },
+  "passed_tests": 5,
+  "total_tests": 8,
+  "production_ready": false
+}

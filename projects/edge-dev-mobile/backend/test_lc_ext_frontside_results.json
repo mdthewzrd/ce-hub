@@ -1,0 +1,21 @@
+{
+  "test_name": "lc_ext_frontside_test",
+  "scanner_file": "/Users/michaeldurante/Downloads/lc ext frontside copy.py",
+  "date_range": "2025-01-01 to 2025-11-01",
+  "execution_time": 0.13364601135253906,
+  "success": false,
+  "result_count": 0,
+  "diagnostics": {
+    "error": "Failed to load scanner function",
+    "processing_id": "scan_1762736293"
+  },
+  "success_criteria": {
+    "Execution Success": false,
+    "Has Results": false,
+    "Execution Time < 5min": true,
+    "Function Detection": null,
+    "Ticker Standardization": false
+  },
+  "pattern_notes": "async main() pattern - already implements full market scanning",
+  "timestamp": "2025-11-09T19:58:13.744709"
+}

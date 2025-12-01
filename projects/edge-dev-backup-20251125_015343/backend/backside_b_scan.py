@@ -399,7 +399,7 @@ def execute_scan():
 def call_real_deepseek_formatter(code):
     """Call the real DeepSeek formatter API"""
     print("🌐 Calling DeepSeek API directly...")
-    api_key = "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"
+    api_key = "YOUR_OPENROUTER_API_KEY_HERE"
     openrouter_url = "https://openrouter.ai/api/v1/chat/completions"
 
     prompt = f"""Transform this Python code into a PROPER EdgeDev scanner format:

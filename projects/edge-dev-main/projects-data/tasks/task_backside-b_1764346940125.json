@@ -1,0 +1,10 @@
+{
+  "id": "task_backside-b_1764346940125",
+  "project_id": "edge-dev-project-YmFja3Np",
+  "title": "Integrate backside b Scanner",
+  "description": "Format and integrate the backside b trading scanner into the edge.dev dashboard system with AI enhancement and parameter integrity preservation.",
+  "status": "done",
+  "scanner_name": "backside b",
+  "created_at": "2025-11-28T16:22:20.125Z",
+  "completed_at": "2025-11-28T16:22:20.125Z"
+}

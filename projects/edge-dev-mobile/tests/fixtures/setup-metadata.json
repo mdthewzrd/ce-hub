@@ -1,0 +1,8 @@
+{
+  "timestamp": "2025-11-18T15:40:46.618Z",
+  "duration": 15859,
+  "environment": "test",
+  "baseURL": "http://localhost:5657",
+  "platform": "darwin",
+  "nodeVersion": "v24.9.0"
+}

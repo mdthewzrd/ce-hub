@@ -1,0 +1,26 @@
+{
+  "scan_id": "7e6709fe-6346-4a8a-a038-8cdd87115bf7",
+  "scan_name": "Test A+ Daily Parabolic Results",
+  "scanner_type": "a_plus",
+  "timestamp": "2025-10-31T18:39:25.093806",
+  "user_id": "test_user_demo",
+  "results_count": 2,
+  "metadata": {
+    "test": true,
+    "patterns_found": 2
+  },
+  "results": [
+    {
+      "ticker": "DJT",
+      "date": "2025-10-31",
+      "scanner_type": "a_plus",
+      "score": 95.2
+    },
+    {
+      "ticker": "AMC",
+      "date": "2025-10-31",
+      "scanner_type": "a_plus",
+      "score": 87.1
+    }
+  ]
+}

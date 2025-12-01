@@ -6,7 +6,7 @@
 
 const https = require('https');
 
-const OPENROUTER_API_KEY = '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';
+const OPENROUTER_API_KEY = 'YOUR_OPENROUTER_API_KEY_HERE';
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
 const testData = {

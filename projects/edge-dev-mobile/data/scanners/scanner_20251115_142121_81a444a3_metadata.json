@@ -1,0 +1,10 @@
+{
+  "scanner_id": "scanner_20251115_142121_81a444a3",
+  "scanner_name": "momentum_d3_extended_pattern_Individual_formatted",
+  "user_id": "default_user",
+  "created_at": "2025-11-15T14:21:21.318285",
+  "parameters_count": 0,
+  "code_length": 10720,
+  "status": "ready",
+  "extraction_method": "multi_scanner_separation"
+}

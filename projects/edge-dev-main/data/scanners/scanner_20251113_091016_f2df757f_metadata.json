@@ -1,0 +1,10 @@
+{
+  "scanner_id": "scanner_20251113_091016_f2df757f",
+  "scanner_name": "adjust_intraday_AI_Generated_formatted",
+  "user_id": "default_user",
+  "created_at": "2025-11-13T09:10:16.897679",
+  "parameters_count": 0,
+  "code_length": 1648,
+  "status": "ready",
+  "extraction_method": "multi_scanner_separation"
+}

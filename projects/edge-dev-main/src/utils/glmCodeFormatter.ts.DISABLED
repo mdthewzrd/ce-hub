@@ -1,0 +1,415 @@
+/**
+ * 🚀 OpenRouter + DeepSeek Coder AI Formatter
+ * ==============================================================================
+ *
+ * Direct integration with OpenRouter API using Gemma 2 model
+ * Uses the user's OpenRouter API key for maximum performance and cost control
+ *
+ * API Key: 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
+ * Model: google/gemma-2-9b-it:free (Free Gemma 2 9B model - reliable for code generation)
+ * Cost: Ultra-competitive pricing via OpenRouter
+ *
+ * Features:
+ * - OpenRouter API integration with DeepSeek Coder
+ * - Bulletproof parameter integrity preservation
+ * - Intelligent scanner type detection
+ * - Cost-optimized with inexpensive DeepSeek model
+ * - 100% template-free AI formatting
+ * - Enhanced Python code generation capabilities
+ */
+
+interface AIFormattingOptions {
+  maxTokens?: number;
+  temperature?: number;
+  scannerType?: 'lc' | 'a_plus' | 'custom';
+  preserveOriginalFormatting?: boolean;
+}
+
+interface AIFormattingResult {
+  success: boolean;
+  formattedCode: string;
+  scannerType: string;
+  integrityVerified: boolean;
+  originalSignature: string;
+  formattedSignature: string;
+  optimizations: string[];
+  warnings: string[];
+  errors: string[];
+  metadata: {
+    originalLines: number;
+    formattedLines: number;
+    parameterCount: number;
+    processingTime: string;
+    model: string;
+  };
+}
+
+class GLMCodeFormatter {
+  private readonly OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
+  private readonly OPENROUTER_API_KEY = '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';
+  private readonly MODEL = 'microsoft/wizardlm-2-8x22b'; // Microsoft WizardLM 2 8x22B - high rate limits
+  private readonly MAX_CODE_LENGTH_FOR_AI = 50000; // Much higher limit for real AI processing
+
+  /**
+   * Format trading scanner code using OpenRouter API with DeepSeek Coder model
+   */
+  async formatCode(code: string, options: AIFormattingOptions = {}): Promise<AIFormattingResult> {
+    const startTime = Date.now();
+    const originalSignature = this.generateSignature(code);
+
+    console.log('🚀 OpenRouter + DeepSeek Coder AI Formatting Started');
+    console.log(`📅 Date: ${new Date().toISOString()}`);
+    console.log(`📊 Original code: ${code.length} chars, ${code.split('\n').length} lines`);
+    console.log(`🔑 Using OpenRouter API: ${this.OPENROUTER_API_KEY.substring(0, 10)}...`);
+
+    console.log('📋 Analyzing code structure...');
+            const parameterCount = this.extractParameters(code).length;
+    const scannerType = options.scannerType || this.detectScannerType(code);
+
+    // Log code analysis details to confirm actual processing
+    console.log(`🔍 Code Analysis Results:`);
+    console.log(`  📏 Code length: ${code.length} characters`);
+    console.log(`  📄 Line count: ${code.split('\n').length} lines`);
+    console.log(`  🔧 Parameter count: ${parameterCount}`);
+    console.log(`  🎯 Scanner type: ${scannerType}`);
+    console.log(`  📝 Functions found: ${code.match(/def\s+\w+/g)?.length || 0}`);
+    console.log(`  📦 Imports found: ${code.match(/(?:import|from)\s+\w+/g)?.length || 0}`);
+
+    // PRODUCTION: No local fallback - must use API
+    if (code.length > this.MAX_CODE_LENGTH_FOR_AI) {
+      throw new Error(`Code too large for AI processing (${code.length} > ${this.MAX_CODE_LENGTH_FOR_AI} chars). This is a production system - local fallback is disabled.`);
+    }
+
+    try {
+      // Step 1: Call OpenRouter API with DeepSeek Coder for formatting
+      const formattedCode = await this.callOpenRouterAPI(code, scannerType);
+      const formattedSignature = this.generateSignature(formattedCode);
+
+      // Step 2: Verify parameter integrity
+      const integrityVerified = this.verifyParameterIntegrity(originalSignature, formattedSignature);
+
+      // Step 3: Analyze optimizations and generate report
+      const processingTime = `${((Date.now() - startTime) / 1000).toFixed(2)}s`;
+
+      const result: AIFormattingResult = {
+        success: true,
+        formattedCode,
+        scannerType,
+        integrityVerified,
+        originalSignature,
+        formattedSignature,
+        optimizations: this.analyzeOptimizations(code, formattedCode),
+        warnings: [],
+        errors: [],
+        metadata: {
+          originalLines: code.split('\n').length,
+          formattedLines: formattedCode.split('\n').length,
+          parameterCount,
+          processingTime,
+          model: this.MODEL
+        }
+      };
+
+      console.log('✅ OpenRouter + DeepSeek Formatting Complete:');
+      console.log(`  📊 Scanner Type: ${scannerType.toUpperCase()}`);
+      console.log(`  🔧 Integrity Verified: ${integrityVerified ? 'YES' : 'NO'}`);
+      console.log(`  ⚡ Processing Time: ${processingTime}`);
+      console.log(`  📈 Lines: ${result.metadata.originalLines} → ${result.metadata.formattedLines}`);
+      console.log(`  🔑 Parameters: ${parameterCount} preserved`);
+
+      return result;
+
+    } catch (error) {
+      console.error('❌ OpenRouter + DeepSeek Formatting Failed:', error);
+
+      // PRODUCTION: No local fallback - fail fast and let the user know
+      const errorMessage = `AI formatting failed: ${error instanceof Error ? error.message : 'Unknown error'}. This is a production system - local fallback is disabled. Please check your OpenRouter API key and model availability.`;
+
+      return {
+        success: false,
+        formattedCode: '',
+        scannerType,
+        integrityVerified: false,
+        originalSignature,
+        formattedSignature: '',
+        optimizations: [],
+        warnings: [],
+        errors: [errorMessage],
+        metadata: {
+          originalLines: code.split('\n').length,
+          formattedLines: 0,
+          parameterCount,
+          processingTime: `${((Date.now() - startTime) / 1000).toFixed(2)}s`,
+          model: this.MODEL
+        }
+      };
+    }
+  }
+
+  /**
+   * Call OpenRouter API with intelligent retry and fallback logic
+   */
+  private async callOpenRouterAPI(code: string, scannerType: string): Promise<string> {
+    const fallbackModels = [
+      'microsoft/wizardlm-2-8x22b',    // Primary: High rate limits
+      'microsoft/WizardLM-2-8x22B',   // Alternative casing
+      'Qwen/Qwen-2.5-7B-Instruct',     // Reliable fallback
+      'meta-llama/Meta-Llama-3.1-8B-Instruct', // Last resort
+    ];
+
+    // Remove current model from fallbacks if it's already there
+    const modelsToTry = [this.MODEL, ...fallbackModels.filter(m => m !== this.MODEL)];
+
+    for (let attempt = 0; attempt < modelsToTry.length; attempt++) {
+      const model = modelsToTry[attempt];
+      const baseDelay = Math.min(1000 * Math.pow(2, attempt), 10000); // Exponential backoff, max 10s
+
+      // Add jitter to prevent thundering herd
+      const jitter = Math.random() * 500;
+      const delay = baseDelay + jitter;
+
+      if (attempt > 0) {
+        console.log(`🔄 Rate limited, retrying with model ${model} in ${Math.round(delay)}ms (attempt ${attempt + 1}/${modelsToTry.length})`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+      }
+
+      try {
+        console.log(`🚀 Attempting format with model: ${model}`);
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 45000); // 45 second timeout
+
+        const response = await fetch(this.OPENROUTER_API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${this.OPENROUTER_API_KEY}`,
+            'HTTP-Referer': 'https://edge.dev',
+            'X-Title': 'Edge Dev Trading Scanner'
+          },
+          body: JSON.stringify({
+            model,
+            messages: [
+              {
+                role: 'system',
+                content: `You are an expert Python code formatter specializing in ANY type of code - trading algorithms, data analysis scripts, utilities, or completely new patterns. You are HIGHLY ADAPTIVE and can handle code you've never seen before.
+
+YOUR ADAPTIVE FORMATTING PRINCIPLES:
+1. PRESERVE ALL ORIGINAL PARAMETERS EXACTLY - NO CHANGES to values, names, or logic
+2. ADAPT to any code structure, pattern, or framework intelligently
+3. ENHANCE readability, performance, and maintainability based on code context
+4. ADD appropriate error handling, logging, and optimization
+5. APPLY modern Python best practices (type hints, docstrings, imports)
+6. MAINTAIN 100% functional integrity - output must work identically to input
+7. IMPROVE code structure while preserving all original behavior
+8. Handle ANY programming pattern: trading scripts, data processing, web scraping, ML models, etc.
+
+CRITICAL REQUIREMENTS:
+- Return ONLY the formatted Python code
+- NO explanations, no markdown blocks, no formatting comments
+- Preserve ALL variable names, function names, and parameter values
+- Code must run identically to the original after formatting
+- Be ready for COMPLETELY NEW code patterns you've never encountered`
+              },
+              {
+                role: 'user',
+                content: this.buildPrompt(code, scannerType)
+              }
+            ],
+            temperature: 0.1,
+            max_tokens: 8000
+          }),
+          signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          const errorMessage = errorData.error?.message || response.statusText;
+
+          // Check if it's a rate limit error
+          if (response.status === 429 || errorMessage.toLowerCase().includes('rate limit')) {
+            console.warn(`⚠️ Rate limited on model ${model}: ${errorMessage}`);
+            if (attempt < modelsToTry.length - 1) {
+              continue; // Try next model
+            } else {
+              throw new Error(`All models rate limited. Last error: ${errorMessage}`);
+            }
+          }
+
+          // For other errors, try next model
+          console.warn(`⚠️ Model ${model} failed (${response.status}): ${errorMessage}`);
+          if (attempt < modelsToTry.length - 1) {
+            continue;
+          } else {
+            throw new Error(`All models failed. Last error: ${errorMessage}`);
+          }
+        }
+
+        const data = await response.json();
+        const formattedCode = data.choices?.[0]?.message?.content;
+
+        if (!formattedCode) {
+          console.warn(`⚠️ Model ${model} returned empty response`);
+          if (attempt < modelsToTry.length - 1) {
+            continue;
+          } else {
+            throw new Error('All models returned empty responses');
+          }
+        }
+
+        console.log(`✅ Successfully formatted with model: ${model}`);
+        // Clean up any markdown code blocks if present
+        return formattedCode.replace(/```python\n?|\n?```/g, '').trim();
+
+      } catch (error) {
+        if (error.name === 'AbortError') {
+          console.warn(`⚠️ Model ${model} timed out`);
+          if (attempt < modelsToTry.length - 1) {
+            continue;
+          } else {
+            throw new Error('All models timed out');
+          }
+        }
+
+        // Log error and try next model
+        console.warn(`⚠️ Model ${model} error: ${error.message}`);
+        if (attempt < modelsToTry.length - 1) {
+          continue;
+        } else {
+          throw error;
+        }
+      }
+    }
+
+    throw new Error('Failed to format code with any available model');
+  }
+
+  
+  /**
+   * Build the formatting prompt for DeepSeek Coder
+   */
+  private buildPrompt(code: string, scannerType: string): string {
+    return `Please format and enhance this ${scannerType.toUpperCase()} trading scanner code:
+
+REQUIREMENTS:
+1. PRESERVE ALL ORIGINAL PARAMETERS EXACTLY - NO CHANGES
+2. Add comprehensive error handling
+3. Enhance with market-wide scanning capabilities
+4. Optimize for performance and readability
+5. Add proper logging and progress indicators
+6. Include data validation
+7. Use modern Python patterns
+
+Original Code:
+\`\`\`python
+${code}
+\`\`\`
+
+Return ONLY the enhanced code with all original parameters preserved exactly.`;
+  }
+
+  /**
+   * Detect scanner type from code patterns
+   */
+  private detectScannerType(code: string): 'lc' | 'a_plus' | 'custom' {
+    const upperCode = code.toUpperCase();
+
+    // LC scanner patterns
+    if (upperCode.includes('SCAN_SYMBOL') ||
+        upperCode.includes('GET_MINUTELY_DATA') ||
+        upperCode.includes('TICKER') && upperCode.includes('FROM_DATE')) {
+      return 'lc';
+    }
+
+    // A+ scanner patterns
+    if (upperCode.includes('MINUTE') &&
+        upperCode.includes('TRIGGER') &&
+        (upperCode.includes('GAP') || upperCode.includes('ATR'))) {
+      return 'a_plus';
+    }
+
+    return 'custom';
+  }
+
+  /**
+   * Extract parameters from code for integrity checking
+   */
+  private extractParameters(code: string): string[] {
+    const parameters: string[] = [];
+
+    // Find function parameters
+    const funcParamMatch = code.match(/def\s+\w+\s*\([^)]*\)/g);
+    if (funcParamMatch) {
+      funcParamMatch.forEach(match => {
+        const params = match.match(/\(([^)]+)\)/)?.[1];
+        if (params) {
+          parameters.push(...params.split(',').map(p => p.trim().split('=')[0].trim()));
+        }
+      });
+    }
+
+    // Find variable assignments
+    const varMatch = code.match(/^[ \t]*([a-zA-Z_][a-zA-Z0-9_]*)\s*=/gm);
+    if (varMatch) {
+      varMatch.forEach(match => {
+        const varName = match.match(/([a-zA-Z_][a-zA-Z0-9_]*)/)?.[1];
+        if (varName && !parameters.includes(varName)) {
+          parameters.push(varName);
+        }
+      });
+    }
+
+    return parameters.filter(p => p && !['def', 'if', 'for', 'while', 'try', 'except'].includes(p));
+  }
+
+  /**
+   * Generate signature for integrity verification
+   */
+  private generateSignature(code: string): string {
+    // Simple hash for parameter integrity checking
+    const params = this.extractParameters(code).sort().join(',');
+    return require('crypto').createHash('sha256').update(params).digest('hex');
+  }
+
+  /**
+   * Verify parameter integrity between original and formatted code
+   */
+  private verifyParameterIntegrity(originalSignature: string, formattedSignature: string): boolean {
+    return originalSignature === formattedSignature;
+  }
+
+  
+  /**
+   * Analyze optimizations made during formatting
+   */
+  private analyzeOptimizations(originalCode: string, formattedCode: string): string[] {
+    const optimizations: string[] = [];
+
+    if (formattedCode.includes('try:') && !originalCode.includes('try:')) {
+      optimizations.push('Added error handling');
+    }
+
+    if (formattedCode.includes('import logging') && !originalCode.includes('import logging')) {
+      optimizations.push('Added logging capabilities');
+    }
+
+    if (formattedCode.includes('async def') && !originalCode.includes('async def')) {
+      optimizations.push('Optimized with async processing');
+    }
+
+    if (formattedCode.length > originalCode.length * 1.1) {
+      optimizations.push('Enhanced code documentation');
+    }
+
+    if (formattedCode.includes('market_wide') || formattedCode.includes('MARKET_WIDE')) {
+      optimizations.push('Added market-wide scanning capabilities');
+    }
+
+    return optimizations;
+  }
+}
+
+export const glmCodeFormatter = new GLMCodeFormatter();
+export type { AIFormattingOptions, AIFormattingResult };

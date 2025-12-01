@@ -1,0 +1,10 @@
+{
+  "scanner_id": "scanner_20251130_115551_3244a4af",
+  "scanner_name": "Test Scanner for Project",
+  "user_id": "test_user",
+  "created_at": "2025-11-30T11:55:51.923242",
+  "parameters_count": 3,
+  "code_length": 180,
+  "status": "ready",
+  "extraction_method": "multi_scanner_separation"
+}

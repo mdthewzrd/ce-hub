@@ -1,0 +1,416 @@
+{
+  "timestamp": "2025-11-09T20:20:18.201236",
+  "total_diagnostic_time": 63.073004722595215,
+  "bug_1_success_criteria": {
+    "bug_confirmed": false,
+    "results": {
+      "success": false,
+      "results": [
+        {
+          "symbol": "JNJ",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "GOOGL",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "UNH",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "MSFT",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "AMZN",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "META",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "NVDA",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "AAPL",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "TSLA",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "BRK.A",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "CVX",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "V",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "ABBV",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "BAC",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "HD",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "PG",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "AVGO",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "MA",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "PFE",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "JPM",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "TMO",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "KO",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "ABT",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "LIN",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "COST",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "WMT",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "VZ",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "PEP",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "MRK",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "DHR",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "NFLX",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "ADBE",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "CRM",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "UPS",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "ACN",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "QCOM",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "TXN",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "RTX",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "HON",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "NKE",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "ROKU",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "PYPL",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "SHOP",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "PTON",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "ZM",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "TDOC",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "SPOT",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "DOCU",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "GME",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "AMC",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "BB",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "NOK",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "PLTR",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "CLOV",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "SPCE",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "RIVN",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "LCID",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "F",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "SOFI",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "HOOD",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "RBLX",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "COIN",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "DKNG",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "U",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "SKLZ",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "QUBT",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "SMCI",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "NUKK",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "GXAI",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "WOLF",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "LAES",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "OPEN",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "RVSN",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        },
+        {
+          "symbol": "GDC",
+          "date": "2025-01-01",
+          "error": "Enhanced wrapper error: 'g'"
+        }
+      ],
+      "diagnostics": {
+        "processing_id": "scan_1762737556",
+        "function_detected": "scan_ticker",
+        "pattern_type": "ticker_based",
+        "execution_model": "standard",
+        "ticker_count": 80,
+        "success_rate": 0.0,
+        "successful_count": 0,
+        "error_count": 74,
+        "sample_errors": [
+          {
+            "symbol": "JNJ",
+            "date": "2025-01-01",
+            "error": "Enhanced wrapper error: 'g'"
+          },
+          {
+            "symbol": "GOOGL",
+            "date": "2025-01-01",
+            "error": "Enhanced wrapper error: 'g'"
+          },
+          {
+            "symbol": "UNH",
+            "date": "2025-01-01",
+            "error": "Enhanced wrapper error: 'g'"
+          }
+        ]
+      }
+    }
+  },
+  "bug_2_optimal_execution": {
+    "bug_confirmed": false,
+    "execution_time": 60.215306997299194,
+    "results": 1
+  },
+  "fixes_needed": [],
+  "next_steps": "Apply targeted fixes based on diagnostic results"
+}

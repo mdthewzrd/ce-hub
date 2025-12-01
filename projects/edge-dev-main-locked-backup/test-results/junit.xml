@@ -1,0 +1,615 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="59.595875">
+<testsuite name="e2e/chatgpt-file-attachment-test.spec.js" timestamp="2025-11-26T18:07:48.945Z" hostname="chromium-desktop" tests="1" failures="1" skipped="0" time="45.543" errors="0">
+<testcase name="ChatGPT-style file attachment interface test" classname="e2e/chatgpt-file-attachment-test.spec.js" time="45.543">
+<failure message="chatgpt-file-attachment-test.spec.js:4:1 ChatGPT-style file attachment interface test" type="FAILURE">
+<![CDATA[  [chromium-desktop] › e2e/chatgpt-file-attachment-test.spec.js:4:1 › ChatGPT-style file attachment interface test 
+
+    TimeoutError: locator.waitFor: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for locator('[data-copilot-textarea], .copilot-textarea').first() to be visible
+
+
+      48 |   // Find CopilotTextarea
+      49 |   const copilotTextarea = await page.locator('[data-copilot-textarea], .copilot-textarea').first();
+    > 50 |   await copilotTextarea.waitFor({ timeout: 15000 });
+         |                         ^
+      51 |   console.log('✅ CopilotTextarea found');
+      52 |
+      53 |   // Read the user's file content
+        at /Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/e2e/chatgpt-file-attachment-test.spec.js:50:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.waitFor: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for locator('[data-copilot-textarea], .copilot-textarea').first() to be visible
+
+
+      48 |   // Find CopilotTextarea
+      49 |   const copilotTextarea = await page.locator('[data-copilot-textarea], .copilot-textarea').first();
+    > 50 |   await copilotTextarea.waitFor({ timeout: 15000 });
+         |                         ^
+      51 |   console.log('✅ CopilotTextarea found');
+      52 |
+      53 |   // Read the user's file content
+        at /Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/e2e/chatgpt-file-attachment-test.spec.js:50:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[🧪 Testing new ChatGPT-style file attachment interface...
+✅ User file found: /Users/michaeldurante/Downloads/backside para b copy.py
+📊 File size: [33m10991[39m bytes
+🖥️  log: 🔧 EDGE-DEV CACHE BUSTER ACTIVE: 2025-11-18-TRADERRA-STYLING-MIGRATION
+🖥️  log: 🔧 FRONTEND VERSION: EDGE_DEV_TRADERRA_v2.0
+🖥️  log:   NEW VERSION DETECTED - CLEARING CACHE
+🖥️  log: 🔧 EDGE-DEV CACHE BUSTER ACTIVE: 2025-11-18-TRADERRA-STYLING-MIGRATION
+🖥️  log: 🔧 FRONTEND VERSION: EDGE_DEV_TRADERRA_v2.0
+🖥️  info: %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+🖥️  log: [HMR] connected
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: 🚀 Running BULLETPROOF Trading Day Validation...
+🖥️  log: 
+================================================================================
+🖥️  log: 📊 BULLETPROOF TRADING DAY VALIDATION REPORT
+🖥️  log: ================================================================================
+🖥️  log:   VALIDATING TRADING DAY LOGIC FOR 2024:
+🖥️  log: 📅 Found 10 market holidays for 2024:
+🖥️  log:    1. New Year's Day: Mon Jan 01 2024 (Monday)
+🖥️  log:    2. Martin Luther King Jr. Day: Mon Jan 15 2024 (Monday)
+🖥️  log:    3. Presidents' Day: Mon Feb 19 2024 (Monday)
+🖥️  log:    4. Good Friday: Fri Mar 29 2024 (Friday)
+🖥️  log:    5. Memorial Day: Mon May 27 2024 (Monday)
+🖥️  log:    6. Juneteenth: Wed Jun 19 2024 (Wednesday)
+🖥️  log:    7. Independence Day: Thu Jul 04 2024 (Thursday)
+🖥️  log:    8. Labor Day: Mon Sep 02 2024 (Monday)
+🖥️  log:    9. Thanksgiving: Thu Nov 28 2024 (Thursday)
+🖥️  log:    10. Christmas Day: Wed Dec 25 2024 (Wednesday)
+🖥️  log: 🚀 Weekend Detection Tests:
+🖥️  log:    Saturday Sat Jan 06 2024: isWeekend=true, isTradingDay=false
+🖥️  log:    Sunday Sun Jan 07 2024: isWeekend=true, isTradingDay=false
+🖥️  log: 🚀 Trading Day Progression Test (first 30 days of 2024):
+🖥️  log:    Mon Jan 01 2024 (Monday): NON-TRADING
+🖥️  log:    Tue Jan 02 2024 (Tuesday): TRADING
+🖥️  log:    Wed Jan 03 2024 (Wednesday): TRADING
+🖥️  log:    Thu Jan 04 2024 (Thursday): TRADING
+🖥️  log:    Fri Jan 05 2024 (Friday): TRADING
+🖥️  log:    Sat Jan 06 2024 (Saturday): NON-TRADING
+🖥️  log:    Sun Jan 07 2024 (Sunday): NON-TRADING
+🖥️  log:    Mon Jan 08 2024 (Monday): TRADING
+🖥️  log:    Tue Jan 09 2024 (Tuesday): TRADING
+🖥️  log:    Wed Jan 10 2024 (Wednesday): TRADING
+🖥️  log: 📊 Trading Day Stats (first 30 days): 20 trading days, max consecutive: 5
+🖥️  log: 🚀 Trading Day Arithmetic Test:
+🖥️  log:    Friday: Fri Jan 05 2024
+🖥️  log:    +1 trading day: Mon Jan 08 2024 (Monday)
+🖥️  log:    -1 trading day: Thu Jan 04 2024 (Thursday)
+🖥️  log:   ALL TESTS PASSED - Trading day logic is bulletproof!
+🖥️  log: ================================================================================
+
+🖥️  log: 
+================================================================================
+🖥️  log: 📊 BULLETPROOF TRADING DAY VALIDATION REPORT
+🖥️  log: ================================================================================
+🖥️  log:   VALIDATING TRADING DAY LOGIC FOR 2023:
+🖥️  log: 📅 Found 10 market holidays for 2023:
+🖥️  log:    1. New Year's Day: Mon Jan 02 2023 (Monday) [Original: Sun Jan 01 2023]
+🖥️  log:    2. Martin Luther King Jr. Day: Mon Jan 16 2023 (Monday)
+🖥️  log:    3. Presidents' Day: Mon Feb 20 2023 (Monday)
+🖥️  log:    4. Good Friday: Fri Apr 07 2023 (Friday)
+🖥️  log:    5. Memorial Day: Mon May 29 2023 (Monday)
+🖥️  log:    6. Juneteenth: Mon Jun 19 2023 (Monday)
+🖥️  log:    7. Independence Day: Tue Jul 04 2023 (Tuesday)
+🖥️  log:    8. Labor Day: Mon Sep 04 2023 (Monday)
+🖥️  log:    9. Thanksgiving: Thu Nov 23 2023 (Thursday)
+🖥️  log:    10. Christmas Day: Mon Dec 25 2023 (Monday)
+🖥️  log: 🚀 Weekend Detection Tests:
+🖥️  log:    Saturday Sat Jan 07 2023: isWeekend=true, isTradingDay=false
+🖥️  log:    Sunday Sun Jan 01 2023: isWeekend=true, isTradingDay=false
+🖥️  log: 🚀 Trading Day Progression Test (first 30 days of 2023):
+🖥️  log:    Sun Jan 01 2023 (Sunday): NON-TRADING
+🖥️  log:    Mon Jan 02 2023 (Monday): NON-TRADING
+🖥️  log:    Tue Jan 03 2023 (Tuesday): TRADING
+🖥️  log:    Wed Jan 04 2023 (Wednesday): TRADING
+🖥️  log:    Thu Jan 05 2023 (Thursday): TRADING
+🖥️  log:    Fri Jan 06 2023 (Friday): TRADING
+🖥️  log:    Sat Jan 07 2023 (Saturday): NON-TRADING
+🖥️  log:    Sun Jan 08 2023 (Sunday): NON-TRADING
+🖥️  log:    Mon Jan 09 2023 (Monday): TRADING
+🖥️  log:    Tue Jan 10 2023 (Tuesday): TRADING
+🖥️  log: 📊 Trading Day Stats (first 30 days): 19 trading days, max consecutive: 5
+🖥️  log: 🚀 Trading Day Arithmetic Test:
+🖥️  log:    Friday: Fri Jan 06 2023
+🖥️  log:    +1 trading day: Mon Jan 09 2023 (Monday)
+🖥️  log:    -1 trading day: Thu Jan 05 2023 (Thursday)
+🖥️  log:   ALL TESTS PASSED - Trading day logic is bulletproof!
+🖥️  log: ================================================================================
+
+🖥️  log:   Loading historical LC scan results and populating cache...
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 0
+🖥️  log:    Date range: undefined → undefined
+🖥️  log:    X Range: undefined to undefined
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 0
+🖥️  log:    Date range: undefined → undefined
+🖥️  log:    X Range: undefined to undefined
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing loading legend
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing loading legend
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 0
+🖥️  log:    Date range: undefined → undefined
+🖥️  log:    X Range: undefined to undefined
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 0
+🖥️  log:    Date range: undefined → undefined
+🖥️  log:    X Range: undefined to undefined
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing loading legend
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing loading legend
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log:   Loaded 3 historical LC results
+🖥️  log: 📊 Top results: AAPL (8.5%), GOOGL (5.2%), MSFT (3.8%)
+🖥️  log:   Dashboard loaded with 3 historical results and cache populated
+🖥️  log:   CHART DATA FETCH: SPY | Day 0 | Base: Wed Nov 26 2025 (Wednesday)
+🖥️  log:   TRADING DAY NAVIGATION: Fetching data for SPY on Day 0
+🖥️  log:   BASE DATE: Wed Nov 26 2025 (Wednesday)
+🖥️  log:   TARGET DATE: Wed Nov 26 2025 (Wednesday) - 0 trading days
+🖥️  log:   DAY NAVIGATION: Target date 2025-11-26 is END DATE. Range: 2025-03-31 to 2025-11-26
+🖥️  log: 📊 Fetching SPY LC navigation data: 2025-03-31 to 2025-11-26 (LC anchor: 2025-11-26)
+🖥️  log: Fetching daily data: SPY from 2025-03-31 to 2025-11-26
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log:   CHART DATA FETCH: SPY | Day 0 | Base: Wed Nov 26 2025 (Wednesday)
+🖥️  log:   TRADING DAY NAVIGATION: Fetching data for SPY on Day 0
+🖥️  log:   BASE DATE: Wed Nov 26 2025 (Wednesday)
+🖥️  log:   TARGET DATE: Wed Nov 26 2025 (Wednesday) - 0 trading days
+🖥️  log:   DAY NAVIGATION: Target date 2025-11-26 is END DATE. Range: 2025-03-31 to 2025-11-26
+🖥️  log: 📊 Fetching SPY LC navigation data: 2025-03-31 to 2025-11-26 (LC anchor: 2025-11-26)
+🖥️  log: Fetching daily data: SPY from 2025-03-31 to 2025-11-26
+🖥️  log: [Fast Refresh] rebuilding
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: [Fast Refresh] done in 122ms
+🖥️  log: [Fast Refresh] rebuilding
+🖥️  log: [Fast Refresh] done in 190ms
+🖥️  log: Received 168 daily bars
+🖥️  warning: Removing spike at index 93: price=644.89, prev=642.69, typical_range=0.09999999999990905
+🖥️  warning: Removing spike at index 119: price=663.7, prev=662.26, typical_range=0.05999999999994543
+🖥️  log: Processing 166 bars for SPY day
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 60
+🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z
+🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 60
+🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z
+🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: Received 168 daily bars
+🖥️  warning: Removing spike at index 93: price=644.89, prev=642.69, typical_range=0.09999999999990905
+🖥️  warning: Removing spike at index 119: price=663.7, prev=662.26, typical_range=0.05999999999994543
+🖥️  log: Processing 166 bars for SPY day
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 60
+🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z
+🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 60
+🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z
+🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: [Fast Refresh] rebuilding
+✅ Page loaded
+⏳ Waiting for CopilotTextarea to initialize...
+🖥️  log: [Fast Refresh] done in 852ms
+🖥️  log: 🔧 Adding native Plotly.js hover debugging for SPY day
+🖥️  log:   Native Plotly.js event listeners attached
+🖥️  log:   SPY day Chart Initialized: {tracesCount: 3, layoutDefined: true, globalTemplateApplied: true, timeframeConfig: Daily candlestick chart (60 days) - Direct OHLC}
+🖥️  log: 🔧 Adding native Plotly.js hover debugging for SPY day
+🖥️  log:   Native Plotly.js event listeners attached
+🖥️  log:   SPY day Chart Initialized: {tracesCount: 3, layoutDefined: true, globalTemplateApplied: true, timeframeConfig: Daily candlestick chart (60 days) - Direct OHLC}
+🖥️  log: [Fast Refresh] rebuilding
+🖥️  log: [Fast Refresh] done in 187ms
+🖥️  log: [Fast Refresh] rebuilding
+🖥️  log: [Fast Refresh] done in 152ms
+🖥️  log: [Fast Refresh] rebuilding
+🖥️  log: [Fast Refresh] done in 140ms
+🖥️  log: [Fast Refresh] rebuilding
+🖥️  log: [Fast Refresh] done in 419ms
+
+[[ATTACHMENT|e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/test-failed-1.png]]
+
+[[ATTACHMENT|e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/video.webm]]
+
+[[ATTACHMENT|e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/error-context.md]]
+
+[[ATTACHMENT|e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop/trace.zip]]
+🧪 Testing new ChatGPT-style file attachment interface...
+✅ User file found: /Users/michaeldurante/Downloads/backside para b copy.py
+📊 File size: [33m10991[39m bytes
+🖥️  log: 🔧 EDGE-DEV CACHE BUSTER ACTIVE: 2025-11-18-TRADERRA-STYLING-MIGRATION
+🖥️  log: 🔧 FRONTEND VERSION: EDGE_DEV_TRADERRA_v2.0
+🖥️  log:   NEW VERSION DETECTED - CLEARING CACHE
+🖥️  log: 🔧 EDGE-DEV CACHE BUSTER ACTIVE: 2025-11-18-TRADERRA-STYLING-MIGRATION
+🖥️  log: 🔧 FRONTEND VERSION: EDGE_DEV_TRADERRA_v2.0
+🖥️  info: %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+🖥️  log: [HMR] connected
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: 🚀 Running BULLETPROOF Trading Day Validation...
+🖥️  log: 
+================================================================================
+🖥️  log: 📊 BULLETPROOF TRADING DAY VALIDATION REPORT
+🖥️  log: ================================================================================
+🖥️  log:   VALIDATING TRADING DAY LOGIC FOR 2024:
+🖥️  log: 📅 Found 10 market holidays for 2024:
+🖥️  log:    1. New Year's Day: Mon Jan 01 2024 (Monday)
+🖥️  log:    2. Martin Luther King Jr. Day: Mon Jan 15 2024 (Monday)
+🖥️  log:    3. Presidents' Day: Mon Feb 19 2024 (Monday)
+🖥️  log:    4. Good Friday: Fri Mar 29 2024 (Friday)
+🖥️  log:    5. Memorial Day: Mon May 27 2024 (Monday)
+🖥️  log:    6. Juneteenth: Wed Jun 19 2024 (Wednesday)
+🖥️  log:    7. Independence Day: Thu Jul 04 2024 (Thursday)
+🖥️  log:    8. Labor Day: Mon Sep 02 2024 (Monday)
+🖥️  log:    9. Thanksgiving: Thu Nov 28 2024 (Thursday)
+🖥️  log:    10. Christmas Day: Wed Dec 25 2024 (Wednesday)
+🖥️  log: 🚀 Weekend Detection Tests:
+🖥️  log:    Saturday Sat Jan 06 2024: isWeekend=true, isTradingDay=false
+🖥️  log:    Sunday Sun Jan 07 2024: isWeekend=true, isTradingDay=false
+🖥️  log: 🚀 Trading Day Progression Test (first 30 days of 2024):
+🖥️  log:    Mon Jan 01 2024 (Monday): NON-TRADING
+🖥️  log:    Tue Jan 02 2024 (Tuesday): TRADING
+🖥️  log:    Wed Jan 03 2024 (Wednesday): TRADING
+🖥️  log:    Thu Jan 04 2024 (Thursday): TRADING
+🖥️  log:    Fri Jan 05 2024 (Friday): TRADING
+🖥️  log:    Sat Jan 06 2024 (Saturday): NON-TRADING
+🖥️  log:    Sun Jan 07 2024 (Sunday): NON-TRADING
+🖥️  log:    Mon Jan 08 2024 (Monday): TRADING
+🖥️  log:    Tue Jan 09 2024 (Tuesday): TRADING
+🖥️  log:    Wed Jan 10 2024 (Wednesday): TRADING
+🖥️  log: 📊 Trading Day Stats (first 30 days): 20 trading days, max consecutive: 5
+🖥️  log: 🚀 Trading Day Arithmetic Test:
+🖥️  log:    Friday: Fri Jan 05 2024
+🖥️  log:    +1 trading day: Mon Jan 08 2024 (Monday)
+🖥️  log:    -1 trading day: Thu Jan 04 2024 (Thursday)
+🖥️  log:   ALL TESTS PASSED - Trading day logic is bulletproof!
+🖥️  log: ================================================================================
+
+🖥️  log: 
+================================================================================
+🖥️  log: 📊 BULLETPROOF TRADING DAY VALIDATION REPORT
+🖥️  log: ================================================================================
+🖥️  log:   VALIDATING TRADING DAY LOGIC FOR 2023:
+🖥️  log: 📅 Found 10 market holidays for 2023:
+🖥️  log:    1. New Year's Day: Mon Jan 02 2023 (Monday) [Original: Sun Jan 01 2023]
+🖥️  log:    2. Martin Luther King Jr. Day: Mon Jan 16 2023 (Monday)
+🖥️  log:    3. Presidents' Day: Mon Feb 20 2023 (Monday)
+🖥️  log:    4. Good Friday: Fri Apr 07 2023 (Friday)
+🖥️  log:    5. Memorial Day: Mon May 29 2023 (Monday)
+🖥️  log:    6. Juneteenth: Mon Jun 19 2023 (Monday)
+🖥️  log:    7. Independence Day: Tue Jul 04 2023 (Tuesday)
+🖥️  log:    8. Labor Day: Mon Sep 04 2023 (Monday)
+🖥️  log:    9. Thanksgiving: Thu Nov 23 2023 (Thursday)
+🖥️  log:    10. Christmas Day: Mon Dec 25 2023 (Monday)
+🖥️  log: 🚀 Weekend Detection Tests:
+🖥️  log:    Saturday Sat Jan 07 2023: isWeekend=true, isTradingDay=false
+🖥️  log:    Sunday Sun Jan 01 2023: isWeekend=true, isTradingDay=false
+🖥️  log: 🚀 Trading Day Progression Test (first 30 days of 2023):
+🖥️  log:    Sun Jan 01 2023 (Sunday): NON-TRADING
+🖥️  log:    Mon Jan 02 2023 (Monday): NON-TRADING
+🖥️  log:    Tue Jan 03 2023 (Tuesday): TRADING
+🖥️  log:    Wed Jan 04 2023 (Wednesday): TRADING
+🖥️  log:    Thu Jan 05 2023 (Thursday): TRADING
+🖥️  log:    Fri Jan 06 2023 (Friday): TRADING
+🖥️  log:    Sat Jan 07 2023 (Saturday): NON-TRADING
+🖥️  log:    Sun Jan 08 2023 (Sunday): NON-TRADING
+🖥️  log:    Mon Jan 09 2023 (Monday): TRADING
+🖥️  log:    Tue Jan 10 2023 (Tuesday): TRADING
+🖥️  log: 📊 Trading Day Stats (first 30 days): 19 trading days, max consecutive: 5
+🖥️  log: 🚀 Trading Day Arithmetic Test:
+🖥️  log:    Friday: Fri Jan 06 2023
+🖥️  log:    +1 trading day: Mon Jan 09 2023 (Monday)
+🖥️  log:    -1 trading day: Thu Jan 05 2023 (Thursday)
+🖥️  log:   ALL TESTS PASSED - Trading day logic is bulletproof!
+🖥️  log: ================================================================================
+
+🖥️  log:   Loading historical LC scan results and populating cache...
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 0
+🖥️  log:    Date range: undefined → undefined
+🖥️  log:    X Range: undefined to undefined
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 0
+🖥️  log:    Date range: undefined → undefined
+🖥️  log:    X Range: undefined to undefined
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing loading legend
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing loading legend
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 0
+🖥️  log:    Date range: undefined → undefined
+🖥️  log:    X Range: undefined to undefined
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 0
+🖥️  log:    Date range: undefined → undefined
+🖥️  log:    X Range: undefined to undefined
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing loading legend
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing loading legend
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log:   Loaded 3 historical LC results
+🖥️  log: 📊 Top results: AAPL (8.5%), GOOGL (5.2%), MSFT (3.8%)
+🖥️  log:   Dashboard loaded with 3 historical results and cache populated
+🖥️  log:   CHART DATA FETCH: SPY | Day 0 | Base: Wed Nov 26 2025 (Wednesday)
+🖥️  log:   TRADING DAY NAVIGATION: Fetching data for SPY on Day 0
+🖥️  log:   BASE DATE: Wed Nov 26 2025 (Wednesday)
+🖥️  log:   TARGET DATE: Wed Nov 26 2025 (Wednesday) - 0 trading days
+🖥️  log:   DAY NAVIGATION: Target date 2025-11-26 is END DATE. Range: 2025-03-31 to 2025-11-26
+🖥️  log: 📊 Fetching SPY LC navigation data: 2025-03-31 to 2025-11-26 (LC anchor: 2025-11-26)
+🖥️  log: Fetching daily data: SPY from 2025-03-31 to 2025-11-26
+🖥️  log: [Fast Refresh] rebuilding
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log:   CHART DATA FETCH: SPY | Day 0 | Base: Wed Nov 26 2025 (Wednesday)
+🖥️  log:   TRADING DAY NAVIGATION: Fetching data for SPY on Day 0
+🖥️  log:   BASE DATE: Wed Nov 26 2025 (Wednesday)
+🖥️  log:   TARGET DATE: Wed Nov 26 2025 (Wednesday) - 0 trading days
+🖥️  log:   DAY NAVIGATION: Target date 2025-11-26 is END DATE. Range: 2025-03-31 to 2025-11-26
+🖥️  log: 📊 Fetching SPY LC navigation data: 2025-03-31 to 2025-11-26 (LC anchor: 2025-11-26)
+🖥️  log: Fetching daily data: SPY from 2025-03-31 to 2025-11-26
+🖥️  log: [Fast Refresh] done in 141ms
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: [Fast Refresh] rebuilding
+🖥️  log: [Fast Refresh] done in 143ms
+🖥️  log: Received 168 daily bars
+🖥️  warning: Removing spike at index 93: price=644.89, prev=642.69, typical_range=0.09999999999990905
+🖥️  warning: Removing spike at index 119: price=663.7, prev=662.26, typical_range=0.05999999999994543
+🖥️  log: Processing 166 bars for SPY day
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 60
+🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z
+🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 60
+🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z
+🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: Received 168 daily bars
+🖥️  warning: Removing spike at index 93: price=644.89, prev=642.69, typical_range=0.09999999999990905
+🖥️  warning: Removing spike at index 119: price=663.7, prev=662.26, typical_range=0.05999999999994543
+🖥️  log: Processing 166 bars for SPY day
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 60
+🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z
+🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log:   day dynamic rangebreaks: 1 gaps hidden (data-driven)
+🖥️  log:   Layout generated for SPY day
+🖥️  log:   SPY day Dynamic Chart Analysis:
+🖥️  log:   Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: x}
+🖥️  log:    Data points: 60
+🖥️  log:    Date range: 2025-09-03T04:00:00.000Z → 2025-11-26T05:00:00.000Z
+🖥️  log:    X Range: 2025-09-03T04:00:00.000Z to 2025-11-27
+🖥️  log:    Daily padding: 1 days padding
+🖥️  log:    Traces: 3
+🖥️  log:    Market session shapes: 0
+🖥️  log:    Template: Daily candlestick chart (60 days) - Direct OHLC
+🖥️  log:      UNIFIED Global Template:  
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}
+🖥️  log: 🏷️ ChartLegend render: {symbol: SPY, dataLength: 60, hoveredIndex: null, timeframe: day}
+🖥️  log: 🏷️ Showing data legend: {displayIndex: 59, barData: Object}
+🖥️  log: RenataPopup render - isOpen: false
+🖥️  log: RenataPopup render - isOpen: false
+✅ Page loaded
+⏳ Waiting for CopilotTextarea to initialize...
+🖥️  log: 🔧 Adding native Plotly.js hover debugging for SPY day
+🖥️  log:   Native Plotly.js event listeners attached
+🖥️  log:   SPY day Chart Initialized: {tracesCount: 3, layoutDefined: true, globalTemplateApplied: true, timeframeConfig: Daily candlestick chart (60 days) - Direct OHLC}
+🖥️  log: 🔧 Adding native Plotly.js hover debugging for SPY day
+🖥️  log:   Native Plotly.js event listeners attached
+🖥️  log:   SPY day Chart Initialized: {tracesCount: 3, layoutDefined: true, globalTemplateApplied: true, timeframeConfig: Daily candlestick chart (60 days) - Direct OHLC}
+🖥️  log: [Fast Refresh] rebuilding
+🖥️  log: [Fast Refresh] done in 126ms
+🖥️  log: [Fast Refresh] rebuilding
+🖥️  log: [Fast Refresh] done in 165ms
+🖥️  log: [Fast Refresh] rebuilding
+🖥️  log: [Fast Refresh] done in 182ms
+🖥️  log: [Fast Refresh] rebuilding
+🖥️  log: [Fast Refresh] done in 241ms
+
+[[ATTACHMENT|e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/test-failed-1.png]]
+
+[[ATTACHMENT|e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/video.webm]]
+
+[[ATTACHMENT|e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/error-context.md]]
+
+[[ATTACHMENT|e2e-chatgpt-file-attachmen-af7f0-e-attachment-interface-test-chromium-desktop-retry1/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

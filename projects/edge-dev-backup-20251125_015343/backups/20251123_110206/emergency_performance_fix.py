@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 class EmergencyAIService:
     def __init__(self):
-        self.api_key = "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"
+        self.api_key = "YOUR_OPENROUTER_API_KEY_HERE"
         self.base_url = "https://openrouter.ai/api/v1/chat/completions"
 
         # Emergency timeout settings - much more aggressive

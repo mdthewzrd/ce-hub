@@ -1,0 +1,7 @@
+{
+  "start_date": "2024-11-01",
+  "end_date": "2024-11-06",
+  "scanner_type": "uploaded",
+  "uploaded_code": "import asyncio\nimport pandas as pd\n\n# Configuration parameters\nVOLUME_MIN_THRESHOLD = 500000\nGAP_UP_PERCENTAGE = 0.02\nEMA_PERIOD = 20\n\nDATES = ['2024-11-01', '2024-11-06']\n\nasync def main():\n    print('LC D2 Scanner Test')\n    return []\n\nif __name__ == '__main__':\n    asyncio.run(main())",
+  "test_mode": true
+}

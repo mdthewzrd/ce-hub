@@ -1,0 +1,39 @@
+{
+  "id": "edge-dev-project-YmFja3Np",
+  "title": "Edge Dev Scanner Integration",
+  "description": "Advanced trading scanner development and integration platform for edge.dev dashboard execution. Features intelligent AI-powered code formatting, market-wide scanning capabilities, and seamless dashboard integration with Polygon API.",
+  "created_at": "2025-11-28T16:22:20.125Z",
+  "scanners": [
+    {
+      "name": "backside b",
+      "task_id": "task_backside-b_1764346940125",
+      "integrated_at": "2025-11-28T16:22:20.126Z"
+    },
+    {
+      "name": "backside b",
+      "task_id": "task_backside-b_1764348881943",
+      "integrated_at": "2025-11-28T16:54:41.945Z"
+    },
+    {
+      "name": "Backside B",
+      "task_id": "task_backside-b_1764350820009",
+      "integrated_at": "2025-11-28T17:27:00.012Z"
+    },
+    {
+      "name": "Backside B",
+      "task_id": "task_backside-b_1764351347444",
+      "integrated_at": "2025-11-28T17:35:47.451Z"
+    },
+    {
+      "name": "backside b",
+      "task_id": "task_backside-b_1764355918599",
+      "integrated_at": "2025-11-28T18:51:58.601Z"
+    },
+    {
+      "name": "backside b",
+      "task_id": "task_backside-b_1764359224966",
+      "integrated_at": "2025-11-28T19:47:04.969Z"
+    }
+  ],
+  "updated_at": "2025-11-28T19:47:04.969Z"
+}

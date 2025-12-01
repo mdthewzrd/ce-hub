@@ -77,7 +77,7 @@ Be specific, actionable, and focused on CE-Hub scanner functionality.`;
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer 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`,
+        'Authorization': `Bearer YOUR_OPENROUTER_API_KEY_HERE`,
         'Content-Type': 'application/json',
         'HTTP-Referer': req.headers.get('referer') || 'http://localhost:5657',
         'X-Title': 'CE-Hub Renata AI Assistant'
