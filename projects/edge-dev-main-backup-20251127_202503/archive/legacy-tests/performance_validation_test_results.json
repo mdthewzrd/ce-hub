@@ -1,0 +1,66 @@
+{
+  "summary": {
+    "total_tests": 3,
+    "passed_tests": 1,
+    "success_rate": "33.3%",
+    "average_duration_seconds": 0,
+    "all_meet_performance_target": true,
+    "test_timestamp": "2025-10-31T16:03:58.886Z"
+  },
+  "test_results": [
+    {
+      "test": "Real Scan - 3 Days",
+      "expected": "Successful completion",
+      "actual": "error",
+      "passed": false,
+      "details": {
+        "error": "Scan start failed: 429 - {\"detail\":\"Maximum concurrent scans (2) reached. Please wait for current scans to complete.\"}",
+        "duration_before_failure": 28
+      },
+      "timestamp": "2025-10-31T16:02:48.879Z"
+    },
+    {
+      "test": "Real Scan - 1 Week",
+      "expected": "Successful completion",
+      "actual": "error",
+      "passed": false,
+      "details": {
+        "error": "Scan start failed: 429 - {\"detail\":\"Maximum concurrent scans (2) reached. Please wait for current scans to complete.\"}",
+        "duration_before_failure": 3
+      },
+      "timestamp": "2025-10-31T16:03:58.885Z"
+    },
+    {
+      "test": "Resource usage validation",
+      "expected": "Optimal resource configuration",
+      "actual": "2 max concurrent, 2 active",
+      "passed": true,
+      "details": {
+        "cpu_cores": 12,
+        "threading_available": true,
+        "multiprocessing_available": true,
+        "async_support": true,
+        "real_scan_integration": true,
+        "polygon_api_enabled": true,
+        "max_concurrent_scans": 2,
+        "active_scans": 2,
+        "rate_limit": "2 scans per minute per IP",
+        "scan_cleanup_interval": "3600 seconds",
+        "supported_date_range": "2020-01-01 to 2025-12-31"
+      },
+      "timestamp": "2025-10-31T16:03:58.885Z"
+    }
+  ],
+  "performance_metrics": [
+    {
+      "success": false,
+      "error": "Scan start failed: 429 - {\"detail\":\"Maximum concurrent scans (2) reached. Please wait for current scans to complete.\"}",
+      "duration": 28
+    },
+    {
+      "success": false,
+      "error": "Scan start failed: 429 - {\"detail\":\"Maximum concurrent scans (2) reached. Please wait for current scans to complete.\"}",
+      "duration": 3
+    }
+  ]
+}

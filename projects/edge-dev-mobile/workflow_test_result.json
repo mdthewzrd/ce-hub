@@ -1,0 +1,372 @@
+{
+  "analysis": {
+    "scanner_type": "Multi-Scanner File (6 scanners)",
+    "scanner_purpose": "Contains 6 distinct scanners: LC Frontside D3 Extended 1, LC Frontside D2 Extended, LC Frontside D2 Extended 1, LC D2 Scanner, Gap Scanner, Volume Scanner",
+    "trading_logic_summary": "Implements 4 trading conditions including: row[col] == 1]), axis=1) for col in columns_to_check; i <= 2; response.status_code == 200",
+    "key_filters": [
+      "vol threshold: 1.5",
+      "vol threshold: 2",
+      "atr threshold: 3",
+      "gap threshold: 1",
+      "gap threshold: 0.1",
+      "vol threshold: 0.5",
+      "atr threshold: 1",
+      "vol threshold: 1"
+    ],
+    "technical_indicators": [
+      "Price",
+      "ATR",
+      "Volume",
+      "Gap",
+      "EMA"
+    ],
+    "configurable_parameters": [
+      {
+        "name": "min_periods",
+        "default_value": 1,
+        "type": "threshold",
+        "description": "Trading filter: min periods threshold",
+        "context": "Used in condition: min_periods threshold"
+      },
+      {
+        "name": "min_periods",
+        "default_value": 1,
+        "type": "threshold",
+        "description": "Trading filter: min periods threshold",
+        "context": "Used in condition: min_periods threshold"
+      },
+      {
+        "name": "min_periods",
+        "default_value": 1,
+        "type": "threshold",
+        "description": "Trading filter: min periods threshold",
+        "context": "Used in condition: min_periods threshold"
+      },
+      {
+        "name": "min_periods",
+        "default_value": 1,
+        "type": "threshold",
+        "description": "Trading filter: min periods threshold",
+        "context": "Used in condition: min_periods threshold"
+      },
+      {
+        "name": "min_periods",
+        "default_value": 1,
+        "type": "threshold",
+        "description": "Trading filter: min periods threshold",
+        "context": "Used in condition: min_periods threshold"
+      },
+      {
+        "name": "min_periods",
+        "default_value": 1,
+        "type": "threshold",
+        "description": "Trading filter: min periods threshold",
+        "context": "Used in condition: min_periods threshold"
+      },
+      {
+        "name": "min_periods",
+        "default_value": 1,
+        "type": "threshold",
+        "description": "Trading filter: min periods threshold",
+        "context": "Used in condition: min_periods threshold"
+      },
+      {
+        "name": "min_periods",
+        "default_value": 1,
+        "type": "threshold",
+        "description": "Trading filter: min periods threshold",
+        "context": "Used in condition: min_periods threshold"
+      },
+      {
+        "name": "atr_mult",
+        "default_value": 3,
+        "type": "threshold",
+        "description": "Trading filter: atr mult threshold",
+        "context": "Used in condition: atr_mult threshold"
+      },
+      {
+        "name": "atr_mult",
+        "default_value": 2,
+        "type": "threshold",
+        "description": "Trading filter: atr mult threshold",
+        "context": "Used in condition: atr_mult threshold"
+      }
+    ],
+    "code_structure": {
+      "functions_found": 14,
+      "function_names": [
+        "adjust_daily",
+        "adjust_intraday",
+        "check_high_lvl_filter_lc",
+        "filter_lc_rows",
+        "get_min_price_lc"
+      ],
+      "has_multiple_scanners": false,
+      "complexity": "high"
+    },
+    "recommendations": [
+      "Multi-scanner file detected with 14 functions - consider parameter extraction for each scanner",
+      "Found 39 potentially configurable parameters",
+      "Complex filtering logic detected - recommend user review of parameter selection",
+      "Consider separating into 6 individual scanner files for easier management"
+    ],
+    "confidence": 0.95,
+    "detected_scanners": [
+      {
+        "name": "LC Frontside D3 Extended 1",
+        "pattern": "lc_frontside_d3_extended_1",
+        "line_start": 460,
+        "line_end": 501,
+        "confidence": 0.9,
+        "type": "logical_scanner",
+        "functions": [
+          {
+            "function_name": "lc_frontside_d3_extended_1",
+            "line_start": 460,
+            "line_end": 501,
+            "confidence": 0.9
+          }
+        ]
+      },
+      {
+        "name": "LC Frontside D2 Extended",
+        "pattern": "lc_frontside_d2_extended",
+        "line_start": 503,
+        "line_end": 536,
+        "confidence": 0.9,
+        "type": "logical_scanner",
+        "functions": [
+          {
+            "function_name": "lc_frontside_d2_extended",
+            "line_start": 503,
+            "line_end": 536,
+            "confidence": 0.9
+          }
+        ]
+      },
+      {
+        "name": "LC Frontside D2 Extended 1",
+        "pattern": "lc_frontside_d2_extended_1",
+        "line_start": 539,
+        "line_end": 572,
+        "confidence": 0.9,
+        "type": "logical_scanner",
+        "functions": [
+          {
+            "function_name": "lc_frontside_d2_extended_1",
+            "line_start": 539,
+            "line_end": 572,
+            "confidence": 0.9
+          }
+        ]
+      },
+      {
+        "name": "LC D2 Scanner",
+        "keywords": [
+          "lc",
+          "d2",
+          "daily",
+          "close",
+          "gap"
+        ],
+        "functions": [
+          {
+            "function_name": "adjust_daily",
+            "line_start": 41,
+            "line_end": 179,
+            "confidence": 0.7
+          },
+          {
+            "function_name": "check_high_lvl_filter_lc",
+            "line_start": 228,
+            "line_end": 900,
+            "confidence": 0.7
+          },
+          {
+            "function_name": "filter_lc_rows",
+            "line_start": 903,
+            "line_end": 905,
+            "confidence": 0.5
+          },
+          {
+            "function_name": "get_min_price_lc",
+            "line_start": 921,
+            "line_end": 950,
+            "confidence": 0.5
+          },
+          {
+            "function_name": "compute_indicators1",
+            "line_start": 970,
+            "line_end": 1130,
+            "confidence": 0.30000000000000004
+          },
+          {
+            "function_name": "calculate_trading_days",
+            "line_start": 1132,
+            "line_end": 1152,
+            "confidence": 0.4
+          },
+          {
+            "function_name": "process_lc_row",
+            "line_start": 1185,
+            "line_end": 1245,
+            "confidence": 0.4
+          },
+          {
+            "function_name": "check_next_day_valid_lc",
+            "line_start": 1272,
+            "line_end": 1287,
+            "confidence": 0.5
+          },
+          {
+            "function_name": "check_lc_pm_liquidity",
+            "line_start": 1290,
+            "line_end": 1315,
+            "confidence": 0.5
+          }
+        ],
+        "confidence": 0.7
+      },
+      {
+        "name": "Gap Scanner",
+        "keywords": [
+          "gap",
+          "premarket",
+          "overnight",
+          "pm"
+        ],
+        "functions": [
+          {
+            "function_name": "check_lc_pm_liquidity",
+            "line_start": 1290,
+            "line_end": 1315,
+            "confidence": 0.4
+          }
+        ],
+        "confidence": 0.4
+      },
+      {
+        "name": "Volume Scanner",
+        "keywords": [
+          "volume",
+          "vol",
+          "rvol",
+          "surge"
+        ],
+        "functions": [
+          {
+            "function_name": "check_high_lvl_filter_lc",
+            "line_start": 228,
+            "line_end": 900,
+            "confidence": 0.30000000000000004
+          },
+          {
+            "function_name": "compute_indicators1",
+            "line_start": 970,
+            "line_end": 1130,
+            "confidence": 0.30000000000000004
+          }
+        ],
+        "confidence": 0.30000000000000004
+      }
+    ],
+    "separation_possible": true,
+    "total_scanners_found": 6,
+    "scanner_functions": [
+      {
+        "function_name": "adjust_daily",
+        "line_start": 41,
+        "line_end": 179
+      },
+      {
+        "function_name": "adjust_intraday",
+        "line_start": 180,
+        "line_end": 226
+      },
+      {
+        "function_name": "check_high_lvl_filter_lc",
+        "line_start": 228,
+        "line_end": 900
+      },
+      {
+        "function_name": "filter_lc_rows",
+        "line_start": 903,
+        "line_end": 905
+      },
+      {
+        "function_name": "get_min_price_lc",
+        "line_start": 921,
+        "line_end": 950
+      },
+      {
+        "function_name": "compute_indicators1",
+        "line_start": 970,
+        "line_end": 1130
+      },
+      {
+        "function_name": "calculate_trading_days",
+        "line_start": 1132,
+        "line_end": 1152
+      },
+      {
+        "function_name": "get_offsets",
+        "line_start": 1153,
+        "line_end": 1160
+      },
+      {
+        "function_name": "fetch_intraday_data",
+        "line_start": 1166,
+        "line_end": 1181
+      },
+      {
+        "function_name": "process_lc_row",
+        "line_start": 1185,
+        "line_end": 1245
+      },
+      {
+        "function_name": "dates_before_after",
+        "line_start": 1248,
+        "line_end": 1269
+      },
+      {
+        "function_name": "check_next_day_valid_lc",
+        "line_start": 1272,
+        "line_end": 1287
+      },
+      {
+        "function_name": "check_lc_pm_liquidity",
+        "line_start": 1290,
+        "line_end": 1315
+      },
+      {
+        "function_name": "process_dataframe",
+        "line_start": 1317,
+        "line_end": 1320
+      }
+    ]
+  },
+  "extracted_scanners": 3,
+  "formatted_scanners": 3,
+  "saved_scanners": [
+    {
+      "scanner_id": "scanner_test_lc_frontside_d3_extended_1_36662",
+      "name": "LC Frontside D3 Extended 1",
+      "pattern": "lc_frontside_d3_extended_1",
+      "ready_for_dashboard": true
+    },
+    {
+      "scanner_id": "scanner_test_lc_frontside_d2_extended_35938",
+      "name": "LC Frontside D2 Extended",
+      "pattern": "lc_frontside_d2_extended",
+      "ready_for_dashboard": true
+    },
+    {
+      "scanner_id": "scanner_test_lc_frontside_d2_extended_1_35947",
+      "name": "LC Frontside D2 Extended 1",
+      "pattern": "lc_frontside_d2_extended_1",
+      "ready_for_dashboard": true
+    }
+  ],
+  "success_rate": 100.0,
+  "workflow_complete": true
+}

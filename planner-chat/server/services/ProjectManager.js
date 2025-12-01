@@ -4,12 +4,93 @@
 const fs = require('fs').promises
 const path = require('path')
 const crypto = require('crypto')
+const https = require('https')
+const http = require('http')
 
 class ProjectManager {
   constructor(config, indexManager) {
     this.config = config
     this.indexManager = indexManager
     this.projectsRoot = path.join(process.cwd(), config.projectsRoot)
+
+    // Edge-Dev API configuration
+    this.edgeDevAPI = {
+      host: 'localhost',
+      port: 8000,
+      protocol: 'http:'
+    }
+  }
+
+  // Fetch projects from Edge-Dev backend
+  async fetchEdgeDevProjects() {
+    return new Promise((resolve, reject) => {
+      const options = {
+        hostname: this.edgeDevAPI.host,
+        port: this.edgeDevAPI.port,
+        path: '/api/projects',
+        method: 'GET',
+        timeout: 5000
+      }
+
+      const req = http.request(options, (res) => {
+        let data = ''
+
+        res.on('data', (chunk) => {
+          data += chunk
+        })
+
+        res.on('end', () => {
+          try {
+            if (res.statusCode === 200) {
+              const projects = JSON.parse(data)
+              resolve(projects)
+            } else {
+              console.warn(`Edge-Dev API responded with status ${res.statusCode}`)
+              resolve([]) // Return empty array instead of failing
+            }
+          } catch (error) {
+            console.warn('Failed to parse Edge-Dev projects response:', error.message)
+            resolve([]) // Return empty array instead of failing
+          }
+        })
+      })
+
+      req.on('error', (error) => {
+        console.warn('Edge-Dev API connection failed:', error.message)
+        resolve([]) // Return empty array instead of failing
+      })
+
+      req.on('timeout', () => {
+        console.warn('Edge-Dev API request timed out')
+        req.destroy()
+        resolve([]) // Return empty array instead of failing
+      })
+
+      req.end()
+    })
+  }
+
+  // Convert Edge-Dev project to planner-chat format
+  convertEdgeDevProject(edgeProject) {
+    return {
+      id: edgeProject.id,
+      slug: edgeProject.name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').trim(),
+      title: edgeProject.name,
+      description: edgeProject.description || '',
+      path: `external/edge-dev/${edgeProject.id}`,
+      isDefault: false,
+      isExternal: true, // Mark as external project
+      source: 'edge-dev',
+      scannerCount: edgeProject.scanner_count || 0,
+      aggregationMethod: edgeProject.aggregation_method || 'union',
+      tags: edgeProject.tags || [],
+      createdAt: edgeProject.created_at,
+      updatedAt: edgeProject.updated_at,
+      lastExecuted: edgeProject.last_executed,
+      executionCount: edgeProject.execution_count || 0,
+      folders: [], // Edge-Dev projects don't have folders
+      chats: [] // Edge-Dev projects don't have chats (they're scanner projects)
+    }
   }
 
   // Create a new project
@@ -181,13 +262,53 @@ class ProjectManager {
     return { success: true }
   }
 
-  // Get project tree (projects + folders + chats)
+  // Get project tree (projects + folders + chats) - Enhanced with Edge-Dev integration
   async getProjectTree() {
+    // Get local planner-chat projects
     const index = await this.indexManager.loadIndex()
+    const localProjects = index.projects || []
+
+    // Fetch Edge-Dev projects
+    const edgeDevProjects = await this.fetchEdgeDevProjects()
+    const convertedEdgeProjects = edgeDevProjects.map(project => this.convertEdgeDevProject(project))
+
+    // Merge projects (local first, then Edge-Dev)
+    const allProjects = [...localProjects, ...convertedEdgeProjects]
+
+    // Update stats to include Edge-Dev projects
+    const totalLocalStats = index.stats || {
+      totalProjects: localProjects.length,
+      totalFolders: 0,
+      totalChats: 0,
+      exportedChats: 0
+    }
+
+    // Calculate combined stats
+    const totalFolders = localProjects.reduce((sum, p) => sum + (p.folders?.length || 0), 0)
+    const totalChats = localProjects.reduce((sum, p) => sum + (p.chats?.length || 0), 0)
+    const exportedChats = localProjects.reduce((sum, p) =>
+      sum + (p.chats?.filter(chat => chat.exported)?.length || 0), 0)
+
+    const combinedStats = {
+      totalProjects: allProjects.length,
+      totalLocalProjects: localProjects.length,
+      totalEdgeDevProjects: convertedEdgeProjects.length,
+      totalScannerProjects: convertedEdgeProjects.filter(p => p.scannerCount > 0).length,
+      totalFolders,
+      totalChats,
+      exportedChats
+    }
+
+    console.log(`📊 Project Tree: ${localProjects.length} local + ${convertedEdgeProjects.length} edge-dev = ${allProjects.length} total projects`)
+
     return {
-      projects: index.projects,
-      stats: index.stats,
-      lastUpdated: index.lastUpdated
+      projects: allProjects,
+      stats: combinedStats,
+      lastUpdated: new Date().toISOString(),
+      sources: {
+        local: index.lastUpdated,
+        edgeDev: new Date().toISOString()
+      }
     }
   }
 

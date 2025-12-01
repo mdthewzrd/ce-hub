@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CE-Hub Mobile Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tool-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .tool-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .tool-description {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .tool-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .tool-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .status-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.offline {
+            background: #ef4444;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .quick-action {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .quick-action:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .tool-card {
+                padding: 20px;
+            }
+
+            .status-bar {
+                position: relative;
+                margin-top: 30px;
+                bottom: auto;
+                left: auto;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 CE-Hub Mobile</h1>
+        <p>Your Complete Mobile Development Environment</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="tool-card" onclick="openTool('http://100.95.223.19:8080')">
+            <div class="tool-icon">💻</div>
+            <div class="tool-title">VS Code Web</div>
+            <div class="tool-description">Full VS Code editor running on your server. Perfect for serious development work with all extensions and features.</div>
+            <button class="tool-button">Open VS Code</button>
+        </div>
+
+        <div class="tool-card" onclick="openTool('http://100.95.223.19:8085/mobile-dev-interface.html')">
+            <div class="tool-icon">📱</div>
+            <div class="tool-title">Mobile Dev Interface</div>
+            <div class="tool-description">Custom mobile-optimized development interface with touch-friendly file management, editor, and terminal.</div>
+            <button class="tool-button">Open Mobile IDE</button>
+        </div>
+
+        <div class="tool-card" onclick="openTool('http://100.95.223.19:8085/mobile-vscode-optimized.html')">
+            <div class="tool-icon">⚡</div>
+            <div class="tool-title">Quick Terminal</div>
+            <div class="tool-description">Fast access mobile terminal with file preview and quick commands. Great for rapid development tasks.</div>
+            <button class="tool-button">Open Terminal</button>
+        </div>
+
+        <div class="tool-card" onclick="openTool('http://100.95.223.19:8085/mobile-vscode-native.html')">
+            <div class="tool-icon">🔧</div>
+            <div class="tool-title">Native Mobile Tools</div>
+            <div class="tool-description">Mobile-first development tools with optimized layouts for files, editor, terminal, and debugging.</div>
+            <button class="tool-button">Open Tools</button>
+        </div>
+
+        <div class="tool-card" onclick="openArchon()">
+            <div class="tool-icon">🧠</div>
+            <div class="tool-title">Archon AI</div>
+            <div class="tool-description">Access your AI knowledge base and project management system for intelligent assistance.</div>
+            <button class="tool-button">Open Archon</button>
+        </div>
+
+        <div class="tool-card" onclick="openDocs()">
+            <div class="tool-icon">📚</div>
+            <div class="tool-title">Documentation</div>
+            <div class="tool-description">Browse your project documentation, guides, and knowledge base for quick reference.</div>
+            <button class="tool-button">View Docs</button>
+        </div>
+    </div>
+
+    <div class="quick-actions">
+        <a href="http://100.95.223.19:8080" class="quick-action">💻 VS Code</a>
+        <a href="http://100.95.223.19:8085/mobile-dev-interface.html" class="quick-action">📱 Mobile IDE</a>
+        <a href="#" onclick="checkStatus()" class="quick-action">🔍 Check Status</a>
+        <a href="#" onclick="openSettings()" class="quick-action">⚙️ Settings</a>
+    </div>
+
+    <div class="status-bar">
+        <div class="status-indicator">
+            <div class="status-dot" id="serverStatus"></div>
+            <span id="statusText">Checking servers...</span>
+        </div>
+        <div>
+            <span id="timeDisplay"></span>
+        </div>
+    </div>
+
+    <script>
+        function openTool(url) {
+            // Add haptic feedback for mobile
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+
+            // Open in new window/tab
+            window.open(url, '_blank');
+        }
+
+        function openArchon() {
+            // For future Archon integration
+            alert('🧠 Archon AI integration coming soon! This will connect to your knowledge base and project management system.');
+        }
+
+        function openDocs() {
+            // Open local docs if available, otherwise show placeholder
+            const docsUrl = 'http://100.95.223.19:8085/docs/';
+            fetch(docsUrl)
+                .then(response => {
+                    if (response.ok) {
+                        window.open(docsUrl, '_blank');
+                    } else {
+                        throw new Error('Docs not available');
+                    }
+                })
+                .catch(() => {
+                    alert('📚 Documentation system is being set up. Check back soon!');
+                });
+        }
+
+        function openSettings() {
+            alert('⚙️ Settings panel coming soon! This will allow you to configure your mobile development environment.');
+        }
+
+        async function checkStatus() {
+            const servers = [
+                { name: 'VS Code Server', url: 'http://100.95.223.19:8080' },
+                { name: 'Mobile Server', url: 'http://100.95.223.19:8085' }
+            ];
+
+            let statusMessage = 'Server Status:\n';
+
+            for (const server of servers) {
+                try {
+                    const response = await fetch(server.url, { mode: 'no-cors' });
+                    statusMessage += `✅ ${server.name}: Online\n`;
+                } catch (error) {
+                    statusMessage += `❌ ${server.name}: Offline\n`;
+                }
+            }
+
+            alert(statusMessage);
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('timeDisplay').textContent = timeString;
+        }
+
+        async function checkServerStatus() {
+            try {
+                const response = await fetch('http://100.95.223.19:8080', {
+                    mode: 'no-cors',
+                    signal: AbortSignal.timeout(5000)
+                });
+                document.getElementById('serverStatus').className = 'status-dot';
+                document.getElementById('statusText').textContent = 'All systems online';
+            } catch (error) {
+                document.getElementById('serverStatus').className = 'status-dot offline';
+                document.getElementById('statusText').textContent = 'Server check failed';
+            }
+        }
+
+        // Initialize
+        updateTime();
+        checkServerStatus();
+        setInterval(updateTime, 1000);
+        setInterval(checkServerStatus, 30000); // Check every 30 seconds
+
+        // Add touch feedback for iOS
+        document.querySelectorAll('.tool-card, .quick-action').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+
+            element.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+        });
+
+        // Service Worker for offline functionality (optional)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(console.error);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,866 @@
+/**
+ * Mobile Pro CSS - Revolutionary Mobile-First Development Environment
+ * Optimized for touch interfaces and mobile workflows
+ */
+
+/* CSS Variables for Mobile Pro Theme */
+:root {
+  --primary-bg: #0a0a0a;
+  --secondary-bg: #1a1a1a;
+  --accent-bg: #00ff88;
+  --surface-bg: #2a2a2a;
+  --border-color: #333333;
+
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-accent: #000000;
+  --text-muted: #888888;
+
+  --header-height: 50px;
+  --nav-height: 65px;
+  --explorer-height: 25vh;
+  --terminal-height: 35vh;
+  --editor-height: 40vh;
+
+  --border-radius: 12px;
+  --border-radius-small: 8px;
+  --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+  --shadow-dark: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+  --transition-fast: 0.15s ease;
+  --transition-medium: 0.25s ease;
+
+  --z-modal: 9000;
+  --z-header: 8000;
+  --z-nav: 7000;
+  --z-overlay: 6000;
+  --z-content: 1000;
+
+  --font-mono: 'SF Mono', Monaco, 'JetBrains Mono', monospace;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mobile-pro-body {
+  font-family: var(--font-ui);
+  background-color: var(--primary-bg);
+  color: var(--text-primary);
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 14px;
+}
+
+/* Mobile Pro Shell Layout */
+.mobile-pro-shell {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Compact Header */
+.mobile-pro-header {
+  height: var(--header-height);
+  background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--surface-bg) 100%);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+  z-index: var(--z-header);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 16px;
+}
+
+.connection-indicator {
+  background: none;
+  border: none;
+  color: var(--accent-bg);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--border-radius-small);
+  transition: all var(--transition-fast);
+}
+
+.connection-indicator.connected {
+  color: var(--accent-bg);
+  text-shadow: 0 0 8px var(--accent-bg);
+}
+
+.connection-indicator.disconnected {
+  color: #ff4444;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+.project-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+
+.icon-btn-mini {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--border-radius-small);
+  transition: all var(--transition-fast);
+}
+
+.icon-btn-mini:hover {
+  color: var(--accent-bg);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Layout - Three Sections */
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Section Headers */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: var(--secondary-bg);
+  border-bottom: 1px solid var(--border-color);
+  min-height: 48px;
+}
+
+.section-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.refresh-btn, .terminal-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--text-secondary);
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.refresh-btn:hover, .terminal-btn:hover {
+  background-color: var(--accent-bg);
+  color: var(--text-accent);
+  transform: scale(1.05);
+}
+
+.terminal-controls {
+  display: flex;
+  gap: 8px;
+}
+
+/* Explorer Section (Top 1/3) */
+.explorer-section {
+  height: var(--explorer-height);
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--primary-bg);
+}
+
+.compact-explorer {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 16px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.compact-explorer::-webkit-scrollbar {
+  display: none;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  min-height: 48px;
+  touch-action: manipulation;
+}
+
+.file-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius-small);
+  margin: 0 -8px;
+  padding: 12px 8px;
+}
+
+.file-item:active {
+  transform: scale(0.98);
+  background-color: var(--accent-bg);
+  color: var(--text-accent);
+}
+
+.file-icon {
+  font-size: 18px;
+  margin-right: 12px;
+  width: 24px;
+  text-align: center;
+}
+
+.file-name {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-item.folder .file-name {
+  color: var(--accent-bg);
+  font-weight: 600;
+}
+
+/* Editor Section (Middle - Explicit Height for Mobile) */
+.editor-section {
+  height: var(--editor-height);
+  min-height: var(--editor-height);
+  position: relative;
+  background-color: var(--primary-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.vscode-iframe-pro {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border: none;
+  background-color: var(--primary-bg);
+  display: block;
+  flex: 1;
+}
+
+.editor-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 12px;
+  pointer-events: none;
+  z-index: var(--z-overlay);
+}
+
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quick-btn {
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: var(--text-primary);
+  font-size: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.quick-btn:hover {
+  background-color: var(--accent-bg);
+  color: var(--text-accent);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Terminal Section (Bottom) */
+.terminal-section {
+  height: var(--terminal-height);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary-bg);
+  border-top: 1px solid var(--border-color);
+}
+
+.mobile-terminal-pro {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.terminal-output {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.4;
+  background-color: var(--primary-bg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.terminal-output::-webkit-scrollbar {
+  width: 4px;
+}
+
+.terminal-output::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 2px;
+}
+
+.terminal-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  min-height: 20px;
+}
+
+.terminal-line.active {
+  animation: blink 1s infinite;
+}
+
+.prompt {
+  color: var(--accent-bg);
+  margin-right: 8px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.command {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.output {
+  color: var(--text-secondary);
+  margin-left: 24px;
+  white-space: pre-wrap;
+}
+
+.cursor {
+  background-color: var(--accent-bg);
+  color: var(--text-accent);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Command Input Area */
+.command-input-area {
+  background-color: var(--secondary-bg);
+  border-top: 1px solid var(--border-color);
+  padding: 12px 16px;
+}
+
+.quick-commands {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.quick-commands::-webkit-scrollbar {
+  display: none;
+}
+
+.cmd-btn {
+  background: linear-gradient(135deg, var(--surface-bg) 0%, var(--border-color) 100%);
+  border: none;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-height: 36px;
+  font-family: var(--font-mono);
+}
+
+.cmd-btn:hover {
+  background: var(--accent-bg);
+  color: var(--text-accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.cmd-btn:active {
+  transform: scale(0.95);
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--primary-bg);
+  border-radius: var(--border-radius);
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+}
+
+.input-prompt {
+  color: var(--accent-bg);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.command-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  outline: none;
+  padding: 4px 0;
+}
+
+.command-input::placeholder {
+  color: var(--text-muted);
+}
+
+.send-btn {
+  background: var(--accent-bg);
+  border: none;
+  color: var(--text-accent);
+  font-size: 16px;
+  font-weight: 600;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-btn:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-glow);
+}
+
+.send-btn:active {
+  transform: scale(0.95);
+}
+
+/* Mobile Navigation Strip */
+.mobile-nav-strip {
+  height: var(--nav-height);
+  background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--surface-bg) 100%);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 60px;
+  min-height: 44px;
+}
+
+.nav-btn:hover {
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn.active {
+  color: var(--accent-bg);
+  background-color: rgba(0, 255, 136, 0.2);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
+}
+
+.nav-icon {
+  font-size: 20px;
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile Testing Tools */
+.mobile-tester {
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  z-index: var(--z-modal);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-dark);
+  overflow: hidden;
+}
+
+.mobile-tester.hidden {
+  display: none;
+}
+
+.tester-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: var(--surface-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tester-header h3 {
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.close-tester {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--border-radius-small);
+  transition: all var(--transition-fast);
+}
+
+.close-tester:hover {
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.device-selector {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+  background-color: var(--primary-bg);
+  border-bottom: 1px solid var(--border-color);
+  overflow-x: auto;
+}
+
+.device-btn {
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.device-btn:hover {
+  background-color: var(--border-color);
+}
+
+.device-btn.active {
+  background-color: var(--accent-bg);
+  color: var(--text-accent);
+  border-color: var(--accent-bg);
+}
+
+.device-frame {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-bg);
+  padding: 20px;
+}
+
+.device-preview {
+  width: 375px;
+  height: 812px;
+  border: 8px solid var(--surface-bg);
+  border-radius: 24px;
+  background-color: var(--primary-bg);
+  box-shadow: var(--shadow-dark);
+}
+
+.device-frame[data-device="iphone-se"] .device-preview {
+  width: 320px;
+  height: 568px;
+}
+
+.device-frame[data-device="iphone-14"] .device-preview {
+  width: 390px;
+  height: 844px;
+}
+
+.device-frame[data-device="pixel-7"] .device-preview {
+  width: 412px;
+  height: 915px;
+}
+
+.device-frame[data-device="ipad"] .device-preview {
+  width: 768px;
+  height: 1024px;
+  border-radius: 16px;
+}
+
+/* Floating Action Button */
+.fab {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--accent-bg) 0%, #00cc70 100%);
+  border: none;
+  border-radius: 50%;
+  color: var(--text-accent);
+  font-size: 24px;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  box-shadow: var(--shadow-dark);
+  z-index: var(--z-nav);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fab:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-glow);
+}
+
+.fab:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  :root {
+    --header-height: 40px;
+    --nav-height: 56px;
+    --explorer-height: 25vh;
+    --terminal-height: 35vh;
+  }
+
+  .header-content {
+    padding: 0 12px;
+  }
+
+  .section-header {
+    padding: 10px 12px;
+    min-height: 44px;
+  }
+
+  .file-item {
+    padding: 10px 0;
+    min-height: 44px;
+  }
+
+  .command-input-area {
+    padding: 10px 12px;
+  }
+
+  .mobile-tester {
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+  }
+}
+
+@media (max-height: 600px) {
+  :root {
+    --explorer-height: 20vh;
+    --terminal-height: 30vh;
+  }
+}
+
+/* Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-bg: #000000;
+    --secondary-bg: #111111;
+    --surface-bg: #222222;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Enhanced Mobile Optimization for Real Devices */
+@media screen and (max-device-width: 767px) {
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px !important;
+    transform: translateZ(0);
+  }
+
+  /* Better touch targets for mobile */
+  .cmd-btn, .quick-btn, .terminal-btn, .refresh-btn {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 12px;
+  }
+
+  /* Improved terminal for mobile */
+  .terminal-output {
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 12px;
+  }
+
+  /* Better mobile file explorer */
+  .file-item {
+    min-height: 52px;
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  /* Critical: Force three-section layout to display properly on mobile */
+  .main-layout {
+    height: calc(100vh - var(--header-height) - var(--nav-height)) !important;
+    overflow: hidden !important;
+  }
+
+  /* Force explorer section to be visible */
+  .explorer-section {
+    height: var(--explorer-height) !important;
+    min-height: var(--explorer-height) !important;
+    max-height: var(--explorer-height) !important;
+    display: flex !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Force editor section to be visible with explicit dimensions */
+  .editor-section {
+    height: var(--editor-height) !important;
+    min-height: var(--editor-height) !important;
+    max-height: var(--editor-height) !important;
+    display: flex !important;
+    flex-shrink: 0 !important;
+    border-top: 1px solid var(--border-color) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  /* Force iframe to be visible */
+  .vscode-iframe-pro {
+    min-height: var(--editor-height) !important;
+    height: 100% !important;
+    display: block !important;
+    background: var(--secondary-bg) !important;
+    border: 1px solid var(--border-color) !important;
+  }
+
+  /* Force terminal section to be visible */
+  .terminal-section {
+    height: var(--terminal-height) !important;
+    min-height: var(--terminal-height) !important;
+    max-height: var(--terminal-height) !important;
+    display: flex !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* iPhone specific optimizations */
+@media screen and (max-device-width: 428px) and (-webkit-device-pixel-ratio: 3) {
+  .mobile-pro-shell {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+  }
+
+  .main-layout {
+    height: calc(100vh - var(--header-height) - var(--nav-height) - env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Landscape mobile optimization */
+@media screen and (max-device-height: 450px) and (orientation: landscape) {
+  :root {
+    --explorer-height: 20vh;
+    --terminal-height: 25vh;
+  }
+
+  .mobile-nav-strip {
+    height: 50px;
+  }
+
+  .nav-btn {
+    min-height: 40px;
+  }
+}

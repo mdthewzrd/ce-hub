@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "mcp-vision": {
+      "command": "/Users/michaeldurante/.venv/bin/python3",
+      "args": [
+        "-c",
+        "from mcp_vision import main; main()"
+      ],
+      "env": {
+        "MCP_TRANSPORT": "stdio",
+        "LOG_LEVEL": "error"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp",
+        "--headless"
+      ],
+      "env": {}
+    }
+  },
+  "autoFeatures": {
+    "contextPreservation": true,
+    "agentDispatch": true,
+    "visionAnalysis": true,
+    "sessionTracking": true
+  }
+}

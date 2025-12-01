@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp",
+        "--headless",
+        "--isolated"
+      ],
+      "env": {}
+    },
+    "archon": {
+      "command": "python",
+      "args": [
+        "/Users/michaeldurante/archon/mcp_stdio_wrapper.py"
+      ],
+      "env": {
+        "ARCHON_MCP_ENDPOINT": "http://localhost:8051"
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "name": "CE-Hub Mobile Development",
+  "short_name": "CE-Hub",
+  "description": "Mobile-optimized development environment for CE-Hub projects",
+  "start_url": "/mobile/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0d1117",
+  "background_color": "#0d1117",
+  "categories": ["productivity", "developer"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' fill='%230d1117'/><text x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' font-size='120'>📱</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%230d1117'/><text x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' font-size='320'>📱</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 844'><rect width='390' height='844' fill='%230d1117'/><text x='50%25' y='20%25' text-anchor='middle' dominant-baseline='middle' font-size='24' fill='%23f0f6fc'>CE-Hub Mobile</text><rect x='20' y='100' width='350' height='200' rx='16' fill='%23161b22' stroke='%2330363d'/><text x='50%25' y='210' text-anchor='middle' dominant-baseline='middle' font-size='18' fill='%23f0f6fc'>Mobile Development Interface</text></svg>",
+      "sizes": "390x844",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "Mobile Dashboard"
+    }
+  ],
+  "features": [
+    "Cross-origin resource sharing",
+    "Touch interaction",
+    "Offline capability"
+  ],
+  "shortcuts": [
+    {
+      "name": "Open VS Code",
+      "description": "Launch the full VS Code interface",
+      "url": "/?source=pwa",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><text y='.9em' font-size='72'>💻</text></svg>",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Terminal",
+      "description": "Quick terminal access",
+      "url": "/mobile/#terminal",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><text y='.9em' font-size='72'>⚡</text></svg>",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Files",
+      "description": "Browse project files",
+      "url": "/mobile/#files",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><text y='.9em' font-size='72'>📁</text></svg>",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

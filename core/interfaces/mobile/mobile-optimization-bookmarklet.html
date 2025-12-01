@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 Mobile VS Code Optimization Bookmarklet</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #569cd6;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #888;
+        }
+
+        .section {
+            background: #2d2d30;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #569cd6;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bookmarklet-box {
+            background: #1e1e1e;
+            border: 2px dashed #444;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+        }
+
+        .bookmarklet-link {
+            display: inline-block;
+            background: #007acc;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 12px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .bookmarklet-link:hover {
+            background: #005a9e;
+            transform: scale(1.05);
+        }
+
+        .instructions {
+            background: #21262d;
+            border-left: 4px solid #4CAF50;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .step {
+            margin: 12px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #4CAF50;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .code-block {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .warning {
+            background: #2d1b00;
+            border: 1px solid #f0ad4e;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            color: #f0ad4e;
+        }
+
+        .success {
+            background: #0d2818;
+            border: 1px solid #4CAF50;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">📱</div>
+        <div class="title">Mobile VS Code Optimizer</div>
+        <div class="subtitle">One-Click Mobile Optimization for VS Code Web</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🚀 Quick Setup</div>
+
+        <div class="bookmarklet-box">
+            <div style="margin-bottom: 16px; font-size: 18px; font-weight: 600;">
+                📌 Drag this to your bookmarks bar:
+            </div>
+
+            <a href="javascript:(function(){var script=document.createElement('script');script.textContent='(function(){console.log(\\'📱 Applying Mobile Optimizations...\\');var existingStyle=document.getElementById(\\'mobile-optimizations\\');if(existingStyle){existingStyle.remove();}var style=document.createElement(\\'style\\');style.id=\\'mobile-optimizations\\';style.innerHTML=\\`.monaco-workbench{font-size:16px !important;}.monaco-list-row, .monaco-tree-row{min-height:44px !important;font-size:16px !important;padding:8px 12px !important;}.minimap-shadow-visible, .editor-widget.minimap, .minimap.slider-mouseover{display:none !important;}.monaco-scrollable-element > .scrollbar{width:16px !important;height:16px !important;}.monaco-scrollable-element > .scrollbar > .slider{background:rgba(121, 121, 121, 0.8) !important;}.monaco-workbench .part.activitybar .action-item{width:60px !important;height:50px !important;}.monaco-editor{font-size:16px !important;line-height:1.5 !important;}.monaco-editor .view-lines{line-height:1.5 !important;}.monaco-button, .monaco-inputbox{min-height:44px !important;font-size:16px !important;}.monaco-workbench .part.panel{min-height:200px !important;}.terminal-wrapper, .xterm-screen{font-size:14px !important;line-height:1.4 !important;}.monaco-tree .monaco-tree-row{height:44px !important;}.monaco-tree .monaco-tree-row .content{line-height:44px !important;}.monaco-menu .monaco-action-bar .action-item{min-height:44px !important;}.monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container .tab{min-height:44px !important;padding:8px 16px !important;}.settings-editor .settings-body .settings-tree-container .setting-item{min-height:60px !important;padding:12px !important;}.quick-input-widget{font-size:16px !important;}.quick-input-list .monaco-list-row{min-height:50px !important;}.monaco-workbench .notifications-list-container .notification-list-item{min-height:60px !important;padding:12px !important;}@media (max-width:768px){.monaco-button, .monaco-inputbox, .monaco-list-row, .monaco-tree-row{min-height:50px !important;font-size:18px !important;}.monaco-editor{font-size:18px !important;}}\`;document.head.appendChild(style);setTimeout(function(){if(window.dispatchEvent){window.dispatchEvent(new Event(\\'resize\\'));}},100);console.log(\\'✅ Mobile optimizations applied successfully!\\');var toast=document.createElement(\\'div\\');toast.style.cssText=\\'position:fixed;top:20px;right:20px;background:#4CAF50;color:white;padding:16px 24px;border-radius:8px;font-size:14px;font-weight:600;z-index:999999;box-shadow:0 4px 12px rgba(0,0,0,0.3);\\';toast.textContent=\\'📱 Mobile optimizations applied!\\';document.body.appendChild(toast);setTimeout(function(){toast.remove();},3000);})();';document.body.appendChild(script);setTimeout(function(){script.remove();},1000);})();"
+               class="bookmarklet-link">📱 Mobile Optimize</a>
+
+            <div style="margin-top: 16px; font-size: 14px; color: #888;">
+                Or use the button above to test it on this page first
+            </div>
+        </div>
+
+        <div class="instructions">
+            <div class="step" data-step="1">
+                <strong>Drag the bookmarklet</strong> to your browser's bookmarks bar
+            </div>
+            <div class="step" data-step="2">
+                <strong>Open VS Code</strong> at http://100.95.223.19:8080/
+            </div>
+            <div class="step" data-step="3">
+                <strong>Click the bookmarklet</strong> to instantly apply mobile optimizations
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🎯 What Gets Optimized</div>
+
+        <div class="feature-list">
+            <div class="feature-item">
+                <div class="feature-icon">📝</div>
+                <div class="feature-title">Editor Text</div>
+                <div class="feature-desc">16px font size, 1.5 line height for better readability</div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">👆</div>
+                <div class="feature-title">Touch Targets</div>
+                <div class="feature-desc">44px minimum height for all clickable elements</div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🗺️</div>
+                <div class="feature-title">Minimap</div>
+                <div class="feature-desc">Hidden to save screen space on mobile</div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">📜</div>
+                <div class="feature-title">Scrollbars</div>
+                <div class="feature-desc">Larger scrollbars for easier touch scrolling</div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">📁</div>
+                <div class="feature-title">File Explorer</div>
+                <div class="feature-desc">Larger file list items with better spacing</div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">💻</div>
+                <div class="feature-title">Terminal</div>
+                <div class="feature-desc">Optimized font size and line height</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📱 Alternative Access Methods</div>
+
+        <div style="margin: 20px 0;">
+            <h3 style="color: #569cd6; margin-bottom: 12px;">🔗 Auto-Optimized Wrapper</h3>
+            <p>Use this URL for automatic mobile optimization:</p>
+            <div class="code-block">
+                file:///Users/michaeldurante/ai%20dev/ce-hub/mobile-optimized-vscode.html
+            </div>
+            <p style="font-size: 14px; color: #888; margin-top: 8px;">
+                This wrapper automatically applies optimizations when VS Code loads
+            </p>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <h3 style="color: #569cd6; margin-bottom: 12px;">🏠 Mobile Dashboard</h3>
+            <p>Access the mobile dashboard for quick navigation:</p>
+            <div class="code-block">
+                file:///Users/michaeldurante/ai%20dev/ce-hub/mobile.html
+            </div>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <h3 style="color: #569cd6; margin-bottom: 12px;">💻 Direct VS Code</h3>
+            <p>Direct access to VS Code (requires manual optimization):</p>
+            <div class="code-block">
+                http://100.95.223.19:8080/
+            </div>
+            <p style="font-size: 14px; color: #888; margin-top: 8px;">
+                Password: 9c7516c8dba7b2328e081e31
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">⌨️ Keyboard Shortcuts</div>
+
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 16px; margin: 16px 0;">
+            <div><code style="background: #21262d; padding: 4px 8px; border-radius: 4px;">Ctrl+Shift+R</code></div>
+            <div>Re-apply mobile optimizations</div>
+
+            <div><code style="background: #21262d; padding: 4px 8px; border-radius: 4px;">F11</code></div>
+            <div>Toggle fullscreen mode</div>
+
+            <div><code style="background: #21262d; padding: 4px 8px; border-radius: 4px;">Ctrl+Shift+P</code></div>
+            <div>VS Code command palette</div>
+
+            <div><code style="background: #21262d; padding: 4px 8px; border-radius: 4px;">Ctrl+`</code></div>
+            <div>Toggle VS Code terminal</div>
+        </div>
+    </div>
+
+    <div class="success">
+        <strong>✅ Success!</strong> Your mobile VS Code optimization setup is complete.
+        Use any of the methods above to enjoy a mobile-optimized development experience.
+    </div>
+
+    <div class="warning">
+        <strong>⚠️ Note:</strong> Due to browser security restrictions, the bookmarklet may not work
+        on some browsers or VS Code deployments. In that case, use the auto-optimized wrapper instead.
+    </div>
+
+    <script>
+        // Test the optimization on this page
+        document.querySelector('.bookmarklet-link').addEventListener('click', function(e) {
+            if (window.location.protocol === 'file:') {
+                e.preventDefault();
+
+                // Apply a demo optimization to this page
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    body { background: #0d1117 !important; }
+                    .title { color: #4CAF50 !important; }
+                `;
+                document.head.appendChild(style);
+
+                // Show demo toast
+                const toast = document.createElement('div');
+                toast.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #4CAF50;
+                    color: white;
+                    padding: 16px 24px;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    z-index: 999999;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                `;
+                toast.textContent = '📱 Demo optimization applied! Drag this to bookmarks for VS Code.';
+                document.body.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.remove();
+                    style.remove();
+                }, 4000);
+            }
+        });
+
+        console.log('📱 Mobile VS Code Optimizer bookmarklet page loaded');
+        console.log('🔖 Drag the bookmarklet to your bookmarks bar for one-click optimization');
+    </script>
+</body>
+</html>

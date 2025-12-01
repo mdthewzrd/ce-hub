@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CE-Hub Mobile</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="CE-Hub">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #00ff88, #0088ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .status.online {
+            border-color: #00ff88;
+        }
+
+        .status.offline {
+            border-color: #ff4444;
+        }
+
+        .command-section {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .quick-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quick-btn {
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 8px;
+            color: #fff;
+            padding: 12px 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-btn:hover {
+            background: #333;
+            border-color: #00ff88;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .command-input {
+            width: 100%;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 8px;
+            color: #fff;
+            padding: 12px;
+            font-size: 16px;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+
+        .command-input:focus {
+            outline: none;
+            border-color: #00ff88;
+        }
+
+        .send-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #00ff88, #0088ff);
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-weight: bold;
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .send-btn:hover {
+            transform: scale(0.98);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .output {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #00ff88;
+            margin: 20px 0;
+        }
+
+        .error {
+            color: #ff4444;
+            background: #220a0a;
+            border-color: #ff4444;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #333;
+            border-top: 2px solid #00ff88;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CE-Hub Mobile</h1>
+            <div id="status" class="status offline">
+                <span id="status-text">Connecting...</span>
+            </div>
+        </div>
+
+        <div class="command-section">
+            <div class="quick-buttons">
+                <button class="quick-btn" onclick="quickCommand('pwd')">📁 Current Dir</button>
+                <button class="quick-btn" onclick="quickCommand('git status')">🔄 Git Status</button>
+                <button class="quick-btn" onclick="quickCommand('ls -la')">📋 List Files</button>
+                <button class="quick-btn" onclick="quickCommand('git branch')">🌿 Branches</button>
+                <button class="quick-btn" onclick="quickCommand('npm run test')">🧪 Run Tests</button>
+                <button class="quick-btn" onclick="quickCommand('git log --oneline -5')">📜 Recent Commits</button>
+            </div>
+
+            <div class="input-group">
+                <label for="commandInput">Custom Command:</label>
+                <input
+                    type="text"
+                    id="commandInput"
+                    class="command-input"
+                    placeholder="Enter command..."
+                    autocomplete="off"
+                    autocapitalize="off"
+                    autocorrect="off"
+                >
+            </div>
+
+            <button id="sendBtn" class="send-btn" onclick="sendCommand()">
+                Send Command
+            </button>
+
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <span>Executing command...</span>
+            </div>
+        </div>
+
+        <div id="output" class="output" style="display: none;">
+            <!-- Output will appear here -->
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://michaels-macbook-pro-2.tail6d4c6d.ts.net';
+        const TOKEN = '171158e5e011bb1d3e50a387a8234d60871323ce9463ec1ff4a1194cd686cfb4';
+
+        let isOnline = false;
+
+        // Check status on load
+        checkStatus();
+
+        // Auto-refresh status every 30 seconds
+        setInterval(checkStatus, 30000);
+
+        // Enter key support
+        document.getElementById('commandInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendCommand();
+            }
+        });
+
+        async function checkStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/healthz`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${TOKEN}`
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    updateStatus(true, `Online - ${data.tmux_status}`);
+                } else {
+                    updateStatus(false, `Error ${response.status}`);
+                }
+            } catch (error) {
+                updateStatus(false, 'Connection Failed');
+            }
+        }
+
+        function updateStatus(online, message) {
+            isOnline = online;
+            const statusEl = document.getElementById('status');
+            const statusTextEl = document.getElementById('status-text');
+
+            statusEl.className = `status ${online ? 'online' : 'offline'}`;
+            statusTextEl.textContent = online ? `✅ ${message}` : `❌ ${message}`;
+
+            // Enable/disable send button
+            document.getElementById('sendBtn').disabled = !online;
+        }
+
+        function quickCommand(command) {
+            document.getElementById('commandInput').value = command;
+            sendCommand();
+        }
+
+        async function sendCommand() {
+            const input = document.getElementById('commandInput');
+            const command = input.value.trim();
+
+            if (!command || !isOnline) return;
+
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('sendBtn').disabled = true;
+
+            try {
+                const response = await fetch(`${API_BASE}/send`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${TOKEN}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text: command,
+                        mode: 'ask',
+                        wait_ms: 3000
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    showOutput(data.full_response || data.preview || 'Command executed successfully', false);
+
+                    // Clear input
+                    input.value = '';
+                } else {
+                    showOutput(`Error ${response.status}: ${response.statusText}`, true);
+                }
+            } catch (error) {
+                showOutput(`Network Error: ${error.message}`, true);
+            } finally {
+                // Hide loading
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('sendBtn').disabled = !isOnline;
+            }
+        }
+
+        function showOutput(text, isError = false) {
+            const outputEl = document.getElementById('output');
+            outputEl.style.display = 'block';
+            outputEl.textContent = text;
+            outputEl.className = `output ${isError ? 'error' : ''}`;
+
+            // Scroll to output
+            outputEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>

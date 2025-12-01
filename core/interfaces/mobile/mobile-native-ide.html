@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>CE-Hub Mobile IDE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #ffffff;
+            height: 100vh;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        /* Mobile App Header */
+        .mobile-header {
+            background: #2d2d2d;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid #404040;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-btn {
+            background: #404040;
+            border: none;
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .header-btn:active {
+            background: #505050;
+            transform: scale(0.95);
+        }
+
+        /* Main Container */
+        .main-container {
+            height: calc(100vh - 60px - 70px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* File Explorer View */
+        .file-explorer {
+            height: 100%;
+            background: #1e1e1e;
+            padding: 20px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .file-explorer.active {
+            display: block;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            margin: 4px 0;
+            background: #2d2d2d;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .file-item:active {
+            background: #404040;
+            transform: scale(0.98);
+        }
+
+        .file-icon {
+            font-size: 20px;
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .file-name {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .file-path {
+            font-size: 12px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        /* Editor View */
+        .editor-view {
+            height: 100%;
+            background: #1e1e1e;
+            display: none;
+            flex-direction: column;
+        }
+
+        .editor-view.active {
+            display: flex;
+        }
+
+        .editor-tabs {
+            background: #2d2d2d;
+            padding: 12px 20px;
+            border-bottom: 1px solid #404040;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .editor-tab {
+            display: inline-block;
+            background: #404040;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin-right: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .editor-tab.active {
+            background: #007acc;
+        }
+
+        .editor-content {
+            flex: 1;
+            position: relative;
+            background: #1e1e1e;
+        }
+
+        .code-editor {
+            width: 100%;
+            height: 100%;
+            background: #1e1e1e;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 20px;
+            resize: none;
+            tab-size: 4;
+        }
+
+        /* Terminal View */
+        .terminal-view {
+            height: 100%;
+            background: #000000;
+            display: none;
+            flex-direction: column;
+        }
+
+        .terminal-view.active {
+            display: flex;
+        }
+
+        .terminal-header {
+            background: #1a1a1a;
+            padding: 12px 20px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .terminal-btn {
+            background: #333;
+            border: none;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .terminal-content {
+            flex: 1;
+            background: #000;
+            color: #00ff00;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            padding: 16px;
+            overflow-y: auto;
+        }
+
+        .terminal-input-container {
+            background: #111;
+            padding: 12px 20px;
+            border-top: 1px solid #333;
+            display: flex;
+            align-items: center;
+        }
+
+        .terminal-prompt {
+            color: #00ff00;
+            margin-right: 8px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+        }
+
+        .terminal-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #00ff00;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+        }
+
+        .terminal-send {
+            background: #007acc;
+            border: none;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        /* Mobile Bottom Navigation */
+        .mobile-nav {
+            background: #2d2d2d;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-top: 1px solid #404040;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            min-width: 60px;
+        }
+
+        .nav-item:active {
+            background: #404040;
+            transform: scale(0.95);
+        }
+
+        .nav-item.active {
+            background: #007acc;
+            color: #ffffff;
+        }
+
+        .nav-icon {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Mobile Specific Optimizations */
+        .mobile-optimized {
+            /* Large touch targets */
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        /* Hide scrollbars but keep functionality */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        * {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 16px;
+            color: #999;
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #333;
+            border-top: 2px solid #007acc;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 12px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-height: 600px) {
+            .mobile-header {
+                height: 50px;
+            }
+            .mobile-nav {
+                height: 60px;
+            }
+            .main-container {
+                height: calc(100vh - 50px - 60px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="header-title">CE-Hub IDE</div>
+        <div class="header-actions">
+            <button class="header-btn" onclick="saveFile()">💾</button>
+            <button class="header-btn" onclick="showMenu()">⋮</button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- File Explorer View -->
+        <div class="file-explorer active" id="files-view">
+            <div class="loading" id="files-loading">
+                <div class="spinner"></div>
+                Loading files...
+            </div>
+            <div id="file-list"></div>
+        </div>
+
+        <!-- Editor View -->
+        <div class="editor-view" id="editor-view">
+            <div class="editor-tabs">
+                <div class="editor-tab active">📄 Welcome.md</div>
+            </div>
+            <div class="editor-content">
+                <textarea class="code-editor" id="code-editor" placeholder="Start typing your code here...">
+# Welcome to CE-Hub Mobile IDE
+
+This is your mobile-optimized development environment.
+
+## Features:
+- 📱 Touch-optimized interface
+- 📁 Easy file management
+- 💻 Full-featured editor
+- 🖥️ Integrated terminal
+- ⚡ Fast performance
+
+## Getting Started:
+1. Tap "Files" to browse your project
+2. Tap any file to edit it
+3. Use "Terminal" for command line access
+4. Save your work with the save button
+
+Happy coding! 🚀
+                </textarea>
+            </div>
+        </div>
+
+        <!-- Terminal View -->
+        <div class="terminal-view" id="terminal-view">
+            <div class="terminal-header">
+                <button class="terminal-btn" onclick="clearTerminal()">Clear</button>
+                <button class="terminal-btn" onclick="newTerminal()">New</button>
+                <span style="color: #999; font-size: 12px;">Terminal</span>
+            </div>
+            <div class="terminal-content" id="terminal-content">
+                <div style="color: #007acc;">CE-Hub Mobile Terminal v1.0</div>
+                <div style="color: #999; margin-bottom: 16px;">Type commands below or use the quick buttons</div>
+            </div>
+            <div class="terminal-input-container">
+                <span class="terminal-prompt">$</span>
+                <input type="text" class="terminal-input" id="terminal-input" placeholder="Enter command..." onkeypress="handleTerminalInput(event)">
+                <button class="terminal-send" onclick="executeCommand()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-nav">
+        <div class="nav-item active" onclick="showView('files')">
+            <div class="nav-icon">📁</div>
+            <div class="nav-label">Files</div>
+        </div>
+        <div class="nav-item" onclick="showView('editor')">
+            <div class="nav-icon">📝</div>
+            <div class="nav-label">Editor</div>
+        </div>
+        <div class="nav-item" onclick="showView('terminal')">
+            <div class="nav-icon">💻</div>
+            <div class="nav-label">Terminal</div>
+        </div>
+        <div class="nav-item" onclick="showView('run')">
+            <div class="nav-icon">▶️</div>
+            <div class="nav-label">Run</div>
+        </div>
+    </div>
+
+    <script>
+        let currentView = 'files';
+        let files = [];
+        let currentFile = null;
+
+        // View Management
+        function showView(view) {
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+
+            // Hide all views
+            document.querySelectorAll('.file-explorer, .editor-view, .terminal-view').forEach(view => {
+                view.classList.remove('active');
+            });
+
+            // Show selected view
+            currentView = view;
+            const viewElement = document.getElementById(`${view}-view`) || document.querySelector(`.${view}-view`);
+            if (viewElement) {
+                viewElement.classList.add('active');
+            }
+
+            // Handle specific view logic
+            switch(view) {
+                case 'files':
+                    loadFiles();
+                    break;
+                case 'terminal':
+                    focusTerminal();
+                    break;
+                case 'run':
+                    showRunDialog();
+                    break;
+            }
+
+            // Haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(30);
+            }
+        }
+
+        // File Management
+        async function loadFiles() {
+            const fileList = document.getElementById('file-list');
+            const loading = document.getElementById('files-loading');
+
+            loading.style.display = 'flex';
+            fileList.innerHTML = '';
+
+            // Simulate file loading - replace with actual API
+            setTimeout(() => {
+                const sampleFiles = [
+                    { name: 'src/index.js', type: 'file', icon: '📜' },
+                    { name: 'src/components/', type: 'folder', icon: '📁' },
+                    { name: 'package.json', type: 'file', icon: '📦' },
+                    { name: 'README.md', type: 'file', icon: '📄' },
+                    { name: 'config/', type: 'folder', icon: '📁' },
+                    { name: 'scripts/', type: 'folder', icon: '📁' },
+                    { name: '.gitignore', type: 'file', icon: '🚫' },
+                    { name: 'docs/', type: 'folder', icon: '📁' }
+                ];
+
+                fileList.innerHTML = sampleFiles.map(file => `
+                    <div class="file-item" onclick="openFile('${file.name}')">
+                        <div class="file-icon">${file.icon}</div>
+                        <div>
+                            <div class="file-name">${file.name}</div>
+                            <div class="file-path">ce-hub/${file.name}</div>
+                        </div>
+                    </div>
+                `).join('');
+
+                loading.style.display = 'none';
+            }, 800);
+        }
+
+        function openFile(filename) {
+            currentFile = filename;
+
+            // Update editor tab
+            document.querySelector('.editor-tab').textContent = `📄 ${filename.split('/').pop()}`;
+
+            // Load file content (simulate)
+            const editor = document.getElementById('code-editor');
+
+            if (filename.includes('.js')) {
+                editor.value = `// ${filename}\nconsole.log('Hello from ${filename}');\n\n// Your code here...`;
+            } else if (filename.includes('.json')) {
+                editor.value = `{\n  "name": "ce-hub",\n  "version": "1.0.0",\n  "description": "Mobile development environment"\n}`;
+            } else if (filename.includes('README')) {
+                editor.value = `# ${filename.replace('.md', '')}\n\nProject documentation goes here...\n\n## Features\n- Mobile development\n- Touch optimization\n- Real-time editing`;
+            } else {
+                editor.value = `# ${filename}\n\n// Content will be loaded from your actual file system\n// This is a mobile-optimized editor`;
+            }
+
+            // Switch to editor view
+            showView('editor');
+
+            // Haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        }
+
+        // Terminal Functions
+        function handleTerminalInput(event) {
+            if (event.key === 'Enter') {
+                executeCommand();
+            }
+        }
+
+        function executeCommand() {
+            const input = document.getElementById('terminal-input');
+            const content = document.getElementById('terminal-content');
+            const command = input.value.trim();
+
+            if (command) {
+                // Add command to terminal
+                content.innerHTML += `<div style="margin: 8px 0;"><span style="color: #00ff00;">$ </span>${command}</div>`;
+
+                // Simulate command execution
+                setTimeout(() => {
+                    let output = '';
+                    switch(command.toLowerCase()) {
+                        case 'ls':
+                            output = 'src/  config/  docs/  package.json  README.md';
+                            break;
+                        case 'pwd':
+                            output = '/Users/dev/ce-hub';
+                            break;
+                        case 'git status':
+                            output = 'On branch main\nYour branch is up to date with \'origin/main\'.';
+                            break;
+                        case 'npm start':
+                            output = 'Starting development server...\nServer running on http://localhost:3000';
+                            break;
+                        case 'clear':
+                            content.innerHTML = '<div style="color: #007acc;">CE-Hub Mobile Terminal v1.0</div>';
+                            input.value = '';
+                            return;
+                        default:
+                            output = `Command '${command}' not found. Try: ls, pwd, git status, npm start, clear`;
+                    }
+
+                    content.innerHTML += `<div style="color: #fff; margin: 4px 0 16px 0;">${output}</div>`;
+                    content.scrollTop = content.scrollHeight;
+                }, 300);
+
+                input.value = '';
+            }
+        }
+
+        function clearTerminal() {
+            const content = document.getElementById('terminal-content');
+            content.innerHTML = '<div style="color: #007acc;">CE-Hub Mobile Terminal v1.0</div><div style="color: #999; margin-bottom: 16px;">Terminal cleared</div>';
+        }
+
+        function newTerminal() {
+            clearTerminal();
+            const content = document.getElementById('terminal-content');
+            content.innerHTML += '<div style="color: #999;">New terminal session started</div>';
+        }
+
+        function focusTerminal() {
+            setTimeout(() => {
+                document.getElementById('terminal-input').focus();
+            }, 100);
+        }
+
+        // Header Functions
+        function saveFile() {
+            if (currentFile) {
+                // Simulate save
+                const editor = document.getElementById('code-editor');
+                console.log('Saving file:', currentFile, editor.value);
+
+                // Show feedback
+                const title = document.querySelector('.header-title');
+                const originalTitle = title.textContent;
+                title.textContent = '💾 Saved!';
+                title.style.color = '#4ade80';
+
+                setTimeout(() => {
+                    title.textContent = originalTitle;
+                    title.style.color = '#ffffff';
+                }, 1500);
+            }
+
+            if (navigator.vibrate) {
+                navigator.vibrate([50, 50, 50]);
+            }
+        }
+
+        function showMenu() {
+            alert('Menu:\n• Settings\n• Extensions\n• Help\n• About\n\nFull menu coming soon!');
+        }
+
+        function showRunDialog() {
+            alert('⚡ Run Commands:\n• npm start\n• npm test\n• npm run build\n• python app.py\n\nQuick run buttons coming soon!');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFiles();
+
+            // Prevent zoom on input focus
+            document.addEventListener('touchstart', function(event) {
+                if (event.touches.length > 1) {
+                    event.preventDefault();
+                }
+            }, {passive: false});
+
+            // Handle viewport changes
+            function handleViewportChange() {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+
+            handleViewportChange();
+            window.addEventListener('resize', handleViewportChange);
+            window.addEventListener('orientationchange', handleViewportChange);
+        });
+
+        // Service Worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(console.error);
+        }
+    </script>
+</body>
+</html>

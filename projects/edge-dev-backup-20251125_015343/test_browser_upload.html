@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Multi-Scanner Upload</title>
+</head>
+<body>
+    <h1>Test Multi-Scanner Detection in Frontend</h1>
+
+    <script>
+        // Simulate the frontend multi-scanner detection logic
+        function detectMultiScanner(code) {
+            const multiScannerIndicators = [
+                // LC scanner patterns
+                'lc_frontside_d3_extended_1',
+                'lc_frontside_d2_extended',
+                'lc_frontside_d2_extended_1',
+
+                // Pattern indicators
+                'momentum_d3_extended_pattern',
+                'momentum_d2_extended_pattern',
+                'momentum_d2_variant_pattern',
+
+                // Main execution blocks
+                'if __name__ == "__main__":',
+            ];
+
+            let indicatorCount = 0;
+
+            for (const indicator of multiScannerIndicators) {
+                if (code.includes(indicator)) {
+                    indicatorCount++;
+                    console.log(`✅ Found indicator: ${indicator}`);
+                }
+            }
+
+            // Function patterns
+            const scannerFunctionPattern = /(async\s+)?def\s+\w*(scan|scanner)\w*\s*\(/gi;
+            const scannerFunctions = code.match(scannerFunctionPattern) || [];
+            if (scannerFunctions.length > 3) {
+                indicatorCount += 2;
+                console.log(`✅ Multiple scanner functions: ${scannerFunctions.length} > 3 (+2 indicators)`);
+            }
+
+            // File size indicator
+            if (code.length > 50000) {
+                indicatorCount += 1;
+                console.log(`✅ File size indicator: ${code.length.toLocaleString()} > 50,000`);
+            }
+
+            console.log(`📊 TOTAL INDICATOR COUNT: ${indicatorCount}`);
+            console.log(`📊 File size: ${code.length.toLocaleString()}`);
+            console.log(`📊 Size threshold (100,000): ${code.length > 100000}`);
+
+            const isMultiScanner = indicatorCount >= 2 || code.length > 100000;
+            console.log(`🎯 MULTI-SCANNER DETECTION RESULT: ${isMultiScanner ? '✅ DETECTED' : '❌ NOT DETECTED'}`);
+            return isMultiScanner;
+        }
+
+        // Test with sample code patterns
+        async function testDetection() {
+            console.log('🔍 TESTING MULTI-SCANNER DETECTION IN BROWSER');
+            console.log('=' * 70);
+
+            try {
+                // Load the actual file content (simulate)
+                const sampleCode = `
+                    lc_frontside_d3_extended_1 = some_value
+                    lc_frontside_d2_extended = another_value
+                    if __name__ == "__main__":
+                        main()
+                `.repeat(1000); // Make it large
+
+                const result = detectMultiScanner(sampleCode);
+                console.log(`Detection result: ${result}`);
+
+                if (result) {
+                    console.log('🎯 Would route to: /api/format/ai-split-scanners');
+                } else {
+                    console.log('🔧 Would route to: /api/format/code');
+                }
+
+            } catch (error) {
+                console.error('Test failed:', error);
+            }
+        }
+
+        // Run test when page loads
+        window.onload = testDetection;
+    </script>
+
+    <p>Check browser console for test results...</p>
+    <button onclick="testDetection()">Run Detection Test</button>
+</body>
+</html>

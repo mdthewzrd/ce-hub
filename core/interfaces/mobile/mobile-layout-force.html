@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 FORCE Mobile Layout VS Code Injector</title>
+</head>
+<body style="background: #1e1e1e; color: #d4d4d4; font-family: monospace; padding: 20px;">
+    <h1>📱 FORCE Mobile Layout VS Code Injector</h1>
+
+    <p><strong>NEW URL:</strong> <a href="https://michaels-macbook-pro-2.tail6d4c6d.ts.net:8093/" style="color: #007acc;">https://michaels-macbook-pro-2.tail6d4c6d.ts.net:8093/</a></p>
+    <p><strong>Password:</strong> ce-hub-dev</p>
+
+    <div style="background: #2d2d30; padding: 15px; border-radius: 5px; margin: 20px 0; overflow-x: auto;">
+        <code style="white-space: pre-wrap; font-size: 12px;" id="injector-code">
+// FORCE Mobile Layout - Bottom Panel Configuration
+(function() {
+    console.log('🔧 Forcing Mobile Layout...');
+
+    // Wait for VS Code to load completely
+    function waitForVSCode() {
+        if (!document.querySelector('.monaco-workbench')) {
+            setTimeout(waitForVSCode, 500);
+            return;
+        }
+
+        console.log('✅ VS Code loaded, applying mobile layout...');
+        applyMobileLayout();
+    }
+
+    function applyMobileLayout() {
+        // Create and inject FORCE CSS
+        const style = document.createElement('style');
+        style.id = 'force-mobile-layout';
+        style.innerHTML = `
+            /* FORCE BOTTOM LAYOUT FOR ALL SCREEN SIZES */
+            .monaco-workbench {
+                flex-direction: column !important;
+                display: flex !important;
+            }
+
+            /* Force titlebar to top */
+            .monaco-workbench .part.titlebar {
+                order: 1 !important;
+                position: relative !important;
+            }
+
+            /* Force editor to main area */
+            .monaco-workbench .part.editor {
+                order: 2 !important;
+                flex: 1 !important;
+                flex-direction: column !important;
+                position: relative !important;
+            }
+
+            /* FORCE SIDEBAR TO BOTTOM AS HORIZONTAL BAR */
+            .monaco-workbench .part.sidebar {
+                order: 3 !important;
+                width: 100% !important;
+                max-height: 200px !important;
+                min-height: 150px !important;
+                flex-direction: row !important;
+                overflow-y: auto !important;
+                position: relative !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                transform: none !important;
+            }
+
+            /* FORCE PANEL TO BOTTOM */
+            .monaco-workbench .part.panel {
+                order: 4 !important;
+                width: 100% !important;
+                max-height: 250px !important;
+                min-height: 150px !important;
+                position: relative !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                transform: none !important;
+            }
+
+            /* Force statusbar to bottom */
+            .monaco-workbench .part.statusbar {
+                order: 5 !important;
+                position: relative !important;
+            }
+
+            /* Hide activity bar completely */
+            .monaco-workbench .part.activitybar {
+                display: none !important;
+            }
+
+            /* Make everything touch-friendly */
+            .monaco-list-row, .monaco-tree-row {
+                min-height: 44px !important;
+                font-size: 16px !important;
+                padding: 8px 12px !important;
+            }
+
+            /* Mobile Dark Mode */
+            body, .monaco-workbench, .monaco-editor, .monaco-editor-background {
+                background-color: #1e1e1e !important;
+                color: #d4d4d4 !important;
+            }
+
+            /* Dark sidebar */
+            .monaco-workbench .part.sidebar {
+                background-color: #252526 !important;
+                color: #cccccc !important;
+            }
+
+            /* Dark panel */
+            .monaco-workbench .part.panel {
+                background-color: #1e1e1e !important;
+                color: #d4d4d4 !important;
+            }
+
+            /* Status bar */
+            .monaco-workbench .part.statusbar {
+                background-color: #007acc !important;
+                color: #ffffff !important;
+            }
+
+            /* Hide minimap */
+            .monaco-editor .minimap {
+                display: none !important;
+            }
+        `;
+
+        // Remove existing override if present
+        const existing = document.getElementById('force-mobile-layout');
+        if (existing) existing.remove();
+
+        // Add new styles
+        document.head.appendChild(style);
+
+        // Force layout refresh
+        setTimeout(() => {
+            const workbench = document.querySelector('.monaco-workbench');
+            if (workbench) {
+                workbench.style.display = 'none';
+                workbench.offsetHeight; // Force reflow
+                workbench.style.display = 'flex';
+                workbench.style.flexDirection = 'column';
+                console.log('✅ Layout refreshed!');
+            }
+        }, 1000);
+
+        console.log('🎉 Mobile layout FORCED!');
+        console.log('📱 Sidebar and panels moved to bottom');
+    }
+
+    // Start the process
+    waitForVSCode();
+})();
+        </code>
+    </div>
+
+    <h2>🚀 Instructions:</h2>
+    <ol style="line-height: 1.6;">
+        <li>Go to: <strong>https://michaels-macbook-pro-2.tail6d4c6d.ts.net:8093/</strong></li>
+        <li>Login with password: <strong>ce-hub-dev</strong></li>
+        <li>If layout doesn't auto-apply, open browser console (F12)</li>
+        <li>Paste the JavaScript code above and press Enter</li>
+        <li>Watch the layout transform to mobile-friendly bottom panels!</li>
+    </ol>
+
+    <button onclick="copyToClipboard()" style="background: #007acc; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 20px 0;">
+        📋 Copy JavaScript Code
+    </button>
+
+    <div style="background: #2d2d30; padding: 15px; border-radius: 5px; margin: 20px 0;">
+        <h3 style="color: #ffcc00;">🎯 Expected Result:</h3>
+        <pre style="color: #d4d4d4; margin: 0;">
+┌─────────────────────────────────────┐
+│            TITLE BAR                │
+├─────────────────────────────────────┤
+│                                     │
+│                                     │
+│            MAIN EDITOR              │
+│          (Full Screen)              │
+│                                     │
+│                                     │
+├─────────────────────────────────────┤
+│  EXPLORER (Horizontal Bottom Bar)   │
+├─────────────────────────────────────┤
+│       TERMINAL (Bottom Panel)       │
+├─────────────────────────────────────┤
+│           STATUS BAR                │
+└─────────────────────────────────────┘
+        </pre>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const code = document.getElementById('injector-code').textContent;
+            navigator.clipboard.writeText(code).then(function() {
+                alert('✅ Code copied! Now paste it in VS Code browser console (F12).');
+            }, function(err) {
+                alert('❌ Failed to copy. Please manually select and copy the code.');
+            });
+        }
+    </script>
+</body>
+</html>

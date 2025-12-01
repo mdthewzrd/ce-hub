@@ -1,0 +1,150 @@
+#!/bin/bash
+# CE-Hub Master Command Interface
+# Provides unified access to all CE-Hub functionality including mobile management
+
+CE_HUB_PATH="/Users/michaeldurante/ai dev/ce-hub"
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Help function
+show_help() {
+    echo "🚀 CE-Hub Master Command Interface"
+    echo "================================="
+    echo
+    echo "📱 Mobile Commands:"
+    echo "  ce-hub mobile status          Show mobile session status"
+    echo "  ce-hub mobile list            List all mobile work sessions"
+    echo "  ce-hub mobile review <id>     Review specific mobile session"
+    echo "  ce-hub mobile merge <id>      Merge mobile work safely"
+    echo "  ce-hub mobile reject <id>     Reject/discard mobile work"
+    echo "  ce-hub mobile cleanup         Clean up old mobile sessions"
+    echo
+    echo "🔧 System Commands:"
+    echo "  ce-hub status                 Show overall system status"
+    echo "  ce-hub backup                 Create system backup"
+    echo "  ce-hub agent <command>        Run agent orchestrator"
+    echo "  ce-hub archon <command>       Interact with Archon"
+    echo
+    echo "Examples:"
+    echo "  ce-hub mobile status          # Check mobile work"
+    echo "  ce-hub mobile review mobile-1732216800  # Review session"
+    echo "  ce-hub mobile merge mobile-1732216800   # Merge work"
+    echo "  ce-hub agent orchestrate \"Create API docs\"  # Run agent"
+}
+
+# Check if we're in the right directory
+if [ ! -d "$CE_HUB_PATH" ]; then
+    echo -e "${RED}❌ CE-Hub path not found: $CE_HUB_PATH${NC}"
+    exit 1
+fi
+
+# Parse command
+COMMAND=$1
+SUBCOMMAND=$2
+
+case $COMMAND in
+    "mobile")
+        # Mobile commands
+        if [ ! -f "$CE_HUB_PATH/scripts/mobile_desktop_cli.py" ]; then
+            echo -e "${RED}❌ Mobile CLI not found${NC}"
+            exit 1
+        fi
+
+        # Pass all arguments except the first to the mobile CLI
+        shift
+        python3 "$CE_HUB_PATH/scripts/mobile_desktop_cli.py" "$@"
+        ;;
+
+    "status")
+        echo "🚀 CE-Hub System Status"
+        echo "======================"
+
+        # Check Archon status
+        echo -n "📊 Archon MCP: "
+        if curl -s http://localhost:8051 > /dev/null 2>&1; then
+            echo -e "${GREEN}✅ Running${NC}"
+        else
+            echo -e "${RED}❌ Not accessible${NC}"
+        fi
+
+        # Check Claude Bridge
+        echo -n "🌉 Claude Bridge: "
+        if curl -s http://localhost:8008 > /dev/null 2>&1; then
+            echo -e "${GREEN}✅ Running${NC}"
+        else
+            echo -e "${RED}❌ Not accessible${NC}"
+        fi
+
+        # Check Git status
+        echo -n "🔄 Git Status: "
+        cd "$CE_HUB_PATH"
+        if git status --porcelain | grep -q .; then
+            echo -e "${YELLOW}⚠️ Uncommitted changes${NC}"
+        else
+            echo -e "${GREEN}✅ Clean${NC}"
+        fi
+
+        # Check mobile sessions
+        echo -n "📱 Mobile Sessions: "
+        if [ -d "/tmp/ce-hub-mobile-sessions" ] && [ "$(ls -A /tmp/ce-hub-mobile-sessions 2>/dev/null)" ]; then
+            session_count=$(ls /tmp/ce-hub-mobile-sessions/*.json 2>/dev/null | wc -l)
+            echo -e "${BLUE}$session_count active/pending${NC}"
+        else
+            echo -e "${GREEN}None active${NC}"
+        fi
+
+        echo
+        echo "Use 'ce-hub mobile status' for detailed mobile info"
+        ;;
+
+    "backup")
+        echo "💾 Creating CE-Hub backup..."
+        cd "$CE_HUB_PATH"
+
+        if [ -f "scripts/backup_system.py" ]; then
+            python3 scripts/backup_system.py --create
+        else
+            # Simple git backup
+            timestamp=$(date +%Y%m%d_%H%M%S)
+            git tag "backup_$timestamp"
+            echo -e "${GREEN}✅ Git backup created: backup_$timestamp${NC}"
+        fi
+        ;;
+
+    "agent")
+        # Agent orchestrator commands
+        if [ ! -f "$CE_HUB_PATH/scripts/agent_orchestrator.py" ]; then
+            echo -e "${RED}❌ Agent orchestrator not found${NC}"
+            exit 1
+        fi
+
+        shift
+        python3 "$CE_HUB_PATH/scripts/agent_orchestrator.py" "$@"
+        ;;
+
+    "archon")
+        # Archon commands
+        if [ ! -f "$CE_HUB_PATH/scripts/archon_client.py" ]; then
+            echo -e "${RED}❌ Archon client not found${NC}"
+            exit 1
+        fi
+
+        shift
+        python3 "$CE_HUB_PATH/scripts/archon_client.py" "$@"
+        ;;
+
+    "help" | "-h" | "--help" | "")
+        show_help
+        ;;
+
+    *)
+        echo -e "${RED}❌ Unknown command: $COMMAND${NC}"
+        echo "Use 'ce-hub help' for available commands"
+        exit 1
+        ;;
+esac

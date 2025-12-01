@@ -1,0 +1,19 @@
+{
+  "threshold_556_10000000_0": 12000000.0,
+  "threshold_557_500000000_0": 600000000.0,
+  "threshold_558_5_0": 6.0,
+  "threshold_543_1_0": 0.8,
+  "threshold_543_5_0": 6.0,
+  "threshold_543_2_5": 2.0,
+  "threshold_543_0_15": 0.12,
+  "threshold_543_15_0": 18.0,
+  "threshold_544_0_5": 0.4,
+  "threshold_544_15_0": 20.0,
+  "threshold_544_2_0": 1.8,
+  "threshold_544_0_1": 0.08,
+  "threshold_544_25_0": 30.0,
+  "d2_pattern_h_h1": true,
+  "d2_pattern_highest_high_5_dist": true,
+  "d2_pattern_dist_l_9ema_atr": true,
+  "d2_pattern_dol_v_cum5": true
+}

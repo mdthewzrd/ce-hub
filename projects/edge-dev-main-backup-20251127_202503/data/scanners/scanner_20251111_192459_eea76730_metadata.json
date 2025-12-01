@@ -1,0 +1,10 @@
+{
+  "scanner_id": "scanner_20251111_192459_eea76730",
+  "scanner_name": "test_fixed_scanner",
+  "user_id": "default_user",
+  "created_at": "2025-11-11T19:24:59.600023",
+  "parameters_count": 0,
+  "code_length": 19,
+  "status": "ready",
+  "extraction_method": "multi_scanner_separation"
+}

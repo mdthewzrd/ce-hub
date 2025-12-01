@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>CE-Hub Mobile IDE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            background: #1e1e1e;
+            color: #cccccc;
+            height: 100vh;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* Mobile-First IDE Header */
+        .ide-header {
+            background: #2d2d30;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            border-bottom: 1px solid #3e3e42;
+        }
+
+        .ide-title {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .claude-launch-btn {
+            background: #007acc;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+        }
+
+        .claude-launch-btn:hover {
+            background: #1177bb;
+        }
+
+        /* Quick Model Buttons */
+        .quick-models {
+            background: #252526;
+            padding: 8px;
+            border-bottom: 1px solid #3e3e42;
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+        }
+
+        .model-quick-btn {
+            background: #383838;
+            border: 1px solid #464647;
+            border-radius: 4px;
+            color: #ffffff;
+            padding: 6px 10px;
+            font-size: 11px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .model-quick-btn:hover,
+        .model-quick-btn.active {
+            background: #007acc;
+            border-color: #007acc;
+        }
+
+        /* Terminal Container - No Scrolling */
+        .terminal-container {
+            height: calc(100vh - 130px); /* Account for header + quick models + input */
+            background: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Terminal Output */
+        .terminal-output {
+            flex: 1;
+            padding: 12px;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #cccccc;
+            background: #1e1e1e;
+        }
+
+        .terminal-line {
+            margin-bottom: 2px;
+            word-wrap: break-word;
+        }
+
+        .command-line {
+            display: flex;
+            align-items: flex-start;
+            margin: 6px 0;
+        }
+
+        .prompt {
+            color: #4ec9b0;
+            margin-right: 8px;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .command {
+            color: #dcdcaa;
+            flex: 1;
+        }
+
+        .output {
+            color: #cccccc;
+            margin: 4px 0 6px 0;
+            white-space: pre-wrap;
+        }
+
+        .output.error {
+            color: #f48771;
+        }
+
+        .output.success {
+            color: #4ec9b0;
+        }
+
+        .output.info {
+            color: #9cdcfe;
+        }
+
+        .output.warning {
+            color: #ffcc02;
+        }
+
+        /* Claude Response Styling */
+        .claude-response {
+            background: #252526;
+            border-left: 3px solid #007acc;
+            padding: 10px 12px;
+            margin: 6px 0;
+            border-radius: 0 4px 4px 0;
+            color: #e1e4e8;
+            line-height: 1.5;
+        }
+
+        .claude-response .claude-header {
+            color: #007acc;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+        }
+
+        .claude-response .claude-content {
+            color: #cccccc;
+            font-size: 13px;
+        }
+
+        .claude-response code {
+            background: #1e1e1e;
+            color: #f8f8f2;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: inherit;
+        }
+
+        .claude-response pre {
+            background: #1e1e1e;
+            border: 1px solid #3e3e42;
+            border-radius: 4px;
+            padding: 8px;
+            margin: 6px 0;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+
+        /* Syntax Highlighting */
+        .syntax-keyword { color: #569cd6; font-weight: 500; }
+        .syntax-string { color: #ce9178; }
+        .syntax-number { color: #b5cea8; }
+        .syntax-comment { color: #6a9955; font-style: italic; }
+        .syntax-function { color: #dcdcaa; }
+        .syntax-variable { color: #9cdcfe; }
+        .syntax-operator { color: #d4d4d4; }
+
+        /* Input Area - Fixed at Bottom */
+        .terminal-input-area {
+            background: #1e1e1e;
+            border-top: 1px solid #3e3e42;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 50px;
+        }
+
+        .input-prompt {
+            color: #4ec9b0;
+            font-family: 'JetBrains Mono', monospace;
+            user-select: none;
+            font-size: 13px;
+        }
+
+        .terminal-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #dcdcaa;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .terminal-input::placeholder {
+            color: #6a9955;
+            font-style: italic;
+        }
+
+        .send-btn {
+            background: #007acc;
+            border: none;
+            border-radius: 50%;
+            color: #ffffff;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .send-btn:hover {
+            background: #1177bb;
+        }
+
+        .send-btn:disabled {
+            background: #464647;
+            cursor: not-allowed;
+        }
+
+        /* Loading Animation */
+        .loading-dots {
+            color: #ffcc02;
+            font-style: italic;
+        }
+
+        .loading-dots::after {
+            content: '...';
+            animation: loading 1.5s steps(3, end) infinite;
+        }
+
+        @keyframes loading {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+            100% { content: ''; }
+        }
+
+        /* Status indicator */
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ec9b0;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            gap: 6px;
+            margin: 6px 0;
+            flex-wrap: wrap;
+        }
+
+        .quick-action {
+            background: #383838;
+            border: 1px solid #464647;
+            border-radius: 4px;
+            color: #cccccc;
+            padding: 4px 8px;
+            font-size: 10px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .quick-action:hover {
+            background: #007acc;
+            border-color: #007acc;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .quick-models {
+                padding: 6px;
+            }
+
+            .terminal-output {
+                padding: 8px;
+                font-size: 12px;
+            }
+
+            .claude-response {
+                padding: 8px 10px;
+            }
+
+            .claude-response .claude-content {
+                font-size: 12px;
+            }
+
+            .terminal-input-area {
+                padding: 8px;
+            }
+        }
+
+        /* Smooth Animations */
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- IDE Header -->
+    <div class="ide-header">
+        <div class="ide-title">
+            <span class="status-dot"></span>
+            <span>CE-Hub Mobile IDE</span>
+        </div>
+        <button class="claude-launch-btn" onclick="showClaudeOptions()">
+            🚀 Claude
+        </button>
+    </div>
+
+    <!-- Quick Model Selection -->
+    <div class="quick-models">
+        <button class="model-quick-btn active" data-model="sonnet-4" onclick="selectQuickModel(this)">
+            Claude 4
+        </button>
+        <button class="model-quick-btn" data-model="sonnet-4.5" onclick="selectQuickModel(this)">
+            Claude 4.5
+        </button>
+        <button class="model-quick-btn" data-model="haiku" onclick="selectQuickModel(this)">
+            Haiku
+        </button>
+        <button class="model-quick-btn" data-model="opus" onclick="selectQuickModel(this)">
+            Opus
+        </button>
+        <button class="quick-action" onclick="clearTerminal()" style="margin-left: auto;">
+            Clear
+        </button>
+    </div>
+
+    <!-- Terminal Container -->
+    <div class="terminal-container">
+        <!-- Terminal Output -->
+        <div class="terminal-output" id="terminalOutput">
+            <div class="terminal-line">
+                <span style="color: #569cd6;">Welcome to</span>
+                <span style="color: #4ec9b0; font-weight: 600;"> CE-Hub Mobile IDE</span>
+            </div>
+            <div class="terminal-line" style="color: #6a9955;">// Professional mobile terminal with easy Claude access</div>
+            <div class="terminal-line"></div>
+
+            <div class="quick-actions">
+                <button class="quick-action" onclick="launchClaude('sonnet-4')">🚀 Claude 4</button>
+                <button class="quick-action" onclick="launchClaude('haiku')">⚡ Haiku</button>
+                <button class="quick-action" onclick="processInput('git status')">📊 Git Status</button>
+                <button class="quick-action" onclick="processInput('ls -la')">📂 List Files</button>
+                <button class="quick-action" onclick="processInput('pwd')">📍 Current Dir</button>
+            </div>
+
+            <div class="command-line">
+                <span class="prompt">➜</span>
+                <span style="color: #9cdcfe;">claude</span>
+                <span style="color: #d4d4d4;">@</span>
+                <span style="color: #4ec9b0;">mobile</span>
+                <span style="color: #569cd6;"> ready</span>
+            </div>
+        </div>
+
+        <!-- Terminal Input -->
+        <div class="terminal-input-area">
+            <span class="input-prompt">➜</span>
+            <input
+                type="text"
+                class="terminal-input"
+                id="terminalInput"
+                placeholder="Type your question or command..."
+                onkeypress="handleInput(event)"
+            >
+            <button class="send-btn" id="sendBtn" onclick="sendInput()">
+                →
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let selectedModel = 'sonnet-4';
+        let isProcessing = false;
+
+        // Quick Model Selection
+        function selectQuickModel(button) {
+            document.querySelectorAll('.model-quick-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            selectedModel = button.dataset.model;
+
+            const modelName = button.textContent;
+            addTerminalLine(`<span class="output info">✓ Switched to ${modelName}</span>`);
+        }
+
+        // Easy Claude Launch
+        function launchClaude(model = null) {
+            if (model) {
+                selectedModel = model;
+                // Update active button
+                document.querySelectorAll('.model-quick-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.model === model) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            const modelNames = {
+                'sonnet-4': 'Claude 4 Sonnet',
+                'sonnet-4.5': 'Claude 4.5 Sonnet',
+                'haiku': 'Claude 3.5 Haiku',
+                'opus': 'Claude 3 Opus'
+            };
+
+            addTerminalLine(`<span class="output success">🚀 ${modelNames[selectedModel]} ready!</span>`);
+            addTerminalLine(`<span class="output info">💬 Ask me anything - no commands needed!</span>`);
+
+            // Focus input
+            document.getElementById('terminalInput').focus();
+            document.getElementById('terminalInput').placeholder = `Ask ${modelNames[selectedModel]} anything...`;
+        }
+
+        function showClaudeOptions() {
+            addTerminalLine(`
+                <div class="quick-actions">
+                    <button class="quick-action" onclick="launchClaude('sonnet-4')">🚀 Claude 4 Sonnet</button>
+                    <button class="quick-action" onclick="launchClaude('sonnet-4.5')">🚀 Claude 4.5 Sonnet</button>
+                    <button class="quick-action" onclick="launchClaude('haiku')">⚡ Claude 3.5 Haiku</button>
+                    <button class="quick-action" onclick="launchClaude('opus')">🧠 Claude 3 Opus</button>
+                </div>
+            `);
+        }
+
+        // Terminal Functions
+        function addTerminalLine(content) {
+            const output = document.getElementById('terminalOutput');
+            const line = document.createElement('div');
+            line.className = 'terminal-line fade-in';
+            line.innerHTML = content;
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function addCommandLine(command) {
+            const commandHtml = `
+                <div class="command-line">
+                    <span class="prompt">➜</span>
+                    <span class="command">${escapeHtml(command)}</span>
+                </div>
+            `;
+            addTerminalLine(commandHtml);
+        }
+
+        function addClaudeResponse(content) {
+            const modelNames = {
+                'sonnet-4': 'Claude 4',
+                'sonnet-4.5': 'Claude 4.5',
+                'haiku': 'Haiku',
+                'opus': 'Opus'
+            };
+
+            const responseHtml = `
+                <div class="claude-response fade-in">
+                    <div class="claude-header">
+                        🤖 ${modelNames[selectedModel]}
+                    </div>
+                    <div class="claude-content">${formatClaudeContent(content)}</div>
+                </div>
+            `;
+            addTerminalLine(responseHtml);
+        }
+
+        function formatClaudeContent(content) {
+            let formatted = escapeHtml(content);
+
+            // Format code blocks
+            formatted = formatted.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+            // Format file paths
+            formatted = formatted.replace(/([a-zA-Z0-9._\/-]+\.(js|ts|py|html|css|json|md))/g, '<span style="color: #ce9178;">$1</span>');
+
+            // Format commands
+            formatted = formatted.replace(/\n([a-z]+\s+[^\n]*)/g, '\n<span style="color: #dcdcaa;">$1</span>');
+
+            return formatted.replace(/\n/g, '<br>');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function showLoading() {
+            addTerminalLine('<div class="loading-dots">Claude is thinking</div>');
+            isProcessing = true;
+            document.getElementById('sendBtn').disabled = true;
+        }
+
+        function hideLoading() {
+            const output = document.getElementById('terminalOutput');
+            const loadingElement = output.querySelector('.loading-dots');
+            if (loadingElement) {
+                loadingElement.parentElement.remove();
+            }
+            isProcessing = false;
+            document.getElementById('sendBtn').disabled = false;
+        }
+
+        async function processInput(input) {
+            if (isProcessing) return;
+
+            addCommandLine(input);
+
+            // Check if it's a system command
+            if (input.match(/^(ls|git|npm|cd|pwd|clear|help)/)) {
+                if (input === 'clear') {
+                    clearTerminal();
+                    return;
+                }
+
+                addTerminalLine(`<span class="output info">System: ${input}</span>`);
+
+                try {
+                    const response = await fetch('/api/execute', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ command: input })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        const outputClass = data.error ? 'error' : 'success';
+                        addTerminalLine(`<span class="output ${outputClass}">${escapeHtml(data.output)}</span>`);
+                    } else {
+                        addTerminalLine(`<span class="output error">Command failed: HTTP ${response.status}</span>`);
+                    }
+                } catch (error) {
+                    addTerminalLine(`<span class="output error">Connection error: ${error.message}</span>`);
+                }
+            } else {
+                // Send to Claude
+                showLoading();
+
+                try {
+                    const response = await fetch('http://100.95.223.19:8106/claude', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ question: input })
+                    });
+
+                    const data = await response.json();
+                    hideLoading();
+
+                    if (data.error) {
+                        addTerminalLine(`<span class="output error">❌ ${data.output}</span>`);
+                    } else {
+                        addClaudeResponse(data.output);
+                    }
+                } catch (error) {
+                    hideLoading();
+                    addTerminalLine(`<span class="output error">Connection error: ${error.message}</span>`);
+                }
+            }
+        }
+
+        function handleInput(event) {
+            if (event.key === 'Enter') {
+                sendInput();
+            }
+        }
+
+        function sendInput() {
+            const input = document.getElementById('terminalInput');
+            const command = input.value.trim();
+
+            if (command && !isProcessing) {
+                processInput(command);
+                input.value = '';
+            }
+        }
+
+        function clearTerminal() {
+            const output = document.getElementById('terminalOutput');
+            output.innerHTML = `
+                <div class="terminal-line">
+                    <span style="color: #569cd6;">Welcome to</span>
+                    <span style="color: #4ec9b0; font-weight: 600;"> CE-Hub Mobile IDE</span>
+                </div>
+                <div class="terminal-line" style="color: #6a9955;">// Professional mobile terminal with easy Claude access</div>
+                <div class="terminal-line"></div>
+
+                <div class="quick-actions">
+                    <button class="quick-action" onclick="launchClaude('sonnet-4')">🚀 Claude 4</button>
+                    <button class="quick-action" onclick="launchClaude('haiku')">⚡ Haiku</button>
+                    <button class="quick-action" onclick="processInput('git status')">📊 Git Status</button>
+                    <button class="quick-action" onclick="processInput('ls -la')">📂 List Files</button>
+                    <button class="quick-action" onclick="processInput('pwd')">📍 Current Dir</button>
+                </div>
+
+                <div class="command-line">
+                    <span class="prompt">➜</span>
+                    <span style="color: #9cdcfe;">claude</span>
+                    <span style="color: #d4d4d4;">@</span>
+                    <span style="color: #4ec9b0;">mobile</span>
+                    <span style="color: #569cd6;"> ready</span>
+                </div>
+            `;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Focus on input
+            document.getElementById('terminalInput').focus();
+
+            // Welcome message
+            setTimeout(() => {
+                addClaudeResponse("Hello! I'm ready to help you with coding and development. Use the quick launch buttons above or just type your questions directly. This mobile IDE interface is optimized for touch and gives you easy access to all Claude models!");
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

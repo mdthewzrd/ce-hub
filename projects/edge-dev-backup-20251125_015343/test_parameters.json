@@ -1,0 +1,4 @@
+{
+  "code": "import pandas as pd\nimport numpy as np\n\nclass LCFrontsideD2:\n    def __init__(self):\n        self.period = 14\n        self.threshold = 0.5\n        self.volume_min = 100000\n    \n    def scan(self):\n        return True\n\nclass LCFrontsideD3:\n    def __init__(self):\n        self.lookback = 20\n        self.rsi_threshold = 70\n    \n    def scan(self):\n        return True",
+  "filename": "test_multi_scanner.py"
+}

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>CE-Hub Mobile</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="CE-Hub">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Mono', monospace;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .header {
+            background: #2d2d30;
+            padding: 10px;
+            border-bottom: 1px solid #444;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 50px;
+        }
+
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #569cd6;
+        }
+
+        .model-selector {
+            position: relative;
+        }
+
+        .model-dropdown {
+            background: #3c3c3c;
+            color: #d4d4d4;
+            border: 1px solid #555;
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            min-width: 120px;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4CAF50;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .status-indicator.offline {
+            background: #f44747;
+        }
+
+        .terminal {
+            height: calc(100vh - 110px);
+            overflow-y: auto;
+            padding: 10px;
+            background: #0c0c0c;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .input-area {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            background: #2d2d30;
+            border-top: 1px solid #444;
+            height: 60px;
+        }
+
+        .input-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .cmd-input {
+            flex: 1;
+            background: #3c3c3c;
+            border: 1px solid #555;
+            color: #d4d4d4;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'SF Mono', monospace;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .cmd-input:focus {
+            border-color: #007acc;
+        }
+
+        .send-btn {
+            background: #007acc;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            margin-left: 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .output-line {
+            margin-bottom: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .command-line {
+            color: #569cd6;
+        }
+
+        .error-line {
+            color: #f44747;
+        }
+
+        .loading {
+            color: #ffc107;
+            display: none;
+        }
+
+        .quick-commands {
+            background: #2d2d30;
+            padding: 8px;
+            border-bottom: 1px solid #444;
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .quick-btn {
+            background: #3c3c3c;
+            color: #d4d4d4;
+            border: 1px solid #555;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .quick-btn:hover {
+            background: #4a4a4a;
+        }
+
+        .model-info {
+            font-size: 10px;
+            color: #888;
+            margin-left: 8px;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        .loading {
+            animation: pulse 1.5s infinite;
+        }
+
+        .user-message {
+            color: #569cd6;
+            font-weight: bold;
+        }
+
+        .ai-message {
+            color: #4CAF50;
+            background: #1a2f1a;
+            padding: 8px;
+            border-radius: 6px;
+            margin: 5px 0;
+        }
+
+        .system {
+            color: #ffc107;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="display: flex; align-items: center;">
+            <span class="status-indicator" id="statusIndicator"></span>
+            <span class="title">CE-Hub</span>
+            <span class="model-info" id="modelInfo">...</span>
+        </div>
+        <div class="model-selector">
+            <select class="model-dropdown" id="modelSelect">
+                <option value="claude-3-sonnet-20240229">Sonnet 3</option>
+                <option value="claude-3-5-sonnet-20241022">Sonnet 3.5</option>
+                <option value="claude-3-5-haiku-20241022">Haiku 3.5</option>
+                <option value="claude-3-opus-20240229">Opus 3</option>
+                <option value="glm-4-plus">GLM 4+</option>
+                <option value="glm-4-0520">GLM 4.5</option>
+                <option value="glm-4-air">GLM 4 Air</option>
+                <option value="glm-4-airx">GLM 4 AirX</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="quick-commands">
+        <button class="quick-btn" onclick="toggleMode()" id="modeBtn">💬 Chat Mode</button>
+        <button class="quick-btn" onclick="quickCommand('pwd')">📁 Dir</button>
+        <button class="quick-btn" onclick="quickCommand('ls -la')">📋 List</button>
+        <button class="quick-btn" onclick="quickCommand('git status')">🔄 Git</button>
+        <button class="quick-btn" onclick="quickCommand('git branch')">🌿 Branch</button>
+        <button class="quick-btn" onclick="quickCommand('npm test')">🧪 Test</button>
+    </div>
+
+    <div class="terminal" id="terminal">
+        <div class="output-line">CE-Hub Mobile Terminal</div>
+        <div class="output-line">Connecting...</div>
+    </div>
+
+    <div class="input-area">
+        <div class="input-wrapper">
+            <input type="text" class="cmd-input" id="cmdInput" placeholder="Enter command..."
+                   autocomplete="off" autocapitalize="off" autocorrect="off">
+            <button class="send-btn" id="sendBtn" onclick="sendCommand()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Detect if we're running locally or via Tailscale
+        const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+        const API_BASE = isLocal ? `http://${window.location.host}` : 'https://michaels-macbook-pro-2.tail6d4c6d.ts.net';
+        const TOKEN = '171158e5e011bb1d3e50a387a8234d60871323ce9463ec1ff4a1194cd686cfb4';
+        const GLM_API_KEY = '05d75ef6fbe645c78d10d92dd4b2a3a3.o0Dmxb2c2EMnmjkY';
+
+        let isOnline = false;
+        let currentModel = 'claude-3-haiku-20240307';
+        let chatMode = false; // false = terminal mode, true = chat mode
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            checkStatus();
+            setupEventListeners();
+            setInterval(checkStatus, 30000); // Check every 30s
+        });
+
+        function setupEventListeners() {
+            // Enter key support
+            document.getElementById('cmdInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendCommand();
+                }
+            });
+
+            // Model selection
+            document.getElementById('modelSelect').addEventListener('change', function(e) {
+                switchModel(e.target.value);
+            });
+
+            // Auto-focus input
+            document.getElementById('cmdInput').focus();
+        }
+
+        async function checkStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/healthz`);
+                if (response.ok) {
+                    const data = await response.json();
+                    updateStatus(true, data.current_model || 'Unknown');
+                    currentModel = data.current_model || currentModel;
+                } else {
+                    updateStatus(false, 'Offline');
+                }
+            } catch (error) {
+                updateStatus(false, 'Connection Failed');
+            }
+        }
+
+        function updateStatus(online, model) {
+            isOnline = online;
+            const indicator = document.getElementById('statusIndicator');
+            const modelInfo = document.getElementById('modelInfo');
+            const sendBtn = document.getElementById('sendBtn');
+
+            indicator.className = `status-indicator ${online ? '' : 'offline'}`;
+            modelInfo.textContent = model;
+            sendBtn.disabled = !online;
+
+            if (online && !document.querySelector('.loading')) {
+                addOutput('✅ Connected to CE-Hub', 'system');
+            }
+        }
+
+        async function switchModel(modelId) {
+            if (!isOnline) return;
+
+            addOutput(`🔄 Switching to ${modelId}...`, 'system');
+
+            try {
+                const response = await fetch(`${API_BASE}/switch-model`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${TOKEN}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: modelId,
+                        api_key: modelId.includes('glm') ? GLM_API_KEY : null
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    addOutput(`✅ Switched to ${modelId}`, 'system');
+                    currentModel = modelId;
+                    document.getElementById('modelInfo').textContent = modelId;
+                } else {
+                    addOutput(`❌ Failed to switch model: ${response.status}`, 'error');
+                    // Revert selection
+                    document.getElementById('modelSelect').value = currentModel;
+                }
+            } catch (error) {
+                addOutput(`❌ Model switch error: ${error.message}`, 'error');
+                document.getElementById('modelSelect').value = currentModel;
+            }
+        }
+
+        function toggleMode() {
+            chatMode = !chatMode;
+            const modeBtn = document.getElementById('modeBtn');
+            const input = document.getElementById('cmdInput');
+
+            if (chatMode) {
+                modeBtn.textContent = '💻 Terminal';
+                input.placeholder = 'Ask me anything...';
+                addOutput('💬 Chat Mode: Ask me questions or request help!', 'system');
+            } else {
+                modeBtn.textContent = '💬 Chat Mode';
+                input.placeholder = 'Enter command...';
+                addOutput('💻 Terminal Mode: Enter shell commands', 'system');
+            }
+        }
+
+        function quickCommand(cmd) {
+            document.getElementById('cmdInput').value = cmd;
+            sendCommand();
+        }
+
+        async function sendCommand() {
+            const input = document.getElementById('cmdInput');
+            const cmd = input.value.trim();
+            if (!cmd || !isOnline) return;
+
+            if (chatMode) {
+                // Chat Mode: Show as user message
+                addOutput(`You: ${cmd}`, 'user-message');
+            } else {
+                // Terminal Mode: Show as command
+                addOutput(`$ ${cmd}`, 'command');
+            }
+
+            input.value = '';
+
+            // Show loading
+            const loadingEl = addOutput(chatMode ? 'Thinking...' : 'Executing...', 'loading');
+            showLoading(true);
+
+            try {
+                const requestText = chatMode ?
+                    `Please respond to this question/request: ${cmd}` :
+                    cmd;
+
+                const response = await fetch(`${API_BASE}/send`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${TOKEN}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text: requestText,
+                        mode: chatMode ? 'chat' : 'ask',
+                        wait_ms: chatMode ? 5000 : 3000,
+                        model: currentModel
+                    })
+                });
+
+                // Remove loading message
+                loadingEl.remove();
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const output = data.full_response || data.preview || 'Command completed';
+
+                    if (chatMode) {
+                        addOutput(`AI: ${output}`, 'ai-message');
+                    } else {
+                        addOutput(output, 'output');
+                    }
+                } else {
+                    addOutput(`❌ Error ${response.status}: ${response.statusText}`, 'error');
+                }
+            } catch (error) {
+                loadingEl.remove();
+                addOutput(`❌ Network error: ${error.message}`, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function addOutput(text, className = '') {
+            const terminal = document.getElementById('terminal');
+            const div = document.createElement('div');
+            div.className = `output-line ${className}`;
+            div.textContent = text;
+            terminal.appendChild(div);
+
+            // Auto-scroll to bottom
+            terminal.scrollTop = terminal.scrollHeight;
+
+            return div;
+        }
+
+        function showLoading(show) {
+            const sendBtn = document.getElementById('sendBtn');
+            sendBtn.disabled = show || !isOnline;
+            sendBtn.textContent = show ? '...' : 'Send';
+        }
+
+        // Auto-reconnect on page focus
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                checkStatus();
+            }
+        });
+    </script>
+</body>
+</html>

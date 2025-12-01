@@ -1,0 +1,23 @@
+{
+  "test_name": "lc_d2_scan_test",
+  "scanner_file": "/Users/michaeldurante/Downloads/lc d2 scan - oct 25 new ideas (2).py",
+  "date_range": "2025-01-01 to 2025-11-01",
+  "execution_time": 0.14822101593017578,
+  "success": false,
+  "result_count": 0,
+  "diagnostics": {
+    "error": "Failed to load scanner function",
+    "processing_id": "scan_1762736374"
+  },
+  "success_criteria": {
+    "Execution Success": false,
+    "Has Results": false,
+    "Execution Time < 5min": true,
+    "Function Detection": null,
+    "Ticker Standardization": false
+  },
+  "pattern_notes": "async main() pattern with advanced parabolic scoring - already implements full market scanning",
+  "code_size": 64219,
+  "complexity": "Very High",
+  "timestamp": "2025-11-09T19:59:34.404580"
+}

@@ -1,0 +1,44 @@
+{
+  "project_id": "lc_momentum_setup",
+  "name": "LC Momentum Setup",
+  "description": "Multi-scanner project combining 2-day and 3-day LC momentum patterns for enhanced signal detection",
+  "scanners": [
+    {
+      "scanner_id": "lc_frontside_d2_extended",
+      "scanner_file": "/Users/michaeldurante/ai dev/ce-hub/edge-dev/generated_scanners/lc_frontside_d2_extended.py",
+      "parameter_file": "/Users/michaeldurante/ai dev/ce-hub/edge-dev/projects/lc_momentum_setup/parameters/lc_frontside_d2_extended_params.json",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 0
+    },
+    {
+      "scanner_id": "lc_frontside_d2_extended_1",
+      "scanner_file": "/Users/michaeldurante/ai dev/ce-hub/edge-dev/generated_scanners/lc_frontside_d2_extended_1.py",
+      "parameter_file": "/Users/michaeldurante/ai dev/ce-hub/edge-dev/projects/lc_momentum_setup/parameters/lc_frontside_d2_extended_1_params.json",
+      "enabled": true,
+      "weight": 1.2,
+      "order_index": 1
+    },
+    {
+      "scanner_id": "lc_frontside_d3_extended_1",
+      "scanner_file": "/Users/michaeldurante/ai dev/ce-hub/edge-dev/generated_scanners/lc_frontside_d3_extended_1.py",
+      "parameter_file": "/Users/michaeldurante/ai dev/ce-hub/edge-dev/projects/lc_momentum_setup/parameters/lc_frontside_d3_extended_1_params.json",
+      "enabled": true,
+      "weight": 1.5,
+      "order_index": 2
+    }
+  ],
+  "aggregation_method": "weighted",
+  "created_at": "2025-11-11T11:01:19.324035",
+  "updated_at": "2025-11-11T11:01:19.324042",
+  "version": 1,
+  "tags": [
+    "momentum",
+    "lc",
+    "frontside",
+    "multi-scanner"
+  ],
+  "created_by": "edge-dev-system",
+  "last_executed": null,
+  "execution_count": 0
+}

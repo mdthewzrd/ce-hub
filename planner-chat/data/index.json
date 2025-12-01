@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2025-10-13T02:19:58.274Z",
+  "lastUpdated": "2025-11-23T17:41:21.752Z",
   "projects": [
     {
       "id": "personal-scratch-001",
@@ -8,20 +8,7 @@
       "title": "Personal Scratch",
       "path": "projects/personal-scratch",
       "isDefault": true,
-      "folders": [
-        {
-          "id": "f074d83c31c3",
-          "name": "ideas",
-          "path": "folders/ideas",
-          "chats": []
-        },
-        {
-          "id": "176585e8f4f2",
-          "name": "research",
-          "path": "folders/research",
-          "chats": []
-        }
-      ],
+      "folders": [],
       "chats": [
         {
           "id": "38f56a60e0c4",
@@ -31,7 +18,7 @@
           "folderPath": null,
           "exported": false,
           "archonSourceId": null,
-          "lastUpdated": "2025-10-13T02:19:58.271Z",
+          "lastUpdated": "2025-11-23T17:41:21.750Z",
           "messageCount": 0,
           "wordCount": 19
         }
@@ -53,7 +40,7 @@
           "folderPath": null,
           "exported": false,
           "archonSourceId": null,
-          "lastUpdated": "2025-10-13T02:19:58.272Z",
+          "lastUpdated": "2025-11-23T17:41:21.750Z",
           "messageCount": 0,
           "wordCount": 877
         },
@@ -65,7 +52,7 @@
           "folderPath": null,
           "exported": false,
           "archonSourceId": null,
-          "lastUpdated": "2025-10-13T02:19:58.272Z",
+          "lastUpdated": "2025-11-23T17:41:21.751Z",
           "messageCount": 0,
           "wordCount": 582
         },
@@ -77,7 +64,7 @@
           "folderPath": null,
           "exported": false,
           "archonSourceId": null,
-          "lastUpdated": "2025-10-13T02:19:58.273Z",
+          "lastUpdated": "2025-11-23T17:41:21.751Z",
           "messageCount": 0,
           "wordCount": 678
         },
@@ -89,7 +76,7 @@
           "folderPath": null,
           "exported": false,
           "archonSourceId": null,
-          "lastUpdated": "2025-10-13T02:19:58.273Z",
+          "lastUpdated": "2025-11-23T17:41:21.751Z",
           "messageCount": 0,
           "wordCount": 637
         }
@@ -111,7 +98,7 @@
           "folderPath": null,
           "exported": false,
           "archonSourceId": null,
-          "lastUpdated": "2025-10-13T02:19:58.274Z",
+          "lastUpdated": "2025-11-23T17:41:21.752Z",
           "messageCount": 0,
           "wordCount": 16
         },
@@ -123,7 +110,7 @@
           "folderPath": null,
           "exported": false,
           "archonSourceId": null,
-          "lastUpdated": "2025-10-13T02:19:58.274Z",
+          "lastUpdated": "2025-11-23T17:41:21.752Z",
           "messageCount": 0,
           "wordCount": 16
         },
@@ -135,7 +122,7 @@
           "folderPath": null,
           "exported": false,
           "archonSourceId": null,
-          "lastUpdated": "2025-10-13T02:19:58.274Z",
+          "lastUpdated": "2025-11-23T17:41:21.752Z",
           "messageCount": 0,
           "wordCount": 21
         }
@@ -144,7 +131,7 @@
   ],
   "stats": {
     "totalProjects": 3,
-    "totalFolders": 2,
+    "totalFolders": 0,
     "totalChats": 8,
     "exportedChats": 0
   }

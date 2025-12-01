@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CE-Hub Mobile Router</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0d1117;
+            color: #f0f6fc;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+        }
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .message {
+            color: #8b949e;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .button {
+            background: #238636;
+            color: white;
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .button.secondary {
+            background: #21262d;
+            border: 1px solid #30363d;
+        }
+        .button:hover {
+            opacity: 0.9;
+        }
+        .loading {
+            color: #8b949e;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="logo">📱</div>
+        <div class="title">CE-Hub Access</div>
+        <div class="message">Choose your interface:</div>
+
+        <div class="buttons">
+            <a href="http://127.0.0.1:8081/mobile/" class="button" id="mobileBtn">
+                📱 Mobile Interface
+            </a>
+            <a href="/" class="button secondary" id="desktopBtn">
+                💻 Full VS Code
+            </a>
+            <a href="https://michaels-macbook-pro-2.tail6d4c6d.ts.net/mobile" class="button" id="mobileTailscaleBtn">
+                🌐 Mobile via Tailscale
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Auto-detect and redirect based on device
+        function detectDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+            const isTablet = /ipad|android(?!.*mobile)/i.test(userAgent);
+            const touchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+            return {
+                isMobile: isMobile && !isTablet,
+                isTablet: isTablet,
+                isTouch: touchDevice,
+                isDesktop: !isMobile && !isTablet
+            };
+        }
+
+        function autoRedirect() {
+            const device = detectDevice();
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Allow manual override with ?interface=mobile or ?interface=desktop
+            const forceInterface = urlParams.get('interface');
+
+            if (forceInterface === 'mobile') {
+                window.location.href = '/mobile/';
+                return;
+            }
+
+            if (forceInterface === 'desktop') {
+                window.location.href = '/';
+                return;
+            }
+
+            // Auto-redirect mobile devices to mobile interface
+            if (device.isMobile) {
+                document.getElementById('container').innerHTML = `
+                    <div class="logo">📱</div>
+                    <div class="title">Redirecting...</div>
+                    <div class="loading">Opening mobile interface</div>
+                `;
+
+                setTimeout(() => {
+                    window.location.href = '/mobile/';
+                }, 1500);
+                return;
+            }
+
+            // Show choice for tablets and desktops
+            if (device.isTablet || device.isTouch) {
+                document.querySelector('.message').textContent = 'Tablet detected. Choose your preferred interface:';
+            }
+        }
+
+        // Run auto-detection
+        document.addEventListener('DOMContentLoaded', () => {
+            // Small delay to let the page render
+            setTimeout(autoRedirect, 100);
+
+            // Add click handlers for manual selection
+            document.getElementById('mobileBtn').addEventListener('click', (e) => {
+                e.target.innerHTML = '📱 Loading...';
+            });
+
+            document.getElementById('desktopBtn').addEventListener('click', (e) => {
+                e.target.innerHTML = '💻 Loading...';
+            });
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'm' || e.key === 'M') {
+                window.location.href = '/mobile/';
+            } else if (e.key === 'd' || e.key === 'D') {
+                window.location.href = '/';
+            }
+        });
+
+        console.log('CE-Hub Mobile Router loaded');
+        console.log('Device info:', detectDevice());
+    </script>
+</body>
+</html>

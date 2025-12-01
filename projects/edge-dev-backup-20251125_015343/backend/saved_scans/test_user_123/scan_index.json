@@ -1,0 +1,12 @@
+{
+  "user_id": "test_user_123",
+  "scans": [
+    {
+      "scan_id": "2d7cf136-23c4-44a1-b73a-8278c80c5c9c",
+      "scan_name": "Test LC Scan",
+      "scanner_type": "lc",
+      "timestamp": "2025-10-31T18:34:52.739427",
+      "results_count": 3
+    }
+  ]
+}

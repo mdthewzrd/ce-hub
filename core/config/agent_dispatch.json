@@ -1,0 +1,197 @@
+{
+  "auto_dispatch": {
+    "enabled": true,
+    "orchestrator": "ce-hub-orchestrator",
+    "orchestrator_rules": {
+      "triggers": [
+        "coordinate",
+        "orchestrate",
+        "manage workflow",
+        "multiple agents",
+        "complex task",
+        "multi-step",
+        "team",
+        "dispatch",
+        "route task"
+      ],
+      "priority": "highest",
+      "capabilities": [
+        "task_analysis",
+        "agent_routing",
+        "workflow_coordination",
+        "context_management",
+        "quality_assurance",
+        "multi_agent_coordination"
+      ]
+    },
+    "rules": {
+      "ce-hub-orchestrator": {
+        "triggers": [
+          "coordinate",
+          "orchestrate",
+          "manage workflow",
+          "multiple agents",
+          "complex task",
+          "multi-step",
+          "team",
+          "dispatch",
+          "route task"
+        ],
+        "priority": "highest",
+        "coordination_only": true,
+        "archon_integration": {
+          "enabled": true,
+          "tools": ["find_projects", "manage_project", "find_tasks", "manage_task"],
+          "knowledge_sources": ["all"],
+          "workflow": "orchestration"
+        }
+      },
+      "research-intelligence-specialist": {
+        "triggers": [
+          "how to",
+          "what's the best",
+          "help me understand",
+          "analyze",
+          "research",
+          "investigate",
+          "what is",
+          "explain",
+          "find information"
+        ],
+        "pre_implementation": true,
+        "priority": "high",
+        "archon_integration": {
+          "enabled": true,
+          "tools": ["rag_search_knowledge_base", "rag_search_code_examples"],
+          "knowledge_sources": ["all"],
+          "workflow": "bmad"
+        }
+      },
+      "ce-hub-engineer": {
+        "triggers": [
+          "implement",
+          "build",
+          "create",
+          "fix",
+          "add feature",
+          "develop",
+          "code",
+          "program",
+          "setup",
+          "configure",
+          "integrate"
+        ],
+        "priority": "high",
+        "archon_integration": {
+          "enabled": true,
+          "tools": ["rag_search_code_examples", "find_projects", "find_tasks"],
+          "knowledge_sources": ["code_examples"],
+          "workflow": "implementation"
+        }
+      },
+      "ce-hub-gui-specialist": {
+        "triggers": [
+          "UI",
+          "frontend",
+          "design",
+          "layout",
+          "styling",
+          "React",
+          "component",
+          "interface",
+          "visual",
+          "user experience"
+        ],
+        "screenshot_context": true,
+        "priority": "medium",
+        "archon_integration": {
+          "enabled": true,
+          "tools": ["rag_search_code_examples"],
+          "knowledge_sources": ["ui_patterns", "design_systems"],
+          "workflow": "design_first"
+        }
+      },
+      "qa-tester": {
+        "triggers": [
+          "test",
+          "validate",
+          "check",
+          "verify",
+          "debug",
+          "quality assurance",
+          "testing",
+          "review"
+        ],
+        "post_implementation": true,
+        "priority": "medium",
+        "archon_integration": {
+          "enabled": true,
+          "tools": ["rag_search_knowledge_base"],
+          "knowledge_sources": ["testing_patterns", "best_practices"],
+          "workflow": "quality_validation"
+        }
+      },
+      "documentation-specialist": {
+        "triggers": [
+          "document",
+          "docs",
+          "documentation",
+          "explain",
+          "write docs",
+          "create guide",
+          "knowledge base"
+        ],
+        "end_of_cycle": true,
+        "priority": "low",
+        "archon_integration": {
+          "enabled": true,
+          "tools": ["rag_search_knowledge_base", "manage_document"],
+          "knowledge_sources": ["documentation_patterns"],
+          "workflow": "knowledge_capture"
+        }
+      }
+    }
+  },
+  "context_management": {
+    "auto_save": true,
+    "session_tracking": true,
+    "decision_logging": true,
+    "screenshot_analysis": true,
+    "archon_mcp_tools": {
+      "enabled": true,
+      "auto_session_init": true,
+      "fallback_to_direct_calls": true
+    },
+    "knowledge_integration": {
+      "archon_knowledge_base": true,
+      "wzrd_agent_knowledge": true,
+      "ce_hub_historical_data": true,
+      "codebase_context": true
+    }
+  },
+  "agent_capabilities": {
+    "mcp_tool_access": [
+      "rag_search_knowledge_base",
+      "rag_search_code_examples",
+      "find_projects",
+      "manage_project",
+      "find_tasks",
+      "manage_task",
+      "find_documents",
+      "manage_document",
+      "find_versions",
+      "manage_version",
+      "get_project_features",
+      "health_check",
+      "session_info"
+    ],
+    "auto_dispatch_priority": [
+      "ce-hub-orchestrator",
+      "research-intelligence-specialist",
+      "ce-hub-engineer",
+      "ce-hub-gui-specialist",
+      "qa-tester",
+      "documentation-specialist"
+    ]
+  }
+}

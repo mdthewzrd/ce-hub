@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0d1117">
+
+    <title>📱 CE-Hub Mobile</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --accent-primary: #238636;
+            --accent-secondary: #2ea043;
+            --border: #30363d;
+            --shadow: 0 8px 32px rgba(0,0,0,0.4);
+            --radius: 16px;
+            --font-size-xs: 14px;
+            --font-size-sm: 16px;
+            --font-size-md: 18px;
+            --font-size-lg: 24px;
+            --font-size-xl: 32px;
+            --touch-target: 56px;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: var(--font-size-md);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        .container {
+            max-width: 100%;
+            padding: 16px;
+        }
+
+        .header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 16px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-primary);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .main {
+            margin-top: 80px;
+            padding: 16px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            font-size: var(--font-size-lg);
+        }
+
+        .card-title {
+            font-size: var(--font-size-md);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            min-height: var(--touch-target);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .action-btn:active {
+            transform: scale(0.95);
+            background: var(--accent-primary);
+        }
+
+        .action-icon {
+            font-size: var(--font-size-lg);
+        }
+
+        .file-browser {
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 16px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-primary);
+            text-decoration: none;
+            min-height: var(--touch-target);
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-item:active {
+            background: var(--bg-primary);
+        }
+
+        .file-icon {
+            font-size: var(--font-size-md);
+            width: 24px;
+            text-align: center;
+        }
+
+        .file-name {
+            flex: 1;
+            font-size: var(--font-size-sm);
+        }
+
+        .file-meta {
+            font-size: var(--font-size-xs);
+            color: var(--text-secondary);
+        }
+
+        .terminal-preview {
+            background: #000;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'SF Mono', Monaco, Consolas, monospace;
+            font-size: var(--font-size-sm);
+            line-height: 1.4;
+            color: #00ff00;
+            margin-top: 16px;
+            min-height: 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            color: #666;
+            font-size: var(--font-size-xs);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #ff5f57; }
+        .terminal-dot.yellow { background: #ffbd2e; }
+        .terminal-dot.green { background: #28ca42; }
+
+        .terminal-content {
+            color: #00ff00;
+        }
+
+        .cursor {
+            background: #00ff00;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 8px;
+            display: flex;
+            justify-content: space-around;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: var(--font-size-xs);
+            min-width: 60px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item.active {
+            color: var(--accent-primary);
+            background: rgba(35, 134, 54, 0.1);
+        }
+
+        .nav-item:active {
+            transform: scale(0.95);
+        }
+
+        .nav-icon {
+            font-size: var(--font-size-md);
+        }
+
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 12px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-xs);
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .recent-files {
+            margin-top: 16px;
+        }
+
+        .section-title {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 375px) {
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .project-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .toast {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-primary);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">📱 CE-Hub</a>
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>Online</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="dashboard-grid" id="dashboard">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-title">Quick Actions</div>
+                </div>
+
+                <div class="quick-actions">
+                    <a href="#" class="action-btn" onclick="openVSCode()">
+                        <div class="action-icon">💻</div>
+                        <div>VS Code</div>
+                    </a>
+                    <a href="#terminal" class="action-btn" onclick="showTerminal()">
+                        <div class="action-icon">⚡</div>
+                        <div>Terminal</div>
+                    </a>
+                    <a href="#files" class="action-btn" onclick="showFiles()">
+                        <div class="action-icon">📁</div>
+                        <div>Files</div>
+                    </a>
+                    <a href="#settings" class="action-btn" onclick="showSettings()">
+                        <div class="action-icon">⚙️</div>
+                        <div>Settings</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Project Overview</div>
+                </div>
+
+                <div class="project-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">287</div>
+                        <div class="stat-label">Files</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Active</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📄</div>
+                    <div class="card-title">Recent Files</div>
+                </div>
+
+                <div class="file-browser">
+                    <a href="#" class="file-item" onclick="openFile('MOBILE_VSCODE_GUIDE.md')">
+                        <div class="file-icon">📝</div>
+                        <div class="file-name">MOBILE_VSCODE_GUIDE.md</div>
+                        <div class="file-meta">2m ago</div>
+                    </a>
+                    <a href="#" class="file-item" onclick="openFile('.vscode/settings.json')">
+                        <div class="file-icon">⚙️</div>
+                        <div class="file-name">settings.json</div>
+                        <div class="file-meta">5m ago</div>
+                    </a>
+                    <a href="#" class="file-item" onclick="openFile('mobile-web/index.html')">
+                        <div class="file-icon">🌐</div>
+                        <div class="file-name">index.html</div>
+                        <div class="file-meta">now</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-title">Terminal</div>
+                </div>
+
+                <div class="terminal-preview">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <div>zsh</div>
+                    </div>
+                    <div class="terminal-content">
+                        <div>CE-Hub $ tailscale status</div>
+                        <div style="color: #00ff00;">✓ Connected to tailnet</div>
+                        <div>CE-Hub $ code-server --version</div>
+                        <div style="color: #00ff00;">4.106.2</div>
+                        <div>CE-Hub $ <span class="cursor">█</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="#dashboard" class="nav-item active" onclick="showDashboard(this)">
+            <div class="nav-icon">🏠</div>
+            <div>Home</div>
+        </a>
+        <a href="#files" class="nav-item" onclick="showFiles(this)">
+            <div class="nav-icon">📁</div>
+            <div>Files</div>
+        </a>
+        <a href="#terminal" class="nav-item" onclick="showTerminal(this)">
+            <div class="nav-icon">⚡</div>
+            <div>Terminal</div>
+        </a>
+        <a href="#tools" class="nav-item" onclick="showTools(this)">
+            <div class="nav-icon">🛠️</div>
+            <div>Tools</div>
+        </a>
+        <a href="#settings" class="nav-item" onclick="showSettings(this)">
+            <div class="nav-icon">⚙️</div>
+            <div>Settings</div>
+        </a>
+    </nav>
+
+    <script>
+        // Mobile optimization and PWA functionality
+        let deferredPrompt;
+
+        // Service Worker registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+
+        // PWA install prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallBanner();
+        });
+
+        function showInstallBanner() {
+            const toast = createToast('📱 Install CE-Hub as an app for the best experience!');
+            toast.onclick = () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then(() => {
+                        deferredPrompt = null;
+                    });
+                }
+            };
+        }
+
+        function createToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 4000);
+
+            return toast;
+        }
+
+        // Navigation functions
+        function setActiveNav(element) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            if (element) {
+                element.classList.add('active');
+            }
+        }
+
+        function showDashboard(element) {
+            setActiveNav(element);
+            // Dashboard is already shown by default
+        }
+
+        function showFiles(element) {
+            setActiveNav(element);
+            createToast('📁 Opening file browser...');
+        }
+
+        function showTerminal(element) {
+            setActiveNav(element);
+            createToast('⚡ Opening terminal interface...');
+        }
+
+        function showTools(element) {
+            setActiveNav(element);
+            createToast('🛠️ Loading development tools...');
+        }
+
+        function showSettings(element) {
+            setActiveNav(element);
+            createToast('⚙️ Opening settings...');
+        }
+
+        // Action functions
+        function openVSCode() {
+            createToast('💻 Opening VS Code...');
+            window.open('/', '_blank');
+        }
+
+        function openFile(filename) {
+            createToast(`📝 Opening ${filename}...`);
+            window.open(`/?file=${encodeURIComponent(filename)}`, '_blank');
+        }
+
+        // Touch optimizations
+        document.addEventListener('touchstart', function() {}, true);
+
+        // Prevent zoom on double tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        // Status updates
+        function updateStatus() {
+            // This would connect to your code-server API to check status
+            console.log('Checking system status...');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStatus();
+
+            // Add haptic feedback for touch interactions
+            if ('vibrate' in navigator) {
+                document.querySelectorAll('.action-btn, .nav-item').forEach(element => {
+                    element.addEventListener('touchstart', () => {
+                        navigator.vibrate(10);
+                    });
+                });
+            }
+        });
+
+        // Auto-hide address bar on iOS
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                window.scrollTo(0, 1);
+            }, 0);
+        });
+    </script>
+</body>
+</html>
