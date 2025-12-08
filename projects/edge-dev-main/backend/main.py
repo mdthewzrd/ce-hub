@@ -3,13 +3,6 @@ FastAPI Backend for LC Scanner with Real Scan Integration
 High-performance wrapper that preserves all threading optimizations from the original scanner
 """
 
-# Load environment variables from .env file first
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
-except ImportError:
-    print("Warning: python-dotenv not available, .env file will not be loaded")
-
 import asyncio
 import json
 import logging
@@ -56,6 +49,60 @@ from core.intelligent_parameter_extractor import IntelligentParameterExtractor
 # Import Universal Scanner Robustness Engine v2.0 - 100% Success Rate System
 from core.universal_scanner_robustness_engine_v2 import process_uploaded_scanner_robust_v2
 
+# Setup logger
+logger = logging.getLogger(__name__)
+
+async def execute_uploaded_scanner_sync(uploaded_code: str, start_date: str, end_date: str, function_name: str = None) -> List[Dict]:
+    """
+    Execute uploaded scanner synchronously and return results immediately
+    This function bridges the async FastAPI endpoint with the sync scanner execution
+    """
+    try:
+        logger.info(f"🚀 Starting synchronous execution of uploaded scanner")
+        logger.info(f"📅 Date range: {start_date} to {end_date}")
+        logger.info(f"📝 Code length: {len(uploaded_code)} characters")
+        logger.info(f"🎯 Target function: {function_name}")
+
+        # Execute the uploaded scanner directly using the existing bypass system
+        # This will handle all the asyncio conflicts and parameter injection
+        results = await execute_uploaded_scanner_direct(
+            code=uploaded_code,
+            start_date=start_date,
+            end_date=end_date,
+            progress_callback=None,
+            pure_execution_mode=True
+        )
+
+        # Convert results to the expected format
+        formatted_results = []
+        if results:
+            for result in results:
+                # Handle different result formats
+                if isinstance(result, dict):
+                    # If it's already in the right format, just ensure required fields
+                    formatted_result = {
+                        'ticker': result.get('ticker', result.get('symbol', 'Unknown')),
+                        'date': result.get('date', result.get('timestamp', datetime.now().strftime('%Y-%m-%d'))),
+                        'signal': result.get('signal', result.get('pattern', 'Signal')),
+                        'price': result.get('price', result.get('close', 0.0)),
+                        'volume': result.get('volume', result.get('vol', 0)),
+                        'score': result.get('score', result.get('confidence', 0.0))
+                    }
+
+                    # Add any additional fields from the original result
+                    for key, value in result.items():
+                        if key not in formatted_result:
+                            formatted_result[key] = value
+
+                    formatted_results.append(formatted_result)
+
+        logger.info(f"✅ Synchronous execution completed: {len(formatted_results)} results")
+        return formatted_results
+
+    except Exception as e:
+        logger.error(f"❌ Synchronous execution failed: {str(e)}")
+        raise Exception(f"Uploaded scanner execution failed: {str(e)}")
+
 # Import Custom Scanner Integration for user-provided scanner files
 from custom_scanner_integration import custom_scanner_manager
 
@@ -76,29 +123,28 @@ from project_composition.project_config import ProjectManager, ProjectConfig, Sc
 async def execute_uploaded_scanner_robust(uploaded_code: str, start_date: str, end_date: str,
                                         progress_callback, pure_execution_mode: bool = True) -> List[Dict]:
     """
-    🚀 UNIVERSAL ROBUSTNESS WRAPPER v2.0 - 100% Success Rate System
+    🚀 UPDATED: Enhanced Function Detection Wrapper - FIXED for User Functions
 
-    Replaces the old upload system with comprehensive robustness engine v2.0 that handles:
-    - Any function signature (scan_ticker, async main, batch processing, etc.)
-    - Any result format (Dict, DataFrame, print output, etc.)
-    - Any execution model (sync, async, batch, parallel)
-    - Universal ticker standardization (forces all scanners to use full market)
-    - Async main pattern support (fixes event loop conflicts)
-    - Optimal scanner detection (pass-through mode for already optimal scanners)
-    - Comprehensive error recovery
-
-    This is the NEW gold standard for uploaded scanner processing - v2.0 Enhanced.
+    Now routes uploaded scanners through comprehensive function detection system that:
+    - Detects user functions vs infrastructure functions
+    - Routes user functions to dedicated execution path with market data
+    - Routes LC scanners to proper LC D2 execution
+    - Routes standalone scripts to generic execution
+    - Preserves 100% of original code logic
     """
     try:
-        logger.info("🚀 UNIVERSAL ROBUSTNESS v2.0: Processing uploaded scanner with 100% success rate engine...")
+        logger.info("🚀 UPDATED: Processing uploaded scanner with function detection system...")
 
         # Report progress start
         if progress_callback:
-            await progress_callback("🎯 Initializing Universal Scanner Robustness Engine v2.0...", 5)
+            await progress_callback("🎯 Initializing Enhanced Function Detection System...", 5)
 
-        # Process with enhanced v2.0 robust engine with timeout (60 seconds to prevent hanging)
+        # Import the updated function detection system
+        from uploaded_scanner_bypass import execute_uploaded_scanner_direct
+
+        # Process with function detection engine (FIXED VERSION)
         result = await asyncio.wait_for(
-            process_uploaded_scanner_robust_v2(uploaded_code, start_date, end_date),
+            execute_uploaded_scanner_direct(uploaded_code, start_date, end_date, progress_callback, pure_execution_mode),
             timeout=60.0
         )
 
@@ -174,6 +220,10 @@ def universal_deduplicate_scan_results(results: List[Dict]) -> List[Dict]:
         df = pd.DataFrame(results)
 
         # Ensure we have the required columns for deduplication
+        # Handle both 'ticker' and 'symbol' field names for compatibility
+        if 'symbol' in df.columns:
+            df['ticker'] = df['symbol']  # Add 'ticker' column from 'symbol'
+
         if 'ticker' in df.columns and 'date' in df.columns:
             # Convert date to datetime if it's a string
             df['date'] = pd.to_datetime(df['date'])
@@ -199,13 +249,17 @@ def universal_deduplicate_scan_results(results: List[Dict]) -> List[Dict]:
                 if isinstance(result.get('date'), pd.Timestamp):
                     date_str = result['date'].strftime('%Y-%m-%d')
 
-                key = (result.get('ticker', ''), date_str)
+                # Handle both 'ticker' and 'symbol' field names
+                ticker_symbol = result.get('ticker', '') or result.get('symbol', '')
+                key = (ticker_symbol, date_str)
 
                 if key not in seen_combinations:
                     seen_combinations.add(key)
                     final_results.append(result)
                 else:
-                    logger.warning(f"🚫 Manual deduplication caught: {result.get('ticker')} on {date_str}")
+                    # Handle both field names in warning message
+                    ticker_symbol = result.get('ticker', '') or result.get('symbol', '')
+                    logger.warning(f"🚫 Manual deduplication caught: {ticker_symbol} on {date_str}")
 
             logger.info(f"✅ Universal deduplication complete: {len(final_results)} final results")
             return final_results
@@ -287,6 +341,7 @@ class ScanRequest(BaseModel):
     use_real_scan: Optional[bool] = True
     scanner_type: Optional[str] = "lc"  # "lc", "a_plus", "uploaded"
     uploaded_code: Optional[str] = None  # The formatted scanner code to execute
+    function_name: Optional[str] = None  # Target function to execute from uploaded scanner
 
 class ScanResponse(BaseModel):
     success: bool
@@ -615,20 +670,53 @@ async def execute_scan(request: Request, scan_request: ScanRequest, background_t
         }
 
         if scan_request.use_real_scan:
-            # Run enhanced 90-day scan in background
-            background_tasks.add_task(run_real_scan_background, scan_id, start_date, end_date)
+            # Check if this is an uploaded scanner - execute synchronously for immediate results
+            if scan_request.uploaded_code and scan_request.scanner_type == 'uploaded':
+                logger.info(f"🚀 SYNCHRONOUS EXECUTION: Uploaded scanner detected, executing immediately")
 
-            success_message = ("Sophisticated LC scan with preserved logic started. Use WebSocket or status endpoint for progress updates."
-                             if SOPHISTICATED_MODE else
-                             "Enhanced 90-day LC scan started. Use WebSocket or status endpoint for progress updates.")
+                # Execute uploaded scanner synchronously
+                try:
+                    results = await execute_uploaded_scanner_sync(
+                        scan_request.uploaded_code,
+                        start_date,
+                        end_date,
+                        scan_request.function_name
+                    )
 
-            return ScanResponse(
-                success=True,
-                scan_id=scan_id,
-                message=success_message,
-                results=[],
-                total_found=0
-            )
+                    logger.info(f"✅ SYNCHRONOUS EXECUTION COMPLETED: {len(results)} results found")
+
+                    return ScanResponse(
+                        success=True,
+                        scan_id=scan_id,
+                        message=f"Uploaded scanner executed successfully. Found {len(results)} results.",
+                        results=results,
+                        total_found=len(results)
+                    )
+
+                except Exception as e:
+                    logger.error(f"❌ SYNCHRONOUS EXECUTION FAILED: {str(e)}")
+                    return ScanResponse(
+                        success=False,
+                        scan_id=scan_id,
+                        message=f"Uploaded scanner execution failed: {str(e)}",
+                        results=[],
+                        total_found=0
+                    )
+            else:
+                # Run enhanced 90-day scan in background for standard scanners
+                background_tasks.add_task(run_real_scan_background, scan_id, start_date, end_date)
+
+                success_message = ("Sophisticated LC scan with preserved logic started. Use WebSocket or status endpoint for progress updates."
+                                 if SOPHISTICATED_MODE else
+                                 "Enhanced 90-day LC scan started. Use WebSocket or status endpoint for progress updates.")
+
+                return ScanResponse(
+                    success=True,
+                    scan_id=scan_id,
+                    message=success_message,
+                    results=[],
+                    total_found=0
+                )
         else:
             # Mock scan for testing
             mock_results = [
@@ -4997,6 +5085,120 @@ async def get_custom_scanner_status():
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+# Project Execution Endpoint
+class ProjectExecutionRequest(BaseModel):
+    date_range: dict
+    scanner_code: Optional[str] = None
+    code: Optional[str] = None
+    uploaded_code: Optional[str] = None
+    timeout_seconds: Optional[int] = 300
+    max_workers: Optional[int] = 4
+
+class ProjectExecutionResponse(BaseModel):
+    success: bool
+    execution_id: str
+    scan_id: str
+    message: str
+    status: str
+    timestamp: str
+    results: Optional[List[Dict]] = []
+    total_found: Optional[int] = 0
+
+@app.post("/api/projects/{project_id}/execute", response_model=ProjectExecutionResponse)
+async def execute_project(project_id: str, request: ProjectExecutionRequest):
+    """Execute a project by calling the scanner execution service"""
+    try:
+        logger.info(f"Project execution request for {project_id}")
+
+        # Extract scanner code from different possible fields
+        scanner_code = (
+            request.scanner_code or
+            request.code or
+            request.uploaded_code or ""
+        )
+
+        if not scanner_code:
+            raise HTTPException(
+                status_code=400,
+                detail="No scanner code provided. Use scanner_code, code, or uploaded_code field."
+            )
+
+        # Extract date range
+        date_range = request.date_range
+        start_date = date_range.get('start_date', '2025-01-01')
+        end_date = date_range.get('end_date', '2025-11-01')
+
+        # Create scan ID
+        scan_id = f"project_{project_id}_{int(time.time())}"
+
+        # Execute the scan and get results
+        scan_results = await execute_scan_robust(
+            uploaded_code=scanner_code,
+            start_date=start_date,
+            end_date=end_date,
+            scanner_type="uploaded",
+            progress_callback=None
+        )
+
+        response = ProjectExecutionResponse(
+            success=True,
+            execution_id=scan_id,
+            scan_id=scan_id,
+            message="Project execution completed successfully",
+            status="completed",
+            timestamp=datetime.now().isoformat(),
+            results=scan_results,
+            total_found=len(scan_results) if scan_results else 0
+        )
+
+        logger.info(f"Project execution completed: {scan_id}, found {len(scan_results) if scan_results else 0} results")
+        return response
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Project execution failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Project execution failed: {str(e)}")
+
+@app.get("/api/projects/{project_id}/execute")
+async def get_project_execution_status(project_id: str, execution_id: Optional[str] = None, scan_id: Optional[str] = None):
+    """Get project execution status"""
+    try:
+        # Use either execution_id or scan_id
+        status_id = execution_id or scan_id
+
+        if not status_id:
+            raise HTTPException(
+                status_code=400,
+                detail="Missing execution_id or scan_id parameter"
+            )
+
+        # Get scan status
+        scan_status = scan_results.get(status_id, {
+            "status": "not_found",
+            "message": "Scan not found",
+            "progress_percent": 0,
+            "results": None,
+            "total_found": 0
+        })
+
+        return {
+            "success": True,
+            "execution_id": status_id,
+            "status": scan_status["status"],
+            "progress_percent": scan_status["progress_percent"],
+            "message": scan_status["message"],
+            "results": scan_status["results"],
+            "total_found": scan_status["total_found"],
+            "timestamp": datetime.now().isoformat()
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Get project execution status failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Status check failed: {str(e)}")
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000, reload=False)
