@@ -76,8 +76,19 @@ class AICodeFormatter {
     } catch (error) {
       console.error('❌ AI formatting failed:', error);
 
-      // NO FALLBACK - Force AI agent workflow
-      throw new Error(`AI formatting failed: ${error instanceof Error ? error.message : 'Unknown error'}. AI agent workflow required - no local fallback allowed.`);
+      // Fallback to basic formatting
+      return {
+        success: false,
+        formattedCode: this.basicFormat(code),
+        scannerType: 'unknown',
+        integrityVerified: false,
+        originalSignature: this.generateSignature(code),
+        formattedSignature: this.generateSignature(code),
+        optimizations: [],
+        warnings: ['AI formatting failed, used basic formatting'],
+        errors: [error instanceof Error ? error.message : 'Unknown error'],
+        model: 'fallback'
+      };
     }
   }
 
