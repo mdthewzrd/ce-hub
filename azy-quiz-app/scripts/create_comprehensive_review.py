@@ -389,6 +389,37 @@ def create_comprehensive_html(products, tags):
             font-size: 13px;
         }
 
+        .ai-tagged {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .ai-tagged-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #2e7d32;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .needs-review-banner {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 10px 12px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .needs-review-banner p {
+            margin: 0;
+            font-size: 13px;
+            color: #e65100;
+        }
+
         .custom-input {
             display: flex;
             gap: 5px;
@@ -481,6 +512,9 @@ def create_comprehensive_html(products, tags):
             use_cases_show = ' show' if not existing_use_cases or not any(existing_use_cases) else ''
             lens_types_show = ' show' if not existing_lens_types or not any(existing_lens_types) else ''
 
+            # Check if product has any AI tags
+            has_ai_tags = bool(existing_style or existing_material or (existing_face_shapes and any(existing_face_shapes)) or (existing_use_cases and any(existing_use_cases)) or (existing_lens_types and any(existing_lens_types)))
+
             # Write product card
             f.write(f"""        <div class="product-card" data-handle="{handle}" data-reviewed="no">
             <img src="{prod['image_src']}" class="product-image" alt="{prod['title']}">
@@ -488,8 +522,16 @@ def create_comprehensive_html(products, tags):
                 <div class="product-vendor">{prod['vendor']}</div>
                 <h3 class="product-title">{prod['title'][:80]}...</h3>
                 <div class="product-handle">{handle}</div>
+""")
 
-                <!-- Frame Style -->
+            # Add banner for untagged products
+            if not has_ai_tags:
+                f.write(f"""                <div class="needs-review-banner">
+                    <p>⚠️ <strong>Needs Manual Tagging:</strong> AI couldn't auto-tag this product. Please select tags below.</p>
+                </div>
+""")
+
+            f.write("""                <!-- Frame Style -->
                 <div class="tag-section">
                     <div class="tag-label">📐 Frame Style <span class="status-indicator pending" id="style-status-{handle}"></span></div>
                     <div class="current-selection" id="style-selection-{handle}">
