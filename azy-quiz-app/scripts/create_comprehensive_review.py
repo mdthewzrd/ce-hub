@@ -336,6 +336,16 @@ def create_comprehensive_html(products, tags):
         .edit-option.style:hover { background: #ffe0b2; }
         .edit-option.style.selected { background: #e65100; border-color: #e65100; }
 
+        .edit-option.custom {
+            background: #e3f2fd;
+            border-color: #2196f3;
+            color: #1976d2;
+            font-weight: 600;
+            border-style: dashed;
+            border-width: 2px;
+        }
+        .edit-option.custom:hover { background: #bbdefb; }
+
         .edit-option.material { background: #f3e5f5; border-color: #e1bee7; }
         .edit-option.material:hover { background: #e1bee7; }
         .edit-option.material.selected { background: #7b1fa2; border-color: #7b1fa2; }
@@ -549,9 +559,9 @@ def create_comprehensive_html(products, tags):
                         <button class="edit-option style" onclick="selectTag('{handle}', 'style', 'rectangle')">Rectangle</button>
                         <button class="edit-option style" onclick="selectTag('{handle}', 'style', 'square')">Square</button>
                         <button class="edit-option style" onclick="selectTag('{handle}', 'style', 'wayfarer')">Wayfarer</button>
-                        <button class="edit-option style" onclick="showCustomInput('{handle}', 'style')">+ Custom</button>
+                        <button class="edit-option custom" onclick="showCustomInput('{handle}', 'style')">+ Add Custom Style</button>
                         <div class="custom-input hidden" id="custom-style-{handle}">
-                            <input type="text" placeholder="Enter custom style..." onkeypress="handleCustomInput(event, '{handle}', 'style')">
+                            <input type="text" placeholder="Enter custom style (e.g., Oversized, Browline, Shield)..." onkeypress="handleCustomInput(event, '{handle}', 'style')">
                             <button type="button" onclick="hideCustomInput('{handle}', 'style')">×</button>
                         </div>
                     </div>
