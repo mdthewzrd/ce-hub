@@ -388,6 +388,36 @@ def create_comprehensive_html(products, tags):
             font-style: italic;
             font-size: 13px;
         }
+
+        .custom-input {
+            display: flex;
+            gap: 5px;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .custom-input input {
+            flex: 1;
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .custom-input button {
+            padding: 6px 10px;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .verify-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -444,6 +474,13 @@ def create_comprehensive_html(products, tags):
             # Build initialization JS
             init_js = build_init_js(handle, tag_data)
 
+            # Determine if edit options should be shown by default (for untagged items)
+            style_show = ' show' if not existing_style else ''
+            material_show = ' show' if not existing_material else ''
+            face_shapes_show = ' show' if not existing_face_shapes or not any(existing_face_shapes) else ''
+            use_cases_show = ' show' if not existing_use_cases or not any(existing_use_cases) else ''
+            lens_types_show = ' show' if not existing_lens_types or not any(existing_lens_types) else ''
+
             # Write product card
             f.write(f"""        <div class="product-card" data-handle="{handle}" data-reviewed="no">
             <img src="{prod['image_src']}" class="product-image" alt="{prod['title']}">
@@ -459,17 +496,22 @@ def create_comprehensive_html(products, tags):
                         {style_html}
                     </div>
                     <div class="verification-buttons">
-                        <button class="verify-btn correct" onclick="verifyTag('{handle}', 'style', '{escape_js(existing_style)}')">✓ Correct</button>
-                        <button class="verify-btn wrong" onclick="rejectTag('{handle}', 'style')">✗ Wrong</button>
+                        <button class="verify-btn correct" onclick="verifyTag('{handle}', 'style', '{escape_js(existing_style)}')" {'disabled' if not existing_style else ''}>✓ Correct</button>
+                        <button class="verify-btn wrong" onclick="rejectTag('{handle}', 'style')" {'disabled' if not existing_style else ''}>✗ Wrong</button>
                         <button class="verify-btn edit" onclick="toggleEdit('{handle}', 'style')">✏️ Edit</button>
                     </div>
-                    <div class="edit-options" id="edit-style-{handle}">
+                    <div class="edit-options{style_show}" id="edit-style-{handle}">
                         <button class="edit-option style" onclick="selectTag('{handle}', 'style', 'aviator')">Aviator</button>
                         <button class="edit-option style" onclick="selectTag('{handle}', 'style', 'cat_eye')">Cat-Eye</button>
                         <button class="edit-option style" onclick="selectTag('{handle}', 'style', 'round')">Round</button>
                         <button class="edit-option style" onclick="selectTag('{handle}', 'style', 'rectangle')">Rectangle</button>
                         <button class="edit-option style" onclick="selectTag('{handle}', 'style', 'square')">Square</button>
                         <button class="edit-option style" onclick="selectTag('{handle}', 'style', 'wayfarer')">Wayfarer</button>
+                        <button class="edit-option style" onclick="showCustomInput('{handle}', 'style')">+ Custom</button>
+                        <div class="custom-input hidden" id="custom-style-{handle}">
+                            <input type="text" placeholder="Enter custom style..." onkeypress="handleCustomInput(event, '{handle}', 'style')">
+                            <button type="button" onclick="hideCustomInput('{handle}', 'style')">×</button>
+                        </div>
                     </div>
                 </div>
 
@@ -480,11 +522,11 @@ def create_comprehensive_html(products, tags):
                         {material_html}
                     </div>
                     <div class="verification-buttons">
-                        <button class="verify-btn correct" onclick="verifyTag('{handle}', 'material', '{escape_js(existing_material)}')">✓ Correct</button>
-                        <button class="verify-btn wrong" onclick="rejectTag('{handle}', 'material')">✗ Wrong</button>
+                        <button class="verify-btn correct" onclick="verifyTag('{handle}', 'material', '{escape_js(existing_material)}')" {'disabled' if not existing_material else ''}>✓ Correct</button>
+                        <button class="verify-btn wrong" onclick="rejectTag('{handle}', 'material')" {'disabled' if not existing_material else ''}>✗ Wrong</button>
                         <button class="verify-btn edit" onclick="toggleEdit('{handle}', 'material')">✏️ Edit</button>
                     </div>
-                    <div class="edit-options" id="edit-material-{handle}">
+                    <div class="edit-options{material_show}" id="edit-material-{handle}">
                         <button class="edit-option material" onclick="selectTag('{handle}', 'material', 'wire')">Wire/Metal</button>
                         <button class="edit-option material" onclick="selectTag('{handle}', 'material', 'acetate')">Acetate/Plastic</button>
                     </div>
@@ -497,11 +539,11 @@ def create_comprehensive_html(products, tags):
                         {face_shapes_html}
                     </div>
                     <div class="verification-buttons">
-                        <button class="verify-btn correct" onclick="verifyTagMultiple('{handle}', 'face_shapes')">✓ Correct</button>
-                        <button class="verify-btn wrong" onclick="rejectTag('{handle}', 'face_shapes')">✗ Wrong</button>
+                        <button class="verify-btn correct" onclick="verifyTagMultiple('{handle}', 'face_shapes')" {'disabled' if not existing_face_shapes or not any(existing_face_shapes) else ''}>✓ Correct</button>
+                        <button class="verify-btn wrong" onclick="rejectTag('{handle}', 'face_shapes')" {'disabled' if not existing_face_shapes or not any(existing_face_shapes) else ''}>✗ Wrong</button>
                         <button class="verify-btn edit" onclick="toggleEdit('{handle}', 'face_shapes')">✏️ Edit</button>
                     </div>
-                    <div class="edit-options" id="edit-face_shapes-{handle}">
+                    <div class="edit-options{face_shapes_show}" id="edit-face_shapes-{handle}">
                         <button class="edit-option face-shape" onclick="toggleMultiple('{handle}', 'face_shapes', 'heart')">♥ Heart</button>
                         <button class="edit-option face-shape" onclick="toggleMultiple('{handle}', 'face_shapes', 'oval')">Oval</button>
                         <button class="edit-option face-shape" onclick="toggleMultiple('{handle}', 'face_shapes', 'round')">Round</button>
@@ -518,11 +560,11 @@ def create_comprehensive_html(products, tags):
                         {use_cases_html}
                     </div>
                     <div class="verification-buttons">
-                        <button class="verify-btn correct" onclick="verifyTagMultiple('{handle}', 'use_cases')">✓ Correct</button>
-                        <button class="verify-btn wrong" onclick="rejectTag('{handle}', 'use_cases')">✗ Wrong</button>
+                        <button class="verify-btn correct" onclick="verifyTagMultiple('{handle}', 'use_cases')" {'disabled' if not existing_use_cases or not any(existing_use_cases) else ''}>✓ Correct</button>
+                        <button class="verify-btn wrong" onclick="rejectTag('{handle}', 'use_cases')" {'disabled' if not existing_use_cases or not any(existing_use_cases) else ''}>✗ Wrong</button>
                         <button class="verify-btn edit" onclick="toggleEdit('{handle}', 'use_cases')">✏️ Edit</button>
                     </div>
-                    <div class="edit-options" id="edit-use_cases-{handle}">
+                    <div class="edit-options{use_cases_show}" id="edit-use_cases-{handle}">
                         <button class="edit-option" onclick="toggleMultiple('{handle}', 'use_cases', 'day')">☀️ Day</button>
                         <button class="edit-option" onclick="toggleMultiple('{handle}', 'use_cases', 'night')">🌙 Night</button>
                         <button class="edit-option" onclick="toggleMultiple('{handle}', 'use_cases', 'going_out')">🎉 Going Out</button>
@@ -539,11 +581,11 @@ def create_comprehensive_html(products, tags):
                         {lens_types_html}
                     </div>
                     <div class="verification-buttons">
-                        <button class="verify-btn correct" onclick="verifyTagMultiple('{handle}', 'lens_types')">✓ Correct</button>
-                        <button class="verify-btn wrong" onclick="rejectTag('{handle}', 'lens_types')">✗ Wrong</button>
+                        <button class="verify-btn correct" onclick="verifyTagMultiple('{handle}', 'lens_types')" {'disabled' if not existing_lens_types or not any(existing_lens_types) else ''}>✓ Correct</button>
+                        <button class="verify-btn wrong" onclick="rejectTag('{handle}', 'lens_types')" {'disabled' if not existing_lens_types or not any(existing_lens_types) else ''}>✗ Wrong</button>
                         <button class="verify-btn edit" onclick="toggleEdit('{handle}', 'lens_types')">✏️ Edit</button>
                     </div>
-                    <div class="edit-options" id="edit-lens_types-{handle}">
+                    <div class="edit-options{lens_types_show}" id="edit-lens_types-{handle}">
                         <button class="edit-option" onclick="toggleMultiple('{handle}', 'lens_types', 'polarized')">🕶️ Polarized</button>
                         <button class="edit-option" onclick="toggleMultiple('{handle}', 'lens_types', 'shape')">✏️ Custom Shape</button>
                         <button class="edit-option" onclick="toggleMultiple('{handle}', 'lens_types', 'tinted')">🌈 Tinted</button>
@@ -614,6 +656,28 @@ def create_comprehensive_html(products, tags):
         function toggleEdit(handle, category) {
             const editOptions = document.getElementById(`edit-${category}-${handle}`);
             editOptions.classList.toggle('show');
+        }
+
+        function showCustomInput(handle, category) {
+            const customInput = document.getElementById(`custom-${category}-${handle}`);
+            customInput.classList.remove('hidden');
+            customInput.querySelector('input').focus();
+        }
+
+        function hideCustomInput(handle, category) {
+            const customInput = document.getElementById(`custom-${category}-${handle}`);
+            customInput.classList.add('hidden');
+            customInput.querySelector('input').value = '';
+        }
+
+        function handleCustomInput(event, handle, category) {
+            if (event.key === 'Enter') {
+                const value = event.target.value.trim();
+                if (value) {
+                    selectTag(handle, category, value);
+                    hideCustomInput(handle, category);
+                }
+            }
         }
 
         function selectTag(handle, category, value) {
