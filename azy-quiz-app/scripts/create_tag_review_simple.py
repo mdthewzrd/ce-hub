@@ -157,6 +157,29 @@ def create_html(products, tags):
 
         .option-btn:hover { border-color: #999; transform: scale(1.02); }
 
+        .option-btn.pending {
+            border: 3px dashed #ff9800;
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .option-btn.pending::after {
+            content: '•';
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #ff9800;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
         /* GREEN SELECTION - Very prominent */
         .option-btn.selected {
             border: 3px solid #4caf50;
@@ -245,6 +268,84 @@ def create_html(products, tags):
         .btn-save { background: #4caf50; color: white; }
         .btn-cancel { background: #f44336; color: white; }
 
+        .custom-trigger {
+            background: #fff3e0 !important;
+            border-color: #ff9800 !important;
+            color: #e65100 !important;
+            border-style: dashed;
+        }
+
+        .custom-input-section {
+            display: none;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #fff8f0;
+            border-radius: 8px;
+            border: 2px dashed #ff9800;
+        }
+
+        .custom-input-section.show { display: block; }
+
+        .custom-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .custom-buttons { display: flex; gap: 8px; }
+        .custom-buttons button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .btn-custom-save { background: #4caf50; color: white; }
+        .btn-custom-cancel { background: #f44336; color: white; }
+
+        .save-changes-section {
+            margin-top: 16px;
+            padding: 12px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            border: 2px solid #4caf50;
+            display: none;
+        }
+
+        .save-changes-section.show {
+            display: block;
+        }
+
+        .btn-save-changes {
+            width: 100%;
+            padding: 12px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .btn-save-changes:hover { background: #45a049; }
+
+        .has-changes-badge {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
         .done-section {
             margin-top: 16px;
             padding-top: 12px;
@@ -292,7 +393,7 @@ def create_html(products, tags):
 <body>
     <div class="header">
         <h1>👓 AZYR Product Tag Review</h1>
-        <p>Click options to select/deselect. Selected items show with green checkmark.</p>
+        <p>Click options to select/deselect (orange = pending). Click "Save Changes" to confirm.</p>
     </div>
 
     <div class="stats">
@@ -410,11 +511,26 @@ def create_html(products, tags):
                     <div class="tag-label">👓 Lens Options</div>
                     <div class="option-grid" id="lens-types-options-{handle}">
                         <button class="option-btn lens" data-value="polarized" onclick="toggleMultiple('{handle}', 'lens_types', 'polarized')">🕶️ Polarized</button>
-                        <button class="option-btn lens" data-value="shape" onclick="toggleMultiple('{handle}', 'lens_types', 'shape')">✏️ Custom Shape</button>
+                        <button class="option-btn lens" data-value="shield" onclick="toggleMultiple('{handle}', 'lens_types', 'shield')">🛡️ Shield</button>
+                        <button class="option-btn lens" data-value="butterfly" onclick="toggleMultiple('{handle}', 'lens_types', 'butterfly')">🦋 Butterfly</button>
+                        <button class="option-btn lens" data-value="geometric" onclick="toggleMultiple('{handle}', 'lens_types', 'geometric')">📐 Geometric</button>
                         <button class="option-btn lens" data-value="tinted" onclick="toggleMultiple('{handle}', 'lens_types', 'tinted')">🌈 Tinted</button>
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('{handle}', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('{handle}', 'lens_types', 'blue_light')">💡 Blue Light</button>
+                        <button class="option-btn lens custom-trigger" onclick="showCustomLensInput('{handle}')">+ Custom</button>
                     </div>
+                    <div class="custom-input-section" id="custom-lens-section-{handle}" style="display: none;">
+                        <input type="text" class="custom-input" id="custom-lens-input-{handle}" placeholder="Enter custom lens type/shape...">
+                        <div class="custom-buttons">
+                            <button class="btn-custom-save" onclick="saveCustomLens('{handle}')">Save</button>
+                            <button class="btn-custom-cancel" onclick="cancelCustomLens('{handle}')">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-{handle}">
+                    <button class="btn-save-changes" onclick="saveChanges('{handle}')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -432,7 +548,8 @@ def create_html(products, tags):
     </div>
 
     <script>
-        const productTags = {};
+        const productTags = {};      // Saved tags (green)
+        const pendingTags = {};       // Pending changes (orange)
         const reviewedProducts = new Set();
 
         // Initialize with existing tags
@@ -515,64 +632,121 @@ def create_html(products, tags):
         });
 
         function toggleSingle(handle, category, value) {
-            productTags[handle] = productTags[handle] || {};
-            const currentValue = productTags[handle][category];
+            pendingTags[handle] = pendingTags[handle] || {};
+            const currentSaved = productTags[handle]?.[category];
+            const currentPending = pendingTags[handle][category];
 
-            // Deselect current if clicking same value
-            if (currentValue === value) {
-                delete productTags[handle][category];
+            // Toggle in pending state
+            if (currentPending === value) {
+                // Already pending this value, remove it
+                delete pendingTags[handle][category];
             } else {
-                productTags[handle][category] = value;
+                // Set new pending value
+                pendingTags[handle][category] = value;
             }
 
             updateUI(handle, category);
+            showSaveButton(handle);
         }
 
         function toggleMultiple(handle, category, value) {
-            productTags[handle] = productTags[handle] || {};
-            if (!productTags[handle][category]) {
-                productTags[handle][category] = [];
+            pendingTags[handle] = pendingTags[handle] || {};
+            if (!pendingTags[handle][category]) {
+                // Start with saved values as base
+                const saved = productTags[handle]?.[category] || [];
+                pendingTags[handle][category] = [...saved];
             }
 
-            const arr = productTags[handle][category];
+            const arr = pendingTags[handle][category];
             const index = arr.indexOf(value);
 
             if (index > -1) {
                 arr.splice(index, 1);
+                if (arr.length === 0) {
+                    delete pendingTags[handle][category];
+                }
             } else {
                 arr.push(value);
             }
 
             updateUI(handle, category);
+            showSaveButton(handle);
+        }
+
+        function showSaveButton(handle) {
+            const saveSection = document.getElementById(`save-section-${handle}`);
+            if (saveSection && Object.keys(pendingTags[handle] || {}).length > 0) {
+                saveSection.classList.add('show');
+            }
+        }
+
+        function saveChanges(handle) {
+            // Apply all pending changes to saved tags
+            if (pendingTags[handle]) {
+                Object.keys(pendingTags[handle]).forEach(category => {
+                    const value = pendingTags[handle][category];
+                    if (Array.isArray(value)) {
+                        if (value.length === 0) {
+                            delete productTags[handle]?.[category];
+                        } else {
+                            productTags[handle] = productTags[handle] || {};
+                            productTags[handle][category] = value;
+                        }
+                    } else {
+                        productTags[handle] = productTags[handle] || {};
+                        productTags[handle][category] = value;
+                    }
+                });
+
+                // Clear pending state
+                delete pendingTags[handle];
+
+                // Hide save button
+                const saveSection = document.getElementById(`save-section-${handle}`);
+                saveSection.classList.remove('show');
+
+                // Update all categories for this product
+                ['style', 'material', 'face_shapes', 'use_cases', 'lens_types'].forEach(cat => {
+                    updateUI(handle, cat);
+                });
+
+                console.log(`Saved changes for ${handle}`);
+            }
         }
 
         function updateUI(handle, category) {
-            // Update button classes
             if (category === 'face_shapes' || category === 'use_cases' || category === 'lens_types') {
                 // Multi-select
-                const container = document.querySelector(`[data-handle="${handle}"] #${category.replace('_', '-')}-options-{handle}`);
+                const container = document.querySelector(`[data-handle="${handle}"] #${category.replace('_', '-')}-options-${handle}`);
                 const buttons = container.querySelectorAll('.option-btn');
-                const values = productTags[handle]?.[category] || [];
+                const savedValues = productTags[handle]?.[category] || [];
+                const pendingValues = pendingTags[handle]?.[category] || savedValues; // Default to saved if no pending
 
                 buttons.forEach(btn => {
                     const val = btn.getAttribute('data-value');
-                    if (values.includes(val)) {
+                    btn.classList.remove('selected', 'pending');
+
+                    if (pendingValues.includes(val)) {
+                        btn.classList.add('pending');
+                    } else if (savedValues.includes(val)) {
                         btn.classList.add('selected');
-                    } else {
-                        btn.classList.remove('selected');
                     }
                 });
             } else {
                 // Single select
-                const container = document.querySelector(`[data-handle="${handle}"] #${category.replace('_', '-')}-options-{handle}`);
+                const container = document.querySelector(`[data-handle="${handle}"] #${category.replace('_', '-')}-options-${handle}`);
                 const buttons = container.querySelectorAll('.option-btn');
-                const value = productTags[handle]?.[category];
+                const savedValue = productTags[handle]?.[category];
+                const pendingValue = pendingTags[handle]?.[category];
 
                 buttons.forEach(btn => {
-                    if (btn.getAttribute('data-value') === value) {
+                    const val = btn.getAttribute('data-value');
+                    btn.classList.remove('selected', 'pending');
+
+                    if (pendingValue === val) {
+                        btn.classList.add('pending');
+                    } else if (savedValue === val) {
                         btn.classList.add('selected');
-                    } else {
-                        btn.classList.remove('selected');
                     }
                 });
             }
@@ -592,20 +766,45 @@ def create_html(products, tags):
             const input = document.getElementById(`custom-text-${handle}`);
             const value = input.value.trim();
             if (value) {
-                productTags[handle] = productTags[handle] || {};
-                productTags[handle]['style'] = value;
+                // Add to pending state
+                pendingTags[handle] = pendingTags[handle] || {};
+                pendingTags[handle]['style'] = value;
 
-                // Update UI - remove selected from all, then add custom indicator
-                const container = document.querySelector(`[data-handle="${handle}"] #style-options-${handle}`);
-                const buttons = container.querySelectorAll('.option-btn:not(.custom-btn)');
-                buttons.forEach(btn => btn.classList.remove('selected'));
-
-                // Add custom label to the button
-                const customBtn = container.querySelector('.custom-btn');
-                customBtn.textContent = value;
-                customBtn.classList.add('selected');
-
+                // Update UI to show pending state
+                updateUI(handle, 'style');
+                showSaveButton(handle);
                 hideCustomInput(handle);
+            }
+        }
+
+        function showCustomLensInput(handle) {
+            document.getElementById(`custom-lens-section-${handle}`).classList.add('show');
+            document.getElementById(`custom-lens-input-${handle}`).focus();
+        }
+
+        function cancelCustomLens(handle) {
+            document.getElementById(`custom-lens-section-${handle}`).classList.remove('show');
+            document.getElementById(`custom-lens-input-${handle}`).value = '';
+        }
+
+        function saveCustomLens(handle) {
+            const input = document.getElementById(`custom-lens-input-${handle}`);
+            const value = input.value.trim();
+            if (value) {
+                // Add to pending state for lens_types (multi-select)
+                pendingTags[handle] = pendingTags[handle] || {};
+                if (!pendingTags[handle]['lens_types']) {
+                    pendingTags[handle]['lens_types'] = [];
+                }
+                // Check if already in pending
+                if (!pendingTags[handle]['lens_types'].includes(value)) {
+                    pendingTags[handle]['lens_types'].push(value);
+                }
+
+                // Update UI to show pending state
+                updateUI(handle, 'lens_types');
+                showSaveButton(handle);
+                cancelCustomLens(handle);
             }
         }
 
