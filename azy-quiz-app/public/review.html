@@ -113,6 +113,29 @@
 
         .option-btn:hover { border-color: #999; transform: scale(1.02); }
 
+        .option-btn.pending {
+            border: 3px dashed #ff9800;
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .option-btn.pending::after {
+            content: '•';
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #ff9800;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
         /* GREEN SELECTION - Very prominent */
         .option-btn.selected {
             border: 3px solid #4caf50;
@@ -201,6 +224,43 @@
         .btn-save { background: #4caf50; color: white; }
         .btn-cancel { background: #f44336; color: white; }
 
+        .save-changes-section {
+            margin-top: 16px;
+            padding: 12px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            border: 2px solid #4caf50;
+            display: none;
+        }
+
+        .save-changes-section.show {
+            display: block;
+        }
+
+        .btn-save-changes {
+            width: 100%;
+            padding: 12px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .btn-save-changes:hover { background: #45a049; }
+
+        .has-changes-badge {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
         .done-section {
             margin-top: 16px;
             padding-top: 12px;
@@ -248,7 +308,7 @@
 <body>
     <div class="header">
         <h1>👓 AZYR Product Tag Review</h1>
-        <p>Click options to select/deselect. Selected items show with green checkmark.</p>
+        <p>Click options to select/deselect (orange = pending). Click "Save Changes" to confirm.</p>
     </div>
 
     <div class="stats">
@@ -351,6 +411,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-structured-field-1990s-polo-club-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('structured-field-1990s-polo-club-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('structured-field-1990s-polo-club-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -429,6 +494,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('measured-silence-1990s-thom-browne-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('measured-silence-1990s-thom-browne-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-measured-silence-1990s-thom-browne-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('measured-silence-1990s-thom-browne-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -511,6 +581,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-shadow-pilot-1990s-valentino-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('shadow-pilot-1990s-valentino-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('shadow-pilot-1990s-valentino-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -589,6 +664,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('bronze-silence-1980s-givenchy-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('bronze-silence-1980s-givenchy-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-bronze-silence-1980s-givenchy-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('bronze-silence-1980s-givenchy-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -671,6 +751,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-neon-atrium-1980s-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('neon-atrium-1980s-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('neon-atrium-1980s-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -749,6 +834,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('architect-s-horizon-1970s-silhouette-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('architect-s-horizon-1970s-silhouette-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-architect-s-horizon-1970s-silhouette-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('architect-s-horizon-1970s-silhouette-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -831,6 +921,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-golden-interval-1970s-charmant-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('golden-interval-1970s-charmant-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('golden-interval-1970s-charmant-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -909,6 +1004,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('stadium-drift-1980s-polo-sport-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('stadium-drift-1980s-polo-sport-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-stadium-drift-1980s-polo-sport-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('stadium-drift-1980s-polo-sport-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -991,6 +1091,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-caffe-aura-1990s-valentino-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('caffe-aura-1990s-valentino-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('caffe-aura-1990s-valentino-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -1069,6 +1174,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('gilded-dusk-1990s-ralph-lauren-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('gilded-dusk-1990s-ralph-lauren-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-gilded-dusk-1990s-ralph-lauren-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('gilded-dusk-1990s-ralph-lauren-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -1151,6 +1261,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-steel-tide-1990s-ralph-lauren-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('steel-tide-1990s-ralph-lauren-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('steel-tide-1990s-ralph-lauren-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -1229,6 +1344,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('midnight-circuit-1980s-tura-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('midnight-circuit-1980s-tura-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-midnight-circuit-1980s-tura-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('midnight-circuit-1980s-tura-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -1311,6 +1431,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-want-to-add-custom-colored-non-prescription-lenses">
+                    <button class="btn-save-changes" onclick="saveChanges('want-to-add-custom-colored-non-prescription-lenses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('want-to-add-custom-colored-non-prescription-lenses')">✓ Done - Next Product</button>
                 </div>
@@ -1389,6 +1514,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('sunlit-whisper-1980s-silhouette-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('sunlit-whisper-1980s-silhouette-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-sunlit-whisper-1980s-silhouette-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('sunlit-whisper-1980s-silhouette-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -1471,6 +1601,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-roseglass-drift-1990s-brendel-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('roseglass-drift-1990s-brendel-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('roseglass-drift-1990s-brendel-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -1549,6 +1684,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('cinematic-edge-1990s-bellagio-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('cinematic-edge-1990s-bellagio-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-cinematic-edge-1990s-bellagio-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('cinematic-edge-1990s-bellagio-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -1631,6 +1771,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-dual-horizon-1980s-john-sterling-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('dual-horizon-1980s-john-sterling-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('dual-horizon-1980s-john-sterling-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -1709,6 +1854,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('crystal-block-2000s-cutler-gross-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('crystal-block-2000s-cutler-gross-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-crystal-block-2000s-cutler-gross-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('crystal-block-2000s-cutler-gross-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -1791,6 +1941,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-paisley-curve-1990s-nouvelle-vague-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('paisley-curve-1990s-nouvelle-vague-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('paisley-curve-1990s-nouvelle-vague-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -1869,6 +2024,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('dual-horizon-1990s-ysl-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('dual-horizon-1990s-ysl-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-dual-horizon-1990s-ysl-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('dual-horizon-1990s-ysl-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -1951,6 +2111,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-scaled-scholar-1990s-giorgio-armani-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('scaled-scholar-1990s-giorgio-armani-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('scaled-scholar-1990s-giorgio-armani-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -2029,6 +2194,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('black-horizon-1990s-dior-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('black-horizon-1990s-dior-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-black-horizon-1990s-dior-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('black-horizon-1990s-dior-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -2111,6 +2281,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-golden-unibrow-1990s-dior-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('golden-unibrow-1990s-dior-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('golden-unibrow-1990s-dior-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -2189,6 +2364,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('gilded-geometry-1980s-dior-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('gilded-geometry-1980s-dior-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-gilded-geometry-1980s-dior-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('gilded-geometry-1980s-dior-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -2271,6 +2451,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-golden-whisper-1980s-dior-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('golden-whisper-1980s-dior-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('golden-whisper-1980s-dior-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -2349,6 +2534,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('amber-lineage-1980s-silhouette-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('amber-lineage-1980s-silhouette-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-amber-lineage-1980s-silhouette-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('amber-lineage-1980s-silhouette-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -2431,6 +2621,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-arc-muse-1980s-dior-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('arc-muse-1980s-dior-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('arc-muse-1980s-dior-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -2509,6 +2704,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('amber-lineage-1980s-dior-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('amber-lineage-1980s-dior-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-amber-lineage-1980s-dior-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('amber-lineage-1980s-dior-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -2591,6 +2791,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-gilded-whisper-1980s-diva-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('gilded-whisper-1980s-diva-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('gilded-whisper-1980s-diva-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -2669,6 +2874,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('caramel-depth-1980s-zeiss-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('caramel-depth-1980s-zeiss-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-caramel-depth-1980s-zeiss-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('caramel-depth-1980s-zeiss-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -2751,6 +2961,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-golden-horizon-1980s-luigi-colani-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('golden-horizon-1980s-luigi-colani-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('golden-horizon-1980s-luigi-colani-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -2829,6 +3044,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('actress-mode-1980s-sophia-loren-glasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('actress-mode-1980s-sophia-loren-glasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-actress-mode-1980s-sophia-loren-glasses">
+                    <button class="btn-save-changes" onclick="saveChanges('actress-mode-1980s-sophia-loren-glasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -2911,6 +3131,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-burnt-honey-1980s-diplomat-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('burnt-honey-1980s-diplomat-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('burnt-honey-1980s-diplomat-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -2989,6 +3214,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('boxer-briefs-1990s-calvin-klein-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('boxer-briefs-1990s-calvin-klein-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-boxer-briefs-1990s-calvin-klein-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('boxer-briefs-1990s-calvin-klein-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -3071,6 +3301,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-honeyline-geometry-1980s-silhouette-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('honeyline-geometry-1980s-silhouette-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('honeyline-geometry-1980s-silhouette-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -3149,6 +3384,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('amber-sculpt-1980s-silhouette-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('amber-sculpt-1980s-silhouette-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-amber-sculpt-1980s-silhouette-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('amber-sculpt-1980s-silhouette-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -3231,6 +3471,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-golden-contour-1970s-christian-dior-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('golden-contour-1970s-christian-dior-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('golden-contour-1970s-christian-dior-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -3309,6 +3554,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('verdant-lineage-1990s-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('verdant-lineage-1990s-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-verdant-lineage-1990s-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('verdant-lineage-1990s-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -3391,6 +3641,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-blue-mirage-1990s-metal-vista-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('blue-mirage-1990s-metal-vista-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('blue-mirage-1990s-metal-vista-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -3469,6 +3724,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('gilded-reverie-1990s-mariella-burani-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('gilded-reverie-1990s-mariella-burani-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-gilded-reverie-1990s-mariella-burani-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('gilded-reverie-1990s-mariella-burani-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -3551,6 +3811,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-golden-lineage-1980s-roy-tower-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('golden-lineage-1980s-roy-tower-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('golden-lineage-1980s-roy-tower-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -3629,6 +3894,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('amber-architect-1980s-anacole-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('amber-architect-1980s-anacole-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-amber-architect-1980s-anacole-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('amber-architect-1980s-anacole-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -3711,6 +3981,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-golden-reverie-1980s-christian-lacroix-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('golden-reverie-1980s-christian-lacroix-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('golden-reverie-1980s-christian-lacroix-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -3789,6 +4064,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('amber-crest-1980s-martin-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('amber-crest-1980s-martin-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-amber-crest-1980s-martin-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('amber-crest-1980s-martin-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -3871,6 +4151,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-honeycut-wrap-1960s-optyl-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('honeycut-wrap-1960s-optyl-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('honeycut-wrap-1960s-optyl-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -3949,6 +4234,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('starlight-cat-eye-1960s-bedazzled-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('starlight-cat-eye-1960s-bedazzled-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-starlight-cat-eye-1960s-bedazzled-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('starlight-cat-eye-1960s-bedazzled-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -4031,6 +4321,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-pop-masquerade-1960s-urbani-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('pop-masquerade-1960s-urbani-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('pop-masquerade-1960s-urbani-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -4109,6 +4404,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('eloquent-1980s-ellen-tracy', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('eloquent-1980s-ellen-tracy', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-eloquent-1980s-ellen-tracy">
+                    <button class="btn-save-changes" onclick="saveChanges('eloquent-1980s-ellen-tracy')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -4191,6 +4491,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-softness-1980s-sro-usa">
+                    <button class="btn-save-changes" onclick="saveChanges('softness-1980s-sro-usa')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('softness-1980s-sro-usa')">✓ Done - Next Product</button>
                 </div>
@@ -4269,6 +4574,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('silver-air-1960s-wire-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('silver-air-1960s-wire-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-silver-air-1960s-wire-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('silver-air-1960s-wire-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -4351,6 +4661,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-mahogany-marble-1990s-giorgio-armani-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('mahogany-marble-1990s-giorgio-armani-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('mahogany-marble-1990s-giorgio-armani-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -4429,6 +4744,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('green-noir-1990s-coco-katchina-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('green-noir-1990s-coco-katchina-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-green-noir-1990s-coco-katchina-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('green-noir-1990s-coco-katchina-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -4511,6 +4831,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-pearl-metro-1990s-la-eyeworks-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('pearl-metro-1990s-la-eyeworks-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('pearl-metro-1990s-la-eyeworks-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -4589,6 +4914,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('hazel-weave-1990s-la-eyeworks-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('hazel-weave-1990s-la-eyeworks-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-hazel-weave-1990s-la-eyeworks-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('hazel-weave-1990s-la-eyeworks-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -4671,6 +5001,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-rapp-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-rapp-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1990s-rapp-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -4749,6 +5084,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('jet-stream-1990s-nike-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('jet-stream-1990s-nike-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-jet-stream-1990s-nike-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('jet-stream-1990s-nike-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -4831,6 +5171,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-bronze-aviator-1990s-hugo-boss-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('bronze-aviator-1990s-hugo-boss-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('bronze-aviator-1990s-hugo-boss-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -4909,6 +5254,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('cobalt-trim-1990s-giorgio-armani-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('cobalt-trim-1990s-giorgio-armani-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-cobalt-trim-1990s-giorgio-armani-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('cobalt-trim-1990s-giorgio-armani-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -4991,6 +5341,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-graphite-precision-1990s-porsche-design-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('graphite-precision-1990s-porsche-design-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('graphite-precision-1990s-porsche-design-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -5069,6 +5424,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('bronze-oval-1990s-jones-new-york-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('bronze-oval-1990s-jones-new-york-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-bronze-oval-1990s-jones-new-york-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('bronze-oval-1990s-jones-new-york-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -5151,6 +5511,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-golden-round-1990s-fossil-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('golden-round-1990s-fossil-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('golden-round-1990s-fossil-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -5229,6 +5594,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('marbled-ocean-1990s-emporio-armani-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('marbled-ocean-1990s-emporio-armani-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-marbled-ocean-1990s-emporio-armani-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('marbled-ocean-1990s-emporio-armani-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -5311,6 +5681,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-steel-rectangle-1980s-neostyle-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('steel-rectangle-1980s-neostyle-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('steel-rectangle-1980s-neostyle-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -5389,6 +5764,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-gold-wire-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-gold-wire-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-gold-wire-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-gold-wire-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -5471,6 +5851,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-brushed-gold-1980s-aviator-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('brushed-gold-1980s-aviator-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('brushed-gold-1980s-aviator-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -5549,6 +5934,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('antique-round-1980s-monty-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('antique-round-1980s-monty-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-antique-round-1980s-monty-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('antique-round-1980s-monty-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -5631,6 +6021,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-alps-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-alps-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-alps-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -5709,6 +6104,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('silver-scholar-1980s-ralph-lauren-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('silver-scholar-1980s-ralph-lauren-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-silver-scholar-1980s-ralph-lauren-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('silver-scholar-1980s-ralph-lauren-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -5791,6 +6191,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-amber-flame-1980s-norris-bloc-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('amber-flame-1980s-norris-bloc-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('amber-flame-1980s-norris-bloc-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -5869,6 +6274,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-eagle-eyes-knicks-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-eagle-eyes-knicks-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-eagle-eyes-knicks-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-eagle-eyes-knicks-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -5951,6 +6361,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-golden-oval-1980s-sergio-tacchini-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('golden-oval-1980s-sergio-tacchini-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('golden-oval-1980s-sergio-tacchini-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -6029,6 +6444,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1970s-luxottica-klixx-2-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1970s-luxottica-klixx-2-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1970s-luxottica-klixx-2-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1970s-luxottica-klixx-2-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -6111,6 +6531,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-marbled-slate-1970s-oakley-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('marbled-slate-1970s-oakley-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('marbled-slate-1970s-oakley-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -6189,6 +6614,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('silver-box-1970s-polaroid-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('silver-box-1970s-polaroid-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-silver-box-1970s-polaroid-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('silver-box-1970s-polaroid-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -6271,6 +6701,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-silhouette-cut-out-1990s-seiko-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('silhouette-cut-out-1990s-seiko-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('silhouette-cut-out-1990s-seiko-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -6349,6 +6784,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('plum-oval-1990s-saki-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('plum-oval-1990s-saki-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-plum-oval-1990s-saki-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('plum-oval-1990s-saki-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -6431,6 +6871,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-crimson-carve-1990s-mugler-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('crimson-carve-1990s-mugler-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('crimson-carve-1990s-mugler-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -6509,6 +6954,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('ebony-layer-1990s-esprit-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('ebony-layer-1990s-esprit-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-ebony-layer-1990s-esprit-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('ebony-layer-1990s-esprit-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -6591,6 +7041,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-neon-edge-1990s-k-jade-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('neon-edge-1990s-k-jade-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('neon-edge-1990s-k-jade-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -6669,6 +7124,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('pink-liner-1990s-ray-ban-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('pink-liner-1990s-ray-ban-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-pink-liner-1990s-ray-ban-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('pink-liner-1990s-ray-ban-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -6751,6 +7211,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-bronze-round-1990s-benetton-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('bronze-round-1990s-benetton-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('bronze-round-1990s-benetton-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -6829,6 +7294,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('midnight-split-1990s-italian-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('midnight-split-1990s-italian-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-midnight-split-1990s-italian-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('midnight-split-1990s-italian-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -6911,6 +7381,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-matte-tortoise-1990s-emporio-armani-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('matte-tortoise-1990s-emporio-armani-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('matte-tortoise-1990s-emporio-armani-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -6989,6 +7464,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('tangerine-edge-1990s-la-eyeworks-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('tangerine-edge-1990s-la-eyeworks-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-tangerine-edge-1990s-la-eyeworks-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('tangerine-edge-1990s-la-eyeworks-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -7071,6 +7551,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-black-keyhole-1990s-komono-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('black-keyhole-1990s-komono-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('black-keyhole-1990s-komono-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -7149,6 +7634,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('crimson-orbit-1990s-zenni-mary-anne-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('crimson-orbit-1990s-zenni-mary-anne-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-crimson-orbit-1990s-zenni-mary-anne-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('crimson-orbit-1990s-zenni-mary-anne-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -7231,6 +7721,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-blush-titanium-1990s-seiko-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('blush-titanium-1990s-seiko-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('blush-titanium-1990s-seiko-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -7309,6 +7804,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('orchid-cut-out-1990s-la-eyeworks-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('orchid-cut-out-1990s-la-eyeworks-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-orchid-cut-out-1990s-la-eyeworks-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('orchid-cut-out-1990s-la-eyeworks-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -7391,6 +7891,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-tartan-burst-1990s-la-eyeworks-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('tartan-burst-1990s-la-eyeworks-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('tartan-burst-1990s-la-eyeworks-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -7469,6 +7974,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('electricity-1980s-axel-s-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('electricity-1980s-axel-s-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-electricity-1980s-axel-s-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('electricity-1980s-axel-s-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -7551,6 +8061,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-sandstone-rectangle-1980s-bcg-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('sandstone-rectangle-1980s-bcg-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('sandstone-rectangle-1980s-bcg-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -7629,6 +8144,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-anne-et-valentin-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-anne-et-valentin-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-anne-et-valentin-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-anne-et-valentin-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -7711,6 +8231,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-korean-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-korean-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-korean-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -7789,6 +8314,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-silhouette-eyglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-silhouette-eyglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-silhouette-eyglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-silhouette-eyglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -7871,6 +8401,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-st-mortiz-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-st-mortiz-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-st-mortiz-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -7949,6 +8484,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('umber-rectangle-1980s-bcg-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('umber-rectangle-1980s-bcg-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-umber-rectangle-1980s-bcg-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('umber-rectangle-1980s-bcg-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -8031,6 +8571,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-alain-afflelou-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-alain-afflelou-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-alain-afflelou-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -8109,6 +8654,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-adrienne-vittadini-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-adrienne-vittadini-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-adrienne-vittadini-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-adrienne-vittadini-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -8191,6 +8741,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1960s-torrence-paris-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1960s-torrence-paris-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1960s-torrence-paris-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -8269,6 +8824,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1960s-bernard-kayman-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1960s-bernard-kayman-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1960s-bernard-kayman-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1960s-bernard-kayman-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -8351,6 +8911,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1960s-polaroid-cat-eye-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1960s-polaroid-cat-eye-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1960s-polaroid-cat-eye-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -8429,6 +8994,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1960s-polaroid-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1960s-polaroid-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1960s-polaroid-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1960s-polaroid-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -8511,6 +9081,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1960s-albert-nipon-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1960s-albert-nipon-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1960s-albert-nipon-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -8589,6 +9164,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1960s-amor-eyewear-sunglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1960s-amor-eyewear-sunglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1960s-amor-eyewear-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1960s-amor-eyewear-sunglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -8671,6 +9251,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-chanel-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-chanel-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1990s-chanel-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -8749,6 +9334,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-jean-lafont-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-jean-lafont-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-jean-lafont-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-jean-lafont-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -8831,6 +9421,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-blush-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-blush-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-blush-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -8909,6 +9504,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1990s-cosmopolitan-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1990s-cosmopolitan-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-cosmopolitan-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-cosmopolitan-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -8991,6 +9591,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1990s-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -9069,6 +9674,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1990s-world-of-frames-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1990s-world-of-frames-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-world-of-frames-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-world-of-frames-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -9151,6 +9761,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-marchon-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-marchon-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-marchon-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -9229,6 +9844,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-renaissance-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-renaissance-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-renaissance-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-renaissance-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -9311,6 +9931,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-valetino-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-valetino-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-valetino-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -9389,6 +10014,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-aristar-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-aristar-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-aristar-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-aristar-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -9471,6 +10101,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1960s-olive-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1960s-olive-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1960s-olive-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -9549,6 +10184,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-pierre-cardin-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-pierre-cardin-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-pierre-cardin-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-pierre-cardin-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -9631,6 +10271,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-bijoux-prinleton-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-bijoux-prinleton-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-bijoux-prinleton-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -9709,6 +10354,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-aviator-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-aviator-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-aviator-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-aviator-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -9791,6 +10441,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-dior-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-dior-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-dior-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -9869,6 +10524,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1960s-peerage-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1960s-peerage-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1960s-peerage-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1960s-peerage-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -9951,6 +10611,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-valentino-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-valentino-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-valentino-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -10029,6 +10694,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-safilo-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-safilo-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-safilo-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-safilo-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -10111,6 +10781,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-drop-arm-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-drop-arm-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-drop-arm-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -10189,6 +10864,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-pink-clear-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-pink-clear-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-pink-clear-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-pink-clear-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -10271,6 +10951,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-silhouette-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-silhouette-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-silhouette-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -10349,6 +11034,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1990s-bolle-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1990s-bolle-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-bolle-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-bolle-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -10431,6 +11121,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-jill-stuart-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-jill-stuart-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1990s-jill-stuart-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -10509,6 +11204,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1990s-versace-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1990s-versace-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-versace-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-versace-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -10591,6 +11291,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-theo-switch-eyeglases">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-theo-switch-eyeglases')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1990s-theo-switch-eyeglases')">✓ Done - Next Product</button>
                 </div>
@@ -10669,6 +11374,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1990s-la-eyeworks-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1990s-la-eyeworks-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-la-eyeworks-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-la-eyeworks-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -10751,6 +11461,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-dior-homme-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-dior-homme-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1990s-dior-homme-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -10829,6 +11544,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1990s-bela-vista-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1990s-bela-vista-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-bela-vista-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-bela-vista-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -10911,6 +11631,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-anne-klein-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-anne-klein-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1990s-anne-klein-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -10989,6 +11714,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1990s-marni-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1990s-marni-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-marni-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-marni-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -11071,6 +11801,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-2000s-paco-rabanne-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('2000s-paco-rabanne-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('2000s-paco-rabanne-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -11149,6 +11884,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-j-faith-glasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-j-faith-glasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-j-faith-glasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-j-faith-glasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -11231,6 +11971,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-optic-2000-eyeglas">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-optic-2000-eyeglas')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-optic-2000-eyeglas')">✓ Done - Next Product</button>
                 </div>
@@ -11309,6 +12054,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1980s-gold-metal-aviators', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1980s-gold-metal-aviators', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-gold-metal-aviators">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-gold-metal-aviators')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -11391,6 +12141,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-oliver-peoples-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-oliver-peoples-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-oliver-peoples-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -11469,6 +12224,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1960s-s-alvarez-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1960s-s-alvarez-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1960s-s-alvarez-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1960s-s-alvarez-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -11551,6 +12311,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-ray-ban-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-ray-ban-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-ray-ban-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -11629,6 +12394,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1990s-mugler-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1990s-mugler-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-mugler-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-mugler-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -11711,6 +12481,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-bellagio-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-bellagio-eyeglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1990s-bellagio-eyeglasses')">✓ Done - Next Product</button>
                 </div>
@@ -11789,6 +12564,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1990s-seiko-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1990s-seiko-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-seiko-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-seiko-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -11871,6 +12651,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-blinde-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-blinde-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1990s-blinde-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -11949,6 +12734,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('1990s-metal-frame-eyeglasses', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('1990s-metal-frame-eyeglasses', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1990s-metal-frame-eyeglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('1990s-metal-frame-eyeglasses')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -12031,6 +12821,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-rosewood-1980s-dunhill-pink-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('rosewood-1980s-dunhill-pink-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('rosewood-1980s-dunhill-pink-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -12109,6 +12904,11 @@
                         <button class="option-btn lens" data-value="rx" onclick="toggleMultiple('orb-2000s-vivienne-westwood-frames', 'lens_types', 'rx')">💊 Prescription</button>
                         <button class="option-btn lens" data-value="blue_light" onclick="toggleMultiple('orb-2000s-vivienne-westwood-frames', 'lens_types', 'blue_light')">💡 Blue Light</button>
                     </div>
+                </div>
+
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-orb-2000s-vivienne-westwood-frames">
+                    <button class="btn-save-changes" onclick="saveChanges('orb-2000s-vivienne-westwood-frames')">💾 Save Changes</button>
                 </div>
 
                 <div class="done-section">
@@ -12191,6 +12991,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-rouge-refine-chanel-sunglasses">
+                    <button class="btn-save-changes" onclick="saveChanges('rouge-refine-chanel-sunglasses')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('rouge-refine-chanel-sunglasses')">✓ Done - Next Product</button>
                 </div>
@@ -12271,6 +13076,11 @@
                     </div>
                 </div>
 
+                <!-- Save Changes Section -->
+                <div class="save-changes-section" id="save-section-1980s-dior-shield">
+                    <button class="btn-save-changes" onclick="saveChanges('1980s-dior-shield')">💾 Save Changes</button>
+                </div>
+
                 <div class="done-section">
                     <button class="btn-done" onclick="markReviewed('1980s-dior-shield')">✓ Done - Next Product</button>
                 </div>
@@ -12284,7 +13094,8 @@
     </div>
 
     <script>
-        const productTags = {};
+        const productTags = {};      // Saved tags (green)
+        const pendingTags = {};       // Pending changes (orange)
         const reviewedProducts = new Set();
 
         // Initialize with existing tags
@@ -16597,64 +17408,121 @@
         });
 
         function toggleSingle(handle, category, value) {
-            productTags[handle] = productTags[handle] || {};
-            const currentValue = productTags[handle][category];
+            pendingTags[handle] = pendingTags[handle] || {};
+            const currentSaved = productTags[handle]?.[category];
+            const currentPending = pendingTags[handle][category];
 
-            // Deselect current if clicking same value
-            if (currentValue === value) {
-                delete productTags[handle][category];
+            // Toggle in pending state
+            if (currentPending === value) {
+                // Already pending this value, remove it
+                delete pendingTags[handle][category];
             } else {
-                productTags[handle][category] = value;
+                // Set new pending value
+                pendingTags[handle][category] = value;
             }
 
             updateUI(handle, category);
+            showSaveButton(handle);
         }
 
         function toggleMultiple(handle, category, value) {
-            productTags[handle] = productTags[handle] || {};
-            if (!productTags[handle][category]) {
-                productTags[handle][category] = [];
+            pendingTags[handle] = pendingTags[handle] || {};
+            if (!pendingTags[handle][category]) {
+                // Start with saved values as base
+                const saved = productTags[handle]?.[category] || [];
+                pendingTags[handle][category] = [...saved];
             }
 
-            const arr = productTags[handle][category];
+            const arr = pendingTags[handle][category];
             const index = arr.indexOf(value);
 
             if (index > -1) {
                 arr.splice(index, 1);
+                if (arr.length === 0) {
+                    delete pendingTags[handle][category];
+                }
             } else {
                 arr.push(value);
             }
 
             updateUI(handle, category);
+            showSaveButton(handle);
+        }
+
+        function showSaveButton(handle) {
+            const saveSection = document.getElementById(`save-section-${handle}`);
+            if (saveSection && Object.keys(pendingTags[handle] || {}).length > 0) {
+                saveSection.classList.add('show');
+            }
+        }
+
+        function saveChanges(handle) {
+            // Apply all pending changes to saved tags
+            if (pendingTags[handle]) {
+                Object.keys(pendingTags[handle]).forEach(category => {
+                    const value = pendingTags[handle][category];
+                    if (Array.isArray(value)) {
+                        if (value.length === 0) {
+                            delete productTags[handle]?.[category];
+                        } else {
+                            productTags[handle] = productTags[handle] || {};
+                            productTags[handle][category] = value;
+                        }
+                    } else {
+                        productTags[handle] = productTags[handle] || {};
+                        productTags[handle][category] = value;
+                    }
+                });
+
+                // Clear pending state
+                delete pendingTags[handle];
+
+                // Hide save button
+                const saveSection = document.getElementById(`save-section-${handle}`);
+                saveSection.classList.remove('show');
+
+                // Update all categories for this product
+                ['style', 'material', 'face_shapes', 'use_cases', 'lens_types'].forEach(cat => {
+                    updateUI(handle, cat);
+                });
+
+                console.log(`Saved changes for ${handle}`);
+            }
         }
 
         function updateUI(handle, category) {
-            // Update button classes
             if (category === 'face_shapes' || category === 'use_cases' || category === 'lens_types') {
                 // Multi-select
-                const container = document.querySelector(`[data-handle="${handle}"] #${category.replace('_', '-')}-options-{handle}`);
+                const container = document.querySelector(`[data-handle="${handle}"] #${category.replace('_', '-')}-options-${handle}`);
                 const buttons = container.querySelectorAll('.option-btn');
-                const values = productTags[handle]?.[category] || [];
+                const savedValues = productTags[handle]?.[category] || [];
+                const pendingValues = pendingTags[handle]?.[category] || savedValues; // Default to saved if no pending
 
                 buttons.forEach(btn => {
                     const val = btn.getAttribute('data-value');
-                    if (values.includes(val)) {
+                    btn.classList.remove('selected', 'pending');
+
+                    if (pendingValues.includes(val)) {
+                        btn.classList.add('pending');
+                    } else if (savedValues.includes(val)) {
                         btn.classList.add('selected');
-                    } else {
-                        btn.classList.remove('selected');
                     }
                 });
             } else {
                 // Single select
-                const container = document.querySelector(`[data-handle="${handle}"] #${category.replace('_', '-')}-options-{handle}`);
+                const container = document.querySelector(`[data-handle="${handle}"] #${category.replace('_', '-')}-options-${handle}`);
                 const buttons = container.querySelectorAll('.option-btn');
-                const value = productTags[handle]?.[category];
+                const savedValue = productTags[handle]?.[category];
+                const pendingValue = pendingTags[handle]?.[category];
 
                 buttons.forEach(btn => {
-                    if (btn.getAttribute('data-value') === value) {
+                    const val = btn.getAttribute('data-value');
+                    btn.classList.remove('selected', 'pending');
+
+                    if (pendingValue === val) {
+                        btn.classList.add('pending');
+                    } else if (savedValue === val) {
                         btn.classList.add('selected');
-                    } else {
-                        btn.classList.remove('selected');
                     }
                 });
             }
@@ -16674,19 +17542,13 @@
             const input = document.getElementById(`custom-text-${handle}`);
             const value = input.value.trim();
             if (value) {
-                productTags[handle] = productTags[handle] || {};
-                productTags[handle]['style'] = value;
+                // Add to pending state
+                pendingTags[handle] = pendingTags[handle] || {};
+                pendingTags[handle]['style'] = value;
 
-                // Update UI - remove selected from all, then add custom indicator
-                const container = document.querySelector(`[data-handle="${handle}"] #style-options-${handle}`);
-                const buttons = container.querySelectorAll('.option-btn:not(.custom-btn)');
-                buttons.forEach(btn => btn.classList.remove('selected'));
-
-                // Add custom label to the button
-                const customBtn = container.querySelector('.custom-btn');
-                customBtn.textContent = value;
-                customBtn.classList.add('selected');
-
+                // Update UI to show pending state
+                updateUI(handle, 'style');
+                showSaveButton(handle);
                 hideCustomInput(handle);
             }
         }
