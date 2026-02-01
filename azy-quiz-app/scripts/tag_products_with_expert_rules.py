@@ -65,9 +65,13 @@ FRAME_STYLE_PATTERNS = {
         r'\bound\b', r'circle', r'john.?lennon', r'round.*frame',
         r'circular', r'perfect.*circle'
     ],
+    'oval': [
+        r'\boval\b', r'oval.*shape', r'oval.*glasses', r'oval.*frame',
+        r'egg.*shape', r'ellipse'
+    ],
     'rectangle': [
         r'\brectangle\b', r'horizontal.*elongated', r'oblong',
-        r'rectangular.*shape', r'horizontal.*lines'
+        r'rectangular', r'horizontal.*lines', r'micro.*rectangular'
     ],
     'square': [
         r'\bsquare\b', r'geometric', r'angular.*square',
