@@ -1,13 +1,11 @@
 /**
- * Projects Page
- *
- * Display and manage trading strategy projects.
+ * Projects Page - Clean Design
  */
 
 'use client';
 
 import { useProjects } from '@/lib/hooks';
-import { FolderOpen, Calendar, Tag } from 'lucide-react';
+import { FolderOpen, Calendar, Tag, Sparkles } from 'lucide-react';
 
 export default function ProjectsPage() {
   const { projects, count, isLoading, error } = useProjects();
@@ -16,8 +14,8 @@ export default function ProjectsPage() {
     return (
       <div className="flex h-full items-center justify-center">
         <div className="text-center">
-          <div className="mb-4 h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent mx-auto" />
-          <p className="text-muted-foreground">Loading projects...</p>
+          <div className="spinner spinner-lg mx-auto mb-4" />
+          <p className="text-sm text-text-muted">Loading projects...</p>
         </div>
       </div>
     );
@@ -27,31 +25,33 @@ export default function ProjectsPage() {
     return (
       <div className="flex h-full items-center justify-center">
         <div className="text-center">
-          <p className="mb-2 text-lg font-medium text-error">Error loading projects</p>
-          <p className="text-sm text-muted-foreground">{error.message}</p>
+          <p className="mb-2 text-sm font-medium text-error">Error loading projects</p>
+          <p className="text-xs text-text-muted">{error.message}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex-1 overflow-y-auto p-6">
-      <div className="mx-auto max-w-6xl">
+    <div className="flex-1 overflow-y-auto">
+      <div className="max-w-6xl mx-auto p-6">
+        {/* Header */}
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="mb-2 text-2xl font-bold">Projects</h1>
-            <p className="text-muted-foreground">
-              {count} {count === 1 ? 'project' : 'projects'} stored
+            <h1 className="mb-2 text-xl font-semibold tracking-tight">Projects</h1>
+            <p className="text-sm text-text-muted">
+              {count} {count === 1 ? 'project' : 'projects'}
             </p>
           </div>
         </div>
 
+        {/* Empty state */}
         {projects.length === 0 ? (
-          <div className="rounded-lg border border-border bg-card p-8 text-center">
-            <FolderOpen className="mx-auto mb-4 h-12 w-12 text-muted-foreground" />
-            <h3 className="mb-2 text-lg font-medium">No projects yet</h3>
-            <p className="text-sm text-muted-foreground">
-              Projects will be created from your conversations and strategy development sessions.
+          <div className="card text-center p-12">
+            <FolderOpen className="mx-auto mb-4 h-12 w-12 text-text-muted" />
+            <h3 className="mb-2 text-base font-medium">No projects yet</h3>
+            <p className="text-sm text-text-muted">
+              Projects will be created from your conversations.
             </p>
           </div>
         ) : (
@@ -71,42 +71,44 @@ function ProjectCard({ project }: { project: any }) {
   const updatedDate = new Date(project.updated_at).toLocaleDateString();
 
   return (
-    <div className="rounded-lg border border-border bg-card p-6 transition-colors hover:bg-secondary">
+    <div className="card card-interactive">
       <div className="mb-4">
-        <h3 className="mb-1 text-lg font-semibold">{project.name}</h3>
-        <p className="text-sm text-muted-foreground line-clamp-2">
+        <div className="flex items-center gap-2 mb-2">
+          <Sparkles className="h-4 w-4 text-primary" />
+          <h3 className="font-medium">{project.name}</h3>
+        </div>
+        <p className="text-xs text-text-muted line-clamp-2 min-h-[2.5rem]">
           {project.description}
         </p>
       </div>
 
-      <div className="space-y-3 text-sm">
-        <div className="flex items-center gap-2 text-muted-foreground">
-          <Calendar className="h-4 w-4" />
+      <div className="space-y-2 text-xs">
+        <div className="flex items-center gap-2 text-text-muted">
+          <Calendar className="h-3.5 w-3.5" />
           <span>Created {createdDate}</span>
         </div>
 
-        <div className="flex items-center gap-2 text-muted-foreground">
-          <Calendar className="h-4 w-4" />
+        <div className="flex items-center gap-2 text-text-muted">
+          <Calendar className="h-3.5 w-3.5" />
           <span>Updated {updatedDate}</span>
         </div>
 
-        <div className="flex items-center gap-2 text-muted-foreground">
-          <FolderOpen className="h-4 w-4" />
+        <div className="flex items-center gap-2 text-text-muted">
+          <FolderOpen className="h-3.5 w-3.5" />
           <span>
-            {project.scanners.length} {project.scanners.length === 1 ? 'scanner' : 'scanners'},
-            {project.strategies.length} {project.strategies.length === 1 ? 'strategy' : 'strategies'}
+            {project.scanners.length} {project.scanners.length === 1 ? 'scanner' : 'scanners'}
+            {project.strategies.length > 0 && (
+              <>, {project.strategies.length} {project.strategies.length === 1 ? 'strategy' : 'strategies'}</>
+            )}
           </span>
         </div>
 
-        {project.tags.length > 0 && (
+        {project.tags?.length > 0 && (
           <div className="flex items-start gap-2">
-            <Tag className="h-4 w-4 text-muted-foreground mt-0.5" />
+            <Tag className="h-3.5 w-3.5 text-text-muted mt-0.5" />
             <div className="flex flex-wrap gap-1">
               {project.tags.map((tag: string) => (
-                <span
-                  key={tag}
-                  className="rounded-full bg-secondary px-2 py-0.5 text-xs text-muted-foreground"
-                >
+                <span key={tag} className="badge badge-primary">
                   {tag}
                 </span>
               ))}
@@ -114,10 +116,6 @@ function ProjectCard({ project }: { project: any }) {
           </div>
         )}
       </div>
-
-      <button className="mt-4 w-full rounded-lg border border-border px-4 py-2 text-sm font-medium transition-colors hover:bg-secondary">
-        View Details
-      </button>
     </div>
   );
 }

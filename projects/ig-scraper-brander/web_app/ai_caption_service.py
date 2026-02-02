@@ -1267,23 +1267,43 @@ CONTENT PRINCIPLES:
         # Build user prompt based on caption length preference
         length_instruction = ""
         max_tokens = 2000
+        use_two_part_generation = False
 
         if caption_length_pref == "story":
+            # Use 2-part generation for story mode to avoid cutoffs
+            use_two_part_generation = True
             length_instruction = """
-**STORY MODE - DEEP NARRATIVE REQUIRED**
+**STORY MODE - PART 1 OF 2 (CHAPTERS 1-4)**
 
-Write a DEEP, engaging narrative caption (750-1000+ words).
+Write a DEEP, MULTI-CHAPTER narrative Instagram caption. This is PART 1 of 2.
 
-This should be a substantial, story-driven caption that:
-- Opens with a powerful, thought-provoking statement
-- Tells a compelling story or shares deep insights
-- Builds an emotional arc throughout
-- Provides genuine value and transformation
-- Ends with a natural, impactful conclusion
+Write the FIRST 4 CHAPTERS (350-450 words total):
 
-Write this as a natural flowing narrative - no chapter numbers, no headers. Just deep, engaging content.
+**CHAPTER 1 - THE HOOK (50-75 words)**
+Start with a powerful, scroll-stopping statement. Use curiosity gaps, counter-intuitive claims, or bold revelations.
+BAD: "Have you ever wondered about..."
+GOOD: "You've been lied to about your body's true potential"
+
+**CHAPTER 2 - THE SETUP (75-100 words)**
+Immediately bridge from the hook with a specific story, example, or context. Use "you" and "your" to involve the reader. Add specific details like numbers, names, dates.
+BAD: "Many people believe that..."
+GOOD: "In 1903, Georges Lakhovsky invented a device that was installed in hospitals across Europe. It cured cancer. Then it disappeared."
+
+**CHAPTER 3 - THE REVELATION (75-100 words)**
+Reveal the core insight, secret, or truth. Build emotional tension. Make it feel significant and transformative.
+BAD: "The truth is that our bodies are powerful."
+GOOD: "Your body isn't a machine. It's a living, breathing electromagnetic field. And for 100 years, this knowledge has been systematically suppressed."
+
+**CHAPTER 4 - THE EVIDENCE (75-100 words)**
+Back up your claims with proof. Use specific examples, studies, or historical facts. Make it undeniable.
+BAD: "Studies show this works."
+GOOD: "When Royal Rife demonstrated this in 1934, medical witnesses watched under microscopes as pathogens were destroyed in real-time. The results were documented, then buried."
+
+STOP after Chapter 4. Part 2 will continue with Chapters 5-7.
+
+Remember: NO chapter headers like "Chapter 1:". Just write the flowing narrative.
 """
-            max_tokens = 3500
+            max_tokens = 1800  # First part limit
         elif caption_length_pref == "short":
             length_instruction = """
 **SHORT MODE - PUNCHY & CONCISE**
@@ -1303,7 +1323,7 @@ Build a complete thought with supporting details.
 """
             max_tokens = 2000
 
-        print(f"[DEBUG] caption_length_preference={caption_length_pref}, max_tokens={max_tokens}")
+        print(f"[DEBUG] caption_length_preference={caption_length_pref}, max_tokens={max_tokens}, two_part={use_two_part_generation}")
 
         messages = [
             {
@@ -1437,6 +1457,59 @@ If writing story length (750-1000+ words), structure as a journey:
 6. **Transformation** (100-150 words) - What becomes possible
 7. **Conclusion** (100-150 words) - Final thought and call to reflection
 
+## STRONG ENDING & CONCLUSION PATTERNS
+
+The ending is just as important as the hook. It's what people remember and share.
+
+❌ **WEAK ENDINGS TO AVOID:**
+- "Thanks for reading!" (generic, adds no value)
+- "Follow for more!" (self-serving, weak)
+- "Let me know your thoughts!" (lazy engagement bait)
+- "Drop a comment below!" (cliché, overused)
+- "Share this with someone who needs it!" (preachy)
+- Trail off without completing the thought
+- Repeat the hook without adding new insight
+- End with a generic platitude
+
+✅ **USE THESE POWERFUL ENDING PATTERNS:**
+
+🎯 **CALL TO REFLECTION (makes them think):**
+- "The question isn't whether this is true. The question is: what will you do with this information now?"
+- "So I'll ask you again: are you ready to see what's been hidden in plain sight?"
+- "This isn't about believing me. It's about believing what's already inside you."
+- "The real question: why was this hidden? And what else don't you know?"
+
+🎯 **CALL TO ACTION (specific, meaningful):**
+- "If you're ready to go deeper, comment 'GUIDE' below and I'll send you the full breakdown."
+- "Save this for when you need to remember: your body is not a machine. It's a miracle."
+- "Share this with someone who's been searching for answers."
+
+🎯 **POWER STATEMENT (memorable):**
+- "This changes everything. And once you see it, you can't unsee it."
+- "Your body knows. It's been waiting for you to remember."
+- "The truth has always been there. Waiting for you to notice."
+
+🎯 **OPEN LOOP (creates curiosity):**
+- "And here's the thing nobody talks about: what happens when we all remember?"
+- "Which brings us to the real question: if this works, what else are we capable of?"
+- "The best part? This is just the beginning."
+
+🎯 **PERSONAL COMMITMENT (creates accountability):**
+- "I'm done ignoring this. And I hope you are too."
+- "From now on, I'm making a different choice. I hope you'll join me."
+
+🎯 **VISIONARY ENDING (inspires hope):**
+- "Imagine what becomes possible when millions of us remember this together."
+- "We're at the edge of a massive shift. And you're part of it."
+- "The future belongs to those who remember who they really are."
+
+**ENDING RULES:**
+- End with IMPACT, not filler
+- Leave them with something to think about
+- Make it shareable (people quote good endings)
+- If using CTA, make it specific and valuable
+- NO generic engagement bait
+
 ## CRITICAL PRODUCTION RULES
 
 You are writing a FINAL, PRODUCTION-READY Instagram caption that will be posted directly.
@@ -1553,6 +1626,126 @@ Generate the caption now:"""
         # Remove multiple consecutive blank lines
         import re
         caption = re.sub(r'\n\n\n+', '\n\n', caption)
+
+        # 2-PART GENERATION: For story mode, generate the second part to avoid cutoffs
+        if use_two_part_generation and caption_length_pref == "story":
+            print(f"[AI Processing] Using 2-part generation for story mode")
+            print(f"[AI Processing] Part 1 completed with {len(caption)} characters")
+
+            # Store part 1
+            part1 = caption
+
+            # Get the last few sentences of part 1 to provide context for continuation
+            part1_lines = caption.split('\n')
+            part1_context = '\n'.join(part1_lines[-3:]) if len(part1_lines) > 3 else caption
+
+            # Generate part 2
+            part2_messages = [
+                {
+                    "role": "system",
+                    "content": f"""You are continuing a DEEP, MULTI-CHAPTER Instagram caption narrative.
+
+## YOUR TASK - PART 2 OF 2 (CHAPTERS 5-7):
+
+Continue the caption from where it left off. Write CHAPTERS 5-7 (300-400 words total).
+
+The first half ended with:
+{part1_context}
+
+**CHAPTER 5 - THE TRANSFORMATION (75-100 words)**
+Describe what becomes possible. Show the before/after. Paint a picture of the new reality.
+Example: "When you remember this, everything changes. You stop trusting external authority and start trusting your own body. You realize you were never broken—you were just disconnected."
+
+**CHAPTER 6 - PRACTICAL APPLICATION (75-100 words)**
+Give specific, actionable steps. Make it tangible. Use "you" and "your."
+Example: "Here's how to test this: Place your hands on your chest. Feel that pulse? That's not just a heartbeat. That's electromagnetic communication. Your cells are talking to each other right now."
+
+**CHAPTER 7 - THE CONCLUSION (75-100 words)**
+End with power. Use one of these patterns:
+- CALL TO REFLECTION: "The question isn't whether this is true. The question is: what will you do with this information now?"
+- POWER STATEMENT: "Your body knows. It's been waiting for you to remember."
+- VISIONARY: "Imagine what becomes possible when millions of us remember this together."
+- OPEN LOOP: "And here's the thing nobody talks about: what happens when we all remember?"
+
+NO generic endings like "Thanks for reading!" or "Follow for more!"
+
+{emoji_rules}
+
+{hashtag_rules}
+
+{spacing_rules}
+
+**CRITICAL:**
+- NO chapter headers like "Chapter 5:" - just flow naturally
+- Start directly with continuation text
+- Make it feel like ONE cohesive narrative
+- End with IMPACT
+"""
+                },
+                {
+                    "role": "user",
+                    "content": f"""Continue this Instagram caption. Write Chapters 5-7 (300-400 words).
+
+First half ended with:
+\"{part1_context}\"
+
+Continue with:
+- Chapter 5: The Transformation
+- Chapter 6: Practical Application
+- Chapter 7: Powerful Conclusion
+
+Make it flow naturally. End with something memorable.
+
+**Content Type**: {analysis.get('content_type', 'general')}
+**Vibe**: {analysis.get('vibe', 'engaging')}
+
+Continue the caption now:"""
+                }
+            ]
+
+            print(f"[AI Processing] Generating part 2...")
+            part2_response = client.generate_completion(
+                messages=part2_messages,
+                temperature=0.7,
+                max_tokens=2000,  # Second part limit
+                reasoning=False
+            )
+
+            if "error" in part2_response:
+                print(f"[AI Processing] Part 2 generation failed: {part2_response['error']}")
+                print(f"[AI Processing] Using part 1 only ({len(part1)} characters)")
+                caption = part1  # Fall back to part 1 only
+            elif "choices" not in part2_response or len(part2_response["choices"]) == 0:
+                print(f"[AI Processing] Part 2 returned empty, using part 1 only")
+                caption = part1
+            else:
+                part2 = part2_response["choices"][0]["message"]["content"].strip()
+
+                # Clean up part 2
+                part2 = part2.replace('**', '')  # Remove bold markdown
+                # Remove any meta-commentary from part 2
+                if any(phrase in part2.lower() for phrase in ['here is the continuation', 'part 2', 'continued from', 'second half']):
+                    part2_lines = part2.split('\n')
+                    part2_lines = [l for l in part2_lines if not any(phrase in l.lower() for phrase in ['here is the continuation', 'part 2:', 'continued from', 'second half:'])]
+                    part2 = '\n'.join(part2_lines).strip()
+
+                # Stitch parts together with a smooth transition
+                # Check if part1 ends mid-sentence or mid-paragraph
+                if part1.endswith('...') or len(part1.split('\n')[-1]) < 50:
+                    # Part 1 ended mid-paragraph, just concatenate
+                    caption = part1 + ' ' + part2
+                else:
+                    # Part 1 ended at a natural break, add paragraph break
+                    caption = part1 + '\n\n' + part2
+
+                print(f"[AI Processing] Part 2 completed with {len(part2)} characters")
+                print(f"[AI Processing] Total stitched caption: {len(caption)} characters")
+
+                # Clean up the stitched caption
+                caption = re.sub(r'\n\n\n+', '\n\n', caption)  # Remove excessive line breaks
+                caption = caption.strip()
+
+        # Only add ManyChat CTA if keyword is set (not empty)
 
         # Only add ManyChat CTA if keyword is set (not empty)
         if manychat_keyword and manychat_keyword.strip() and manychat_keyword.upper() not in caption.upper():

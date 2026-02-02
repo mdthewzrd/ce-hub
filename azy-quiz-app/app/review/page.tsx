@@ -8,7 +8,7 @@ export default function ReviewPage() {
 
   useEffect(() => {
     // Fetch the HTML content
-    fetch('/verification/SIMPLE_REVIEW.html')
+    fetch('/review.html')
       .then(res => res.text())
       .then(html => {
         setHtmlContent(html);
