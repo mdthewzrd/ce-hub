@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZYR Tagging Reference - CE-Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #13131a;
+            --bg-card: #1a1a24;
+            --border-color: #2a2a3a;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0b0;
+            --accent-primary: #00dc82;
+            --accent-secondary: #7c3aed;
+            --accent-tertiary: #f59e0b;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-secondary);
+            padding: 16px 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-brand h1 {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 20px 24px;
+            background: linear-gradient(135deg, rgba(0, 220, 130, 0.1), rgba(124, 58, 237, 0.1));
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-header .emoji {
+            font-size: 24px;
+        }
+
+        .section-content {
+            padding: 24px;
+        }
+
+        .reference-item {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+
+        .reference-item:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 20px rgba(0, 220, 130, 0.1);
+        }
+
+        .reference-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .frame-style-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .frame-style-name .icon {
+            font-size: 22px;
+        }
+
+        .compatibility-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .face-shapes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .face-shape-tag {
+            background: rgba(0, 220, 130, 0.15);
+            color: var(--accent-primary);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 220, 130, 0.3);
+        }
+
+        .use-cases {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .use-case-tag {
+            background: rgba(124, 58, 237, 0.15);
+            color: var(--accent-secondary);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .lens-item {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+
+        .lens-item:hover {
+            border-color: var(--accent-tertiary);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.1);
+        }
+
+        .lens-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .lens-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-tertiary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lens-name .icon {
+            font-size: 22px;
+        }
+
+        .lens-use-cases {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .lens-use-case-tag {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-tertiary);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .quick-reference {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .quick-reference h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .tip-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tip-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 12px;
+        }
+
+        .tip-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .reference-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .nav-brand h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Top Navigation -->
+        <div class="top-nav">
+            <div class="nav-brand">
+                <h1>CE-Hub</h1>
+                <span class="badge">Reference</span>
+            </div>
+            <div class="nav-links">
+                <a href="/review.html" class="nav-link">← Back to Review</a>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>📚 Tagging Reference Guide</h1>
+            <p>Quick reference for frame styles, face shapes, lens types, and use cases</p>
+        </div>
+
+        <!-- Reference Grid -->
+        <div class="reference-grid">
+            <!-- Frame Styles to Face Shapes -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2><span class="emoji">👓</span> Frame Styles → Compatible Face Shapes</h2>
+                </div>
+                <div class="section-content">
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">✈️</span> Aviator
+                        </div>
+                        <div class="compatibility-label">Best for these face shapes:</div>
+                        <div class="face-shapes">
+                            <span class="face-shape-tag">Heart</span>
+                            <span class="face-shape-tag">Oval</span>
+                            <span class="face-shape-tag">Square</span>
+                            <span class="face-shape-tag">Diamond</span>
+                        </div>
+                    </div>
+
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">🐱</span> Cat Eye
+                        </div>
+                        <div class="compatibility-label">Best for these face shapes:</div>
+                        <div class="face-shapes">
+                            <span class="face-shape-tag">Heart</span>
+                            <span class="face-shape-tag">Oval</span>
+                            <span class="face-shape-tag">Round</span>
+                            <span class="face-shape-tag">Square</span>
+                            <span class="face-shape-tag">Diamond</span>
+                        </div>
+                    </div>
+
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">⭕</span> Round
+                        </div>
+                        <div class="compatibility-label">Best for these face shapes:</div>
+                        <div class="face-shapes">
+                            <span class="face-shape-tag">Heart</span>
+                            <span class="face-shape-tag">Square</span>
+                            <span class="face-shape-tag">Diamond</span>
+                        </div>
+                    </div>
+
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">▭</span> Rectangle
+                        </div>
+                        <div class="compatibility-label">Best for these face shapes:</div>
+                        <div class="face-shapes">
+                            <span class="face-shape-tag">Heart</span>
+                            <span class="face-shape-tag">Oval</span>
+                            <span class="face-shape-tag">Round</span>
+                            <span class="face-shape-tag">Diamond</span>
+                        </div>
+                    </div>
+
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">⬜</span> Square
+                        </div>
+                        <div class="compatibility-label">Best for these face shapes:</div>
+                        <div class="face-shapes">
+                            <span class="face-shape-tag">Oval</span>
+                            <span class="face-shape-tag">Round</span>
+                        </div>
+                    </div>
+
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">🚧</span> Wayfarer
+                        </div>
+                        <div class="compatibility-label">Best for these face shapes:</div>
+                        <div class="face-shapes">
+                            <span class="face-shape-tag">Heart</span>
+                            <span class="face-shape-tag">Oval</span>
+                            <span class="face-shape-tag">Round</span>
+                            <span class="face-shape-tag">Square</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lens Types to Use Cases -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2><span class="emoji">🔆</span> Lens Types → Recommended Use Cases</h2>
+                </div>
+                <div class="section-content">
+                    <div class="lens-item">
+                        <div class="lens-name">
+                            <span class="icon">💻</span> Blue Light
+                        </div>
+                        <div class="compatibility-label">Best for:</div>
+                        <div class="lens-use-cases">
+                            <span class="lens-use-case-tag">At Desk</span>
+                        </div>
+                    </div>
+
+                    <div class="lens-item">
+                        <div class="lens-name">
+                            <span class="icon">☀️</span> Polarized
+                        </div>
+                        <div class="compatibility-label">Best for:</div>
+                        <div class="lens-use-cases">
+                            <span class="lens-use-case-tag">Sport</span>
+                            <span class="lens-use-case-tag">Day</span>
+                        </div>
+                    </div>
+
+                    <div class="lens-item">
+                        <div class="lens-name">
+                            <span class="icon">👁️</span> Prescription (RX)
+                        </div>
+                        <div class="compatibility-label">Best for:</div>
+                        <div class="lens-use-cases">
+                            <span class="lens-use-case-tag">Day</span>
+                            <span class="lens-use-case-tag">Night</span>
+                            <span class="lens-use-case-tag">Casual</span>
+                            <span class="lens-use-case-tag">At Desk</span>
+                            <span class="lens-use-case-tag">Going Out</span>
+                            <span class="lens-use-case-tag">Sport</span>
+                        </div>
+                    </div>
+
+                    <div class="lens-item">
+                        <div class="lens-name">
+                            <span class="icon">🌈</span> Tinted
+                        </div>
+                        <div class="compatibility-label">Best for:</div>
+                        <div class="lens-use-cases">
+                            <span class="lens-use-case-tag">Day</span>
+                            <span class="lens-use-case-tag">Night</span>
+                        </div>
+                    </div>
+
+                    <div class="lens-item">
+                        <div class="lens-name">
+                            <span class="icon">✨</span> Custom
+                        </div>
+                        <div class="compatibility-label">Best for:</div>
+                        <div class="lens-use-cases">
+                            <span class="lens-use-case-tag">Going Out</span>
+                            <span class="lens-use-case-tag">Casual</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Use Cases to Frame Styles -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2><span class="emoji">🎯</span> Use Cases → Recommended Frame Styles</h2>
+                </div>
+                <div class="section-content">
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">☀️</span> Day
+                        </div>
+                        <div class="compatibility-label">Recommended styles:</div>
+                        <div class="use-cases">
+                            <span class="use-case-tag">Rectangle</span>
+                            <span class="use-case-tag">Aviator</span>
+                            <span class="use-case-tag">Wayfarer</span>
+                            <span class="use-case-tag">Cat Eye</span>
+                        </div>
+                    </div>
+
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">🌙</span> Night
+                        </div>
+                        <div class="compatibility-label">Recommended styles:</div>
+                        <div class="use-cases">
+                            <span class="use-case-tag">Square</span>
+                            <span class="use-case-tag">Wayfarer</span>
+                            <span class="use-case-tag">Round</span>
+                        </div>
+                    </div>
+
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">🎉</span> Going Out
+                        </div>
+                        <div class="compatibility-label">Recommended styles:</div>
+                        <div class="use-cases">
+                            <span class="use-case-tag">Square</span>
+                            <span class="use-case-tag">Aviator</span>
+                            <span class="use-case-tag">Wayfarer</span>
+                            <span class="use-case-tag">Cat Eye</span>
+                            <span class="use-case-tag">Rectangle</span>
+                        </div>
+                    </div>
+
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">😌</span> Casual
+                        </div>
+                        <div class="compatibility-label">Recommended styles:</div>
+                        <div class="use-cases">
+                            <span class="use-case-tag">Round</span>
+                            <span class="use-case-tag">Cat Eye</span>
+                            <span class="use-case-tag">Rectangle</span>
+                            <span class="use-case-tag">Wayfarer</span>
+                            <span class="use-case-tag">Square</span>
+                            <span class="use-case-tag">Aviator</span>
+                        </div>
+                    </div>
+
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">🏃</span> Sport
+                        </div>
+                        <div class="compatibility-label">Recommended styles:</div>
+                        <div class="use-cases">
+                            <span class="use-case-tag">Aviator</span>
+                            <span class="use-case-tag">Rectangle</span>
+                        </div>
+                    </div>
+
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">💼</span> At Desk
+                        </div>
+                        <div class="compatibility-label">Recommended styles:</div>
+                        <div class="use-cases">
+                            <span class="use-case-tag">Round</span>
+                            <span class="use-case-tag">Rectangle</span>
+                            <span class="use-case-tag">Square</span>
+                            <span class="use-case-tag">Wayfarer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Materials -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2><span class="emoji">🔧</span> Frame Materials</h2>
+                </div>
+                <div class="section-content">
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">⚡</span> Wire / Metal
+                        </div>
+                        <div class="compatibility-label">Keywords to identify:</div>
+                        <div class="face-shapes">
+                            <span class="face-shape-tag">Wire</span>
+                            <span class="face-shape-tag">Metal</span>
+                            <span class="face-shape-tag">Gold</span>
+                            <span class="face-shape-tag">Silver</span>
+                            <span class="face-shape-tag">Bronze</span>
+                            <span class="face-shape-tag">Steel</span>
+                            <span class="face-shape-tag">Titanium</span>
+                            <span class="face-shape-tag">Thin Metal</span>
+                        </div>
+                    </div>
+
+                    <div class="reference-item">
+                        <div class="frame-style-name">
+                            <span class="icon">💪</span> Acetate / Plastic
+                        </div>
+                        <div class="compatibility-label">Keywords to identify:</div>
+                        <div class="face-shapes">
+                            <span class="face-shape-tag">Acetate</span>
+                            <span class="face-shape-tag">Plastic</span>
+                            <span class="face-shape-tag">Thick Plastic</span>
+                            <span class="face-shape-tag">Tortoise</span>
+                            <span class="face-shape-tag">Tortoiseshell</span>
+                            <span class="face-shape-tag">Thick Frame</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Reference Tips -->
+        <div class="quick-reference">
+            <h3>💡 Quick Tagging Tips</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>Frame Style Detection</h4>
+                    <p>Look for key shape words in titles: "aviator", "cat eye", "round", "square", "rectangle", "wayfarer". Check metafields too!</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Material Keywords</h4>
+                    <p>Wire/metal = "wire", "metal", "gold", "silver", "thin". Acetate = "acetate", "plastic", "tortoise", "thick frame".</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Lens Types</h4>
+                    <p>Only tag if explicitly mentioned. "Polarized", "RX" or "prescription", "blue light", "tinted", "photochromic".</p>
+                </div>
+                <div class="tip-card">
+                    <h4>When Uncertain</h4>
+                    <p>Use the visual shape as your primary guide. When in doubt, leave it blank for manual review rather than guessing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
