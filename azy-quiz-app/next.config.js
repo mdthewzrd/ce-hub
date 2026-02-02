@@ -13,11 +13,12 @@ const nextConfig = {
       },
     ],
   },
-  async rewrites() {
+  async redirects() {
     return [
       {
         source: '/review',
         destination: '/review.html',
+        permanent: false,
       },
     ];
   },
