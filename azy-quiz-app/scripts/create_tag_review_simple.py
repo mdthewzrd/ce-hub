@@ -53,24 +53,115 @@ def create_html(products, tags):
         f.write("""<!DOCTYPE html>
 <html>
 <head>
-    <title>AZYR Product Tag Review</title>
+    <title>CE-Hub | AZYR Product Tag Review</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #13131a;
+            --bg-card: #1a1a24;
+            --border-color: #2a2a3a;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0b0;
+            --accent-primary: #00dc82;
+            --accent-secondary: #7c3aed;
+            --accent-tertiary: #f59e0b;
+            --sync-green: #22c55e;
+            --sync-yellow: #eab308;
+            --sync-red: #ef4444;
+        }
+
         * { box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             padding: 20px;
-            background: #f5f5f5;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             margin: 0;
         }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-secondary);
+            padding: 16px 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-brand h1 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00dc82 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-brand .badge {
+            background: var(--bg-card);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .sync-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .sync-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .sync-dot.green { background: var(--sync-green); box-shadow: 0 0 10px var(--sync-green); }
+        .sync-dot.yellow { background: var(--sync-yellow); box-shadow: 0 0 10px var(--sync-yellow); animation: pulse 0.5s infinite; }
+        .sync-dot.red { background: var(--sync-red); box-shadow: 0 0 10px var(--sync-red); }
+
+        .sync-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #00dc82 0%, #7c3aed 100%);
             color: white;
             padding: 30px;
             border-radius: 12px;
             margin-bottom: 20px;
             text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 220, 130, 0.2);
         }
         .header h1 { margin: 0; font-size: 28px; }
         .header p { margin: 8px 0 0; opacity: 0.9; font-size: 14px; }
@@ -82,39 +173,46 @@ def create_html(products, tags):
             margin-bottom: 20px;
         }
         .stat-box {
-            background: white;
+            background: var(--bg-card);
             padding: 16px;
             border-radius: 8px;
             text-align: center;
+            border: 1px solid var(--border-color);
         }
-        .stat-box h3 { margin: 0; font-size: 11px; color: #666; text-transform: uppercase; }
-        .stat-box .number { font-size: 24px; font-weight: bold; color: #333; }
+        .stat-box h3 { margin: 0; font-size: 11px; color: var(--text-secondary); text-transform: uppercase; }
+        .stat-box .number { font-size: 24px; font-weight: bold; color: var(--text-primary); }
 
-        .filters { background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; }
+        .filters { background: var(--bg-card); padding: 16px; border-radius: 8px; margin-bottom: 16px; border: 1px solid var(--border-color); }
         .filters h2 { margin: 0 0 12px 0; font-size: 16px; }
         .filter-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
         .filter-btn {
             padding: 8px 16px;
-            border: 1px solid #ddd;
-            background: white;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
             border-radius: 20px;
             cursor: pointer;
             font-size: 13px;
+            transition: all 0.2s;
         }
-        .filter-btn.active { background: #667eea; color: white; border-color: #667eea; }
+        .filter-btn:hover { background: var(--accent-primary); color: white; border-color: var(--accent-primary); }
+        .filter-btn.active { background: var(--accent-primary); color: white; border-color: var(--accent-primary); }
 
-        .sort-section { background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; }
+        .sort-section { background: var(--bg-card); padding: 16px; border-radius: 8px; margin-bottom: 16px; border: 1px solid var(--border-color); }
         .sort-section h2 { margin: 0 0 12px 0; font-size: 16px; }
         .sort-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
         .sort-btn {
             padding: 8px 16px;
-            border: 1px solid #ddd;
-            background: white;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
             border-radius: 20px;
             cursor: pointer;
             font-size: 13px;
+            transition: all 0.2s;
         }
-        .sort-btn.active { background: #ff9800; color: white; border-color: #ff9800; }
+        .sort-btn:hover { background: var(--accent-tertiary); color: white; border-color: var(--accent-tertiary); }
+        .sort-btn.active { background: var(--accent-tertiary); color: white; border-color: var(--accent-tertiary); }
 
         .products-grid {
             display: grid;
@@ -123,36 +221,42 @@ def create_html(products, tags):
         }
 
         .product-card {
-            background: white;
+            background: var(--bg-card);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
 
         .product-image {
             width: 100%;
             aspect-ratio: 1;
             object-fit: cover;
-            background: #f0f0f0;
+            background: var(--bg-secondary);
         }
 
         .product-info { padding: 16px; }
-        .product-vendor { font-size: 11px; color: #888; text-transform: uppercase; margin-bottom: 4px; }
-        .product-title { font-weight: 600; margin: 0 0 4px 0; font-size: 15px; line-height: 1.3; }
-        .product-handle { font-family: monospace; font-size: 10px; color: #999; margin-bottom: 12px; }
+        .product-vendor { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 4px; }
+        .product-title { font-weight: 600; margin: 0 0 4px 0; font-size: 15px; line-height: 1.3; color: var(--text-primary); }
+        .product-handle { font-family: monospace; font-size: 10px; color: var(--text-secondary); margin-bottom: 12px; }
 
         .tag-section {
             margin: 12px 0;
             padding: 12px;
-            background: #fafafa;
+            background: var(--bg-secondary);
             border-radius: 8px;
-            border: 1px solid #eee;
+            border: 1px solid var(--border-color);
         }
 
         .tag-label {
             font-size: 11px;
             font-weight: 700;
-            color: #555;
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 10px;
@@ -166,8 +270,9 @@ def create_html(products, tags):
 
         .option-btn {
             padding: 8px 12px;
-            border: 2px solid #ddd;
-            background: white;
+            border: 2px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
             border-radius: 20px;
             cursor: pointer;
             font-size: 12px;
@@ -176,12 +281,12 @@ def create_html(products, tags):
             position: relative;
         }
 
-        .option-btn:hover { border-color: #999; transform: scale(1.02); }
+        .option-btn:hover { border-color: var(--accent-primary); transform: scale(1.02); }
 
         .option-btn.pending {
             border: 3px dashed #ff9800;
-            background: #fff3e0;
-            color: #e65100;
+            background: rgba(255, 152, 0, 0.15);
+            color: #ff9800;
         }
 
         .option-btn.pending::after {
@@ -203,11 +308,11 @@ def create_html(products, tags):
 
         /* GREEN SELECTION - Very prominent */
         .option-btn.selected {
-            border: 3px solid #4caf50;
-            background: #e8f5e9;
-            color: #2e7d32;
+            border: 3px solid #22c55e;
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
             font-weight: 700;
-            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.25);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
         }
 
         .option-btn.selected::after {
@@ -215,7 +320,7 @@ def create_html(products, tags):
             position: absolute;
             top: -6px;
             right: -6px;
-            background: #4caf50;
+            background: #22c55e;
             color: white;
             width: 18px;
             height: 18px;
@@ -228,30 +333,30 @@ def create_html(products, tags):
         }
 
         /* Category colors */
-        .option-btn.style { background: #fff3e0; border-color: #ffe0b2; }
-        .option-btn.style.selected { border-color: #e65100; background: #ffe0b2; }
-        .option-btn.style.selected::after { background: #e65100; }
+        .option-btn.style { background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3); }
+        .option-btn.style.selected { border-color: #f59e0b; background: rgba(245, 158, 11, 0.2); }
+        .option-btn.style.selected::after { background: #f59e0b; }
 
-        .option-btn.material { background: #f3e5f5; border-color: #e1bee7; }
-        .option-btn.material.selected { border-color: #7b1fa2; background: #e1bee7; }
-        .option-btn.material.selected::after { background: #7b1fa2; }
+        .option-btn.material { background: rgba(124, 58, 237, 0.1); border-color: rgba(124, 58, 237, 0.3); }
+        .option-btn.material.selected { border-color: #7c3aed; background: rgba(124, 58, 237, 0.2); }
+        .option-btn.material.selected::after { background: #7c3aed; }
 
-        .option-btn.face-shape { background: #e8f5e9; border-color: #c8e6c9; }
-        .option-btn.face-shape.selected { border-color: #2e7d32; background: #c8e6c9; }
-        .option-btn.face-shape.selected::after { background: #2e7d32; }
+        .option-btn.face-shape { background: rgba(34, 197, 94, 0.1); border-color: rgba(34, 197, 94, 0.3); }
+        .option-btn.face-shape.selected { border-color: #22c55e; background: rgba(34, 197, 94, 0.2); }
+        .option-btn.face-shape.selected::after { background: #22c55e; }
 
-        .option-btn.use-case { background: #fff9c4; border-color: #ffe082; }
-        .option-btn.use-case.selected { border-color: #f57f17; background: #ffe082; }
-        .option-btn.use-case.selected::after { background: #f57f17; }
+        .option-btn.use-case { background: rgba(251, 146, 60, 0.1); border-color: rgba(251, 146, 60, 0.3); }
+        .option-btn.use-case.selected { border-color: #fb923c; background: rgba(251, 146, 60, 0.2); }
+        .option-btn.use-case.selected::after { background: #fb923c; }
 
-        .option-btn.lens { background: #e3f2fd; border-color: #bbdefb; }
-        .option-btn.lens.selected { border-color: #1565c0; background: #bbdefb; }
-        .option-btn.lens.selected::after { background: #1565c0; }
+        .option-btn.lens { background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.3); }
+        .option-btn.lens.selected { border-color: #3b82f6; background: rgba(59, 130, 246, 0.2); }
+        .option-btn.lens.selected::after { background: #3b82f6; }
 
         .custom-btn {
-            background: #e3f2fd;
-            border-color: #2196f3;
-            color: #1976d2;
+            background: rgba(245, 158, 11, 0.15);
+            border-color: #f59e0b;
+            color: #f59e0b;
             font-weight: 600;
             border-style: dashed;
         }
@@ -261,19 +366,21 @@ def create_html(products, tags):
             width: 100%;
             margin-top: 10px;
             padding: 10px;
-            background: #f0f7ff;
+            background: var(--bg-secondary);
             border-radius: 8px;
-            border: 2px dashed #2196f3;
+            border: 2px dashed var(--accent-tertiary);
         }
         .custom-input-container.show { display: block; }
 
         .custom-input-container input {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             font-size: 13px;
             margin-bottom: 8px;
+            background: var(--bg-card);
+            color: var(--text-primary);
         }
 
         .custom-input-actions { display: flex; gap: 8px; }
@@ -286,13 +393,13 @@ def create_html(products, tags):
             font-size: 13px;
             font-weight: 600;
         }
-        .btn-save { background: #4caf50; color: white; }
-        .btn-cancel { background: #f44336; color: white; }
+        .btn-save { background: #22c55e; color: white; }
+        .btn-cancel { background: #ef4444; color: white; }
 
         .custom-trigger {
-            background: #fff3e0 !important;
-            border-color: #ff9800 !important;
-            color: #e65100 !important;
+            background: rgba(245, 158, 11, 0.2) !important;
+            border-color: #f59e0b !important;
+            color: #f59e0b !important;
             border-style: dashed;
         }
 
@@ -301,9 +408,9 @@ def create_html(products, tags):
             width: 100%;
             margin-top: 10px;
             padding: 10px;
-            background: #fff8f0;
+            background: var(--bg-secondary);
             border-radius: 8px;
-            border: 2px dashed #ff9800;
+            border: 2px dashed #f59e0b;
         }
 
         .custom-input-section.show { display: block; }
@@ -311,10 +418,12 @@ def create_html(products, tags):
         .custom-input {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             font-size: 13px;
             margin-bottom: 8px;
+            background: var(--bg-card);
+            color: var(--text-primary);
         }
 
         .custom-buttons { display: flex; gap: 8px; }
@@ -327,15 +436,15 @@ def create_html(products, tags):
             font-size: 13px;
             font-weight: 600;
         }
-        .btn-custom-save { background: #4caf50; color: white; }
-        .btn-custom-cancel { background: #f44336; color: white; }
+        .btn-custom-save { background: #22c55e; color: white; }
+        .btn-custom-cancel { background: #ef4444; color: white; }
 
         .save-changes-section {
             margin-top: 16px;
             padding: 12px;
-            background: #e8f5e9;
+            background: rgba(34, 197, 94, 0.15);
             border-radius: 8px;
-            border: 2px solid #4caf50;
+            border: 2px solid #22c55e;
             display: none;
         }
 
@@ -346,7 +455,7 @@ def create_html(products, tags):
         .btn-save-changes {
             width: 100%;
             padding: 12px;
-            background: #4caf50;
+            background: #22c55e;
             color: white;
             border: none;
             border-radius: 8px;
@@ -354,11 +463,11 @@ def create_html(products, tags):
             font-size: 14px;
             font-weight: 600;
         }
-        .btn-save-changes:hover { background: #45a049; }
+        .btn-save-changes:hover { background: #16a34a; }
 
         .has-changes-badge {
             display: inline-block;
-            background: #ff9800;
+            background: #f59e0b;
             color: white;
             padding: 4px 10px;
             border-radius: 12px;
@@ -370,13 +479,13 @@ def create_html(products, tags):
         .done-section {
             margin-top: 16px;
             padding-top: 12px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid var(--border-color);
         }
 
         .btn-done {
             width: 100%;
             padding: 12px;
-            background: #4caf50;
+            background: var(--accent-secondary);
             color: white;
             border: none;
             border-radius: 8px;
@@ -384,15 +493,16 @@ def create_html(products, tags):
             font-size: 14px;
             font-weight: 600;
         }
-        .btn-done:hover { background: #45a049; }
+        .btn-done:hover { background: #6d28d9; }
 
         .export-section {
             position: sticky;
             bottom: 16px;
-            background: white;
+            background: var(--bg-card);
             padding: 16px;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            border: 1px solid var(--border-color);
         }
 
         .export-section button {
@@ -405,9 +515,9 @@ def create_html(products, tags):
             margin-right: 8px;
         }
 
-        .btn-primary { background: #4caf50; color: white; }
-        .btn-secondary { background: #2196f3; color: white; }
-        .btn-info { background: #9c27b0; color: white; }
+        .btn-primary { background: var(--accent-primary); color: white; }
+        .btn-secondary { background: var(--accent-secondary); color: white; }
+        .btn-info { background: #ec4899; color: white; }
 
         .hidden { display: none; }
 
@@ -424,9 +534,22 @@ def create_html(products, tags):
     </style>
 </head>
 <body>
+    <div class="top-nav">
+        <div class="nav-left">
+            <div class="nav-brand">
+                <h1>CE-Hub</h1>
+                <span class="badge">AZYR Review</span>
+            </div>
+        </div>
+        <div class="sync-indicator">
+            <span class="sync-dot green" id="sync-dot"></span>
+            <span class="sync-text" id="sync-text">Synced</span>
+        </div>
+    </div>
+
     <div class="header">
-        <h1>👓 AZYR Product Tag Review</h1>
-        <p>Click options to select/deselect (orange = pending). Click "Save Changes" to confirm. <strong>Changes auto-sync to cloud - you and teammates will see each other's updates!</strong></p>
+        <h1>👓 Product Tag Review</h1>
+        <p>Click options to select/deselect (orange = pending). Click "Save Changes" to confirm. <strong>Changes auto-sync every 30 seconds - you and teammates will see each other's updates!</strong></p>
     </div>
 
     <div class="stats">
@@ -782,14 +905,12 @@ def create_html(products, tags):
                 localStorage.setItem('azyrProductTags', JSON.stringify(productTags));
 
                 // Sync to cloud (API)
-                showSyncStatus('Syncing to cloud...');
+                updateSyncStatus('syncing');
                 saveTagsToAPI().then(success => {
                     if (success) {
-                        showSyncStatus('Saved to cloud ✓');
-                        setTimeout(() => hideSyncStatus(), 2000);
+                        updateSyncStatus('synced');
                     } else {
-                        showSyncStatus('Cloud save failed (saved locally)');
-                        setTimeout(() => hideSyncStatus(), 3000);
+                        updateSyncStatus('error');
                     }
                 });
 
@@ -828,7 +949,7 @@ def create_html(products, tags):
         // ========== REAL-TIME SYNC FUNCTIONS ==========
 
         let lastSyncTime = Date.now();
-        const SYNC_INTERVAL = 10000; // Check for updates every 10 seconds
+        const SYNC_INTERVAL = 30000; // Check for updates every 30 seconds
 
         // Load tags from API (cloud sync)
         async function loadTagsFromAPI() {
@@ -926,21 +1047,38 @@ def create_html(products, tags):
 
         // Show sync status message
         function showSyncStatus(message) {
-            let status = document.getElementById('sync-status');
-            if (!status) {
-                status = document.createElement('div');
-                status.id = 'sync-status';
-                status.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #4caf50; color: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000; font-size: 14px; animation: slideIn 0.3s ease-out;';
-                document.body.appendChild(status);
+            const dot = document.getElementById('sync-dot');
+            const text = document.getElementById('sync-text');
+
+            if (message.includes('Syncing') || message.includes('Loading')) {
+                dot.className = 'sync-dot yellow';
+                text.textContent = 'Syncing...';
+            } else if (message.includes('error') || message.includes('failed') || message.includes('unavailable')) {
+                dot.className = 'sync-dot red';
+                text.textContent = 'Sync Error';
+            } else {
+                dot.className = 'sync-dot green';
+                text.textContent = 'Synced';
             }
-            status.textContent = message;
-            status.style.display = 'block';
         }
 
         function hideSyncStatus() {
-            const status = document.getElementById('sync-status');
-            if (status) {
-                status.style.display = 'none';
+            // Keep showing the synced status
+        }
+
+        function updateSyncStatus(status) {
+            const dot = document.getElementById('sync-dot');
+            const text = document.getElementById('sync-text');
+
+            if (status === 'syncing') {
+                dot.className = 'sync-dot yellow';
+                text.textContent = 'Syncing...';
+            } else if (status === 'error') {
+                dot.className = 'sync-dot red';
+                text.textContent = 'Sync Error';
+            } else {
+                dot.className = 'sync-dot green';
+                text.textContent = 'Synced';
             }
         }
 
