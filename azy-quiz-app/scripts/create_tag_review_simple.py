@@ -1239,16 +1239,9 @@ def create_html(products, tags):
             });
         }
 
-        // Call initialization immediately if DOM is ready, otherwise wait for DOMContentLoaded
-        console.log('🟢 Checking document.readyState:', document.readyState);
-        if (document.readyState === 'loading') {
-            console.log('🟢 Waiting for DOMContentLoaded...');
-            document.addEventListener('DOMContentLoaded', initializeSelectedState);
-        } else {
-            // DOM is already ready, initialize immediately
-            console.log('🟢 DOM already ready, initializing immediately!');
-            initializeSelectedState();
-        }
+        // Call initialization immediately - script is at end of body so DOM is ready
+        console.log('🟢 Running initialization immediately (script at end of body)');
+        initializeSelectedState();
 
         function toggleSingle(handle, category, value) {
             pendingTags[handle] = pendingTags[handle] || {};
