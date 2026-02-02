@@ -157,7 +157,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from database import get_brand_voice_for_caption_by_id
 
 # Database path - resolve to handle .. in paths correctly
-DB_PATH = Path(__file__).resolve().parent / "harmonatica.db"
+DB_PATH = Path(__file__).resolve().parent.parent.parent / "harmonatica.db"
 
 
 class OpenRouterClient:
@@ -1400,6 +1400,42 @@ After your hook, the FIRST PARAGRAPH must immediately deliver value and maintain
 **EXAMPLE OPENING STRUCTURE:**
 Hook: "The mistake killing your progress"
 Opening: "I spent 3 years stuck in the same place. Trying everything. Getting nowhere. Then I discovered the one thing holding me back..."
+
+## BODY CONTENT QUALITY STANDARDS
+
+After your opening, EVERY paragraph must add NEW value and advance the narrative:
+
+✅ **DO IN BODY PARAGRAPHS:**
+- **Use specific examples**: "When I studied the Tesla coil..." not "When you study technology..."
+- **Include real stories**: "In 1903, Lakhovsky's device was installed in hospitals..." not generic claims
+- **Add actionable insights**: "Here's how to test this: place your hands..." not vague concepts
+- **Vary sentence structure**: Mix short punchy sentences with longer explanatory ones
+- **Build logical flow**: Each paragraph should connect to and advance from the previous one
+- **Use the "you" perspective**: "You can test this by..." not "People can test..."
+- **Add numbers and specifics**: "After 47 days..." not "After some time..."
+- **Create emotional arcs**: Build tension, then release; create curiosity, then satisfy it
+
+❌ **DON'T DO IN BODY PARAGRAPHS:**
+- **Repeat the same concept**: Don't say "electromagnetic" 5 times in 5 different ways
+- **Use vague generalities**: "Many people believe..." without specifics
+- **Go off on tangents**: Stay focused on ONE core narrative thread
+- **Make claims without evidence**: Back up statements with examples
+- **Use business jargon**: No "synergy," "leverage," "optimize," etc.
+- **Be preachy**: Share discoveries, don't lecture
+- **Use filler phrases**: "It's important to note," "Essentially," "Basically"
+
+**ANTI-REPETITION RULE:**
+If you've used a word or concept in the last 2 paragraphs, find a DIFFERENT way to express the next idea. Every paragraph must add NEW information, not restate old information in different words.
+
+**STORY STRUCTURE FOR LONG CAPTIONS:**
+If writing story length (750-1000+ words), structure as a journey:
+1. **Hook & Setup** (100-150 words) - The problem and what's at stake
+2. **Personal Discovery** (150-200 words) - How you found this or a specific story
+3. **The Secret Revealed** (150-200 words) - The core insight or mechanism
+4. **Proof & Evidence** (100-150 words) - Real examples, studies, or history
+5. **Practical Application** (100-150 words) - How the reader can use this
+6. **Transformation** (100-150 words) - What becomes possible
+7. **Conclusion** (100-150 words) - Final thought and call to reflection
 
 ## CRITICAL PRODUCTION RULES
 

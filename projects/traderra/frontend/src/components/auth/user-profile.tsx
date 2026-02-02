@@ -1,6 +1,6 @@
 'use client'
 
-import { UserButton, useUser } from '@clerk/nextjs'
+import { UserButton, useUser, SignInButton } from '@clerk/nextjs'
 import { User, Settings, TrendingUp, Calendar } from 'lucide-react'
 
 export function UserProfile() {
@@ -20,19 +20,21 @@ export function UserProfile() {
 
   if (!user) {
     return (
-      <div className="flex items-center space-x-3">
-        <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-          <User className="w-4 h-4 text-primary-foreground" />
-        </div>
-        <div className="flex flex-col">
-          <span className="text-sm font-medium studio-text truncate max-w-32">
-            Sign In Required
-          </span>
-          <span className="text-xs studio-muted">
-            Please sign in
-          </span>
-        </div>
-      </div>
+      <SignInButton mode="modal">
+        <button className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity">
+          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+            <User className="w-4 h-4 text-primary-foreground" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-sm font-medium studio-text truncate max-w-32">
+              Sign In
+            </span>
+            <span className="text-xs studio-muted">
+              Click to sign in
+            </span>
+          </div>
+        </button>
+      </SignInButton>
     )
   }
 
@@ -93,7 +95,7 @@ export function UserProfileCard() {
               <User className="w-8 h-8 text-primary-foreground" />
             </div>
           </div>
-          <div>
+          <div className="flex-1">
             <h3 className="text-lg font-semibold studio-text">Sign In Required</h3>
             <p className="studio-muted text-sm">Please sign in to access your profile</p>
             <p className="studio-muted text-xs flex items-center mt-1">
@@ -101,6 +103,11 @@ export function UserProfileCard() {
               Authentication required
             </p>
           </div>
+          <SignInButton mode="modal">
+            <button className="btn-primary">
+              Sign In
+            </button>
+          </SignInButton>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

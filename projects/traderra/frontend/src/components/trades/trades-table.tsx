@@ -499,6 +499,13 @@ export function TradesTable({ compact = false, importedTrades = [], isLoading = 
               </div>
             </div>
           </div>
+
+          {/* Diagnostic info - shows if trades are being filtered */}
+          {tradesData.length !== filteredAndSortedTrades.length && (
+            <div className="text-xs studio-muted bg-yellow-500/10 border border-yellow-500/30 rounded p-2">
+              Showing {filteredAndSortedTrades.length} of {tradesData.length} total trades (date range filter applied)
+            </div>
+          )}
         </div>
       )}
 

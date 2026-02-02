@@ -651,6 +651,240 @@ def create_html(products, tags):
                 opacity: 1;
             }
         }
+
+        /* Floating Reference Button */
+        .reference-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(0, 220, 130, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid var(--bg-primary);
+        }
+
+        .reference-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(0, 220, 130, 0.6);
+        }
+
+        .reference-fab:active {
+            transform: scale(0.95);
+        }
+
+        /* Reference Modal */
+        .reference-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+            padding: 20px;
+            overflow-y: auto;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .reference-modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .reference-modal-content {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            animation: slideUp 0.3s ease;
+            margin-top: 20px;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .reference-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background: var(--bg-secondary);
+            z-index: 10;
+        }
+
+        .reference-modal-header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .reference-close-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .reference-close-btn:hover {
+            background: var(--accent-tertiary);
+            border-color: var(--accent-tertiary);
+            color: white;
+        }
+
+        .reference-modal-body {
+            padding: 24px;
+        }
+
+        .reference-section {
+            margin-bottom: 32px;
+        }
+
+        .reference-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .reference-section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .reference-item {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .reference-item-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reference-item-title.style { color: var(--accent-primary); }
+        .reference-item-title.lens { color: var(--accent-tertiary); }
+        .reference-item-title.usecase { color: var(--accent-secondary); }
+
+        .reference-item-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .reference-tag {
+            background: rgba(0, 220, 130, 0.15);
+            color: var(--accent-primary);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 220, 130, 0.3);
+        }
+
+        .reference-tag.lens {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-tertiary);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .reference-tag.usecase {
+            background: rgba(124, 58, 237, 0.15);
+            color: var(--accent-secondary);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+
+        /* Custom scrollbar for modal */
+        .reference-modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .reference-modal-content::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        .reference-modal-content::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        .reference-modal-content::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-primary);
+        }
+
+        @media (max-width: 768px) {
+            .reference-fab {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .reference-modal-content {
+                margin: 10px;
+                max-height: 95vh;
+            }
+
+            .reference-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -660,7 +894,6 @@ def create_html(products, tags):
                 <h1>CE-Hub</h1>
                 <span class="badge">AZYR Review</span>
             </div>
-            <a href="/reference.html" class="nav-link">📚 Reference Guide</a>
         </div>
         <div class="sync-indicator">
             <span class="sync-dot green" id="sync-dot"></span>
@@ -1462,7 +1695,244 @@ def create_html(products, tags):
         function showExportInfo() {
             document.getElementById('export-info').style.display = 'block';
         }
+
+        // Reference Modal Functions
+        function openReferenceModal() {
+            document.getElementById('reference-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeReferenceModal() {
+            document.getElementById('reference-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeReferenceModal();
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('reference-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeReferenceModal();
+            }
+        });
     </script>
+
+    <!-- Floating Reference Button -->
+    <div class="reference-fab" onclick="openReferenceModal()" title="Open Reference Guide">
+        📚
+    </div>
+
+    <!-- Reference Modal -->
+    <div class="reference-modal" id="reference-modal">
+        <div class="reference-modal-content">
+            <div class="reference-modal-header">
+                <h2>📚 Tagging Reference Guide</h2>
+                <button class="reference-close-btn" onclick="closeReferenceModal()">&times;</button>
+            </div>
+            <div class="reference-modal-body">
+                <!-- Frame Styles to Face Shapes -->
+                <div class="reference-section">
+                    <div class="reference-section-title">👓 Frame Styles → Compatible Face Shapes</div>
+                    <div class="reference-grid">
+                        <div class="reference-item">
+                            <div class="reference-item-title style">✈️ Aviator</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag">Heart</span>
+                                <span class="reference-tag">Oval</span>
+                                <span class="reference-tag">Square</span>
+                                <span class="reference-tag">Diamond</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title style">🐱 Cat Eye</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag">Heart</span>
+                                <span class="reference-tag">Oval</span>
+                                <span class="reference-tag">Round</span>
+                                <span class="reference-tag">Square</span>
+                                <span class="reference-tag">Diamond</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title style">⭕ Round</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag">Heart</span>
+                                <span class="reference-tag">Square</span>
+                                <span class="reference-tag">Diamond</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title style">▭ Rectangle</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag">Heart</span>
+                                <span class="reference-tag">Oval</span>
+                                <span class="reference-tag">Round</span>
+                                <span class="reference-tag">Diamond</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title style">⬜ Square</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag">Oval</span>
+                                <span class="reference-tag">Round</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title style">🚧 Wayfarer</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag">Heart</span>
+                                <span class="reference-tag">Oval</span>
+                                <span class="reference-tag">Round</span>
+                                <span class="reference-tag">Square</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lens Types to Use Cases -->
+                <div class="reference-section">
+                    <div class="reference-section-title">🔆 Lens Types → Recommended Use Cases</div>
+                    <div class="reference-grid">
+                        <div class="reference-item">
+                            <div class="reference-item-title lens">💻 Blue Light</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag lens">At Desk</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title lens">☀️ Polarized</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag lens">Sport</span>
+                                <span class="reference-tag lens">Day</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title lens">👁️ Prescription (RX)</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag lens">Day</span>
+                                <span class="reference-tag lens">Night</span>
+                                <span class="reference-tag lens">Casual</span>
+                                <span class="reference-tag lens">At Desk</span>
+                                <span class="reference-tag lens">Going Out</span>
+                                <span class="reference-tag lens">Sport</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title lens">🌈 Tinted</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag lens">Day</span>
+                                <span class="reference-tag lens">Night</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title lens">✨ Custom</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag lens">Going Out</span>
+                                <span class="reference-tag lens">Casual</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Use Cases to Frame Styles -->
+                <div class="reference-section">
+                    <div class="reference-section-title">🎯 Use Cases → Recommended Frame Styles</div>
+                    <div class="reference-grid">
+                        <div class="reference-item">
+                            <div class="reference-item-title usecase">☀️ Day</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag usecase">Rectangle</span>
+                                <span class="reference-tag usecase">Aviator</span>
+                                <span class="reference-tag usecase">Wayfarer</span>
+                                <span class="reference-tag usecase">Cat Eye</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title usecase">🌙 Night</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag usecase">Square</span>
+                                <span class="reference-tag usecase">Wayfarer</span>
+                                <span class="reference-tag usecase">Round</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title usecase">🎉 Going Out</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag usecase">Square</span>
+                                <span class="reference-tag usecase">Aviator</span>
+                                <span class="reference-tag usecase">Wayfarer</span>
+                                <span class="reference-tag usecase">Cat Eye</span>
+                                <span class="reference-tag usecase">Rectangle</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title usecase">😌 Casual</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag usecase">Round</span>
+                                <span class="reference-tag usecase">Cat Eye</span>
+                                <span class="reference-tag usecase">Rectangle</span>
+                                <span class="reference-tag usecase">Wayfarer</span>
+                                <span class="reference-tag usecase">Square</span>
+                                <span class="reference-tag usecase">Aviator</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title usecase">🏃 Sport</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag usecase">Aviator</span>
+                                <span class="reference-tag usecase">Rectangle</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title usecase">💼 At Desk</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag usecase">Round</span>
+                                <span class="reference-tag usecase">Rectangle</span>
+                                <span class="reference-tag usecase">Square</span>
+                                <span class="reference-tag usecase">Wayfarer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Materials -->
+                <div class="reference-section">
+                    <div class="reference-section-title">🔧 Frame Materials - Detection Keywords</div>
+                    <div class="reference-grid">
+                        <div class="reference-item">
+                            <div class="reference-item-title style">⚡ Wire / Metal</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag">Wire</span>
+                                <span class="reference-tag">Metal</span>
+                                <span class="reference-tag">Gold</span>
+                                <span class="reference-tag">Silver</span>
+                                <span class="reference-tag">Bronze</span>
+                                <span class="reference-tag">Steel</span>
+                                <span class="reference-tag">Titanium</span>
+                                <span class="reference-tag">Thin Metal</span>
+                            </div>
+                        </div>
+                        <div class="reference-item">
+                            <div class="reference-item-title style">💪 Acetate / Plastic</div>
+                            <div class="reference-item-content">
+                                <span class="reference-tag">Acetate</span>
+                                <span class="reference-tag">Plastic</span>
+                                <span class="reference-tag">Thick Plastic</span>
+                                <span class="reference-tag">Tortoise</span>
+                                <span class="reference-tag">Tortoiseshell</span>
+                                <span class="reference-tag">Thick Frame</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>""")
 
