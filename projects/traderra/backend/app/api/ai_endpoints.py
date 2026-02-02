@@ -610,7 +610,7 @@ async def renata_chat_simple(request: dict):
         from ..core.config import settings
 
         # Extract request data
-        query = request.get("query", "")
+        query = request.get("query") or request.get("message", "")
         mode = request.get("mode", "coach")
         performance_data = request.get("performance_data", {})
 
@@ -667,23 +667,23 @@ async def renata_chat_simple(request: dict):
         )
 
         return AIResponse(
-            success=True,
             response=result.text,
-            mode_used=result.mode_used.value if result.mode_used else mode,
-            data=result.data,
-            actions=result.actions,
-            archon_sources=result.archon_sources,
-            insights_generated=result.insights_generated,
-            timestamp=datetime.now().isoformat()
+            command_type="question",
+            intent="trading_analysis",
+            confidence=0.85,
+            ai_mode_change={"mode": result.mode_used.value if result.mode_used else mode},
+            learning_applied=bool(result.insights_generated and len(result.insights_generated) > 0),
+            suggested_learning=result.archon_sources[0] if result.archon_sources else None
         )
 
     except Exception as e:
         logger.error(f"Simple Renata chat failed: {e}")
         return AIResponse(
-            success=False,
             response=f"Error: {str(e)}",
-            mode_used=request.get("mode", "coach"),
-            timestamp=datetime.now().isoformat()
+            command_type="error",
+            intent="error",
+            confidence=0.0,
+            learning_applied=False
         )
 
 
@@ -888,8 +888,8 @@ async def renata_chat(
     Maps frontend renata.chat() calls to the analyze_performance functionality
     """
     try:
-        # Extract frontend request format
-        query = request.get("query", "")
+        # Extract frontend request format - accept both "query" and "message"
+        query = request.get("query") or request.get("message", "")
         mode = request.get("mode", "coach")
         performance_data = request.get("performance_data", {})
         trading_context = request.get("trading_context", {})
@@ -940,21 +940,23 @@ async def renata_chat(
         )
 
         return AIResponse(
-            success=True,
             response=result.text,
-            mode_used=result.mode_used.value if result.mode_used else mode,
-            data=result.data,
-            actions=result.actions,
-            archon_sources=result.archon_sources,
-            insights_generated=result.insights_generated,
-            timestamp=datetime.now().isoformat()
+            command_type="question",
+            intent="trading_analysis",
+            confidence=0.85,
+            ai_mode_change={"mode": result.mode_used.value if result.mode_used else mode},
+            learning_applied=bool(result.insights_generated and len(result.insights_generated) > 0),
+            suggested_learning=result.archon_sources[0] if result.archon_sources else None
         )
 
     except Exception as e:
         logger.error(f"Renata chat failed: {e}")
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Renata chat failed: {str(e)}"
+        return AIResponse(
+            response=f"Error: {str(e)}",
+            command_type="error",
+            intent="error",
+            confidence=0.0,
+            learning_applied=False
         )
 
 

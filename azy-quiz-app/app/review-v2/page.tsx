@@ -284,7 +284,62 @@ export default function ReviewV2Page() {
                               : 'border border-[#2a2a3a] bg-[#13131a]'
                           }`}
                         >
-                          {shape}
+                          {shape === 'heart' ? '♥ Heart' : shape.charAt(0).toUpperCase() + shape.slice(1)}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Use Cases */}
+                <div className="mb-3">
+                  <label className="text-xs text-gray-500 uppercase">Use Cases</label>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {['day', 'night', 'going_out', 'casual', 'sport', 'at_desk'].map((useCase) => {
+                      const state = getButtonState(product.handle, 'use_cases', useCase);
+                      return (
+                        <button
+                          key={useCase}
+                          onClick={() => toggleMultiple(product.handle, 'use_cases', useCase)}
+                          className={`px-2 py-1 text-xs rounded ${
+                            state.pending
+                              ? 'border-2 border-orange-500 bg-orange-500/20 text-orange-500'
+                              : state.selected
+                              ? 'border-2 border-green-500 bg-green-500/20 text-green-500'
+                              : 'border border-[#2a2a3a] bg-[#13131a]'
+                          }`}
+                        >
+                          {useCase === 'going_out' ? '🎉 Going Out' :
+                           useCase === 'at_desk' ? '💼 At Desk' :
+                           useCase === 'day' ? '☀️ Day' :
+                           useCase === 'night' ? '🌙 Night' :
+                           useCase === 'casual' ? '😌 Casual' :
+                           useCase === 'sport' ? '🏃 Sport' : useCase}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Lens Types */}
+                <div className="mb-3">
+                  <label className="text-xs text-gray-500 uppercase">Lens Types</label>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {['tinted', 'gradient', 'polarized', 'mirror', 'photochromic', 'geometric', 'butterfly', 'rx'].map((lens) => {
+                      const state = getButtonState(product.handle, 'lens_types', lens);
+                      return (
+                        <button
+                          key={lens}
+                          onClick={() => toggleMultiple(product.handle, 'lens_types', lens)}
+                          className={`px-2 py-1 text-xs rounded ${
+                            state.pending
+                              ? 'border-2 border-orange-500 bg-orange-500/20 text-orange-500'
+                              : state.selected
+                              ? 'border-2 border-green-500 bg-green-500/20 text-green-500'
+                              : 'border border-[#2a2a3a] bg-[#13131a]'
+                          }`}
+                        >
+                          {lens === 'rx' ? '👓 Rx Ready' : lens.charAt(0).toUpperCase() + lens.slice(1)}
                         </button>
                       );
                     })}
