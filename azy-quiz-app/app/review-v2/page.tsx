@@ -14,6 +14,7 @@ export default function ReviewV2Page() {
   const [customLensValue, setCustomLensValue] = useState<Record<string, string>>({});
   const [showCustomStyle, setShowCustomStyle] = useState<Record<string, boolean>>({});
   const [customStyleValue, setCustomStyleValue] = useState<Record<string, string>>({});
+  const [showReferenceModal, setShowReferenceModal] = useState(false);
 
   useEffect(() => {
     loadProductData();
@@ -136,6 +137,11 @@ export default function ReviewV2Page() {
 
   const markReviewed = (handle: string) => {
     reviewedProducts.current.add(handle);
+    forceUpdate();
+  };
+
+  const unmarkReviewed = (handle: string) => {
+    reviewedProducts.current.delete(handle);
     forceUpdate();
   };
 
@@ -456,18 +462,256 @@ export default function ReviewV2Page() {
                       Save Changes
                     </button>
                   )}
-                  <button
-                    onClick={() => markReviewed(product.handle)}
-                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                  >
-                    {isReviewed ? '✓ Reviewed' : 'Mark Reviewed'}
-                  </button>
+                  {isReviewed ? (
+                    <button
+                      onClick={() => unmarkReviewed(product.handle)}
+                      className="px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700"
+                    >
+                      Edit
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => markReviewed(product.handle)}
+                      className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    >
+                      Mark Reviewed
+                    </button>
+                  )}
                 </div>
               </div>
             );
           })}
         </div>
       </div>
+
+      {/* Floating Reference Button */}
+      <button
+        onClick={() => setShowReferenceModal(true)}
+        className="fixed bottom-6 right-6 w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center text-2xl z-40 transition-all hover:scale-110"
+        title="Open Reference Guide"
+      >
+        📚
+      </button>
+
+      {/* Reference Modal */}
+      {showReferenceModal && (
+        <div
+          className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+          onClick={() => setShowReferenceModal(false)}
+        >
+          <div
+            className="bg-[#1a1a24] rounded-lg border border-[#2a2a3a] max-w-4xl w-full max-h-[80vh] overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between p-4 border-b border-[#2a2a3a]">
+              <h2 className="text-xl font-bold">📚 Tagging Reference Guide</h2>
+              <button
+                onClick={() => setShowReferenceModal(false)}
+                className="text-gray-400 hover:text-white text-2xl leading-none"
+              >
+                &times;
+              </button>
+            </div>
+            <div className="p-4 overflow-y-auto flex-1">
+              {/* Frame Styles -> Face Shapes */}
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-3 text-amber-400">👓 Frame Styles → Compatible Face Shapes</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-amber-400 mb-2">✈️ Aviator</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Heart</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Oval</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Square</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Diamond</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-amber-400 mb-2">🐱 Cat Eye</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Heart</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Oval</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Round</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Square</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Diamond</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-amber-400 mb-2">⭕ Round</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Heart</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Square</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Diamond</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-amber-400 mb-2">▭ Rectangle</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Heart</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Oval</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Round</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Diamond</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-amber-400 mb-2">⬜ Square</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Oval</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Round</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-amber-400 mb-2">🚧 Wayfarer</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Heart</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Oval</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Round</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Square</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Lens Types -> Use Cases */}
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-3 text-green-400">🔆 Lens Types → Recommended Use Cases</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-green-400 mb-2">💻 Blue Light</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">💼 At Desk</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-green-400 mb-2">🕶️ Polarized</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">🏃 Sport</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">☀️ Day</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-green-400 mb-2">💊 Prescription (RX)</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">☀️ Day</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">🌙 Night</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">😌 Casual</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">💼 At Desk</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">🎉 Going Out</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">🏃 Sport</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-green-400 mb-2">🌈 Tinted</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">☀️ Day</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">🌙 Night</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-green-400 mb-2">✨ Custom</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">🎉 Going Out</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-green-400">😌 Casual</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Use Cases -> Frame Styles */}
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-3 text-purple-400">🎯 Use Cases → Recommended Frame Styles</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-purple-400 mb-2">☀️ Day</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Rectangle</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Aviator</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Wayfarer</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Cat Eye</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-purple-400 mb-2">🌙 Night</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Square</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Wayfarer</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Round</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-purple-400 mb-2">🎉 Going Out</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Square</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Aviator</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Wayfarer</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Cat Eye</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Rectangle</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-purple-400 mb-2">😌 Casual</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Round</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Cat Eye</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Rectangle</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Wayfarer</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Square</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Aviator</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-purple-400 mb-2">🏃 Sport</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Aviator</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Rectangle</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-purple-400 mb-2">💼 At Desk</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Round</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Rectangle</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Square</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded text-purple-400">Wayfarer</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Materials */}
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-3 text-amber-400">🔧 Frame Materials - Detection Keywords</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-amber-400 mb-2">⚡ Wire / Metal</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Wire</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Metal</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Gold</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Silver</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Bronze</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Steel</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Titanium</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Thin Metal</span>
+                    </div>
+                  </div>
+                  <div className="bg-[#13131a] p-3 rounded">
+                    <div className="font-semibold text-amber-400 mb-2">💪 Acetate / Plastic</div>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Acetate</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Plastic</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Thick Plastic</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Tortoise</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Tortoiseshell</span>
+                      <span className="px-2 py-1 text-xs bg-[#2a2a3a] rounded">Thick Frame</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
