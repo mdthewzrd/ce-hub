@@ -103,6 +103,19 @@ def create_html(products, tags):
         }
         .filter-btn.active { background: #667eea; color: white; border-color: #667eea; }
 
+        .sort-section { background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px; }
+        .sort-section h2 { margin: 0 0 12px 0; font-size: 16px; }
+        .sort-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+        .sort-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .sort-btn.active { background: #ff9800; color: white; border-color: #ff9800; }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
@@ -402,7 +415,7 @@ def create_html(products, tags):
 <body>
     <div class="header">
         <h1>👓 AZYR Product Tag Review</h1>
-        <p>Click options to select/deselect (orange = pending). Click "Save Changes" to confirm.</p>
+        <p>Click options to select/deselect (orange = pending). Click "Save Changes" to confirm. Changes are saved in your browser - export regularly to share progress!</p>
     </div>
 
     <div class="stats">
@@ -413,6 +426,10 @@ def create_html(products, tags):
         <div class="stat-box">
             <h3>Reviewed</h3>
             <div class="number" id="reviewed-count">0</div>
+        </div>
+        <div class="stat-box">
+            <h3>Saved ✓</h3>
+            <div class="number" id="saved-count">0</div>
         </div>
         <div class="stat-box">
             <h3>Remaining</h3>
@@ -427,6 +444,20 @@ def create_html(products, tags):
             <button class="filter-btn" onclick="filterProducts('reviewed')">Reviewed ✓</button>
             <button class="filter-btn" onclick="filterProducts('unreviewed')">Needs Review</button>
         </div>
+    </div>
+
+    <div class="sort-section">
+        <h2>📊 Sort (for team coordination):</h2>
+        <div class="sort-buttons">
+            <button class="sort-btn active" onclick="sortProducts('default')">Default</button>
+            <button class="sort-btn" onclick="sortProducts('az')">A-Z (Start from top)</button>
+            <button class="sort-btn" onclick="sortProducts('za')">Z-A (Start from bottom)</button>
+            <button class="sort-btn" onclick="sortProducts('reviewed')">Reviewed First</button>
+            <button class="sort-btn" onclick="sortProducts('unreviewed')">Unreviewed First</button>
+        </div>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: #666;">
+            💡 Tip: One person sorts A-Z, another sorts Z-A to work from opposite ends simultaneously!
+        </p>
     </div>
 
     <div class="products-grid" id="products-grid">
@@ -731,9 +762,43 @@ def create_html(products, tags):
                     updateUI(handle, cat);
                 });
 
+                // Update saved count
+                updateSavedCount();
+
+                // Save to localStorage for persistence
+                localStorage.setItem('azyrProductTags', JSON.stringify(productTags));
+
                 console.log(`Saved changes for ${handle}`);
             }
         }
+
+        function updateSavedCount() {
+            const savedCount = Object.keys(productTags).length;
+            document.getElementById('saved-count').textContent = savedCount;
+        }
+
+        // Load saved progress from localStorage on page load
+        function loadSavedProgress() {
+            const saved = localStorage.getItem('azyrProductTags');
+            if (saved) {
+                try {
+                    const savedTags = JSON.parse(saved);
+                    Object.assign(productTags, savedTags);
+                    Object.keys(savedTags).forEach(handle => {
+                        ['style', 'material', 'face_shapes', 'use_cases', 'lens_types'].forEach(cat => {
+                            updateUI(handle, cat);
+                        });
+                    });
+                    updateSavedCount();
+                    console.log('Loaded saved progress from localStorage');
+                } catch(e) {
+                    console.error('Failed to load saved progress:', e);
+                }
+            }
+        }
+
+        // Call loadSavedProgress on page load
+        setTimeout(loadSavedProgress, 100);
 
         function updateUI(handle, category) {
             if (category === 'face_shapes' || category === 'use_cases' || category === 'lens_types') {
@@ -861,6 +926,41 @@ def create_html(products, tags):
                     card.classList.toggle('hidden', reviewed);
                 }
             });
+        }
+
+        function sortProducts(sortType) {
+            document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const grid = document.getElementById('products-grid');
+            const cards = Array.from(document.querySelectorAll('.product-card'));
+
+            cards.sort((a, b) => {
+                const titleA = a.querySelector('.product-title').textContent.trim();
+                const titleB = b.querySelector('.product-title').textContent.trim();
+                const reviewedA = a.getAttribute('data-reviewed') === 'yes';
+                const reviewedB = b.getAttribute('data-reviewed') === 'yes';
+
+                switch(sortType) {
+                    case 'az':
+                        return titleA.localeCompare(titleB);
+                    case 'za':
+                        return titleB.localeCompare(titleA);
+                    case 'reviewed':
+                        if (reviewedA && !reviewedB) return -1;
+                        if (!reviewedA && reviewedB) return 1;
+                        return 0;
+                    case 'unreviewed':
+                        if (!reviewedA && reviewedB) return -1;
+                        if (reviewedA && !reviewedB) return 1;
+                        return 0;
+                    default:
+                        return 0;
+                }
+            });
+
+            // Reappend cards in new order
+            cards.forEach(card => grid.appendChild(card));
         }
 
         function exportVerifiedTags() {
