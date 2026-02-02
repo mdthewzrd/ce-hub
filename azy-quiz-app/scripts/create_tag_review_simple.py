@@ -24,6 +24,14 @@ def read_products():
                     'title': title,
                     'vendor': row.get('Vendor', ''),
                     'image_src': row.get('Image Src', ''),
+                    'title': row.get('Title', ''),
+                    'body_html': row.get('Body (HTML)', ''),
+                    'type': row.get('Type', ''),
+                    'tags': row.get('Tags', ''),
+                    'variant_sku': row.get('Variant SKU', ''),
+                    'variant_price': row.get('Variant Price', ''),
+                    'variant_compare_at_price': row.get('Variant Compare At Price', ''),
+                    'status': row.get('Status', 'active'),
                 }
     return products
 
@@ -386,6 +394,7 @@ def create_html(products, tags):
 
         .btn-primary { background: #4caf50; color: white; }
         .btn-secondary { background: #2196f3; color: white; }
+        .btn-info { background: #9c27b0; color: white; }
 
         .hidden { display: none; }
     </style>
@@ -423,8 +432,8 @@ def create_html(products, tags):
     <div class="products-grid" id="products-grid">
 """)
 
-        # Write product cards
-        for handle, prod in list(products.items())[:150]:
+        # Write product cards (all products)
+        for handle, prod in list(products.items()):
             tag_data = tags.get(handle, {})
 
             # Get existing tags
@@ -543,8 +552,20 @@ def create_html(products, tags):
         f.write("""    </div>
 
     <div class="export-section">
-        <button class="btn-primary" onclick="exportAllTags()">Export Verified Tags</button>
+        <button class="btn-primary" onclick="exportVerifiedTags()">📋 Export Verified Tags</button>
+        <button class="btn-info" onclick="showExportInfo()">ℹ️ How to Import to Shopify</button>
         <button class="btn-secondary" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑ Top</button>
+    </div>
+
+    <div id="export-info" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 1000; max-width: 500px;">
+        <h3 style="margin-top: 0;">How to Import to Shopify</h3>
+        <ol style="line-height: 1.8;">
+            <li>Click <strong>Export Verified Tags</strong> to download the CSV</li>
+            <li>Email the CSV to: <strong>your-email@example.com</strong></li>
+            <li>We'll convert it to Shopify import format</li>
+            <li>Import the updated CSV in Shopify Admin</li>
+        </ol>
+        <button onclick="document.getElementById('export-info').style.display='none'" style="padding: 10px 20px; background: #4caf50; color: white; border: none; border-radius: 6px; cursor: pointer;">Got it!</button>
     </div>
 
     <script>
@@ -842,7 +863,7 @@ def create_html(products, tags):
             });
         }
 
-        function exportAllTags() {
+        function exportVerifiedTags() {
             let csv = 'Handle,Style,Material,Face Shapes,Use Cases,Lens Types,Status\\n';
             let count = 0;
 
@@ -865,8 +886,15 @@ def create_html(products, tags):
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'verified_product_tags.csv';
+            const date = new Date().toISOString().slice(0,10);
+            a.download = 'azyr_verified_tags_' + date + '.csv';
             a.click();
+
+            alert('Exported ' + count + ' products!\\n\\nEmail this file to be converted to Shopify import format.');
+        }
+
+        function showExportInfo() {
+            document.getElementById('export-info').style.display = 'block';
         }
     </script>
 </body>
