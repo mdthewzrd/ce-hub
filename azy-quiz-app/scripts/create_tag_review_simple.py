@@ -1181,8 +1181,8 @@ def create_html(products, tags):
             container.dataset.currentIndex = newIndex;
         }
 
-        // Initialize selected state on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        // Initialize selected state - runs immediately if DOM is ready, or waits for DOMContentLoaded
+        function initializeSelectedState() {
             Object.keys(productTags).forEach(handle => {
                 const tags = productTags[handle];
 
@@ -1222,7 +1222,15 @@ def create_html(products, tags):
                     });
                 }
             });
-        });
+        }
+
+        // Call initialization immediately if DOM is ready, otherwise wait for DOMContentLoaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeSelectedState);
+        } else {
+            // DOM is already ready, initialize immediately
+            initializeSelectedState();
+        }
 
         function toggleSingle(handle, category, value) {
             pendingTags[handle] = pendingTags[handle] || {};

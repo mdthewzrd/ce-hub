@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 export default function ReviewPage() {
   useEffect(() => {
-    // Directly redirect to the HTML file
+    // Redirect to the static HTML file
     window.location.href = '/review.html';
   }, []);
 
