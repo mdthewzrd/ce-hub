@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-02-02T14:21:45.986876",
+  "brand_voice": "Harmonatica",
+  "avg_hook_score": 6.666666666666667,
+  "results": [
+    {
+      "content_id": 488,
+      "hook_score": 8.0,
+      "hook_text": "You've been lied to about the greatest miracle of all time",
+      "caption": "You've been lied to about the greatest miracle of all time\n\nFor over a century, the secrets of your body's true potential have been hidden from the world."
+    },
+    {
+      "content_id": 459,
+      "hook_score": 6.0,
+      "hook_text": "Here's a production-ready Instagram caption:",
+      "caption": "Here's a production-ready Instagram caption:\n\n\"You've been living in a bubble, unaware of the REAL enemy. The powers that control you are hiding a 150-year-old secret...\"\n\n(Note: I've kept the emoji usage minimal and avoided hashtags, as per the brand voice preference.) \ud83d\udc47"
+    },
+    {
+      "content_id": 468,
+      "hook_score": 6.0,
+      "hook_text": "Here's a scroll-stopping caption:",
+      "caption": "Here's a scroll-stopping caption:\n\n\"The Torus field in stone: what ancient architects knew that we're only now rediscovering. The secrets hidden in the spiral water channel at Nilkanth Mahadev Temple will blow your mind\"\n\n(Note: I've used a CURIOSITY GAPS (Positive) hook pattern, specifically \"The one thing that changed everything\" variant, to pique the reader's interest and make them want to learn more.) \ud83d\udc47"
+    }
+  ]
+}

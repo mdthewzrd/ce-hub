@@ -12,6 +12,8 @@ export default function ReviewV2Page() {
   const reviewedProducts = useRef<Set<string>>(new Set());
   const [showCustomLens, setShowCustomLens] = useState<Record<string, boolean>>({});
   const [customLensValue, setCustomLensValue] = useState<Record<string, string>>({});
+  const [showCustomStyle, setShowCustomStyle] = useState<Record<string, boolean>>({});
+  const [customStyleValue, setCustomStyleValue] = useState<Record<string, string>>({});
 
   useEffect(() => {
     loadProductData();
@@ -240,7 +242,54 @@ export default function ReviewV2Page() {
                         </button>
                       );
                     })}
+                    <button
+                      onClick={() => setShowCustomStyle(prev => ({ ...prev, [product.handle]: true }))}
+                      className="px-3 py-1 text-sm rounded border-2 border-dashed border-amber-500 bg-amber-500/10 text-amber-500 hover:bg-amber-500/20"
+                    >
+                      + Custom
+                    </button>
                   </div>
+
+                  {/* Custom Style Input */}
+                  {showCustomStyle?.[product.handle] && (
+                    <div className="mt-2 p-2 bg-[#13131a] border-2 border-dashed border-amber-500 rounded">
+                      <input
+                        type="text"
+                        value={customStyleValue?.[product.handle] || ''}
+                        onChange={(e) => setCustomStyleValue(prev => ({ ...prev, [product.handle]: e.target.value }))}
+                        placeholder="Enter custom frame style (e.g., Oversized, Browline, Shield)..."
+                        className="w-full px-3 py-2 bg-[#1a1a24] border border-[#2a2a3a] rounded text-white text-sm"
+                        autoFocus
+                      />
+                      <div className="flex gap-2 mt-2">
+                        <button
+                          onClick={() => {
+                            const value = customStyleValue?.[product.handle]?.trim();
+                            if (value) {
+                              setProductTags(prev => ({
+                                ...prev,
+                                [product.handle]: { ...prev[product.handle], style: value }
+                              }));
+                              setCustomStyleValue(prev => ({ ...prev, [product.handle]: '' }));
+                              setShowCustomStyle(prev => ({ ...prev, [product.handle]: false }));
+                            }
+                          }}
+                          className="flex-1 px-3 py-1 bg-green-600 text-white rounded text-sm hover:bg-green-700"
+                        >
+                          Save
+                        </button>
+                        <button
+                          onClick={() => {
+                            setShowCustomStyle(prev => ({ ...prev, [product.handle]: false }));
+                            setCustomStyleValue(prev => ({ ...prev, [product.handle]: '' }));
+                          }}
+                          className="flex-1 px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Material */}

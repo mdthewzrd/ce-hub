@@ -24,7 +24,13 @@ export default function PlanPage() {
       </div>
 
       {/* Main Content Area */}
-      <div className={`flex-1 flex flex-col overflow-hidden relative z-10 transition-transform duration-300 ease-out ${sidebarOpen ? '-translate-x-96' : 'translate-x-0'}`}>
+      <div
+        className="flex flex-col overflow-hidden relative z-10 transition-all duration-300 ease-out"
+        style={{
+          width: sidebarOpen ? 'calc(100% - 384px)' : '100%',
+          marginLeft: sidebarOpen ? '0' : '0'
+        }}
+      >
         {/* Premium Header */}
         <header className="flex h-16 items-center justify-between border-b border-gold/10 bg-gradient-to-b from-surface to-transparent backdrop-blur-xl px-6">
           <div className="flex items-center gap-4">

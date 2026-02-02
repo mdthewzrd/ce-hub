@@ -335,12 +335,13 @@ def remove_markdown_formatting(caption: str) -> str:
 
 def remove_quote_wrapping(caption: str) -> str:
     """
-    Remove quote wrapping around the entire caption.
+    Remove quote wrapping around the entire caption or first line.
     Sometimes AI wraps the whole caption in quotes: "caption here"
+    Or just the first line: "The world's most ancient engineers..."
     """
     caption = caption.strip()
 
-    # Quote characters to check
+    # First, handle the case where the entire caption is quoted
     quote_chars = ['"', "'"]
 
     for quote in quote_chars:
@@ -357,7 +358,18 @@ def remove_quote_wrapping(caption: str) -> str:
                 caption = caption[1:-1].strip()
                 break
 
-    return caption
+    # Second, handle the case where only the first line is quoted
+    lines = caption.split('\n')
+    if lines:
+        first_line = lines[0].strip()
+        # Check if first line starts and ends with quotes
+        for quote in quote_chars:
+            if len(first_line) >= 2 and first_line.startswith(quote) and first_line.endswith(quote):
+                # Remove quotes from first line
+                lines[0] = first_line[1:-1].strip()
+                break
+
+    return '\n'.join(lines)
 
 
 def remove_ai_meta_commentary(caption: str) -> str:
@@ -375,8 +387,8 @@ def remove_ai_meta_commentary(caption: str) -> str:
 
     # Expanded patterns - include contractions and variations
     meta_patterns = [
-        r'^Here is the (revised|rewritten|production-ready|optimized|fresh|new|scroll-stopping|unique|powerful) caption:?',  # Various prefixes (with optional colon)
-        r"^Here('s| is a) (production-ready|optimized|fresh|new|scroll-stopping|compelling|unique) (caption|Instagram caption):?",  # Contractions (with optional colon)
+        r'^Here is the (revised|rewritten|production-ready|optimized|fresh|new|scroll-stopping|unique|powerful) (Instagram )?caption:?',  # Various prefixes (with optional colon)
+        r"^Here('s| is a) (production-ready|optimized|fresh|new|scroll-stopping|compelling|unique) (Instagram )?caption(: | that |:).*$",  # Contractions (catching longer variations)
         r'^Here is your (caption|Instagram caption):?',  # Direct assignment (with optional colon)
         r"^Here('s| is) your (caption|Instagram caption):?",  # With contractions (with optional colon)
         r"^Here('s| is) an? (Instagram )?caption",  # Various "Here's a/Here's an" patterns
@@ -390,6 +402,8 @@ def remove_ai_meta_commentary(caption: str) -> str:
         r"^Here('s| is) an? (Instagram )?caption with",  # Catch "Here's a caption with..."
         r'^Your (fresh|unique|powerful) caption',  # More variations
         r"^Here('s| is) a (fresh|unique|powerful) caption with",  # Specific: "Here's a fresh caption with..."
+        r"^Here's a (rewritten|production-ready|scroll-stopping) (Instagram )?caption(: | that |:).*$",  # Catch "Here's a rewritten caption that..."
+        r"^Here is a (rewritten|production-ready|scroll-stopping) (Instagram )?caption(: | that |:).*$",  # Catch "Here is a rewritten caption that..."
     ]
 
     # Section headers and meta-labels (case insensitive)

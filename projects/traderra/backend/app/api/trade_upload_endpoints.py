@@ -110,7 +110,7 @@ async def parse_tradervue_csv(csv_content: str) -> List[TradeData]:
         # Validate required columns
         required_columns = [
             'Open Datetime', 'Close Datetime', 'Symbol', 'Side',
-            'Volume', 'Entry Price', 'Exit Price', 'Net P&L'
+            'Volume', 'Entry Price', 'Exit Price', 'Gross P&L'
         ]
         missing_columns = [col for col in required_columns if col not in df.columns]
         if missing_columns:
