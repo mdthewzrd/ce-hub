@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import uvicorn
 
-from .conversation.manager import ConversationManager, create_session
+from .conversation.manager import ConversationManager
 from .llm.openrouter_client import LLMConfig, get_client, reset_client
 from .code.validator import CodeValidator
 from .edgedev import EdgeDevClient

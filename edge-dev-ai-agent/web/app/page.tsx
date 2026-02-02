@@ -30,6 +30,7 @@ interface NavItem {
 
 const navigation: NavItem[] = [
   { name: 'Chat', href: '/', icon: MessageSquare },
+  { name: 'Plan', href: '/plan', icon: Sparkles },
   { name: 'Patterns', href: '/patterns', icon: BarChart3 },
   { name: 'Projects', href: '/projects', icon: FolderOpen },
   { name: 'Memory', href: '/memory', icon: Brain },

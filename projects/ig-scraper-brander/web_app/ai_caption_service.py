@@ -132,26 +132,241 @@ def improve_caption_spacing(caption: str) -> str:
     prev_was_content = False
 
     for line in lines:
-        is_empty = not line.strip()
+        stripped = line.strip()
+        is_empty = not stripped
 
         if not is_empty:
-            # If we have 2+ consecutive content lines, add a break
+            # If we have 2+ consecutive content lines, add a break between them
             if prev_was_content:
-                # Check if previous line was long (likely needs break)
-                if len(formatted_lines) > 0 and len(formatted_lines[-1]) > 60:
-                    formatted_lines.append("")  # Add empty line
-                    formatted_lines.append(line)
-                else:
-                    formatted_lines.append(line)
+                # Check if previous line was substantial enough to need a break
+                if len(formatted_lines) > 0 and len(formatted_lines[-1]) > 40:
+                    formatted_lines.append("")  # Add empty line for paragraph break
+                formatted_lines.append(stripped)
             else:
-                formatted_lines.append(line)
+                formatted_lines.append(stripped)
             prev_was_content = True
         else:
-            # Keep existing empty lines (visual breaks)
-            formatted_lines.append(line)
+            # Skip multiple consecutive empty lines
+            if not formatted_lines or formatted_lines[-1] != "":
+                formatted_lines.append("")
             prev_was_content = False
 
+    # Clean up any trailing empty lines
+    while formatted_lines and formatted_lines[-1] == "":
+        formatted_lines.pop()
+
     return '\n'.join(formatted_lines)
+
+
+def remove_chapter_labels_and_headers(caption: str) -> str:
+    """
+    Remove chapter labels, section headers, and other non-Instagram formatting
+    """
+    import re
+    lines = caption.split('\n')
+    filtered_lines = []
+
+    # Patterns to remove - more aggressive now
+    header_patterns = [
+        r'^CHAPTER\s+\d+.*$',
+        r'^CHAPTER\s+[IVX]+.*$',
+        r'^##\s+.*$',
+        r'^###\s+.*$',
+        r'^\d+\.\s+.*$',  # "1. ", "2. " etc
+        r'^PRACTICAL\s+APPLICATION.*$',
+        r'^POWERFUL\s+CONCLUSION.*$',
+        r'^THE\s+WINNING\s+FORMULA.*$',
+        r'^BRAND\s+VOICE.*$',
+        r'^TONE\s+GUIDELINES.*$',
+        r'^CRITICAL\s+REQUIREMENTS.*$',
+        r'^CONTENT\s+SAFETY.*$',
+        r'^REFERENCE\s+.*$',
+        r'^Here is the rewritten caption.*$',  # AI prefix
+        r'^Here is.*caption.*',  # Generic AI prefix
+        r'^Part\s+\d+\s+of\s+\d+.*$',  # Part labels
+        r'^The\s+Transformation.*$',
+        r'^A\s+New\s+Reality.*$',
+        r'^Practical\s+Application.*$',
+        r'^The\s+Solution.*$',
+        r'^The\s+Reveal.*$',
+        r'^The\s+Truth.*$',
+        r'^Conclusion.*$',
+    ]
+
+    combined_pattern = '|'.join(f'({p})' for p in header_patterns)
+    regex = re.compile(combined_pattern, re.IGNORECASE)
+
+    for line in lines:
+        stripped = line.strip()
+        # Skip lines that match header patterns
+        if regex.match(stripped):
+            continue
+        # Skip all-caps lines that look like headers (short, all caps with colon)
+        if stripped and len(stripped) < 60 and stripped.isupper() and (':' in stripped or stripped.endswith('.')):
+            continue
+        # Skip title case lines that look like section headers
+        if stripped and len(stripped) < 50 and ':' not in stripped and '.' not in stripped:
+            # Check if it's all title case (each word capitalized)
+            words = stripped.split()
+            if len(words) >= 2 and len(words) <= 6:
+                title_case_count = sum(1 for w in words if w and w[0].isupper())
+                if title_case_count == len(words):
+                    continue  # Skip this line, looks like a section header
+        filtered_lines.append(line)
+
+    # Clean up excessive blank lines
+    result_lines = []
+    prev_empty = False
+    for line in filtered_lines:
+        is_empty = not line.strip()
+        if is_empty:
+            if not prev_empty:
+                result_lines.append(line)
+            prev_empty = True
+        else:
+            result_lines.append(line)
+            prev_empty = False
+
+    # Remove leading/trailing whitespace
+    result = '\n'.join(result_lines).strip()
+    return result
+
+
+def filter_shadowban_triggers(caption: str) -> str:
+    """
+    Filter out phrases that trigger shadowbans or content moderation
+    Focus on medical claims, conspiracy language, and platform-risky content
+    """
+    import re
+
+    # Phrases to soften or remove
+    replacements = {
+        # Medical cure claims - soften to language about wellness
+        r'cured cancer': 'supported wellness',
+        r'cure[sd]?\s+cancer': 'helped with wellness',
+        r'cure[sd]?\s+': 'helped with ',
+        r'cancer.*disappeared': 'health improved',
+        r'pathogens.*destroyed': 'pathogens managed',
+
+        # Conspiracy/suppression language - soften to education angle
+        r'systematically suppressed': 'overlooked',
+        r'has been suppressed': 'has been overlooked',
+        r'buried.*truth': 'not widely discussed',
+        r'hidden.*truth': 'lesser-known',
+        r'disappeared': 'was forgotten',
+        r'documented.*then.*buried': 'documented but not widely shared',
+
+        # Anti-medicine/authority framing
+        r'rely on external authority': 'consider all perspectives',
+        r'external authority.*fix': 'outside solutions',
+        r'outsourcing.*body': 'looking beyond yourself',
+
+        # Absolute claims - soften to possibility language
+        r'isn\'t a fantasy': 'is worth exploring',
+        r'not.*fantasy': 'worth considering',
+        r'This isn\'t [a-z]+ fantasy': 'This is worth exploring',
+        r'It\'s a reality': 'It\'s a possibility worth considering',
+        r'hidden in plain sight': 'often overlooked',
+    }
+
+    result = caption
+    for pattern, replacement in replacements.items():
+        result = re.sub(pattern, replacement, result, flags=re.IGNORECASE)
+
+    return result
+
+
+def format_for_mobile_readability(caption: str) -> str:
+    """
+    Format caption for optimal mobile Instagram readability
+
+    Key principles:
+    - Break long paragraphs into shorter chunks (2-3 sentences max)
+    - Add visual breathing room between ideas
+    - Make it scannable while scrolling
+    - Keep the hook compact (2 lines max)
+    """
+    lines = caption.split('\n')
+    formatted = []
+    in_hook = True
+
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
+            if formatted and formatted[-1] != "":
+                formatted.append("")
+            in_hook = False
+            continue
+
+        # Hook (first non-empty line) - keep compact
+        if in_hook:
+            formatted.append(stripped)
+            in_hook = False
+            continue
+
+        # Long paragraphs need breaking up
+        # Count sentences roughly
+        sentence_count = stripped.count('.') + stripped.count('!') + stripped.count('?')
+
+        if sentence_count >= 4 or len(stripped) > 200:
+            # Break this paragraph into smaller chunks
+            chunks = split_long_paragraph(stripped)
+            for i, chunk in enumerate(chunks):
+                if i > 0:
+                    formatted.append("")
+                formatted.append(chunk.strip())
+        else:
+            formatted.append(stripped)
+
+    # Clean up excessive blank lines
+    result = []
+    prev_empty = False
+    for line in formatted:
+        if not line.strip():
+            if not prev_empty:
+                result.append("")
+            prev_empty = True
+        else:
+            result.append(line)
+            prev_empty = False
+
+    # Trim trailing empty lines
+    while result and not result[-1].strip():
+        result.pop()
+
+    return '\n'.join(result)
+
+
+def split_long_paragraph(paragraph: str) -> list:
+    """
+    Split a long paragraph into 2-3 sentence chunks for mobile readability
+    """
+    import re
+
+    # Split by sentence endings
+    sentences = re.split(r'(?<=[.!?])\s+', paragraph)
+
+    chunks = []
+    current_chunk = []
+
+    for sentence in sentences:
+        current_chunk.append(sentence)
+        sentence_count = len(current_chunk)
+
+        # Start a new chunk after 2-3 sentences
+        if sentence_count >= 2 and len(' '.join(current_chunk)) > 120:
+            chunks.append(' '.join(current_chunk))
+            current_chunk = []
+        elif sentence_count >= 3:
+            chunks.append(' '.join(current_chunk))
+            current_chunk = []
+
+    # Add remaining sentences
+    if current_chunk:
+        chunks.append(' '.join(current_chunk))
+
+    return chunks
+
 sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from database import get_brand_voice_for_caption_by_id
@@ -333,12 +548,12 @@ class CaptionPromptBuilder:
    - Let the content stand on its own
    - Focus on value delivered, not asking for something"""
 
-        # Caption length specifications
+        # Caption length specifications (Instagram optimized)
         length_specs = {
-            "story": "750-1000 words - Write a deep, narrative-driven story with multiple chapters, extensive detail, and comprehensive exploration of ideas. This is a LONG-FORM narrative that readers should spend 3-5 minutes reading.",
-            "long": "400-500 words - Detailed exploration with multiple paragraphs and substantial teaching.",
-            "medium": "250-350 words - Balanced approach with key insights and moderate depth.",
-            "short": "100-150 words - Quick, punchy delivery of one core idea."
+            "story": "300-400 words - A flowing narrative that tells a complete story with 3-4 substantial paragraphs. Keep it engaging but scannable.",
+            "long": "250-350 words - Detailed exploration with 3-4 paragraphs and solid teaching.",
+            "medium": "180-250 words - Balanced approach with key insights and 2-3 paragraphs.",
+            "short": "80-120 words - Quick, punchy delivery of one core idea."
         }
         length_instruction = length_specs.get(caption_length_preference, length_specs["medium"])
 
@@ -374,6 +589,18 @@ Generate a captivating, long-form caption that stops the scroll, pulls readers t
 - Emotional journey: relatable hook → substantial teaching → empowerment
 - {"Natural CTA that flows from the value you provided" if use_manychat_cta else "End naturally without asking for anything - NO call-to-action whatsoever"}
 - Keep emojis MINIMAL - 1-2 for entire caption max, only if they add real value, and NEVER in the hook
+
+## Content Safety & Tone Guidelines (CRITICAL - AVOID SHADOWBAN):
+- NEVER claim to "cure cancer" or any disease - this triggers immediate moderation
+- NEVER use phrases like "systematically suppressed", "buried truth", "hidden knowledge"
+- NEVER reference historical figures claiming their work was "disappeared" or "suppressed"
+- AVOID: conspiracy narratives, "they don't want you to know", "big pharma hiding truth"
+- AVOID: absolute medical claims, miracle cure language, anti-medicine framing
+- AVOID: chapter labels, section headers like "The Transformation", "Practical Application"
+- INSTEAD: Frame as personal exploration, wellness tips, self-discovery
+- INSTEAD: Use "supporting wellness" not "curing", "consider exploring" not "the truth is"
+- INSTEAD: Focus on empowerment through self-awareness, not fighting external oppression
+- KEEP it grounded: What works for YOU, not what "they" are hiding
 
 ## Reference Top-Performing Captions (Study these patterns):
 {reference_context}
@@ -644,13 +871,13 @@ class CaptionGenerator:
 
             # Adjust max_tokens based on caption length preference
             if caption_length_preference == "story":
-                max_tokens = 2500  # ~750-1000 words
+                max_tokens = 1200  # ~300-400 words
             elif caption_length_preference == "long":
-                max_tokens = 1800  # ~500 words
+                max_tokens = 900   # ~250-350 words
             elif caption_length_preference == "medium":
-                max_tokens = 1200  # ~300 words
+                max_tokens = 700   # ~180-250 words
             else:  # short
-                max_tokens = 800   # ~150 words
+                max_tokens = 400   # ~80-120 words
 
             # Step 5: Build prompt
             messages = self.prompt_builder.build_caption_generation_prompt(
@@ -677,7 +904,16 @@ class CaptionGenerator:
 
             caption = response["choices"][0]["message"]["content"]
 
-            # Step 6: Quality checking
+            # Step 6.5: Post-process caption - clean up formatting issues
+            print("Post-processing caption...")
+            caption = remove_chapter_labels_and_headers(caption)
+            caption = filter_shadowban_triggers(caption)
+            caption = format_for_mobile_readability(caption)
+            caption = improve_caption_spacing(caption)
+            caption = add_emojis_if_needed(caption)
+            print(f"Caption post-processed (length: {len(caption)} chars)")
+
+            # Step 7: Quality checking
             print("Running quality checks...")
             quality_results = self._quality_check_caption(
                 caption=caption,
@@ -983,20 +1219,28 @@ def get_recent_captions_for_avoidance(limit: int = 15) -> str:
         if not rows:
             return ""
 
-        # Extract hooks (first line/sentence of each caption)
+        # Extract hooks, phrases, and concepts to avoid
         hooks_seen = set()
         phrases_seen = set()
+        concepts_seen = set()
+        words_seen = {}
 
         for row in rows:
             caption = row['caption']
-            # Get first line as hook
+
+            # Get first 2 lines as hook (more comprehensive)
             lines = caption.split('\n')
-            if lines:
-                first_line = lines[0].strip()
-                # Remove common punctuation for better matching
-                clean_hook = first_line.rstrip('?!.,:;').lower().strip()
-                if len(clean_hook) > 10 and len(clean_hook) < 100:
-                    hooks_seen.add(clean_hook)
+            if len(lines) >= 2:
+                hook_text = f"{lines[0].strip()} {lines[1].strip()}"
+            elif lines:
+                hook_text = lines[0].strip()
+            else:
+                hook_text = caption[:100]
+
+            # Remove common punctuation for better matching
+            clean_hook = hook_text.rstrip('?!.,:;').lower().strip()
+            if len(clean_hook) > 10 and len(clean_hook) < 150:
+                hooks_seen.add(clean_hook)
 
             # Extract common phrases (3-5 word sequences)
             words = caption.lower().replace('\n', ' ').split()
@@ -1004,21 +1248,44 @@ def get_recent_captions_for_avoidance(limit: int = 15) -> str:
                 phrase = ' '.join(words[i:i+3])
                 if len(phrase) > 15 and len(phrase) < 60:
                     # Skip very common phrases
-                    if not any(word in ['comment', 'below', 'link', 'bio', 'follow', 'like'] for word in phrase.split()):
+                    if not any(word in ['comment', 'below', 'link', 'bio', 'follow', 'like', 'this is', 'the', 'a', 'an'] for word in phrase.split()):
                         phrases_seen.add(phrase)
 
-        # Build avoidance context
+                # Extract 4-word phrases too
+                if i < len(words) - 3:
+                    phrase4 = ' '.join(words[i:i+4])
+                    if len(phrase4) > 20 and len(phrase4) < 70:
+                        if not any(word in ['comment', 'below', 'link', 'bio', 'follow', 'like', 'this is', 'the truth', 'the secret'] for word in phrase4.split()):
+                            phrases_seen.add(phrase4)
+
+            # Extract key concepts (single words that are overused)
+            import re
+            # Extract meaningful words (not common stop words)
+            meaningful_words = re.findall(r'\b[a-z]{4,}\b', caption.lower())
+            stop_words = {'this', 'that', 'with', 'from', 'have', 'been', 'were', 'they', 'them', 'your', 'body', 'just', 'like', 'more', 'only', 'even', 'back', 'into', 'over', 'such'}
+            for word in meaningful_words:
+                if word not in stop_words:
+                    words_seen[word] = words_seen.get(word, 0) + 1
+
+        # Build comprehensive avoidance context
         context = "\n\n## RECENTLY USED HOOKS (DO NOT REPEAT):\n"
-        for hook in sorted(hooks_seen)[:20]:
+        for hook in sorted(hooks_seen)[:15]:
             context += f"- {hook}\n"
 
-        context += "\n## OVERUSED PHRASES (AVOID VARIATIONS OF THESE):\n"
-        for phrase in sorted(list(phrases_seen))[:25]:
+        context += "\n## OVERUSED PHRASES (AVOID VARIATIONS):\n"
+        for phrase in sorted(list(phrases_seen))[:20]:
             context += f"- {phrase}\n"
 
-        context += f"\n**IMPORTANT**: These hooks and phrases have been used recently. Create something COMPLETELY different and unique. Do not use similar wording or patterns."
+        # Add overused concepts (words used 5+ times)
+        overused_concepts = {word: count for word, count in words_seen.items() if count >= 5}
+        if overused_concepts:
+            context += "\n## OVERUSED CONCEPTS (FIND SYNONYMS):\n"
+            for word, count in sorted(overused_concepts.items(), key=lambda x: x[1], reverse=True)[:10]:
+                context += f"- {word} (used {count} times recently)\n"
 
-        print(f"[Deduplication] Found {len(hooks_seen)} recent hooks and {len(phrases_seen)} phrases to avoid")
+        context += f"\n**CRITICAL**: Create something FRESH and UNIQUE. Do not use similar wording, concepts, or patterns to what's listed above."
+
+        print(f"[Deduplication] Found {len(hooks_seen)} recent hooks, {len(phrases_seen)} phrases, {len(overused_concepts)} overused concepts to avoid")
         return context
 
     except Exception as e:
@@ -1302,8 +1569,10 @@ GOOD: "When Royal Rife demonstrated this in 1934, medical witnesses watched unde
 STOP after Chapter 4. Part 2 will continue with Chapters 5-7.
 
 Remember: NO chapter headers like "Chapter 1:". Just write the flowing narrative.
+
+**LENGTH LIMIT: Maximum 350 words for Part 1. STOP after chapter 4. Do NOT write chapters 5-7 yet.
 """
-            max_tokens = 1800  # First part limit
+            max_tokens = 1000  # First part limit - strictly controlled to prevent runaway generation
         elif caption_length_pref == "short":
             length_instruction = """
 **SHORT MODE - PUNCHY & CONCISE**
@@ -1456,6 +1725,41 @@ If writing story length (750-1000+ words), structure as a journey:
 5. **Practical Application** (100-150 words) - How the reader can use this
 6. **Transformation** (100-150 words) - What becomes possible
 7. **Conclusion** (100-150 words) - Final thought and call to reflection
+
+## ANTI-REPETITION SYSTEM
+
+**CRITICAL: Avoid repeating yourself at all costs.**
+
+❌ **REPETITION PATTERNS TO AVOID:**
+- Don't use the same word more than twice in a paragraph
+- Don't repeat the same concept in different paragraphs
+- Don't say "electromagnetic" then "biofield" then "energy field" in 3 consecutive sentences
+- Don't repeat your hook at the end without adding new insight
+- Don't use the same sentence structure throughout
+
+✅ **VARIETY TECHNIQUES:**
+- **Mix sentence lengths**: Short punchy (5-10 words) + Medium (15-25 words) + Long (25-40 words)
+- **Vary sentence starts**: Don't start every sentence with "The" or "This" or "It's"
+- **Use different perspectives**: Sometimes "you", sometimes "we", sometimes "I", sometimes passive voice
+- **Change paragraph structure**: Some short (2 sentences), some longer (4-5 sentences)
+- **Use synonyms**: If you used "body" 3 times, switch to "physical form", "organism", "vessel", "being"
+
+**PROOFREADING CHECK:**
+Before finishing, scan your caption for:
+1. Words used more than 3 times → Find synonyms
+2. Similar sentence structures → Mix it up
+3. Repeated concepts → Merge or delete one
+4. Consecutive sentences starting with same word → Rewrite
+
+**EXAMPLE OF REPETITION TO AVOID:**
+BAD: "Your body is electromagnetic. Your body has energy fields. Your body can heal itself."
+GOOD: "Your body is electromagnetic. Every cell contains energy fields. This physical form can regenerate itself."
+
+**VARIETY INJECTION:**
+- Add specific numbers: "After 47 days..." not "After some time..."
+- Include names: "When Tesla discovered..." not "When researchers found..."
+- Use sensory details: "Feel the pulse..." not "Observe the rhythm..."
+- Change verbs: Instead of "is/are/was/were" use "becomes/reveals/demonstrates/proves"
 
 ## STRONG ENDING & CONCLUSION PATTERNS
 
@@ -1765,18 +2069,16 @@ Continue the caption now:"""
                 caption = caption.strip()
                 print(f"[AI Processing] Removed all hashtags (brand voice preference: none)")
 
-        # Validate caption quality - reject corrupted content
+        # Validate caption quality - reject truly corrupted content
         import string
         printable_chars = set(string.printable)
         non_printable = sum(1 for c in caption if c not in printable_chars)
         non_printable_ratio = non_printable / len(caption) if caption else 0
 
-        # Check for suspicious patterns (code, technical jargon, etc.)
-        suspicious_patterns = ['Utility', 'DataAnnotations', 'batchSize', 'tensorflow', 'StackTrace', 'Exception']
-        suspicious_count = sum(1 for pattern in suspicious_patterns if pattern in caption)
-
-        if non_printable_ratio > 0.3 or suspicious_count > 3:
-            error_msg = f"Caption validation failed: non_printable_ratio={non_printable_ratio:.2f}, suspicious_patterns={suspicious_count}"
+        # Only reject if there's a LOT of non-printable characters (>30%)
+        # This catches actual corruption, not legitimate technical content
+        if non_printable_ratio > 0.3:
+            error_msg = f"Caption validation failed: non_printable_ratio={non_printable_ratio:.2f}"
             print(f"[AI Processing] ERROR: {error_msg}")
             print(f"[AI Processing] Caption preview: {caption[:200]}...")
             update_processing_status(source_id, 'failed', error_msg)

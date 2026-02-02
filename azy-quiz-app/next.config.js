@@ -13,6 +13,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/review',
+        destination: '/review.html',
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

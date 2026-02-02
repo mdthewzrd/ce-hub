@@ -5,7 +5,7 @@
 /* Import Inter font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Design Tokens - Clean, Modern Theme */
+/* Design Tokens - Clean, Modern Theme with EdgeDev Gold */
 :root {
   /* Core Colors - Refined Palette */
   --background: #09090b;
@@ -22,6 +22,22 @@
   --primary: #3b82f6;
   --primary-hover: #2563eb;
   --primary-light: rgba(59, 130, 246, 0.1);
+
+  /* EdgeDev Gold Theme */
+  --gold: #D4AF37;
+  --gold-hover: #c9a432;
+  --gold-light: rgba(212, 175, 55, 0.1);
+  --gold/20: rgba(212, 175, 55, 0.2);
+  --gold/30: rgba(212, 175, 55, 0.3);
+  --gold/40: rgba(212, 175, 55, 0.4);
+  --gold/50: rgba(212, 175, 55, 0.5);
+  --gold/60: rgba(212, 175, 55, 0.6);
+  --gold/70: rgba(212, 175, 55, 0.7);
+  --gold/80: rgba(212, 175, 55, 0.8);
+  --gold/15: rgba(212, 175, 55, 0.15);
+  --gold/8: rgba(212, 175, 55, 0.08);
+  --gold/5: rgba(212, 175, 55, 0.05);
+  --gold/3: rgba(212, 175, 55, 0.03);
 
   /* Text Colors */
   --text-primary: #fafafa;

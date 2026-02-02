@@ -1,4 +1,4 @@
 {
-  "/page": "app/page.js",
-  "/trades/page": "app/trades/page.js"
+  "/api/copilotkit/route": "app/api/copilotkit/route.js",
+  "/page": "app/page.js"
 }
