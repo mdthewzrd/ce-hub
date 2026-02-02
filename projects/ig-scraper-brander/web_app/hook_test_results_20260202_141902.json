@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-02-02T14:19:02.377999",
+  "brand_voice": "Harmonatica",
+  "avg_hook_score": 6.666666666666667,
+  "results": [
+    {
+      "content_id": 488,
+      "hook_score": 6.0,
+      "hook_text": "You've been living in a body that's been lied to about its true potential.",
+      "caption": "You've been living in a body that's been lied to about its true potential.\n\nFor over a century, the secrets of the human energy system have been kept from the masses, conditioning us to view our bodies as mere vessels instead of powerful machines capable of unlocking untold potential."
+    },
+    {
+      "content_id": 468,
+      "hook_score": 7.0,
+      "hook_text": "UNLOCK THE SECRET TO ANCIENT WISDOM",
+      "caption": " UNLOCK THE SECRET TO ANCIENT WISDOM\n\nYou won't believe what this temple's spiral design is actually hiding..."
+    },
+    {
+      "content_id": 459,
+      "hook_score": 7.0,
+      "hook_text": "The 'powers that be' have been hiding a secret from us for 150 years.",
+      "caption": "The 'powers that be' have been hiding a secret from us for 150 years."
+    }
+  ]
+}

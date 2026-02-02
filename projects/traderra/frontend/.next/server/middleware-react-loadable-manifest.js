@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST="{\"../node_modules/@segment/analytics-node/dist/esm/lib/fetch.js -> node-fetch\":{\"id\":\"../node_modules/@segment/analytics-node/dist/esm/lib/fetch.js -> node-fetch\",\"files\":[]},\"components/charts/trading-chart.tsx -> react-plotly.js\":{\"id\":\"components/charts/trading-chart.tsx -> react-plotly.js\",\"files\":[\"static/chunks/_app-pages-browser_node_modules_react-plotly_js_react-plotly_js.js\"]}}"

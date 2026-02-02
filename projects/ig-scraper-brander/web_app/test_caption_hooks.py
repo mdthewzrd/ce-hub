@@ -18,7 +18,15 @@ sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 # Import caption generation service
-from ai_caption_service import OpenRouterClient
+from ai_caption_service import (
+    OpenRouterClient,
+    remove_chapter_labels_and_headers,
+    filter_shadowban_triggers,
+    format_for_mobile_readability,
+    improve_caption_spacing,
+    add_emojis_if_needed,
+    enforce_hook_length_limit
+)
 
 # Database path
 DB_PATH = Path(__file__).parent.parent.parent / "harmonatica.db"
@@ -239,7 +247,17 @@ Generate the caption now:"""
         )
 
         if "choices" in response and len(response["choices"]) > 0:
-            return response["choices"][0]["message"]["content"].strip()
+            caption = response["choices"][0]["message"]["content"].strip()
+
+            # Apply post-processing to clean up formatting
+            caption = remove_chapter_labels_and_headers(caption)
+            caption = filter_shadowban_triggers(caption)
+            caption = format_for_mobile_readability(caption)
+            caption = improve_caption_spacing(caption)
+            caption = add_emojis_if_needed(caption)
+            caption = enforce_hook_length_limit(caption)  # Enforce mobile preview limit
+
+            return caption
         else:
             return None
 

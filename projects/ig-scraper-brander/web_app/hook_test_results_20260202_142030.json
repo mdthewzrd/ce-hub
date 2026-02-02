@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-02-02T14:20:30.055301",
+  "brand_voice": "Harmonatica",
+  "avg_hook_score": 6.333333333333333,
+  "results": [
+    {
+      "content_id": 488,
+      "hook_score": 6.0,
+      "hook_text": "YOUR BODY IS CAPABLE OF SOMETHING YOU'VE BEEN TOLD IS IMPOSSIBLE",
+      "caption": "YOUR BODY IS CAPABLE OF SOMETHING YOU'VE BEEN TOLD IS IMPOSSIBLE\n\nYou've been conditioned to see your body as a burden, a mere vessel for your soul. But what if I told you that's just a lie?"
+    },
+    {
+      "content_id": 459,
+      "hook_score": 7.0,
+      "hook_text": "What if everything you've been told about reality is a lie?",
+      "caption": "What if everything you've been told about reality is a lie?"
+    },
+    {
+      "content_id": 468,
+      "hook_score": 6.0,
+      "hook_text": "Here's a scroll-stopping caption:",
+      "caption": "Here's a scroll-stopping caption:\n\n\"You're ignoring a secret encoded in ancient stone, often overlooked. What if the spiral design at Nilkanth Mahadev Temple holds the key to harnessing the power of electromagnetism?\""
+    }
+  ]
+}

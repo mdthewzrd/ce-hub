@@ -49,6 +49,9 @@ def add_emojis_if_needed(caption: str) -> str:
     - NO emoji in the hook/first line (keep it clean)
     - Only add to: ONE key body point, or CTA
     """
+    # First, strip ALL emojis from the first line/hook
+    caption = remove_emojis_from_first_line(caption)
+
     # Count existing emojis
     emoji_count = sum(1 for c in caption if ord(c) > 127000)
     lines = caption.split('\n')
@@ -88,15 +91,148 @@ def add_emojis_if_needed(caption: str) -> str:
 
         result_lines.append(line)
 
-    # Add emoji to CTA if needed (last non-empty line)
-    if emojis_added < desired_count:
+    # Add emoji to CTA if needed (last non-empty line) - but ONLY if caption has 5+ lines
+    # This avoids placing emoji right after the hook in short captions
+    if emojis_added < desired_count and len(result_lines) >= 5:
         for i in range(len(result_lines) - 1, -1, -1):
             if result_lines[i].strip() and emojis_added < desired_count:
-                result_lines[i] = result_lines[i] + ' ' + cta_emoji[0]
-                emojis_added += 1
-                break
+                # Make sure this isn't the hook (first non-empty line)
+                if i > 2:  # Only add to lines after the first few (hook + early content)
+                    result_lines[i] = result_lines[i] + ' ' + cta_emoji[0]
+                    emojis_added += 1
+                    break
 
     return '\n'.join(result_lines)
+
+
+def remove_emojis_from_first_line(caption: str) -> str:
+    """
+    Remove ALL emojis from the first line/hook of the caption.
+    Instagram hooks should be clean text without emojis.
+    """
+    import re
+
+    lines = caption.split('\n')
+    if not lines:
+        return caption
+
+    # Get the first non-empty line (the hook)
+    first_line_idx = 0
+    for i, line in enumerate(lines):
+        if line.strip():
+            first_line_idx = i
+            break
+
+    # Remove emojis from the first line
+    first_line = lines[first_line_idx]
+
+    # Common emoji ranges and patterns
+    emoji_ranges = [
+        (0x1F600, 0x1F64F),  # Emoticons
+        (0x1F300, 0x1F5FF),  # Symbols & Pictographs
+        (0x1F680, 0x1F6FF),  # Transport & Map
+        (0x1F1E0, 0x1F1FF),  # Flags
+        (0x2600, 0x26FF),    # Misc symbols
+        (0x2700, 0x27BF),    # Dingbats
+        (0xFE00, 0xFE0F),    # Variation Selectors
+        (0x1F900, 0x1F9FF),  # Supplemental Symbols
+        (0x1FA00, 0x1FA6F),  # Symbols and Pictographs Extended-A
+        (0x1FA70, 0x1FAFF),  # Symbols and Pictographs Extended-B
+        (0x231A, 0x23FF),    # Miscellaneous Technical
+        (0x2B50, 0x2B55),    # Stars
+    ]
+
+    # Remove emojis
+    cleaned_line = ''
+    for char in first_line:
+        char_code = ord(char)
+        is_emoji = any(start <= char_code <= end for start, end in emoji_ranges)
+        # Also check for common arrow emojis and similar
+        if not is_emoji and char_code not in [0x27A1, 0x2B05, 0x2B06, 0x2B07, 0x25C0, 0x25B6, 0x23EC, 0x23EA]:
+            cleaned_line += char
+
+    # Clean up any trailing spaces after removing emoji
+    cleaned_line = cleaned_line.rstrip()
+
+    # Also remove emoji-like text patterns (e.g., "👇" as text)
+    cleaned_line = re.sub(r'\s*[→👇↓⬇️📲]\s*$', '', cleaned_line)
+
+    lines[first_line_idx] = cleaned_line
+    return '\n'.join(lines)
+
+
+def enforce_hook_length_limit(caption: str, max_chars: int = 140) -> str:
+    """
+    Enforce strict character limit for the first 2 lines (mobile preview).
+
+    Instagram shows first 2 lines before "more" button on mobile.
+    This ensures the hook is fully visible without clicking.
+
+    Args:
+        caption: The full caption text
+        max_chars: Maximum characters for first 2 lines combined (default: 140)
+
+    Returns:
+        Caption with truncated/shortened hook if needed
+    """
+    lines = caption.split('\n')
+
+    # Get first 2 non-empty lines (the mobile preview)
+    preview_lines = []
+    preview_length = 0
+    first_line_idx = -1
+    second_line_idx = -1
+
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if stripped:
+            if first_line_idx == -1:
+                first_line_idx = i
+                preview_lines.append(stripped)
+                preview_length += len(stripped)
+            elif second_line_idx == -1:
+                second_line_idx = i
+                preview_lines.append(stripped)
+                preview_length += len(stripped)
+                break
+
+    # If preview is within limit, return as-is
+    if preview_length <= max_chars:
+        return caption
+
+    # Need to shorten the hook
+    first_line = lines[first_line_idx] if first_line_idx >= 0 else ""
+
+    # Strategy: Truncate first line to fit, ending with natural break
+    # Try to end at a complete word or phrase
+
+    # If first line alone exceeds limit, truncate it
+    if len(first_line) > max_chars:
+        # Find a good truncation point (ellipsis, question mark, or word boundary)
+        truncation_points = ['...', '?', '!', '.', ' -', ',']
+        best_truncate = max_chars - 10  # Leave room for "..." if needed
+
+        for i, point in enumerate(truncation_points):
+            idx = first_line.rfind(point, 0, best_truncate)
+            if idx > 10:  # Found a good break point
+                first_line = first_line[:idx + len(point)].rstrip()
+                break
+        else:
+            # No good break point, truncate at word boundary
+            words = first_line[:best_truncate].split()
+            first_line = ' '.join(words[:-1]) + '...'
+
+        lines[first_line_idx] = first_line
+
+        # Remove second line if it exists (hook should be single line now)
+        if second_line_idx >= 0 and second_line_idx > first_line_idx:
+            # Check if second line content should be kept
+            second_line = lines[second_line_idx].strip()
+            if len(first_line) + len(second_line) > max_chars:
+                # Remove second line, but keep rest of caption
+                lines.pop(second_line_idx)
+
+    return '\n'.join(lines)
 
 
 def _reduce_emojis(caption: str, max_count: int) -> str:
@@ -204,16 +340,22 @@ def remove_quote_wrapping(caption: str) -> str:
     """
     caption = caption.strip()
 
-    # Check if entire caption is wrapped in quotes
-    if len(caption) >= 2 and caption[0] in '"'"'"' and caption[-1] == caption[0]:
-        # Check if there's a matching quote at the end
-        quote_count = caption.count(caption[0])
-        # Only unwrap if it looks like the whole thing is quoted (start+end match, and minimal internal quotes)
-        if quote_count == 2:
-            caption = caption[1:-1].strip()
-        elif caption.startswith('"') and caption.endswith('"') and '"\n' not in caption:
-            # If quotes are at very start and end with no newlines with quotes, unwrap
-            caption = caption[1:-1].strip()
+    # Quote characters to check
+    quote_chars = ['"', "'"]
+
+    for quote in quote_chars:
+        # Check if entire caption is wrapped in this quote type
+        if len(caption) >= 2 and caption.startswith(quote) and caption.endswith(quote):
+            # Check if there's a matching quote at the end
+            quote_count = caption.count(quote)
+            # Only unwrap if it looks like the whole thing is quoted (start+end match, and minimal internal quotes)
+            if quote_count == 2:
+                caption = caption[1:-1].strip()
+                break
+            elif caption.startswith(quote) and caption.endswith(quote) and f'{quote}\n' not in caption:
+                # If quotes are at very start and end with no newlines with quotes, unwrap
+                caption = caption[1:-1].strip()
+                break
 
     return caption
 
@@ -233,15 +375,21 @@ def remove_ai_meta_commentary(caption: str) -> str:
 
     # Expanded patterns - include contractions and variations
     meta_patterns = [
-        r'^Here is the (revised|rewritten|production-ready|optimized|fresh|new|scroll-stopping) caption',  # Various prefixes
-        r"^Here('s| is a) (production-ready|optimized|fresh|new|scroll-stopping|compelling) (caption|Instagram caption)",  # Contractions
-        r'^Here is your (caption|Instagram caption)',  # Direct assignment
-        r"^Here('s| is) your (caption|Instagram caption)",  # With contractions
-        r'^Here'?s an? (Instagram )?caption',  # Various "Here's a/Here's an" patterns
+        r'^Here is the (revised|rewritten|production-ready|optimized|fresh|new|scroll-stopping|unique|powerful) caption:?',  # Various prefixes (with optional colon)
+        r"^Here('s| is a) (production-ready|optimized|fresh|new|scroll-stopping|compelling|unique) (caption|Instagram caption):?",  # Contractions (with optional colon)
+        r'^Here is your (caption|Instagram caption):?',  # Direct assignment (with optional colon)
+        r"^Here('s| is) your (caption|Instagram caption):?",  # With contractions (with optional colon)
+        r"^Here('s| is) an? (Instagram )?caption",  # Various "Here's a/Here's an" patterns
         r'^(Below is the|The following is a) caption',  # Alternative intros
         r'^Caption:?$',  # Just "Caption:" or "Caption"
         r'^Your caption:?$',  # "Your caption:"
         r'^Generated caption:?$',  # "Generated caption:"
+        r'^Here is a (fresh|unique|powerful)',  # Catch "Here is a fresh..."
+        r"^Here('s| is) a (fresh|unique|powerful)",  # Catch "Here's a fresh..."
+        r'^Here is an? (Instagram )?caption with',  # Catch "Here is a caption with..."
+        r"^Here('s| is) an? (Instagram )?caption with",  # Catch "Here's a caption with..."
+        r'^Your (fresh|unique|powerful) caption',  # More variations
+        r"^Here('s| is) a (fresh|unique|powerful) caption with",  # Specific: "Here's a fresh caption with..."
     ]
 
     # Section headers and meta-labels (case insensitive)
@@ -308,7 +456,8 @@ def remove_ai_meta_commentary(caption: str) -> str:
                 result_lines.append(line)
             prev_empty = True
         else:
-            result_lines.append(line)
+            # Strip leading/trailing whitespace from each non-empty line
+            result_lines.append(line.strip())
             prev_empty = False
 
     result = '\n'.join(result_lines).strip()
@@ -1011,6 +1160,7 @@ class CaptionGenerator:
             caption = format_for_mobile_readability(caption)
             caption = improve_caption_spacing(caption)
             caption = add_emojis_if_needed(caption)
+            caption = enforce_hook_length_limit(caption)  # Enforce mobile preview limit
             print(f"Caption post-processed (length: {len(caption)} chars)")
 
             # Step 7: Quality checking

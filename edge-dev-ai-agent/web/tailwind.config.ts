@@ -10,43 +10,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        background: '#000000',
+        foreground: '#fafafa',
         surface: {
-          DEFAULT: 'var(--surface)',
-          hover: 'var(--surface-hover)',
-          active: 'var(--surface-active)',
+          DEFAULT: '#0a0a0a',
+          hover: '#141414',
+          active: '#1a1a1a',
         },
         border: {
-          DEFAULT: 'var(--border)',
-          subtle: 'var(--border-subtle)',
+          DEFAULT: '#1a1a1a',
+          subtle: '#0f0f0f',
+          gold: 'rgba(212, 175, 55, 0.3)',
+          goldlight: 'rgba(212, 175, 55, 0.15)',
         },
         primary: {
-          DEFAULT: 'var(--primary)',
-          hover: 'var(--primary-hover)',
-          light: 'var(--primary-light)',
+          DEFAULT: '#D4AF37',
+          hover: '#c9a432',
+          light: 'rgba(212, 175, 55, 0.1)',
         },
         text: {
-          primary: 'var(--text-primary)',
-          secondary: 'var(--text-secondary)',
-          muted: 'var(--text-muted)',
-          inverse: 'var(--text-inverse)',
-        },
-        success: {
-          DEFAULT: 'var(--success)',
-          light: 'var(--success-light)',
-        },
-        warning: {
-          DEFAULT: 'var(--warning)',
-          light: 'var(--warning-light)',
-        },
-        error: {
-          DEFAULT: 'var(--error)',
-          light: 'var(--error-light)',
-        },
-        info: {
-          DEFAULT: 'var(--info)',
-          light: 'var(--info-light)',
+          primary: '#fafafa',
+          secondary: '#a1a1aa',
+          muted: '#71717a',
+          inverse: '#000000',
+          gold: '#D4AF37',
         },
         gold: {
           DEFAULT: '#D4AF37',
@@ -63,6 +50,7 @@ const config: Config = {
           8: 'rgba(212, 175, 55, 0.08)',
           5: 'rgba(212, 175, 55, 0.05)',
           3: 'rgba(212, 175, 55, 0.03)',
+          10: 'rgba(212, 175, 55, 0.1)',
         },
       },
       spacing: {
@@ -84,6 +72,16 @@ const config: Config = {
         md: 'var(--shadow-md)',
         lg: 'var(--shadow-lg)',
         xl: 'var(--shadow-xl)',
+        'gold-sm': '0 2px 8px rgba(212, 175, 55, 0.15), 0 1px 3px rgba(0, 0, 0, 0.5)',
+        'gold-md': '0 4px 16px rgba(212, 175, 55, 0.2), 0 2px 6px rgba(0, 0, 0, 0.6)',
+        'gold-lg': '0 8px 32px rgba(212, 175, 55, 0.25), 0 4px 12px rgba(0, 0, 0, 0.7)',
+        'gold-xl': '0 16px 48px rgba(212, 175, 55, 0.3), 0 8px 16px rgba(0, 0, 0, 0.8)',
+        '3d-sm': '0 1px 3px rgba(0, 0, 0, 0.8), 0 4px 12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
+        '3d-md': '0 2px 8px rgba(0, 0, 0, 0.9), 0 8px 24px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
+        '3d-lg': '0 4px 16px rgba(0, 0, 0, 0.95), 0 16px 48px rgba(0, 0, 0, 0.8), inset 0 2px 0 rgba(255, 255, 255, 0.1)',
+        'glow-sm': '0 0 20px rgba(212, 175, 55, 0.3), 0 0 40px rgba(212, 175, 55, 0.15)',
+        'glow-md': '0 0 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.2)',
+        'glow-lg': '0 0 40px rgba(212, 175, 55, 0.5), 0 0 80px rgba(212, 175, 55, 0.25)',
       },
       transitionDuration: {
         fast: '150ms',

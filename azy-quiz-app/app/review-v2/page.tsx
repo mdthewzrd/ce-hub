@@ -329,9 +329,6 @@ export default function ReviewV2Page() {
                   <div className="flex flex-wrap gap-2 mt-1">
                     {[
                       { value: 'polarized', label: '🕶️ Polarized' },
-                      { value: 'shield', label: '🛡️ Shield' },
-                      { value: 'butterfly', label: '🦋 Butterfly' },
-                      { value: 'geometric', label: '📐 Geometric' },
                       { value: 'tinted', label: '🌈 Tinted' },
                       { value: 'rx', label: '💊 Prescription' },
                       { value: 'blue_light', label: '💡 Blue Light' },
