@@ -140,6 +140,24 @@ def create_html(products, tags):
             border: 1px solid var(--border-color);
         }
 
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-link:hover {
+            background: rgba(0, 220, 130, 0.1);
+            color: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
         .sync-indicator {
             display: flex;
             align-items: center;
@@ -642,6 +660,7 @@ def create_html(products, tags):
                 <h1>CE-Hub</h1>
                 <span class="badge">AZYR Review</span>
             </div>
+            <a href="/reference.html" class="nav-link">📚 Reference Guide</a>
         </div>
         <div class="sync-indicator">
             <span class="sync-dot green" id="sync-dot"></span>
