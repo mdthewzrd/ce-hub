@@ -1,0 +1,287 @@
+================================================================================
+VIDEO TRANSCRIPT: Intro to Vortex Math - Part 5
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: Alright, just to make it a little bit more thorough, let's try it too.
+
+[00:00:06] **Randy Powell**: So now here with one is my control, two and five are going to be reciprocal. So when I multiply by two,
+
+[00:00:12] **Randy Powell**: I should get the same thing I get when I divide by five. Okay, just like doubling and having.
+
+[00:00:20] **Randy Powell**: Even though they're a little bit different. So let's see, two modifications go, two, four, six,
+
+[00:00:29] **Randy Powell**: eight, one, three, five, seven, nine. So dividing by five, I have one divided by five is point two,
+
+[00:00:40] **Randy Powell**: which is two. Two divided by five is point four, which is four. Three divided by five is point six,
+
+[00:00:48] **Randy Powell**: which is eight. Four divided by five is point eight, which is eight. Five divided by five is one,
+
+[00:00:55] **Randy Powell**: of course, which is one. Six divided by five is one point two, which equals three. Seven divided
+
+[00:01:01] **Randy Powell**: divided by five, you can see here is 1.4, which equals five.
+
+[00:01:05] **Randy Powell**: Eight divided by five, 1.6, which equals seven.
+
+[00:01:09] **Randy Powell**: Nine divided by five is 1.8, which equals nine.
+
+[00:01:14] **Randy Powell**: Okay, so in other words, just like I have multiples of two,
+
+[00:01:17] **Randy Powell**: two, four, six, eight, one, three, five, seven, nine.
+
+[00:01:19] **Randy Powell**: Dividing by five gives me the same thing.
+
+[00:01:22] **Randy Powell**: Two, four, six, eight, one, three, five, seven, nine.
+
+[00:01:29] **Randy Powell**: All right, I hope that's clear.
+
+[00:01:31] **Randy Powell**: Let me try just another example.
+
+[00:01:33] **Randy Powell**: Well, let's try multiplying by five then,
+
+[00:01:36] **Randy Powell**: the same thing should work.
+
+[00:01:38] **Randy Powell**: When I multiply by five, I get five,
+
+[00:01:42] **Randy Powell**: let me put my other post-drop here.
+
+[00:01:44] **Randy Powell**: This will make it a little easier to see the sequence that way.
+
+[00:01:48] **Randy Powell**: I don't have to be too, too confusing.
+
+[00:01:52] **Randy Powell**: Multiplying by five, I got five, 10,
+
+[00:01:56] **Randy Powell**: or I got just five, one, six, two, seven, three, eight, four, nine.
+
+[00:02:00] **Randy Powell**: I'm gonna assume everyone's following me
+
+[00:02:03] **Randy Powell**: with the reducing to single digits now.
+
+[00:02:06] **Randy Powell**: I think we've covered that pretty well.
+
+[00:02:09] **Randy Powell**: So then dividing by, let's see,
+
+[00:02:13] **Randy Powell**: dividing by two should be multiples of five.
+
+[00:02:19] **Randy Powell**: Very easy to get tricked up, slipped up here,
+
+[00:02:22] **Randy Powell**: but let's see, two, one divided by two is 0.5,
+
+[00:02:27] **Randy Powell**: which gives me five.
+
+[00:02:29] **Randy Powell**: Two divided by two is one.
+
+[00:02:32] **Randy Powell**: Three divided by two is 1.5, which equals six.
+
+[00:02:37] **Randy Powell**: Four divided by two is of course two.
+
+[00:02:41] **Randy Powell**: Five divided by two is 2.5, which equals seven.
+
+[00:02:44] **Randy Powell**: Six divided by two is three.
+
+[00:02:47] **Randy Powell**: Seven divided by two is 3.5, which is eight.
+
+[00:02:51] **Randy Powell**: Eight divided by two is four.
+
+[00:02:54] **Randy Powell**: Nine divided by two is 4.5, which equals nine.
+
+[00:02:58] **Randy Powell**: So in other words, dividing by two is the same
+
+[00:03:00] **Randy Powell**: as multiplying by five.
+
+[00:03:03] **Randy Powell**: You're gonna find the same thing with four and seven.
+
+[00:03:05] **Randy Powell**: I won't continue to do all these four,
+
+[00:03:07] **Randy Powell**: you can do them for yourself, but multiplying by four,
+
+[00:03:11] **Randy Powell**: you're gonna get the same as you get when you divide by seven.
+
+[00:03:15] **Randy Powell**: Dividing by seven has actually been one of those riddles
+
+[00:03:17] **Randy Powell**: of math that you can actually solve it with this
+
+[00:03:21] **Randy Powell**: and show it to be perfect,
+
+[00:03:21] **Randy Powell**: but I'm not gonna go into that here on this video.
+
+[00:03:25] **Randy Powell**: Okay, but you can work that for yourself now.
+
+[00:03:27] **Randy Powell**: Multiplying and dividing is the same given reciprocals.
+
+[00:03:33] **Randy Powell**: So that's why I was explaining
+
+[00:03:34] **Randy Powell**: in the beginning reciprocal motion.
+
+[00:03:36] **Randy Powell**: But let's go back to my three, nine, and six.
+
+[00:03:39] **Randy Powell**: Now I said, when my number nine, no matter what
+
+[00:03:45] **Randy Powell**: you multiply it by, it's always the same.
+
+[00:03:48] **Randy Powell**: They're never changing number nine.
+
+[00:03:50] **Randy Powell**: In terms of its multiplying function.
+
+[00:03:55] **Randy Powell**: But when you divide nine by nine,
+
+[00:03:58] **Randy Powell**: something interesting happens.
+
+[00:04:01] **Randy Powell**: So let's try that.
+
+[00:04:02] **Randy Powell**: Nine divided by one is nine.
+
+[00:04:07] **Randy Powell**: So we still have our nine.
+
+[00:04:10] **Randy Powell**: Nine divided by two is 4.5, which equals nine.
+
+[00:04:18] **Randy Powell**: That would still have nine.
+
+[00:04:19] **Randy Powell**: But then something interesting happens.
+
+[00:04:21] **Randy Powell**: When I divide nine by three, I get three.
+
+[00:04:25] **Randy Powell**: So there we actually do see a function
+
+[00:04:28] **Randy Powell**: which changes the number nine.
+
+[00:04:31] **Randy Powell**: So the first number we have is a three.
+
+[00:04:35] **Randy Powell**: Nine divided by four, I believe is five point.
+
+[00:04:40] **Randy Powell**: Let me just double check my math.
+
+[00:04:42] **Randy Powell**: So I'm not giving wrong numbers.
+
+[00:04:44] **Randy Powell**: Nine divided by four, oh, I didn't write them down.
+
+[00:04:48] **Randy Powell**: I believe is five point four.
+
+[00:04:50] **Randy Powell**: Anyway, equals back to nine.
+
+[00:04:53] **Randy Powell**: What is it?
+
+[00:04:53] **Randy Powell**: It's the four point five.
+
+[00:04:56] **Randy Powell**: Four point five, yeah.
+
+[00:04:57] **Randy Powell**: Nine divided by four would be, no, would be two.
+
+[00:05:01] **Randy Powell**: Two point two five?
+
+[00:05:03] **Randy Powell**: Two point two five is what it is, yeah.
+
+[00:05:08] **Randy Powell**: Which would equal nine.
+
+[00:05:10] **Randy Powell**: Nine divided by five comes back to equal nine.
+
+[00:05:14] **Randy Powell**: Then again, when you divide nine by six,
+
+[00:05:16] **Randy Powell**: something interesting happens.
+
+[00:05:18] **Randy Powell**: You get six.
+
+[00:05:21] **Randy Powell**: So now we've had a three and a six.
+
+[00:05:23] **Randy Powell**: Showing how it is that the nine is initially
+
+[00:05:26] **Randy Powell**: dividing into these polar forces,
+
+[00:05:29] **Randy Powell**: which we see as magnetism.
+
+[00:05:32] **Randy Powell**: And remember, again, when I say,
+
+[00:05:33] **Randy Powell**: when this higher world at the nine, three, and six
+
+[00:05:35] **Randy Powell**: is dividing, you get multiplication in the physical world.
+
+[00:05:41] **Randy Powell**: Very interesting concept has not been pointed out here before.
+
+[00:05:47] **Randy Powell**: Okay.
+
+[00:05:48] **Randy Powell**: Nine divided by seven comes back to nine.
+
+[00:05:50] **Randy Powell**: Nine divided by eight comes back to nine.
+
+[00:05:52] **Randy Powell**: And nine divided by nine.
+
+[00:05:54] **Randy Powell**: And here's the magic trick, gives you one.
+
+[00:06:00] **Randy Powell**: So the only numbers that seem to have this ability
+
+[00:06:03] **Randy Powell**: to cross between one world and the other are what?
+
+[00:06:07] **Randy Powell**: Nine, three, six, and one.
+
+[00:06:13] **Randy Powell**: Okay, this is why we say one god, one universe.
+
+[00:06:18] **Randy Powell**: In order for anything to be coherent,
+
+[00:06:20] **Randy Powell**: which is certainly a property we're looking for
+
+[00:06:23] **Randy Powell**: in energy and nature, coherence, communication,
+
+[00:06:27] **Randy Powell**: it has to be unified.
+
+[00:06:30] **Randy Powell**: One is the only number which can cross the boundary
+
+[00:06:34] **Randy Powell**: between this world and the higher world.
+
+[00:06:37] **Randy Powell**: And it's certainly the only number
+
+[00:06:39] **Randy Powell**: which has the full capacity for channeling
+
+[00:06:44] **Randy Powell**: this energy of the nine, which is absolute wholeness,
+
+[00:06:50] **Randy Powell**: completeness filled up to the top.
+
+[00:06:53] **Randy Powell**: That is the one.
+
+[00:06:54] **Randy Powell**: So I want you to pay attention to the fact too
+
+[00:06:57] **Randy Powell**: that there's a very specific relationship
+
+[00:06:59] **Randy Powell**: between how there's three and six relate to the nine
+
+[00:07:02] **Randy Powell**: and how the two and five relate to the one
+
+[00:07:06] **Randy Powell**: or any reciprocal for that matter.
+
+[00:07:08] **Randy Powell**: The function of the nine splitting into the three and six
+
+[00:07:11] **Randy Powell**: is directly related to reciprocals in the physical world
+
+[00:07:17] **Randy Powell**: which are modeling motion.
+
+[00:07:21] **Randy Powell**: Okay, so we did multiplication, we did division,
+
+[00:07:24] **Randy Powell**: add and subtract is pretty easy.
+
+[00:07:26] **Randy Powell**: If you're adding any number, you're just going up
+
+[00:07:28] **Randy Powell**: and increments of that number.
+
+[00:07:30] **Randy Powell**: If you're subtracting, you're going down
+
+[00:07:31] **Randy Powell**: and increments of that number, which is the same
+
+[00:07:34] **Randy Powell**: that I just showed in my multiplication series.
+
+[00:07:39] **Randy Powell**: The only other thing I didn't show,
+
+[00:07:42] **Randy Powell**: and I showed reciprocals there,
+
+[00:07:45] **Randy Powell**: now I didn't talk about my three and six.
+
+[00:07:47] **Randy Powell**: What happens when you divide by three or six?
+
+[00:07:50] **Randy Powell**: Well, something interesting happens
+
+[00:07:52] **Randy Powell**: and it leads me into my next topic here,
+
+[00:07:56] **Randy Powell**: which is something we call family number groups.

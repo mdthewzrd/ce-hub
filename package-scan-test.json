@@ -1,0 +1,28 @@
+{
+  "name": "scan-page-validator",
+  "version": "1.0.0",
+  "description": "Playwright test to validate scan page historical data display",
+  "main": "validate-scan-page-historical-data.js",
+  "scripts": {
+    "test": "node validate-scan-page-historical-data.js",
+    "test:headless": "node -e \"const validator = require('./validate-scan-page-historical-data.js'); const v = new validator(); v.browser = null; v.initialize = async () => { const { chromium } = require('playwright'); v.browser = await chromium.launch({headless: true}); v.page = await v.browser.newPage(); await v.page.setViewportSize({ width: 1920, height: 1080 }); return true; }; v.runCompleteTest().then(() => process.exit(0)).catch(() => process.exit(1));\"",
+    "install:playwright": "npm install playwright",
+    "setup": "npm install && npx playwright install"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "playwright",
+    "testing",
+    "validation",
+    "scan-page",
+    "historical-data"
+  ],
+  "author": "CE-Hub Testing Suite",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

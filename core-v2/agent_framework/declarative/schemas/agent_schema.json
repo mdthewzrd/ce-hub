@@ -1,0 +1,617 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CE Hub Agent Definition Schema",
+  "description": "Declarative schema for defining CE Hub agents in JSON format. Enables rapid agent creation without writing Python code.",
+  "type": "object",
+  "required": ["agent"],
+  "properties": {
+    "agent": {
+      "type": "object",
+      "description": "Agent definition",
+      "required": ["name", "description", "type", "max_tools", "system_prompt", "tools"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Agent name (2-4 words, PascalCase)",
+          "pattern": "^[A-Z][a-zA-Z0-9 ]{2,50}$",
+          "examples": [
+            "Trading Pattern Analyzer",
+            "Code Formatter Agent",
+            "Data Summarizer"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "One-sentence description of what the agent does",
+          "maxLength": 200,
+          "examples": [
+            "Analyzes stock market patterns and generates actionable trading signals with risk assessments."
+          ]
+        },
+        "type": {
+          "type": "string",
+          "description": "Agent complexity type",
+          "enum": ["simple", "complex"],
+          "default": "simple"
+        },
+        "version": {
+          "type": "string",
+          "description": "Agent version (semantic versioning)",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "default": "1.0.0"
+        },
+        "model": {
+          "type": "string",
+          "description": "LLM model to use",
+          "default": "claude-3-5-sonnet-20241022",
+          "enum": [
+            "claude-3-5-sonnet-20241022",
+            "claude-3-5-haiku-20241022",
+            "claude-3-opus-20240229",
+            "gpt-4-turbo-preview",
+            "gpt-4",
+            "gpt-3.5-turbo"
+          ]
+        },
+        "max_tools": {
+          "type": "integer",
+          "description": "Maximum number of tools allowed (WARNING: >10 degrades LLM performance)",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 10
+        },
+        "capabilities": {
+          "type": "object",
+          "description": "Agent capabilities and skills",
+          "properties": {
+            "role": {
+              "type": "string",
+              "description": "Agent's primary role",
+              "examples": [
+                "trading_analyst",
+                "code_engineer",
+                "data_scientist",
+                "content_writer"
+              ]
+            },
+            "skills": {
+              "type": "array",
+              "description": "List of specific skills (3-7 items)",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "maxItems": 10
+            },
+            "complexity": {
+              "type": "string",
+              "description": "Task complexity level",
+              "enum": ["simple", "moderate", "complex"],
+              "default": "moderate"
+            },
+            "output_format": {
+              "type": "string",
+              "description": "Preferred output format",
+              "enum": ["json", "text", "markdown", "code"],
+              "default": "json"
+            }
+          }
+        },
+        "system_prompt": {
+          "type": "object",
+          "description": "System prompt configuration",
+          "required": ["role"],
+          "properties": {
+            "role": {
+              "type": "string",
+              "description": "Who/what the agent is (2-3 sentences)",
+              "minLength": 50,
+              "maxLength": 500
+            },
+            "responsibilities": {
+              "type": "array",
+              "description": "Core responsibilities (3-5 items)",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 3,
+              "maxItems": 7
+            },
+            "guidelines": {
+              "type": "array",
+              "description": "Operational guidelines (3-7 items)",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 3,
+              "maxItems": 10
+            },
+            "constraints": {
+              "type": "array",
+              "description": "What the agent should NOT do (3-5 items)",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 2,
+              "maxItems": 7
+            },
+            "tone": {
+              "type": "string",
+              "description": "Communication tone",
+              "enum": ["professional", "friendly", "technical", "casual"],
+              "default": "professional"
+            }
+          }
+        },
+        "tools": {
+          "type": "array",
+          "description": "Tools available to the agent (keep under 10!)",
+          "items": {
+            "type": "object",
+            "required": ["name", "description", "type", "parameters"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Tool name (snake_case)",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "description": {
+                "type": "string",
+                "description": "One-line description of what the tool does",
+                "maxLength": 100
+              },
+              "type": {
+                "type": "string",
+                "description": "Tool category",
+                "enum": [
+                  "analysis",
+                  "calculation",
+                  "data_retrieval",
+                  "communication",
+                  "file_operation",
+                  "validation",
+                  "transformation"
+                ]
+              },
+              "parameters": {
+                "type": "object",
+                "description": "Tool parameters schema",
+                "additionalProperties": {
+                  "type": "object",
+                  "required": ["type"],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": ["string", "integer", "float", "boolean", "array", "object"]
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Parameter description"
+                    },
+                    "required": {
+                      "type": "boolean",
+                      "description": "Whether parameter is required",
+                      "default": false
+                    },
+                    "default": {
+                      "description": "Default value if not provided"
+                    },
+                    "enum": {
+                      "type": "array",
+                      "description": "Allowed values (for enums)",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "return_type": {
+                "type": "string",
+                "description": "Return type (Python type hint)",
+                "examples": [
+                  "Dict[str, Any]",
+                  "List[str]",
+                  "str",
+                  "float"
+                ]
+              },
+              "example": {
+                "type": "string",
+                "description": "Example usage in Python code"
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 10
+        },
+        "rag": {
+          "type": "object",
+          "description": "RAG (Retrieval-Augmented Generation) configuration",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Enable RAG for knowledge retention",
+              "default": true
+            },
+            "vector_db": {
+              "type": "string",
+              "description": "Vector database to use",
+              "enum": ["neo4j", "chroma", "pinecone", "weaviate"],
+              "default": "neo4j"
+            },
+            "collection_name": {
+              "type": "string",
+              "description": "Collection/table name for embeddings",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "top_k": {
+              "type": "integer",
+              "description": "Number of documents to retrieve",
+              "minimum": 1,
+              "maximum": 20,
+              "default": 5
+            },
+            "chunk_size": {
+              "type": "integer",
+              "description": "Text chunk size for embeddings",
+              "minimum": 100,
+              "maximum": 2000,
+              "default": 512
+            },
+            "chunk_overlap": {
+              "type": "integer",
+              "description": "Overlap between chunks",
+              "minimum": 0,
+              "maximum": 500,
+              "default": 50
+            }
+          },
+          "required": ["enabled"]
+        },
+        "output": {
+          "type": "object",
+          "description": "Output configuration",
+          "properties": {
+            "format": {
+              "type": "string",
+              "description": "Output format",
+              "enum": ["json", "text", "markdown", "code"],
+              "default": "json"
+            },
+            "schema": {
+              "type": "string",
+              "description": "Pydantic model class name for validation",
+              "pattern": "^[A-Z][a-zA-Z0-9]*$"
+            },
+            "streaming": {
+              "type": "boolean",
+              "description": "Enable streaming responses",
+              "default": false
+            }
+          }
+        },
+        "validation": {
+          "type": "object",
+          "description": "Validation configuration",
+          "properties": {
+            "level": {
+              "type": "string",
+              "description": "Validation strictness",
+              "enum": ["strict", "moderate", "lenient"],
+              "default": "moderate"
+            },
+            "rules": {
+              "type": "array",
+              "description": "Custom validation rules",
+              "items": {
+                "type": "object",
+                "required": ["name", "check"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Rule name"
+                  },
+                  "check": {
+                    "type": "string",
+                    "description": "Validation check (Python expression)"
+                  },
+                  "error_message": {
+                    "type": "string",
+                    "description": "Error message if validation fails"
+                  }
+                }
+              }
+            },
+            "quality_threshold": {
+              "type": "number",
+              "description": "Minimum quality score (0-1)",
+              "minimum": 0,
+              "maximum": 1,
+              "default": 0.7
+            }
+          }
+        },
+        "integration": {
+          "type": "object",
+          "description": "External system integration",
+          "properties": {
+            "apis": {
+              "type": "array",
+              "description": "External APIs the agent uses",
+              "items": {
+                "type": "object",
+                "required": ["name", "purpose"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "API name"
+                  },
+                  "purpose": {
+                    "type": "string",
+                    "description": "What the API is used for"
+                  },
+                  "auth_type": {
+                    "type": "string",
+                    "description": "Authentication type",
+                    "enum": ["api_key", "oauth", "basic", "none"],
+                    "default": "api_key"
+                  },
+                  "env_var": {
+                    "type": "string",
+                    "description": "Environment variable name for credentials",
+                    "pattern": "^[A-Z_][A-Z0-9_]*$"
+                  }
+                }
+              }
+            },
+            "databases": {
+              "type": "array",
+              "description": "Databases the agent accesses",
+              "items": {
+                "type": "object",
+                "required": ["name", "type", "access"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Database name"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "Database type",
+                    "enum": ["sqlite", "postgresql", "mysql", "mongodb", "redis"]
+                  },
+                  "access": {
+                    "type": "string",
+                    "description": "Access level",
+                    "enum": ["read", "write", "readwrite"]
+                  },
+                  "env_var": {
+                    "type": "string",
+                    "description": "Environment variable for connection string"
+                  }
+                }
+              }
+            },
+            "file_system": {
+              "type": "object",
+              "description": "File system access",
+              "properties": {
+                "read_paths": {
+                  "type": "array",
+                  "description": "Paths agent can read from",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "write_paths": {
+                  "type": "array",
+                  "description": "Paths agent can write to",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "monitoring": {
+          "type": "object",
+          "description": "Monitoring and logging configuration",
+          "properties": {
+            "log_level": {
+              "type": "string",
+              "description": "Logging level",
+              "enum": ["DEBUG", "INFO", "WARNING", "ERROR"],
+              "default": "INFO"
+            },
+            "metrics": {
+              "type": "array",
+              "description": "Metrics to collect",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "request_count",
+                  "response_time",
+                  "error_rate",
+                  "token_usage",
+                  "tool_usage",
+                  "quality_score"
+                ]
+              }
+            },
+            "alerts": {
+              "type": "array",
+              "description": "Alert conditions",
+              "items": {
+                "type": "object",
+                "required": ["condition", "action"],
+                "properties": {
+                  "condition": {
+                    "type": "string",
+                    "description": "Alert condition (Python expression)"
+                  },
+                  "action": {
+                    "type": "string",
+                    "description": "Action to take (e.g., 'send_notification')"
+                  },
+                  "threshold": {
+                    "type": "number",
+                    "description": "Threshold value"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deployment": {
+          "type": "object",
+          "description": "Deployment configuration",
+          "properties": {
+            "replicas": {
+              "type": "integer",
+              "description": "Number of agent instances",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 1
+            },
+            "resources": {
+              "type": "object",
+              "description": "Resource limits",
+              "properties": {
+                "cpu": {
+                  "type": "string",
+                  "description": "CPU limit (e.g., '500m', '2')"
+                },
+                "memory": {
+                  "type": "string",
+                  "description": "Memory limit (e.g., '512Mi', '2Gi')"
+                }
+              }
+            },
+            "autoscaling": {
+              "type": "object",
+              "description": "Autoscaling configuration",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "min_replicas": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "default": 1
+                },
+                "max_replicas": {
+                  "type": "integer",
+                  "maximum": 10,
+                  "default": 5
+                },
+                "target_cpu_utilization": {
+                  "type": "number",
+                  "minimum": 10,
+                  "maximum": 90,
+                  "default": 70
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "agent": {
+        "name": "Trading Pattern Analyzer",
+        "description": "Analyzes stock patterns and generates trading signals",
+        "type": "simple",
+        "model": "claude-3-5-sonnet-20241022",
+        "max_tools": 7,
+        "capabilities": {
+          "role": "trading_analyst",
+          "skills": [
+            "pattern_detection",
+            "technical_analysis",
+            "risk_assessment",
+            "signal_generation"
+          ],
+          "complexity": "moderate",
+          "output_format": "json"
+        },
+        "system_prompt": {
+          "role": "You are a Trading Pattern Analysis Specialist with expertise in technical analysis and market pattern recognition.",
+          "responsibilities": [
+            "Analyze market patterns using technical indicators",
+            "Identify trading opportunities with clear entry/exit points",
+            "Assess risk levels for each potential trade",
+            "Provide evidence-based recommendations"
+          ],
+          "guidelines": [
+            "Always provide data citations for pattern detections",
+            "Include risk assessment with every signal",
+            "Use confidence scores (0-100) for all predictions",
+            "Prioritize quality over quantity of signals"
+          ],
+          "constraints": [
+            "NEVER provide financial advice without disclaimers",
+            "DON'T guarantee returns or predict with 100% certainty",
+            "AVOID analyzing more than 20 symbols simultaneously"
+          ]
+        },
+        "tools": [
+          {
+            "name": "detect_gap",
+            "description": "Detects price gaps in market data",
+            "type": "analysis",
+            "parameters": {
+              "symbol": {
+                "type": "string",
+                "description": "Stock ticker symbol",
+                "required": true
+              },
+              "threshold": {
+                "type": "float",
+                "description": "Minimum gap size (default: 0.02)",
+                "required": false,
+                "default": 0.02
+              }
+            },
+            "return_type": "GapPattern",
+            "example": "detect_gap('AAPL', threshold=0.02)"
+          },
+          {
+            "name": "analyze_volume",
+            "description": "Analyzes volume patterns and surges",
+            "type": "analysis",
+            "parameters": {
+              "symbol": {
+                "type": "string",
+                "required": true
+              },
+              "periods": {
+                "type": "integer",
+                "required": false,
+                "default": 20
+              }
+            },
+            "return_type": "VolumeAnalysis"
+          }
+        ],
+        "rag": {
+          "enabled": true,
+          "vector_db": "neo4j",
+          "top_k": 5
+        },
+        "output": {
+          "format": "json",
+          "schema": "TradingSignal"
+        },
+        "validation": {
+          "level": "moderate",
+          "quality_threshold": 0.7
+        }
+      }
+    }
+  ]
+}

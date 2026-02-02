@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 CE-Hub Mobile Access</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0d1117;
+            color: #f0f6fc;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 28px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .message {
+            color: #8b949e;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .button {
+            background: #238636;
+            color: white;
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+        .button:hover {
+            background: #2ea043;
+        }
+        .button.secondary {
+            background: #21262d;
+            border: 1px solid #30363d;
+        }
+        .button.secondary:hover {
+            background: #30363d;
+        }
+        .url-info {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 24px 0;
+            text-align: left;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .url-label {
+            color: #8b949e;
+            margin-bottom: 8px;
+        }
+        .url {
+            color: #58a6ff;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">📱</div>
+        <div class="title">Mobile VS Code Access</div>
+        <div class="message">Your mobile development environment is ready!</div>
+
+        <div class="buttons">
+            <a href="http://127.0.0.1:8081/mobile/" class="button" target="_blank">
+                📱 Open Mobile Interface (Local)
+            </a>
+            <a href="http://100.95.223.19:8081/mobile/" class="button" target="_blank">
+                🌐 Open Mobile Interface (Tailscale)
+            </a>
+            <a href="http://127.0.0.1:8080/" class="button secondary" target="_blank">
+                💻 Open Full VS Code
+            </a>
+        </div>
+
+        <div class="url-info">
+            <div class="url-label">📋 URLs for mobile access:</div>
+            <div class="url">Local: http://127.0.0.1:8081/mobile/</div>
+            <div class="url">Tailscale: http://100.95.223.19:8081/mobile/</div>
+        </div>
+
+        <div class="message" style="margin-top: 24px; font-size: 14px;">
+            💡 Bookmark the Tailscale URL on your mobile device for easy access!
+        </div>
+    </div>
+
+    <script>
+        // Auto-redirect mobile devices to the mobile interface
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            setTimeout(() => {
+                window.location.href = 'http://100.95.223.19:8081/mobile/';
+            }, 2000);
+        }
+
+        console.log('📱 Mobile access page loaded');
+        console.log('Mobile interface: http://127.0.0.1:8081/mobile/');
+        console.log('Tailscale access: http://100.95.223.19:8081/mobile/');
+    </script>
+</body>
+</html>

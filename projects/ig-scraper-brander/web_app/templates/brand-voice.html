@@ -1,0 +1,2685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Brand Voice Builder 2.0 - UPDATED SELECTION FIXED</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+        }
+
+        .premium-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-left: 3px solid #6366f1;
+        }
+
+        .option-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .option-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .option-card.selected {
+            background: rgba(99, 102, 241, 0.15) !important;
+            border-color: #6366f1 !important;
+            box-shadow: 0 0 0 1px #6366f1 !important;
+        }
+
+        /* More specific selector to override any Tailwind classes */
+        label.option-card.selected {
+            background: rgba(99, 102, 241, 0.15) !important;
+            border-color: #6366f1 !important;
+            box-shadow: 0 0 0 1px #6366f1 !important;
+        }
+
+        /* Even more specific - using attribute selector */
+        label.option-card[class*="selected"] {
+            background: rgba(99, 102, 241, 0.15) !important;
+            border-color: #6366f1 !important;
+            box-shadow: 0 0 0 1px #6366f1 !important;
+        }
+
+        /* Target all elements that have both option-card and selected classes */
+        *.option-card.selected,
+        *[class*="option-card"].selected,
+        *[class*="option-card"][class*="selected"] {
+            background: rgba(99, 102, 241, 0.15) !important;
+            border-color: #6366f1 !important;
+            box-shadow: 0 0 0 1px #6366f1 !important;
+        }
+
+        /* Extra specificity for selected state */
+        .option-card.selected * {
+            color: inherit !important;
+        }
+
+        .premium-input {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .premium-input:focus {
+            background: rgba(0, 0, 0, 0.4);
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            outline: none;
+        }
+
+        .premium-textarea {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .premium-textarea:focus {
+            background: rgba(0, 0, 0, 0.4);
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            outline: none;
+        }
+
+        .tag-badge {
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .tag-badge-DO {
+            background: rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+
+        .tag-badge-DONT {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-step {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-color: #6366f1;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+        }
+
+        .progress-step.completed {
+            background: #22c55e;
+            border-color: #22c55e;
+        }
+
+        .skeleton-prompt {
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        .checkbox-custom {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-custom:checked {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-color: #6366f1;
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.6);
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        }
+
+        .tab-btn {
+            color: rgba(255, 255, 255, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .tab-btn.active {
+            color: #6366f1;
+            border-bottom-color: #6366f1;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content:not(.hidden) {
+            display: block;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Navigation -->
+    <nav class="premium-card sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <a href="/settings" class="nav-link">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        <span class="text-sm font-medium">Back to Settings</span>
+                    </a>
+                    <div class="h-6 w-px bg-white/10"></div>
+                    <div>
+                        <h1 class="text-lg font-semibold text-white">Brand Voice Builder 2.0 ✨</h1>
+                        <p class="text-xs text-green-400">✓ SELECTION FIXED - All buttons now working!</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="openTemplateLibrary()" class="btn-secondary px-4 py-2.5 rounded-lg font-medium text-sm">
+                        <i class="fas fa-layer-group mr-2"></i>Templates
+                    </button>
+                    <div id="saveStatus" class="text-sm text-gray-400">
+                        <i class="fas fa-circle-notch fa-spin mr-2 hidden" id="saveSpinner"></i>
+                        <span id="saveStatusText">All changes saved</span>
+                    </div>
+                    <button onclick="saveProfile()" class="btn-primary px-5 py-2.5 rounded-lg font-semibold text-sm">
+                        <i class="fas fa-save mr-2"></i>Save Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Template Library Modal -->
+    <div id="templateLibraryModal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeTemplateLibrary()"></div>
+        <div class="absolute inset-4 md:inset-10 lg:inset-20 bg-[#0f0f1a] rounded-2xl border border-white/10 overflow-hidden flex flex-col">
+            <!-- Header -->
+            <div class="p-6 border-b border-white/10 flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-white">Brand Voice Template Library</h2>
+                    <p class="text-sm text-gray-400 mt-1">Choose a template to start or manage your saved profiles</p>
+                </div>
+                <button onclick="closeTemplateLibrary()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Tabs -->
+            <div class="border-b border-white/10">
+                <div class="flex gap-1 px-6">
+                    <button onclick="switchTab('templates')" class="tab-btn active px-4 py-3 text-sm font-medium border-b-2 border-transparent" data-tab="templates">
+                        <i class="fas fa-magic mr-2"></i>Starter Templates
+                    </button>
+                    <button onclick="switchTab('saved')" class="tab-btn px-4 py-3 text-sm font-medium border-b-2 border-transparent" data-tab="saved">
+                        <i class="fas fa-folder mr-2"></i>My Saved Profiles
+                    </button>
+                    <button onclick="switchTab('variants')" class="tab-btn px-4 py-3 text-sm font-medium border-b-2 border-transparent" data-tab="variants">
+                        <i class="fas fa-code-branch mr-2"></i>Variants & Clones
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 overflow-y-auto p-6">
+                <!-- Templates Tab -->
+                <div id="templatesTab" class="tab-content">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                        <!-- E-Commerce Template -->
+                        <div class="premium-card rounded-xl p-5 cursor-pointer hover:border-indigo-500/50 transition-all" onclick="loadTemplate('ecommerce')">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-shopping-cart text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-white mb-1">E-Commerce & Sales</h3>
+                                    <p class="text-xs text-gray-400 mb-3">Product-focused, conversion-driven content</p>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span class="text-xs bg-orange-500/20 text-orange-300 px-2 py-0.5 rounded">Product</span>
+                                        <span class="text-xs bg-pink-500/20 text-pink-300 px-2 py-0.5 rounded">Sales</span>
+                                        <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded">Promotional</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Personal Brand Template -->
+                        <div class="premium-card rounded-xl p-5 cursor-pointer hover:border-indigo-500/50 transition-all" onclick="loadTemplate('personal')">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-user-tie text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-white mb-1">Personal Brand</h3>
+                                    <p class="text-xs text-gray-400 mb-3">Thought leadership and expertise</p>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded">Authority</span>
+                                        <span class="text-xs bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded">Expert</span>
+                                        <span class="text-xs bg-teal-500/20 text-teal-300 px-2 py-0.5 rounded">Mentor</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Community Builder Template -->
+                        <div class="premium-card rounded-xl p-5 cursor-pointer hover:border-indigo-500/50 transition-all" onclick="loadTemplate('community')">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-users text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-white mb-1">Community Builder</h3>
+                                    <p class="text-xs text-gray-400 mb-3">Engagement and growth-focused</p>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span class="text-xs bg-green-500/20 text-green-300 px-2 py-0.5 rounded">Engagement</span>
+                                        <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded">Growth</span>
+                                        <span class="text-xs bg-lime-500/20 text-lime-300 px-2 py-0.5 rounded">Connection</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Service Business Template -->
+                        <div class="premium-card rounded-xl p-5 cursor-pointer hover:border-indigo-500/50 transition-all" onclick="loadTemplate('service')">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-briefcase text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-white mb-1">Service Business</h3>
+                                    <p class="text-xs text-gray-400 mb-3">Professional B2B and services</p>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded">B2B</span>
+                                        <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded">Professional</span>
+                                        <span class="text-xs bg-violet-500/20 text-violet-300 px-2 py-0.5 rounded">Trust</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Creator Template -->
+                        <div class="premium-card rounded-xl p-5 cursor-pointer hover:border-indigo-500/50 transition-all" onclick="loadTemplate('creator')">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-video text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-white mb-1">Content Creator</h3>
+                                    <p class="text-xs text-gray-400 mb-3">Education & entertainment mix</p>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span class="text-xs bg-red-500/20 text-red-300 px-2 py-0.5 rounded">Education</span>
+                                        <span class="text-xs bg-orange-500/20 text-orange-300 px-2 py-0.5 rounded">Entertainment</span>
+                                        <span class="text-xs bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded">Creative</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blank Template -->
+                        <div class="premium-card rounded-xl p-5 cursor-pointer hover:border-indigo-500/50 transition-all" onclick="loadTemplate('blank')">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-plus text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-white mb-1">Start from Scratch</h3>
+                                    <p class="text-xs text-gray-400 mb-3">Build your brand voice from zero</p>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span class="text-xs bg-gray-500/20 text-gray-300 px-2 py-0.5 rounded">Custom</span>
+                                        <span class="text-xs bg-gray-500/20 text-gray-300 px-2 py-0.5 rounded">Flexible</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Saved Profiles Tab -->
+                <div id="savedTab" class="tab-content hidden">
+                    <div id="savedProfilesList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Will be populated dynamically -->
+                        <div class="premium-card rounded-xl p-8 text-center">
+                            <i class="fas fa-folder-open text-4xl text-gray-600 mb-4"></i>
+                            <p class="text-gray-400">No saved profiles yet</p>
+                            <p class="text-xs text-gray-500 mt-2">Save your first profile to see it here</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Variants Tab -->
+                <div id="variantsTab" class="tab-content hidden">
+                    <div class="mb-6">
+                        <div class="premium-card rounded-xl p-6">
+                            <h3 class="text-lg font-semibold text-white mb-4">Create Variations</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <button onclick="createVariant()" class="premium-card rounded-lg p-4 text-left hover:border-indigo-500/50 transition-all">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                                            <i class="fas fa-code-branch text-white"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-white">Create Variant</div>
+                                            <div class="text-xs text-gray-400">Same brand, different page</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-gray-500">Create an offspring profile for the same account but different posting style or content theme</p>
+                                </button>
+
+                                <button onclick="cloneProfile()" class="premium-card rounded-lg p-4 text-left hover:border-indigo-500/50 transition-all">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                                            <i class="fas fa-copy text-white"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-white">Clone to New Brand</div>
+                                            <div class="text-xs text-gray-400">Same style, different brand</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-gray-500">Duplicate this brand voice for a different account or brand</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="variantsList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Will be populated dynamically -->
+                        <div class="premium-card rounded-xl p-8 text-center">
+                            <i class="fas fa-code-branch text-4xl text-gray-600 mb-4"></i>
+                            <p class="text-gray-400">No variants created yet</p>
+                            <p class="text-xs text-gray-500 mt-2">Create variants to reuse your brand voice work</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-5xl mx-auto px-6 py-8">
+        <!-- Account Selector -->
+        <div class="premium-card rounded-xl p-6 mb-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Select Account to Customize</label>
+                    <select id="accountSelector" onchange="loadAccountProfile()" class="premium-input px-4 py-3 rounded-lg text-white w-64">
+                        <option value="">-- Choose Account --</option>
+                    </select>
+                </div>
+                <button onclick="createNewProfile()" class="btn-primary px-4 py-2.5 rounded-lg font-semibold text-sm animate-pulse cursor-pointer relative z-10" style="pointer-events: auto !important;">
+                    <i class="fas fa-plus-circle mr-2"></i>New Profile
+                </button>
+            </div>
+        </div>
+
+        <!-- Form Sections -->
+        <div id="mainForm" class="hidden space-y-8">
+
+            <!-- SECTION 1: Brand Identity -->
+            <div class="premium-card rounded-xl overflow-hidden">
+                <div class="section-header px-6 py-4">
+                    <h2 class="text-lg font-semibold flex items-center gap-3">
+                        <i class="fas fa-fingerprint text-indigo-400"></i>
+                        Brand Identity
+                    </h2>
+                </div>
+                <div class="p-6 space-y-6">
+
+                    <!-- Brand Name -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Brand Name</label>
+                        <input type="text" id="brandName" class="premium-input w-full px-4 py-3 rounded-lg text-white" placeholder="e.g., Harmonatica">
+                    </div>
+
+                    <!-- One-Liner Description -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                            In one sentence, what does your brand do?
+                            <span class="skeleton-prompt text-xs ml-2">(Example: "We help entrepreneurs scale their businesses through AI-powered automation")</span>
+                        </label>
+                        <input type="text" id="brandOneLiner" class="premium-input w-full px-4 py-3 rounded-lg text-white" placeholder="A clear, one-line description of your brand...">
+                    </div>
+
+                    <!-- Core Values -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            What are your 3 core values?
+                            <span class="skeleton-prompt text-xs ml-2">(Select 3-5 that best represent your brand)</span>
+                        </label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="coreValuesGrid">
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="authenticity" class="checkbox-custom">
+                                <span class="text-sm">Authenticity</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="innovation" class="checkbox-custom">
+                                <span class="text-sm">Innovation</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="transparency" class="checkbox-custom">
+                                <span class="text-sm">Transparency</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="excellence" class="checkbox-custom">
+                                <span class="text-sm">Excellence</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="community" class="checkbox-custom">
+                                <span class="text-sm">Community</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="growth" class="checkbox-custom">
+                                <span class="text-sm">Growth</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="integrity" class="checkbox-custom">
+                                <span class="text-sm">Integrity</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="creativity" class="checkbox-custom">
+                                <span class="text-sm">Creativity</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="impact" class="checkbox-custom">
+                                <span class="text-sm">Impact</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="empowerment" class="checkbox-custom">
+                                <span class="text-sm">Empowerment</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="sustainability" class="checkbox-custom">
+                                <span class="text-sm">Sustainability</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="quality" class="checkbox-custom">
+                                <span class="text-sm">Quality</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="collaboration" class="checkbox-custom">
+                                <span class="text-sm">Collaboration</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="customer-focus" class="checkbox-custom">
+                                <span class="text-sm">Customer First</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="diversity" class="checkbox-custom">
+                                <span class="text-sm">Diversity</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="reliability" class="checkbox-custom">
+                                <span class="text-sm">Reliability</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="friendly" class="checkbox-custom">
+                                <span class="text-sm">Friendly</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="tech-savvy" class="checkbox-custom">
+                                <span class="text-sm">Tech-Savvy</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="creative" class="checkbox-custom">
+                                <span class="text-sm">Creative</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="efficiency" class="checkbox-custom">
+                                <span class="text-sm">Efficiency</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="accessibility" class="checkbox-custom">
+                                <span class="text-sm">Accessibility</span>
+                            </label>
+                        </div>
+                        <div class="mt-3 flex gap-2">
+                            <input type="text" id="coreValueOther" class="premium-input flex-1 px-4 py-2 rounded-lg text-sm text-white" placeholder="Add custom core value and press Enter">
+                            <button onclick="addCustomCoreValue()" class="btn-secondary px-4 py-2 rounded-lg text-sm font-medium">Add Custom</button>
+                        </div>
+                        <div id="customCoreValuesContainer" class="flex flex-wrap gap-2 mt-2"></div>
+                    </div>
+
+                    <!-- Brand Personality - Multiple Choice with Other -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            If your brand was a person, how would you describe them?
+                            <span class="skeleton-prompt text-xs ml-2">(Choose 2-3)</span>
+                        </label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="personalityGrid">
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="checkbox" value="mentor" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-2">🧑‍🏫</div>
+                                <div class="text-sm font-medium">Mentor</div>
+                                <div class="text-xs text-gray-400">Wise & Guiding</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="checkbox" value="friend" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-2">🤝</div>
+                                <div class="text-sm font-medium">Friend</div>
+                                <div class="text-xs text-gray-400">Casual & Warm</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="checkbox" value="expert" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-2">👨‍💼</div>
+                                <div class="text-sm font-medium">Expert</div>
+                                <div class="text-xs text-gray-400">Professional & Authoritative</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="checkbox" value="visionary" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-2">🚀</div>
+                                <div class="text-sm font-medium">Visionary</div>
+                                <div class="text-xs text-gray-400">Bold & Forward-thinking</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="checkbox" value="storyteller" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-2">📖</div>
+                                <div class="text-sm font-medium">Storyteller</div>
+                                <div class="text-xs text-gray-400">Narrative & Engaging</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="checkbox" value="rebel" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-2">⚡</div>
+                                <div class="text-sm font-medium">Rebel</div>
+                                <div class="text-xs text-gray-400">Edgy & Disruptive</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="checkbox" value="helper" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-2">🙌</div>
+                                <div class="text-sm font-medium">Helper</div>
+                                <div class="text-xs text-gray-400">Supportive & Caring</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="checkbox" value="entertainer" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-2">🎭</div>
+                                <div class="text-sm font-medium">Entertainer</div>
+                                <div class="text-xs text-gray-400">Fun & Playful</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="checkbox" value="creative" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-2">🎨</div>
+                                <div class="text-sm font-medium">Creative</div>
+                                <div class="text-xs text-gray-400">Imaginative & Original</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="checkbox" value="efficient" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-2">⚡</div>
+                                <div class="text-sm font-medium">Efficient</div>
+                                <div class="text-xs text-gray-400">Get Things Done</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="checkbox" value="supportive" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-2">🤝</div>
+                                <div class="text-sm font-medium">Supportive</div>
+                                <div class="text-xs text-gray-400">Helpful & Caring</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="checkbox" value="forward-thinking" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-2">🔮</div>
+                                <div class="text-sm font-medium">Forward-Thinking</div>
+                                <div class="text-xs text-gray-400">Visionary</div>
+                            </label>
+                        </div>
+                        <div class="mt-3">
+                            <input type="text" id="personalityOther" class="premium-input w-full px-4 py-2.5 rounded-lg text-sm text-white" placeholder="Or describe your brand personality in your own words...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: Your Audience -->
+            <div class="premium-card rounded-xl overflow-hidden">
+                <div class="section-header px-6 py-4">
+                    <h2 class="text-lg font-semibold flex items-center gap-3">
+                        <i class="fas fa-users text-purple-400"></i>
+                        Your Audience
+                    </h2>
+                </div>
+                <div class="p-6 space-y-6">
+
+                    <!-- Who They Are -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                            Who is your ideal follower/customer?
+                            <span class="skeleton-prompt text-xs ml-2">(Be specific about demographics and psychographics)</span>
+                        </label>
+                        <textarea id="targetAudience" rows="3" class="premium-textarea w-full px-4 py-3 rounded-lg text-white" placeholder="e.g., Entrepreneurs aged 25-40 who are struggling with time management and want to scale their business without burning out..."></textarea>
+                    </div>
+
+                    <!-- Their Pain Points -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                            What problems keep them up at night?
+                            <span class="skeleton-prompt text-xs ml-2">(List 2-3 main pain points)</span>
+                        </label>
+                        <textarea id="audiencePainPoints" rows="3" class="premium-textarea w-full px-4 py-3 rounded-lg text-white" placeholder="e.g.,
+• Overwhelmed by daily tasks and decisions
+• Struggling to grow revenue while maintaining quality
+• Feeling isolated in their entrepreneurial journey"></textarea>
+                    </div>
+
+                    <!-- What They Want -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                            What do they want most?
+                            <span class="skeleton-prompt text-xs ml-2">(Their desired transformation)</span>
+                        </label>
+                        <textarea id="audienceDesires" rows="3" class="premium-textarea w-full px-4 py-3 rounded-lg text-white" placeholder="e.g., They want a predictable path to scaling their business that doesn't require sacrificing their personal life or values..."></textarea>
+                    </div>
+
+                    <!-- Familiarity Level -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            How familiar is your audience with your topic?
+                        </label>
+                        <div class="grid grid-cols-3 gap-3" id="familiarityGrid">
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="familiarity" value="beginner" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Beginner</div>
+                                <div class="text-xs text-gray-400">New to the topic, needs basics explained</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="familiarity" value="intermediate" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Intermediate</div>
+                                <div class="text-xs text-gray-400">Knows fundamentals, ready to go deeper</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="familiarity" value="advanced" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Advanced</div>
+                                <div class="text-xs text-gray-400">Experienced, wants cutting-edge insights</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: Voice & Tone Guidelines -->
+            <div class="premium-card rounded-xl overflow-hidden">
+                <div class="section-header px-6 py-4">
+                    <h2 class="text-lg font-semibold flex items-center gap-3">
+                        <i class="fas fa-comment-dots text-blue-400"></i>
+                        Voice & Tone Guidelines
+                    </h2>
+                </div>
+                <div class="p-6 space-y-6">
+
+                    <!-- Writing Style -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            How should your captions sound?
+                        </label>
+                        <div class="grid grid-cols-3 gap-3" id="writingStyleGrid">
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="writingStyle" value="conversational" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Conversational</div>
+                                <div class="text-xs text-gray-400">Like chatting with a friend</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="writingStyle" value="professional" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Professional</div>
+                                <div class="text-xs text-gray-400">Polished & authoritative</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="writingStyle" value="casual" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Casual</div>
+                                <div class="text-xs text-gray-400">Relaxed & informal</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Caption Structure -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            What structure should your captions follow?
+                            <span class="skeleton-prompt text-xs ml-2">(Choose a framework)</span>
+                        </label>
+                        <div class="grid grid-cols-2 gap-3" id="captionStructureGrid">
+                            <label class="option-card rounded-lg p-4 cursor-pointer">
+                                <input type="radio" name="captionStructure" value="hook-value-cta" class="checkbox-custom hidden">
+                                <div class="font-medium mb-2">Hook → Value → CTA</div>
+                                <div class="text-xs text-gray-400">Start with attention-grabber, deliver value, end with call-to-action</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer">
+                                <input type="radio" name="captionStructure" value="story-lesson-cta" class="checkbox-custom hidden">
+                                <div class="font-medium mb-2">Story → Lesson → CTA</div>
+                                <div class="text-xs text-gray-400">Share a personal story, extract the lesson, invite action</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer">
+                                <input type="radio" name="captionStructure" value="problem-solution-cta" class="checkbox-custom hidden">
+                                <div class="font-medium mb-2">Problem → Solution → CTA</div>
+                                <div class="text-xs text-gray-400">Identify pain point, offer solution, guide to next step</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer">
+                                <input type="radio" name="captionStructure" value="list-value-cta" class="checkbox-custom hidden">
+                                <div class="font-medium mb-2">List → Value → CTA</div>
+                                <div class="text-xs text-gray-400">Numbered list format, deliver value, close with action</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Caption Length -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            Ideal caption length?
+                        </label>
+                        <div class="grid grid-cols-4 gap-3" id="captionLengthGrid">
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="captionLength" value="short" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Short</div>
+                                <div class="text-xs text-gray-400">Under 150 words</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="captionLength" value="medium" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Medium</div>
+                                <div class="text-xs text-gray-400">150-300 words</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="captionLength" value="long" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Long</div>
+                                <div class="text-xs text-gray-400">300-500 words</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="captionLength" value="story" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Story</div>
+                                <div class="text-xs text-gray-400">750-1000 words, deep narrative</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Emoji Style -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            Emoji usage?
+                        </label>
+                        <div class="grid grid-cols-3 gap-3" id="emojiStyleGrid">
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="emojiStyle" value="minimal" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-1">😐</div>
+                                <div class="font-medium mb-1">Minimal</div>
+                                <div class="text-xs text-gray-400">1-2 emojis max</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="emojiStyle" value="moderate" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-1">😊</div>
+                                <div class="font-medium mb-1">Moderate</div>
+                                <div class="text-xs text-gray-400">3-5 emojis</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="emojiStyle" value="liberal" class="checkbox-custom hidden">
+                                <div class="text-2xl mb-1">🎉</div>
+                                <div class="font-medium mb-1">Expressive</div>
+                                <div class="text-xs text-gray-400">6+ emojis</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Hashtag Strategy -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            Hashtag strategy?
+                        </label>
+                        <div class="grid grid-cols-4 gap-3" id="hashtagStrategyGrid">
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="hashtagStrategy" value="none" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">None</div>
+                                <div class="text-xs text-gray-400">No hashtags</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="hashtagStrategy" value="minimal" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Minimal</div>
+                                <div class="text-xs text-gray-400">3-5 tags</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="hashtagStrategy" value="moderate" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Moderate</div>
+                                <div class="text-xs text-gray-400">5-10 tags</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="hashtagStrategy" value="extensive" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Extensive</div>
+                                <div class="text-xs text-gray-400">15-30 tags</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Grammar & Punctuation -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            Grammar & Punctuation Style
+                            <span class="skeleton-prompt text-xs ml-2">(How formal should captions be?)</span>
+                        </label>
+                        <div class="grid grid-cols-3 gap-3" id="grammarStyleGrid">
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="grammarStyle" value="formal" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Formal</div>
+                                <div class="text-xs text-gray-400">Perfect grammar, full punctuation</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="grammarStyle" value="casual" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Casual</div>
+                                <div class="text-xs text-gray-400">Minor grammar relaxed, conversational</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="grammarStyle" value="relaxed" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Relaxed</div>
+                                <div class="text-xs text-gray-400">Minimal punctuation, lowercase ok</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Slang & Abbreviations -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            Slang, Abbreviations & Informal Language
+                        </label>
+                        <div class="grid grid-cols-3 gap-3" id="slangStyleGrid">
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="slangStyle" value="none" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">None</div>
+                                <div class="text-xs text-gray-400">Professional language only</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="slangStyle" value="light" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Light</div>
+                                <div class="text-xs text-gray-400">Common abbrev (lol, btw, tbh)</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer text-center">
+                                <input type="radio" name="slangStyle" value="heavy" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Heavy</div>
+                                <div class="text-xs text-gray-400">Full slang, internet culture</div>
+                            </label>
+                        </div>
+                        <div class="mt-3 premium-input px-4 py-2.5 rounded-lg text-sm text-white" style="background: rgba(0,0,0,0.2);">
+                            <span class="text-gray-400 text-xs">Examples:</span>
+                            <span class="text-xs ml-2" id="slangExamples">"rn", "tmr", "ppl", "tho", "bc", "nvm", "ngl", "fr"</span>
+                        </div>
+                    </div>
+
+                    <!-- Caption Spacing & Structure -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            Caption Spacing & Structure
+                            <span class="skeleton-prompt text-xs ml-2">(How should paragraphs be separated?)</span>
+                        </label>
+                        <div class="grid grid-cols-2 gap-3" id="spacingStyleGrid">
+                            <label class="option-card rounded-lg p-4 cursor-pointer">
+                                <input type="radio" name="spacingStyle" value="compact" class="checkbox-custom hidden">
+                                <div class="font-medium mb-2">Compact</div>
+                                <div class="text-xs text-gray-400">Single paragraph, tight spacing</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer">
+                                <input type="radio" name="spacingStyle" value="moderate" class="checkbox-custom hidden">
+                                <div class="font-medium mb-2">Moderate</div>
+                                <div class="text-xs text-gray-400">1-2 line breaks between sections</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer">
+                                <input type="radio" name="spacingStyle" value="airy" class="checkbox-custom hidden">
+                                <div class="font-medium mb-2">Airy</div>
+                                <div class="text-xs text-gray-400">Multiple line breaks, very readable</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer">
+                                <input type="radio" name="spacingStyle" value="bullet-points" class="checkbox-custom hidden">
+                                <div class="font-medium mb-2">Bullet Points</div>
+                                <div class="text-xs text-gray-400">Use • or numbers for lists</div>
+                            </label>
+                        </div>
+                        <div class="mt-3 p-3 bg-black/20 rounded-lg border border-white/5">
+                            <div class="text-xs text-gray-400 mb-2">Preview of spacing styles:</div>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div>
+                                    <span class="text-purple-400">Compact:</span>
+                                    <div class="text-gray-500">Hook here. Value goes here. CTA at end.</div>
+                                </div>
+                                <div>
+                                    <span class="text-purple-400">Moderate:</span>
+                                    <div class="text-gray-500">Hook here.<br><br>Value goes here.<br><br>CTA at end.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DO Use These Words - With Categories -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            <span class="text-green-400">✓</span> DO use these words/phrases
+                            <span class="skeleton-prompt text-xs ml-2">(Add categories or individual words)</span>
+                        </label>
+
+                        <!-- Category Quick-Select -->
+                        <div class="mb-4">
+                            <div class="text-xs text-gray-400 mb-2">Quick-add categories:</div>
+                            <div class="flex flex-wrap gap-2" id="doCategoriesGrid">
+                                <button onclick="addDoCategory('growth')" class="text-xs bg-green-500/10 hover:bg-green-500/20 text-green-300 px-3 py-1.5 rounded-lg border border-green-500/30 transition-all">
+                                    📈 Growth
+                                </button>
+                                <button onclick="addDoCategory('action')" class="text-xs bg-green-500/10 hover:bg-green-500/20 text-green-300 px-3 py-1.5 rounded-lg border border-green-500/30 transition-all">
+                                    ⚡ Action
+                                </button>
+                                <button onclick="addDoCategory('emotion')" class="text-xs bg-green-500/10 hover:bg-green-500/20 text-green-300 px-3 py-1.5 rounded-lg border border-green-500/30 transition-all">
+                                    💚 Emotion
+                                </button>
+                                <button onclick="addDoCategory('success')" class="text-xs bg-green-500/10 hover:bg-green-500/20 text-green-300 px-3 py-1.5 rounded-lg border border-green-500/30 transition-all">
+                                    🏆 Success
+                                </button>
+                                <button onclick="addDoCategory('freedom')" class="text-xs bg-green-500/10 hover:bg-green-500/20 text-green-300 px-3 py-1.5 rounded-lg border border-green-500/30 transition-all">
+                                    🕊️ Freedom
+                                </button>
+                                <button onclick="addDoCategory('community')" class="text-xs bg-green-500/10 hover:bg-green-500/20 text-green-300 px-3 py-1.5 rounded-lg border border-green-500/30 transition-all">
+                                    👥 Community
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="doKeywordsContainer" class="flex flex-wrap gap-2 mb-3"></div>
+                        <div class="flex gap-2">
+                            <input type="text" id="doKeywordInput" class="premium-input flex-1 px-4 py-2.5 rounded-lg text-sm text-white" placeholder="Type and press Enter to add...">
+                            <button onclick="addKeyword('do')" class="btn-secondary px-4 py-2.5 rounded-lg text-sm font-medium">Add</button>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-2">Examples: "scale", "freedom", "systems", "growth", "strategy"</div>
+                    </div>
+
+                    <!-- DON'T Use These Words - With Categories -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            <span class="text-red-400">✗</span> DON'T use these words/phrases
+                            <span class="skeleton-prompt text-xs ml-2">(Add categories or individual words)</span>
+                        </label>
+
+                        <!-- Category Quick-Select -->
+                        <div class="mb-4">
+                            <div class="text-xs text-gray-400 mb-2">Quick-add categories:</div>
+                            <div class="flex flex-wrap gap-2" id="dontCategoriesGrid">
+                                <button onclick="addDontCategory('hype')" class="text-xs bg-red-500/10 hover:bg-red-500/20 text-red-300 px-3 py-1.5 rounded-lg border border-red-500/30 transition-all">
+                                    🚫 Hype
+                                </button>
+                                <button onclick="addDontCategory('manipulation')" class="text-xs bg-red-500/10 hover:bg-red-500/20 text-red-300 px-3 py-1.5 rounded-lg border border-red-500/30 transition-all">
+                                    🚫 Manipulation
+                                </button>
+                                <button onclick="addDontCategory('cliché')" class="text-xs bg-red-500/10 hover:bg-red-500/20 text-red-300 px-3 py-1.5 rounded-lg border border-red-500/30 transition-all">
+                                    🚫 Cliché
+                                </button>
+                                <button onclick="addDontCategory('overpromising')" class="text-xs bg-red-500/10 hover:bg-red-500/20 text-red-300 px-3 py-1.5 rounded-lg border border-red-500/30 transition-all">
+                                    🚫 Overpromising
+                                </button>
+                                <button onclick="addDontCategory('complex')" class="text-xs bg-red-500/10 hover:bg-red-500/20 text-red-300 px-3 py-1.5 rounded-lg border border-red-500/30 transition-all">
+                                    🚫 Complex
+                                </button>
+                                <button onclick="addDontCategory('negative')" class="text-xs bg-red-500/10 hover:bg-red-500/20 text-red-300 px-3 py-1.5 rounded-lg border border-red-500/30 transition-all">
+                                    🚫 Negative
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="dontKeywordsContainer" class="flex flex-wrap gap-2 mb-3"></div>
+                        <div class="flex gap-2">
+                            <input type="text" id="dontKeywordInput" class="premium-input flex-1 px-4 py-2.5 rounded-lg text-sm text-white" placeholder="Type and press Enter to add...">
+                            <button onclick="addKeyword('dont')" class="btn-secondary px-4 py-2.5 rounded-lg text-sm font-medium">Add</button>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-2">Examples: "hack", "overnight success", "get rich quick", "guarantee"</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: Content Strategy -->
+            <div class="premium-card rounded-xl overflow-hidden">
+                <div class="section-header px-6 py-4">
+                    <h2 class="text-lg font-semibold flex items-center gap-3">
+                        <i class="fas fa-bullseye text-green-400"></i>
+                        Content Strategy
+                    </h2>
+                </div>
+                <div class="p-6 space-y-6">
+
+                    <!-- Content Pillars -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            What are your 3-5 content pillars?
+                            <span class="skeleton-prompt text-xs ml-2">(Main themes you post about)</span>
+                        </label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="contentPillarsGrid">
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="education" class="checkbox-custom">
+                                <span class="text-sm">Education</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="motivation" class="checkbox-custom">
+                                <span class="text-sm">Motivation</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="behind-scenes" class="checkbox-custom">
+                                <span class="text-sm">Behind the Scenes</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="tips-tutorials" class="checkbox-custom">
+                                <span class="text-sm">Tips & Tutorials</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="stories" class="checkbox-custom">
+                                <span class="text-sm">Stories</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="industry-news" class="checkbox-custom">
+                                <span class="text-sm">Industry News</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="user-generated" class="checkbox-custom">
+                                <span class="text-sm">User Content</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="promotional" class="checkbox-custom">
+                                <span class="text-sm">Promotional</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="entertainment" class="checkbox-custom">
+                                <span class="text-sm">Entertainment</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="lifestyle" class="checkbox-custom">
+                                <span class="text-sm">Lifestyle</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="inspiration" class="checkbox-custom">
+                                <span class="text-sm">Inspiration</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="how-to" class="checkbox-custom">
+                                <span class="text-sm">How-To Guides</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="case-studies" class="checkbox-custom">
+                                <span class="text-sm">Case Studies</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="trends" class="checkbox-custom">
+                                <span class="text-sm">Trends</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="reviews" class="checkbox-custom">
+                                <span class="text-sm">Reviews</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="qa" class="checkbox-custom">
+                                <span class="text-sm">Q&A</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="challenges" class="checkbox-custom">
+                                <span class="text-sm">Challenges</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="community-highlights" class="checkbox-custom">
+                                <span class="text-sm">Community Highlights</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="product-launches" class="checkbox-custom">
+                                <span class="text-sm">Product Launches</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="thought-leadership" class="checkbox-custom">
+                                <span class="text-sm">Thought Leadership</span>
+                            </label>
+                            <label class="option-card rounded-lg p-3 cursor-pointer flex items-center gap-2">
+                                <input type="checkbox" value="humor" class="checkbox-custom">
+                                <span class="text-sm">Humor</span>
+                            </label>
+                        </div>
+                        <div class="mt-3 flex gap-2">
+                            <input type="text" id="contentPillarOther" class="premium-input flex-1 px-4 py-2 rounded-lg text-sm text-white" placeholder="Add custom content pillar and press Enter">
+                            <button onclick="addCustomContentPillar()" class="btn-secondary px-4 py-2 rounded-lg text-sm font-medium">Add Custom</button>
+                        </div>
+                        <div id="customContentPillarsContainer" class="flex flex-wrap gap-2 mt-2"></div>
+                    </div>
+
+                    <!-- Content Goals -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-3">
+                            What's the primary goal of your Instagram content?
+                        </label>
+                        <div class="grid grid-cols-2 gap-3" id="contentGoalsGrid">
+                            <label class="option-card rounded-lg p-4 cursor-pointer">
+                                <input type="radio" name="contentGoal" value="educate" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Educate & Add Value</div>
+                                <div class="text-xs text-gray-400">Build authority through teaching</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer">
+                                <input type="radio" name="contentGoal" value="engage" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Engage & Build Community</div>
+                                <div class="text-xs text-gray-400">Create conversations and connections</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer">
+                                <input type="radio" name="contentGoal" value="convert" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Convert & Sell</div>
+                                <div class="text-xs text-gray-400">Drive leads and sales</div>
+                            </label>
+                            <label class="option-card rounded-lg p-4 cursor-pointer">
+                                <input type="radio" name="contentGoal" value="inspire" class="checkbox-custom hidden">
+                                <div class="font-medium mb-1">Inspire & Motivate</div>
+                                <div class="text-xs text-gray-400">Elevate mindset and energy</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 5: ManyChat & CTA -->
+            <div class="premium-card rounded-xl overflow-hidden">
+                <div class="section-header px-6 py-4">
+                    <h2 class="text-lg font-semibold flex items-center gap-3">
+                        <i class="fas fa-robot text-cyan-400"></i>
+                        Automation & Call-to-Action
+                    </h2>
+                </div>
+                <div class="p-6 space-y-6">
+
+                    <!-- ManyChat Keyword -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">
+                                ManyChat Keyword
+                                <span class="skeleton-prompt text-xs ml-2">(What should followers comment?)</span>
+                            </label>
+                            <input type="text" id="manychatKeyword" class="premium-input w-full px-4 py-3 rounded-lg text-white uppercase" placeholder="e.g., GUIDE">
+                            <div class="text-xs text-gray-500 mt-2">This word will trigger your automation</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">
+                                CTA Type
+                            </label>
+                            <select id="manychatCta" class="premium-input w-full px-4 py-3 rounded-lg text-white">
+                                <option value="COMMENT">Comment the keyword</option>
+                                <option value="DM">DM us</option>
+                                <option value="LINK">Link in bio</option>
+                                <option value="STORY">Reply to story</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- What They Get -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                            What do followers get when they comment?
+                            <span class="skeleton-prompt text-xs ml-2">(For your internal reference)</span>
+                        </label>
+                        <input type="text" id="automationOffer" class="premium-input w-full px-4 py-3 rounded-lg text-white" placeholder="e.g., Free PDF guide, Course access, Consultation call">
+                    </div>
+
+                    <!-- Custom CTA Instructions -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                            Any special instructions for the CTA?
+                            <span class="skeleton-prompt text-xs ml-2">(Optional - specify how to phrase the call-to-action)</span>
+                        </label>
+                        <textarea id="ctaInstructions" rows="2" class="premium-textarea w-full px-4 py-3 rounded-lg text-white" placeholder="e.g., Always mention that spots are limited. Create urgency by saying 'today only'..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 6: Additional Notes -->
+            <div class="premium-card rounded-xl overflow-hidden">
+                <div class="section-header px-6 py-4">
+                    <h2 class="text-lg font-semibold flex items-center gap-3">
+                        <i class="fas fa-sticky-note text-yellow-400"></i>
+                        Additional Instructions
+                    </h2>
+                </div>
+                <div class="p-6">
+                    <label class="block text-sm font-medium text-gray-300 mb-3">
+                        Any other details the AI should know?
+                        <span class="skeleton-prompt text-xs ml-2">(Specific preferences, rules, or examples)</span>
+                    </label>
+                    <textarea id="additionalNotes" rows="5" class="premium-textarea w-full px-4 py-3 rounded-lg text-white" placeholder="Example instructions:
+• Always start captions with a question
+• Include 2-3 line breaks between paragraphs
+• Never use all caps
+• Reference personal anecdotes when possible
+• End every caption with an engagement question
+• Avoid using the word 'just'
+• Keep sentences under 20 words when possible"></textarea>
+                </div>
+            </div>
+
+            <!-- Save & Test Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+                <button onclick="saveProfile()" class="btn-primary px-8 py-3.5 rounded-lg font-semibold text-base">
+                    <i class="fas fa-save mr-2"></i>Save Brand Voice Profile
+                </button>
+                <button onclick="testGenerate()" class="btn-secondary px-8 py-3.5 rounded-lg font-semibold text-base">
+                    <i class="fas fa-flask mr-2"></i>Generate Test Caption
+                </button>
+            </div>
+
+            <!-- Caption Preview -->
+            <div id="previewSection" class="hidden premium-card rounded-xl p-6 mt-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <i class="fas fa-eye text-purple-400"></i>
+                    Generated Caption Preview
+                </h3>
+                <div class="bg-black/30 rounded-lg p-5 border border-white/10">
+                    <p id="previewCaption" class="whitespace-pre-wrap text-gray-300 leading-relaxed"></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-gray-900 border border-gray-700 rounded-xl px-5 py-3.5 text-white text-sm z-50 hidden shadow-xl">
+        <div class="flex items-center gap-3">
+            <i class="fas fa-check-circle text-green-400" id="toastIcon"></i>
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script>
+        console.log('🚀 Brand Voice Builder 2.0 - SELECTION FIXED - Loaded at:', new Date().toISOString());
+
+        let currentProfile = null;
+        let doKeywords = [];
+        let dontKeywords = [];
+        let customCoreValues = [];
+        let customContentPillars = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('✅ DOM Content Loaded - Setting up Brand Voice Builder 2.0');
+            setupEventListeners();
+            loadAccounts();
+
+            // Add Enter key handlers
+            document.getElementById('coreValueOther')?.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addCustomCoreValue();
+                }
+            });
+
+            document.getElementById('contentPillarOther')?.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addCustomContentPillar();
+                }
+            });
+        });
+
+        function setupEventListeners() {
+            console.log('Setting up event listeners...');
+
+            // Option card selection
+            document.querySelectorAll('.option-card').forEach(card => {
+                // Remove existing listeners to avoid duplicates
+                card.removeEventListener('click', handleOptionCardClick);
+                card.addEventListener('click', handleOptionCardClick);
+
+                // Handle clicking on checkbox/radio input directly
+                const input = card.querySelector('input');
+                if (input) {
+                    input.removeEventListener('change', handleInputChange);
+                    input.addEventListener('change', handleInputChange);
+                }
+            });
+
+            console.log('Event listeners setup complete');
+        }
+
+        function handleOptionCardClick(e) {
+            const card = e.currentTarget;
+
+            // Allow default behavior for interactive elements
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON' || e.target.tagName === 'I' || e.target.tagName === 'A') {
+                return;
+            }
+
+            const input = card.querySelector('input');
+            if (!input) return;
+
+            console.log('Option card clicked:', input.type, input.value, 'current checked:', input.checked);
+
+            if (input.type === 'radio') {
+                // For radios: manually handle selection (clear others, select this one)
+                e.preventDefault();
+                const name = input.name;
+                document.querySelectorAll(`input[name="${name}"]`).forEach(inp => {
+                    const c = inp.closest('.option-card');
+                    if (c) {
+                        c.classList.remove('selected');
+                        // Clear inline styles
+                        c.style.background = '';
+                        c.style.borderColor = '';
+                        c.style.boxShadow = '';
+                    }
+                    inp.checked = false;
+                });
+                card.classList.add('selected');
+                card.style.background = 'rgba(99, 102, 241, 0.15)';
+                card.style.borderColor = '#6366f1';
+                card.style.boxShadow = '0 0 0 1px #6366f1';
+                input.checked = true;
+            } else if (input.type === 'checkbox') {
+                // For checkboxes: let the label's default behavior handle it, then sync UI
+                // Don't prevent default - let the label naturally toggle the checkbox
+                // The change event will handle UI sync
+            }
+
+            // Trigger change event for checkboxes (radios already handled above)
+            if (input.type === 'checkbox') {
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }
+
+        function handleInputChange(e) {
+            const input = e.target;
+            const card = input.closest('.option-card');
+
+            console.log('Input changed:', input.type, input.value, 'checked:', input.checked);
+
+            if (input.type === 'checkbox' && card) {
+                // Sync the selected class with the actual checkbox state
+                card.classList.toggle('selected', input.checked);
+                // Also update inline styles to match
+                if (input.checked) {
+                    card.style.background = 'rgba(99, 102, 241, 0.15)';
+                    card.style.borderColor = '#6366f1';
+                    card.style.boxShadow = '0 0 0 1px #6366f1';
+                } else {
+                    card.style.background = '';
+                    card.style.borderColor = '';
+                    card.style.boxShadow = '';
+                }
+            }
+        }
+
+        // Keyword input handlers
+        document.getElementById('doKeywordInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addKeyword('do');
+            }
+        });
+
+        document.getElementById('dontKeywordInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addKeyword('dont');
+            }
+        });
+
+        async function loadAccounts() {
+            try {
+                const response = await fetch('/api/accounts/settings');
+                const data = await response.json();
+
+                console.log('Accounts response:', data);
+
+                const selector = document.getElementById('accountSelector');
+                selector.innerHTML = '<option value="">-- Choose Account --</option>';
+
+                if (data.success && data.accounts && data.accounts.length > 0) {
+                    data.accounts.forEach(account => {
+                        const option = document.createElement('option');
+                        option.value = account.username;
+                        option.textContent = account.username;
+                        selector.appendChild(option);
+                    });
+                    console.log(`✅ Loaded ${data.accounts.length} account(s)`);
+                } else {
+                    console.log('⚠️ No accounts found - showing setup message');
+                    // Show a message that no accounts exist
+                    const option = document.createElement('option');
+                    option.value = "";
+                    option.textContent = "⚠️ No accounts - Click 'New Profile' to create one";
+                    option.disabled = true;
+                    selector.appendChild(option);
+
+                    // Show a helpful toast
+                    setTimeout(() => {
+                        showToast('No accounts found. Click "New Profile" to create one!', 'error');
+                    }, 500);
+                }
+            } catch (error) {
+                console.error('Error loading accounts:', error);
+                showToast('Failed to load accounts. Please try again.', 'error');
+            }
+        }
+
+        async function loadAccountProfile() {
+            const account = document.getElementById('accountSelector').value;
+
+            if (!account) {
+                document.getElementById('mainForm').classList.add('hidden');
+                return;
+            }
+
+            document.getElementById('mainForm').classList.remove('hidden');
+
+            try {
+                const response = await fetch(`/api/brand-voice?account=${encodeURIComponent(account)}`);
+                const data = await response.json();
+
+                if (data.success && data.profile) {
+                    currentProfile = data.profile;
+                    populateForm(data.profile);
+                } else {
+                    resetForm();
+                }
+            } catch (error) {
+                console.error('Error loading profile:', error);
+                resetForm();
+            }
+        }
+
+        function populateForm(profile) {
+            console.log('[populateForm] Loading profile:', profile);
+            console.log('[populateForm] core_values type:', typeof profile.core_values, 'value:', profile.core_values);
+            console.log('[populateForm] personality_traits type:', typeof profile.personality_traits, 'value:', profile.personality_traits);
+
+            // Helper to parse comma-separated strings or JSON arrays
+            const parseArray = (value) => {
+                if (!value) return [];
+                if (Array.isArray(value)) return value;
+                if (typeof value === 'string') {
+                    // Try JSON parse first
+                    try {
+                        const parsed = JSON.parse(value);
+                        if (Array.isArray(parsed)) return parsed;
+                    } catch (e) {}
+                    // Fall back to comma-separated
+                    return value.split(',').map(v => v.trim()).filter(v => v);
+                }
+                return [];
+            };
+
+            // Helper to find best matching checkbox for a value
+            const findMatchingCheckbox = (containerId, value) => {
+                const container = document.getElementById(containerId);
+                if (!container) {
+                    console.log(`[populateForm] Container not found: ${containerId}`);
+                    return null;
+                }
+
+                console.log(`[populateForm] Looking for checkbox in ${containerId} with value: "${value}"`);
+
+                // Get all checkboxes first for debugging
+                const allCheckboxes = container.querySelectorAll('input[type="checkbox"]');
+                console.log(`[populateForm] Found ${allCheckboxes.length} checkboxes in ${containerId}`);
+                allCheckboxes.forEach(cb => console.log(`[populateForm]   - Available checkbox: "${cb.value}"`));
+
+                // Normalize value: remove prefixes like "slightly", handle hyphens
+                const normalizeValue = (val) => {
+                    return val.toLowerCase()
+                        .replace(/^slightly\s+/i, '')
+                        .replace(/-/g, '')
+                        .trim();
+                };
+
+                const normalizedValue = normalizeValue(value);
+                console.log(`[populateForm] Normalized value: "${value}" -> "${normalizedValue}"`);
+
+                // 1. Try exact match
+                let checkbox = container.querySelector(`input[value="${value}"]`);
+                if (checkbox) {
+                    console.log(`[populateForm] ✅ Exact match found for: "${value}"`);
+                    return checkbox;
+                }
+
+                // 2. Try case-insensitive match
+                checkbox = container.querySelector(`input[value="${value.toLowerCase()}"]`);
+                if (checkbox) {
+                    console.log(`[populateForm] ✅ Case-insensitive match found for: "${value}" -> "${checkbox.value}"`);
+                    return checkbox;
+                }
+
+                // 3. Try normalized match
+                for (const cb of allCheckboxes) {
+                    const cbNorm = normalizeValue(cb.value);
+                    if (cbNorm === normalizedValue) {
+                        console.log(`[populateForm] ✅ Normalized match found: "${value}" -> "${cb.value}"`);
+                        return cb;
+                    }
+                }
+
+                // 4. Try partial match (value contains checkbox value or vice versa)
+                for (const cb of allCheckboxes) {
+                    const cbVal = cb.value.toLowerCase();
+                    const valLower = value.toLowerCase();
+                    if (cbVal.includes(valLower) || valLower.includes(cbVal)) {
+                        console.log(`[populateForm] ✅ Partial match found: "${value}" -> "${cb.value}"`);
+                        return cb;
+                    }
+                }
+
+                console.log(`[populateForm] ❌ No match found for: "${value}"`);
+                return null;
+            };
+
+            // Brand Identity
+            document.getElementById('brandName').value = profile.brand_name || profile.profile_name || '';
+            document.getElementById('brandOneLiner').value = profile.brand_one_liner || '';
+
+            // Core values - handle both comma strings and JSON arrays with fuzzy matching
+            const coreValues = parseArray(profile.core_values);
+            console.log('[populateForm] Processing core values:', coreValues);
+            coreValues.forEach(value => {
+                const checkbox = findMatchingCheckbox('coreValuesGrid', value);
+                if (checkbox) {
+                    console.log(`[populateForm] ✅ Checking checkbox for: "${value}"`);
+                    checkbox.checked = true;
+                    const parentCard = checkbox.closest('.option-card');
+                    if (parentCard) {
+                        parentCard.classList.add('selected');
+                        // Use inline styles to guarantee the visual update
+                        parentCard.style.background = 'rgba(99, 102, 241, 0.15)';
+                        parentCard.style.borderColor = '#6366f1';
+                        parentCard.style.boxShadow = '0 0 0 1px #6366f1';
+                        console.log(`[populateForm] ✅ Checkbox "${value}" is now checked with inline styles applied`);
+                    } else {
+                        console.log(`[populateForm] ❌ ERROR: No .option-card parent found for: "${value}"`);
+                    }
+                } else {
+                    console.log(`[populateForm] ⚠️ No checkbox found for: "${value}" - adding to custom values`);
+                    // Add as custom value if no match found
+                    if (!customCoreValues.includes(value)) {
+                        customCoreValues.push(value);
+                    }
+                }
+            });
+            // Render custom core values after adding all
+            if (coreValues.some(v => !findMatchingCheckbox('coreValuesGrid', v))) {
+                renderCustomCoreValues();
+            }
+
+            // Personality - handle both comma strings and JSON arrays with fuzzy matching
+            const personalityTraits = parseArray(profile.personality_traits);
+            console.log('[populateForm] Processing personality traits:', personalityTraits);
+            personalityTraits.forEach(trait => {
+                const checkbox = findMatchingCheckbox('personalityGrid', trait);
+                if (checkbox) {
+                    console.log(`[populateForm] ✅ Checking personality checkbox for: "${trait}"`);
+                    checkbox.checked = true;
+                    const parentCard = checkbox.closest('.option-card');
+                    if (parentCard) {
+                        parentCard.classList.add('selected');
+                        // Use inline styles to guarantee the visual update
+                        parentCard.style.background = 'rgba(99, 102, 241, 0.15)';
+                        parentCard.style.borderColor = '#6366f1';
+                        parentCard.style.boxShadow = '0 0 0 1px #6366f1';
+                        console.log(`[populateForm] ✅ Personality checkbox "${trait}" is now checked with inline styles applied`);
+                    } else {
+                        console.log(`[populateForm] ❌ ERROR: No .option-card parent found for personality: "${trait}"`);
+                    }
+                } else {
+                    console.log(`[populateForm] ⚠️ No personality checkbox found for: "${trait}"`);
+                }
+                // Note: No custom personality system exists, so unmatched values are skipped
+            });
+
+            // Audience
+            document.getElementById('targetAudience').value = profile.target_audience || '';
+            document.getElementById('audiencePainPoints').value = profile.audience_pain_points || '';
+            document.getElementById('audienceDesires').value = profile.audience_desires || '';
+
+            // Familiarity
+            if (profile.audience_familiarity) {
+                selectRadio('familiarity', profile.audience_familiarity);
+            } else {
+                selectRadio('familiarity', 'intermediate'); // Default
+            }
+
+            // Writing style - handle both old free text and new radio values
+            if (profile.writing_style) {
+                // Try to match free text to radio option
+                const writingStyle = profile.writing_style.toLowerCase();
+                if (writingStyle.includes('conversational') || writingStyle.includes('casual')) {
+                    selectRadio('writingStyle', 'casual');
+                } else if (writingStyle.includes('professional') || writingStyle.includes('formal')) {
+                    selectRadio('writingStyle', 'professional');
+                } else if (writingStyle.includes('short') || writingStyle.includes('punchy')) {
+                    selectRadio('writingStyle', 'conversational');
+                } else {
+                    // Default to conversational if no match
+                    selectRadio('writingStyle', 'conversational');
+                }
+            } else {
+                // Set default if empty
+                selectRadio('writingStyle', 'conversational');
+            }
+
+            // Keywords - handle both comma strings and JSON arrays
+            doKeywords = parseArray(profile.do_keywords);
+            dontKeywords = parseArray(profile.dont_keywords);
+            renderKeywords();
+
+            // Caption preferences
+            if (profile.caption_structure) {
+                // Handle both free text and radio option values
+                const structure = profile.caption_structure.toLowerCase();
+                if (structure.includes('hook') || structure.includes('→') || structure.includes('->')) {
+                    // It's a free text description, try to match to radio option
+                    if (structure.includes('story')) {
+                        selectRadio('captionStructure', 'story');
+                    } else if (structure.includes('list') || structure.includes('bullet')) {
+                        selectRadio('captionStructure', 'list');
+                    } else {
+                        selectRadio('captionStructure', 'hook_value_cta'); // Default match
+                    }
+                } else {
+                    selectRadio('captionStructure', profile.caption_structure);
+                }
+            } else {
+                selectRadio('captionStructure', 'hook_value_cta'); // Default
+            }
+            if (profile.caption_length_preference) {
+                selectRadio('captionLength', profile.caption_length_preference);
+            } else {
+                selectRadio('captionLength', 'medium'); // Default
+            }
+            if (profile.emoji_usage) {
+                selectRadio('emojiStyle', profile.emoji_usage);
+            } else {
+                selectRadio('emojiStyle', 'minimal'); // Default
+            }
+            if (profile.hashtag_strategy) {
+                selectRadio('hashtagStrategy', profile.hashtag_strategy);
+            } else {
+                selectRadio('hashtagStrategy', 'none'); // Default
+            }
+
+            // Style preferences - set defaults if empty
+            if (profile.grammar_style) {
+                selectRadio('grammarStyle', profile.grammar_style);
+            } else {
+                selectRadio('grammarStyle', 'casual'); // Default
+            }
+            if (profile.slang_style) {
+                selectRadio('slangStyle', profile.slang_style);
+            } else {
+                selectRadio('slangStyle', 'light'); // Default
+            }
+            if (profile.spacing_style) {
+                selectRadio('spacingStyle', profile.spacing_style);
+            } else {
+                selectRadio('spacingStyle', 'moderate'); // Default
+            }
+
+            // Content pillars - handle both comma strings and JSON arrays with fuzzy matching
+            const contentPillars = parseArray(profile.content_pillars);
+            contentPillars.forEach(pillar => {
+                const checkbox = findMatchingCheckbox('contentPillarsGrid', pillar);
+                if (checkbox) {
+                    checkbox.checked = true;
+                    const card = checkbox.closest('.option-card');
+                    if (card) {
+                        card.classList.add('selected');
+                        card.style.background = 'rgba(99, 102, 241, 0.15)';
+                        card.style.borderColor = '#6366f1';
+                        card.style.boxShadow = '0 0 0 1px #6366f1';
+                    }
+                } else {
+                    // Add as custom value if no match found
+                    if (!customContentPillars.includes(pillar)) {
+                        customContentPillars.push(pillar);
+                    }
+                }
+            });
+            // Render custom content pillars after adding all
+            if (contentPillars.some(p => !findMatchingCheckbox('contentPillarsGrid', p))) {
+                renderCustomContentPillars();
+            }
+
+            // Content goal
+            if (profile.content_goal) {
+                selectRadio('contentGoal', profile.content_goal);
+            } else {
+                selectRadio('contentGoal', 'educate'); // Default
+            }
+
+            // ManyChat
+            document.getElementById('manychatKeyword').value = profile.manychat_keyword || 'LINK';
+            document.getElementById('manychatCta').value = profile.manychat_cta || 'COMMENT';
+            document.getElementById('automationOffer').value = profile.automation_offer || '';
+            document.getElementById('ctaInstructions').value = profile.cta_instructions || '';
+
+            // Additional notes
+            document.getElementById('additionalNotes').value = profile.additional_notes || '';
+        }
+
+        function selectRadio(name, value) {
+            const input = document.querySelector(`input[name="${name}"][value="${value}"]`);
+            if (input) {
+                input.checked = true;
+                const card = input.closest('.option-card');
+                if (card) {
+                    card.classList.add('selected');
+                    card.style.background = 'rgba(99, 102, 241, 0.15)';
+                    card.style.borderColor = '#6366f1';
+                    card.style.boxShadow = '0 0 0 1px #6366f1';
+                }
+            }
+        }
+
+        function resetForm() {
+            currentProfile = null;
+            doKeywords = [];
+            dontKeywords = [];
+            customCoreValues = [];
+            customContentPillars = [];
+
+            // Reset all inputs
+            document.querySelectorAll('input, textarea').forEach(el => {
+                if (el.type === 'checkbox' || el.type === 'radio') {
+                    el.checked = false;
+                    const card = el.closest('.option-card');
+                    if (card) {
+                        card.classList.remove('selected');
+                        // Clear inline styles
+                        card.style.background = '';
+                        card.style.borderColor = '';
+                        card.style.boxShadow = '';
+                    }
+                } else {
+                    el.value = '';
+                }
+            });
+
+            // Set defaults
+            document.getElementById('manychatKeyword').value = 'LINK';
+            document.getElementById('manychatCta').value = 'COMMENT';
+
+            renderKeywords();
+            renderCustomCoreValues();
+            renderCustomContentPillars();
+        }
+
+        function addKeyword(type) {
+            const inputId = type === 'do' ? 'doKeywordInput' : 'dontKeywordInput';
+            const input = document.getElementById(inputId);
+            const keyword = input.value.trim();
+
+            if (keyword) {
+                if (type === 'do') {
+                    doKeywords.push(keyword);
+                } else {
+                    dontKeywords.push(keyword);
+                }
+                input.value = '';
+                renderKeywords();
+            }
+        }
+
+        function removeKeyword(type, index) {
+            if (type === 'do') {
+                doKeywords.splice(index, 1);
+            } else {
+                dontKeywords.splice(index, 1);
+            }
+            renderKeywords();
+        }
+
+        function renderKeywords() {
+            // DO keywords
+            const doContainer = document.getElementById('doKeywordsContainer');
+            doContainer.innerHTML = doKeywords.map((kw, i) => `
+                <span class="tag-badge tag-badge-DO px-3 py-1.5 rounded-full text-sm flex items-center gap-2">
+                    ${kw}
+                    <button onclick="removeKeyword('do', ${i})" class="hover:text-white">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </span>
+            `).join('');
+
+            // DON'T keywords
+            const dontContainer = document.getElementById('dontKeywordsContainer');
+            dontContainer.innerHTML = dontKeywords.map((kw, i) => `
+                <span class="tag-badge tag-badge-DONT px-3 py-1.5 rounded-full text-sm flex items-center gap-2">
+                    ${kw}
+                    <button onclick="removeKeyword('dont', ${i})" class="hover:text-white">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </span>
+            `).join('');
+        }
+
+        // Category word lists for quick-add
+        const doCategoryWords = {
+            growth: ['scale', 'growth', 'expand', 'level up', 'elevate', 'multiply', 'accelerate', 'momentum', 'progress', 'breakthrough'],
+            action: ['take action', 'start now', 'implement', 'execute', 'apply', 'do it', 'make it happen', 'step up', 'move', 'act'],
+            emotion: ['feel', 'heart', 'passion', 'love', 'excited', 'joy', 'fulfillment', 'meaningful', 'authentic', 'real'],
+            success: ['win', 'achieve', 'success', 'results', 'outcome', 'victory', 'breakthrough', 'transform', 'thrive', 'prosper'],
+            freedom: ['freedom', 'liberty', 'choice', 'flexible', 'autonomy', 'independence', 'control', 'empower', 'liberated', 'free'],
+            community: ['together', 'family', 'tribe', 'us', 'we', 'connection', 'belong', 'community', 'brotherhood', 'sisterhood']
+        };
+
+        const dontCategoryWords = {
+            hype: ['overnight success', 'get rich quick', 'secret loophole', 'hack', 'magic pill', 'instant', 'effortless', 'auto-pilot'],
+            manipulation: ['act now', 'limited spots', 'dont miss out', 'only for you', 'exclusive offer', 'urgency', 'scarcity', 'fomo'],
+            cliché: ['game changer', 'revolutionary', 'groundbreaking', 'unprecedented', 'paradigm shift', 'cutting edge', 'state of the art'],
+            overpromising: ['guarantee', '100%', 'always', 'never fail', 'risk-free', 'cant lose', 'sure thing', 'promise'],
+            complex: ['algorithm', 'optimization', 'leverage', 'synergy', 'paradigm', 'matrix', 'ecosystem', 'blockchain', 'ai-powered'],
+            negative: ['fail', 'failure', 'struggle', 'problem', 'issue', 'cant', 'wont', 'impossible', 'hard', 'difficult']
+        };
+
+        function addDoCategory(category) {
+            const words = doCategoryWords[category] || [];
+            words.forEach(word => {
+                if (!doKeywords.includes(word)) {
+                    doKeywords.push(word);
+                }
+            });
+            renderKeywords();
+        }
+
+        function addDontCategory(category) {
+            const words = dontCategoryWords[category] || [];
+            words.forEach(word => {
+                if (!dontKeywords.includes(word)) {
+                    dontKeywords.push(word);
+                }
+            });
+            renderKeywords();
+        }
+
+        function addCustomCoreValue() {
+            const input = document.getElementById('coreValueOther');
+            const value = input.value.trim();
+
+            if (value && !customCoreValues.includes(value)) {
+                customCoreValues.push(value);
+                input.value = '';
+                renderCustomCoreValues();
+            }
+        }
+
+        function removeCustomCoreValue(index) {
+            customCoreValues.splice(index, 1);
+            renderCustomCoreValues();
+        }
+
+        function renderCustomCoreValues() {
+            const container = document.getElementById('customCoreValuesContainer');
+            container.innerHTML = customCoreValues.map((value, i) => `
+                <span class="tag-badge px-3 py-1.5 rounded-full text-sm flex items-center gap-2" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                    ${value}
+                    <button onclick="removeCustomCoreValue(${i})" class="hover:text-white">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </span>
+            `).join('');
+        }
+
+        function addCustomContentPillar() {
+            const input = document.getElementById('contentPillarOther');
+            const value = input.value.trim();
+
+            if (value && !customContentPillars.includes(value)) {
+                customContentPillars.push(value);
+                input.value = '';
+                renderCustomContentPillars();
+            }
+        }
+
+        function removeCustomContentPillar(index) {
+            customContentPillars.splice(index, 1);
+            renderCustomContentPillars();
+        }
+
+        function renderCustomContentPillars() {
+            const container = document.getElementById('customContentPillarsContainer');
+            container.innerHTML = customContentPillars.map((value, i) => `
+                <span class="tag-badge px-3 py-1.5 rounded-full text-sm flex items-center gap-2" style="background: linear-gradient(135deg, #10b981, #34d399);">
+                    ${value}
+                    <button onclick="removeCustomContentPillar(${i})" class="hover:text-white">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </span>
+            `).join('');
+        }
+
+        async function saveProfile() {
+            const account = document.getElementById('accountSelector').value;
+
+            if (!account) {
+                showError('Please select an account first');
+                return;
+            }
+
+            showSaving();
+            const profileData = collectFormData();
+
+            // Include profile ID if editing existing profile
+            if (currentProfile && currentProfile.id) {
+                profileData.profile_id = currentProfile.id;
+            }
+
+            try {
+                // Use PUT if editing existing profile, POST if creating new
+                const method = (currentProfile && currentProfile.id) ? 'PUT' : 'POST';
+                const url = (currentProfile && currentProfile.id) ? `/api/brand-voice/${currentProfile.id}` : '/api/brand-voice';
+
+                const response = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(profileData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showSuccess('Brand voice profile saved successfully!');
+                } else {
+                    showError(result.error || 'Failed to save profile');
+                }
+            } catch (error) {
+                console.error('Error saving profile:', error);
+                showError('Failed to save profile');
+            }
+        }
+
+        async function testGenerate() {
+            const account = document.getElementById('accountSelector').value;
+            if (!account) {
+                showError('Please select an account first');
+                return;
+            }
+
+            document.getElementById('previewSection').classList.remove('hidden');
+            document.getElementById('previewCaption').innerHTML = '<span class="text-gray-500">Generating caption...</span>';
+
+            try {
+                const response = await fetch('/api/test-caption', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ account })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('previewCaption').textContent = result.caption;
+                } else {
+                    document.getElementById('previewCaption').innerHTML = `<span class="text-red-400">${result.error}</span>`;
+                }
+            } catch (error) {
+                console.error('Error generating test caption:', error);
+                document.getElementById('previewCaption').innerHTML = '<span class="text-red-400">Failed to generate test caption</span>';
+            }
+        }
+
+        function showSaving() {
+            document.getElementById('saveSpinner').classList.remove('hidden');
+            document.getElementById('saveStatusText').textContent = 'Saving...';
+        }
+
+        function showSuccess(message) {
+            document.getElementById('saveSpinner').classList.add('hidden');
+            document.getElementById('saveStatusText').textContent = 'Saved';
+            showToast(message, 'success');
+        }
+
+        function showError(message) {
+            document.getElementById('saveSpinner').classList.add('hidden');
+            document.getElementById('saveStatusText').textContent = 'Error saving';
+            showToast(message, 'error');
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toastIcon');
+            const msg = document.getElementById('toastMessage');
+
+            icon.className = type === 'success' ? 'fas fa-check-circle text-green-400' : 'fas fa-exclamation-circle text-red-400';
+            msg.textContent = message;
+            toast.classList.remove('hidden');
+
+            setTimeout(() => toast.classList.add('hidden'), 3000);
+        }
+
+        async function createNewProfile() {
+            const account = prompt('Enter the Instagram username for your posting account:\n\nExample: mybrand, mybusiness, etc.');
+
+            if (!account) return;
+
+            const username = account.replace('@', '').trim();
+
+            if (!username) {
+                showError('Please enter a valid username');
+                return;
+            }
+
+            // Show loading state
+            showToast(`Creating profile for @${username}...`, 'success');
+
+            try {
+                // Create the account in the database first
+                const response = await fetch('/api/accounts/settings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: username,
+                        platform: 'instagram',
+                        active: 1
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    console.log('✅ Account created:', username);
+
+                    // Reload accounts to get the new one
+                    await loadAccounts();
+
+                    // Select the new account
+                    document.getElementById('accountSelector').value = username;
+
+                    // Show the form
+                    document.getElementById('mainForm').classList.remove('hidden');
+
+                    showToast(`✅ Profile created for @${username}! You can now customize your brand voice.`, 'success');
+                } else {
+                    // Account might already exist, try to load it
+                    console.log('Account might already exist, loading...');
+                    await loadAccounts();
+
+                    // Try to select it
+                    const selector = document.getElementById('accountSelector');
+                    const optionExists = Array.from(selector.options).some(opt => opt.value === username);
+
+                    if (optionExists) {
+                        selector.value = username;
+                        loadAccountProfile();
+                        showToast(`Loaded existing profile for @${username}`, 'success');
+                    } else {
+                        showError(result.error || 'Failed to create profile');
+                    }
+                }
+            } catch (error) {
+                console.error('Error creating profile:', error);
+                showError('Failed to create profile. Please try again.');
+            }
+        }
+
+        // Template System
+        function openTemplateLibrary() {
+            document.getElementById('templateLibraryModal').classList.remove('hidden');
+            loadSavedProfiles();
+        }
+
+        function closeTemplateLibrary() {
+            document.getElementById('templateLibraryModal').classList.add('hidden');
+        }
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            // Show selected tab
+            document.getElementById(tabName + 'Tab').classList.remove('hidden');
+
+            // Update button styles
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+        }
+
+        async function loadSavedProfiles() {
+            try {
+                const response = await fetch('/api/brand-voice');
+                const data = await response.json();
+
+                if (data.success && data.profiles) {
+                    renderSavedProfiles(data.profiles);
+                    renderVariantsList(data.profiles);
+                }
+            } catch (error) {
+                console.error('Error loading profiles:', error);
+            }
+        }
+
+        function renderSavedProfiles(profiles) {
+            const container = document.getElementById('savedProfilesList');
+
+            if (profiles.length === 0) {
+                container.innerHTML = `
+                    <div class="premium-card rounded-xl p-8 text-center">
+                        <i class="fas fa-folder-open text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">No saved profiles yet</p>
+                        <p class="text-xs text-gray-500 mt-2">Save your first profile to see it here</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = profiles.map(profile => `
+                <div class="premium-card rounded-xl p-5 cursor-pointer hover:border-indigo-500/50 transition-all" onclick="loadSavedProfile('${profile.account_username}')">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
+                                <i class="fas fa-at text-white"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-white">@${profile.account_username}</div>
+                                <div class="text-xs text-gray-400">${profile.brand_name || 'No brand name'}</div>
+                            </div>
+                        </div>
+                        <span class="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded">Active</span>
+                    </div>
+                    <p class="text-xs text-gray-500 line-clamp-2">${profile.brand_one_liner || 'No description'}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderVariantsList(profiles) {
+            const container = document.getElementById('variantsList');
+
+            if (profiles.length === 0) {
+                container.innerHTML = `
+                    <div class="premium-card rounded-xl p-8 text-center">
+                        <i class="fas fa-code-branch text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">No variants created yet</p>
+                        <p class="text-xs text-gray-500 mt-2">Create variants to reuse your brand voice work</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = profiles.map(profile => `
+                <div class="premium-card rounded-xl p-5">
+                    <div class="flex items-start gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-code-branch text-white text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-medium text-white">${profile.profile_name || profile.account_username}</div>
+                            <div class="text-xs text-gray-400">Created ${new Date(profile.created_at).toLocaleDateString()}</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="editVariant('${profile.account_username}')" class="flex-1 text-xs bg-white/5 hover:bg-white/10 px-3 py-2 rounded-lg transition-all">
+                            <i class="fas fa-edit mr-1"></i>Edit
+                        </button>
+                        <button onclick="duplicateVariant('${profile.account_username}')" class="flex-1 text-xs bg-white/5 hover:bg-white/10 px-3 py-2 rounded-lg transition-all">
+                            <i class="fas fa-copy mr-1"></i>Duplicate
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function loadSavedProfile(account) {
+            document.getElementById('accountSelector').value = account;
+            loadAccountProfile();
+            closeTemplateLibrary();
+        }
+
+        function editVariant(account) {
+            loadSavedProfile(account);
+        }
+
+        // Template definitions
+        const templates = {
+            ecommerce: {
+                brand_name: '',
+                brand_one_liner: 'We help customers find the perfect products that solve their problems',
+                core_values: ['transparency', 'excellence'],
+                personality_traits: ['expert', 'helper'],
+                target_audience: 'E-commerce shoppers aged 18-45 looking for quality products that solve specific problems',
+                audience_pain_points: '• Tired of buying products that don\'t deliver\n• Uncertainty about product quality\n• Overwhelmed by too many choices',
+                audience_desires: 'They want confidence in their purchasing decisions and products that actually work',
+                audience_familiarity: 'beginner',
+                writing_style: 'conversational',
+                do_keywords: ['quality', 'results', 'solution', 'transform', 'elevate'],
+                dont_keywords: ['cheap', 'guarantee', 'overnight', 'hack', 'get rich quick'],
+                caption_structure: 'problem-solution-cta',
+                caption_length_preference: 'short',
+                emoji_usage: 'moderate',
+                hashtag_strategy: 'moderate',
+                content_pillars: ['promotional', 'tips-tutorials'],
+                content_goal: 'convert',
+                manychat_keyword: 'SHOP',
+                manychat_cta: 'LINK',
+                automation_offer: 'Product discount code',
+                cta_instructions: 'Create urgency by mentioning limited stock or time-sensitive offers'
+            },
+
+            personal: {
+                brand_name: '',
+                brand_one_liner: 'I share actionable insights and strategies to help you achieve your goals faster',
+                core_values: ['authenticity', 'growth'],
+                personality_traits: ['mentor', 'expert'],
+                target_audience: 'Ambitious professionals and entrepreneurs aged 25-45 who want to accelerate their growth',
+                audience_pain_points: '• Feeling stuck in their progress\n• Information overload from too many "gurus"\n• Lack of clear, actionable advice',
+                audience_desires: 'They want a trusted guide who can cut through the noise and provide clear pathways to success',
+                audience_familiarity: 'intermediate',
+                writing_style: 'professional',
+                do_keywords: ['strategy', 'framework', 'system', 'growth', 'results', 'transform'],
+                dont_keywords: ['hack', 'shortcut', 'easy', 'overnight', 'guarantee'],
+                caption_structure: 'hook-value-cta',
+                caption_length_preference: 'medium',
+                emoji_usage: 'minimal',
+                hashtag_strategy: 'minimal',
+                content_pillars: ['education', 'motivation', 'behind-scenes'],
+                content_goal: 'educate',
+                manychat_keyword: 'GUIDE',
+                manychat_cta: 'COMMENT',
+                automation_offer: 'Free PDF guide or checklist',
+                cta_instructions: 'Position the CTA as an exclusive resource for engaged followers'
+            },
+
+            community: {
+                brand_name: '',
+                brand_one_liner: 'We\'re building a community of like-minded people who support and grow together',
+                core_values: ['community', 'authenticity'],
+                personality_traits: ['friend', 'helper'],
+                target_audience: 'People seeking connection and community around shared interests and goals',
+                audience_pain_points: '• Feeling isolated in their journey\n• Lack of accountability and support\n• Wanting to belong to something bigger',
+                audience_desires: 'They want genuine connections and a supportive environment that helps them grow',
+                audience_familiarity: 'beginner',
+                writing_style: 'conversational',
+                do_keywords: ['together', 'community', 'support', 'growth', 'join', 'connect'],
+                dont_keywords: ['exclusive', 'limited', 'elite', 'secret'],
+                caption_structure: 'story-lesson-cta',
+                caption_length_preference: 'medium',
+                emoji_usage: 'liberal',
+                hashtag_strategy: 'extensive',
+                content_pillars: ['entertainment', 'motivation', 'user-generated'],
+                content_goal: 'engage',
+                manychat_keyword: 'JOIN',
+                manychat_cta: 'COMMENT',
+                automation_offer: 'Community invite or group access',
+                cta_instructions: 'Make it feel exclusive and welcoming, emphasize the community aspect'
+            },
+
+            service: {
+                brand_name: '',
+                brand_one_liner: 'We help businesses streamline operations and achieve sustainable growth through proven strategies',
+                core_values: ['excellence', 'transparency'],
+                personality_traits: ['expert', 'visionary'],
+                target_audience: 'Business owners and decision-makers looking for professional services to improve their operations',
+                audience_pain_points: '• Inefficient processes wasting time and money\n• Struggling to scale operations\n• Need specialized expertise they don\'t have in-house',
+                audience_desires: 'They want reliable, expert partners who can deliver measurable results and ROI',
+                audience_familiarity: 'advanced',
+                writing_style: 'professional',
+                do_keywords: ['strategy', 'optimization', 'growth', 'efficiency', 'results', 'ROI'],
+                dont_keywords: ['cheap', 'quick fix', 'one-size-fits-all', 'guesswork'],
+                caption_structure: 'hook-value-cta',
+                caption_length_preference: 'medium',
+                emoji_usage: 'minimal',
+                hashtag_strategy: 'minimal',
+                content_pillars: ['education', 'tips-tutorials', 'industry-news'],
+                content_goal: 'convert',
+                manychat_keyword: 'CONSULT',
+                manychat_cta: 'LINK',
+                automation_offer: 'Free consultation or audit',
+                cta_instructions: 'Emphasize professionalism and expertise, include social proof when possible'
+            },
+
+            creator: {
+                brand_name: '',
+                brand_one_liner: 'I create content that entertains, educates, and inspires you to take action',
+                core_values: ['authenticity', 'innovation'],
+                personality_traits: ['entertainer', 'storyteller'],
+                target_audience: 'Content consumers looking for entertainment mixed with practical value and inspiration',
+                audience_pain_points: '• Bored with generic content\n• Want to be entertained AND learn something\n• Seeking inspiration for their own journey',
+                audience_desires: 'They want content that captures their attention, makes them think, and leaves them feeling inspired',
+                audience_familiarity: 'beginner',
+                writing_style: 'conversational',
+                do_keywords: ['story', 'journey', 'behind the scenes', 'real', 'authentic', 'inspire'],
+                dont_keywords: ['perfect', 'expert', 'guru', 'ultimate', 'proven system'],
+                caption_structure: 'story-lesson-cta',
+                caption_length_preference: 'medium',
+                emoji_usage: 'liberal',
+                hashtag_strategy: 'moderate',
+                content_pillars: ['entertainment', 'education', 'behind-scenes', 'stories'],
+                content_goal: 'inspire',
+                manychat_keyword: 'CONTENT',
+                manychat_cta: 'COMMENT',
+                automation_offer: 'Content template or resource',
+                cta_instructions: 'Keep it fun and engaging, make followers feel part of the journey'
+            },
+
+            blank: {}
+        };
+
+        function loadTemplate(templateType) {
+            const template = templates[templateType];
+
+            if (!template) {
+                resetForm();
+                closeTemplateLibrary();
+                document.getElementById('mainForm').classList.remove('hidden');
+                return;
+            }
+
+            resetForm();
+
+            // Apply template values
+            Object.keys(template).forEach(key => {
+                const value = template[key];
+
+                // Handle text inputs and textareas
+                if (typeof value === 'string') {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        element.value = value;
+                    }
+                }
+
+                // Handle arrays (checkboxes)
+                if (Array.isArray(value)) {
+                    if (key === 'core_values') {
+                        value.forEach(val => {
+                            const checkbox = document.querySelector(`#coreValuesGrid input[value="${val}"]`);
+                            if (checkbox) {
+                                checkbox.checked = true;
+                                const card = checkbox.closest('.option-card');
+                                if (card) {
+                                    card.classList.add('selected');
+                                    card.style.background = 'rgba(99, 102, 241, 0.15)';
+                                    card.style.borderColor = '#6366f1';
+                                    card.style.boxShadow = '0 0 0 1px #6366f1';
+                                }
+                            }
+                        });
+                    }
+                    if (key === 'personality_traits') {
+                        value.forEach(val => {
+                            const checkbox = document.querySelector(`#personalityGrid input[value="${val}"]`);
+                            if (checkbox) {
+                                checkbox.checked = true;
+                                const card = checkbox.closest('.option-card');
+                                if (card) {
+                                    card.classList.add('selected');
+                                    card.style.background = 'rgba(99, 102, 241, 0.15)';
+                                    card.style.borderColor = '#6366f1';
+                                    card.style.boxShadow = '0 0 0 1px #6366f1';
+                                }
+                            }
+                        });
+                    }
+                    if (key === 'content_pillars') {
+                        value.forEach(val => {
+                            const checkbox = document.querySelector(`#contentPillarsGrid input[value="${val}"]`);
+                            if (checkbox) {
+                                checkbox.checked = true;
+                                const card = checkbox.closest('.option-card');
+                                if (card) {
+                                    card.classList.add('selected');
+                                    card.style.background = 'rgba(99, 102, 241, 0.15)';
+                                    card.style.borderColor = '#6366f1';
+                                    card.style.boxShadow = '0 0 0 1px #6366f1';
+                                }
+                            }
+                        });
+                    }
+                    if (key === 'do_keywords') {
+                        doKeywords = [...value];
+                    }
+                    if (key === 'dont_keywords') {
+                        dontKeywords = [...value];
+                    }
+                }
+
+                // Handle radio buttons
+                if (key === 'audience_familiarity' || key === 'writing_style' ||
+                    key === 'caption_structure' || key === 'caption_length_preference' ||
+                    key === 'emoji_usage' || key === 'hashtag_strategy' ||
+                    key === 'content_goal') {
+                    selectRadio(key, value);
+                }
+            });
+
+            renderKeywords();
+            closeTemplateLibrary();
+            document.getElementById('mainForm').classList.remove('hidden');
+
+            showToast(`Loaded ${templateType.charAt(0).toUpperCase() + templateType.slice(1)} template`, 'success');
+        }
+
+        function createVariant() {
+            const account = document.getElementById('accountSelector').value;
+
+            if (!account) {
+                showError('Please select an account first');
+                return;
+            }
+
+            const variantName = prompt('Enter a name for this variant (e.g., "Behind the Scenes", "Product Focus"):');
+            if (!variantName) return;
+
+            // Save current profile as a variant
+            showSaving();
+            const profileData = collectFormData();
+            profileData.profile_name = variantName;
+            profileData.is_variant = 1;
+            profileData.parent_account = account;
+
+            fetch('/api/brand-voice/variant', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(profileData)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    showSuccess(`Variant "${variantName}" created successfully!`);
+                    loadSavedProfiles();
+                } else {
+                    showError(result.error || 'Failed to create variant');
+                }
+            })
+            .catch(error => {
+                console.error('Error creating variant:', error);
+                showError('Failed to create variant');
+            });
+        }
+
+        function cloneProfile() {
+            const account = document.getElementById('accountSelector').value;
+
+            if (!account) {
+                showError('Please select an account first');
+                return;
+            }
+
+            const newAccount = prompt('Enter the username for the new account/brand:');
+            if (!newAccount) return;
+
+            const cloneName = prompt('Name this cloned profile:', `Clone of ${account}`);
+            if (!cloneName) return;
+
+            showSaving();
+            const profileData = collectFormData();
+            profileData.account_username = newAccount.replace('@', '');
+            profileData.profile_name = cloneName;
+            profileData.is_clone = 1;
+            profileData.cloned_from = account;
+
+            fetch('/api/brand-voice/clone', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(profileData)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    showSuccess(`Profile cloned to @${newAccount.replace('@', '')} successfully!`);
+                    loadAccounts();
+                    loadSavedProfiles();
+                } else {
+                    showError(result.error || 'Failed to clone profile');
+                }
+            })
+            .catch(error => {
+                console.error('Error cloning profile:', error);
+                showError('Failed to clone profile');
+            });
+        }
+
+        function duplicateVariant(account) {
+            const newName = prompt('Enter a name for the duplicate:');
+            if (!newName) return;
+
+            // Load the profile and create a duplicate
+            fetch(`/api/brand-voice?account=${encodeURIComponent(account)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.profile) {
+                        const profile = data.profile;
+                        profile.profile_name = newName;
+                        delete profile.id;
+
+                        return fetch('/api/brand-voice', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(profile)
+                        });
+                    }
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result && result.success) {
+                        showSuccess('Profile duplicated successfully!');
+                        loadSavedProfiles();
+                    } else {
+                        showError('Failed to duplicate profile');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error duplicating profile:', error);
+                    showError('Failed to duplicate profile');
+                });
+        }
+
+        function collectFormData() {
+            const account = document.getElementById('accountSelector').value;
+
+            // Collect core values
+            const coreValues = [];
+            document.querySelectorAll('#coreValuesGrid .checkbox-custom:checked').forEach(cb => {
+                coreValues.push(cb.value);
+            });
+            // Add custom core values
+            customCoreValues.forEach(value => {
+                coreValues.push(value);
+            });
+
+            // Collect personality traits
+            const personalityTraits = [];
+            document.querySelectorAll('#personalityGrid .checkbox-custom:checked').forEach(cb => {
+                personalityTraits.push(cb.value);
+            });
+            const otherPersonality = document.getElementById('personalityOther').value.trim();
+            if (otherPersonality) {
+                personalityTraits.push(otherPersonality);
+            }
+
+            // Collect content pillars
+            const contentPillars = [];
+            document.querySelectorAll('#contentPillarsGrid .checkbox-custom:checked').forEach(cb => {
+                contentPillars.push(cb.value);
+            });
+            // Add custom content pillars
+            customContentPillars.forEach(value => {
+                contentPillars.push(value);
+            });
+
+            // Collect radio values
+            const getRadioValue = (name) => {
+                const checked = document.querySelector(`input[name="${name}"]:checked`);
+                return checked ? checked.value : null;
+            };
+
+            return {
+                account_username: account,
+                profile_name: document.getElementById('brandName').value || `${account} Brand Voice`,
+                brand_name: document.getElementById('brandName').value,
+                brand_one_liner: document.getElementById('brandOneLiner').value,
+                core_values: coreValues,
+                personality_traits: personalityTraits,
+                target_audience: document.getElementById('targetAudience').value,
+                audience_pain_points: document.getElementById('audiencePainPoints').value,
+                audience_desires: document.getElementById('audienceDesires').value,
+                audience_familiarity: getRadioValue('familiarity'),
+                writing_style: getRadioValue('writingStyle'),
+                caption_structure: getRadioValue('captionStructure'),
+                caption_length_preference: getRadioValue('captionLength'),
+                grammar_style: getRadioValue('grammarStyle'),
+                slang_style: getRadioValue('slangStyle'),
+                spacing_style: getRadioValue('spacingStyle'),
+                emoji_usage: getRadioValue('emojiStyle'),
+                hashtag_usage: getRadioValue('hashtagStrategy'),
+                hashtag_strategy: getRadioValue('hashtagStrategy'),
+                content_pillars: contentPillars,
+                content_goal: getRadioValue('contentGoal'),
+                do_keywords: doKeywords,
+                dont_keywords: dontKeywords,
+                manychat_keyword: document.getElementById('manychatKeyword').value.toUpperCase(),
+                manychat_cta: document.getElementById('manychatCta').value,
+                automation_offer: document.getElementById('automationOffer').value,
+                cta_instructions: document.getElementById('ctaInstructions').value,
+                additional_notes: document.getElementById('additionalNotes').value
+            };
+        }
+    </script>
+</body>
+</html>

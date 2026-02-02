@@ -11,20 +11,24 @@ import json
 
 def read_products():
     products = {}
-    seen = set()
     with open('/Users/michaeldurante/Downloads/products_export_1.csv', 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
             handle = row.get('Handle', '')
             title = row.get('Title', '')
-            if handle and handle not in seen and title:
-                seen.add(handle)
+            image_src = row.get('Image Src', '')
+
+            # Skip rows without a handle or title
+            if not handle or not title:
+                continue
+
+            # Initialize product if not exists
+            if handle not in products:
                 products[handle] = {
                     'handle': handle,
                     'title': title,
                     'vendor': row.get('Vendor', ''),
-                    'image_src': row.get('Image Src', ''),
-                    'title': row.get('Title', ''),
+                    'images': [],  # Will collect all images
                     'body_html': row.get('Body (HTML)', ''),
                     'type': row.get('Type', ''),
                     'tags': row.get('Tags', ''),
@@ -33,6 +37,19 @@ def read_products():
                     'variant_compare_at_price': row.get('Variant Compare At Price', ''),
                     'status': row.get('Status', 'active'),
                 }
+
+            # Collect all images for this product
+            if image_src and image_src not in products[handle]['images']:
+                products[handle]['images'].append(image_src)
+
+    # Set image_src to first image for backward compatibility
+    for handle in products:
+        if products[handle]['images']:
+            products[handle]['image_src'] = products[handle]['images'][0]
+        else:
+            products[handle]['image_src'] = ''
+            products[handle]['images'] = ['']
+
     return products
 
 def read_tags():
@@ -233,11 +250,96 @@ def create_html(products, tags):
             box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
 
-        .product-image {
+        .product-image-container {
+            position: relative;
             width: 100%;
             aspect-ratio: 1;
-            object-fit: cover;
             background: var(--bg-secondary);
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.2s ease;
+        }
+
+        .image-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            opacity: 0;
+            transition: all 0.2s ease;
+            z-index: 10;
+            user-select: none;
+        }
+
+        .image-nav-arrow:hover {
+            background: rgba(0, 220, 130, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .image-nav-arrow:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .product-image-container:hover .image-nav-arrow {
+            opacity: 1;
+        }
+
+        .image-nav-arrow.prev {
+            left: 10px;
+        }
+
+        .image-nav-arrow.next {
+            right: 10px;
+        }
+
+        .image-counter {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .product-image-container:hover .image-counter {
+            opacity: 1;
+        }
+
+        .image-counter.always-visible {
+            opacity: 1;
+        }
+
+        /* Show arrows on mobile by default */
+        @media (max-width: 768px) {
+            .image-nav-arrow {
+                opacity: 1;
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+            }
+            .image-counter {
+                opacity: 1;
+            }
         }
 
         .product-info { padding: 16px; }
@@ -617,8 +719,17 @@ def create_html(products, tags):
                 'lens_types': existing_lens_types,
             }
 
+            # Prepare images array for JavaScript
+            images_json = json.dumps(prod['images'])
+            image_count = len([img for img in prod['images'] if img])
+
             f.write(f"""        <div class="product-card" data-handle="{handle}" data-reviewed="no">
-            <img src="{prod['image_src']}" class="product-image" alt="{prod['title']}">
+            <div class="product-image-container" data-handle="{handle}" data-current-index="0">
+                <img src="{prod['image_src']}" class="product-image" alt="{prod['title']}" data-index="0">
+                <button class="image-nav-arrow prev" onclick="navigateImage(event, '{handle}', -1)"&#8249;</button>
+                <button class="image-nav-arrow next" onclick="navigateImage(event, '{handle}', 1)"&#8250;</button>
+                <div class="image-counter{' always-visible' if image_count > 1 else ''}">1/{image_count}</div>
+            </div>
             <div class="product-info">
                 <div class="product-vendor">{prod['vendor']}</div>
                 <h3 class="product-title">{prod['title'][:70]}...</h3>
@@ -739,8 +850,9 @@ def create_html(products, tags):
         const productTags = {};      // Saved tags (green)
         const pendingTags = {};       // Pending changes (orange)
         const reviewedProducts = new Set();
+        const productImages = {};     // Store all images for each product
 
-        // Initialize with existing tags
+        // Initialize images
 """)
 
         # Add initialization for each product
@@ -775,7 +887,48 @@ def create_html(products, tags):
             if parts:
                 f.write("        " + "\n        ".join(parts) + "\n")
 
+        # Add images data
+        for handle, prod in products.items():
+            images = prod.get('images', [])
+            if images and len(images) > 0:
+                f.write(f"        productImages['{handle}'] = {json.dumps(images)};\n")
+
         f.write("""
+        // Image navigation function
+        function navigateImage(event, handle, direction) {
+            event.stopPropagation();
+            event.preventDefault();
+
+            const container = document.querySelector(`.product-image-container[data-handle="${handle}"]`);
+            if (!container) return;
+
+            const images = productImages[handle] || [];
+            if (images.length <= 1) return; // No navigation needed for single image
+
+            let currentIndex = parseInt(container.dataset.currentIndex) || 0;
+            const newIndex = (currentIndex + direction + images.length) % images.length;
+
+            // Update image
+            const img = container.querySelector('.product-image');
+            if (img && images[newIndex]) {
+                img.style.opacity = '0';
+                setTimeout(() => {
+                    img.src = images[newIndex];
+                    img.dataset.index = newIndex;
+                    img.style.opacity = '1';
+                }, 100);
+            }
+
+            // Update counter
+            const counter = container.querySelector('.image-counter');
+            if (counter) {
+                counter.textContent = `${newIndex + 1}/${images.length}`;
+            }
+
+            // Update current index
+            container.dataset.currentIndex = newIndex;
+        }
+
         // Initialize selected state on page load
         document.addEventListener('DOMContentLoaded', function() {
             Object.keys(productTags).forEach(handle => {

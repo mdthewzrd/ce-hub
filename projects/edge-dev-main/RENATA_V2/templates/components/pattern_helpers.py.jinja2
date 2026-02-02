@@ -1,0 +1,76 @@
+{#
+  Pattern Detection Helpers Component
+
+  Reusable template for pattern detection logic helpers
+  Usage: {% include 'components/pattern_helpers.py.jinja2' %}
+#}
+
+{# Group by ticker and iterate #}
+{% macro ticker_iteration() %}
+for ticker, data in stage2_data.groupby('ticker'):
+    # Calculate indicators for this ticker
+    {{ caller() }}
+{% endmacro %}
+
+{# Build result dictionary #}
+{% macro build_result(ticker_var='ticker', date_var='date', price_var='open') %}
+{
+    'ticker': {{ ticker_var }},
+    'date': {{ date_var }},
+    'entry_price': {{ price_var }},
+    'entry_conditions_met': entry_conditions,
+    'indicators_calculated': indicators
+}
+{% endmacro %}
+
+{# Append result to list #}
+{% macro append_result(result_var='result') %}
+results.append({{ result_var }})
+{% endmacro %}
+
+{# Common gap pattern detection #}
+{% macro gap_pattern_detection(min_gap=0.5, min_volume=1000000) %}
+# Calculate gap
+data['gap'] = (data['open'] / data['close'].shift(1)) - 1
+
+# Find signals
+signals = data[
+    (data['gap'] >= {{ min_gap }}) &
+    (data['volume'] >= {{ min_volume }})
+]
+
+# Build results
+for idx, row in signals.iterrows():
+    result = {
+        'ticker': ticker,
+        'date': row['date'],
+        'entry_price': row['open'],
+        'gap': row['gap'],
+        'volume': row['volume']
+    }
+    results.append(result)
+{% endmacro %}
+
+{# EMA crossover detection #}
+{% macro ema_crossover(fast_ema=9, slow_ema=21) %}
+# Calculate EMAs
+data['ema_{{ fast_ema }}'] = data['close'].ewm(span={{ fast_ema }}).mean()
+data['ema_{{ slow_ema }}'] = data['close'].ewm(span={{ slow_ema }}).mean()
+
+# Find crossover
+data['crossover'] = data['ema_{{ fast_ema }}'] > data['ema_{{ slow_ema }}']
+data['crossover_signal'] = data['crossover'] & ~data['crossover'].shift(1)
+
+# Build results
+signals = data[data['crossover_signal'] == True]
+
+for idx, row in signals.iterrows():
+    result = {
+        'ticker': ticker,
+        'date': row['date'],
+        'entry_price': row['close'],
+        'ema_{{ fast_ema }}': row['ema_{{ fast_ema }}'],
+        'ema_{{ slow_ema }}': row['ema_{{ slow_ema }}']
+    }
+    results.append(result)
+{% endmacro %}

@@ -1,0 +1,17 @@
+{
+  "project_id": "704125d8-f350-4cd4-a6b7-3c37b3a93db9",
+  "name": "lc d2 scan   oct 25 new ideas  2",
+  "description": "Multi-scanner project: lc d2 scan   oct 25 new ideas  2",
+  "scanners": [],
+  "aggregation_method": "weighted",
+  "created_at": "2025-11-12T12:06:15.588572",
+  "updated_at": "2025-11-12T12:06:15.588588",
+  "version": 1,
+  "tags": [
+    "multi-scanner",
+    "auto-split"
+  ],
+  "created_by": null,
+  "last_executed": null,
+  "execution_count": 0
+}

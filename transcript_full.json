@@ -1,0 +1,6942 @@
+[
+  {
+    "time": "00:00:02",
+    "text": "Not only have I built hundreds of AI"
+  },
+  {
+    "time": "00:00:02",
+    "text": "Not only have I built hundreds of AI"
+  },
+  {
+    "time": "00:00:04",
+    "text": "Not only have I built hundreds of AI agents myself, I've seen other people"
+  },
+  {
+    "time": "00:00:04",
+    "text": "agents myself, I've seen other people"
+  },
+  {
+    "time": "00:00:07",
+    "text": "agents myself, I've seen other people build thousands for every use case under"
+  },
+  {
+    "time": "00:00:07",
+    "text": "build thousands for every use case under"
+  },
+  {
+    "time": "00:00:09",
+    "text": "build thousands for every use case under the sun. And those who are the most"
+  },
+  {
+    "time": "00:00:09",
+    "text": "the sun. And those who are the most"
+  },
+  {
+    "time": "00:00:11",
+    "text": "the sun. And those who are the most successful are the ones who don't over"
+  },
+  {
+    "time": "00:00:11",
+    "text": "successful are the ones who don't over"
+  },
+  {
+    "time": "00:00:13",
+    "text": "successful are the ones who don't over complicated. And in this video, I want"
+  },
+  {
+    "time": "00:00:13",
+    "text": "complicated. And in this video, I want"
+  },
+  {
+    "time": "00:00:15",
+    "text": "complicated. And in this video, I want to show you how that can be you as well."
+  },
+  {
+    "time": "00:00:15",
+    "text": "to show you how that can be you as well."
+  },
+  {
+    "time": "00:00:17",
+    "text": "to show you how that can be you as well. Cuz here's the thing, and I see this all"
+  },
+  {
+    "time": "00:00:17",
+    "text": "Cuz here's the thing, and I see this all"
+  },
+  {
+    "time": "00:00:20",
+    "text": "Cuz here's the thing, and I see this all of the time. When people first think"
+  },
+  {
+    "time": "00:00:20",
+    "text": "of the time. When people first think"
+  },
+  {
+    "time": "00:00:22",
+    "text": "of the time. When people first think about building their AI agents, their"
+  },
+  {
+    "time": "00:00:22",
+    "text": "about building their AI agents, their"
+  },
+  {
+    "time": "00:00:24",
+    "text": "about building their AI agents, their perfectionism kicks in and they worry"
+  },
+  {
+    "time": "00:00:24",
+    "text": "perfectionism kicks in and they worry"
+  },
+  {
+    "time": "00:00:26",
+    "text": "perfectionism kicks in and they worry about creating the perfect system"
+  },
+  {
+    "time": "00:00:26",
+    "text": "about creating the perfect system"
+  },
+  {
+    "time": "00:00:28",
+    "text": "about creating the perfect system prompt, defining the perfect tools,"
+  },
+  {
+    "time": "00:00:28",
+    "text": "prompt, defining the perfect tools,"
+  },
+  {
+    "time": "00:00:30",
+    "text": "prompt, defining the perfect tools, thinking about the LLM they want to use."
+  },
+  {
+    "time": "00:00:30",
+    "text": "thinking about the LLM they want to use."
+  },
+  {
+    "time": "00:00:31",
+    "text": "thinking about the LLM they want to use. They consider the context and"
+  },
+  {
+    "time": "00:00:31",
+    "text": "They consider the context and"
+  },
+  {
+    "time": "00:00:33",
+    "text": "They consider the context and observability and latency and security"
+  },
+  {
+    "time": "00:00:33",
+    "text": "observability and latency and security"
+  },
+  {
+    "time": "00:00:34",
+    "text": "observability and latency and security and deployment. They get overwhelmed"
+  },
+  {
+    "time": "00:00:34",
+    "text": "and deployment. They get overwhelmed"
+  },
+  {
+    "time": "00:00:36",
+    "text": "and deployment. They get overwhelmed with everything. And that might be you"
+  },
+  {
+    "time": "00:00:36",
+    "text": "with everything. And that might be you"
+  },
+  {
+    "time": "00:00:38",
+    "text": "with everything. And that might be you as well. So, what I have to say to you"
+  },
+  {
+    "time": "00:00:38",
+    "text": "as well. So, what I have to say to you"
+  },
+  {
+    "time": "00:00:41",
+    "text": "as well. So, what I have to say to you right now is take a deep breath. That is"
+  },
+  {
+    "time": "00:00:41",
+    "text": "right now is take a deep breath. That is"
+  },
+  {
+    "time": "00:00:43",
+    "text": "right now is take a deep breath. That is why I'm here. Honestly, you can learn"
+  },
+  {
+    "time": "00:00:43",
+    "text": "why I'm here. Honestly, you can learn"
+  },
+  {
+    "time": "00:00:45",
+    "text": "why I'm here. Honestly, you can learn 90% of what you need to build AI agents"
+  },
+  {
+    "time": "00:00:46",
+    "text": "90% of what you need to build AI agents"
+  },
+  {
+    "time": "00:00:48",
+    "text": "90% of what you need to build AI agents from just this video. And that, my"
+  },
+  {
+    "time": "00:00:48",
+    "text": "from just this video. And that, my"
+  },
+  {
+    "time": "00:00:50",
+    "text": "from just this video. And that, my friend, is what I have for you in this"
+  },
+  {
+    "time": "00:00:50",
+    "text": "friend, is what I have for you in this"
+  },
+  {
+    "time": "00:00:52",
+    "text": "friend, is what I have for you in this video. I want to cover each of the core"
+  },
+  {
+    "time": "00:00:52",
+    "text": "video. I want to cover each of the core"
+  },
+  {
+    "time": "00:00:54",
+    "text": "video. I want to cover each of the core components of building agents like"
+  },
+  {
+    "time": "00:00:54",
+    "text": "components of building agents like"
+  },
+  {
+    "time": "00:00:56",
+    "text": "components of building agents like system prompts, tools, security, and"
+  },
+  {
+    "time": "00:00:56",
+    "text": "system prompts, tools, security, and"
+  },
+  {
+    "time": "00:00:58",
+    "text": "system prompts, tools, security, and context. And I want to break down what"
+  },
+  {
+    "time": "00:00:58",
+    "text": "context. And I want to break down what"
+  },
+  {
+    "time": "00:01:00",
+    "text": "context. And I want to break down what you should focus on to build the first"
+  },
+  {
+    "time": "00:01:00",
+    "text": "you should focus on to build the first"
+  },
+  {
+    "time": "00:01:02",
+    "text": "you should focus on to build the first 90% of your agent. Basically, creating"
+  },
+  {
+    "time": "00:01:02",
+    "text": "90% of your agent. Basically, creating"
+  },
+  {
+    "time": "00:01:04",
+    "text": "90% of your agent. Basically, creating that proof of concept. And then,"
+  },
+  {
+    "time": "00:01:04",
+    "text": "that proof of concept. And then,"
+  },
+  {
+    "time": "00:01:06",
+    "text": "that proof of concept. And then, honestly, even more importantly, I want"
+  },
+  {
+    "time": "00:01:06",
+    "text": "honestly, even more importantly, I want"
+  },
+  {
+    "time": "00:01:08",
+    "text": "honestly, even more importantly, I want to talk about what you shouldn't focus"
+  },
+  {
+    "time": "00:01:08",
+    "text": "to talk about what you shouldn't focus"
+  },
+  {
+    "time": "00:01:10",
+    "text": "to talk about what you shouldn't focus on at first because otherwise, you're"
+  },
+  {
+    "time": "00:01:10",
+    "text": "on at first because otherwise, you're"
+  },
+  {
+    "time": "00:01:12",
+    "text": "on at first because otherwise, you're over complicating it. the kinds of"
+  },
+  {
+    "time": "00:01:12",
+    "text": "over complicating it. the kinds of"
+  },
+  {
+    "time": "00:01:14",
+    "text": "over complicating it. the kinds of things you will need to look into at"
+  },
+  {
+    "time": "00:01:14",
+    "text": "things you will need to look into at"
+  },
+  {
+    "time": "00:01:15",
+    "text": "things you will need to look into at some point when you want to specialize"
+  },
+  {
+    "time": "00:01:15",
+    "text": "some point when you want to specialize"
+  },
+  {
+    "time": "00:01:17",
+    "text": "some point when you want to specialize your agents and move to production. But"
+  },
+  {
+    "time": "00:01:17",
+    "text": "your agents and move to production. But"
+  },
+  {
+    "time": "00:01:19",
+    "text": "your agents and move to production. But that's what my other content is for"
+  },
+  {
+    "time": "00:01:19",
+    "text": "that's what my other content is for"
+  },
+  {
+    "time": "00:01:20",
+    "text": "that's what my other content is for right now. Whether you're new to"
+  },
+  {
+    "time": "00:01:20",
+    "text": "right now. Whether you're new to"
+  },
+  {
+    "time": "00:01:22",
+    "text": "right now. Whether you're new to building agents or you just want to"
+  },
+  {
+    "time": "00:01:22",
+    "text": "building agents or you just want to"
+  },
+  {
+    "time": "00:01:24",
+    "text": "building agents or you just want to build them faster, I want to help you"
+  },
+  {
+    "time": "00:01:24",
+    "text": "build them faster, I want to help you"
+  },
+  {
+    "time": "00:01:26",
+    "text": "build them faster, I want to help you focus on the first 90% to make things"
+  },
+  {
+    "time": "00:01:26",
+    "text": "focus on the first 90% to make things"
+  },
+  {
+    "time": "00:01:28",
+    "text": "focus on the first 90% to make things dead simple. Oh, and by the way, this"
+  },
+  {
+    "time": "00:01:28",
+    "text": "dead simple. Oh, and by the way, this"
+  },
+  {
+    "time": "00:01:29",
+    "text": "dead simple. Oh, and by the way, this agent that you're looking at right here"
+  },
+  {
+    "time": "00:01:30",
+    "text": "agent that you're looking at right here"
+  },
+  {
+    "time": "00:01:32",
+    "text": "agent that you're looking at right here is the mascot for the new Dynamis"
+  },
+  {
+    "time": "00:01:32",
+    "text": "is the mascot for the new Dynamis"
+  },
+  {
+    "time": "00:01:33",
+    "text": "is the mascot for the new Dynamis Agentic coding course. So, if you want"
+  },
+  {
+    "time": "00:01:33",
+    "text": "Agentic coding course. So, if you want"
+  },
+  {
+    "time": "00:01:35",
+    "text": "Agentic coding course. So, if you want to master building systems around AI"
+  },
+  {
+    "time": "00:01:36",
+    "text": "to master building systems around AI"
+  },
+  {
+    "time": "00:01:37",
+    "text": "to master building systems around AI coding, check out the link in the"
+  },
+  {
+    "time": "00:01:37",
+    "text": "coding, check out the link in the"
+  },
+  {
+    "time": "00:01:38",
+    "text": "coding, check out the link in the description. All right. So, the first"
+  },
+  {
+    "time": "00:01:38",
+    "text": "description. All right. So, the first"
+  },
+  {
+    "time": "00:01:40",
+    "text": "description. All right. So, the first thing I want to cover with you is the"
+  },
+  {
+    "time": "00:01:40",
+    "text": "thing I want to cover with you is the"
+  },
+  {
+    "time": "00:01:43",
+    "text": "thing I want to cover with you is the four core components of any AI agent,"
+  },
+  {
+    "time": "00:01:43",
+    "text": "four core components of any AI agent,"
+  },
+  {
+    "time": "00:01:47",
+    "text": "four core components of any AI agent, which quick recap, an AI agent is any"
+  },
+  {
+    "time": "00:01:47",
+    "text": "which quick recap, an AI agent is any"
+  },
+  {
+    "time": "00:01:49",
+    "text": "which quick recap, an AI agent is any large language model that is given the"
+  },
+  {
+    "time": "00:01:49",
+    "text": "large language model that is given the"
+  },
+  {
+    "time": "00:01:50",
+    "text": "large language model that is given the ability to interact with the outside"
+  },
+  {
+    "time": "00:01:50",
+    "text": "ability to interact with the outside"
+  },
+  {
+    "time": "00:01:53",
+    "text": "ability to interact with the outside world on your behalf through tools. And"
+  },
+  {
+    "time": "00:01:53",
+    "text": "world on your behalf through tools. And"
+  },
+  {
+    "time": "00:01:54",
+    "text": "world on your behalf through tools. And so, it can do something like book a"
+  },
+  {
+    "time": "00:01:54",
+    "text": "so, it can do something like book a"
+  },
+  {
+    "time": "00:01:56",
+    "text": "so, it can do something like book a meeting on your calendar, search the"
+  },
+  {
+    "time": "00:01:56",
+    "text": "meeting on your calendar, search the"
+  },
+  {
+    "time": "00:01:58",
+    "text": "meeting on your calendar, search the internet for you. That's the first part"
+  },
+  {
+    "time": "00:01:58",
+    "text": "internet for you. That's the first part"
+  },
+  {
+    "time": "00:02:00",
+    "text": "internet for you. That's the first part of agents is these tools. It's the"
+  },
+  {
+    "time": "00:02:00",
+    "text": "of agents is these tools. It's the"
+  },
+  {
+    "time": "00:02:01",
+    "text": "of agents is these tools. It's the functions that we give it that it can"
+  },
+  {
+    "time": "00:02:01",
+    "text": "functions that we give it that it can"
+  },
+  {
+    "time": "00:02:04",
+    "text": "functions that we give it that it can call upon to perform actions. And then"
+  },
+  {
+    "time": "00:02:04",
+    "text": "call upon to perform actions. And then"
+  },
+  {
+    "time": "00:02:07",
+    "text": "call upon to perform actions. And then the brain for our AI agent is the large"
+  },
+  {
+    "time": "00:02:07",
+    "text": "the brain for our AI agent is the large"
+  },
+  {
+    "time": "00:02:09",
+    "text": "the brain for our AI agent is the large language model. It processes our"
+  },
+  {
+    "time": "00:02:09",
+    "text": "language model. It processes our"
+  },
+  {
+    "time": "00:02:11",
+    "text": "language model. It processes our requests and it decides based on the"
+  },
+  {
+    "time": "00:02:11",
+    "text": "requests and it decides based on the"
+  },
+  {
+    "time": "00:02:13",
+    "text": "requests and it decides based on the instructions we give it which tools to"
+  },
+  {
+    "time": "00:02:13",
+    "text": "instructions we give it which tools to"
+  },
+  {
+    "time": "00:02:16",
+    "text": "instructions we give it which tools to use. And speaking of those core"
+  },
+  {
+    "time": "00:02:16",
+    "text": "use. And speaking of those core"
+  },
+  {
+    "time": "00:02:18",
+    "text": "use. And speaking of those core instructions, that is our agent program,"
+  },
+  {
+    "time": "00:02:18",
+    "text": "instructions, that is our agent program,"
+  },
+  {
+    "time": "00:02:21",
+    "text": "instructions, that is our agent program, aka the system prompt. It's the highest"
+  },
+  {
+    "time": "00:02:21",
+    "text": "aka the system prompt. It's the highest"
+  },
+  {
+    "time": "00:02:23",
+    "text": "aka the system prompt. It's the highest level set of instructions we give to any"
+  },
+  {
+    "time": "00:02:23",
+    "text": "level set of instructions we give to any"
+  },
+  {
+    "time": "00:02:25",
+    "text": "level set of instructions we give to any AI agent at the start of any"
+  },
+  {
+    "time": "00:02:25",
+    "text": "AI agent at the start of any"
+  },
+  {
+    "time": "00:02:27",
+    "text": "AI agent at the start of any conversation that instructs it on its"
+  },
+  {
+    "time": "00:02:27",
+    "text": "conversation that instructs it on its"
+  },
+  {
+    "time": "00:02:30",
+    "text": "conversation that instructs it on its persona, goals, how to use tools. We'll"
+  },
+  {
+    "time": "00:02:30",
+    "text": "persona, goals, how to use tools. We'll"
+  },
+  {
+    "time": "00:02:31",
+    "text": "persona, goals, how to use tools. We'll cover the different core components of"
+  },
+  {
+    "time": "00:02:31",
+    "text": "cover the different core components of"
+  },
+  {
+    "time": "00:02:34",
+    "text": "cover the different core components of system prompts in a little bit. And then"
+  },
+  {
+    "time": "00:02:34",
+    "text": "system prompts in a little bit. And then"
+  },
+  {
+    "time": "00:02:35",
+    "text": "system prompts in a little bit. And then last but not least, we have memory"
+  },
+  {
+    "time": "00:02:35",
+    "text": "last but not least, we have memory"
+  },
+  {
+    "time": "00:02:38",
+    "text": "last but not least, we have memory systems. That's the context we have from"
+  },
+  {
+    "time": "00:02:38",
+    "text": "systems. That's the context we have from"
+  },
+  {
+    "time": "00:02:41",
+    "text": "systems. That's the context we have from our conversations, both the short-term"
+  },
+  {
+    "time": "00:02:41",
+    "text": "our conversations, both the short-term"
+  },
+  {
+    "time": "00:02:42",
+    "text": "our conversations, both the short-term and long-term memory. We'll talk about"
+  },
+  {
+    "time": "00:02:42",
+    "text": "and long-term memory. We'll talk about"
+  },
+  {
+    "time": "00:02:44",
+    "text": "and long-term memory. We'll talk about this a bit more when we get into context"
+  },
+  {
+    "time": "00:02:44",
+    "text": "this a bit more when we get into context"
+  },
+  {
+    "time": "00:02:47",
+    "text": "this a bit more when we get into context as well. And so, as we go through each"
+  },
+  {
+    "time": "00:02:47",
+    "text": "as well. And so, as we go through each"
+  },
+  {
+    "time": "00:02:49",
+    "text": "as well. And so, as we go through each of these core components, I'm going to"
+  },
+  {
+    "time": "00:02:49",
+    "text": "of these core components, I'm going to"
+  },
+  {
+    "time": "00:02:50",
+    "text": "of these core components, I'm going to move pretty quickly because I just want"
+  },
+  {
+    "time": "00:02:50",
+    "text": "move pretty quickly because I just want"
+  },
+  {
+    "time": "00:02:52",
+    "text": "move pretty quickly because I just want to cover the basics with you, but I'll"
+  },
+  {
+    "time": "00:02:52",
+    "text": "to cover the basics with you, but I'll"
+  },
+  {
+    "time": "00:02:54",
+    "text": "to cover the basics with you, but I'll also link to different videos on my"
+  },
+  {
+    "time": "00:02:54",
+    "text": "also link to different videos on my"
+  },
+  {
+    "time": "00:02:55",
+    "text": "also link to different videos on my channel throughout this video if you"
+  },
+  {
+    "time": "00:02:55",
+    "text": "channel throughout this video if you"
+  },
+  {
+    "time": "00:02:57",
+    "text": "channel throughout this video if you want to dive deeper into anything. And"
+  },
+  {
+    "time": "00:02:57",
+    "text": "want to dive deeper into anything. And"
+  },
+  {
+    "time": "00:03:00",
+    "text": "want to dive deeper into anything. And when building an AI agent, it is really"
+  },
+  {
+    "time": "00:03:00",
+    "text": "when building an AI agent, it is really"
+  },
+  {
+    "time": "00:03:02",
+    "text": "when building an AI agent, it is really simple to get started. And I'll show you"
+  },
+  {
+    "time": "00:03:02",
+    "text": "simple to get started. And I'll show you"
+  },
+  {
+    "time": "00:03:04",
+    "text": "simple to get started. And I'll show you an example in code in just a bit here so"
+  },
+  {
+    "time": "00:03:04",
+    "text": "an example in code in just a bit here so"
+  },
+  {
+    "time": "00:03:06",
+    "text": "an example in code in just a bit here so you can really see what I'm talking"
+  },
+  {
+    "time": "00:03:06",
+    "text": "you can really see what I'm talking"
+  },
+  {
+    "time": "00:03:08",
+    "text": "you can really see what I'm talking about. So when you're building the very"
+  },
+  {
+    "time": "00:03:08",
+    "text": "about. So when you're building the very"
+  },
+  {
+    "time": "00:03:10",
+    "text": "about. So when you're building the very core of your AI agent, it's really just"
+  },
+  {
+    "time": "00:03:10",
+    "text": "core of your AI agent, it's really just"
+  },
+  {
+    "time": "00:03:12",
+    "text": "core of your AI agent, it's really just three steps. You need to pick a large"
+  },
+  {
+    "time": "00:03:12",
+    "text": "three steps. You need to pick a large"
+  },
+  {
+    "time": "00:03:14",
+    "text": "three steps. You need to pick a large language model, write a basic system"
+  },
+  {
+    "time": "00:03:14",
+    "text": "language model, write a basic system"
+  },
+  {
+    "time": "00:03:16",
+    "text": "language model, write a basic system prompt as the agent instructions, and"
+  },
+  {
+    "time": "00:03:16",
+    "text": "prompt as the agent instructions, and"
+  },
+  {
+    "time": "00:03:18",
+    "text": "prompt as the agent instructions, and then add your first tool because you"
+  },
+  {
+    "time": "00:03:18",
+    "text": "then add your first tool because you"
+  },
+  {
+    "time": "00:03:20",
+    "text": "then add your first tool because you need a tool otherwise it's really just a"
+  },
+  {
+    "time": "00:03:20",
+    "text": "need a tool otherwise it's really just a"
+  },
+  {
+    "time": "00:03:22",
+    "text": "need a tool otherwise it's really just a regular large language model, not an"
+  },
+  {
+    "time": "00:03:22",
+    "text": "regular large language model, not an"
+  },
+  {
+    "time": "00:03:24",
+    "text": "regular large language model, not an agent. And so for picking a large"
+  },
+  {
+    "time": "00:03:24",
+    "text": "agent. And so for picking a large"
+  },
+  {
+    "time": "00:03:26",
+    "text": "agent. And so for picking a large language model, I would highly recommend"
+  },
+  {
+    "time": "00:03:26",
+    "text": "language model, I would highly recommend"
+  },
+  {
+    "time": "00:03:28",
+    "text": "language model, I would highly recommend using a platform called Open Router"
+  },
+  {
+    "time": "00:03:28",
+    "text": "using a platform called Open Router"
+  },
+  {
+    "time": "00:03:29",
+    "text": "using a platform called Open Router because it gives you access to pretty"
+  },
+  {
+    "time": "00:03:29",
+    "text": "because it gives you access to pretty"
+  },
+  {
+    "time": "00:03:31",
+    "text": "because it gives you access to pretty much any large language model you could"
+  },
+  {
+    "time": "00:03:31",
+    "text": "much any large language model you could"
+  },
+  {
+    "time": "00:03:35",
+    "text": "much any large language model you could possibly want. And so Claude Haiku 4.5"
+  },
+  {
+    "time": "00:03:35",
+    "text": "possibly want. And so Claude Haiku 4.5"
+  },
+  {
+    "time": "00:03:36",
+    "text": "possibly want. And so Claude Haiku 4.5 is the general one that I use just as"
+  },
+  {
+    "time": "00:03:36",
+    "text": "is the general one that I use just as"
+  },
+  {
+    "time": "00:03:38",
+    "text": "is the general one that I use just as I'm prototyping my AI agents, but you"
+  },
+  {
+    "time": "00:03:38",
+    "text": "I'm prototyping my AI agents, but you"
+  },
+  {
+    "time": "00:03:41",
+    "text": "I'm prototyping my AI agents, but you could use GPT 5 Mini. You could use an"
+  },
+  {
+    "time": "00:03:41",
+    "text": "could use GPT 5 Mini. You could use an"
+  },
+  {
+    "time": "00:03:43",
+    "text": "could use GPT 5 Mini. You could use an open source model like DeepSeek, for"
+  },
+  {
+    "time": "00:03:43",
+    "text": "open source model like DeepSeek, for"
+  },
+  {
+    "time": "00:03:45",
+    "text": "open source model like DeepSeek, for example. Like all of them are available"
+  },
+  {
+    "time": "00:03:45",
+    "text": "example. Like all of them are available"
+  },
+  {
+    "time": "00:03:47",
+    "text": "example. Like all of them are available on this platform. And then when creating"
+  },
+  {
+    "time": "00:03:47",
+    "text": "on this platform. And then when creating"
+  },
+  {
+    "time": "00:03:48",
+    "text": "on this platform. And then when creating your system prompt, you just want to"
+  },
+  {
+    "time": "00:03:48",
+    "text": "your system prompt, you just want to"
+  },
+  {
+    "time": "00:03:50",
+    "text": "your system prompt, you just want to define your agents role and behavior."
+  },
+  {
+    "time": "00:03:50",
+    "text": "define your agents role and behavior."
+  },
+  {
+    "time": "00:03:51",
+    "text": "define your agents role and behavior. And you can refine this over time as"
+  },
+  {
+    "time": "00:03:51",
+    "text": "And you can refine this over time as"
+  },
+  {
+    "time": "00:03:53",
+    "text": "And you can refine this over time as well. just starting really simple and"
+  },
+  {
+    "time": "00:03:53",
+    "text": "well. just starting really simple and"
+  },
+  {
+    "time": "00:03:55",
+    "text": "well. just starting really simple and then adding your first tool. Like you"
+  },
+  {
+    "time": "00:03:55",
+    "text": "then adding your first tool. Like you"
+  },
+  {
+    "time": "00:03:57",
+    "text": "then adding your first tool. Like you can give it access to search the web."
+  },
+  {
+    "time": "00:03:57",
+    "text": "can give it access to search the web."
+  },
+  {
+    "time": "00:03:59",
+    "text": "can give it access to search the web. You can give it the ability to perform"
+  },
+  {
+    "time": "00:03:59",
+    "text": "You can give it the ability to perform"
+  },
+  {
+    "time": "00:04:01",
+    "text": "You can give it the ability to perform mathematical computations with a"
+  },
+  {
+    "time": "00:04:01",
+    "text": "mathematical computations with a"
+  },
+  {
+    "time": "00:04:02",
+    "text": "mathematical computations with a calculator tool. Like literally whatever"
+  },
+  {
+    "time": "00:04:02",
+    "text": "calculator tool. Like literally whatever"
+  },
+  {
+    "time": "00:04:04",
+    "text": "calculator tool. Like literally whatever it is, just start simple and then once"
+  },
+  {
+    "time": "00:04:04",
+    "text": "it is, just start simple and then once"
+  },
+  {
+    "time": "00:04:06",
+    "text": "it is, just start simple and then once you have this foundation, that's when"
+  },
+  {
+    "time": "00:04:06",
+    "text": "you have this foundation, that's when"
+  },
+  {
+    "time": "00:04:08",
+    "text": "you have this foundation, that's when you can build on more capabilities and"
+  },
+  {
+    "time": "00:04:08",
+    "text": "you can build on more capabilities and"
+  },
+  {
+    "time": "00:04:09",
+    "text": "you can build on more capabilities and integrations. And I want to show you"
+  },
+  {
+    "time": "00:04:10",
+    "text": "integrations. And I want to show you"
+  },
+  {
+    "time": "00:04:11",
+    "text": "integrations. And I want to show you more than just theory as well. Like"
+  },
+  {
+    "time": "00:04:11",
+    "text": "more than just theory as well. Like"
+  },
+  {
+    "time": "00:04:13",
+    "text": "more than just theory as well. Like let's actually go and build an AI agent"
+  },
+  {
+    "time": "00:04:13",
+    "text": "let's actually go and build an AI agent"
+  },
+  {
+    "time": "00:04:15",
+    "text": "let's actually go and build an AI agent right now so you can see practically how"
+  },
+  {
+    "time": "00:04:15",
+    "text": "right now so you can see practically how"
+  },
+  {
+    "time": "00:04:17",
+    "text": "right now so you can see practically how dead simple it really is. And I'll have"
+  },
+  {
+    "time": "00:04:17",
+    "text": "dead simple it really is. And I'll have"
+  },
+  {
+    "time": "00:04:19",
+    "text": "dead simple it really is. And I'll have a link to this repo in the description"
+  },
+  {
+    "time": "00:04:19",
+    "text": "a link to this repo in the description"
+  },
+  {
+    "time": "00:04:21",
+    "text": "a link to this repo in the description as well if you want to dive into this"
+  },
+  {
+    "time": "00:04:21",
+    "text": "as well if you want to dive into this"
+  },
+  {
+    "time": "00:04:23",
+    "text": "as well if you want to dive into this extremely basic agent that's covering"
+  },
+  {
+    "time": "00:04:23",
+    "text": "extremely basic agent that's covering"
+  },
+  {
+    "time": "00:04:25",
+    "text": "extremely basic agent that's covering all of the components in this video,"
+  },
+  {
+    "time": "00:04:25",
+    "text": "all of the components in this video,"
+  },
+  {
+    "time": "00:04:27",
+    "text": "all of the components in this video, even some things we'll talk about in a"
+  },
+  {
+    "time": "00:04:27",
+    "text": "even some things we'll talk about in a"
+  },
+  {
+    "time": "00:04:28",
+    "text": "even some things we'll talk about in a bit like observability. So you can get"
+  },
+  {
+    "time": "00:04:28",
+    "text": "bit like observability. So you can get"
+  },
+  {
+    "time": "00:04:30",
+    "text": "bit like observability. So you can get this up and running yourself, even use"
+  },
+  {
+    "time": "00:04:30",
+    "text": "this up and running yourself, even use"
+  },
+  {
+    "time": "00:04:33",
+    "text": "this up and running yourself, even use this as a template for your first agent"
+  },
+  {
+    "time": "00:04:33",
+    "text": "this as a template for your first agent"
+  },
+  {
+    "time": "00:04:34",
+    "text": "this as a template for your first agent if you want. And so I'm going to build"
+  },
+  {
+    "time": "00:04:34",
+    "text": "if you want. And so I'm going to build"
+  },
+  {
+    "time": "00:04:36",
+    "text": "if you want. And so I'm going to build it from scratch with you right now, like"
+  },
+  {
+    "time": "00:04:36",
+    "text": "it from scratch with you right now, like"
+  },
+  {
+    "time": "00:04:38",
+    "text": "it from scratch with you right now, like show you line by line how simple this"
+  },
+  {
+    "time": "00:04:38",
+    "text": "show you line by line how simple this"
+  },
+  {
+    "time": "00:04:40",
+    "text": "show you line by line how simple this really is. It's going to be less than 50"
+  },
+  {
+    "time": "00:04:40",
+    "text": "really is. It's going to be less than 50"
+  },
+  {
+    "time": "00:04:42",
+    "text": "really is. It's going to be less than 50 lines in the end, just like I promised"
+  },
+  {
+    "time": "00:04:42",
+    "text": "lines in the end, just like I promised"
+  },
+  {
+    "time": "00:04:44",
+    "text": "lines in the end, just like I promised in the slide. And so first I'm going to"
+  },
+  {
+    "time": "00:04:44",
+    "text": "in the slide. And so first I'm going to"
+  },
+  {
+    "time": "00:04:46",
+    "text": "in the slide. And so first I'm going to import all of the Python dependencies."
+  },
+  {
+    "time": "00:04:46",
+    "text": "import all of the Python dependencies."
+  },
+  {
+    "time": "00:04:49",
+    "text": "import all of the Python dependencies. I'm using Pantic AI since it's my"
+  },
+  {
+    "time": "00:04:49",
+    "text": "I'm using Pantic AI since it's my"
+  },
+  {
+    "time": "00:04:51",
+    "text": "I'm using Pantic AI since it's my favorite AI agent framework, but it"
+  },
+  {
+    "time": "00:04:51",
+    "text": "favorite AI agent framework, but it"
+  },
+  {
+    "time": "00:04:52",
+    "text": "favorite AI agent framework, but it really doesn't matter the one that you"
+  },
+  {
+    "time": "00:04:52",
+    "text": "really doesn't matter the one that you"
+  },
+  {
+    "time": "00:04:54",
+    "text": "really doesn't matter the one that you use. The principles that I'm covering in"
+  },
+  {
+    "time": "00:04:54",
+    "text": "use. The principles that I'm covering in"
+  },
+  {
+    "time": "00:04:55",
+    "text": "use. The principles that I'm covering in this video applies no matter how you're"
+  },
+  {
+    "time": "00:04:55",
+    "text": "this video applies no matter how you're"
+  },
+  {
+    "time": "00:04:57",
+    "text": "this video applies no matter how you're building your agents, even if it's with"
+  },
+  {
+    "time": "00:04:57",
+    "text": "building your agents, even if it's with"
+  },
+  {
+    "time": "00:04:59",
+    "text": "building your agents, even if it's with a tool like N8N because what I'm"
+  },
+  {
+    "time": "00:04:59",
+    "text": "a tool like N8N because what I'm"
+  },
+  {
+    "time": "00:05:01",
+    "text": "a tool like N8N because what I'm focusing on here is just defining our"
+  },
+  {
+    "time": "00:05:01",
+    "text": "focusing on here is just defining our"
+  },
+  {
+    "time": "00:05:04",
+    "text": "focusing on here is just defining our four core components. LLM, tools,"
+  },
+  {
+    "time": "00:05:04",
+    "text": "four core components. LLM, tools,"
+  },
+  {
+    "time": "00:05:07",
+    "text": "four core components. LLM, tools, memory, and a system prompt. And so the"
+  },
+  {
+    "time": "00:05:07",
+    "text": "memory, and a system prompt. And so the"
+  },
+  {
+    "time": "00:05:09",
+    "text": "memory, and a system prompt. And so the first thing I'm going to do is define"
+  },
+  {
+    "time": "00:05:09",
+    "text": "first thing I'm going to do is define"
+  },
+  {
+    "time": "00:05:11",
+    "text": "first thing I'm going to do is define the large language model that I want to"
+  },
+  {
+    "time": "00:05:11",
+    "text": "the large language model that I want to"
+  },
+  {
+    "time": "00:05:13",
+    "text": "the large language model that I want to leverage. And just like I talked about a"
+  },
+  {
+    "time": "00:05:13",
+    "text": "leverage. And just like I talked about a"
+  },
+  {
+    "time": "00:05:15",
+    "text": "leverage. And just like I talked about a little bit ago, I'm using open router."
+  },
+  {
+    "time": "00:05:15",
+    "text": "little bit ago, I'm using open router."
+  },
+  {
+    "time": "00:05:16",
+    "text": "little bit ago, I'm using open router. So right now I'm going to use cloud"
+  },
+  {
+    "time": "00:05:16",
+    "text": "So right now I'm going to use cloud"
+  },
+  {
+    "time": "00:05:19",
+    "text": "So right now I'm going to use cloud haiku 4.5 as my model. But literally"
+  },
+  {
+    "time": "00:05:19",
+    "text": "haiku 4.5 as my model. But literally"
+  },
+  {
+    "time": "00:05:22",
+    "text": "haiku 4.5 as my model. But literally just changing this line or just changing"
+  },
+  {
+    "time": "00:05:22",
+    "text": "just changing this line or just changing"
+  },
+  {
+    "time": "00:05:24",
+    "text": "just changing this line or just changing my environment variable here. A single"
+  },
+  {
+    "time": "00:05:24",
+    "text": "my environment variable here. A single"
+  },
+  {
+    "time": "00:05:26",
+    "text": "my environment variable here. A single line change. I can swap to any model I"
+  },
+  {
+    "time": "00:05:26",
+    "text": "line change. I can swap to any model I"
+  },
+  {
+    "time": "00:05:29",
+    "text": "line change. I can swap to any model I want like Gemini or DeepSeek or OpenAI."
+  },
+  {
+    "time": "00:05:29",
+    "text": "want like Gemini or DeepSeek or OpenAI."
+  },
+  {
+    "time": "00:05:31",
+    "text": "want like Gemini or DeepSeek or OpenAI. It's that easy. After I have my LLM"
+  },
+  {
+    "time": "00:05:31",
+    "text": "It's that easy. After I have my LLM"
+  },
+  {
+    "time": "00:05:34",
+    "text": "It's that easy. After I have my LLM defined, now I define the agent itself"
+  },
+  {
+    "time": "00:05:34",
+    "text": "defined, now I define the agent itself"
+  },
+  {
+    "time": "00:05:36",
+    "text": "defined, now I define the agent itself including the system prompt, the"
+  },
+  {
+    "time": "00:05:36",
+    "text": "including the system prompt, the"
+  },
+  {
+    "time": "00:05:38",
+    "text": "including the system prompt, the highlevel instructions. And so I'm"
+  },
+  {
+    "time": "00:05:38",
+    "text": "highlevel instructions. And so I'm"
+  },
+  {
+    "time": "00:05:40",
+    "text": "highlevel instructions. And so I'm importing this from a separate file."
+  },
+  {
+    "time": "00:05:40",
+    "text": "importing this from a separate file."
+  },
+  {
+    "time": "00:05:42",
+    "text": "importing this from a separate file. I'll just show you a very very basic"
+  },
+  {
+    "time": "00:05:42",
+    "text": "I'll just show you a very very basic"
+  },
+  {
+    "time": "00:05:43",
+    "text": "I'll just show you a very very basic example of a system prompt here and then"
+  },
+  {
+    "time": "00:05:44",
+    "text": "example of a system prompt here and then"
+  },
+  {
+    "time": "00:05:45",
+    "text": "example of a system prompt here and then more on this in a little bit. The core"
+  },
+  {
+    "time": "00:05:45",
+    "text": "more on this in a little bit. The core"
+  },
+  {
+    "time": "00:05:47",
+    "text": "more on this in a little bit. The core components that I generally include"
+  },
+  {
+    "time": "00:05:47",
+    "text": "components that I generally include"
+  },
+  {
+    "time": "00:05:50",
+    "text": "components that I generally include including the persona goal tool"
+  },
+  {
+    "time": "00:05:50",
+    "text": "including the persona goal tool"
+  },
+  {
+    "time": "00:05:52",
+    "text": "including the persona goal tool instructions, the output format like how"
+  },
+  {
+    "time": "00:05:52",
+    "text": "instructions, the output format like how"
+  },
+  {
+    "time": "00:05:54",
+    "text": "instructions, the output format like how it communicates back to us and then also"
+  },
+  {
+    "time": "00:05:54",
+    "text": "it communicates back to us and then also"
+  },
+  {
+    "time": "00:05:55",
+    "text": "it communicates back to us and then also any other miscellaneous instructions I"
+  },
+  {
+    "time": "00:05:55",
+    "text": "any other miscellaneous instructions I"
+  },
+  {
+    "time": "00:05:57",
+    "text": "any other miscellaneous instructions I want to include. So I have this saved"
+  },
+  {
+    "time": "00:05:57",
+    "text": "want to include. So I have this saved"
+  },
+  {
+    "time": "00:05:59",
+    "text": "want to include. So I have this saved here. Now this is a part of my agent"
+  },
+  {
+    "time": "00:05:59",
+    "text": "here. Now this is a part of my agent"
+  },
+  {
+    "time": "00:06:01",
+    "text": "here. Now this is a part of my agent that I've defined. And so the next thing"
+  },
+  {
+    "time": "00:06:01",
+    "text": "that I've defined. And so the next thing"
+  },
+  {
+    "time": "00:06:03",
+    "text": "that I've defined. And so the next thing that we need to add is a tool to really"
+  },
+  {
+    "time": "00:06:03",
+    "text": "that we need to add is a tool to really"
+  },
+  {
+    "time": "00:06:06",
+    "text": "that we need to add is a tool to really turn it from an LLM or a chatbot into a"
+  },
+  {
+    "time": "00:06:06",
+    "text": "turn it from an LLM or a chatbot into a"
+  },
+  {
+    "time": "00:06:09",
+    "text": "turn it from an LLM or a chatbot into a full-fledged agent. And the way that you"
+  },
+  {
+    "time": "00:06:09",
+    "text": "full-fledged agent. And the way that you"
+  },
+  {
+    "time": "00:06:11",
+    "text": "full-fledged agent. And the way that you do that with most AI Asian frameworks is"
+  },
+  {
+    "time": "00:06:11",
+    "text": "do that with most AI Asian frameworks is"
+  },
+  {
+    "time": "00:06:13",
+    "text": "do that with most AI Asian frameworks is you define a Python function like very"
+  },
+  {
+    "time": "00:06:13",
+    "text": "you define a Python function like very"
+  },
+  {
+    "time": "00:06:15",
+    "text": "you define a Python function like very simply and then you add what is called a"
+  },
+  {
+    "time": "00:06:16",
+    "text": "simply and then you add what is called a"
+  },
+  {
+    "time": "00:06:19",
+    "text": "simply and then you add what is called a decorator. This signals to paid AI that"
+  },
+  {
+    "time": "00:06:19",
+    "text": "decorator. This signals to paid AI that"
+  },
+  {
+    "time": "00:06:21",
+    "text": "decorator. This signals to paid AI that this function right here I want to take"
+  },
+  {
+    "time": "00:06:21",
+    "text": "this function right here I want to take"
+  },
+  {
+    "time": "00:06:23",
+    "text": "this function right here I want to take and attach to my agent as a capability"
+  },
+  {
+    "time": "00:06:24",
+    "text": "and attach to my agent as a capability"
+  },
+  {
+    "time": "00:06:26",
+    "text": "and attach to my agent as a capability that it can now invoke. And so the agent"
+  },
+  {
+    "time": "00:06:26",
+    "text": "that it can now invoke. And so the agent"
+  },
+  {
+    "time": "00:06:28",
+    "text": "that it can now invoke. And so the agent defines these parameters when it calls"
+  },
+  {
+    "time": "00:06:28",
+    "text": "defines these parameters when it calls"
+  },
+  {
+    "time": "00:06:30",
+    "text": "defines these parameters when it calls the tool. So like in this case this is a"
+  },
+  {
+    "time": "00:06:30",
+    "text": "the tool. So like in this case this is a"
+  },
+  {
+    "time": "00:06:32",
+    "text": "the tool. So like in this case this is a very basic tool to add two numbers"
+  },
+  {
+    "time": "00:06:32",
+    "text": "very basic tool to add two numbers"
+  },
+  {
+    "time": "00:06:34",
+    "text": "very basic tool to add two numbers together because large language models"
+  },
+  {
+    "time": "00:06:34",
+    "text": "together because large language models"
+  },
+  {
+    "time": "00:06:36",
+    "text": "together because large language models as token prediction machines actually"
+  },
+  {
+    "time": "00:06:36",
+    "text": "as token prediction machines actually"
+  },
+  {
+    "time": "00:06:38",
+    "text": "as token prediction machines actually suck at math. interesting fact. And so"
+  },
+  {
+    "time": "00:06:38",
+    "text": "suck at math. interesting fact. And so"
+  },
+  {
+    "time": "00:06:40",
+    "text": "suck at math. interesting fact. And so it defines these parameters and it"
+  },
+  {
+    "time": "00:06:40",
+    "text": "it defines these parameters and it"
+  },
+  {
+    "time": "00:06:42",
+    "text": "it defines these parameters and it leverages this dock string as it's"
+  },
+  {
+    "time": "00:06:42",
+    "text": "leverages this dock string as it's"
+  },
+  {
+    "time": "00:06:44",
+    "text": "leverages this dock string as it's called like this comment is included as"
+  },
+  {
+    "time": "00:06:44",
+    "text": "called like this comment is included as"
+  },
+  {
+    "time": "00:06:46",
+    "text": "called like this comment is included as a part of the prompt to the LLM because"
+  },
+  {
+    "time": "00:06:46",
+    "text": "a part of the prompt to the LLM because"
+  },
+  {
+    "time": "00:06:49",
+    "text": "a part of the prompt to the LLM because it defines when and how to leverage this"
+  },
+  {
+    "time": "00:06:49",
+    "text": "it defines when and how to leverage this"
+  },
+  {
+    "time": "00:06:51",
+    "text": "it defines when and how to leverage this tool which in this case the"
+  },
+  {
+    "time": "00:06:51",
+    "text": "tool which in this case the"
+  },
+  {
+    "time": "00:06:53",
+    "text": "tool which in this case the functionality is very basic just adding"
+  },
+  {
+    "time": "00:06:53",
+    "text": "functionality is very basic just adding"
+  },
+  {
+    "time": "00:06:54",
+    "text": "functionality is very basic just adding two numbers together. But this could be"
+  },
+  {
+    "time": "00:06:54",
+    "text": "two numbers together. But this could be"
+  },
+  {
+    "time": "00:06:56",
+    "text": "two numbers together. But this could be a tool to search the web based on a"
+  },
+  {
+    "time": "00:06:56",
+    "text": "a tool to search the web based on a"
+  },
+  {
+    "time": "00:06:59",
+    "text": "a tool to search the web based on a query it defines create an event in our"
+  },
+  {
+    "time": "00:06:59",
+    "text": "query it defines create an event in our"
+  },
+  {
+    "time": "00:07:01",
+    "text": "query it defines create an event in our calendar based on a time range and title"
+  },
+  {
+    "time": "00:07:01",
+    "text": "calendar based on a time range and title"
+  },
+  {
+    "time": "00:07:02",
+    "text": "calendar based on a time range and title that it defines right like all those"
+  },
+  {
+    "time": "00:07:02",
+    "text": "that it defines right like all those"
+  },
+  {
+    "time": "00:07:03",
+    "text": "that it defines right like all those things are parameters and then we"
+  },
+  {
+    "time": "00:07:04",
+    "text": "things are parameters and then we"
+  },
+  {
+    "time": "00:07:05",
+    "text": "things are parameters and then we perform the functionality for the agent"
+  },
+  {
+    "time": "00:07:05",
+    "text": "perform the functionality for the agent"
+  },
+  {
+    "time": "00:07:08",
+    "text": "perform the functionality for the agent based on that. That is the tool that we"
+  },
+  {
+    "time": "00:07:08",
+    "text": "based on that. That is the tool that we"
+  },
+  {
+    "time": "00:07:09",
+    "text": "based on that. That is the tool that we got for the agent. And that is really"
+  },
+  {
+    "time": "00:07:09",
+    "text": "got for the agent. And that is really"
+  },
+  {
+    "time": "00:07:11",
+    "text": "got for the agent. And that is really good. We've created our agent and added"
+  },
+  {
+    "time": "00:07:11",
+    "text": "good. We've created our agent and added"
+  },
+  {
+    "time": "00:07:13",
+    "text": "good. We've created our agent and added the tools. The only thing we have to do"
+  },
+  {
+    "time": "00:07:13",
+    "text": "the tools. The only thing we have to do"
+  },
+  {
+    "time": "00:07:15",
+    "text": "the tools. The only thing we have to do now is set up a way to interact with it."
+  },
+  {
+    "time": "00:07:15",
+    "text": "now is set up a way to interact with it."
+  },
+  {
+    "time": "00:07:17",
+    "text": "now is set up a way to interact with it. So I'm going to create a very basic"
+  },
+  {
+    "time": "00:07:17",
+    "text": "So I'm going to create a very basic"
+  },
+  {
+    "time": "00:07:19",
+    "text": "So I'm going to create a very basic command line interface here. We start"
+  },
+  {
+    "time": "00:07:19",
+    "text": "command line interface here. We start"
+  },
+  {
+    "time": "00:07:21",
+    "text": "command line interface here. We start with empty conversation. This is where"
+  },
+  {
+    "time": "00:07:21",
+    "text": "with empty conversation. This is where"
+  },
+  {
+    "time": "00:07:22",
+    "text": "with empty conversation. This is where we'll add memory, which is the fourth"
+  },
+  {
+    "time": "00:07:22",
+    "text": "we'll add memory, which is the fourth"
+  },
+  {
+    "time": "00:07:25",
+    "text": "we'll add memory, which is the fourth component of agents. And so in an"
+  },
+  {
+    "time": "00:07:25",
+    "text": "component of agents. And so in an"
+  },
+  {
+    "time": "00:07:26",
+    "text": "component of agents. And so in an infinite loop here, we're getting the"
+  },
+  {
+    "time": "00:07:26",
+    "text": "infinite loop here, we're getting the"
+  },
+  {
+    "time": "00:07:28",
+    "text": "infinite loop here, we're getting the input from the user. Uh and we're"
+  },
+  {
+    "time": "00:07:28",
+    "text": "input from the user. Uh and we're"
+  },
+  {
+    "time": "00:07:30",
+    "text": "input from the user. Uh and we're exiting the program if they say exit."
+  },
+  {
+    "time": "00:07:30",
+    "text": "exiting the program if they say exit."
+  },
+  {
+    "time": "00:07:32",
+    "text": "exiting the program if they say exit. Otherwise, we are going to call the"
+  },
+  {
+    "time": "00:07:32",
+    "text": "Otherwise, we are going to call the"
+  },
+  {
+    "time": "00:07:34",
+    "text": "Otherwise, we are going to call the agent. So it's very simply agent.run run"
+  },
+  {
+    "time": "00:07:34",
+    "text": "agent. So it's very simply agent.run run"
+  },
+  {
+    "time": "00:07:37",
+    "text": "agent. So it's very simply agent.run run with the user's latest message and"
+  },
+  {
+    "time": "00:07:37",
+    "text": "with the user's latest message and"
+  },
+  {
+    "time": "00:07:39",
+    "text": "with the user's latest message and passing in for short-term memory the"
+  },
+  {
+    "time": "00:07:39",
+    "text": "passing in for short-term memory the"
+  },
+  {
+    "time": "00:07:41",
+    "text": "passing in for short-term memory the conversation history so it knows what we"
+  },
+  {
+    "time": "00:07:41",
+    "text": "conversation history so it knows what we"
+  },
+  {
+    "time": "00:07:43",
+    "text": "conversation history so it knows what we said to each other up until this point"
+  },
+  {
+    "time": "00:07:44",
+    "text": "said to each other up until this point"
+  },
+  {
+    "time": "00:07:46",
+    "text": "said to each other up until this point and then I'm going to add on to the"
+  },
+  {
+    "time": "00:07:46",
+    "text": "and then I'm going to add on to the"
+  },
+  {
+    "time": "00:07:47",
+    "text": "and then I'm going to add on to the conversation history everything that we"
+  },
+  {
+    "time": "00:07:47",
+    "text": "conversation history everything that we"
+  },
+  {
+    "time": "00:07:50",
+    "text": "conversation history everything that we just said and then print out the agents"
+  },
+  {
+    "time": "00:07:50",
+    "text": "just said and then print out the agents"
+  },
+  {
+    "time": "00:07:52",
+    "text": "just said and then print out the agents latest response. Take a look at that."
+  },
+  {
+    "time": "00:07:52",
+    "text": "latest response. Take a look at that."
+  },
+  {
+    "time": "00:07:53",
+    "text": "latest response. Take a look at that. And then even after we call our main"
+  },
+  {
+    "time": "00:07:53",
+    "text": "And then even after we call our main"
+  },
+  {
+    "time": "00:07:56",
+    "text": "And then even after we call our main function here, we are still below 50"
+  },
+  {
+    "time": "00:07:56",
+    "text": "function here, we are still below 50"
+  },
+  {
+    "time": "00:07:59",
+    "text": "function here, we are still below 50 lines of code. It is that easy to define"
+  },
+  {
+    "time": "00:07:59",
+    "text": "lines of code. It is that easy to define"
+  },
+  {
+    "time": "00:08:01",
+    "text": "lines of code. It is that easy to define our agents. And obviously there's so"
+  },
+  {
+    "time": "00:08:01",
+    "text": "our agents. And obviously there's so"
+  },
+  {
+    "time": "00:08:02",
+    "text": "our agents. And obviously there's so many more things that we have to do to"
+  },
+  {
+    "time": "00:08:02",
+    "text": "many more things that we have to do to"
+  },
+  {
+    "time": "00:08:04",
+    "text": "many more things that we have to do to really get our agent to the point where"
+  },
+  {
+    "time": "00:08:04",
+    "text": "really get our agent to the point where"
+  },
+  {
+    "time": "00:08:05",
+    "text": "really get our agent to the point where it's production ready. But again, I just"
+  },
+  {
+    "time": "00:08:06",
+    "text": "it's production ready. But again, I just"
+  },
+  {
+    "time": "00:08:07",
+    "text": "it's production ready. But again, I just want to focus on making it dead simple"
+  },
+  {
+    "time": "00:08:07",
+    "text": "want to focus on making it dead simple"
+  },
+  {
+    "time": "00:08:09",
+    "text": "want to focus on making it dead simple for you right now. And I know that a lot"
+  },
+  {
+    "time": "00:08:10",
+    "text": "for you right now. And I know that a lot"
+  },
+  {
+    "time": "00:08:11",
+    "text": "for you right now. And I know that a lot of this might be review for you if you"
+  },
+  {
+    "time": "00:08:11",
+    "text": "of this might be review for you if you"
+  },
+  {
+    "time": "00:08:14",
+    "text": "of this might be review for you if you built agents in the past. But especially"
+  },
+  {
+    "time": "00:08:14",
+    "text": "built agents in the past. But especially"
+  },
+  {
+    "time": "00:08:16",
+    "text": "built agents in the past. But especially if you have built a lot of AI agents"
+  },
+  {
+    "time": "00:08:16",
+    "text": "if you have built a lot of AI agents"
+  },
+  {
+    "time": "00:08:18",
+    "text": "if you have built a lot of AI agents already, you're probably like me where a"
+  },
+  {
+    "time": "00:08:18",
+    "text": "already, you're probably like me where a"
+  },
+  {
+    "time": "00:08:20",
+    "text": "already, you're probably like me where a lot of times you just overcomplicate"
+  },
+  {
+    "time": "00:08:20",
+    "text": "lot of times you just overcomplicate"
+  },
+  {
+    "time": "00:08:22",
+    "text": "lot of times you just overcomplicate things cuz you know how much can go into"
+  },
+  {
+    "time": "00:08:22",
+    "text": "things cuz you know how much can go into"
+  },
+  {
+    "time": "00:08:23",
+    "text": "things cuz you know how much can go into building agents. That's what I'm trying"
+  },
+  {
+    "time": "00:08:23",
+    "text": "building agents. That's what I'm trying"
+  },
+  {
+    "time": "00:08:25",
+    "text": "building agents. That's what I'm trying to do is just draw you back to the"
+  },
+  {
+    "time": "00:08:25",
+    "text": "to do is just draw you back to the"
+  },
+  {
+    "time": "00:08:27",
+    "text": "to do is just draw you back to the fundamentals because you need to keep"
+  },
+  {
+    "time": "00:08:27",
+    "text": "fundamentals because you need to keep"
+  },
+  {
+    "time": "00:08:29",
+    "text": "fundamentals because you need to keep things simple when you're first creating"
+  },
+  {
+    "time": "00:08:29",
+    "text": "things simple when you're first creating"
+  },
+  {
+    "time": "00:08:31",
+    "text": "things simple when you're first creating any agent really any software at all."
+  },
+  {
+    "time": "00:08:31",
+    "text": "any agent really any software at all."
+  },
+  {
+    "time": "00:08:33",
+    "text": "any agent really any software at all. And so yeah, we can go into the terminal"
+  },
+  {
+    "time": "00:08:33",
+    "text": "And so yeah, we can go into the terminal"
+  },
+  {
+    "time": "00:08:35",
+    "text": "And so yeah, we can go into the terminal now and interact with our agent. So I'm"
+  },
+  {
+    "time": "00:08:35",
+    "text": "now and interact with our agent. So I'm"
+  },
+  {
+    "time": "00:08:37",
+    "text": "now and interact with our agent. So I'm going to run agent.py here. Everything"
+  },
+  {
+    "time": "00:08:37",
+    "text": "going to run agent.py here. Everything"
+  },
+  {
+    "time": "00:08:39",
+    "text": "going to run agent.py here. Everything that we just built, I can say hello to"
+  },
+  {
+    "time": "00:08:39",
+    "text": "that we just built, I can say hello to"
+  },
+  {
+    "time": "00:08:41",
+    "text": "that we just built, I can say hello to get a super simple response back here."
+  },
+  {
+    "time": "00:08:41",
+    "text": "get a super simple response back here."
+  },
+  {
+    "time": "00:08:43",
+    "text": "get a super simple response back here. And then I can say for example, what is"
+  },
+  {
+    "time": "00:08:43",
+    "text": "And then I can say for example, what is"
+  },
+  {
+    "time": "00:08:45",
+    "text": "And then I can say for example, what is and I'll just do a couple of bigger"
+  },
+  {
+    "time": "00:08:45",
+    "text": "and I'll just do a couple of bigger"
+  },
+  {
+    "time": "00:08:47",
+    "text": "and I'll just do a couple of bigger numbers that I want to add together. And"
+  },
+  {
+    "time": "00:08:47",
+    "text": "numbers that I want to add together. And"
+  },
+  {
+    "time": "00:08:49",
+    "text": "numbers that I want to add together. And so here it knows thanks to the tool"
+  },
+  {
+    "time": "00:08:49",
+    "text": "so here it knows thanks to the tool"
+  },
+  {
+    "time": "00:08:51",
+    "text": "so here it knows thanks to the tool description that it should use the add"
+  },
+  {
+    "time": "00:08:52",
+    "text": "description that it should use the add"
+  },
+  {
+    "time": "00:08:54",
+    "text": "description that it should use the add numbers tool that we gave it to produce"
+  },
+  {
+    "time": "00:08:54",
+    "text": "numbers tool that we gave it to produce"
+  },
+  {
+    "time": "00:08:55",
+    "text": "numbers tool that we gave it to produce this sum. There we go. Take a look at"
+  },
+  {
+    "time": "00:08:56",
+    "text": "this sum. There we go. Take a look at"
+  },
+  {
+    "time": "00:08:58",
+    "text": "this sum. There we go. Take a look at that. And I can even say did you use the"
+  },
+  {
+    "time": "00:08:58",
+    "text": "that. And I can even say did you use the"
+  },
+  {
+    "time": "00:08:59",
+    "text": "that. And I can even say did you use the tool, right? And it should say yes. Like"
+  },
+  {
+    "time": "00:08:59",
+    "text": "tool, right? And it should say yes. Like"
+  },
+  {
+    "time": "00:09:01",
+    "text": "tool, right? And it should say yes. Like it actually recognizes based on the"
+  },
+  {
+    "time": "00:09:01",
+    "text": "it actually recognizes based on the"
+  },
+  {
+    "time": "00:09:03",
+    "text": "it actually recognizes based on the conversation history that it used the ad"
+  },
+  {
+    "time": "00:09:03",
+    "text": "conversation history that it used the ad"
+  },
+  {
+    "time": "00:09:05",
+    "text": "conversation history that it used the ad numbers tool. Okay, perfect. So we got"
+  },
+  {
+    "time": "00:09:05",
+    "text": "numbers tool. Okay, perfect. So we got"
+  },
+  {
+    "time": "00:09:07",
+    "text": "numbers tool. Okay, perfect. So we got this agent with conversation history. It"
+  },
+  {
+    "time": "00:09:07",
+    "text": "this agent with conversation history. It"
+  },
+  {
+    "time": "00:09:09",
+    "text": "this agent with conversation history. It knows when to use this tool. And now at"
+  },
+  {
+    "time": "00:09:09",
+    "text": "knows when to use this tool. And now at"
+  },
+  {
+    "time": "00:09:10",
+    "text": "knows when to use this tool. And now at this point we can start to expand the"
+  },
+  {
+    "time": "00:09:10",
+    "text": "this point we can start to expand the"
+  },
+  {
+    "time": "00:09:13",
+    "text": "this point we can start to expand the tools that we give it. We can refine our"
+  },
+  {
+    "time": "00:09:13",
+    "text": "tools that we give it. We can refine our"
+  },
+  {
+    "time": "00:09:14",
+    "text": "tools that we give it. We can refine our system prompt, play around with"
+  },
+  {
+    "time": "00:09:14",
+    "text": "system prompt, play around with"
+  },
+  {
+    "time": "00:09:16",
+    "text": "system prompt, play around with different LLMs. and I want to talk about"
+  },
+  {
+    "time": "00:09:16",
+    "text": "different LLMs. and I want to talk about"
+  },
+  {
+    "time": "00:09:18",
+    "text": "different LLMs. and I want to talk about that as well. Now, starting with large"
+  },
+  {
+    "time": "00:09:18",
+    "text": "that as well. Now, starting with large"
+  },
+  {
+    "time": "00:09:20",
+    "text": "that as well. Now, starting with large language models, choosing your LLM, like"
+  },
+  {
+    "time": "00:09:20",
+    "text": "language models, choosing your LLM, like"
+  },
+  {
+    "time": "00:09:22",
+    "text": "language models, choosing your LLM, like I was saying when I was building the"
+  },
+  {
+    "time": "00:09:22",
+    "text": "I was saying when I was building the"
+  },
+  {
+    "time": "00:09:24",
+    "text": "I was saying when I was building the agent, Claude Haiku 4.5 is the one that"
+  },
+  {
+    "time": "00:09:24",
+    "text": "agent, Claude Haiku 4.5 is the one that"
+  },
+  {
+    "time": "00:09:26",
+    "text": "agent, Claude Haiku 4.5 is the one that I recommend just a cheap and fast option"
+  },
+  {
+    "time": "00:09:26",
+    "text": "I recommend just a cheap and fast option"
+  },
+  {
+    "time": "00:09:28",
+    "text": "I recommend just a cheap and fast option that's really good for building proof of"
+  },
+  {
+    "time": "00:09:28",
+    "text": "that's really good for building proof of"
+  },
+  {
+    "time": "00:09:29",
+    "text": "that's really good for building proof of concepts when I don't want to spend a"
+  },
+  {
+    "time": "00:09:29",
+    "text": "concepts when I don't want to spend a"
+  },
+  {
+    "time": "00:09:31",
+    "text": "concepts when I don't want to spend a lot of money on tokens as I'm iterating"
+  },
+  {
+    "time": "00:09:31",
+    "text": "lot of money on tokens as I'm iterating"
+  },
+  {
+    "time": "00:09:33",
+    "text": "lot of money on tokens as I'm iterating on my agent initially. And then Claude"
+  },
+  {
+    "time": "00:09:33",
+    "text": "on my agent initially. And then Claude"
+  },
+  {
+    "time": "00:09:36",
+    "text": "on my agent initially. And then Claude Sonnet 4.5 is generally the best"
+  },
+  {
+    "time": "00:09:36",
+    "text": "Sonnet 4.5 is generally the best"
+  },
+  {
+    "time": "00:09:38",
+    "text": "Sonnet 4.5 is generally the best all-around right now. This might change"
+  },
+  {
+    "time": "00:09:38",
+    "text": "all-around right now. This might change"
+  },
+  {
+    "time": "00:09:40",
+    "text": "all-around right now. This might change in literally a week and people have"
+  },
+  {
+    "time": "00:09:40",
+    "text": "in literally a week and people have"
+  },
+  {
+    "time": "00:09:42",
+    "text": "in literally a week and people have different opinions. The main thing that"
+  },
+  {
+    "time": "00:09:42",
+    "text": "different opinions. The main thing that"
+  },
+  {
+    "time": "00:09:44",
+    "text": "different opinions. The main thing that I want to communicate here is don't"
+  },
+  {
+    "time": "00:09:44",
+    "text": "I want to communicate here is don't"
+  },
+  {
+    "time": "00:09:46",
+    "text": "I want to communicate here is don't actually worry about picking the perfect"
+  },
+  {
+    "time": "00:09:46",
+    "text": "actually worry about picking the perfect"
+  },
+  {
+    "time": "00:09:47",
+    "text": "actually worry about picking the perfect LLM up front, especially when you're"
+  },
+  {
+    "time": "00:09:47",
+    "text": "LLM up front, especially when you're"
+  },
+  {
+    "time": "00:09:49",
+    "text": "LLM up front, especially when you're using a platform like Open Router where"
+  },
+  {
+    "time": "00:09:49",
+    "text": "using a platform like Open Router where"
+  },
+  {
+    "time": "00:09:52",
+    "text": "using a platform like Open Router where it makes it so easy to swap between"
+  },
+  {
+    "time": "00:09:52",
+    "text": "it makes it so easy to swap between"
+  },
+  {
+    "time": "00:09:54",
+    "text": "it makes it so easy to swap between LLMs. Even if you're not using Open"
+  },
+  {
+    "time": "00:09:54",
+    "text": "LLMs. Even if you're not using Open"
+  },
+  {
+    "time": "00:09:56",
+    "text": "LLMs. Even if you're not using Open Router, it still is really easy. And"
+  },
+  {
+    "time": "00:09:56",
+    "text": "Router, it still is really easy. And"
+  },
+  {
+    "time": "00:09:58",
+    "text": "Router, it still is really easy. And then if you want a local model for"
+  },
+  {
+    "time": "00:09:58",
+    "text": "then if you want a local model for"
+  },
+  {
+    "time": "00:10:00",
+    "text": "then if you want a local model for privacy reasons or you want to be 100%"
+  },
+  {
+    "time": "00:10:00",
+    "text": "privacy reasons or you want to be 100%"
+  },
+  {
+    "time": "00:10:02",
+    "text": "privacy reasons or you want to be 100% free running on your hardware, then"
+  },
+  {
+    "time": "00:10:02",
+    "text": "free running on your hardware, then"
+  },
+  {
+    "time": "00:10:04",
+    "text": "free running on your hardware, then Mistl 3.1 Smaller Quen 3 are the ones"
+  },
+  {
+    "time": "00:10:04",
+    "text": "Mistl 3.1 Smaller Quen 3 are the ones"
+  },
+  {
+    "time": "00:10:06",
+    "text": "Mistl 3.1 Smaller Quen 3 are the ones that I recommend right now. And if you"
+  },
+  {
+    "time": "00:10:06",
+    "text": "that I recommend right now. And if you"
+  },
+  {
+    "time": "00:10:08",
+    "text": "that I recommend right now. And if you haven't ever tried Open Router or a tool"
+  },
+  {
+    "time": "00:10:08",
+    "text": "haven't ever tried Open Router or a tool"
+  },
+  {
+    "time": "00:10:09",
+    "text": "haven't ever tried Open Router or a tool like it that really just routes you"
+  },
+  {
+    "time": "00:10:10",
+    "text": "like it that really just routes you"
+  },
+  {
+    "time": "00:10:12",
+    "text": "like it that really just routes you between the different LLM providers, I"
+  },
+  {
+    "time": "00:10:12",
+    "text": "between the different LLM providers, I"
+  },
+  {
+    "time": "00:10:13",
+    "text": "between the different LLM providers, I would highly recommend trying one"
+  },
+  {
+    "time": "00:10:13",
+    "text": "would highly recommend trying one"
+  },
+  {
+    "time": "00:10:15",
+    "text": "would highly recommend trying one because it makes it so easy to iterate"
+  },
+  {
+    "time": "00:10:15",
+    "text": "because it makes it so easy to iterate"
+  },
+  {
+    "time": "00:10:17",
+    "text": "because it makes it so easy to iterate on the LLM for your agent, giving you"
+  },
+  {
+    "time": "00:10:17",
+    "text": "on the LLM for your agent, giving you"
+  },
+  {
+    "time": "00:10:19",
+    "text": "on the LLM for your agent, giving you instant access to take a look at this."
+  },
+  {
+    "time": "00:10:19",
+    "text": "instant access to take a look at this."
+  },
+  {
+    "time": "00:10:21",
+    "text": "instant access to take a look at this. We got Grock, Anthropic, Gemini, we've"
+  },
+  {
+    "time": "00:10:21",
+    "text": "We got Grock, Anthropic, Gemini, we've"
+  },
+  {
+    "time": "00:10:25",
+    "text": "We got Grock, Anthropic, Gemini, we've got the GPT models, we've got uh Quen 3,"
+  },
+  {
+    "time": "00:10:25",
+    "text": "got the GPT models, we've got uh Quen 3,"
+  },
+  {
+    "time": "00:10:27",
+    "text": "got the GPT models, we've got uh Quen 3, all the open- source ones. No matter"
+  },
+  {
+    "time": "00:10:27",
+    "text": "all the open- source ones. No matter"
+  },
+  {
+    "time": "00:10:28",
+    "text": "all the open- source ones. No matter what you want to experiment with, you've"
+  },
+  {
+    "time": "00:10:28",
+    "text": "what you want to experiment with, you've"
+  },
+  {
+    "time": "00:10:30",
+    "text": "what you want to experiment with, you've got it here. And so just use this as"
+  },
+  {
+    "time": "00:10:30",
+    "text": "got it here. And so just use this as"
+  },
+  {
+    "time": "00:10:32",
+    "text": "got it here. And so just use this as your tool to iterate on the LM very"
+  },
+  {
+    "time": "00:10:32",
+    "text": "your tool to iterate on the LM very"
+  },
+  {
+    "time": "00:10:34",
+    "text": "your tool to iterate on the LM very quickly and just not have to think about"
+  },
+  {
+    "time": "00:10:34",
+    "text": "quickly and just not have to think about"
+  },
+  {
+    "time": "00:10:36",
+    "text": "quickly and just not have to think about it that much. And then for the system"
+  },
+  {
+    "time": "00:10:36",
+    "text": "it that much. And then for the system"
+  },
+  {
+    "time": "00:10:37",
+    "text": "it that much. And then for the system prompt component, I promised I would"
+  },
+  {
+    "time": "00:10:37",
+    "text": "prompt component, I promised I would"
+  },
+  {
+    "time": "00:10:39",
+    "text": "prompt component, I promised I would dive a little bit more into the"
+  },
+  {
+    "time": "00:10:39",
+    "text": "dive a little bit more into the"
+  },
+  {
+    "time": "00:10:40",
+    "text": "dive a little bit more into the different categories that I have. So"
+  },
+  {
+    "time": "00:10:40",
+    "text": "different categories that I have. So"
+  },
+  {
+    "time": "00:10:41",
+    "text": "different categories that I have. So that's what I want to talk about very"
+  },
+  {
+    "time": "00:10:41",
+    "text": "that's what I want to talk about very"
+  },
+  {
+    "time": "00:10:44",
+    "text": "that's what I want to talk about very quickly. It can be especially easy to"
+  },
+  {
+    "time": "00:10:44",
+    "text": "quickly. It can be especially easy to"
+  },
+  {
+    "time": "00:10:46",
+    "text": "quickly. It can be especially easy to overthink the system prompt because it's"
+  },
+  {
+    "time": "00:10:46",
+    "text": "overthink the system prompt because it's"
+  },
+  {
+    "time": "00:10:48",
+    "text": "overthink the system prompt because it's just such a broad problem to solve of"
+  },
+  {
+    "time": "00:10:48",
+    "text": "just such a broad problem to solve of"
+  },
+  {
+    "time": "00:10:49",
+    "text": "just such a broad problem to solve of like what should the top level"
+  },
+  {
+    "time": "00:10:50",
+    "text": "like what should the top level"
+  },
+  {
+    "time": "00:10:52",
+    "text": "like what should the top level instruction set be for my agent? And so"
+  },
+  {
+    "time": "00:10:52",
+    "text": "instruction set be for my agent? And so"
+  },
+  {
+    "time": "00:10:54",
+    "text": "instruction set be for my agent? And so I like to keep things simple by working"
+  },
+  {
+    "time": "00:10:54",
+    "text": "I like to keep things simple by working"
+  },
+  {
+    "time": "00:10:56",
+    "text": "I like to keep things simple by working off of a template that I use for all of"
+  },
+  {
+    "time": "00:10:56",
+    "text": "off of a template that I use for all of"
+  },
+  {
+    "time": "00:10:58",
+    "text": "off of a template that I use for all of my AI agents at least as a starting"
+  },
+  {
+    "time": "00:10:58",
+    "text": "my AI agents at least as a starting"
+  },
+  {
+    "time": "00:11:00",
+    "text": "my AI agents at least as a starting point. I always have persona and goals,"
+  },
+  {
+    "time": "00:11:00",
+    "text": "point. I always have persona and goals,"
+  },
+  {
+    "time": "00:11:02",
+    "text": "point. I always have persona and goals, tool instructions and examples, output"
+  },
+  {
+    "time": "00:11:02",
+    "text": "tool instructions and examples, output"
+  },
+  {
+    "time": "00:11:05",
+    "text": "tool instructions and examples, output format, and miscellaneous instructions."
+  },
+  {
+    "time": "00:11:05",
+    "text": "format, and miscellaneous instructions."
+  },
+  {
+    "time": "00:11:07",
+    "text": "format, and miscellaneous instructions. And what you shouldn't worry about at"
+  },
+  {
+    "time": "00:11:07",
+    "text": "And what you shouldn't worry about at"
+  },
+  {
+    "time": "00:11:09",
+    "text": "And what you shouldn't worry about at this point is setting up elaborate"
+  },
+  {
+    "time": "00:11:09",
+    "text": "this point is setting up elaborate"
+  },
+  {
+    "time": "00:11:12",
+    "text": "this point is setting up elaborate prompt evaluations or split testing your"
+  },
+  {
+    "time": "00:11:12",
+    "text": "prompt evaluations or split testing your"
+  },
+  {
+    "time": "00:11:13",
+    "text": "prompt evaluations or split testing your system prompts. You can get into that"
+  },
+  {
+    "time": "00:11:14",
+    "text": "system prompts. You can get into that"
+  },
+  {
+    "time": "00:11:15",
+    "text": "system prompts. You can get into that when you really want to refine your"
+  },
+  {
+    "time": "00:11:15",
+    "text": "when you really want to refine your"
+  },
+  {
+    "time": "00:11:17",
+    "text": "when you really want to refine your agent instructions. But right now, just"
+  },
+  {
+    "time": "00:11:18",
+    "text": "agent instructions. But right now, just"
+  },
+  {
+    "time": "00:11:20",
+    "text": "agent instructions. But right now, just keep it simple and refine at a high"
+  },
+  {
+    "time": "00:11:20",
+    "text": "keep it simple and refine at a high"
+  },
+  {
+    "time": "00:11:22",
+    "text": "keep it simple and refine at a high level as you are manually testing your"
+  },
+  {
+    "time": "00:11:22",
+    "text": "level as you are manually testing your"
+  },
+  {
+    "time": "00:11:24",
+    "text": "level as you are manually testing your agent. And if you want to see that"
+  },
+  {
+    "time": "00:11:24",
+    "text": "agent. And if you want to see that"
+  },
+  {
+    "time": "00:11:25",
+    "text": "agent. And if you want to see that system prompt template in action, I've"
+  },
+  {
+    "time": "00:11:25",
+    "text": "system prompt template in action, I've"
+  },
+  {
+    "time": "00:11:27",
+    "text": "system prompt template in action, I've got you covered. I'll have a link to"
+  },
+  {
+    "time": "00:11:27",
+    "text": "got you covered. I'll have a link to"
+  },
+  {
+    "time": "00:11:29",
+    "text": "got you covered. I'll have a link to this in the description as well. It's a"
+  },
+  {
+    "time": "00:11:30",
+    "text": "this in the description as well. It's a"
+  },
+  {
+    "time": "00:11:32",
+    "text": "this in the description as well. It's a real example of me filling out those"
+  },
+  {
+    "time": "00:11:32",
+    "text": "real example of me filling out those"
+  },
+  {
+    "time": "00:11:34",
+    "text": "real example of me filling out those different sections, creating a system"
+  },
+  {
+    "time": "00:11:34",
+    "text": "different sections, creating a system"
+  },
+  {
+    "time": "00:11:36",
+    "text": "different sections, creating a system prompt for a task management agent. So,"
+  },
+  {
+    "time": "00:11:36",
+    "text": "prompt for a task management agent. So,"
+  },
+  {
+    "time": "00:11:39",
+    "text": "prompt for a task management agent. So, I have my persona defined here. I'm"
+  },
+  {
+    "time": "00:11:39",
+    "text": "I have my persona defined here. I'm"
+  },
+  {
+    "time": "00:11:40",
+    "text": "I have my persona defined here. I'm defining the goals for the task"
+  },
+  {
+    "time": "00:11:40",
+    "text": "defining the goals for the task"
+  },
+  {
+    "time": "00:11:42",
+    "text": "defining the goals for the task management agent. The tool instructions"
+  },
+  {
+    "time": "00:11:42",
+    "text": "management agent. The tool instructions"
+  },
+  {
+    "time": "00:11:44",
+    "text": "management agent. The tool instructions like how I can use different tools"
+  },
+  {
+    "time": "00:11:44",
+    "text": "like how I can use different tools"
+  },
+  {
+    "time": "00:11:47",
+    "text": "like how I can use different tools together to manage tasks in my platform."
+  },
+  {
+    "time": "00:11:47",
+    "text": "together to manage tasks in my platform."
+  },
+  {
+    "time": "00:11:49",
+    "text": "together to manage tasks in my platform. The output format, just specifying ways"
+  },
+  {
+    "time": "00:11:49",
+    "text": "The output format, just specifying ways"
+  },
+  {
+    "time": "00:11:50",
+    "text": "The output format, just specifying ways that I want it to communicate back to me"
+  },
+  {
+    "time": "00:11:50",
+    "text": "that I want it to communicate back to me"
+  },
+  {
+    "time": "00:11:53",
+    "text": "that I want it to communicate back to me or things to avoid. Some examples. Now,"
+  },
+  {
+    "time": "00:11:53",
+    "text": "or things to avoid. Some examples. Now,"
+  },
+  {
+    "time": "00:11:55",
+    "text": "or things to avoid. Some examples. Now, this applies more to more complex agents"
+  },
+  {
+    "time": "00:11:55",
+    "text": "this applies more to more complex agents"
+  },
+  {
+    "time": "00:11:57",
+    "text": "this applies more to more complex agents and system prompts where you actually"
+  },
+  {
+    "time": "00:11:57",
+    "text": "and system prompts where you actually"
+  },
+  {
+    "time": "00:11:59",
+    "text": "and system prompts where you actually want to kind of give an example of a"
+  },
+  {
+    "time": "00:11:59",
+    "text": "want to kind of give an example of a"
+  },
+  {
+    "time": "00:12:01",
+    "text": "want to kind of give an example of a workflow of chaining different tools"
+  },
+  {
+    "time": "00:12:01",
+    "text": "workflow of chaining different tools"
+  },
+  {
+    "time": "00:12:02",
+    "text": "workflow of chaining different tools together, so it doesn't really apply"
+  },
+  {
+    "time": "00:12:02",
+    "text": "together, so it doesn't really apply"
+  },
+  {
+    "time": "00:12:03",
+    "text": "together, so it doesn't really apply here. And then the last thing is just"
+  },
+  {
+    "time": "00:12:03",
+    "text": "here. And then the last thing is just"
+  },
+  {
+    "time": "00:12:05",
+    "text": "here. And then the last thing is just miscellaneous instructions. This is also"
+  },
+  {
+    "time": "00:12:05",
+    "text": "miscellaneous instructions. This is also"
+  },
+  {
+    "time": "00:12:08",
+    "text": "miscellaneous instructions. This is also the place to go to add in extra"
+  },
+  {
+    "time": "00:12:08",
+    "text": "the place to go to add in extra"
+  },
+  {
+    "time": "00:12:10",
+    "text": "the place to go to add in extra instructions to fix those little issues"
+  },
+  {
+    "time": "00:12:10",
+    "text": "instructions to fix those little issues"
+  },
+  {
+    "time": "00:12:12",
+    "text": "instructions to fix those little issues you see with your agent that doesn't"
+  },
+  {
+    "time": "00:12:12",
+    "text": "you see with your agent that doesn't"
+  },
+  {
+    "time": "00:12:14",
+    "text": "you see with your agent that doesn't necessarily fit into all the others. So,"
+  },
+  {
+    "time": "00:12:14",
+    "text": "necessarily fit into all the others. So,"
+  },
+  {
+    "time": "00:12:15",
+    "text": "necessarily fit into all the others. So, a catchall to make sure that there's a"
+  },
+  {
+    "time": "00:12:15",
+    "text": "a catchall to make sure that there's a"
+  },
+  {
+    "time": "00:12:17",
+    "text": "a catchall to make sure that there's a place to put anything as you're"
+  },
+  {
+    "time": "00:12:17",
+    "text": "place to put anything as you're"
+  },
+  {
+    "time": "00:12:19",
+    "text": "place to put anything as you're experimenting with your agent and"
+  },
+  {
+    "time": "00:12:19",
+    "text": "experimenting with your agent and"
+  },
+  {
+    "time": "00:12:21",
+    "text": "experimenting with your agent and refining your system prompt. And then as"
+  },
+  {
+    "time": "00:12:21",
+    "text": "refining your system prompt. And then as"
+  },
+  {
+    "time": "00:12:23",
+    "text": "refining your system prompt. And then as far as tools go for your AI agents,"
+  },
+  {
+    "time": "00:12:23",
+    "text": "far as tools go for your AI agents,"
+  },
+  {
+    "time": "00:12:24",
+    "text": "far as tools go for your AI agents, there's just a few things I want to"
+  },
+  {
+    "time": "00:12:24",
+    "text": "there's just a few things I want to"
+  },
+  {
+    "time": "00:12:26",
+    "text": "there's just a few things I want to cover quickly to help you keep things"
+  },
+  {
+    "time": "00:12:26",
+    "text": "cover quickly to help you keep things"
+  },
+  {
+    "time": "00:12:28",
+    "text": "cover quickly to help you keep things simple and focused. The first is that"
+  },
+  {
+    "time": "00:12:28",
+    "text": "simple and focused. The first is that"
+  },
+  {
+    "time": "00:12:31",
+    "text": "simple and focused. The first is that you should keep your tools to under 10"
+  },
+  {
+    "time": "00:12:31",
+    "text": "you should keep your tools to under 10"
+  },
+  {
+    "time": "00:12:33",
+    "text": "you should keep your tools to under 10 for your AI agents, at least when"
+  },
+  {
+    "time": "00:12:33",
+    "text": "for your AI agents, at least when"
+  },
+  {
+    "time": "00:12:34",
+    "text": "for your AI agents, at least when starting out. And you definitely want to"
+  },
+  {
+    "time": "00:12:34",
+    "text": "starting out. And you definitely want to"
+  },
+  {
+    "time": "00:12:36",
+    "text": "starting out. And you definitely want to make sure that each tool's purpose is"
+  },
+  {
+    "time": "00:12:36",
+    "text": "make sure that each tool's purpose is"
+  },
+  {
+    "time": "00:12:38",
+    "text": "make sure that each tool's purpose is very distinct. Because if your tools"
+  },
+  {
+    "time": "00:12:38",
+    "text": "very distinct. Because if your tools"
+  },
+  {
+    "time": "00:12:40",
+    "text": "very distinct. Because if your tools have overlapping functionality or if you"
+  },
+  {
+    "time": "00:12:40",
+    "text": "have overlapping functionality or if you"
+  },
+  {
+    "time": "00:12:42",
+    "text": "have overlapping functionality or if you have too many, then your large language"
+  },
+  {
+    "time": "00:12:42",
+    "text": "have too many, then your large language"
+  },
+  {
+    "time": "00:12:44",
+    "text": "have too many, then your large language model starts to get overwhelmed with all"
+  },
+  {
+    "time": "00:12:44",
+    "text": "model starts to get overwhelmed with all"
+  },
+  {
+    "time": "00:12:46",
+    "text": "model starts to get overwhelmed with all the possibilities of its capabilities"
+  },
+  {
+    "time": "00:12:46",
+    "text": "the possibilities of its capabilities"
+  },
+  {
+    "time": "00:12:48",
+    "text": "the possibilities of its capabilities and it'll use the wrong tools. It will"
+  },
+  {
+    "time": "00:12:48",
+    "text": "and it'll use the wrong tools. It will"
+  },
+  {
+    "time": "00:12:51",
+    "text": "and it'll use the wrong tools. It will forget to call tools. uh and it's just a"
+  },
+  {
+    "time": "00:12:51",
+    "text": "forget to call tools. uh and it's just a"
+  },
+  {
+    "time": "00:12:53",
+    "text": "forget to call tools. uh and it's just a mess. Like definitely keep it to under"
+  },
+  {
+    "time": "00:12:53",
+    "text": "mess. Like definitely keep it to under"
+  },
+  {
+    "time": "00:12:56",
+    "text": "mess. Like definitely keep it to under 10. And then also MCP servers are a"
+  },
+  {
+    "time": "00:12:56",
+    "text": "10. And then also MCP servers are a"
+  },
+  {
+    "time": "00:12:58",
+    "text": "10. And then also MCP servers are a great way to find preackaged sets of"
+  },
+  {
+    "time": "00:12:58",
+    "text": "great way to find preackaged sets of"
+  },
+  {
+    "time": "00:13:00",
+    "text": "great way to find preackaged sets of tools you can bring into your an agent"
+  },
+  {
+    "time": "00:13:00",
+    "text": "tools you can bring into your an agent"
+  },
+  {
+    "time": "00:13:01",
+    "text": "tools you can bring into your an agent when you're, you know, creating"
+  },
+  {
+    "time": "00:13:01",
+    "text": "when you're, you know, creating"
+  },
+  {
+    "time": "00:13:02",
+    "text": "when you're, you know, creating something initially and you just want to"
+  },
+  {
+    "time": "00:13:02",
+    "text": "something initially and you just want to"
+  },
+  {
+    "time": "00:13:05",
+    "text": "something initially and you just want to move very quickly. And so definitely"
+  },
+  {
+    "time": "00:13:05",
+    "text": "move very quickly. And so definitely"
+  },
+  {
+    "time": "00:13:06",
+    "text": "move very quickly. And so definitely based on what you're building, you'll"
+  },
+  {
+    "time": "00:13:06",
+    "text": "based on what you're building, you'll"
+  },
+  {
+    "time": "00:13:08",
+    "text": "based on what you're building, you'll probably be able to find an MTP server"
+  },
+  {
+    "time": "00:13:08",
+    "text": "probably be able to find an MTP server"
+  },
+  {
+    "time": "00:13:10",
+    "text": "probably be able to find an MTP server that gives you some functionality right"
+  },
+  {
+    "time": "00:13:10",
+    "text": "that gives you some functionality right"
+  },
+  {
+    "time": "00:13:12",
+    "text": "that gives you some functionality right out of the box for your agents. And then"
+  },
+  {
+    "time": "00:13:12",
+    "text": "out of the box for your agents. And then"
+  },
+  {
+    "time": "00:13:14",
+    "text": "out of the box for your agents. And then the last thing I'll say is a lot of"
+  },
+  {
+    "time": "00:13:14",
+    "text": "the last thing I'll say is a lot of"
+  },
+  {
+    "time": "00:13:16",
+    "text": "the last thing I'll say is a lot of people ask me, \"What capabilities should"
+  },
+  {
+    "time": "00:13:16",
+    "text": "people ask me, \"What capabilities should"
+  },
+  {
+    "time": "00:13:18",
+    "text": "people ask me, \"What capabilities should I focus on learning first when I'm"
+  },
+  {
+    "time": "00:13:18",
+    "text": "I focus on learning first when I'm"
+  },
+  {
+    "time": "00:13:20",
+    "text": "I focus on learning first when I'm building agents?\" and I want to give"
+  },
+  {
+    "time": "00:13:20",
+    "text": "building agents?\" and I want to give"
+  },
+  {
+    "time": "00:13:24",
+    "text": "building agents?\" and I want to give them tools and rag is always the answer"
+  },
+  {
+    "time": "00:13:24",
+    "text": "them tools and rag is always the answer"
+  },
+  {
+    "time": "00:13:26",
+    "text": "them tools and rag is always the answer that I have for them. Giving your AI"
+  },
+  {
+    "time": "00:13:26",
+    "text": "that I have for them. Giving your AI"
+  },
+  {
+    "time": "00:13:28",
+    "text": "that I have for them. Giving your AI agent tools that allows it to search"
+  },
+  {
+    "time": "00:13:28",
+    "text": "agent tools that allows it to search"
+  },
+  {
+    "time": "00:13:30",
+    "text": "agent tools that allows it to search your documents and knowledge base."
+  },
+  {
+    "time": "00:13:30",
+    "text": "your documents and knowledge base."
+  },
+  {
+    "time": "00:13:31",
+    "text": "your documents and knowledge base. That's what retrieval augmented"
+  },
+  {
+    "time": "00:13:31",
+    "text": "That's what retrieval augmented"
+  },
+  {
+    "time": "00:13:33",
+    "text": "That's what retrieval augmented generation is. And so really, it's"
+  },
+  {
+    "time": "00:13:33",
+    "text": "generation is. And so really, it's"
+  },
+  {
+    "time": "00:13:35",
+    "text": "generation is. And so really, it's giving your agents the ability to ground"
+  },
+  {
+    "time": "00:13:35",
+    "text": "giving your agents the ability to ground"
+  },
+  {
+    "time": "00:13:37",
+    "text": "giving your agents the ability to ground their responses in real data. And I"
+  },
+  {
+    "time": "00:13:37",
+    "text": "their responses in real data. And I"
+  },
+  {
+    "time": "00:13:40",
+    "text": "their responses in real data. And I would say that probably over 80% of AI"
+  },
+  {
+    "time": "00:13:40",
+    "text": "would say that probably over 80% of AI"
+  },
+  {
+    "time": "00:13:41",
+    "text": "would say that probably over 80% of AI agents running out in the wild right"
+  },
+  {
+    "time": "00:13:41",
+    "text": "agents running out in the wild right"
+  },
+  {
+    "time": "00:13:43",
+    "text": "agents running out in the wild right now, no matter the industry or niche,"
+  },
+  {
+    "time": "00:13:44",
+    "text": "now, no matter the industry or niche,"
+  },
+  {
+    "time": "00:13:46",
+    "text": "now, no matter the industry or niche, are using rag to some extent as part of"
+  },
+  {
+    "time": "00:13:46",
+    "text": "are using rag to some extent as part of"
+  },
+  {
+    "time": "00:13:49",
+    "text": "are using rag to some extent as part of the capabilities for the agent. And then"
+  },
+  {
+    "time": "00:13:49",
+    "text": "the capabilities for the agent. And then"
+  },
+  {
+    "time": "00:13:51",
+    "text": "the capabilities for the agent. And then continuing with our theme here, what not"
+  },
+  {
+    "time": "00:13:52",
+    "text": "continuing with our theme here, what not"
+  },
+  {
+    "time": "00:13:55",
+    "text": "continuing with our theme here, what not to focus on when building tools is don't"
+  },
+  {
+    "time": "00:13:55",
+    "text": "to focus on when building tools is don't"
+  },
+  {
+    "time": "00:13:57",
+    "text": "to focus on when building tools is don't worry about multi- aent systems or"
+  },
+  {
+    "time": "00:13:57",
+    "text": "worry about multi- aent systems or"
+  },
+  {
+    "time": "00:13:59",
+    "text": "worry about multi- aent systems or complex tool orchestration through that"
+  },
+  {
+    "time": "00:13:59",
+    "text": "complex tool orchestration through that"
+  },
+  {
+    "time": "00:14:01",
+    "text": "complex tool orchestration through that yet. When you have a system that starts"
+  },
+  {
+    "time": "00:14:01",
+    "text": "yet. When you have a system that starts"
+  },
+  {
+    "time": "00:14:03",
+    "text": "yet. When you have a system that starts to have more than 10 tools, that is"
+  },
+  {
+    "time": "00:14:03",
+    "text": "to have more than 10 tools, that is"
+  },
+  {
+    "time": "00:14:05",
+    "text": "to have more than 10 tools, that is generally when you start to split into"
+  },
+  {
+    "time": "00:14:05",
+    "text": "generally when you start to split into"
+  },
+  {
+    "time": "00:14:07",
+    "text": "generally when you start to split into specialized sub aents and you have"
+  },
+  {
+    "time": "00:14:07",
+    "text": "specialized sub aents and you have"
+  },
+  {
+    "time": "00:14:09",
+    "text": "specialized sub aents and you have routing between them. Those kinds of"
+  },
+  {
+    "time": "00:14:09",
+    "text": "routing between them. Those kinds of"
+  },
+  {
+    "time": "00:14:12",
+    "text": "routing between them. Those kinds of systems are powerful and necessary for a"
+  },
+  {
+    "time": "00:14:12",
+    "text": "systems are powerful and necessary for a"
+  },
+  {
+    "time": "00:14:13",
+    "text": "systems are powerful and necessary for a lot of applications, but definitely"
+  },
+  {
+    "time": "00:14:13",
+    "text": "lot of applications, but definitely"
+  },
+  {
+    "time": "00:14:15",
+    "text": "lot of applications, but definitely overengineering when you're just getting"
+  },
+  {
+    "time": "00:14:15",
+    "text": "overengineering when you're just getting"
+  },
+  {
+    "time": "00:14:17",
+    "text": "overengineering when you're just getting started creating your agent or a system."
+  },
+  {
+    "time": "00:14:17",
+    "text": "started creating your agent or a system."
+  },
+  {
+    "time": "00:14:18",
+    "text": "started creating your agent or a system. Also, if you want to learn more about"
+  },
+  {
+    "time": "00:14:18",
+    "text": "Also, if you want to learn more about"
+  },
+  {
+    "time": "00:14:20",
+    "text": "Also, if you want to learn more about rag and building that into your agents,"
+  },
+  {
+    "time": "00:14:20",
+    "text": "rag and building that into your agents,"
+  },
+  {
+    "time": "00:14:21",
+    "text": "rag and building that into your agents, check out the video that I'll link to"
+  },
+  {
+    "time": "00:14:21",
+    "text": "check out the video that I'll link to"
+  },
+  {
+    "time": "00:14:23",
+    "text": "check out the video that I'll link to right here. I cover that all of the time"
+  },
+  {
+    "time": "00:14:23",
+    "text": "right here. I cover that all of the time"
+  },
+  {
+    "time": "00:14:25",
+    "text": "right here. I cover that all of the time on my channel because it is so"
+  },
+  {
+    "time": "00:14:25",
+    "text": "on my channel because it is so"
+  },
+  {
+    "time": "00:14:26",
+    "text": "on my channel because it is so important. And so with that, moving on"
+  },
+  {
+    "time": "00:14:26",
+    "text": "important. And so with that, moving on"
+  },
+  {
+    "time": "00:14:29",
+    "text": "important. And so with that, moving on to the next thing, we have our security"
+  },
+  {
+    "time": "00:14:29",
+    "text": "to the next thing, we have our security"
+  },
+  {
+    "time": "00:14:31",
+    "text": "to the next thing, we have our security essentials because it is important to"
+  },
+  {
+    "time": "00:14:31",
+    "text": "essentials because it is important to"
+  },
+  {
+    "time": "00:14:32",
+    "text": "essentials because it is important to think about security when you're"
+  },
+  {
+    "time": "00:14:32",
+    "text": "think about security when you're"
+  },
+  {
+    "time": "00:14:34",
+    "text": "think about security when you're building any software upfront. But I"
+  },
+  {
+    "time": "00:14:34",
+    "text": "building any software upfront. But I"
+  },
+  {
+    "time": "00:14:36",
+    "text": "building any software upfront. But I don't want you to over complicate it"
+  },
+  {
+    "time": "00:14:36",
+    "text": "don't want you to over complicate it"
+  },
+  {
+    "time": "00:14:38",
+    "text": "don't want you to over complicate it yet, right? Like don't become a security"
+  },
+  {
+    "time": "00:14:38",
+    "text": "yet, right? Like don't become a security"
+  },
+  {
+    "time": "00:14:40",
+    "text": "yet, right? Like don't become a security expert overnight. There are existing"
+  },
+  {
+    "time": "00:14:40",
+    "text": "expert overnight. There are existing"
+  },
+  {
+    "time": "00:14:42",
+    "text": "expert overnight. There are existing tools out there to help us with"
+  },
+  {
+    "time": "00:14:42",
+    "text": "tools out there to help us with"
+  },
+  {
+    "time": "00:14:43",
+    "text": "tools out there to help us with security. So we can still move quickly"
+  },
+  {
+    "time": "00:14:43",
+    "text": "security. So we can still move quickly"
+  },
+  {
+    "time": "00:14:45",
+    "text": "security. So we can still move quickly as we're building our agent initially."
+  },
+  {
+    "time": "00:14:45",
+    "text": "as we're building our agent initially."
+  },
+  {
+    "time": "00:14:47",
+    "text": "as we're building our agent initially. We'll definitely want to pay more"
+  },
+  {
+    "time": "00:14:47",
+    "text": "We'll definitely want to pay more"
+  },
+  {
+    "time": "00:14:48",
+    "text": "We'll definitely want to pay more attention to security when we're going"
+  },
+  {
+    "time": "00:14:48",
+    "text": "attention to security when we're going"
+  },
+  {
+    "time": "00:14:50",
+    "text": "attention to security when we're going into production. But at first there are"
+  },
+  {
+    "time": "00:14:50",
+    "text": "into production. But at first there are"
+  },
+  {
+    "time": "00:14:52",
+    "text": "into production. But at first there are a couple of tools that I want to call"
+  },
+  {
+    "time": "00:14:52",
+    "text": "a couple of tools that I want to call"
+  },
+  {
+    "time": "00:14:54",
+    "text": "a couple of tools that I want to call out here. And then just some general"
+  },
+  {
+    "time": "00:14:54",
+    "text": "out here. And then just some general"
+  },
+  {
+    "time": "00:14:56",
+    "text": "out here. And then just some general principles to follow. Like for example,"
+  },
+  {
+    "time": "00:14:56",
+    "text": "principles to follow. Like for example,"
+  },
+  {
+    "time": "00:14:58",
+    "text": "principles to follow. Like for example, don't hardcode your API keys, right?"
+  },
+  {
+    "time": "00:14:58",
+    "text": "don't hardcode your API keys, right?"
+  },
+  {
+    "time": "00:15:00",
+    "text": "don't hardcode your API keys, right? Like you don't want to have your OpenAI"
+  },
+  {
+    "time": "00:15:00",
+    "text": "Like you don't want to have your OpenAI"
+  },
+  {
+    "time": "00:15:02",
+    "text": "Like you don't want to have your OpenAI or anthropic API key just sitting there"
+  },
+  {
+    "time": "00:15:02",
+    "text": "or anthropic API key just sitting there"
+  },
+  {
+    "time": "00:15:05",
+    "text": "or anthropic API key just sitting there right in your code or your end workflow"
+  },
+  {
+    "time": "00:15:05",
+    "text": "right in your code or your end workflow"
+  },
+  {
+    "time": "00:15:06",
+    "text": "right in your code or your end workflow for example. You always want to store"
+  },
+  {
+    "time": "00:15:06",
+    "text": "for example. You always want to store"
+  },
+  {
+    "time": "00:15:09",
+    "text": "for example. You always want to store that in a secure way through things like"
+  },
+  {
+    "time": "00:15:09",
+    "text": "that in a secure way through things like"
+  },
+  {
+    "time": "00:15:12",
+    "text": "that in a secure way through things like environment variables. And then also"
+  },
+  {
+    "time": "00:15:12",
+    "text": "environment variables. And then also"
+  },
+  {
+    "time": "00:15:13",
+    "text": "environment variables. And then also when we think about building AI agents"
+  },
+  {
+    "time": "00:15:14",
+    "text": "when we think about building AI agents"
+  },
+  {
+    "time": "00:15:15",
+    "text": "when we think about building AI agents in particular, there's a lot of security"
+  },
+  {
+    "time": "00:15:15",
+    "text": "in particular, there's a lot of security"
+  },
+  {
+    "time": "00:15:17",
+    "text": "in particular, there's a lot of security that we want to implement through what"
+  },
+  {
+    "time": "00:15:17",
+    "text": "that we want to implement through what"
+  },
+  {
+    "time": "00:15:18",
+    "text": "that we want to implement through what are called guard rails, right? So"
+  },
+  {
+    "time": "00:15:18",
+    "text": "are called guard rails, right? So"
+  },
+  {
+    "time": "00:15:20",
+    "text": "are called guard rails, right? So limiting what kind of information can"
+  },
+  {
+    "time": "00:15:20",
+    "text": "limiting what kind of information can"
+  },
+  {
+    "time": "00:15:22",
+    "text": "limiting what kind of information can come into the large language model and"
+  },
+  {
+    "time": "00:15:22",
+    "text": "come into the large language model and"
+  },
+  {
+    "time": "00:15:24",
+    "text": "come into the large language model and then also limiting the kinds of"
+  },
+  {
+    "time": "00:15:24",
+    "text": "then also limiting the kinds of"
+  },
+  {
+    "time": "00:15:27",
+    "text": "then also limiting the kinds of responses that the agent can give and"
+  },
+  {
+    "time": "00:15:27",
+    "text": "responses that the agent can give and"
+  },
+  {
+    "time": "00:15:29",
+    "text": "responses that the agent can give and having it like actually retry if it"
+  },
+  {
+    "time": "00:15:29",
+    "text": "having it like actually retry if it"
+  },
+  {
+    "time": "00:15:31",
+    "text": "having it like actually retry if it produces any kind of response that isn't"
+  },
+  {
+    "time": "00:15:31",
+    "text": "produces any kind of response that isn't"
+  },
+  {
+    "time": "00:15:33",
+    "text": "produces any kind of response that isn't acceptable for us. And there's a super"
+  },
+  {
+    "time": "00:15:33",
+    "text": "acceptable for us. And there's a super"
+  },
+  {
+    "time": "00:15:35",
+    "text": "acceptable for us. And there's a super popular open source repository that I"
+  },
+  {
+    "time": "00:15:36",
+    "text": "popular open source repository that I"
+  },
+  {
+    "time": "00:15:37",
+    "text": "popular open source repository that I lean on all the time to help with"
+  },
+  {
+    "time": "00:15:37",
+    "text": "lean on all the time to help with"
+  },
+  {
+    "time": "00:15:39",
+    "text": "lean on all the time to help with guardrails and very creatively called"
+  },
+  {
+    "time": "00:15:39",
+    "text": "guardrails and very creatively called"
+  },
+  {
+    "time": "00:15:42",
+    "text": "guardrails and very creatively called guardrails AI. And so it's a Python"
+  },
+  {
+    "time": "00:15:42",
+    "text": "guardrails AI. And so it's a Python"
+  },
+  {
+    "time": "00:15:43",
+    "text": "guardrails AI. And so it's a Python framework because I always love building"
+  },
+  {
+    "time": "00:15:43",
+    "text": "framework because I always love building"
+  },
+  {
+    "time": "00:15:46",
+    "text": "framework because I always love building my AI agents with Python that helps"
+  },
+  {
+    "time": "00:15:46",
+    "text": "my AI agents with Python that helps"
+  },
+  {
+    "time": "00:15:48",
+    "text": "my AI agents with Python that helps build reliable AI applications by giving"
+  },
+  {
+    "time": "00:15:48",
+    "text": "build reliable AI applications by giving"
+  },
+  {
+    "time": "00:15:50",
+    "text": "build reliable AI applications by giving you both the input and output guard"
+  },
+  {
+    "time": "00:15:50",
+    "text": "you both the input and output guard"
+  },
+  {
+    "time": "00:15:51",
+    "text": "you both the input and output guard rails that I'm talking about. So"
+  },
+  {
+    "time": "00:15:51",
+    "text": "rails that I'm talking about. So"
+  },
+  {
+    "time": "00:15:53",
+    "text": "rails that I'm talking about. So limiting what goes in and limiting what"
+  },
+  {
+    "time": "00:15:53",
+    "text": "limiting what goes in and limiting what"
+  },
+  {
+    "time": "00:15:56",
+    "text": "limiting what goes in and limiting what the agent can produce. And they provide"
+  },
+  {
+    "time": "00:15:56",
+    "text": "the agent can produce. And they provide"
+  },
+  {
+    "time": "00:15:57",
+    "text": "the agent can produce. And they provide a lot of different options for"
+  },
+  {
+    "time": "00:15:57",
+    "text": "a lot of different options for"
+  },
+  {
+    "time": "00:15:59",
+    "text": "a lot of different options for guardrails. Like for example, one thing"
+  },
+  {
+    "time": "00:15:59",
+    "text": "guardrails. Like for example, one thing"
+  },
+  {
+    "time": "00:16:01",
+    "text": "guardrails. Like for example, one thing that you want to avoid quite often is"
+  },
+  {
+    "time": "00:16:01",
+    "text": "that you want to avoid quite often is"
+  },
+  {
+    "time": "00:16:04",
+    "text": "that you want to avoid quite often is inserting any kind of PII, personally"
+  },
+  {
+    "time": "00:16:04",
+    "text": "inserting any kind of PII, personally"
+  },
+  {
+    "time": "00:16:06",
+    "text": "inserting any kind of PII, personally identifiable information into a prompt"
+  },
+  {
+    "time": "00:16:06",
+    "text": "identifiable information into a prompt"
+  },
+  {
+    "time": "00:16:08",
+    "text": "identifiable information into a prompt to an LLM, especially when it's going"
+  },
+  {
+    "time": "00:16:08",
+    "text": "to an LLM, especially when it's going"
+  },
+  {
+    "time": "00:16:10",
+    "text": "to an LLM, especially when it's going out to some model in the cloud like"
+  },
+  {
+    "time": "00:16:10",
+    "text": "out to some model in the cloud like"
+  },
+  {
+    "time": "00:16:12",
+    "text": "out to some model in the cloud like anthropic or Gemini instead of a local"
+  },
+  {
+    "time": "00:16:12",
+    "text": "anthropic or Gemini instead of a local"
+  },
+  {
+    "time": "00:16:14",
+    "text": "anthropic or Gemini instead of a local LLM. So limiting that kind of thing,"
+  },
+  {
+    "time": "00:16:14",
+    "text": "LLM. So limiting that kind of thing,"
+  },
+  {
+    "time": "00:16:16",
+    "text": "LLM. So limiting that kind of thing, maybe detecting any vulgar language"
+  },
+  {
+    "time": "00:16:16",
+    "text": "maybe detecting any vulgar language"
+  },
+  {
+    "time": "00:16:18",
+    "text": "maybe detecting any vulgar language that's outputed from an LLM because they"
+  },
+  {
+    "time": "00:16:18",
+    "text": "that's outputed from an LLM because they"
+  },
+  {
+    "time": "00:16:20",
+    "text": "that's outputed from an LLM because they will do that sometimes. Like those are"
+  },
+  {
+    "time": "00:16:20",
+    "text": "will do that sometimes. Like those are"
+  },
+  {
+    "time": "00:16:21",
+    "text": "will do that sometimes. Like those are just some examples of input and output"
+  },
+  {
+    "time": "00:16:21",
+    "text": "just some examples of input and output"
+  },
+  {
+    "time": "00:16:24",
+    "text": "just some examples of input and output guard rails. And it is very easy to"
+  },
+  {
+    "time": "00:16:24",
+    "text": "guard rails. And it is very easy to"
+  },
+  {
+    "time": "00:16:26",
+    "text": "guard rails. And it is very easy to install this as a Python package and"
+  },
+  {
+    "time": "00:16:26",
+    "text": "install this as a Python package and"
+  },
+  {
+    "time": "00:16:29",
+    "text": "install this as a Python package and bring these guards right into your code"
+  },
+  {
+    "time": "00:16:29",
+    "text": "bring these guards right into your code"
+  },
+  {
+    "time": "00:16:31",
+    "text": "bring these guards right into your code as you are interacting with your agents"
+  },
+  {
+    "time": "00:16:31",
+    "text": "as you are interacting with your agents"
+  },
+  {
+    "time": "00:16:32",
+    "text": "as you are interacting with your agents like we saw earlier when I had that, you"
+  },
+  {
+    "time": "00:16:32",
+    "text": "like we saw earlier when I had that, you"
+  },
+  {
+    "time": "00:16:34",
+    "text": "like we saw earlier when I had that, you know, simple command line tool to talk"
+  },
+  {
+    "time": "00:16:34",
+    "text": "know, simple command line tool to talk"
+  },
+  {
+    "time": "00:16:35",
+    "text": "know, simple command line tool to talk to the agent. Like I could just add a"
+  },
+  {
+    "time": "00:16:35",
+    "text": "to the agent. Like I could just add a"
+  },
+  {
+    "time": "00:16:37",
+    "text": "to the agent. Like I could just add a guard before or after that call to the"
+  },
+  {
+    "time": "00:16:38",
+    "text": "guard before or after that call to the"
+  },
+  {
+    "time": "00:16:39",
+    "text": "guard before or after that call to the agent. So yeah, guardrails don't have to"
+  },
+  {
+    "time": "00:16:39",
+    "text": "agent. So yeah, guardrails don't have to"
+  },
+  {
+    "time": "00:16:41",
+    "text": "agent. So yeah, guardrails don't have to be complicated. There are tools like"
+  },
+  {
+    "time": "00:16:41",
+    "text": "be complicated. There are tools like"
+  },
+  {
+    "time": "00:16:42",
+    "text": "be complicated. There are tools like this, even completely open- source ones"
+  },
+  {
+    "time": "00:16:42",
+    "text": "this, even completely open- source ones"
+  },
+  {
+    "time": "00:16:44",
+    "text": "this, even completely open- source ones like guardrails AI that make it very"
+  },
+  {
+    "time": "00:16:44",
+    "text": "like guardrails AI that make it very"
+  },
+  {
+    "time": "00:16:46",
+    "text": "like guardrails AI that make it very easy. Okay, so we've talked about"
+  },
+  {
+    "time": "00:16:46",
+    "text": "easy. Okay, so we've talked about"
+  },
+  {
+    "time": "00:16:49",
+    "text": "easy. Okay, so we've talked about guardrails and I gave you one example of"
+  },
+  {
+    "time": "00:16:49",
+    "text": "guardrails and I gave you one example of"
+  },
+  {
+    "time": "00:16:50",
+    "text": "guardrails and I gave you one example of best practices for security in our"
+  },
+  {
+    "time": "00:16:50",
+    "text": "best practices for security in our"
+  },
+  {
+    "time": "00:16:52",
+    "text": "best practices for security in our codebase. But what about the other"
+  },
+  {
+    "time": "00:16:52",
+    "text": "codebase. But what about the other"
+  },
+  {
+    "time": "00:16:54",
+    "text": "codebase. But what about the other million different vulnerabilities we"
+  },
+  {
+    "time": "00:16:54",
+    "text": "million different vulnerabilities we"
+  },
+  {
+    "time": "00:16:57",
+    "text": "million different vulnerabilities we have to account for in our codebase and"
+  },
+  {
+    "time": "00:16:57",
+    "text": "have to account for in our codebase and"
+  },
+  {
+    "time": "00:16:59",
+    "text": "have to account for in our codebase and the dependencies we're bringing into our"
+  },
+  {
+    "time": "00:16:59",
+    "text": "the dependencies we're bringing into our"
+  },
+  {
+    "time": "00:17:01",
+    "text": "the dependencies we're bringing into our project? We can't expect ourselves to"
+  },
+  {
+    "time": "00:17:01",
+    "text": "project? We can't expect ourselves to"
+  },
+  {
+    "time": "00:17:03",
+    "text": "project? We can't expect ourselves to become a security expert overnight. And"
+  },
+  {
+    "time": "00:17:03",
+    "text": "become a security expert overnight. And"
+  },
+  {
+    "time": "00:17:05",
+    "text": "become a security expert overnight. And so it's important to learn these things,"
+  },
+  {
+    "time": "00:17:05",
+    "text": "so it's important to learn these things,"
+  },
+  {
+    "time": "00:17:07",
+    "text": "so it's important to learn these things, but also we can lean on existing tools"
+  },
+  {
+    "time": "00:17:07",
+    "text": "but also we can lean on existing tools"
+  },
+  {
+    "time": "00:17:10",
+    "text": "but also we can lean on existing tools to help us with this vulnerability"
+  },
+  {
+    "time": "00:17:10",
+    "text": "to help us with this vulnerability"
+  },
+  {
+    "time": "00:17:12",
+    "text": "to help us with this vulnerability detection. There are a lot of options"
+  },
+  {
+    "time": "00:17:12",
+    "text": "detection. There are a lot of options"
+  },
+  {
+    "time": "00:17:14",
+    "text": "detection. There are a lot of options out there for this, but Sneak Studio is"
+  },
+  {
+    "time": "00:17:14",
+    "text": "out there for this, but Sneak Studio is"
+  },
+  {
+    "time": "00:17:16",
+    "text": "out there for this, but Sneak Studio is one that I've been leaning on a lot"
+  },
+  {
+    "time": "00:17:16",
+    "text": "one that I've been leaning on a lot"
+  },
+  {
+    "time": "00:17:18",
+    "text": "one that I've been leaning on a lot recently. And they also have an MCP"
+  },
+  {
+    "time": "00:17:18",
+    "text": "recently. And they also have an MCP"
+  },
+  {
+    "time": "00:17:21",
+    "text": "recently. And they also have an MCP server within the studio to help us"
+  },
+  {
+    "time": "00:17:21",
+    "text": "server within the studio to help us"
+  },
+  {
+    "time": "00:17:22",
+    "text": "server within the studio to help us handle vulnerability detection"
+  },
+  {
+    "time": "00:17:22",
+    "text": "handle vulnerability detection"
+  },
+  {
+    "time": "00:17:25",
+    "text": "handle vulnerability detection automatically right within our coding"
+  },
+  {
+    "time": "00:17:25",
+    "text": "automatically right within our coding"
+  },
+  {
+    "time": "00:17:27",
+    "text": "automatically right within our coding process. So like always, I'm trying to"
+  },
+  {
+    "time": "00:17:27",
+    "text": "process. So like always, I'm trying to"
+  },
+  {
+    "time": "00:17:29",
+    "text": "process. So like always, I'm trying to focus on open- source solutions for this"
+  },
+  {
+    "time": "00:17:29",
+    "text": "focus on open- source solutions for this"
+  },
+  {
+    "time": "00:17:31",
+    "text": "focus on open- source solutions for this video, but there's really no open-"
+  },
+  {
+    "time": "00:17:31",
+    "text": "video, but there's really no open-"
+  },
+  {
+    "time": "00:17:33",
+    "text": "video, but there's really no open- source alternative to Sneak that I know"
+  },
+  {
+    "time": "00:17:33",
+    "text": "source alternative to Sneak that I know"
+  },
+  {
+    "time": "00:17:35",
+    "text": "source alternative to Sneak that I know about. This platform is incredible. So"
+  },
+  {
+    "time": "00:17:35",
+    "text": "about. This platform is incredible. So"
+  },
+  {
+    "time": "00:17:38",
+    "text": "about. This platform is incredible. So in the Sneak Studio, we can set up these"
+  },
+  {
+    "time": "00:17:38",
+    "text": "in the Sneak Studio, we can set up these"
+  },
+  {
+    "time": "00:17:39",
+    "text": "in the Sneak Studio, we can set up these different projects and integrations. We"
+  },
+  {
+    "time": "00:17:39",
+    "text": "different projects and integrations. We"
+  },
+  {
+    "time": "00:17:42",
+    "text": "different projects and integrations. We can have it analyze our codebase and"
+  },
+  {
+    "time": "00:17:42",
+    "text": "can have it analyze our codebase and"
+  },
+  {
+    "time": "00:17:44",
+    "text": "can have it analyze our codebase and dependencies for vulnerabilities in our"
+  },
+  {
+    "time": "00:17:44",
+    "text": "dependencies for vulnerabilities in our"
+  },
+  {
+    "time": "00:17:46",
+    "text": "dependencies for vulnerabilities in our GitHub repositories. They have a CLI. We"
+  },
+  {
+    "time": "00:17:46",
+    "text": "GitHub repositories. They have a CLI. We"
+  },
+  {
+    "time": "00:17:48",
+    "text": "GitHub repositories. They have a CLI. We can do things locally. They have the MCP"
+  },
+  {
+    "time": "00:17:48",
+    "text": "can do things locally. They have the MCP"
+  },
+  {
+    "time": "00:17:49",
+    "text": "can do things locally. They have the MCP server that I'm going to show you in a"
+  },
+  {
+    "time": "00:17:49",
+    "text": "server that I'm going to show you in a"
+  },
+  {
+    "time": "00:17:51",
+    "text": "server that I'm going to show you in a little bit. I'll link to all this in the"
+  },
+  {
+    "time": "00:17:51",
+    "text": "little bit. I'll link to all this in the"
+  },
+  {
+    "time": "00:17:53",
+    "text": "little bit. I'll link to all this in the description. But yeah, the MCP server in"
+  },
+  {
+    "time": "00:17:53",
+    "text": "description. But yeah, the MCP server in"
+  },
+  {
+    "time": "00:17:55",
+    "text": "description. But yeah, the MCP server in particular is super cool to me because"
+  },
+  {
+    "time": "00:17:55",
+    "text": "particular is super cool to me because"
+  },
+  {
+    "time": "00:17:57",
+    "text": "particular is super cool to me because we can have vulnerability detection"
+  },
+  {
+    "time": "00:17:57",
+    "text": "we can have vulnerability detection"
+  },
+  {
+    "time": "00:17:59",
+    "text": "we can have vulnerability detection built right into our AI coding"
+  },
+  {
+    "time": "00:17:59",
+    "text": "built right into our AI coding"
+  },
+  {
+    "time": "00:18:02",
+    "text": "built right into our AI coding workflows. Now, so take a look at this."
+  },
+  {
+    "time": "00:18:02",
+    "text": "workflows. Now, so take a look at this."
+  },
+  {
+    "time": "00:18:05",
+    "text": "workflows. Now, so take a look at this. I have the Sneak MCP server connected"
+  },
+  {
+    "time": "00:18:05",
+    "text": "I have the Sneak MCP server connected"
+  },
+  {
+    "time": "00:18:06",
+    "text": "I have the Sneak MCP server connected directly to my cloud code after I went"
+  },
+  {
+    "time": "00:18:06",
+    "text": "directly to my cloud code after I went"
+  },
+  {
+    "time": "00:18:08",
+    "text": "directly to my cloud code after I went through the Sneak authentication process"
+  },
+  {
+    "time": "00:18:08",
+    "text": "through the Sneak authentication process"
+  },
+  {
+    "time": "00:18:10",
+    "text": "through the Sneak authentication process in the CLI. And you can connect this to"
+  },
+  {
+    "time": "00:18:10",
+    "text": "in the CLI. And you can connect this to"
+  },
+  {
+    "time": "00:18:13",
+    "text": "in the CLI. And you can connect this to literally any AI coding assistant or MCP"
+  },
+  {
+    "time": "00:18:13",
+    "text": "literally any AI coding assistant or MCP"
+  },
+  {
+    "time": "00:18:15",
+    "text": "literally any AI coding assistant or MCP client. So now within cloud I could"
+  },
+  {
+    "time": "00:18:15",
+    "text": "client. So now within cloud I could"
+  },
+  {
+    "time": "00:18:17",
+    "text": "client. So now within cloud I could build this into a full AI coding"
+  },
+  {
+    "time": "00:18:17",
+    "text": "build this into a full AI coding"
+  },
+  {
+    "time": "00:18:18",
+    "text": "build this into a full AI coding workflow which is very cool. I'm going"
+  },
+  {
+    "time": "00:18:18",
+    "text": "workflow which is very cool. I'm going"
+  },
+  {
+    "time": "00:18:19",
+    "text": "workflow which is very cool. I'm going to show you a simple demo right now."
+  },
+  {
+    "time": "00:18:19",
+    "text": "to show you a simple demo right now."
+  },
+  {
+    "time": "00:18:23",
+    "text": "to show you a simple demo right now. I'll just say you know use the sneak MCP"
+  },
+  {
+    "time": "00:18:23",
+    "text": "I'll just say you know use the sneak MCP"
+  },
+  {
+    "time": "00:18:27",
+    "text": "I'll just say you know use the sneak MCP to analyze my code and dependencies"
+  },
+  {
+    "time": "00:18:27",
+    "text": "to analyze my code and dependencies"
+  },
+  {
+    "time": "00:18:29",
+    "text": "to analyze my code and dependencies for vulnerabilities."
+  },
+  {
+    "time": "00:18:29",
+    "text": "for vulnerabilities."
+  },
+  {
+    "time": "00:18:31",
+    "text": "for vulnerabilities. And so it's able to leverage different"
+  },
+  {
+    "time": "00:18:31",
+    "text": "And so it's able to leverage different"
+  },
+  {
+    "time": "00:18:34",
+    "text": "And so it's able to leverage different tools within the MCP server to check for"
+  },
+  {
+    "time": "00:18:34",
+    "text": "tools within the MCP server to check for"
+  },
+  {
+    "time": "00:18:36",
+    "text": "tools within the MCP server to check for both right like it's a very robust"
+  },
+  {
+    "time": "00:18:36",
+    "text": "both right like it's a very robust"
+  },
+  {
+    "time": "00:18:38",
+    "text": "both right like it's a very robust solution here. And so I'll let it go for"
+  },
+  {
+    "time": "00:18:38",
+    "text": "solution here. And so I'll let it go for"
+  },
+  {
+    "time": "00:18:41",
+    "text": "solution here. And so I'll let it go for a little bit. I'll pause and come back"
+  },
+  {
+    "time": "00:18:41",
+    "text": "a little bit. I'll pause and come back"
+  },
+  {
+    "time": "00:18:42",
+    "text": "a little bit. I'll pause and come back once it has run the vulnerability"
+  },
+  {
+    "time": "00:18:42",
+    "text": "once it has run the vulnerability"
+  },
+  {
+    "time": "00:18:44",
+    "text": "once it has run the vulnerability detection. Okay, this is so cool. Take a"
+  },
+  {
+    "time": "00:18:44",
+    "text": "detection. Okay, this is so cool. Take a"
+  },
+  {
+    "time": "00:18:47",
+    "text": "detection. Okay, this is so cool. Take a look at this. So, within my basic agent"
+  },
+  {
+    "time": "00:18:47",
+    "text": "look at this. So, within my basic agent"
+  },
+  {
+    "time": "00:18:49",
+    "text": "look at this. So, within my basic agent repository, first it used the sneakc"
+  },
+  {
+    "time": "00:18:49",
+    "text": "repository, first it used the sneakc"
+  },
+  {
+    "time": "00:18:51",
+    "text": "repository, first it used the sneakc server to analyze for any"
+  },
+  {
+    "time": "00:18:51",
+    "text": "server to analyze for any"
+  },
+  {
+    "time": "00:18:53",
+    "text": "server to analyze for any vulnerabilities with my dependencies,"
+  },
+  {
+    "time": "00:18:53",
+    "text": "vulnerabilities with my dependencies,"
+  },
+  {
+    "time": "00:18:56",
+    "text": "vulnerabilities with my dependencies, things like paidantic AI, for example."
+  },
+  {
+    "time": "00:18:56",
+    "text": "things like paidantic AI, for example."
+  },
+  {
+    "time": "00:18:59",
+    "text": "things like paidantic AI, for example. And then it does a code scan. So, this"
+  },
+  {
+    "time": "00:18:59",
+    "text": "And then it does a code scan. So, this"
+  },
+  {
+    "time": "00:19:01",
+    "text": "And then it does a code scan. So, this would also detect things like if I had"
+  },
+  {
+    "time": "00:19:01",
+    "text": "would also detect things like if I had"
+  },
+  {
+    "time": "00:19:03",
+    "text": "would also detect things like if I had my environment variables hardcoded like"
+  },
+  {
+    "time": "00:19:03",
+    "text": "my environment variables hardcoded like"
+  },
+  {
+    "time": "00:19:05",
+    "text": "my environment variables hardcoded like the example that I gave earlier. So, it"
+  },
+  {
+    "time": "00:19:05",
+    "text": "the example that I gave earlier. So, it"
+  },
+  {
+    "time": "00:19:07",
+    "text": "the example that I gave earlier. So, it found three issues with my dependencies"
+  },
+  {
+    "time": "00:19:07",
+    "text": "found three issues with my dependencies"
+  },
+  {
+    "time": "00:19:08",
+    "text": "found three issues with my dependencies and nothing with my code, which I'm very"
+  },
+  {
+    "time": "00:19:08",
+    "text": "and nothing with my code, which I'm very"
+  },
+  {
+    "time": "00:19:11",
+    "text": "and nothing with my code, which I'm very proud of. I got no issues with my code."
+  },
+  {
+    "time": "00:19:11",
+    "text": "proud of. I got no issues with my code."
+  },
+  {
+    "time": "00:19:13",
+    "text": "proud of. I got no issues with my code. And not only does it do the analysis,"
+  },
+  {
+    "time": "00:19:13",
+    "text": "And not only does it do the analysis,"
+  },
+  {
+    "time": "00:19:15",
+    "text": "And not only does it do the analysis, but it gives me a summary and lists the"
+  },
+  {
+    "time": "00:19:15",
+    "text": "but it gives me a summary and lists the"
+  },
+  {
+    "time": "00:19:16",
+    "text": "but it gives me a summary and lists the actions I can take to remedy things."
+  },
+  {
+    "time": "00:19:16",
+    "text": "actions I can take to remedy things."
+  },
+  {
+    "time": "00:19:18",
+    "text": "actions I can take to remedy things. Like here are the uh just medium"
+  },
+  {
+    "time": "00:19:18",
+    "text": "Like here are the uh just medium"
+  },
+  {
+    "time": "00:19:20",
+    "text": "Like here are the uh just medium severity vulnerabilities that I have"
+  },
+  {
+    "time": "00:19:20",
+    "text": "severity vulnerabilities that I have"
+  },
+  {
+    "time": "00:19:22",
+    "text": "severity vulnerabilities that I have within a few of my dependencies. Nothing"
+  },
+  {
+    "time": "00:19:22",
+    "text": "within a few of my dependencies. Nothing"
+  },
+  {
+    "time": "00:19:23",
+    "text": "within a few of my dependencies. Nothing in my code. And then it gives me"
+  },
+  {
+    "time": "00:19:23",
+    "text": "in my code. And then it gives me"
+  },
+  {
+    "time": "00:19:26",
+    "text": "in my code. And then it gives me recommendations to fix fix things. And"
+  },
+  {
+    "time": "00:19:26",
+    "text": "recommendations to fix fix things. And"
+  },
+  {
+    "time": "00:19:28",
+    "text": "recommendations to fix fix things. And so I can go and say yes action on this"
+  },
+  {
+    "time": "00:19:28",
+    "text": "so I can go and say yes action on this"
+  },
+  {
+    "time": "00:19:30",
+    "text": "so I can go and say yes action on this now. And it's going to update my"
+  },
+  {
+    "time": "00:19:30",
+    "text": "now. And it's going to update my"
+  },
+  {
+    "time": "00:19:32",
+    "text": "now. And it's going to update my requirements.ext fix these things. And I"
+  },
+  {
+    "time": "00:19:32",
+    "text": "requirements.ext fix these things. And I"
+  },
+  {
+    "time": "00:19:34",
+    "text": "requirements.ext fix these things. And I could even run the sneak MCP server"
+  },
+  {
+    "time": "00:19:34",
+    "text": "could even run the sneak MCP server"
+  },
+  {
+    "time": "00:19:35",
+    "text": "could even run the sneak MCP server again. And you can definitely see how"
+  },
+  {
+    "time": "00:19:35",
+    "text": "again. And you can definitely see how"
+  },
+  {
+    "time": "00:19:37",
+    "text": "again. And you can definitely see how you'd build this kind of thing directly"
+  },
+  {
+    "time": "00:19:37",
+    "text": "you'd build this kind of thing directly"
+  },
+  {
+    "time": "00:19:39",
+    "text": "you'd build this kind of thing directly into the validation layer of your AI"
+  },
+  {
+    "time": "00:19:39",
+    "text": "into the validation layer of your AI"
+  },
+  {
+    "time": "00:19:42",
+    "text": "into the validation layer of your AI coding workflow. Very, very neat for any"
+  },
+  {
+    "time": "00:19:42",
+    "text": "coding workflow. Very, very neat for any"
+  },
+  {
+    "time": "00:19:44",
+    "text": "coding workflow. Very, very neat for any AI agent or really any software you want"
+  },
+  {
+    "time": "00:19:44",
+    "text": "AI agent or really any software you want"
+  },
+  {
+    "time": "00:19:46",
+    "text": "AI agent or really any software you want to build at all. Moving on, I want to"
+  },
+  {
+    "time": "00:19:46",
+    "text": "to build at all. Moving on, I want to"
+  },
+  {
+    "time": "00:19:48",
+    "text": "to build at all. Moving on, I want to talk about memory. Now, managing the"
+  },
+  {
+    "time": "00:19:48",
+    "text": "talk about memory. Now, managing the"
+  },
+  {
+    "time": "00:19:50",
+    "text": "talk about memory. Now, managing the tokens that we're passing into the LLM"
+  },
+  {
+    "time": "00:19:50",
+    "text": "tokens that we're passing into the LLM"
+  },
+  {
+    "time": "00:19:52",
+    "text": "tokens that we're passing into the LLM calls for our agents. And this really is"
+  },
+  {
+    "time": "00:19:52",
+    "text": "calls for our agents. And this really is"
+  },
+  {
+    "time": "00:19:54",
+    "text": "calls for our agents. And this really is a hot topic right now, especially with"
+  },
+  {
+    "time": "00:19:54",
+    "text": "a hot topic right now, especially with"
+  },
+  {
+    "time": "00:19:56",
+    "text": "a hot topic right now, especially with all the rate limiting that people are"
+  },
+  {
+    "time": "00:19:56",
+    "text": "all the rate limiting that people are"
+  },
+  {
+    "time": "00:19:58",
+    "text": "all the rate limiting that people are getting with AI coding assistants like"
+  },
+  {
+    "time": "00:19:58",
+    "text": "getting with AI coding assistants like"
+  },
+  {
+    "time": "00:20:01",
+    "text": "getting with AI coding assistants like Claude Code. It really is important to"
+  },
+  {
+    "time": "00:20:01",
+    "text": "Claude Code. It really is important to"
+  },
+  {
+    "time": "00:20:03",
+    "text": "Claude Code. It really is important to manage our context efficiently, only"
+  },
+  {
+    "time": "00:20:03",
+    "text": "manage our context efficiently, only"
+  },
+  {
+    "time": "00:20:06",
+    "text": "manage our context efficiently, only giving to our agents the information it"
+  },
+  {
+    "time": "00:20:06",
+    "text": "giving to our agents the information it"
+  },
+  {
+    "time": "00:20:07",
+    "text": "giving to our agents the information it actually needs and not completely"
+  },
+  {
+    "time": "00:20:07",
+    "text": "actually needs and not completely"
+  },
+  {
+    "time": "00:20:09",
+    "text": "actually needs and not completely bloating our system prompts with"
+  },
+  {
+    "time": "00:20:09",
+    "text": "bloating our system prompts with"
+  },
+  {
+    "time": "00:20:10",
+    "text": "bloating our system prompts with thousands of lines of instruction and"
+  },
+  {
+    "time": "00:20:10",
+    "text": "thousands of lines of instruction and"
+  },
+  {
+    "time": "00:20:12",
+    "text": "thousands of lines of instruction and tools that it doesn't actually need."
+  },
+  {
+    "time": "00:20:12",
+    "text": "tools that it doesn't actually need."
+  },
+  {
+    "time": "00:20:14",
+    "text": "tools that it doesn't actually need. That's what you want to avoid. And so,"
+  },
+  {
+    "time": "00:20:14",
+    "text": "That's what you want to avoid. And so,"
+  },
+  {
+    "time": "00:20:16",
+    "text": "That's what you want to avoid. And so, just a couple of simple tips here going"
+  },
+  {
+    "time": "00:20:16",
+    "text": "just a couple of simple tips here going"
+  },
+  {
+    "time": "00:20:18",
+    "text": "just a couple of simple tips here going along with our theme. The first one is"
+  },
+  {
+    "time": "00:20:18",
+    "text": "along with our theme. The first one is"
+  },
+  {
+    "time": "00:20:21",
+    "text": "along with our theme. The first one is to keep your prompts very concise. both"
+  },
+  {
+    "time": "00:20:21",
+    "text": "to keep your prompts very concise. both"
+  },
+  {
+    "time": "00:20:23",
+    "text": "to keep your prompts very concise. both your system prompts and then also the"
+  },
+  {
+    "time": "00:20:23",
+    "text": "your system prompts and then also the"
+  },
+  {
+    "time": "00:20:25",
+    "text": "your system prompts and then also the tool descriptions that describe to your"
+  },
+  {
+    "time": "00:20:25",
+    "text": "tool descriptions that describe to your"
+  },
+  {
+    "time": "00:20:27",
+    "text": "tool descriptions that describe to your agent when and how to use tools like I"
+  },
+  {
+    "time": "00:20:27",
+    "text": "agent when and how to use tools like I"
+  },
+  {
+    "time": "00:20:29",
+    "text": "agent when and how to use tools like I showed in the code earlier. You don't"
+  },
+  {
+    "time": "00:20:29",
+    "text": "showed in the code earlier. You don't"
+  },
+  {
+    "time": "00:20:31",
+    "text": "showed in the code earlier. You don't need to over complicate it. That's why I"
+  },
+  {
+    "time": "00:20:31",
+    "text": "need to over complicate it. That's why I"
+  },
+  {
+    "time": "00:20:33",
+    "text": "need to over complicate it. That's why I have these templates for you like the"
+  },
+  {
+    "time": "00:20:33",
+    "text": "have these templates for you like the"
+  },
+  {
+    "time": "00:20:34",
+    "text": "have these templates for you like the one for the system prompt, right? Like"
+  },
+  {
+    "time": "00:20:34",
+    "text": "one for the system prompt, right? Like"
+  },
+  {
+    "time": "00:20:36",
+    "text": "one for the system prompt, right? Like you have your goal just a couple of"
+  },
+  {
+    "time": "00:20:36",
+    "text": "you have your goal just a couple of"
+  },
+  {
+    "time": "00:20:38",
+    "text": "you have your goal just a couple of sentences, your persona just a couple of"
+  },
+  {
+    "time": "00:20:38",
+    "text": "sentences, your persona just a couple of"
+  },
+  {
+    "time": "00:20:41",
+    "text": "sentences, your persona just a couple of sentences. Keep it very organized and"
+  },
+  {
+    "time": "00:20:41",
+    "text": "sentences. Keep it very organized and"
+  },
+  {
+    "time": "00:20:42",
+    "text": "sentences. Keep it very organized and keeping it organized also helps you keep"
+  },
+  {
+    "time": "00:20:42",
+    "text": "keeping it organized also helps you keep"
+  },
+  {
+    "time": "00:20:44",
+    "text": "keeping it organized also helps you keep it quite concise. You don't need to"
+  },
+  {
+    "time": "00:20:44",
+    "text": "it quite concise. You don't need to"
+  },
+  {
+    "time": "00:20:47",
+    "text": "it quite concise. You don't need to overthink it. And so keeping your system"
+  },
+  {
+    "time": "00:20:47",
+    "text": "overthink it. And so keeping your system"
+  },
+  {
+    "time": "00:20:49",
+    "text": "overthink it. And so keeping your system prompts to just a couple of hundred"
+  },
+  {
+    "time": "00:20:49",
+    "text": "prompts to just a couple of hundred"
+  },
+  {
+    "time": "00:20:51",
+    "text": "prompts to just a couple of hundred lines at most is generally what I"
+  },
+  {
+    "time": "00:20:51",
+    "text": "lines at most is generally what I"
+  },
+  {
+    "time": "00:20:52",
+    "text": "lines at most is generally what I recommend. Some solutions might need"
+  },
+  {
+    "time": "00:20:52",
+    "text": "recommend. Some solutions might need"
+  },
+  {
+    "time": "00:20:54",
+    "text": "recommend. Some solutions might need more, but that's when I'd start to"
+  },
+  {
+    "time": "00:20:54",
+    "text": "more, but that's when I'd start to"
+  },
+  {
+    "time": "00:20:56",
+    "text": "more, but that's when I'd start to question like could you really make that"
+  },
+  {
+    "time": "00:20:56",
+    "text": "question like could you really make that"
+  },
+  {
+    "time": "00:20:58",
+    "text": "question like could you really make that more concise or split it into different"
+  },
+  {
+    "time": "00:20:58",
+    "text": "more concise or split it into different"
+  },
+  {
+    "time": "00:21:00",
+    "text": "more concise or split it into different specialized agents so each agent still"
+  },
+  {
+    "time": "00:21:00",
+    "text": "specialized agents so each agent still"
+  },
+  {
+    "time": "00:21:02",
+    "text": "specialized agents so each agent still has a simple system prompt. Another"
+  },
+  {
+    "time": "00:21:02",
+    "text": "has a simple system prompt. Another"
+  },
+  {
+    "time": "00:21:04",
+    "text": "has a simple system prompt. Another thing you can do for agents that have"
+  },
+  {
+    "time": "00:21:04",
+    "text": "thing you can do for agents that have"
+  },
+  {
+    "time": "00:21:06",
+    "text": "thing you can do for agents that have longer conversations is you can limit"
+  },
+  {
+    "time": "00:21:06",
+    "text": "longer conversations is you can limit"
+  },
+  {
+    "time": "00:21:09",
+    "text": "longer conversations is you can limit kind of in a sliding window to the 10 or"
+  },
+  {
+    "time": "00:21:09",
+    "text": "kind of in a sliding window to the 10 or"
+  },
+  {
+    "time": "00:21:12",
+    "text": "kind of in a sliding window to the 10 or 20 most recent messages, for example,"
+  },
+  {
+    "time": "00:21:12",
+    "text": "20 most recent messages, for example,"
+  },
+  {
+    "time": "00:21:13",
+    "text": "20 most recent messages, for example, that you actually include in the"
+  },
+  {
+    "time": "00:21:14",
+    "text": "that you actually include in the"
+  },
+  {
+    "time": "00:21:15",
+    "text": "that you actually include in the context. And going back to the code,"
+  },
+  {
+    "time": "00:21:15",
+    "text": "context. And going back to the code,"
+  },
+  {
+    "time": "00:21:17",
+    "text": "context. And going back to the code, I'll even show you what that looks like"
+  },
+  {
+    "time": "00:21:17",
+    "text": "I'll even show you what that looks like"
+  },
+  {
+    "time": "00:21:19",
+    "text": "I'll even show you what that looks like here. Like right now when we call our"
+  },
+  {
+    "time": "00:21:19",
+    "text": "here. Like right now when we call our"
+  },
+  {
+    "time": "00:21:21",
+    "text": "here. Like right now when we call our agent, we run it, we're passing in the"
+  },
+  {
+    "time": "00:21:21",
+    "text": "agent, we run it, we're passing in the"
+  },
+  {
+    "time": "00:21:22",
+    "text": "agent, we run it, we're passing in the entire conversation history. But in"
+  },
+  {
+    "time": "00:21:22",
+    "text": "entire conversation history. But in"
+  },
+  {
+    "time": "00:21:24",
+    "text": "entire conversation history. But in Python, if I wanted to include just the"
+  },
+  {
+    "time": "00:21:24",
+    "text": "Python, if I wanted to include just the"
+  },
+  {
+    "time": "00:21:26",
+    "text": "Python, if I wanted to include just the last 10 messages, I could do something"
+  },
+  {
+    "time": "00:21:26",
+    "text": "last 10 messages, I could do something"
+  },
+  {
+    "time": "00:21:29",
+    "text": "last 10 messages, I could do something like this. And so now maybe like, you"
+  },
+  {
+    "time": "00:21:29",
+    "text": "like this. And so now maybe like, you"
+  },
+  {
+    "time": "00:21:30",
+    "text": "like this. And so now maybe like, you know, all previous messages aren't"
+  },
+  {
+    "time": "00:21:30",
+    "text": "know, all previous messages aren't"
+  },
+  {
+    "time": "00:21:32",
+    "text": "know, all previous messages aren't really as relevant anymore. We just want"
+  },
+  {
+    "time": "00:21:32",
+    "text": "really as relevant anymore. We just want"
+  },
+  {
+    "time": "00:21:34",
+    "text": "really as relevant anymore. We just want to include the most recent 10. That's"
+  },
+  {
+    "time": "00:21:34",
+    "text": "to include the most recent 10. That's"
+  },
+  {
+    "time": "00:21:35",
+    "text": "to include the most recent 10. That's how we can do that. So that's another"
+  },
+  {
+    "time": "00:21:35",
+    "text": "how we can do that. So that's another"
+  },
+  {
+    "time": "00:21:37",
+    "text": "how we can do that. So that's another really popular strategy. Also, tools"
+  },
+  {
+    "time": "00:21:37",
+    "text": "really popular strategy. Also, tools"
+  },
+  {
+    "time": "00:21:39",
+    "text": "really popular strategy. Also, tools like N8N have that as an option baked"
+  },
+  {
+    "time": "00:21:39",
+    "text": "like N8N have that as an option baked"
+  },
+  {
+    "time": "00:21:41",
+    "text": "like N8N have that as an option baked directly into their short-term memory"
+  },
+  {
+    "time": "00:21:41",
+    "text": "directly into their short-term memory"
+  },
+  {
+    "time": "00:21:44",
+    "text": "directly into their short-term memory nodes. So very useful to know. And then"
+  },
+  {
+    "time": "00:21:44",
+    "text": "nodes. So very useful to know. And then"
+  },
+  {
+    "time": "00:21:46",
+    "text": "nodes. So very useful to know. And then also when you start to have so much"
+  },
+  {
+    "time": "00:21:46",
+    "text": "also when you start to have so much"
+  },
+  {
+    "time": "00:21:48",
+    "text": "also when you start to have so much information about a single user that you"
+  },
+  {
+    "time": "00:21:48",
+    "text": "information about a single user that you"
+  },
+  {
+    "time": "00:21:51",
+    "text": "information about a single user that you don't want to include it in the"
+  },
+  {
+    "time": "00:21:51",
+    "text": "don't want to include it in the"
+  },
+  {
+    "time": "00:21:53",
+    "text": "don't want to include it in the short-term memory, that's when you can"
+  },
+  {
+    "time": "00:21:53",
+    "text": "short-term memory, that's when you can"
+  },
+  {
+    "time": "00:21:55",
+    "text": "short-term memory, that's when you can look at long-term memory. But also,"
+  },
+  {
+    "time": "00:21:55",
+    "text": "look at long-term memory. But also,"
+  },
+  {
+    "time": "00:21:57",
+    "text": "look at long-term memory. But also, don't build it from scratch. Again,"
+  },
+  {
+    "time": "00:21:57",
+    "text": "don't build it from scratch. Again,"
+  },
+  {
+    "time": "00:21:59",
+    "text": "don't build it from scratch. Again, don't over complicate it. There are"
+  },
+  {
+    "time": "00:21:59",
+    "text": "don't over complicate it. There are"
+  },
+  {
+    "time": "00:22:01",
+    "text": "don't over complicate it. There are tools that you can use just like with"
+  },
+  {
+    "time": "00:22:01",
+    "text": "tools that you can use just like with"
+  },
+  {
+    "time": "00:22:03",
+    "text": "tools that you can use just like with security to help us with long-term"
+  },
+  {
+    "time": "00:22:03",
+    "text": "security to help us with long-term"
+  },
+  {
+    "time": "00:22:06",
+    "text": "security to help us with long-term memory, and mem is one of those. Mem is"
+  },
+  {
+    "time": "00:22:06",
+    "text": "memory, and mem is one of those. Mem is"
+  },
+  {
+    "time": "00:22:08",
+    "text": "memory, and mem is one of those. Mem is a completely open-source long-term"
+  },
+  {
+    "time": "00:22:08",
+    "text": "a completely open-source long-term"
+  },
+  {
+    "time": "00:22:10",
+    "text": "a completely open-source long-term memory agentic framework. And so I'll"
+  },
+  {
+    "time": "00:22:10",
+    "text": "memory agentic framework. And so I'll"
+  },
+  {
+    "time": "00:22:12",
+    "text": "memory agentic framework. And so I'll show the GitHub in a second here, but"
+  },
+  {
+    "time": "00:22:12",
+    "text": "show the GitHub in a second here, but"
+  },
+  {
+    "time": "00:22:14",
+    "text": "show the GitHub in a second here, but yeah, when you have so much information"
+  },
+  {
+    "time": "00:22:14",
+    "text": "yeah, when you have so much information"
+  },
+  {
+    "time": "00:22:16",
+    "text": "yeah, when you have so much information about a user that you can't just include"
+  },
+  {
+    "time": "00:22:16",
+    "text": "about a user that you can't just include"
+  },
+  {
+    "time": "00:22:19",
+    "text": "about a user that you can't just include it all in context, you need some way to"
+  },
+  {
+    "time": "00:22:19",
+    "text": "it all in context, you need some way to"
+  },
+  {
+    "time": "00:22:21",
+    "text": "it all in context, you need some way to search through a longer term set of"
+  },
+  {
+    "time": "00:22:21",
+    "text": "search through a longer term set of"
+  },
+  {
+    "time": "00:22:23",
+    "text": "search through a longer term set of memories and bring only the ones in that"
+  },
+  {
+    "time": "00:22:23",
+    "text": "memories and bring only the ones in that"
+  },
+  {
+    "time": "00:22:24",
+    "text": "memories and bring only the ones in that are relevant to the current"
+  },
+  {
+    "time": "00:22:24",
+    "text": "are relevant to the current"
+  },
+  {
+    "time": "00:22:25",
+    "text": "are relevant to the current conversation, which actually does use"
+  },
+  {
+    "time": "00:22:25",
+    "text": "conversation, which actually does use"
+  },
+  {
+    "time": "00:22:27",
+    "text": "conversation, which actually does use rag under the hood, by the way. So"
+  },
+  {
+    "time": "00:22:27",
+    "text": "rag under the hood, by the way. So"
+  },
+  {
+    "time": "00:22:29",
+    "text": "rag under the hood, by the way. So again, another example why it's such an"
+  },
+  {
+    "time": "00:22:29",
+    "text": "again, another example why it's such an"
+  },
+  {
+    "time": "00:22:32",
+    "text": "again, another example why it's such an important capability. Um, but yeah,"
+  },
+  {
+    "time": "00:22:32",
+    "text": "important capability. Um, but yeah,"
+  },
+  {
+    "time": "00:22:34",
+    "text": "important capability. Um, but yeah, basically you're able to pull core"
+  },
+  {
+    "time": "00:22:34",
+    "text": "basically you're able to pull core"
+  },
+  {
+    "time": "00:22:36",
+    "text": "basically you're able to pull core memories from conversations and store it"
+  },
+  {
+    "time": "00:22:36",
+    "text": "memories from conversations and store it"
+  },
+  {
+    "time": "00:22:37",
+    "text": "memories from conversations and store it to be searched later. That's what"
+  },
+  {
+    "time": "00:22:38",
+    "text": "to be searched later. That's what"
+  },
+  {
+    "time": "00:22:40",
+    "text": "to be searched later. That's what Memzero offers us. And it's so easy to"
+  },
+  {
+    "time": "00:22:40",
+    "text": "Memzero offers us. And it's so easy to"
+  },
+  {
+    "time": "00:22:42",
+    "text": "Memzero offers us. And it's so easy to include in our Python code to just like"
+  },
+  {
+    "time": "00:22:42",
+    "text": "include in our Python code to just like"
+  },
+  {
+    "time": "00:22:44",
+    "text": "include in our Python code to just like guardrails AI. I'll show you an example"
+  },
+  {
+    "time": "00:22:44",
+    "text": "guardrails AI. I'll show you an example"
+  },
+  {
+    "time": "00:22:46",
+    "text": "guardrails AI. I'll show you an example really quickly in their quick start. You"
+  },
+  {
+    "time": "00:22:46",
+    "text": "really quickly in their quick start. You"
+  },
+  {
+    "time": "00:22:48",
+    "text": "really quickly in their quick start. You install it as a Python package and then"
+  },
+  {
+    "time": "00:22:48",
+    "text": "install it as a Python package and then"
+  },
+  {
+    "time": "00:22:51",
+    "text": "install it as a Python package and then you basically have a function to search"
+  },
+  {
+    "time": "00:22:51",
+    "text": "you basically have a function to search"
+  },
+  {
+    "time": "00:22:53",
+    "text": "you basically have a function to search for memories like performing rag to find"
+  },
+  {
+    "time": "00:22:53",
+    "text": "for memories like performing rag to find"
+  },
+  {
+    "time": "00:22:55",
+    "text": "for memories like performing rag to find memories related to the latest message"
+  },
+  {
+    "time": "00:22:55",
+    "text": "memories related to the latest message"
+  },
+  {
+    "time": "00:22:57",
+    "text": "memories related to the latest message and then you have a function to add"
+  },
+  {
+    "time": "00:22:57",
+    "text": "and then you have a function to add"
+  },
+  {
+    "time": "00:22:59",
+    "text": "and then you have a function to add memories. And so it'll use a large"
+  },
+  {
+    "time": "00:22:59",
+    "text": "memories. And so it'll use a large"
+  },
+  {
+    "time": "00:23:01",
+    "text": "memories. And so it'll use a large language model to extract the key"
+  },
+  {
+    "time": "00:23:01",
+    "text": "language model to extract the key"
+  },
+  {
+    "time": "00:23:03",
+    "text": "language model to extract the key information to store to be retrieved"
+  },
+  {
+    "time": "00:23:03",
+    "text": "information to store to be retrieved"
+  },
+  {
+    "time": "00:23:05",
+    "text": "information to store to be retrieved later. And so this definitely solves the"
+  },
+  {
+    "time": "00:23:05",
+    "text": "later. And so this definitely solves the"
+  },
+  {
+    "time": "00:23:06",
+    "text": "later. And so this definitely solves the context problem because now you're able"
+  },
+  {
+    "time": "00:23:06",
+    "text": "context problem because now you're able"
+  },
+  {
+    "time": "00:23:09",
+    "text": "context problem because now you're able to basically have infinite memory for an"
+  },
+  {
+    "time": "00:23:09",
+    "text": "to basically have infinite memory for an"
+  },
+  {
+    "time": "00:23:10",
+    "text": "to basically have infinite memory for an agent, but you don't have to give it all"
+  },
+  {
+    "time": "00:23:10",
+    "text": "agent, but you don't have to give it all"
+  },
+  {
+    "time": "00:23:13",
+    "text": "agent, but you don't have to give it all to the LLM at once. It just retrieves"
+  },
+  {
+    "time": "00:23:13",
+    "text": "to the LLM at once. It just retrieves"
+  },
+  {
+    "time": "00:23:14",
+    "text": "to the LLM at once. It just retrieves things as needed. And of course, the"
+  },
+  {
+    "time": "00:23:14",
+    "text": "things as needed. And of course, the"
+  },
+  {
+    "time": "00:23:16",
+    "text": "things as needed. And of course, the last thing I want to hit on for context"
+  },
+  {
+    "time": "00:23:16",
+    "text": "last thing I want to hit on for context"
+  },
+  {
+    "time": "00:23:18",
+    "text": "last thing I want to hit on for context is what not to focus on when you're"
+  },
+  {
+    "time": "00:23:18",
+    "text": "is what not to focus on when you're"
+  },
+  {
+    "time": "00:23:21",
+    "text": "is what not to focus on when you're first building your agent. Do not worry"
+  },
+  {
+    "time": "00:23:21",
+    "text": "first building your agent. Do not worry"
+  },
+  {
+    "time": "00:23:23",
+    "text": "first building your agent. Do not worry about advanced memory compression"
+  },
+  {
+    "time": "00:23:23",
+    "text": "about advanced memory compression"
+  },
+  {
+    "time": "00:23:24",
+    "text": "about advanced memory compression techniques. There's a lot of cool things"
+  },
+  {
+    "time": "00:23:24",
+    "text": "techniques. There's a lot of cool things"
+  },
+  {
+    "time": "00:23:26",
+    "text": "techniques. There's a lot of cool things that Enthropic especially has been doing"
+  },
+  {
+    "time": "00:23:26",
+    "text": "that Enthropic especially has been doing"
+  },
+  {
+    "time": "00:23:27",
+    "text": "that Enthropic especially has been doing research on, but like don't worry about"
+  },
+  {
+    "time": "00:23:27",
+    "text": "research on, but like don't worry about"
+  },
+  {
+    "time": "00:23:29",
+    "text": "research on, but like don't worry about that. Don't worry about specialized sub"
+  },
+  {
+    "time": "00:23:29",
+    "text": "that. Don't worry about specialized sub"
+  },
+  {
+    "time": "00:23:31",
+    "text": "that. Don't worry about specialized sub agents. These are both solutions to"
+  },
+  {
+    "time": "00:23:31",
+    "text": "agents. These are both solutions to"
+  },
+  {
+    "time": "00:23:34",
+    "text": "agents. These are both solutions to handle the memory problem when it starts"
+  },
+  {
+    "time": "00:23:34",
+    "text": "handle the memory problem when it starts"
+  },
+  {
+    "time": "00:23:36",
+    "text": "handle the memory problem when it starts to get really really technical. But"
+  },
+  {
+    "time": "00:23:36",
+    "text": "to get really really technical. But"
+  },
+  {
+    "time": "00:23:38",
+    "text": "to get really really technical. But right now, just start simple and you can"
+  },
+  {
+    "time": "00:23:38",
+    "text": "right now, just start simple and you can"
+  },
+  {
+    "time": "00:23:40",
+    "text": "right now, just start simple and you can always optimize things as you're"
+  },
+  {
+    "time": "00:23:40",
+    "text": "always optimize things as you're"
+  },
+  {
+    "time": "00:23:42",
+    "text": "always optimize things as you're starting to expand your agent and go to"
+  },
+  {
+    "time": "00:23:42",
+    "text": "starting to expand your agent and go to"
+  },
+  {
+    "time": "00:23:44",
+    "text": "starting to expand your agent and go to production and you hit some limits. But"
+  },
+  {
+    "time": "00:23:44",
+    "text": "production and you hit some limits. But"
+  },
+  {
+    "time": "00:23:46",
+    "text": "production and you hit some limits. But right now, focusing on these things up"
+  },
+  {
+    "time": "00:23:46",
+    "text": "right now, focusing on these things up"
+  },
+  {
+    "time": "00:23:49",
+    "text": "right now, focusing on these things up front is all you need to go the first"
+  },
+  {
+    "time": "00:23:49",
+    "text": "front is all you need to go the first"
+  },
+  {
+    "time": "00:23:51",
+    "text": "front is all you need to go the first 90% probably even beyond depending on"
+  },
+  {
+    "time": "00:23:51",
+    "text": "90% probably even beyond depending on"
+  },
+  {
+    "time": "00:23:54",
+    "text": "90% probably even beyond depending on how simple your agents are. And context"
+  },
+  {
+    "time": "00:23:54",
+    "text": "how simple your agents are. And context"
+  },
+  {
+    "time": "00:23:56",
+    "text": "how simple your agents are. And context was the last of the four core components"
+  },
+  {
+    "time": "00:23:56",
+    "text": "was the last of the four core components"
+  },
+  {
+    "time": "00:23:57",
+    "text": "was the last of the four core components of agents. So, we've covered the core"
+  },
+  {
+    "time": "00:23:57",
+    "text": "of agents. So, we've covered the core"
+  },
+  {
+    "time": "00:24:00",
+    "text": "of agents. So, we've covered the core four and security. Now, I want to talk a"
+  },
+  {
+    "time": "00:24:00",
+    "text": "four and security. Now, I want to talk a"
+  },
+  {
+    "time": "00:24:02",
+    "text": "four and security. Now, I want to talk a bit about observability and deployment."
+  },
+  {
+    "time": "00:24:02",
+    "text": "bit about observability and deployment."
+  },
+  {
+    "time": "00:24:04",
+    "text": "bit about observability and deployment. Getting our agent ready for production."
+  },
+  {
+    "time": "00:24:04",
+    "text": "Getting our agent ready for production."
+  },
+  {
+    "time": "00:24:06",
+    "text": "Getting our agent ready for production. And I will say that security,"
+  },
+  {
+    "time": "00:24:06",
+    "text": "And I will say that security,"
+  },
+  {
+    "time": "00:24:08",
+    "text": "And I will say that security, observability, and deployment definitely"
+  },
+  {
+    "time": "00:24:08",
+    "text": "observability, and deployment definitely"
+  },
+  {
+    "time": "00:24:10",
+    "text": "observability, and deployment definitely go a lot more into the last 10% of"
+  },
+  {
+    "time": "00:24:10",
+    "text": "go a lot more into the last 10% of"
+  },
+  {
+    "time": "00:24:11",
+    "text": "go a lot more into the last 10% of building an agent. But I want to touch"
+  },
+  {
+    "time": "00:24:11",
+    "text": "building an agent. But I want to touch"
+  },
+  {
+    "time": "00:24:13",
+    "text": "building an agent. But I want to touch on them here because there are some ways"
+  },
+  {
+    "time": "00:24:13",
+    "text": "on them here because there are some ways"
+  },
+  {
+    "time": "00:24:16",
+    "text": "on them here because there are some ways to design stuff up front very simply,"
+  },
+  {
+    "time": "00:24:16",
+    "text": "to design stuff up front very simply,"
+  },
+  {
+    "time": "00:24:18",
+    "text": "to design stuff up front very simply, especially with observability. I want to"
+  },
+  {
+    "time": "00:24:18",
+    "text": "especially with observability. I want to"
+  },
+  {
+    "time": "00:24:21",
+    "text": "especially with observability. I want to introduce you to Langfuse right now. And"
+  },
+  {
+    "time": "00:24:21",
+    "text": "introduce you to Langfuse right now. And"
+  },
+  {
+    "time": "00:24:22",
+    "text": "introduce you to Langfuse right now. And I covered this on my channel already."
+  },
+  {
+    "time": "00:24:22",
+    "text": "I covered this on my channel already."
+  },
+  {
+    "time": "00:24:24",
+    "text": "I covered this on my channel already. Link to a video right here on Langfuse"
+  },
+  {
+    "time": "00:24:24",
+    "text": "Link to a video right here on Langfuse"
+  },
+  {
+    "time": "00:24:25",
+    "text": "Link to a video right here on Langfuse if you want to dive more into"
+  },
+  {
+    "time": "00:24:25",
+    "text": "if you want to dive more into"
+  },
+  {
+    "time": "00:24:27",
+    "text": "if you want to dive more into observability. But we can set up the"
+  },
+  {
+    "time": "00:24:27",
+    "text": "observability. But we can set up the"
+  },
+  {
+    "time": "00:24:29",
+    "text": "observability. But we can set up the ability to watch for the actions that"
+  },
+  {
+    "time": "00:24:29",
+    "text": "ability to watch for the actions that"
+  },
+  {
+    "time": "00:24:31",
+    "text": "ability to watch for the actions that our agent is taking, view them in a"
+  },
+  {
+    "time": "00:24:31",
+    "text": "our agent is taking, view them in a"
+  },
+  {
+    "time": "00:24:34",
+    "text": "our agent is taking, view them in a dashboard. We can do things like testing"
+  },
+  {
+    "time": "00:24:34",
+    "text": "dashboard. We can do things like testing"
+  },
+  {
+    "time": "00:24:35",
+    "text": "dashboard. We can do things like testing different prompts for our agents. It is"
+  },
+  {
+    "time": "00:24:35",
+    "text": "different prompts for our agents. It is"
+  },
+  {
+    "time": "00:24:38",
+    "text": "different prompts for our agents. It is a beautiful platform and it's actually"
+  },
+  {
+    "time": "00:24:38",
+    "text": "a beautiful platform and it's actually"
+  },
+  {
+    "time": "00:24:41",
+    "text": "a beautiful platform and it's actually super easy to incorporate into our code."
+  },
+  {
+    "time": "00:24:41",
+    "text": "super easy to incorporate into our code."
+  },
+  {
+    "time": "00:24:43",
+    "text": "super easy to incorporate into our code. And so I did this very sneakily already"
+  },
+  {
+    "time": "00:24:43",
+    "text": "And so I did this very sneakily already"
+  },
+  {
+    "time": "00:24:45",
+    "text": "And so I did this very sneakily already when I built the agent with you, but I"
+  },
+  {
+    "time": "00:24:45",
+    "text": "when I built the agent with you, but I"
+  },
+  {
+    "time": "00:24:47",
+    "text": "when I built the agent with you, but I have this function here called setup"
+  },
+  {
+    "time": "00:24:47",
+    "text": "have this function here called setup"
+  },
+  {
+    "time": "00:24:50",
+    "text": "have this function here called setup observability. And all it does is it"
+  },
+  {
+    "time": "00:24:50",
+    "text": "observability. And all it does is it"
+  },
+  {
+    "time": "00:24:53",
+    "text": "observability. And all it does is it initializes langfuse based on some"
+  },
+  {
+    "time": "00:24:53",
+    "text": "initializes langfuse based on some"
+  },
+  {
+    "time": "00:24:54",
+    "text": "initializes langfuse based on some environment variables that I have set"
+  },
+  {
+    "time": "00:24:54",
+    "text": "environment variables that I have set"
+  },
+  {
+    "time": "00:24:56",
+    "text": "environment variables that I have set here. And I cover all that in my YouTube"
+  },
+  {
+    "time": "00:24:56",
+    "text": "here. And I cover all that in my YouTube"
+  },
+  {
+    "time": "00:24:58",
+    "text": "here. And I cover all that in my YouTube video on Langfuse if you're curious. But"
+  },
+  {
+    "time": "00:24:58",
+    "text": "video on Langfuse if you're curious. But"
+  },
+  {
+    "time": "00:24:59",
+    "text": "video on Langfuse if you're curious. But you basically just connect to your"
+  },
+  {
+    "time": "00:24:59",
+    "text": "you basically just connect to your"
+  },
+  {
+    "time": "00:25:02",
+    "text": "you basically just connect to your Langfuse instance. And then after you"
+  },
+  {
+    "time": "00:25:02",
+    "text": "Langfuse instance. And then after you"
+  },
+  {
+    "time": "00:25:04",
+    "text": "Langfuse instance. And then after you set up the connection and instrument"
+  },
+  {
+    "time": "00:25:04",
+    "text": "set up the connection and instrument"
+  },
+  {
+    "time": "00:25:07",
+    "text": "set up the connection and instrument your agent, your Pantic AI agent for"
+  },
+  {
+    "time": "00:25:07",
+    "text": "your agent, your Pantic AI agent for"
+  },
+  {
+    "time": "00:25:09",
+    "text": "your agent, your Pantic AI agent for observability, that is all you have to"
+  },
+  {
+    "time": "00:25:09",
+    "text": "observability, that is all you have to"
+  },
+  {
+    "time": "00:25:11",
+    "text": "observability, that is all you have to do. Literally no more code in here for"
+  },
+  {
+    "time": "00:25:12",
+    "text": "do. Literally no more code in here for"
+  },
+  {
+    "time": "00:25:13",
+    "text": "do. Literally no more code in here for Langfuse. And it's going to watch for"
+  },
+  {
+    "time": "00:25:13",
+    "text": "Langfuse. And it's going to watch for"
+  },
+  {
+    "time": "00:25:15",
+    "text": "Langfuse. And it's going to watch for all of our agent executions, even"
+  },
+  {
+    "time": "00:25:15",
+    "text": "all of our agent executions, even"
+  },
+  {
+    "time": "00:25:17",
+    "text": "all of our agent executions, even getting a sense of the tool calls that"
+  },
+  {
+    "time": "00:25:17",
+    "text": "getting a sense of the tool calls that"
+  },
+  {
+    "time": "00:25:19",
+    "text": "getting a sense of the tool calls that it's making under the hood. So take a"
+  },
+  {
+    "time": "00:25:19",
+    "text": "it's making under the hood. So take a"
+  },
+  {
+    "time": "00:25:20",
+    "text": "it's making under the hood. So take a look at this. So I'm in the Langfuse"
+  },
+  {
+    "time": "00:25:20",
+    "text": "look at this. So I'm in the Langfuse"
+  },
+  {
+    "time": "00:25:23",
+    "text": "look at this. So I'm in the Langfuse dashboard now where I can view that"
+  },
+  {
+    "time": "00:25:23",
+    "text": "dashboard now where I can view that"
+  },
+  {
+    "time": "00:25:24",
+    "text": "dashboard now where I can view that execution that we had from our test"
+  },
+  {
+    "time": "00:25:24",
+    "text": "execution that we had from our test"
+  },
+  {
+    "time": "00:25:26",
+    "text": "execution that we had from our test earlier where it used the add numbers"
+  },
+  {
+    "time": "00:25:26",
+    "text": "earlier where it used the add numbers"
+  },
+  {
+    "time": "00:25:29",
+    "text": "earlier where it used the add numbers function and we have all of this very"
+  },
+  {
+    "time": "00:25:29",
+    "text": "function and we have all of this very"
+  },
+  {
+    "time": "00:25:31",
+    "text": "function and we have all of this very rich data around the number of tokens"
+  },
+  {
+    "time": "00:25:31",
+    "text": "rich data around the number of tokens"
+  },
+  {
+    "time": "00:25:33",
+    "text": "rich data around the number of tokens that it used the latency. We can view"
+  },
+  {
+    "time": "00:25:33",
+    "text": "that it used the latency. We can view"
+  },
+  {
+    "time": "00:25:35",
+    "text": "that it used the latency. We can view the tools and also look at the different"
+  },
+  {
+    "time": "00:25:35",
+    "text": "the tools and also look at the different"
+  },
+  {
+    "time": "00:25:37",
+    "text": "the tools and also look at the different parameters that we have like the tool"
+  },
+  {
+    "time": "00:25:37",
+    "text": "parameters that we have like the tool"
+  },
+  {
+    "time": "00:25:39",
+    "text": "parameters that we have like the tool arguments like for the numbers to add."
+  },
+  {
+    "time": "00:25:39",
+    "text": "arguments like for the numbers to add."
+  },
+  {
+    "time": "00:25:41",
+    "text": "arguments like for the numbers to add. We can view the system prompt that was"
+  },
+  {
+    "time": "00:25:41",
+    "text": "We can view the system prompt that was"
+  },
+  {
+    "time": "00:25:43",
+    "text": "We can view the system prompt that was leveraged here based on that template we"
+  },
+  {
+    "time": "00:25:44",
+    "text": "leveraged here based on that template we"
+  },
+  {
+    "time": "00:25:45",
+    "text": "leveraged here based on that template we have defined. We have all this"
+  },
+  {
+    "time": "00:25:45",
+    "text": "have defined. We have all this"
+  },
+  {
+    "time": "00:25:47",
+    "text": "have defined. We have all this observability that also really helps for"
+  },
+  {
+    "time": "00:25:47",
+    "text": "observability that also really helps for"
+  },
+  {
+    "time": "00:25:49",
+    "text": "observability that also really helps for monitoring our agents in production when"
+  },
+  {
+    "time": "00:25:49",
+    "text": "monitoring our agents in production when"
+  },
+  {
+    "time": "00:25:51",
+    "text": "monitoring our agents in production when other users are leveraging the agent. So"
+  },
+  {
+    "time": "00:25:51",
+    "text": "other users are leveraging the agent. So"
+  },
+  {
+    "time": "00:25:53",
+    "text": "other users are leveraging the agent. So we can't just like look at our chat and"
+  },
+  {
+    "time": "00:25:53",
+    "text": "we can't just like look at our chat and"
+  },
+  {
+    "time": "00:25:55",
+    "text": "we can't just like look at our chat and see how the agent is performing. And"
+  },
+  {
+    "time": "00:25:55",
+    "text": "see how the agent is performing. And"
+  },
+  {
+    "time": "00:25:56",
+    "text": "see how the agent is performing. And there's so many other things within"
+  },
+  {
+    "time": "00:25:56",
+    "text": "there's so many other things within"
+  },
+  {
+    "time": "00:25:58",
+    "text": "there's so many other things within langu as well that I don't want to get"
+  },
+  {
+    "time": "00:25:58",
+    "text": "langu as well that I don't want to get"
+  },
+  {
+    "time": "00:26:01",
+    "text": "langu as well that I don't want to get into right now like eval for your agent."
+  },
+  {
+    "time": "00:26:01",
+    "text": "into right now like eval for your agent."
+  },
+  {
+    "time": "00:26:03",
+    "text": "into right now like eval for your agent. It is a totally open- source platform"
+  },
+  {
+    "time": "00:26:03",
+    "text": "It is a totally open- source platform"
+  },
+  {
+    "time": "00:26:06",
+    "text": "It is a totally open- source platform just like me zero and guardrails AI. So"
+  },
+  {
+    "time": "00:26:06",
+    "text": "just like me zero and guardrails AI. So"
+  },
+  {
+    "time": "00:26:08",
+    "text": "just like me zero and guardrails AI. So again focusing on open source a lot in"
+  },
+  {
+    "time": "00:26:08",
+    "text": "again focusing on open source a lot in"
+  },
+  {
+    "time": "00:26:10",
+    "text": "again focusing on open source a lot in this video. There are other solutions"
+  },
+  {
+    "time": "00:26:10",
+    "text": "this video. There are other solutions"
+  },
+  {
+    "time": "00:26:12",
+    "text": "this video. There are other solutions for this kind of observability like"
+  },
+  {
+    "time": "00:26:12",
+    "text": "for this kind of observability like"
+  },
+  {
+    "time": "00:26:14",
+    "text": "for this kind of observability like Heliconee and Langmith for example, but"
+  },
+  {
+    "time": "00:26:14",
+    "text": "Heliconee and Langmith for example, but"
+  },
+  {
+    "time": "00:26:16",
+    "text": "Heliconee and Langmith for example, but Langfuse is the one that I love using."
+  },
+  {
+    "time": "00:26:16",
+    "text": "Langfuse is the one that I love using."
+  },
+  {
+    "time": "00:26:18",
+    "text": "Langfuse is the one that I love using. And I know I didn't cover it too much in"
+  },
+  {
+    "time": "00:26:18",
+    "text": "And I know I didn't cover it too much in"
+  },
+  {
+    "time": "00:26:19",
+    "text": "And I know I didn't cover it too much in the code, but it really is as simple as"
+  },
+  {
+    "time": "00:26:19",
+    "text": "the code, but it really is as simple as"
+  },
+  {
+    "time": "00:26:21",
+    "text": "the code, but it really is as simple as what I showed you. And so you can use"
+  },
+  {
+    "time": "00:26:21",
+    "text": "what I showed you. And so you can use"
+  },
+  {
+    "time": "00:26:23",
+    "text": "what I showed you. And so you can use the repository that I have linked below"
+  },
+  {
+    "time": "00:26:23",
+    "text": "the repository that I have linked below"
+  },
+  {
+    "time": "00:26:25",
+    "text": "the repository that I have linked below as your template to like start an agent"
+  },
+  {
+    "time": "00:26:25",
+    "text": "as your template to like start an agent"
+  },
+  {
+    "time": "00:26:27",
+    "text": "as your template to like start an agent with observability baked right in if"
+  },
+  {
+    "time": "00:26:27",
+    "text": "with observability baked right in if"
+  },
+  {
+    "time": "00:26:29",
+    "text": "with observability baked right in if you're interested. And then the very"
+  },
+  {
+    "time": "00:26:29",
+    "text": "you're interested. And then the very"
+  },
+  {
+    "time": "00:26:30",
+    "text": "you're interested. And then the very last component that I want to at least"
+  },
+  {
+    "time": "00:26:30",
+    "text": "last component that I want to at least"
+  },
+  {
+    "time": "00:26:33",
+    "text": "last component that I want to at least touch on right now is how you can"
+  },
+  {
+    "time": "00:26:33",
+    "text": "touch on right now is how you can"
+  },
+  {
+    "time": "00:26:35",
+    "text": "touch on right now is how you can configure your agent upfront to work"
+  },
+  {
+    "time": "00:26:35",
+    "text": "configure your agent upfront to work"
+  },
+  {
+    "time": "00:26:37",
+    "text": "configure your agent upfront to work well for deployment when you're ready to"
+  },
+  {
+    "time": "00:26:37",
+    "text": "well for deployment when you're ready to"
+  },
+  {
+    "time": "00:26:39",
+    "text": "well for deployment when you're ready to take your agent into production. Now,"
+  },
+  {
+    "time": "00:26:39",
+    "text": "take your agent into production. Now,"
+  },
+  {
+    "time": "00:26:41",
+    "text": "take your agent into production. Now, obviously that's going to be part of the"
+  },
+  {
+    "time": "00:26:41",
+    "text": "obviously that's going to be part of the"
+  },
+  {
+    "time": "00:26:42",
+    "text": "obviously that's going to be part of the last 10%. Not something I'm going to"
+  },
+  {
+    "time": "00:26:42",
+    "text": "last 10%. Not something I'm going to"
+  },
+  {
+    "time": "00:26:44",
+    "text": "last 10%. Not something I'm going to talk about a lot in this video, but the"
+  },
+  {
+    "time": "00:26:44",
+    "text": "talk about a lot in this video, but the"
+  },
+  {
+    "time": "00:26:46",
+    "text": "talk about a lot in this video, but the one big golden nugget that I want to"
+  },
+  {
+    "time": "00:26:46",
+    "text": "one big golden nugget that I want to"
+  },
+  {
+    "time": "00:26:49",
+    "text": "one big golden nugget that I want to give you here is you should always think"
+  },
+  {
+    "time": "00:26:49",
+    "text": "give you here is you should always think"
+  },
+  {
+    "time": "00:26:51",
+    "text": "give you here is you should always think about how you can build your AI agent to"
+  },
+  {
+    "time": "00:26:51",
+    "text": "about how you can build your AI agent to"
+  },
+  {
+    "time": "00:26:55",
+    "text": "about how you can build your AI agent to run as a Docker container. Docker is my"
+  },
+  {
+    "time": "00:26:55",
+    "text": "run as a Docker container. Docker is my"
+  },
+  {
+    "time": "00:26:59",
+    "text": "run as a Docker container. Docker is my method for packaging up any application"
+  },
+  {
+    "time": "00:26:59",
+    "text": "method for packaging up any application"
+  },
+  {
+    "time": "00:27:00",
+    "text": "method for packaging up any application especially AI agents that I want to"
+  },
+  {
+    "time": "00:27:00",
+    "text": "especially AI agents that I want to"
+  },
+  {
+    "time": "00:27:03",
+    "text": "especially AI agents that I want to deploy to the cloud and also I will say"
+  },
+  {
+    "time": "00:27:03",
+    "text": "deploy to the cloud and also I will say"
+  },
+  {
+    "time": "00:27:06",
+    "text": "deploy to the cloud and also I will say that AI coding assistants are very good"
+  },
+  {
+    "time": "00:27:06",
+    "text": "that AI coding assistants are very good"
+  },
+  {
+    "time": "00:27:08",
+    "text": "that AI coding assistants are very good at setting up docker configuration like"
+  },
+  {
+    "time": "00:27:08",
+    "text": "at setting up docker configuration like"
+  },
+  {
+    "time": "00:27:10",
+    "text": "at setting up docker configuration like your docker files and docker compose u"
+  },
+  {
+    "time": "00:27:10",
+    "text": "your docker files and docker compose u"
+  },
+  {
+    "time": "00:27:13",
+    "text": "your docker files and docker compose u files. Yeah. So leverage those and then"
+  },
+  {
+    "time": "00:27:13",
+    "text": "files. Yeah. So leverage those and then"
+  },
+  {
+    "time": "00:27:14",
+    "text": "files. Yeah. So leverage those and then you can add you know like a simple"
+  },
+  {
+    "time": "00:27:14",
+    "text": "you can add you know like a simple"
+  },
+  {
+    "time": "00:27:16",
+    "text": "you can add you know like a simple streamllet application with Python or"
+  },
+  {
+    "time": "00:27:16",
+    "text": "streamllet application with Python or"
+  },
+  {
+    "time": "00:27:18",
+    "text": "streamllet application with Python or build a react front end to create a chat"
+  },
+  {
+    "time": "00:27:18",
+    "text": "build a react front end to create a chat"
+  },
+  {
+    "time": "00:27:20",
+    "text": "build a react front end to create a chat interface for your agent if it is a"
+  },
+  {
+    "time": "00:27:20",
+    "text": "interface for your agent if it is a"
+  },
+  {
+    "time": "00:27:22",
+    "text": "interface for your agent if it is a conversationally driven agent or"
+  },
+  {
+    "time": "00:27:22",
+    "text": "conversationally driven agent or"
+  },
+  {
+    "time": "00:27:24",
+    "text": "conversationally driven agent or otherwise what I like to do for more you"
+  },
+  {
+    "time": "00:27:24",
+    "text": "otherwise what I like to do for more you"
+  },
+  {
+    "time": "00:27:26",
+    "text": "otherwise what I like to do for more you know like background agents that run on"
+  },
+  {
+    "time": "00:27:26",
+    "text": "know like background agents that run on"
+  },
+  {
+    "time": "00:27:27",
+    "text": "know like background agents that run on a data set periodically I'll run it just"
+  },
+  {
+    "time": "00:27:27",
+    "text": "a data set periodically I'll run it just"
+  },
+  {
+    "time": "00:27:29",
+    "text": "a data set periodically I'll run it just as a serverless function so it's kind of"
+  },
+  {
+    "time": "00:27:29",
+    "text": "as a serverless function so it's kind of"
+  },
+  {
+    "time": "00:27:31",
+    "text": "as a serverless function so it's kind of like background agent run it as"
+  },
+  {
+    "time": "00:27:31",
+    "text": "like background agent run it as"
+  },
+  {
+    "time": "00:27:33",
+    "text": "like background agent run it as serverless in a docker container"
+  },
+  {
+    "time": "00:27:33",
+    "text": "serverless in a docker container"
+  },
+  {
+    "time": "00:27:35",
+    "text": "serverless in a docker container conversational agent you run it in a"
+  },
+  {
+    "time": "00:27:35",
+    "text": "conversational agent you run it in a"
+  },
+  {
+    "time": "00:27:37",
+    "text": "conversational agent you run it in a docker container also with a front-end"
+  },
+  {
+    "time": "00:27:37",
+    "text": "docker container also with a front-end"
+  },
+  {
+    "time": "00:27:39",
+    "text": "docker container also with a front-end application that's pretty much like the"
+  },
+  {
+    "time": "00:27:39",
+    "text": "application that's pretty much like the"
+  },
+  {
+    "time": "00:27:41",
+    "text": "application that's pretty much like the two tracks I have for any agent that I"
+  },
+  {
+    "time": "00:27:41",
+    "text": "two tracks I have for any agent that I"
+  },
+  {
+    "time": "00:27:43",
+    "text": "two tracks I have for any agent that I want to deploy. So yeah, just think like"
+  },
+  {
+    "time": "00:27:43",
+    "text": "want to deploy. So yeah, just think like"
+  },
+  {
+    "time": "00:27:45",
+    "text": "want to deploy. So yeah, just think like Docker native. Have that in your mind"
+  },
+  {
+    "time": "00:27:45",
+    "text": "Docker native. Have that in your mind"
+  },
+  {
+    "time": "00:27:46",
+    "text": "Docker native. Have that in your mind from the get-go when you're building"
+  },
+  {
+    "time": "00:27:46",
+    "text": "from the get-go when you're building"
+  },
+  {
+    "time": "00:27:48",
+    "text": "from the get-go when you're building your agent. What you don't want to focus"
+  },
+  {
+    "time": "00:27:48",
+    "text": "your agent. What you don't want to focus"
+  },
+  {
+    "time": "00:27:51",
+    "text": "your agent. What you don't want to focus on for observability and deployment and"
+  },
+  {
+    "time": "00:27:51",
+    "text": "on for observability and deployment and"
+  },
+  {
+    "time": "00:27:52",
+    "text": "on for observability and deployment and everything production ready is"
+  },
+  {
+    "time": "00:27:52",
+    "text": "everything production ready is"
+  },
+  {
+    "time": "00:27:55",
+    "text": "everything production ready is Kubernetes orchestration, extensive LM"
+  },
+  {
+    "time": "00:27:55",
+    "text": "Kubernetes orchestration, extensive LM"
+  },
+  {
+    "time": "00:27:57",
+    "text": "Kubernetes orchestration, extensive LM evals or prompt AB testing. Like some of"
+  },
+  {
+    "time": "00:27:57",
+    "text": "evals or prompt AB testing. Like some of"
+  },
+  {
+    "time": "00:27:58",
+    "text": "evals or prompt AB testing. Like some of the things we have in Langfuse that are"
+  },
+  {
+    "time": "00:27:58",
+    "text": "the things we have in Langfuse that are"
+  },
+  {
+    "time": "00:28:00",
+    "text": "the things we have in Langfuse that are very powerful when you want to super"
+  },
+  {
+    "time": "00:28:00",
+    "text": "very powerful when you want to super"
+  },
+  {
+    "time": "00:28:02",
+    "text": "very powerful when you want to super refine your agent tools and system"
+  },
+  {
+    "time": "00:28:02",
+    "text": "refine your agent tools and system"
+  },
+  {
+    "time": "00:28:03",
+    "text": "refine your agent tools and system prompt and everything like don't even"
+  },
+  {
+    "time": "00:28:03",
+    "text": "prompt and everything like don't even"
+  },
+  {
+    "time": "00:28:05",
+    "text": "prompt and everything like don't even worry about that yet. You can definitely"
+  },
+  {
+    "time": "00:28:05",
+    "text": "worry about that yet. You can definitely"
+  },
+  {
+    "time": "00:28:07",
+    "text": "worry about that yet. You can definitely get there and like I said core part of"
+  },
+  {
+    "time": "00:28:07",
+    "text": "get there and like I said core part of"
+  },
+  {
+    "time": "00:28:10",
+    "text": "get there and like I said core part of the last 10%. But right now also don't"
+  },
+  {
+    "time": "00:28:10",
+    "text": "the last 10%. But right now also don't"
+  },
+  {
+    "time": "00:28:12",
+    "text": "the last 10%. But right now also don't even think about like the infrastructure"
+  },
+  {
+    "time": "00:28:12",
+    "text": "even think about like the infrastructure"
+  },
+  {
+    "time": "00:28:13",
+    "text": "even think about like the infrastructure that much because unless you're running"
+  },
+  {
+    "time": "00:28:13",
+    "text": "that much because unless you're running"
+  },
+  {
+    "time": "00:28:15",
+    "text": "that much because unless you're running local large language models, you don't"
+  },
+  {
+    "time": "00:28:15",
+    "text": "local large language models, you don't"
+  },
+  {
+    "time": "00:28:16",
+    "text": "local large language models, you don't really need heavy infrastructure for"
+  },
+  {
+    "time": "00:28:16",
+    "text": "really need heavy infrastructure for"
+  },
+  {
+    "time": "00:28:19",
+    "text": "really need heavy infrastructure for your agents at all. Like obviously it"
+  },
+  {
+    "time": "00:28:19",
+    "text": "your agents at all. Like obviously it"
+  },
+  {
+    "time": "00:28:20",
+    "text": "your agents at all. Like obviously it depends on the amount of usage of your"
+  },
+  {
+    "time": "00:28:20",
+    "text": "depends on the amount of usage of your"
+  },
+  {
+    "time": "00:28:23",
+    "text": "depends on the amount of usage of your agent. But for most use cases, just like"
+  },
+  {
+    "time": "00:28:23",
+    "text": "agent. But for most use cases, just like"
+  },
+  {
+    "time": "00:28:25",
+    "text": "agent. But for most use cases, just like a couple of vCPUs and a few gigabytes of"
+  },
+  {
+    "time": "00:28:25",
+    "text": "a couple of vCPUs and a few gigabytes of"
+  },
+  {
+    "time": "00:28:28",
+    "text": "a couple of vCPUs and a few gigabytes of RAM is all you need to run an AI agent"
+  },
+  {
+    "time": "00:28:28",
+    "text": "RAM is all you need to run an AI agent"
+  },
+  {
+    "time": "00:28:30",
+    "text": "RAM is all you need to run an AI agent even if you have a front-end application"
+  },
+  {
+    "time": "00:28:30",
+    "text": "even if you have a front-end application"
+  },
+  {
+    "time": "00:28:33",
+    "text": "even if you have a front-end application as well. very very lightweight as long"
+  },
+  {
+    "time": "00:28:33",
+    "text": "as well. very very lightweight as long"
+  },
+  {
+    "time": "00:28:36",
+    "text": "as well. very very lightweight as long as you are calling a third party for the"
+  },
+  {
+    "time": "00:28:36",
+    "text": "as you are calling a third party for the"
+  },
+  {
+    "time": "00:28:38",
+    "text": "as you are calling a third party for the large language model like open router or"
+  },
+  {
+    "time": "00:28:38",
+    "text": "large language model like open router or"
+  },
+  {
+    "time": "00:28:40",
+    "text": "large language model like open router or you know anthropic or gemini whatever"
+  },
+  {
+    "time": "00:28:40",
+    "text": "you know anthropic or gemini whatever"
+  },
+  {
+    "time": "00:28:42",
+    "text": "you know anthropic or gemini whatever that might be. So there you go that's"
+  },
+  {
+    "time": "00:28:42",
+    "text": "that might be. So there you go that's"
+  },
+  {
+    "time": "00:28:43",
+    "text": "that might be. So there you go that's everything that I have for you today"
+  },
+  {
+    "time": "00:28:43",
+    "text": "everything that I have for you today"
+  },
+  {
+    "time": "00:28:46",
+    "text": "everything that I have for you today helping you just keep it simple which"
+  },
+  {
+    "time": "00:28:46",
+    "text": "helping you just keep it simple which"
+  },
+  {
+    "time": "00:28:47",
+    "text": "helping you just keep it simple which will not just help you build better"
+  },
+  {
+    "time": "00:28:47",
+    "text": "will not just help you build better"
+  },
+  {
+    "time": "00:28:49",
+    "text": "will not just help you build better agents even when you have to scale"
+  },
+  {
+    "time": "00:28:49",
+    "text": "agents even when you have to scale"
+  },
+  {
+    "time": "00:28:51",
+    "text": "agents even when you have to scale complexity but it'll also just help you"
+  },
+  {
+    "time": "00:28:51",
+    "text": "complexity but it'll also just help you"
+  },
+  {
+    "time": "00:28:53",
+    "text": "complexity but it'll also just help you get over that hurdle of motivation"
+  },
+  {
+    "time": "00:28:53",
+    "text": "get over that hurdle of motivation"
+  },
+  {
+    "time": "00:28:55",
+    "text": "get over that hurdle of motivation because I'm giving you permission to not"
+  },
+  {
+    "time": "00:28:55",
+    "text": "because I'm giving you permission to not"
+  },
+  {
+    "time": "00:28:57",
+    "text": "because I'm giving you permission to not be perfect at first. you just start with"
+  },
+  {
+    "time": "00:28:57",
+    "text": "be perfect at first. you just start with"
+  },
+  {
+    "time": "00:28:59",
+    "text": "be perfect at first. you just start with the foundations like I showed you and"
+  },
+  {
+    "time": "00:28:59",
+    "text": "the foundations like I showed you and"
+  },
+  {
+    "time": "00:29:01",
+    "text": "the foundations like I showed you and then build on top and iterate as you"
+  },
+  {
+    "time": "00:29:01",
+    "text": "then build on top and iterate as you"
+  },
+  {
+    "time": "00:29:03",
+    "text": "then build on top and iterate as you need. And so I hope that inspires you to"
+  },
+  {
+    "time": "00:29:03",
+    "text": "need. And so I hope that inspires you to"
+  },
+  {
+    "time": "00:29:05",
+    "text": "need. And so I hope that inspires you to just go and build your next AI agent"
+  },
+  {
+    "time": "00:29:05",
+    "text": "just go and build your next AI agent"
+  },
+  {
+    "time": "00:29:07",
+    "text": "just go and build your next AI agent right now because it can be super simple"
+  },
+  {
+    "time": "00:29:07",
+    "text": "right now because it can be super simple"
+  },
+  {
+    "time": "00:29:09",
+    "text": "right now because it can be super simple to start. And so with that, if you"
+  },
+  {
+    "time": "00:29:10",
+    "text": "to start. And so with that, if you"
+  },
+  {
+    "time": "00:29:11",
+    "text": "to start. And so with that, if you appreciate this video and you're looking"
+  },
+  {
+    "time": "00:29:11",
+    "text": "appreciate this video and you're looking"
+  },
+  {
+    "time": "00:29:13",
+    "text": "appreciate this video and you're looking forward to more things on building AI"
+  },
+  {
+    "time": "00:29:13",
+    "text": "forward to more things on building AI"
+  },
+  {
+    "time": "00:29:15",
+    "text": "forward to more things on building AI agents and using AI coding assistants,"
+  },
+  {
+    "time": "00:29:15",
+    "text": "agents and using AI coding assistants,"
+  },
+  {
+    "time": "00:29:17",
+    "text": "agents and using AI coding assistants, I'd really appreciate a like and a"
+  },
+  {
+    "time": "00:29:17",
+    "text": "I'd really appreciate a like and a"
+  },
+  {
+    "time": "00:29:18",
+    "text": "I'd really appreciate a like and a subscribe. And with that, I will see you"
+  },
+  {
+    "time": "00:29:18",
+    "text": "subscribe. And with that, I will see you"
+  },
+  {
+    "time": "00:29:18",
+    "text": "subscribe. And with that, I will see you in the next"
+  }
+]

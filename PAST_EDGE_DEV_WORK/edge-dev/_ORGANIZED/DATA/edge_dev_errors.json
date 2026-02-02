@@ -1,0 +1,57 @@
+[
+  {
+    "error_id": "ERR_20251125_225707_4394998688",
+    "timestamp": "2025-11-25T22:57:07.966546",
+    "severity": "ErrorSeverity.CRITICAL",
+    "category": "ErrorCategory.PARAMETER_VALIDATION",
+    "message": "Invalid parameter: price_min cannot be negative",
+    "traceback_str": "Traceback (most recent call last):\n  File \"/Users/michaeldurante/ai dev/ce-hub/edge-dev/comprehensive_system_test.py\", line 141, in test_error_handler\n    raise ValueError(\"Invalid parameter: price_min cannot be negative\")\nValueError: Invalid parameter: price_min cannot be negative\n",
+    "context": {
+      "scanner_name": "test_scanner",
+      "scanner_type": "backside_b",
+      "function_name": "test_function"
+    },
+    "scanner_name": "test_scanner",
+    "function_name": "unknown",
+    "line_number": null,
+    "recovery_action": null,
+    "resolved": false
+  },
+  {
+    "error_id": "ERR_20251125_225707_4692746048",
+    "timestamp": "2025-11-25T22:57:07.971321",
+    "severity": "ErrorSeverity.MEDIUM",
+    "category": "ErrorCategory.FILE_SYSTEM_ERROR",
+    "message": "API connection failed",
+    "traceback_str": "Traceback (most recent call last):\n  File \"/Users/michaeldurante/ai dev/ce-hub/edge-dev/comprehensive_system_test.py\", line 152, in test_error_handler\n    raise ConnectionError(\"API connection failed\")\nConnectionError: API connection failed\n",
+    "context": {
+      "scanner_name": "test_scanner",
+      "category": "api_error"
+    },
+    "scanner_name": "test_scanner",
+    "function_name": "unknown",
+    "line_number": null,
+    "recovery_action": null,
+    "resolved": false
+  },
+  {
+    "error_id": "ERR_20251125_225707_4394998688",
+    "timestamp": "2025-11-25T22:57:07.975164",
+    "severity": "ErrorSeverity.CRITICAL",
+    "category": "ErrorCategory.CALCULATION_ERROR",
+    "message": "Division by zero",
+    "traceback_str": "Traceback (most recent call last):\n  File \"/Users/michaeldurante/ai dev/ce-hub/edge-dev/bulletproof_error_handler.py\", line 389, in wrapper\n    return func(*args, **kwargs)\n  File \"/Users/michaeldurante/ai dev/ce-hub/edge-dev/comprehensive_system_test.py\", line 221, in failing_function\n    raise ZeroDivisionError(\"Division by zero\")\nZeroDivisionError: Division by zero\n",
+    "context": {
+      "function_name": "failing_function",
+      "module": "__main__",
+      "args": "()",
+      "kwargs": "{}",
+      "error_category": "calculation_error"
+    },
+    "scanner_name": null,
+    "function_name": "unknown",
+    "line_number": null,
+    "recovery_action": null,
+    "resolved": false
+  }
+]

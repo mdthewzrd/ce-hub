@@ -1,0 +1,772 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - main [ref=e3]:
+    - generic [ref=e6]:
+      - generic [ref=e8]:
+        - generic [ref=e10]:
+          - generic [ref=e11] [cursor=pointer]:
+            - img [ref=e12]
+            - generic [ref=e14]: Edge.dev Gap Up Scanner
+          - generic [ref=e15] [cursor=pointer]:
+            - img [ref=e16]
+            - generic [ref=e19]: Market Scanner
+          - generic [ref=e20] [cursor=pointer]:
+            - img [ref=e21]
+            - generic [ref=e23]: Real-time Analysis
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - heading "PROJECTS" [level=2] [ref=e26]
+            - button "Create New Project" [ref=e27]:
+              - img [ref=e28]
+          - paragraph [ref=e30]: 2 projects • Organize scans and chats by strategy
+        - generic [ref=e32]:
+          - generic [ref=e35] [cursor=pointer]:
+            - button [ref=e36]
+            - generic [ref=e38]:
+              - generic [ref=e39]:
+                - heading "Backside Momentum Strategy" [level=3] [ref=e40]
+                - button [ref=e42]:
+                  - img [ref=e43]
+              - generic [ref=e47]:
+                - generic [ref=e48]:
+                  - img [ref=e49]
+                  - text: 0 scans
+                - generic [ref=e51]:
+                  - img [ref=e52]
+                  - text: 0 chats
+              - generic [ref=e55]:
+                - img [ref=e56]
+                - text: Backside Momentum
+          - generic [ref=e61] [cursor=pointer]:
+            - button [ref=e62]
+            - generic [ref=e64]:
+              - generic [ref=e65]:
+                - heading "LC Pattern Analysis" [level=3] [ref=e66]
+                - button [ref=e68]:
+                  - img [ref=e69]
+              - generic [ref=e73]:
+                - generic [ref=e74]:
+                  - img [ref=e75]
+                  - text: 0 scans
+                - generic [ref=e77]:
+                  - img [ref=e78]
+                  - text: 0 chats
+              - generic [ref=e81]:
+                - img [ref=e82]
+                - text: LC Patterns
+        - generic [ref=e87]:
+          - generic [ref=e88]: "Total Projects: 2"
+          - generic [ref=e89]: "Total Chats: 0"
+      - main [ref=e91]:
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - generic [ref=e96]:
+              - img [ref=e97]
+              - generic [ref=e105]: Edge.dev
+            - generic [ref=e106]: Gap Up Scanner
+          - generic [ref=e107]:
+            - button "Unified" [ref=e108]:
+              - img [ref=e110]
+              - text: Unified
+            - button "R Renata• Live" [ref=e114]:
+              - generic [ref=e116]: R
+              - text: Renata•
+              - generic [ref=e118]: Live
+        - generic [ref=e120]:
+          - generic [ref=e122]:
+            - generic [ref=e123]:
+              - generic [ref=e124]: Scan Date Range
+              - generic [ref=e125]:
+                - textbox "End Date" [ref=e126]: 2025-11-18
+                - textbox "Start Date" [ref=e127]: 2025-08-20
+            - generic [ref=e128]:
+              - generic [ref=e129]: Scanner Type
+              - combobox [ref=e130]:
+                - option "Gap Scanner D1" [selected]
+                - option "LC D2"
+                - option "Half A+"
+            - generic [ref=e131]:
+              - button "Start Scan" [ref=e132]:
+                - img [ref=e133]
+                - text: Start Scan
+              - button "AI Builder" [ref=e135]:
+                - img [ref=e136]
+                - text: AI Builder
+              - button "Saved" [ref=e144]:
+                - img [ref=e145]
+                - text: Saved
+          - generic [ref=e147]:
+            - generic [ref=e149]:
+              - img [ref=e151]
+              - generic [ref=e155]:
+                - generic [ref=e156]: "8"
+                - generic [ref=e157]: Total Results
+            - generic [ref=e159]:
+              - img [ref=e161]
+              - generic [ref=e164]:
+                - generic [ref=e165]: "8"
+                - generic [ref=e166]: High Gaps (>5%)
+            - generic [ref=e168]:
+              - img [ref=e170]
+              - generic [ref=e172]:
+                - generic [ref=e173]: "5"
+                - generic [ref=e174]: High Volume
+            - generic [ref=e176]:
+              - img [ref=e178]
+              - generic [ref=e181]:
+                - generic [ref=e182]: 11/18/2025
+                - generic [ref=e183]: Last Scan
+          - generic [ref=e184]:
+            - generic [ref=e185]:
+              - generic [ref=e186]:
+                - generic [ref=e188]:
+                  - heading "Scan Results" [level=2] [ref=e189]
+                  - generic [ref=e190]:
+                    - button "Save Scan" [ref=e191]:
+                      - img [ref=e192]
+                      - text: Save Scan
+                    - generic [ref=e196]: 8 results
+                - generic [ref=e198]:
+                  - 'button "BYND +53.50% Price: $53.50 Volume: 11.5M Target: $58.85 Date: 2024-10-25 Vol Ratio: 11.5x High Gap" [ref=e199]':
+                    - generic [ref=e200]:
+                      - generic [ref=e201]:
+                        - generic [ref=e202]:
+                          - generic [ref=e203]: BYND
+                          - generic [ref=e204]: +53.50%
+                        - generic [ref=e205]:
+                          - generic [ref=e206]:
+                            - text: "Price:"
+                            - generic [ref=e207]: $53.50
+                          - generic [ref=e208]: "Volume: 11.5M"
+                          - generic [ref=e209]:
+                            - text: "Target:"
+                            - generic [ref=e210]: $58.85
+                          - generic [ref=e211]: "Date: 2024-10-25"
+                      - generic [ref=e212]:
+                        - generic [ref=e213]: "Vol Ratio: 11.5x"
+                        - generic [ref=e214]: High Gap
+                  - 'button "WOLF +699.70% Price: $699.70 Volume: 1.5M Target: $769.67 Date: 2024-10-24 Vol Ratio: 1.5x High Gap" [ref=e215]':
+                    - generic [ref=e216]:
+                      - generic [ref=e217]:
+                        - generic [ref=e218]:
+                          - generic [ref=e219]: WOLF
+                          - generic [ref=e220]: +699.70%
+                        - generic [ref=e221]:
+                          - generic [ref=e222]:
+                            - text: "Price:"
+                            - generic [ref=e223]: $699.70
+                          - generic [ref=e224]: "Volume: 1.5M"
+                          - generic [ref=e225]:
+                            - text: "Target:"
+                            - generic [ref=e226]: $769.67
+                          - generic [ref=e227]: "Date: 2024-10-24"
+                      - generic [ref=e228]:
+                        - generic [ref=e229]: "Vol Ratio: 1.5x"
+                        - generic [ref=e230]: High Gap
+                  - 'button "HOUR +288.80% Price: $288.80 Volume: 378.2M Target: $317.68 Date: 2024-10-23 Vol Ratio: 378.2x High Gap" [ref=e231]':
+                    - generic [ref=e232]:
+                      - generic [ref=e233]:
+                        - generic [ref=e234]:
+                          - generic [ref=e235]: HOUR
+                          - generic [ref=e236]: +288.80%
+                        - generic [ref=e237]:
+                          - generic [ref=e238]:
+                            - text: "Price:"
+                            - generic [ref=e239]: $288.80
+                          - generic [ref=e240]: "Volume: 378.2M"
+                          - generic [ref=e241]:
+                            - text: "Target:"
+                            - generic [ref=e242]: $317.68
+                          - generic [ref=e243]: "Date: 2024-10-23"
+                      - generic [ref=e244]:
+                        - generic [ref=e245]: "Vol Ratio: 378.2x"
+                        - generic [ref=e246]: High Gap
+                  - 'button "THAR +199.50% Price: $199.50 Volume: 587.3M Target: $219.45 Date: 2024-10-22 Vol Ratio: 587.3x High Gap" [ref=e247]':
+                    - generic [ref=e248]:
+                      - generic [ref=e249]:
+                        - generic [ref=e250]:
+                          - generic [ref=e251]: THAR
+                          - generic [ref=e252]: +199.50%
+                        - generic [ref=e253]:
+                          - generic [ref=e254]:
+                            - text: "Price:"
+                            - generic [ref=e255]: $199.50
+                          - generic [ref=e256]: "Volume: 587.3M"
+                          - generic [ref=e257]:
+                            - text: "Target:"
+                            - generic [ref=e258]: $219.45
+                          - generic [ref=e259]: "Date: 2024-10-22"
+                      - generic [ref=e260]:
+                        - generic [ref=e261]: "Vol Ratio: 587.3x"
+                        - generic [ref=e262]: High Gap
+                  - 'button "ATNF +382.10% Price: $382.10 Volume: 1.2M Target: $420.31 Date: 2024-10-21 Vol Ratio: 1.2x High Gap" [ref=e263]':
+                    - generic [ref=e264]:
+                      - generic [ref=e265]:
+                        - generic [ref=e266]:
+                          - generic [ref=e267]: ATNF
+                          - generic [ref=e268]: +382.10%
+                        - generic [ref=e269]:
+                          - generic [ref=e270]:
+                            - text: "Price:"
+                            - generic [ref=e271]: $382.10
+                          - generic [ref=e272]: "Volume: 1.2M"
+                          - generic [ref=e273]:
+                            - text: "Target:"
+                            - generic [ref=e274]: $420.31
+                          - generic [ref=e275]: "Date: 2024-10-21"
+                      - generic [ref=e276]:
+                        - generic [ref=e277]: "Vol Ratio: 1.2x"
+                        - generic [ref=e278]: High Gap
+                  - 'button "ETHZ +392.10% Price: $392.10 Volume: 1.2M Target: $431.31 Date: 2024-10-18 Vol Ratio: 1.2x High Gap" [ref=e279]':
+                    - generic [ref=e280]:
+                      - generic [ref=e281]:
+                        - generic [ref=e282]:
+                          - generic [ref=e283]: ETHZ
+                          - generic [ref=e284]: +392.10%
+                        - generic [ref=e285]:
+                          - generic [ref=e286]:
+                            - text: "Price:"
+                            - generic [ref=e287]: $392.10
+                          - generic [ref=e288]: "Volume: 1.2M"
+                          - generic [ref=e289]:
+                            - text: "Target:"
+                            - generic [ref=e290]: $431.31
+                          - generic [ref=e291]: "Date: 2024-10-18"
+                      - generic [ref=e292]:
+                        - generic [ref=e293]: "Vol Ratio: 1.2x"
+                        - generic [ref=e294]: High Gap
+                  - 'button "MCVT +178.80% Price: $178.80 Volume: 223.8M Target: $196.68 Date: 2024-10-17 Vol Ratio: 223.8x High Gap" [ref=e295]':
+                    - generic [ref=e296]:
+                      - generic [ref=e297]:
+                        - generic [ref=e298]:
+                          - generic [ref=e299]: MCVT
+                          - generic [ref=e300]: +178.80%
+                        - generic [ref=e301]:
+                          - generic [ref=e302]:
+                            - text: "Price:"
+                            - generic [ref=e303]: $178.80
+                          - generic [ref=e304]: "Volume: 223.8M"
+                          - generic [ref=e305]:
+                            - text: "Target:"
+                            - generic [ref=e306]: $196.68
+                          - generic [ref=e307]: "Date: 2024-10-17"
+                      - generic [ref=e308]:
+                        - generic [ref=e309]: "Vol Ratio: 223.8x"
+                        - generic [ref=e310]: High Gap
+                  - 'button "SUTG +178.80% Price: $178.80 Volume: 223.8M Target: $196.68 Date: 2024-10-16 Vol Ratio: 223.8x High Gap" [ref=e311]':
+                    - generic [ref=e312]:
+                      - generic [ref=e313]:
+                        - generic [ref=e314]:
+                          - generic [ref=e315]: SUTG
+                          - generic [ref=e316]: +178.80%
+                        - generic [ref=e317]:
+                          - generic [ref=e318]:
+                            - text: "Price:"
+                            - generic [ref=e319]: $178.80
+                          - generic [ref=e320]: "Volume: 223.8M"
+                          - generic [ref=e321]:
+                            - text: "Target:"
+                            - generic [ref=e322]: $196.68
+                          - generic [ref=e323]: "Date: 2024-10-16"
+                      - generic [ref=e324]:
+                        - generic [ref=e325]: "Vol Ratio: 223.8x"
+                        - generic [ref=e326]: High Gap
+              - generic [ref=e327]:
+                - heading "Statistics" [level=2] [ref=e329]
+                - generic [ref=e331]:
+                  - generic [ref=e332]:
+                    - generic [ref=e333]: "Total Results:"
+                    - generic [ref=e334]: "8"
+                  - generic [ref=e335]:
+                    - generic [ref=e336]: "Avg Gap %:"
+                    - generic [ref=e337]: 296.66%
+                  - generic [ref=e338]:
+                    - generic [ref=e339]: "High Gap (>10%):"
+                    - generic [ref=e340]: "8"
+                  - generic [ref=e341]:
+                    - generic [ref=e342]: "Med Gap (5-10%):"
+                    - generic [ref=e343]: "0"
+            - generic [ref=e344]:
+              - generic [ref=e346]:
+                - heading "Chart Analysis" [level=2] [ref=e347]
+                - generic [ref=e348]:
+                  - generic [ref=e350]:
+                    - button "Table view" [pressed] [ref=e351]: ⚏Table
+                    - button "Chart view" [ref=e352]: 📈Chart
+                  - generic [ref=e353]: SPY • 5min
+              - generic [ref=e355]:
+                - generic [ref=e357]:
+                  - generic [ref=e358]:
+                    - generic [ref=e360]:
+                      - button "DAY" [ref=e361]
+                      - button "HOUR" [ref=e362]
+                      - button "15MIN" [ref=e363]
+                      - button "5MIN" [ref=e364]
+                    - generic [ref=e365]:
+                      - text: 5-minute candlestick chart (2 days) - 1min base data, 4am-8pm coverage
+                      - generic [ref=e366]: 🌐 GLOBAL Template • 🕐 Extended hours (4am-8pm) • 🛡️ Holiday filtered
+                  - generic [ref=e370]:
+                    - img:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: 00:00Jan 03
+                            - generic:
+                              - generic: 08:00Jan 03
+                            - generic:
+                              - generic: 16:00Jan 03
+                            - generic:
+                              - generic: 00:00Jan 04
+                            - generic:
+                              - generic: 08:00Jan 04
+                            - generic:
+                              - generic: 16:00Jan 04
+                            - generic:
+                              - generic: 00:00Jan 05
+                            - generic:
+                              - generic: 08:00Jan 05
+                            - generic:
+                              - generic: 16:00Jan 05
+                            - generic:
+                              - generic: 00:00Jan 06
+                            - generic:
+                              - generic: 08:00Jan 06
+                            - generic:
+                              - generic: 16:00Jan 06
+                            - generic:
+                              - generic: 00:00Jan 07
+                            - generic:
+                              - generic: 08:00Jan 07
+                            - generic:
+                              - generic: 16:00Jan 07
+                            - generic:
+                              - generic: 00:00Jan 10
+                            - generic:
+                              - generic: 08:00Jan 10
+                            - generic:
+                              - generic: 16:00Jan 10
+                            - generic:
+                              - generic: 00:00Jan 11
+                            - generic:
+                              - generic: 08:00Jan 11
+                            - generic:
+                              - generic: 16:00Jan 11
+                            - generic:
+                              - generic: 00:00Jan 12
+                            - generic:
+                              - generic: 08:00Jan 12
+                            - generic:
+                              - generic: 16:00Jan 12
+                            - generic:
+                              - generic: 00:00Jan 13
+                            - generic:
+                              - generic: 08:00Jan 13
+                            - generic:
+                              - generic: 16:00Jan 13
+                            - generic:
+                              - generic: 00:00Jan 14
+                            - generic:
+                              - generic: 08:00Jan 14
+                            - generic:
+                              - generic: 16:00Jan 14
+                            - generic:
+                              - generic: 00:00Jan 17
+                            - generic:
+                              - generic: 08:00Jan 17
+                            - generic:
+                              - generic: 16:00Jan 17
+                            - generic:
+                              - generic: 00:00Jan 18
+                            - generic:
+                              - generic: 08:00Jan 18
+                            - generic:
+                              - generic: 16:00Jan 18
+                            - generic:
+                              - generic: 00:00Jan 19
+                            - generic:
+                              - generic: 08:00Jan 19
+                            - generic:
+                              - generic: 16:00Jan 19
+                            - generic:
+                              - generic: 00:00Jan 20
+                            - generic:
+                              - generic: 08:00Jan 20
+                            - generic:
+                              - generic: 16:00Jan 20
+                            - generic:
+                              - generic: 00:00Jan 21
+                            - generic:
+                              - generic: 08:00Jan 21
+                            - generic:
+                              - generic: 16:00Jan 21
+                            - generic:
+                              - generic: 00:00Jan 24
+                            - generic:
+                              - generic: 08:00Jan 24
+                            - generic:
+                              - generic: 16:00Jan 24
+                            - generic:
+                              - generic: 00:00Jan 25
+                            - generic:
+                              - generic: 08:00Jan 25
+                            - generic:
+                              - generic: 16:00Jan 25
+                            - generic:
+                              - generic: 00:00Jan 26
+                            - generic:
+                              - generic: 08:00Jan 26
+                            - generic:
+                              - generic: 16:00Jan 26
+                            - generic:
+                              - generic: 00:00Jan 27
+                            - generic:
+                              - generic: 08:00Jan 27
+                            - generic:
+                              - generic: 16:00Jan 27
+                            - generic:
+                              - generic: 00:00Jan 28
+                            - generic:
+                              - generic: 08:00Jan 28
+                            - generic:
+                              - generic: 16:00Jan 28
+                            - generic:
+                              - generic: 00:00Jan 31
+                            - generic:
+                              - generic: 08:00Jan 31
+                            - generic:
+                              - generic: 16:00Jan 31
+                            - generic:
+                              - generic: 00:00Feb 01
+                            - generic:
+                              - generic: 08:00Feb 01
+                            - generic:
+                              - generic: 16:00Feb 01
+                            - generic:
+                              - generic: 00:00Feb 02
+                            - generic:
+                              - generic: 08:00Feb 02
+                            - generic:
+                              - generic: 16:00Feb 02
+                            - generic:
+                              - generic: 00:00Feb 03
+                            - generic:
+                              - generic: 08:00Feb 03
+                            - generic:
+                              - generic: 16:00Feb 03
+                            - generic:
+                              - generic: 00:00Feb 04
+                            - generic:
+                              - generic: 08:00Feb 04
+                            - generic:
+                              - generic: 16:00Feb 04
+                            - generic:
+                              - generic: 00:00Feb 07
+                            - generic:
+                              - generic: 08:00Feb 07
+                            - generic:
+                              - generic: 16:00Feb 07
+                            - generic:
+                              - generic: 00:00Feb 08
+                            - generic:
+                              - generic: 08:00Feb 08
+                            - generic:
+                              - generic: 16:00Feb 08
+                            - generic:
+                              - generic: 00:00Feb 09
+                            - generic:
+                              - generic: 08:00Feb 09
+                            - generic:
+                              - generic: 16:00Feb 09
+                            - generic:
+                              - generic: 00:00Feb 10
+                            - generic:
+                              - generic: 08:00Feb 10
+                            - generic:
+                              - generic: 16:00Feb 10
+                            - generic:
+                              - generic: 00:00Feb 11
+                            - generic:
+                              - generic: 08:00Feb 11
+                            - generic:
+                              - generic: 16:00Feb 11
+                            - generic:
+                              - generic: 00:00Feb 14
+                            - generic:
+                              - generic: 08:00Feb 14
+                            - generic:
+                              - generic: 16:00Feb 14
+                            - generic:
+                              - generic: 00:00Feb 15
+                            - generic:
+                              - generic: 08:00Feb 15
+                            - generic:
+                              - generic: 16:00Feb 15
+                            - generic:
+                              - generic: 00:00Feb 16
+                            - generic:
+                              - generic: 08:00Feb 16
+                            - generic:
+                              - generic: 16:00Feb 16
+                            - generic:
+                              - generic: 00:00Feb 17
+                            - generic:
+                              - generic: 08:00Feb 17
+                            - generic:
+                              - generic: 16:00Feb 17
+                            - generic:
+                              - generic: 00:00Feb 18
+                            - generic:
+                              - generic: 08:00Feb 18
+                            - generic:
+                              - generic: 16:00Feb 18
+                            - generic:
+                              - generic: 00:00Feb 21
+                            - generic:
+                              - generic: 08:00Feb 21
+                            - generic:
+                              - generic: 16:00Feb 21
+                            - generic:
+                              - generic: 00:00Feb 22
+                            - generic:
+                              - generic: 08:00Feb 22
+                            - generic:
+                              - generic: 16:00Feb 22
+                            - generic:
+                              - generic: 00:00Feb 23
+                            - generic:
+                              - generic: 08:00Feb 23
+                            - generic:
+                              - generic: 16:00Feb 23
+                            - generic:
+                              - generic: 00:00Feb 24
+                            - generic:
+                              - generic: 08:00Feb 24
+                            - generic:
+                              - generic: 16:00Feb 24
+                            - generic:
+                              - generic: 00:00Feb 25
+                            - generic:
+                              - generic: 08:00Feb 25
+                            - generic:
+                              - generic: 16:00Feb 25
+                            - generic:
+                              - generic: 00:00Feb 28
+                            - generic:
+                              - generic: 08:00Feb 28
+                            - generic:
+                              - generic: 16:00Feb 28
+                            - generic:
+                              - generic: 00:00Feb 29
+                            - generic:
+                              - generic: 08:00Feb 29
+                            - generic:
+                              - generic: 16:00Feb 29
+                            - generic:
+                              - generic: 00:00Mar 01
+                            - generic:
+                              - generic: 08:00Mar 01
+                            - generic:
+                              - generic: 16:00Mar 01
+                            - generic:
+                              - generic: 00:00Mar 02
+                            - generic:
+                              - generic: 08:00Mar 02
+                            - generic:
+                              - generic: 16:00Mar 02
+                            - generic:
+                              - generic: 00:00Mar 03
+                            - generic:
+                              - generic: 08:00Mar 03
+                            - generic:
+                              - generic: 16:00Mar 03
+                            - generic:
+                              - generic: 00:00Mar 06
+                            - generic:
+                              - generic: 08:00Mar 06
+                            - generic:
+                              - generic: 16:00Mar 06
+                            - generic:
+                              - generic: 00:00Mar 07
+                            - generic:
+                              - generic: 08:00Mar 07
+                            - generic:
+                              - generic: 16:00Mar 07
+                            - generic:
+                              - generic: 00:00Mar 08
+                            - generic:
+                              - generic: 08:00Mar 08
+                            - generic:
+                              - generic: 16:00Mar 08
+                            - generic:
+                              - generic: 00:00Mar 09
+                            - generic:
+                              - generic: 08:00Mar 09
+                            - generic:
+                              - generic: 16:00Mar 09
+                            - generic:
+                              - generic: 00:00Mar 10
+                            - generic:
+                              - generic: 08:00Mar 10
+                            - generic:
+                              - generic: 16:00Mar 10
+                            - generic:
+                              - generic: 00:00Mar 13
+                            - generic:
+                              - generic: 08:00Mar 13
+                            - generic:
+                              - generic: 16:00Mar 13
+                            - generic:
+                              - generic: 00:00Mar 14
+                            - generic:
+                              - generic: 08:00Mar 14
+                            - generic:
+                              - generic: 16:00Mar 14
+                            - generic:
+                              - generic: 00:00Mar 15
+                            - generic:
+                              - generic: 08:00Mar 15
+                            - generic:
+                              - generic: 16:00Mar 15
+                            - generic:
+                              - generic: 00:00Mar 16
+                            - generic:
+                              - generic: 08:00Mar 16
+                            - generic:
+                              - generic: 16:00Mar 16
+                            - generic:
+                              - generic: 00:00Mar 17
+                            - generic:
+                              - generic: 08:00Mar 17
+                            - generic:
+                              - generic: 16:00Mar 17
+                            - generic:
+                              - generic: 00:00Mar 20
+                            - generic:
+                              - generic: 08:00Mar 20
+                            - generic:
+                              - generic: 16:00Mar 20
+                            - generic:
+                              - generic: 00:00Mar 21
+                            - generic:
+                              - generic: 08:00Mar 21
+                            - generic:
+                              - generic: 16:00Mar 21
+                            - generic:
+                              - generic: 00:00Mar 22
+                            - generic:
+                              - generic: 08:00Mar 22
+                            - generic:
+                              - generic: 16:00Mar 22
+                            - generic:
+                              - generic: 00:00Mar 23
+                            - generic:
+                              - generic: 08:00Mar 23
+                            - generic:
+                              - generic: 16:00Mar 23
+                            - generic:
+                              - generic: 00:00Mar 24
+                            - generic:
+                              - generic: 08:00Mar 24
+                            - generic:
+                              - generic: 16:00Mar 24
+                            - generic:
+                              - generic: 00:00Mar 27
+                          - generic:
+                            - generic:
+                              - generic: −1
+                            - generic:
+                              - generic: "0"
+                            - generic:
+                              - generic: "1"
+                            - generic:
+                              - generic: "2"
+                            - generic:
+                              - generic: "3"
+                            - generic:
+                              - generic: "4"
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: −1
+                            - generic:
+                              - generic: "0"
+                            - generic:
+                              - generic: "1"
+                            - generic:
+                              - generic: "2"
+                            - generic:
+                              - generic: "3"
+                            - generic:
+                              - generic: "4"
+                    - img:
+                      - generic:
+                        - generic:
+                          - generic: SPY - 5MIN Chart
+                    - toolbar [ref=e393]:
+                      - button "Download plot as a PNG" [ref=e395] [cursor=pointer]:
+                        - img [ref=e396]
+                      - generic [ref=e398]:
+                        - button "Zoom" [ref=e399] [cursor=pointer]:
+                          - img [ref=e400]
+                        - button "Pan" [ref=e402] [cursor=pointer]:
+                          - img [ref=e403]
+                      - generic [ref=e405]:
+                        - button "Zoom in" [ref=e406] [cursor=pointer]:
+                          - img [ref=e407]
+                        - button "Zoom out" [ref=e409] [cursor=pointer]:
+                          - img [ref=e410]
+                        - button "Autoscale" [ref=e412] [cursor=pointer]:
+                          - img [ref=e413]
+                        - button "Reset axes" [ref=e415] [cursor=pointer]:
+                          - img [ref=e416]
+                    - img
+                - generic [ref=e419]:
+                  - generic [ref=e420]: "Timeframe:"
+                  - combobox [ref=e421]:
+                    - option "1min"
+                    - option "5min" [selected]
+                    - option "15min"
+                    - option "1hour"
+                    - option "1day"
+        - generic [ref=e423]:
+          - generic [ref=e424]:
+            - generic [ref=e425]:
+              - img [ref=e427]
+              - generic [ref=e435]:
+                - heading "Renata AI" [level=3] [ref=e436]
+                - paragraph [ref=e437]: Trading Assistant
+            - combobox [ref=e439]:
+              - option "Renata" [selected]
+              - option "Analyst"
+              - option "Coach"
+              - option "Mentor"
+          - generic [ref=e441]:
+            - generic [ref=e443]:
+              - img [ref=e444]
+              - generic [ref=e447]: Renata Mode
+            - generic [ref=e448]:
+              - generic [ref=e450]: connected
+              - button "Reset chat (clears errors and starts fresh)" [ref=e451] [cursor=pointer]:
+                - img [ref=e452]
+          - generic [ref=e457]:
+            - generic [ref=e458]: Hello! I'm Renata, your AI scanning and backtesting specialist. I can help you optimize scanners, develop backtesting strategies, and analyze pattern performance. What scanning or backtesting challenge can I help you with today?
+            - generic [ref=e459]: 10:40 AM
+          - generic [ref=e461]:
+            - generic [ref=e462]:
+              - textbox "Ask me about trading, scanning, or market analysis..." [ref=e463]
+              - button [disabled] [ref=e464]:
+                - img [ref=e465]
+            - generic [ref=e468]:
+              - generic [ref=e469]: "Try: \"Help me optimize my scanner\" • \"Analyze this pattern\" • \"Risk management tips\""
+              - generic [ref=e470]: Press Enter to send • Shift + Enter for new line
+    - button "× bd5c9079-929b-4d55-bdc9-16d1c8181b71" [ref=e471]:
+      - generic "Hide Inspector" [ref=e472] [cursor=pointer]: ×
+      - img "bd5c9079-929b-4d55-bdc9-16d1c8181b71" [ref=e474]
+  - button "Open Next.js Dev Tools" [ref=e482] [cursor=pointer]:
+    - img [ref=e483]
+  - alert [ref=e486]
+  - img [ref=e487]
+```

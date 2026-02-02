@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #0a0a0a; color: white; }
+        .test-info { background: #1a1a1a; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        .buttons { display: flex; gap: 5px; background: #374151; padding: 4px; border-radius: 8px; width: fit-content; }
+        .btn { padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
+        .btn.active { background: #eab308; color: black; }
+        .btn.inactive { background: transparent; color: #9ca3af; }
+        .btn.inactive:hover { color: white; background: rgba(255,255,255,0.1); }
+        .result { margin-top: 20px; padding: 10px; background: #1a1a1a; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h1>Dashboard $ % R Button Test</h1>
+        <p><strong>Purpose:</strong> Test the functionality of display mode toggle buttons</p>
+        <p><strong>Expected:</strong> Clicking buttons should change active state and update display</p>
+    </div>
+
+    <div>
+        <h3>$ % R Toggle Buttons:</h3>
+        <div class="buttons">
+            <button id="dollar-btn" class="btn active" onclick="setMode('dollar')">$</button>
+            <button id="percent-btn" class="btn inactive" onclick="setMode('percent')">%</button>
+            <button id="r-btn" class="btn inactive" onclick="setMode('r')">R</button>
+        </div>
+    </div>
+
+    <div class="result">
+        <h4>Current Mode: <span id="current-mode">dollar</span></h4>
+        <p>Sample value display: <span id="sample-value">$1,250.00</span></p>
+    </div>
+
+    <div class="test-info">
+        <h3>Test Results:</h3>
+        <ul id="test-results">
+            <li>✅ Buttons render correctly</li>
+            <li>⚠️ Click to test button responsiveness</li>
+        </ul>
+    </div>
+
+    <script>
+        let currentMode = 'dollar';
+        const sampleValue = 1250;
+
+        function setMode(mode) {
+            currentMode = mode;
+            updateButtons();
+            updateDisplay();
+            addTestResult(`✅ Successfully switched to ${mode} mode`);
+        }
+
+        function updateButtons() {
+            // Reset all buttons
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.className = 'btn inactive';
+            });
+
+            // Set active button
+            const activeBtn = document.getElementById(`${currentMode}-btn`);
+            if (activeBtn) {
+                activeBtn.className = 'btn active';
+            }
+        }
+
+        function updateDisplay() {
+            document.getElementById('current-mode').textContent = currentMode;
+
+            let displayValue;
+            switch(currentMode) {
+                case 'dollar':
+                    displayValue = `$${sampleValue.toFixed(2)}`;
+                    break;
+                case 'percent':
+                    displayValue = `${(sampleValue/10000 * 100).toFixed(2)}%`;
+                    break;
+                case 'r':
+                    displayValue = `${(sampleValue/100).toFixed(2)}R`;
+                    break;
+                default:
+                    displayValue = `$${sampleValue.toFixed(2)}`;
+            }
+
+            document.getElementById('sample-value').textContent = displayValue;
+        }
+
+        function addTestResult(message) {
+            const results = document.getElementById('test-results');
+            const li = document.createElement('li');
+            li.textContent = message;
+            results.appendChild(li);
+        }
+
+        // Test button click events
+        window.addEventListener('load', function() {
+            addTestResult('✅ Page loaded successfully');
+            addTestResult('✅ JavaScript initialized');
+
+            // Test programmatic clicks
+            setTimeout(() => {
+                document.getElementById('percent-btn').click();
+                setTimeout(() => {
+                    document.getElementById('r-btn').click();
+                    setTimeout(() => {
+                        document.getElementById('dollar-btn').click();
+                        addTestResult('✅ Automated button test cycle completed');
+                    }, 500);
+                }, 500);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

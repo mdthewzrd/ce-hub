@@ -1,0 +1,83 @@
+====================================================================================================
+TOPIC-BASED ANALYSIS FOR BOOK CHAPTERS
+====================================================================================================
+
+KEY TERM FREQUENCY ANALYSIS:
+----------------------------------------------------------------------------------------------------
+  energy: 107 mentions
+  field: 85 mentions
+  unified: 24 mentions
+  consciousness: 19 mentions
+  frequency: 16 mentions
+  pattern: 12 mentions
+  vibration: 11 mentions
+  healing: 10 mentions
+  atom: 9 mentions
+  geometry: 5 mentions
+  tesla: 5 mentions
+  coil: 4 mentions
+  torus: 3 mentions
+  phi: 3 mentions
+  mathematics: 2 mentions
+  vortex: 1 mentions
+  golden: 1 mentions
+
+
+TEMPORAL DISTRIBUTION OF TOPICS:
+----------------------------------------------------------------------------------------------------
+
+Minutes 0-10:
+  Timestamp: 00:00:08
+  Dominant topics: energy(16), healing(1), pattern(1)
+
+Minutes 10-20:
+  Timestamp: 00:10:00
+  Dominant topics: energy(13), geometry(5), pattern(3)
+
+Minutes 20-30:
+  Timestamp: 00:20:00
+  Dominant topics: energy(8), pattern(4), healing(1)
+
+Minutes 30-40:
+  Timestamp: 00:30:14
+  Dominant topics: energy(8), healing(3), frequency(1)
+
+Minutes 40-50:
+  Timestamp: 00:40:00
+  Dominant topics: pattern(3), energy(1), frequency(1)
+
+Minutes 50-60:
+  Timestamp: 00:50:01
+  Dominant topics: frequency(6), energy(5), healing(3)
+
+Minutes 60-70:
+  Timestamp: 01:00:00
+  Dominant topics: energy(10), frequency(2), math(2)
+
+Minutes 70-80:
+  Timestamp: 01:10:00
+  Dominant topics: energy(27), tesla(5), frequency(3)
+
+Minutes 80-90:
+  Timestamp: 01:20:00
+  Dominant topics: energy(8), frequency(1)
+
+Minutes 90-100:
+  Timestamp: 01:30:02
+  Dominant topics: energy(2), healing(1)
+
+Minutes 100-110:
+  Timestamp: 01:40:02
+  Dominant topics: energy(2)
+
+Minutes 110-120:
+  Timestamp: 01:50:01
+  Dominant topics: energy(2), frequency(1), healing(1)
+
+Minutes 120-130:
+  Timestamp: 02:00:00
+  Dominant topics: energy(2)
+
+Minutes 130-140:
+  Timestamp: 02:10:00
+  Dominant topics: energy(3)

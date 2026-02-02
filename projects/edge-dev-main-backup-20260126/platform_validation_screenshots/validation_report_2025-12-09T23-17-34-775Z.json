@@ -1,0 +1,112 @@
+{
+  "timestamp": "2025-12-09T23:17:34.775Z",
+  "testUrl": "http://localhost:5667",
+  "summary": {
+    "total": 5,
+    "passed": 1,
+    "failed": 4,
+    "passRate": "20.00%"
+  },
+  "performance": {
+    "  Loading projects from API...": "2025-12-09T23:17:32.918Z",
+    "🔄 Loading saved scans for user: test_user_123": "2025-12-09T23:17:22.973Z",
+    "  Loading historical LC scan results and populating cache...": "2025-12-09T23:17:22.982Z",
+    "✅ Loaded 1 saved scans": "2025-12-09T23:17:22.994Z",
+    "  Loaded projects: []": "2025-12-09T23:17:32.931Z",
+    "pageLoadTime": 1495
+  },
+  "consoleErrors": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "timestamp": "2025-12-09T23:17:22.990Z"
+    },
+    {
+      "type": "error",
+      "text": "Access to fetch at 'http://localhost:5656/api/projects' from origin 'http://localhost:5667' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+      "timestamp": "2025-12-09T23:17:22.994Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "timestamp": "2025-12-09T23:17:22.994Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "timestamp": "2025-12-09T23:17:22.994Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "timestamp": "2025-12-09T23:17:22.995Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "timestamp": "2025-12-09T23:17:22.995Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "timestamp": "2025-12-09T23:17:30.342Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "timestamp": "2025-12-09T23:17:30.349Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "timestamp": "2025-12-09T23:17:30.352Z"
+    },
+    {
+      "type": "error",
+      "text": "Access to fetch at 'http://localhost:5656/api/projects' from origin 'http://localhost:5667' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+      "timestamp": "2025-12-09T23:17:32.924Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "timestamp": "2025-12-09T23:17:32.924Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "timestamp": "2025-12-09T23:17:32.926Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "timestamp": "2025-12-09T23:17:32.927Z"
+    }
+  ],
+  "errors": [
+    {
+      "test": "Basic Loading",
+      "error": "page.screenshot: options.quality is unsupported for the png screenshots",
+      "stack": "page.screenshot: options.quality is unsupported for the png screenshots\n    at takeScreenshot (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/comprehensive_platform_validation_test.js:42:14)\n    at testBasicLoading (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/comprehensive_platform_validation_test.js:129:11)\n    at async runComprehensiveTests (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/comprehensive_platform_validation_test.js:628:5)"
+    },
+    {
+      "test": "Chart Functionality",
+      "error": "page.screenshot: options.quality is unsupported for the png screenshots",
+      "stack": "page.screenshot: options.quality is unsupported for the png screenshots\n    at takeScreenshot (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/comprehensive_platform_validation_test.js:42:14)\n    at testChartFunctionality (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/comprehensive_platform_validation_test.js:218:11)\n    at async runComprehensiveTests (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/comprehensive_platform_validation_test.js:629:5)"
+    },
+    {
+      "test": "Scan Results",
+      "error": "page.screenshot: options.quality is unsupported for the png screenshots",
+      "stack": "page.screenshot: options.quality is unsupported for the png screenshots\n    at takeScreenshot (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/comprehensive_platform_validation_test.js:42:14)\n    at testScanResults (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/comprehensive_platform_validation_test.js:429:15)\n    at async runComprehensiveTests (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/comprehensive_platform_validation_test.js:631:5)"
+    },
+    {
+      "test": "Performance and Responsiveness",
+      "error": "page.screenshot: options.quality is unsupported for the png screenshots",
+      "stack": "page.screenshot: options.quality is unsupported for the png screenshots\n    at takeScreenshot (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/comprehensive_platform_validation_test.js:42:14)\n    at testPerformance (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/comprehensive_platform_validation_test.js:529:13)\n    at async runComprehensiveTests (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/comprehensive_platform_validation_test.js:632:5)"
+    }
+  ],
+  "screenshots": [],
+  "recommendations": [
+    "🔧 Fix JavaScript console errors for better user experience",
+    "🐛 Address failed test cases to ensure full functionality"
+  ]
+}

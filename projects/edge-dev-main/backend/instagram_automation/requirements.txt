@@ -1,0 +1,29 @@
+# Instagram Automation Backend Dependencies
+
+# FastAPI and web framework
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+pydantic==2.9.2
+
+# Instagram automation
+instagrapi==2.0.0
+requests==2.32.3
+
+# Data processing
+python-dotenv==1.0.1
+
+# Database (included with Python)
+# sqlite3 - built-in
+
+# Caption engine integration
+# openai - already installed for caption engine
+# httpx - for async requests
+
+# Scheduling
+apscheduler==3.10.4
+
+# Logging
+python-json-logger==2.0.7
+
+# Utilities
+aiofiles==24.1.0

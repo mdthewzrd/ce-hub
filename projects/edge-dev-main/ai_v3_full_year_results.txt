@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test_ai_v3_full_year.py", line 11, in <module>
+    from backside_b_AI_FORMATTED_V2 import BacksideBMessy
+  File "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/backside_b_AI_FORMATTED_V2.py", line 10, in <module>
+    class BacksideBMessy:
+    ...<410 lines>...
+            return stage3_results
+  File "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/backside_b_AI_FORMATTED_V2.py", line 56, in BacksideBMessy
+    price_min:8.0,
+    ^^^^^^^^^
+NameError: name 'price_min' is not defined

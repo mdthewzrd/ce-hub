@@ -1,0 +1,97 @@
+================================================================================
+VIDEO TRANSCRIPT: Intro to Vortex Math - Part 16
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: Alright, so you can also do them in different ratios. They don't have to be 9 by 9.
+
+[00:00:05] **Randy Powell**: It could be 9 by 27 or 9 by 36.
+
+[00:00:11] **Randy Powell**: I just had 9 numbers on my vertical, but I had 36 across my horizontal, which would make a long narrow
+
+[00:00:19] **Randy Powell**: torus. But whatever the smallest number is, in other words, if it's 9, I'm only going to have one
+
+[00:00:27] **Randy Powell**: spire on that. So a 9 by 36, even, is just going to have one spire. Whereas an 18 by 36 or an 18 by
+
+[00:00:37] **Randy Powell**: anything is going to have two spires. So that's with my ratio of being half, but it's a totally
+
+[00:00:45] **Randy Powell**: different number of circuits, totally different number of vertices. Those numbers are always
+
+[00:00:51] **Randy Powell**: changing, but you never have to shift anything's position. You know, you never have to change
+
+[00:00:59] **Randy Powell**: a fudge or account for anything that's missing. They always line up in a perfect sequence, which I think I
+
+[00:01:06] **Randy Powell**: clearly demonstrated in my other video. There's a lot more you can go into this in terms of how this relates to
+
+[00:01:17] **Randy Powell**: various geometries, tetrahedrons, pyramids. I found the way that you can model all of it through the
+
+[00:01:23] **Randy Powell**: emanations of the torus. And by understanding the interconnection of your circuits, your spires.
+
+[00:01:31] **Randy Powell**: And by the way, my spires are always unbroken sequences too. How they create the interlaced doubling
+
+[00:01:41] **Randy Powell**: circuits, how you can do that in various layers of the torus. Since making this discovery, I've just
+
+[00:01:48] **Randy Powell**: taken it so far, so fast. I wanted to share the basic aspects of it so that everyone can start working on it
+
+[00:01:55] **Randy Powell**: on their own. But I am interested in teaching on it further. People have questions and they write in. I will try to
+
+[00:02:06] **Randy Powell**: post up what other information I can. My basic goal in this was to really just explain the basic symbol
+
+[00:02:13] **Randy Powell**: here. To explain that basic symbol, how it worked and what its principles are, all of that's already been covered
+
+[00:02:28] **Randy Powell**: even on Marco's videos. But I really wanted to get it ingrained because if you can't understand these principles,
+
+[00:02:35] **Randy Powell**: then doing the complex aspects of interweaving these circuits and understanding the spires sequences. And how the mere
+
+[00:02:47] **Randy Powell**: image works and how the vortices work, I just think that you will always falter in that without this basic understanding.
+
+[00:02:58] **Randy Powell**: So I spent a long time just working on this before I even got to any of that. But we would like to see some prototypes
+
+[00:03:07] **Randy Powell**: be built. And I'm mostly more interested in teaching on the mathematics. I've gone through a lot of physics,
+
+[00:03:17] **Randy Powell**: all the various equations and can connect it with this and show the whole number relationships. So I'm working now
+
+[00:03:26] **Randy Powell**: to model periodic table. And I'm interested to hear in everybody's comments on all this work. We went from
+
+[00:03:36] **Randy Powell**: the simple to the highly complex day, ultimately what we are talking about here. To me is even something totally different,
+
+[00:03:47] **Randy Powell**: which is when you get into the spiritual or the philosophical aspects of this. All those are good topics. We hope to explain them further in videos.
+
+[00:04:02] **Randy Powell**: I just want everybody today to get an understanding basically of how to build a Torroy. How many numbers do you need?
+
+[00:04:10] **Randy Powell**: How many tiles do you have to have? You have to be really thorough when you're doing this. So I showed you how to multiply them.
+
+[00:04:19] **Randy Powell**: You're basic nine by nine Torroy. You have to make sure the common mistake is that you don't account for all your positives and negatives.
+
+[00:04:28] **Randy Powell**: And then you're basic nine by nine Torroy. You're going to have 162 tiles. And we didn't even get into how you can turn them into hexagons and triangles.
+
+[00:04:39] **Randy Powell**: There's a lot more there and how you can create the matrix. We've only really looked at the diamonds.
+
+[00:04:47] **Randy Powell**: But you need 162 tiles with the 18 vortices and 6 conductors.
+
+[00:04:57] **Randy Powell**: That's the minimum you can have. Now you can work on your own permutations. I think I've given you enough that you can build out the toruses for yourself.
+
+[00:05:06] **Randy Powell**: You can try the various ones, the two seven toruses. We just looked at one and eight. We could do two seven. We could do four or five.
+
+[00:05:14] **Randy Powell**: You can make layers on this, like layers of an onion skin. And I even found out how to make doubling going in towards the center so that you can model it on every single axis.
+
+[00:05:27] **Randy Powell**: So if anybody also has computer skills and like to do animations, interested in communicating with people on that as well.
+
+[00:05:37] **Randy Powell**: I'm really trying to teach this to generate the understanding. So I really want to hear from people. We're just looking to get a grasp on this.
+
+[00:05:45] **Randy Powell**: How does it apply to things in life? And I will try to keep posting more videos connecting with that.
+
+[00:05:54] **Randy Powell**: Or hopefully doing seminars where working one on one or not necessarily one on one, but working in person.
+
+[00:06:01] **Randy Powell**: You can definitely get a lot deeper into this. And the more we get 3D models, the more we can really show how it's functioning.
+
+[00:06:10] **Randy Powell**: But the way that I have it with the circuits, I believe, is the key to understanding this, to be able to model different types of atoms to really get a hold of electrical motion, magnetism.
+
+[00:06:24] **Randy Powell**: And that was initially our goal here. So I hope everyone has enjoyed the video. I'm getting horse now, so I'm going to stop.
+
+[00:06:34] **Randy Powell**: But we'll see you later. Peace.

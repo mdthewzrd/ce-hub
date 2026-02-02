@@ -1,0 +1,29 @@
+{
+  "project_id": "4c3266f5-97ce-4b95-9e8a-95f2ba9252ce",
+  "name": "Backside Para B Copy Project",
+  "description": "Auto-generated project for backside_para_b_copy_3 scanners",
+  "scanners": [
+    {
+      "scanner_id": "scanner_1768325335530",
+      "scanner_name": "backside_para_b_copy_3",
+      "scanner_file": "scanners/backside_para_b_copy_3.py",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 0
+    }
+  ],
+  "aggregation_method": "union",
+  "created_at": "2026-01-13T12:28:55.537179",
+  "updated_at": "2026-01-13T12:28:55.553782",
+  "version": 1,
+  "tags": [
+    "scanner",
+    "auto-generated",
+    "backside-para-b-copy-3"
+  ],
+  "created_by": "renata-ai-upload",
+  "last_executed": null,
+  "execution_count": 0,
+  "function_name": "backside_para_b_copy_3",
+  "has_code": true
+}

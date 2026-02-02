@@ -1,0 +1,62 @@
+{
+  "scan_id": "test-historical-scan",
+  "scan_name": "Test Historical Scan - Real Data",
+  "scanner_type": "Custom Scanner",
+  "timestamp": "2025-12-08T22:55:00.000Z",
+  "user_id": "test_user_123",
+  "results_count": 3,
+  "metadata": {
+    "description": "Test scan with historical dates that have real market data",
+    "scanParams": {
+      "start_date": "2024-01-01",
+      "end_date": "2024-12-31",
+      "filters": {}
+    },
+    "resultCount": 3,
+    "tags": [
+      "test"
+    ],
+    "isFavorite": false,
+    "tickerUniverse": "US Stocks",
+    "estimatedResults": "3 results",
+    "savedAt": "2025-12-08T22:55:00.000Z"
+  },
+  "results": [
+    {
+      "ticker": "AAPL",
+      "date": "2024-11-18",
+      "gapPercent": 2.5,
+      "volume": 125000000,
+      "score": 85,
+      "result": "win",
+      "pnl": "+5.2%",
+      "execution_output": "Signal",
+      "trigger": "D-1",
+      "scanner_type": "A+ Daily Parabolic"
+    },
+    {
+      "ticker": "TSLA",
+      "date": "2024-10-15",
+      "gapPercent": -1.8,
+      "volume": 98000000,
+      "score": 82,
+      "result": "win",
+      "pnl": "+8.7%",
+      "execution_output": "Signal",
+      "trigger": "D-1",
+      "scanner_type": "A+ Daily Parabolic"
+    },
+    {
+      "ticker": "NVDA",
+      "date": "2024-09-26",
+      "gapPercent": 3.2,
+      "volume": 156000000,
+      "score": 88,
+      "result": "win",
+      "pnl": "+12.1%",
+      "execution_output": "Signal",
+      "trigger": "D-1",
+      "scanner_type": "A+ Daily Parabolic"
+    }
+  ]
+}

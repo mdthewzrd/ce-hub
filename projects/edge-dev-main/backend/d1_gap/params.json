@@ -1,0 +1,94 @@
+{
+  "scanner_name": "D1GapScanner",
+  "scanner_type": "d1_gap",
+  "formatted_class_name": "UltraFastRenataD1GapScanner",
+  "description": "D1 Gap Scanner with 50%+ gap detection and EMA200 filter",
+  "parameters": {
+    "price_min": {
+      "value": 0.75,
+      "type": "float",
+      "description": "Minimum stock price in USD",
+      "category": "liquidity_filter"
+    },
+    "pm_high_pct_min": {
+      "value": 0.5,
+      "type": "float",
+      "description": "Minimum pre-market high increase (50%)",
+      "category": "trigger"
+    },
+    "pm_vol_min": {
+      "value": 5000000,
+      "type": "int",
+      "description": "Minimum pre-market volume (5M shares)",
+      "category": "liquidity_filter"
+    },
+    "gap_pct_min": {
+      "value": 0.5,
+      "type": "float",
+      "description": "Minimum gap percentage (50%)",
+      "category": "trigger"
+    },
+    "open_over_prev_high_pct_min": {
+      "value": 0.3,
+      "type": "float",
+      "description": "Minimum open above previous high (30%)",
+      "category": "trigger"
+    },
+    "ema200_max_pct": {
+      "value": 0.8,
+      "type": "float",
+      "description": "Maximum close vs EMA200 (80%)",
+      "category": "filter"
+    },
+    "exclude_d2": {
+      "value": true,
+      "type": "bool",
+      "description": "Exclude stocks with D2 pattern",
+      "category": "logic"
+    },
+    "d2_pct_min": {
+      "value": 0.3,
+      "type": "float",
+      "description": "D2 pattern minimum increase (30%)",
+      "category": "exclusion"
+    },
+    "d2_vol_min": {
+      "value": 10000000,
+      "type": "int",
+      "description": "D2 pattern minimum volume (10M shares)",
+      "category": "exclusion"
+    }
+  },
+  "date_ranges": {
+    "d0_start": "2025-01-01",
+    "d0_end": "2026-01-01",
+    "scan_start": "2018-01-01",
+    "scan_end": "2026-01-01",
+    "description": "D0 is signal output range, scan_start is historical data for EMA200 (200+ days)"
+  },
+  "threading": {
+    "stage1_workers": "min(128, cpu_cores * 8)",
+    "stage2_workers": "min(96, cpu_cores * 6)",
+    "batch_size": 200
+  },
+  "api": {
+    "base_url": "https://api.polygon.io",
+    "snapshot_endpoint": "/v2/snapshot/locale/us/markets/stocks/tickers",
+    "api_key": "Fm7brz4s23eSocDErnL68cE7wspz2K1I"
+  },
+  "smart_filters": {
+    "description": "D1 Gap specific 4-parameter smart filtering",
+    "filters": [
+      "price_min: Minimum price $0.75",
+      "volume_min (pm_vol_min): 5M pre-market volume",
+      "gap_pct_min: 50% gap minimum",
+      "ema200_max_pct: Close <= 80% of EMA200"
+    ]
+  },
+  "notes": {
+    "pre_market_data": "Original code uses pm_high and pm_vol which Polygon doesn't provide. Formatted version uses opening gap as conservative proxy.",
+    "ema_filter": "Requires 200+ days of historical data for EMA200 calculation",
+    "d2_exclusion": "Original code excludes D2 patterns (d2 == 0 condition)",
+    "market_cap_check": "Original code checks market cap, formatted version focuses on gap detection"
+  }
+}

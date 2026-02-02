@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Virtual Try-On - Advanced 3D Reconstruction</title>
+
+    <!-- Three.js for 3D rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- MediaPipe for hand/body tracking (from Google's GitHub) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/holistic/holistic.js"></script>
+
+    <!-- TensorFlow.js for ML-based 3D reconstruction -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+
+    <!-- OpenCV.js for computer vision -->
+    <script async src="https://docs.opencv.org/4.5.0/opencv.js"></script>
+
+    <!-- Bootstrap for UI -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+            height: 100vh;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 15px 30px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header .subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Control Panel */
+        .control-panel {
+            position: absolute;
+            left: 20px;
+            top: 120px;
+            width: 320px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 900;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+        }
+
+        /* Video Container - FULL SCREEN */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: #000;
+        }
+
+        #camera-video, #processed-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #processed-video {
+            z-index: 2;
+        }
+
+        /* 3D Canvas Overlay */
+        .canvas-3d-container {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            width: 500px;
+            height: 400px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        #3d-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* AR Canvas */
+        .ar-canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        #ar-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Buttons */
+        .btn-action {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #5a6fd8, #6a4190);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #fa709a, #fee140);
+        }
+
+        /* Status Panel - MOVED TO RIGHT */
+        .status-panel {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 20px;
+            z-index: 900;
+            color: white;
+            min-width: 280px;
+            max-width: 320px;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 10px;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-active {
+            background-color: #28a745;
+        }
+
+        .status-processing {
+            background-color: #ffc107;
+        }
+
+        .status-inactive {
+            background-color: #dc3545;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .loading-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Info Cards */
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .info-card h6 {
+            color: white;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .info-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        /* Floating Action Button - MOVED TO LEFT */
+        .fab-container {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 900;
+        }
+
+        .fab {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Range Slider */
+        .form-range {
+            height: 8px;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 4px;
+        }
+
+        .form-range::-webkit-slider-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .control-panel {
+                left: 10px;
+                right: 10px;
+                top: 100px;
+                width: auto;
+                max-height: 200px;
+            }
+
+            .canvas-3d-container {
+                right: 10px;
+                top: 320px;
+                width: calc(100% - 20px);
+                height: 300px;
+            }
+
+            .status-panel {
+                bottom: 10px;
+                left: 10px;
+                right: auto;
+                min-width: auto;
+                max-width: calc(100% - 140px);
+            }
+
+            .fab-container {
+                left: auto;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h4>Initializing Virtual Try-On...</h4>
+            <p class="text-muted">Setting up camera and 3D reconstruction engine</p>
+            <div class="progress mt-3">
+                <div class="progress-bar progress-bar-striped progress-bar-animated"
+                     role="progressbar" style="width: 0%" id="init-progress">0%</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>
+            <span style="font-size: 2rem;">🍌</span>
+            Banana Virtual Try-On
+        </h1>
+        <div class="subtitle">Advanced 3D Reconstruction & Augmented Reality</div>
+    </div>
+
+    <!-- Main App Container -->
+    <div class="app-container">
+        <!-- Camera Video Background -->
+        <div class="video-container">
+            <video id="camera-video" autoplay playsinline style="display: none;"></video>
+            <video id="processed-video" autoplay playsinline style="display: none;"></video>
+
+            <!-- AR Canvas Overlay -->
+            <div class="ar-canvas-container">
+                <canvas id="ar-canvas"></canvas>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <h5 class="mb-4">
+                <i class="fas fa-cogs"></i> Control Center
+            </h5>
+
+            <!-- Camera Controls -->
+            <div class="mb-4">
+                <h6 class="mb-3"><i class="fas fa-camera"></i> Camera</h6>
+                <button class="btn btn-action btn-success" id="start-camera">
+                    <i class="fas fa-play"></i> Start Camera
+                </button>
+                <button class="btn btn-action btn-danger" id="stop-camera" disabled>
+                    <i class="fas fa-stop"></i> Stop Camera
+                </button>
+                <button class="btn btn-action btn-secondary" id="switch-camera">
+                    <i class="fas fa-sync"></i> Switch Camera
+                </button>
+            </div>
+
+            <!-- Scanning Controls -->
+            <div class="mb-4">
+                <h6 class="mb-3"><i class="fas fa-cube"></i> 3D Scanning</h6>
+                <button class="btn btn-action btn-warning" id="start-scan" disabled>
+                    <i class="fas fa-radar"></i> Start 3D Scan
+                </button>
+                <button class="btn btn-action btn-secondary" id="pause-scan" disabled>
+                    <i class="fas fa-pause"></i> Pause Scan
+                </button>
+                <button class="btn btn-action btn-secondary" id="reset-scan">
+                    <i class="fas fa-redo"></i> Reset Scan
+                </button>
+            </div>
+
+            <!-- Glasses Controls -->
+            <div class="mb-4">
+                <h6 class="mb-3"><i class="fas fa-glasses"></i> Glasses Try-On</h6>
+                <div class="mb-3">
+                    <label class="form-label small">Glasses Style</label>
+                    <select class="form-select" id="glasses-style">
+                        <option value="aviator">🥇 Aviator</option>
+                        <option value="wayfarer">🕶️ Wayfarer</option>
+                        <option value="catEye">😺 Cat Eye</option>
+                        <option value="round">⭕ Round</option>
+                    </select>
+                </div>
+                <button class="btn btn-action btn-success" id="try-glasses">
+                    <i class="fas fa-glasses"></i> Try On Glasses
+                </button>
+                <button class="btn btn-action btn-secondary" id="toggle-tracking">
+                    <i class="fas fa-hand-paper"></i> Hand Tracking
+                </button>
+            </div>
+
+            <!-- AR Controls -->
+            <div class="mb-4">
+                <h6 class="mb-3"><i class="fas fa-vr-cardboard"></i> AR Mode</h6>
+                <button class="btn btn-action" id="toggle-ar">
+                    <i class="fas fa-magic"></i> Toggle AR
+                </button>
+            </div>
+
+            <!-- 3D Model Controls -->
+            <div class="mb-4">
+                <h6 class="mb-3"><i class="fas fa-sliders-h"></i> Model Controls</h6>
+                <div class="mb-3">
+                    <label class="form-label small">Rotation Speed</label>
+                    <input type="range" class="form-range" id="rotation-speed" min="0" max="100" value="50">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small">Model Scale</label>
+                    <input type="range" class="form-range" id="model-scale" min="50" max="200" value="100">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small">Opacity</label>
+                    <input type="range" class="form-range" id="model-opacity" min="0" max="100" value="80">
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Status Panel -->
+        <div class="status-panel">
+            <h6 class="mb-3"><i class="fas fa-info-circle"></i> System Status</h6>
+
+            <div class="status-item">
+                <span class="status-indicator status-inactive" id="camera-indicator"></span>
+                <span>Camera: <span id="camera-status">Inactive</span></span>
+            </div>
+
+            <div class="status-item">
+                <span class="status-indicator status-inactive" id="scanning-indicator"></span>
+                <span>Scanning: <span id="scanning-status">Inactive</span></span>
+            </div>
+
+            <div class="status-item">
+                <span class="status-indicator status-inactive" id="ar-indicator"></span>
+                <span>AR: <span id="ar-status">Inactive</span></span>
+            </div>
+
+            <div class="status-item">
+                <span class="status-indicator status-inactive" id="tracking-indicator"></span>
+                <span>Tracking: <span id="tracking-status">Inactive</span></span>
+            </div>
+
+            <div class="status-item">
+                <span class="status-indicator status-inactive" id="glasses-indicator"></span>
+                <span>Glasses: <span id="glasses-status">Inactive</span></span>
+            </div>
+
+            <div class="info-card">
+                <h6>Performance</h6>
+                <p>FPS: <span id="fps-counter">0</span> | Points: <span id="point-count">0</span></p>
+            </div>
+
+            <div class="info-card">
+                <h6>Instructions</h6>
+                <p>📸 Start camera first<br>
+                👓 Try on glasses with hand tracking<br>
+                🍌 Press "Start 3D Scan" for object scanning<br>
+                ✋ Hand tracking positions glasses<br>
+                🎮 Use sliders to adjust model</p>
+            </div>
+        </div>
+
+        <!-- Floating Action Button -->
+        <div class="fab-container">
+            <button class="fab" id="fullscreen-btn">
+                <i class="fas fa-expand"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/src/working-glasses.js"></script>
+    <script src="/src/virtual-try-on.js"></script>
+    <script>
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeVirtualTryOn();
+        });
+    </script>
+</body>
+</html>

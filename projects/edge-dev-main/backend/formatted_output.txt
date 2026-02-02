@@ -1,0 +1,572 @@
+🚀 RENATA ULTRA-FAST MODE: Stage1: 96 threads, Stage2: 72 threads
+🔧 SCANNER TYPE: SC DMR Multi-Scanner (10 patterns)
+🚀 Ultra-Fast Renata SC DMR Multi-Scanner Initialized
+📅 Signal Output Range (D0): 2025-01-01 to 2025-12-01
+📊 Historical Data Range: 2024-11-06 to 2025-12-26
+🎯 Mass Parameters: 4 (shared across all 10 scanners)
+📈 Scanner Patterns: 10
+
+🚀 Starting ULTRA-FAST SC DMR Multi-Scanner...
+⚡ 10 scanner patterns in single execution
+📡 Edge.dev Standard: Snapshot + Individual Symbol History
+
+======================================================================
+🚀 STAGE 1: ULTRA-FAST MARKET UNIVERSE FETCH
+======================================================================
+📡 Fetching Polygon market snapshot (optimized)...
+✅ Raw snapshot: 12,099 tickers received
+
+🔄 Applying ultra-fast smart filters to 12,099 tickers...
+⚡ Using 96 hyper-threads
+📊 Filters: price >= $0.75, volume >= 10,000,000
+⚡ Progress: 100/12,099 (0.8%) | Qualified: 1 (1.0%)
+⚡ Progress: 200/12,099 (1.7%) | Qualified: 4 (2.0%)
+⚡ Progress: 300/12,099 (2.5%) | Qualified: 5 (1.7%)
+⚡ Progress: 400/12,099 (3.3%) | Qualified: 6 (1.5%)
+⚡ Progress: 500/12,099 (4.1%) | Qualified: 7 (1.4%)
+⚡ Progress: 600/12,099 (5.0%) | Qualified: 8 (1.3%)
+⚡ Progress: 700/12,099 (5.8%) | Qualified: 9 (1.3%)
+⚡ Progress: 800/12,099 (6.6%) | Qualified: 10 (1.2%)
+⚡ Progress: 900/12,099 (7.4%) | Qualified: 11 (1.2%)
+⚡ Progress: 1,000/12,099 (8.3%) | Qualified: 12 (1.2%)
+⚡ Progress: 1,100/12,099 (9.1%) | Qualified: 16 (1.5%)
+⚡ Progress: 1,200/12,099 (9.9%) | Qualified: 17 (1.4%)
+⚡ Progress: 1,300/12,099 (10.7%) | Qualified: 17 (1.3%)
+⚡ Progress: 1,400/12,099 (11.6%) | Qualified: 19 (1.4%)
+⚡ Progress: 1,500/12,099 (12.4%) | Qualified: 20 (1.3%)
+⚡ Progress: 1,600/12,099 (13.2%) | Qualified: 21 (1.3%)
+⚡ Progress: 1,700/12,099 (14.1%) | Qualified: 22 (1.3%)
+⚡ Progress: 1,800/12,099 (14.9%) | Qualified: 22 (1.2%)
+⚡ Progress: 1,900/12,099 (15.7%) | Qualified: 23 (1.2%)
+⚡ Progress: 2,000/12,099 (16.5%) | Qualified: 27 (1.4%)
+⚡ Progress: 2,100/12,099 (17.4%) | Qualified: 28 (1.3%)
+⚡ Progress: 2,200/12,099 (18.2%) | Qualified: 31 (1.4%)
+⚡ Progress: 2,300/12,099 (19.0%) | Qualified: 35 (1.5%)
+⚡ Progress: 2,400/12,099 (19.8%) | Qualified: 35 (1.5%)
+⚡ Progress: 2,500/12,099 (20.7%) | Qualified: 37 (1.5%)
+⚡ Progress: 2,600/12,099 (21.5%) | Qualified: 41 (1.6%)
+⚡ Progress: 2,700/12,099 (22.3%) | Qualified: 44 (1.6%)
+⚡ Progress: 2,800/12,099 (23.1%) | Qualified: 45 (1.6%)
+⚡ Progress: 2,900/12,099 (24.0%) | Qualified: 46 (1.6%)
+⚡ Progress: 3,000/12,099 (24.8%) | Qualified: 48 (1.6%)
+⚡ Progress: 3,100/12,099 (25.6%) | Qualified: 49 (1.6%)
+⚡ Progress: 3,200/12,099 (26.4%) | Qualified: 51 (1.6%)
+⚡ Progress: 3,300/12,099 (27.3%) | Qualified: 51 (1.5%)
+⚡ Progress: 3,400/12,099 (28.1%) | Qualified: 51 (1.5%)
+⚡ Progress: 3,500/12,099 (28.9%) | Qualified: 52 (1.5%)
+⚡ Progress: 3,600/12,099 (29.8%) | Qualified: 52 (1.4%)
+⚡ Progress: 3,700/12,099 (30.6%) | Qualified: 53 (1.4%)
+⚡ Progress: 3,800/12,099 (31.4%) | Qualified: 55 (1.4%)
+⚡ Progress: 3,900/12,099 (32.2%) | Qualified: 56 (1.4%)
+⚡ Progress: 4,000/12,099 (33.1%) | Qualified: 57 (1.4%)
+⚡ Progress: 4,100/12,099 (33.9%) | Qualified: 57 (1.4%)
+⚡ Progress: 4,200/12,099 (34.7%) | Qualified: 58 (1.4%)
+⚡ Progress: 4,300/12,099 (35.5%) | Qualified: 58 (1.3%)
+⚡ Progress: 4,400/12,099 (36.4%) | Qualified: 60 (1.4%)
+⚡ Progress: 4,500/12,099 (37.2%) | Qualified: 60 (1.3%)
+⚡ Progress: 4,600/12,099 (38.0%) | Qualified: 62 (1.3%)
+⚡ Progress: 4,700/12,099 (38.8%) | Qualified: 63 (1.3%)
+⚡ Progress: 4,800/12,099 (39.7%) | Qualified: 63 (1.3%)
+⚡ Progress: 4,900/12,099 (40.5%) | Qualified: 64 (1.3%)
+⚡ Progress: 5,000/12,099 (41.3%) | Qualified: 65 (1.3%)
+⚡ Progress: 5,100/12,099 (42.2%) | Qualified: 66 (1.3%)
+⚡ Progress: 5,200/12,099 (43.0%) | Qualified: 66 (1.3%)
+⚡ Progress: 5,300/12,099 (43.8%) | Qualified: 66 (1.2%)
+⚡ Progress: 5,400/12,099 (44.6%) | Qualified: 66 (1.2%)
+⚡ Progress: 5,500/12,099 (45.5%) | Qualified: 67 (1.2%)
+⚡ Progress: 5,600/12,099 (46.3%) | Qualified: 67 (1.2%)
+⚡ Progress: 5,700/12,099 (47.1%) | Qualified: 67 (1.2%)
+⚡ Progress: 5,800/12,099 (47.9%) | Qualified: 68 (1.2%)
+⚡ Progress: 5,900/12,099 (48.8%) | Qualified: 69 (1.2%)
+⚡ Progress: 6,000/12,099 (49.6%) | Qualified: 69 (1.1%)
+⚡ Progress: 6,100/12,099 (50.4%) | Qualified: 72 (1.2%)
+⚡ Progress: 6,200/12,099 (51.2%) | Qualified: 72 (1.2%)
+⚡ Progress: 6,300/12,099 (52.1%) | Qualified: 74 (1.2%)
+⚡ Progress: 6,400/12,099 (52.9%) | Qualified: 76 (1.2%)
+⚡ Progress: 6,500/12,099 (53.7%) | Qualified: 80 (1.2%)
+⚡ Progress: 6,600/12,099 (54.5%) | Qualified: 80 (1.2%)
+⚡ Progress: 6,700/12,099 (55.4%) | Qualified: 81 (1.2%)
+⚡ Progress: 6,800/12,099 (56.2%) | Qualified: 82 (1.2%)
+⚡ Progress: 6,900/12,099 (57.0%) | Qualified: 84 (1.2%)
+⚡ Progress: 7,000/12,099 (57.9%) | Qualified: 87 (1.2%)
+⚡ Progress: 7,100/12,099 (58.7%) | Qualified: 89 (1.3%)
+⚡ Progress: 7,200/12,099 (59.5%) | Qualified: 89 (1.2%)
+⚡ Progress: 7,300/12,099 (60.3%) | Qualified: 91 (1.2%)
+⚡ Progress: 7,400/12,099 (61.2%) | Qualified: 91 (1.2%)
+⚡ Progress: 7,500/12,099 (62.0%) | Qualified: 93 (1.2%)
+⚡ Progress: 7,600/12,099 (62.8%) | Qualified: 93 (1.2%)
+⚡ Progress: 7,700/12,099 (63.6%) | Qualified: 96 (1.2%)
+⚡ Progress: 7,800/12,099 (64.5%) | Qualified: 96 (1.2%)
+⚡ Progress: 7,900/12,099 (65.3%) | Qualified: 96 (1.2%)
+⚡ Progress: 8,000/12,099 (66.1%) | Qualified: 96 (1.2%)
+⚡ Progress: 8,100/12,099 (66.9%) | Qualified: 96 (1.2%)
+⚡ Progress: 8,200/12,099 (67.8%) | Qualified: 98 (1.2%)
+⚡ Progress: 8,300/12,099 (68.6%) | Qualified: 102 (1.2%)
+⚡ Progress: 8,400/12,099 (69.4%) | Qualified: 104 (1.2%)
+⚡ Progress: 8,500/12,099 (70.3%) | Qualified: 107 (1.3%)
+⚡ Progress: 8,600/12,099 (71.1%) | Qualified: 108 (1.3%)
+⚡ Progress: 8,700/12,099 (71.9%) | Qualified: 108 (1.2%)
+⚡ Progress: 8,800/12,099 (72.7%) | Qualified: 109 (1.2%)
+⚡ Progress: 8,900/12,099 (73.6%) | Qualified: 110 (1.2%)
+⚡ Progress: 9,000/12,099 (74.4%) | Qualified: 111 (1.2%)
+⚡ Progress: 9,100/12,099 (75.2%) | Qualified: 112 (1.2%)
+⚡ Progress: 9,200/12,099 (76.0%) | Qualified: 114 (1.2%)
+⚡ Progress: 9,300/12,099 (76.9%) | Qualified: 114 (1.2%)
+⚡ Progress: 9,400/12,099 (77.7%) | Qualified: 115 (1.2%)
+⚡ Progress: 9,500/12,099 (78.5%) | Qualified: 115 (1.2%)
+⚡ Progress: 9,600/12,099 (79.3%) | Qualified: 117 (1.2%)
+⚡ Progress: 9,700/12,099 (80.2%) | Qualified: 118 (1.2%)
+⚡ Progress: 9,800/12,099 (81.0%) | Qualified: 121 (1.2%)
+⚡ Progress: 9,900/12,099 (81.8%) | Qualified: 121 (1.2%)
+⚡ Progress: 10,000/12,099 (82.7%) | Qualified: 123 (1.2%)
+⚡ Progress: 10,100/12,099 (83.5%) | Qualified: 127 (1.3%)
+⚡ Progress: 10,200/12,099 (84.3%) | Qualified: 129 (1.3%)
+⚡ Progress: 10,300/12,099 (85.1%) | Qualified: 131 (1.3%)
+⚡ Progress: 10,400/12,099 (86.0%) | Qualified: 133 (1.3%)
+⚡ Progress: 10,500/12,099 (86.8%) | Qualified: 135 (1.3%)
+⚡ Progress: 10,600/12,099 (87.6%) | Qualified: 137 (1.3%)
+⚡ Progress: 10,700/12,099 (88.4%) | Qualified: 139 (1.3%)
+⚡ Progress: 10,800/12,099 (89.3%) | Qualified: 141 (1.3%)
+⚡ Progress: 10,900/12,099 (90.1%) | Qualified: 142 (1.3%)
+⚡ Progress: 11,000/12,099 (90.9%) | Qualified: 143 (1.3%)
+⚡ Progress: 11,100/12,099 (91.7%) | Qualified: 145 (1.3%)
+⚡ Progress: 11,200/12,099 (92.6%) | Qualified: 145 (1.3%)
+⚡ Progress: 11,300/12,099 (93.4%) | Qualified: 147 (1.3%)
+⚡ Progress: 11,400/12,099 (94.2%) | Qualified: 149 (1.3%)
+⚡ Progress: 11,500/12,099 (95.0%) | Qualified: 149 (1.3%)
+⚡ Progress: 11,600/12,099 (95.9%) | Qualified: 150 (1.3%)
+⚡ Progress: 11,700/12,099 (96.7%) | Qualified: 150 (1.3%)
+⚡ Progress: 11,800/12,099 (97.5%) | Qualified: 151 (1.3%)
+⚡ Progress: 11,900/12,099 (98.4%) | Qualified: 151 (1.3%)
+⚡ Progress: 12,000/12,099 (99.2%) | Qualified: 151 (1.3%)
+
+🚀 Stage 1 Complete:
+📊 Processed: 12,099 tickers
+✅ Qualified: 153 tickers
+
+======================================================================
+🚀 STAGE 2: ULTRA-FAST MULTI-SCANNER PATTERN DETECTION
+======================================================================
+⚡ Optimized Universe: 153 symbols
+🔥 Using 72 hyper-threads
+📦 Processing batch 1: 153 symbols
+✅ AMZN: 1 signals
+✅ GSIT: 2 signals
+✅ BMNU: 1 signals
+✅ WULF: 9 signals
+✅ AMD: 2 signals
+✅ RR: 3 signals
+✅ IONQ: 3 signals
+✅ QBTS: 6 signals
+✅ JOBY: 2 signals
+✅ BITF: 10 signals
+✅ IREN: 8 signals
+✅ FCX: 1 signals
+✅ PLUG: 5 signals
+✅ TZA: 1 signals
+✅ SLV: 1 signals
+✅ ASST: 8 signals
+✅ NIO: 3 signals
+✅ WBD: 1 signals
+⚡ Batch Progress: 50/153 (32.7%) | Signals: 67
+✅ INTC: 1 signals
+✅ TMC: 1 signals
+✅ ETHA: 2 signals
+✅ TSLA: 2 signals
+✅ DNN: 1 signals
+✅ ACHR: 2 signals
+✅ ASTS: 4 signals
+✅ MU: 3 signals
+✅ CRWV: 5 signals
+✅ RIG: 3 signals
+✅ SOUN: 4 signals
+✅ RKLB: 1 signals
+✅ CIFR: 8 signals
+✅ TQQQ: 3 signals
+✅ ZETA: 2 signals
+✅ AVGO: 2 signals
+✅ MSTX: 1 signals
+✅ PSLV: 1 signals
+✅ DUST: 1 signals
+✅ SOXS: 5 signals
+✅ BTBT: 4 signals
+✅ UAMY: 7 signals
+✅ HOOD: 4 signals
+⚡ Batch Progress: 100/153 (65.4%) | Signals: 134
+✅ SOXL: 7 signals
+✅ SMR: 6 signals
+✅ XPEV: 2 signals
+✅ BBD: 2 signals
+✅ RXRX: 5 signals
+✅ PATH: 1 signals
+✅ SNAP: 1 signals
+✅ QS: 1 signals
+✅ BYND: 10 signals
+✅ NVDL: 4 signals
+✅ GOOGL: 1 signals
+✅ CLSK: 3 signals
+✅ RGTI: 3 signals
+✅ OPEN: 8 signals
+✅ NU: 1 signals
+✅ UVIX: 5 signals
+✅ AG: 1 signals
+✅ SMCI: 6 signals
+✅ BMNR: 16 signals
+✅ TSLS: 1 signals
+✅ ONDS: 7 signals
+✅ APLD: 6 signals
+✅ QUBT: 5 signals
+✅ TSLL: 10 signals
+✅ PLTD: 1 signals
+✅ RZLV: 6 signals
+✅ SOPA: 5 signals
+⚡ Batch Progress: 150/153 (98.0%) | Signals: 258
+✅ BBAI: 10 signals
+✅ NVD: 3 signals
+✅ JDST: 1 signals
+
+🚀 Stage 2 Complete (2.2s): Found 272 signals
+⚡ Processing Speed: 70 symbols/second
+
+======================================================================
+📊 STAGE 3: RESULTS ANALYSIS
+======================================================================
+
+📈 Total signals: 272
+📊 Unique tickers: 71
+📅 Date range: 2025-01-06 to 2025-11-28
+
+📊 Signals by Scanner:
+  • D3_Alt: 119
+  • D3: 106
+  • D2_PM_Setup: 24
+  • D2_PMH_Break_1: 8
+  • D2_PMH_Break: 5
+  • D2_PM_Setup_2: 4
+  • D2_Extreme_Gap: 3
+  • D2_Extreme_Intraday_Run: 3
+
+🔝 Top 10 tickers by signal frequency:
+  BMNR: 16 signals
+  BITF: 10 signals
+  TSLL: 10 signals
+  BBAI: 10 signals
+  BYND: 10 signals
+  WULF: 9 signals
+  OPEN: 8 signals
+  IREN: 8 signals
+  CIFR: 8 signals
+  ASST: 8 signals
+
+📋 Recent signals:
+Ticker       Date Scanner_Label
+  BMNU 2025-11-28        D3_Alt
+  MSTX 2025-11-28        D3_Alt
+ GOOGL 2025-11-21        D3_Alt
+  APLD 2025-11-20        D3_Alt
+  BITF 2025-11-20        D3_Alt
+  RZLV 2025-11-20        D3_Alt
+  SOXL 2025-11-20        D3_Alt
+  TQQQ 2025-11-20        D3_Alt
+   FCX 2025-11-19        D3_Alt
+   NVD 2025-11-17            D3
+   NVD 2025-11-17        D3_Alt
+  PLTD 2025-11-17            D3
+  SOXS 2025-11-17            D3
+  UVIX 2025-11-17            D3
+   NVD 2025-11-14        D3_Alt
+  UVIX 2025-11-14        D3_Alt
+  BBAI 2025-11-12            D3
+  BBAI 2025-11-12        D3_Alt
+  ASST 2025-11-06        D3_Alt
+  DUST 2025-10-28            D3
+
+======================================================================
+🚀 ULTRA-FAST SCAN COMPLETE
+======================================================================
+⏱️  Total Time: 9.1s
+🎯 Stage 1 Time: 6.9s
+🎯 Stage 2 Time: 2.2s
+✅ Final Signals: 272
+📈 Throughput: 17 symbols/second
+======================================================================
+
+✅ Results exported to: sc_dmr_results.csv
+
+======================================================================
+ALL RESULTS (272 signals)
+======================================================================
+Ticker       Date           Scanner_Label
+  BMNU 2025-11-28                  D3_Alt
+  MSTX 2025-11-28                  D3_Alt
+ GOOGL 2025-11-21                  D3_Alt
+  APLD 2025-11-20                  D3_Alt
+  BITF 2025-11-20                  D3_Alt
+  RZLV 2025-11-20                  D3_Alt
+  SOXL 2025-11-20                  D3_Alt
+  TQQQ 2025-11-20                  D3_Alt
+   FCX 2025-11-19                  D3_Alt
+   NVD 2025-11-17                      D3
+   NVD 2025-11-17                  D3_Alt
+  PLTD 2025-11-17                      D3
+  SOXS 2025-11-17                      D3
+  UVIX 2025-11-17                      D3
+   NVD 2025-11-14                  D3_Alt
+  UVIX 2025-11-14                  D3_Alt
+  BBAI 2025-11-12                      D3
+  BBAI 2025-11-12                  D3_Alt
+  ASST 2025-11-06                  D3_Alt
+  DUST 2025-10-28                      D3
+  JDST 2025-10-28                      D3
+  WULF 2025-10-28                      D3
+  ASST 2025-10-27             D2_PM_Setup
+  ASST 2025-10-27           D2_PM_Setup_2
+  ASST 2025-10-27            D2_PMH_Break
+  ASST 2025-10-27          D2_Extreme_Gap
+  ASST 2025-10-27 D2_Extreme_Intraday_Run
+  ASST 2025-10-27                  D3_Alt
+  ONDS 2025-10-27                      D3
+  ONDS 2025-10-27                  D3_Alt
+  QUBT 2025-10-27                      D3
+  SOUN 2025-10-27                  D3_Alt
+  BYND 2025-10-22             D2_PM_Setup
+  BYND 2025-10-22           D2_PM_Setup_2
+  BYND 2025-10-22            D2_PMH_Break
+  BYND 2025-10-22          D2_Extreme_Gap
+  BYND 2025-10-22 D2_Extreme_Intraday_Run
+  BYND 2025-10-22                      D3
+  BYND 2025-10-22                  D3_Alt
+  BYND 2025-10-21             D2_PM_Setup
+  BYND 2025-10-21                      D3
+  BYND 2025-10-21                  D3_Alt
+  GSIT 2025-10-21             D2_PM_Setup
+  GSIT 2025-10-21            D2_PMH_Break
+   SMR 2025-10-16                  D3_Alt
+  BITF 2025-10-15          D2_PMH_Break_1
+   SMR 2025-10-15                  D3_Alt
+  UAMY 2025-10-14                      D3
+  UAMY 2025-10-14                  D3_Alt
+  APLD 2025-10-13                  D3_Alt
+  ASTS 2025-10-13                  D3_Alt
+  BITF 2025-10-13                      D3
+  BITF 2025-10-13                  D3_Alt
+  CIFR 2025-10-13                      D3
+   DNN 2025-10-13                  D3_Alt
+  IREN 2025-10-13                      D3
+   SMR 2025-10-13                  D3_Alt
+  UAMY 2025-10-13             D2_PM_Setup
+  UAMY 2025-10-13                      D3
+  WULF 2025-10-13                      D3
+    AG 2025-10-10                      D3
+  PSLV 2025-10-10                      D3
+   SLV 2025-10-10                      D3
+  BITF 2025-10-08                      D3
+  CLSK 2025-10-08                      D3
+  CRWV 2025-10-08                      D3
+    MU 2025-10-08                      D3
+  UAMY 2025-10-08                      D3
+  UAMY 2025-10-08                  D3_Alt
+   AMD 2025-10-07                  D3_Alt
+    MU 2025-10-07                  D3_Alt
+  ONDS 2025-10-07                      D3
+  PATH 2025-10-07                  D3_Alt
+  UAMY 2025-10-07                  D3_Alt
+   AMD 2025-10-06             D2_PM_Setup
+  APLD 2025-10-06                  D3_Alt
+  BTBT 2025-10-06                      D3
+  BTBT 2025-10-06                  D3_Alt
+  CIFR 2025-10-06                      D3
+  CIFR 2025-10-06                  D3_Alt
+  CLSK 2025-10-06                      D3
+  IREN 2025-10-06                  D3_Alt
+  PLUG 2025-10-06                  D3_Alt
+  WULF 2025-10-06                      D3
+  WULF 2025-10-06                  D3_Alt
+  BITF 2025-10-03                      D3
+  CIFR 2025-10-03                      D3
+  CIFR 2025-10-03                  D3_Alt
+  WULF 2025-10-03                  D3_Alt
+  RZLV 2025-10-02                      D3
+  IREN 2025-09-24                      D3
+  IREN 2025-09-24                  D3_Alt
+  TSLL 2025-09-24                      D3
+  TSLL 2025-09-23                      D3
+  IREN 2025-09-22                  D3_Alt
+    RR 2025-09-19                  D3_Alt
+  RZLV 2025-09-16                  D3_Alt
+  JOBY 2025-09-15                  D3_Alt
+  RZLV 2025-09-15                  D3_Alt
+  ASST 2025-09-12          D2_PMH_Break_1
+  BITF 2025-09-12                      D3
+  BMNR 2025-09-12                      D3
+  BMNR 2025-09-12                  D3_Alt
+    MU 2025-09-12                      D3
+   WBD 2025-09-12          D2_PMH_Break_1
+  BMNR 2025-09-11                      D3
+  RZLV 2025-09-09                  D3_Alt
+  ONDS 2025-08-29                  D3_Alt
+   NIO 2025-08-25                      D3
+   NIO 2025-08-25                  D3_Alt
+  OPEN 2025-08-22             D2_PM_Setup
+  OPEN 2025-08-19                      D3
+  OPEN 2025-08-19                  D3_Alt
+  WULF 2025-08-14             D2_PM_Setup
+  WULF 2025-08-14                  D3_Alt
+  BMNR 2025-08-12                      D3
+  BMNR 2025-08-12                  D3_Alt
+  BMNR 2025-08-11             D2_PM_Setup
+  BMNR 2025-08-11                      D3
+  BMNR 2025-08-11                  D3_Alt
+   RIG 2025-08-08                      D3
+   RIG 2025-08-07                      D3
+  SOXS 2025-08-06                  D3_Alt
+   BBD 2025-08-05                      D3
+  JOBY 2025-08-04                  D3_Alt
+  BMNR 2025-07-31                  D3_Alt
+  ONDS 2025-07-31                  D3_Alt
+  SOXL 2025-07-30                      D3
+  BITF 2025-07-22                  D3_Alt
+  BMNR 2025-07-22                      D3
+  IREN 2025-07-22                      D3
+  OPEN 2025-07-22                      D3
+  RXRX 2025-07-21                      D3
+  RXRX 2025-07-21                  D3_Alt
+  APLD 2025-07-18                  D3_Alt
+  BMNR 2025-07-18                      D3
+  OPEN 2025-07-18             D2_PM_Setup
+  OPEN 2025-07-18                      D3
+  BMNR 2025-07-17                      D3
+  BMNR 2025-07-17                  D3_Alt
+  CRWV 2025-07-16                      D3
+  CRWV 2025-07-16                  D3_Alt
+  OPEN 2025-07-16             D2_PM_Setup
+  OPEN 2025-07-16                  D3_Alt
+   NIO 2025-07-14                      D3
+  BTBT 2025-07-09                      D3
+  SOUN 2025-07-09                  D3_Alt
+  BTBT 2025-07-08                      D3
+  IONQ 2025-07-08                  D3_Alt
+  BMNR 2025-07-03             D2_PM_Setup
+  BMNR 2025-07-03           D2_PM_Setup_2
+  BMNR 2025-07-02             D2_PM_Setup
+  BBAI 2025-07-01                      D3
+  BBAI 2025-07-01                  D3_Alt
+  ASTS 2025-06-30                      D3
+  RZLV 2025-06-30                      D3
+  SOUN 2025-06-30                  D3_Alt
+  CRWV 2025-06-26                      D3
+  IONQ 2025-06-26                      D3
+    QS 2025-06-26             D2_PM_Setup
+  TSLL 2025-06-24                      D3
+  ZETA 2025-06-24                      D3
+  ZETA 2025-06-24                  D3_Alt
+  IREN 2025-06-23                  D3_Alt
+  TSLA 2025-06-23                  D3_Alt
+  TSLL 2025-06-23                  D3_Alt
+  CIFR 2025-06-20                  D3_Alt
+   TMC 2025-06-20                  D3_Alt
+   SMR 2025-06-18                      D3
+  TSLL 2025-06-16                  D3_Alt
+  QUBT 2025-06-11             D2_PM_Setup
+  QUBT 2025-06-11                      D3
+  QUBT 2025-06-11                  D3_Alt
+  RGTI 2025-06-11                      D3
+  PLUG 2025-06-10                      D3
+  PLUG 2025-06-10                  D3_Alt
+  APLD 2025-06-09                      D3
+  PLUG 2025-06-09             D2_PM_Setup
+  WULF 2025-06-09                      D3
+  HOOD 2025-06-06                      D3
+  ONDS 2025-06-06                      D3
+  SOXL 2025-06-06                      D3
+  ACHR 2025-05-29                      D3
+  RKLB 2025-05-29                      D3
+  IONQ 2025-05-22             D2_PM_Setup
+  RGTI 2025-05-22             D2_PM_Setup
+  QBTS 2025-05-21                      D3
+  SOXS 2025-05-20                  D3_Alt
+  BBAI 2025-05-14                  D3_Alt
+  ETHA 2025-05-13                      D3
+  ETHA 2025-05-13                  D3_Alt
+  HOOD 2025-05-13                      D3
+  HOOD 2025-05-13                  D3_Alt
+   RIG 2025-05-13                      D3
+  SMCI 2025-05-13                  D3_Alt
+  WULF 2025-05-13                  D3_Alt
+  BITF 2025-05-12                  D3_Alt
+  CLSK 2025-05-12                  D3_Alt
+  SNAP 2025-05-12                      D3
+  TSLL 2025-05-12                      D3
+  TSLL 2025-05-12                  D3_Alt
+  RXRX 2025-05-09                      D3
+  RXRX 2025-05-09                  D3_Alt
+  PLUG 2025-04-28             D2_PM_Setup
+  NVDL 2025-04-24                      D3
+  SMCI 2025-04-24                      D3
+  SOXL 2025-04-24                      D3
+  SOXL 2025-04-24                  D3_Alt
+  TQQQ 2025-04-24                      D3
+  HOOD 2025-04-23                  D3_Alt
+  TSLL 2025-04-23                  D3_Alt
+  QBTS 2025-04-14                  D3_Alt
+  XPEV 2025-04-11                      D3
+  ACHR 2025-04-08                  D3_Alt
+  AMZN 2025-04-08                  D3_Alt
+  ASTS 2025-04-08                  D3_Alt
+  AVGO 2025-04-08                  D3_Alt
+  BBAI 2025-04-08                  D3_Alt
+  CRWV 2025-04-08                  D3_Alt
+  NVDL 2025-04-08          D2_PMH_Break_1
+  RGTI 2025-04-08                  D3_Alt
+  SMCI 2025-04-08                  D3_Alt
+   SMR 2025-04-08                  D3_Alt
+  SOXL 2025-04-08          D2_PMH_Break_1
+  TQQQ 2025-04-08          D2_PMH_Break_1
+  TSLL 2025-04-08          D2_PMH_Break_1
+  UVIX 2025-04-08             D2_PM_Setup
+  SOXS 2025-04-07                      D3
+   TZA 2025-04-07                      D3
+  UVIX 2025-04-07                      D3
+  SOXS 2025-04-03             D2_PM_Setup
+  NVDL 2025-03-14                      D3
+  QBTS 2025-03-14             D2_PM_Setup
+  QBTS 2025-03-14                      D3
+  QBTS 2025-03-14                  D3_Alt
+   SMR 2025-03-12                  D3_Alt
+  TSLS 2025-03-10                      D3
+  XPEV 2025-03-07                      D3
+  UVIX 2025-03-04                  D3_Alt
+  APLD 2025-02-20                  D3_Alt
+  QBTS 2025-02-20                  D3_Alt
+  QUBT 2025-02-20                  D3_Alt
+  INTC 2025-02-18                  D3_Alt
+  ASTS 2025-02-10                      D3
+  BBAI 2025-02-10          D2_PMH_Break_1
+  BBAI 2025-02-10                  D3_Alt
+  RXRX 2025-02-06                  D3_Alt
+  SOPA 2025-02-03             D2_PM_Setup
+  SOPA 2025-02-03           D2_PM_Setup_2
+  SOPA 2025-02-03            D2_PMH_Break
+  SOPA 2025-02-03          D2_Extreme_Gap
+  SOPA 2025-02-03 D2_Extreme_Intraday_Run
+  CIFR 2025-01-31             D2_PM_Setup
+  CIFR 2025-01-31                  D3_Alt
+  IREN 2025-01-31                  D3_Alt
+    NU 2025-01-22                      D3
+  SMCI 2025-01-22                      D3
+  SMCI 2025-01-22                  D3_Alt
+  BITF 2025-01-21                  D3_Alt
+  TSLA 2025-01-21                  D3_Alt
+  TSLL 2025-01-21                  D3_Alt
+  AVGO 2025-01-17                      D3
+  NVDL 2025-01-17                      D3
+  SMCI 2025-01-17                      D3
+  SOUN 2025-01-17                      D3
+  SOXL 2025-01-17                      D3
+  BBAI 2025-01-16                      D3
+  BBAI 2025-01-16                  D3_Alt
+    RR 2025-01-15            D2_PMH_Break
+    RR 2025-01-15                  D3_Alt
+   BBD 2025-01-07                  D3_Alt
+  ONDS 2025-01-06                  D3_Alt
+======================================================================

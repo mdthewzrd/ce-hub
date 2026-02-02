@@ -1,0 +1,337 @@
+# Production Trading System Dependencies
+
+# Core Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# Database and ORM
+asyncpg==0.29.0
+sqlalchemy[asyncio]==2.0.23
+alembic==1.13.0
+psycopg2-binary==2.9.9
+
+# Caching and Message Queue
+redis==5.0.1
+pika==1.3.2
+celery==5.3.4
+
+# Time Series Databases
+influxdb-client==1.38.0
+timescaledb-psycopg2==0.5.0
+
+# Vector Database
+qdrant-client==1.7.0
+sentence-transformers==2.2.2
+
+# Data Processing
+pandas==2.1.4
+numpy==1.24.4
+scipy==1.11.4
+scikit-learn==1.3.2
+
+# Technical Analysis
+TA-Lib==0.4.25
+vectorbt-pro[data]==0.25.0
+empyrical==0.5.5
+
+# Trading APIs
+polygon-api-client==3.0.0
+yfinance==0.2.28
+alpaca-trade-api==3.0.0
+ib-insync==0.9.86
+
+# WebSockets and Networking
+websockets==12.0
+aiohttp==3.9.1
+requests==2.31.0
+
+# Async Programming
+asyncio==3.4.3
+aiofiles==23.2.1
+concurrent-futures==3.1.1
+
+# Machine Learning
+torch==2.1.1
+transformers==4.36.2
+tensorflow==2.15.0
+
+# Optimization
+cvxpy==1.3.2
+hyperopt==0.2.7
+optuna==3.4.0
+
+# Risk Management
+arch==6.2.0
+pymc==5.10.0
+
+# Portfolio Optimization
+pyportfolioopt==1.5.5
+efficient-frontier==0.1.1
+
+# Data Validation
+cerberus==1.3.5
+jsonschema==4.20.0
+marshmallow==3.20.1
+
+# Configuration
+python-dotenv==1.0.0
+configparser==6.0.0
+hydra-core==1.3.2
+
+# Logging and Monitoring
+structlog==23.2.0
+prometheus-client==0.19.0
+opencensus-ext-logging==0.1.27
+
+# Authentication and Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+cryptography==41.0.8
+python-multipart==0.0.6
+
+# API Documentation
+fastapi-users==12.1.2
+fastapi-pagination==0.12.13
+
+# Background Tasks
+apscheduler==3.10.4
+celery-beat==2.5.0
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+httpx==0.25.2
+
+# Code Quality
+black==23.11.0
+isort==5.12.0
+flake8==6.1.0
+mypy==1.7.1
+pre-commit==3.6.0
+
+# Documentation
+mkdocs==1.5.3
+mkdocs-material==9.4.8
+
+# Performance
+uvloop==0.19.0
+orjson==3.9.10
+
+# Data Serialization
+msgpack==1.0.7
+avro==1.11.3
+parquet==1.3.1
+
+# Cloud Services
+boto3==1.34.0
+google-cloud-storage==2.10.0
+azure-storage-blob==12.19.0
+
+# Monitoring and Observability
+sentry-sdk[fastapi]==1.38.0
+datadog==0.47.0
+newrelic==9.2.0
+
+# Development Tools
+jupyter==1.0.0
+ipython==8.17.2
+notebook==7.0.6
+
+# Environment Management
+python-dotenv==1.0.0
+environs==10.0.0
+
+# Time and Date
+pytz==2023.3
+dateutil==2.8.2
+
+# HTTP Client
+httpx==0.25.2
+aiohttp==3.9.1
+
+# Financial Calculations
+quantlib-python==1.32
+yfinance==0.2.28
+pandas-datareader==0.10.0
+
+# Market Data
+ccxt==4.1.80
+binance==1.0.19
+krakenex==2.1.0
+
+# Charting and Visualization
+plotly==5.17.0
+dash==2.15.0
+bokeh==3.3.0
+matplotlib==3.8.2
+seaborn==0.13.0
+
+# Performance Profiling
+py-spy==0.3.14
+memory-profiler==0.61.0
+line-profiler==4.1.1
+
+# Database Utilities
+alembic==1.13.0
+sqlakeyset==2.0.1691705035
+sqlglot==20.8.0
+
+# Cache
+hiredis==2.2.3
+dogpile.cache==1.3.2
+
+# Async Database
+asyncpg==0.29.0
+aiomysql==0.2.0
+aiosqlite==0.19.0
+
+# API Rate Limiting
+slowapi==0.1.9
+ratelimit==2.2.1
+
+# Queue Systems
+celery==5.3.4
+kombu==5.3.4
+amqp==5.1.1
+
+# File Processing
+openpyxl==3.1.2
+xlsxwriter==3.1.9
+pandas-gbq==0.19.2
+
+# Mathematical Libraries
+sympy==1.12
+statsmodels==0.14.0
+
+# Optimization and Linear Algebra
+cvxopt==1.3.2
+pyomo==6.7.0
+
+# Web Scraping (for documentation)
+beautifulsoup4==4.12.2
+lxml==4.9.3
+scrapy==2.11.0
+selenium==4.16.0
+
+# Natural Language Processing
+spacy==3.7.2
+nltk==3.8.1
+textblob==0.17.1
+
+# API Documentation Generation
+fastapi==0.104.1
+fastapi-users==12.1.2
+fastapi-pagination==0.12.13
+
+# Security Tools
+bandit==1.7.5
+safety==2.3.5
+
+# Docker Utilities
+docker==6.1.3
+docker-compose==1.29.2
+
+# Environment Detection
+python-decouple==3.8
+
+# Type Hints
+types-redis==4.6.0.11
+types-requests==2.31.0.10
+types-pytz==2023.3.1.0
+
+# Error Tracking
+sentry-sdk[fastapi]==1.38.0
+
+# Performance Monitoring
+psutil==5.9.6
+py-cpuinfo==9.0.0
+
+# Database Migrations
+alembic==1.13.0
+flywaydb-cli==9.5.0
+
+# API Testing
+postman==1.0.0
+insomnia==8.6.1
+
+# Data Validation
+pydantic==2.5.0
+marshmallow==3.20.1
+cerberus==1.3.5
+
+# Configuration Management
+dynaconf==3.2.4
+consul-python==1.1.0
+
+# Service Discovery
+etcd3==0.12.0
+consul==1.1.0
+
+# Load Balancing
+nginx-unit==1.31.1
+haproxy==3.0
+
+# Container Orchestration
+kubernetes==28.1.0
+kubernetes-client==1.0.0
+
+# Infrastructure as Code
+terraform==1.6.4
+ansible==8.7.0
+
+# CI/CD
+github3.py==4.0.1
+gitlab==3.14.0
+
+# Performance Testing
+locust==2.17.0
+jmeter==5.6.2
+
+# Health Checks
+healthcheck==0.2.0
+django-health-check==0.6.0
+
+# API Gateway
+tyk==5.3.0
+kong==3.4.0
+
+# Microservices
+nameko==3.0.0
+fastmicro==0.1.0
+
+# Event Streaming
+kafka-python==2.0.2
+confluent-kafka==2.3.0
+
+# Service Mesh
+istio==1.20.0
+linkerd==2.15.0
+
+# Distributed Tracing
+jaeger-client==4.8.0
+opencensus-ext-jaeger==0.1.8
+
+# Metrics Collection
+statsd==4.0.1
+telegraf==1.29.1
+
+# Log Aggregation
+fluent-logger==0.10.0
+logstash==7.17.9
+
+# Configuration Management
+ansible==8.7.0
+puppet==8.4.0
+chef==17.10.0
+
+# Container Security
+trivy==0.48.1
+clair==4.7.0
+
+# Network Security
+fail2ban==1.0.2
+ufw==0.36.1

@@ -1,0 +1,2 @@
+Ticker,Date,Trigger,PosAbs_1000d,D1_Body/ATR,D1Vol(shares),D1Vol/Avg,"VolSig(max D-1,D-2)/Avg",Gap/ATR,Open>PrevHigh,Open/EMA9,D1>H(D-2),D1Close>D2Close,Slope9_5d,High-EMA9/ATR(trigger),ADV20_$,Scanner_Type
+TSLA,2024-07-02,D-1,0.632,1.14,135691395,1.74,1.74,1.07,True,1.09,True,True,10.25,2.51,14308112758,Ultra_Conservative

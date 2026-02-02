@@ -1,0 +1,1876 @@
+{
+  "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+  "chunk_count": 98,
+  "chunks": [
+    {
+      "content": "# EdgeDev Execution System Gold Standard\n**Complete Strategy Definition, Execution & Backtesting Framework**\n\n**Version**: 2.0\n**Date**: 2026-01-29\n**Status**: COMPLETE - Archon-Enabled\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "EdgeDev Execution System Gold Standard"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "archon",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Table of Contents\n\n1. [System Overview](#system-overview)\n2. [Strategy Definition Framework](#strategy-definition-framework)\n3. [Entry Logic](#entry-logic)\n4. [Position Management](#position-management)\n5. [Exit Logic](#exit-logic)\n6. [Pyramiding & Scaling](#pyramiding--scaling)\n7. [Capital Management](#capital-management)\n8. [Risk Management](#risk-management)\n9. [Retry & Re-entry Rules](#retry--re-entry-rules)\n10. [Data Input Modes](#data-input-modes)\n11. [Execution Engine](#execution-engine)\n12. [Performance Metrics](#performance-metrics)\n13. [Validation Framework](#validation-framework)\n14. [Archon Integration](#archon-integration)\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::Table of Contents",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "Table of Contents"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Table of Contents"
+      },
+      "tags": [
+        "strategy",
+        "indicator",
+        "archon",
+        "risk",
+        "position",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "## System Overview\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::System Overview",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "System Overview"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "System Overview"
+      },
+      "tags": []
+    },
+    {
+      "content": "### What This System Does\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                    COMPLETE STRATEGY EXECUTION                          \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502                                                                         \u2502\n\u2502  INPUT: Any trading approach you can describe                          \u2502\n\u2502  \u251c\u2500\u2500 Scanner-based strategies                                          \u2502\n\u2502  \u251c\u2500\u2500 Custom signal strategies                                          \u2502\n\u2502  \u251c\u2500\u2500 Hybrid approaches                                                 \u2502\n\u2502  \u2514\u2500\u2500 Multi-stage execution                                            \u2502\n\u2502                                                                         \u2502\n\u2502  PROCESS: Define it \u2192 Agent generates code \u2192 Backtest validates       \u2502\n\u2502                                                                         \u2502\n\u2502  OUTPUT: Production-ready execution system                             \u2502\n\u2502  \u251c\u2500\u2500 Scanner code (if needed)                                          \u2502\n\u2502  \u251c\u2500\u2500 Execution logic                                                   \u2502\n\u2502  \u251c\u2500\u2500 Backtest results                                                  \u2502\n\u2502  \u251c\u2500\u2500 Performance metrics                                               \u2502\n\u2502  \u2514\u2500\u2500 Edge validation                                                   \u2502\n\u2502                                                                         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::System Overview::What This System Does",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "System Overview",
+        "What This System Does"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What This System Does"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "v31",
+        "code",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Architecture",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::System Overview::Architecture::chunk0",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "System Overview",
+        "Architecture"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Architecture"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "pattern",
+        "v31",
+        "archon",
+        "code",
+        "risk",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Architecture\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                    ARCHON-POWERED WORKFLOW                             \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502                                                                         \u2502\n\u2502  1. USER DESCRIBES STRATEGY                                            \u2502\n\u2502     \"I want to fade gap ups with pyramiding and trailing stops\"        \u2502\n\u2502                                                                         \u2502\n\u2502  2. AGENT QUERIES ARCHON                                                \u2502\n\u2502     \u251c\u2500\u2500 Retrieve: Gap fade patterns                                     \u2502\n\u2502     \u251c\u2500\u2500 Retrieve: Pyramiding best practices                            \u2502\n\u2502     \u251c\u2500\u2500 Retrieve: Trailing stop methods                                \u2502\n\u2502     \u251c\u2500\u2500 Retrieve: Past similar projects                                \u2502\n\u2502     \u2514\u2500\u2500 Retrieve: What worked/what didn't                             \u2502\n\u2502                                                                         \u2502\n\u2502  3. AGENT GENERATES STRATEGY DEFINITION                                \u2502\n\u2502     \u251c\u2500\u2500 Entry logic (from Archon patterns)                             \u2502\n\u2502     \u251c\u2500\u2500 Execution rules (from Archon knowledge)                        \u2502\n\u2502     \u251c\u2500\u2500 Parameter suggestions (from past results)                      \u2502\n\u2502     \u2514\u2500\u2500 Code structure (from V31 Gold Standard)                        \u2502\n\u2502                                                                         \u2502\n\u2502  4. AGENT GENERATES CODE                                                \u2502\n\u2502     \u251c\u2500\u2500 Scanner (if needed)                                             \u2502\n\u2502     \u251c\u2500\u2500 Execution engine                                                \u2502\n\u2502     \u251c\u2500\u2500 Backtest simulator                                              \u2502\n\u2502     \u2514\u2500\u2500 Validation code                                                 \u2502\n\u2502                                                                         \u2502\n\u2502  5. SYSTEM VALIDATES                                                    \u2502\n\u2502     \u251c\u2500\u2500 Run backtest                                                   \u2502\n\u2502     \u251c\u2500\u2500 Check A+ examples                                              \u2502\n\u2502     \u251c\u2500\u2500 Validate edge                                                  \u2502\n\u2502     \u2514\u2500\u2500 Store results in Archon                                        \u2502\n\u2502                                                                         \u2502\n\u2502  6. USER REVIEWS & ITERATES                                            \u2502\n\u2502     \u2514\u2500\u2500 Cycle continues, agent learns more                             \u2502\n\u2502                                                                         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::System Overview::Architecture::chunk1",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "System Overview",
+        "Architecture"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Architecture"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "pattern",
+        "v31",
+        "archon",
+        "code",
+        "risk",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "learns more                             \u2502\n\u2502                                                                         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n\n\n[...previous chunk overlap...]\n\n---",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::System Overview::Architecture::chunk2",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "System Overview",
+        "Architecture"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Architecture"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "pattern",
+        "v31",
+        "archon",
+        "code",
+        "risk",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Strategy Definition Framework\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::Strategy Definition Framework",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "Strategy Definition Framework"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Strategy Definition Framework"
+      },
+      "tags": [
+        "strategy"
+      ]
+    },
+    {
+      "content": "### Complete Strategy Specification\n\nEvery strategy can be fully defined with these components:",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::Strategy Definition Framework::Complete Strategy Specification::chunk0",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "Strategy Definition Framework",
+        "Complete Strategy Specification"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Complete Strategy Specification"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "indicator",
+        "pattern",
+        "code",
+        "risk",
+        "position",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### Complete Strategy Specification\n\nEvery strategy can be fully defined with these components:\n\n```python\nstrategy = {\n    # === IDENTITY ===\n    'name': 'Gap Fade with Pyramiding',\n    'description': 'Fade gap ups, add to winners, trail stops',\n    'author': 'User',\n    'created': '2025-01-29',\n\n    # === ENTRY LOGIC ===\n    'entry': {\n        'type': 'scanner_based',  # OR 'custom_signal' OR 'hybrid'\n        'scanner': 'GapFadeScanner',\n        'custom_condition': None,\n        'signal_filter': None,  # Additional filtering\n        'initial_position_pct': 0.5,  # Start with 50% of full position\n    },\n\n    # === POSITION MANAGEMENT ===\n    'position': {\n        'sizing_method': 'atr_based',  # OR 'fixed_pct' OR 'kelly'\n        'risk_per_trade_pct': 0.01,  # 1% of account\n        'max_positions': 5,\n        'correlation_limit': 0.7,  # Max correlation between positions\n    },\n\n    # === PYRAMIDING (Adding to Winners) ===\n    'pyramid': {\n        'enabled': True,\n        'num_adds': 2,  # Maximum 2 additions\n        'trigger': 'unrealized_r >= 1.0',  # Add when up 1R\n        'add_size_pct': 0.25,  # Add 25% of initial each time\n        'spacing': 'atr_based',  # OR 'fixed_r' OR 'fixed_price'\n        'atr_spacing': 1.5,\n    },\n\n    # === STOPS ===\n    'stops': {\n        'initial': {\n            'type': 'atr_based',  # OR 'fixed_price' OR 'fixed_pct'\n            'atr_multiplier': 0.8,\n        },\n        'breakeven': {\n            'enabled': True,\n            'trigger_r': 1.0,  # Move to breakeven after 1R\n        },\n        'trailing': {\n            'enabled': True,\n            'trigger_r': 2.0,  # Start trailing after 2R\n            'type': 'atr_based',  # OR 'fixed_r' OR 'percent'\n            'atr_multiplier': 0.5,\n        },\n        'time_stop': {\n            'enabled': False,\n            'max_holding_minutes': 240,\n        },\n    },\n\n    # === TARGETS ===\n    'targets': [\n        {'r': 1.5, 'exit_pct': 0.5, 'type': 'profit_target'},\n        {'r': 3.0, 'exit_pct': 0.3, 'type': 'profit_target'},\n        {'r': 5.0, 'exit_pct': 0.2, 'type': 'profit_target'},\n    ],\n    # Remaining exited by other conditions (stop, time, etc.)\n\n    # === RETRY RULES (Re-entry) ===\n    'retry': {\n        'enabled': True,\n        'condition': 'signal_reoccurs AND volume >= 2x_initial',\n        'cooldown_bars': 5,  # Wait 5 bars before re-entry\n        'max_retries_per_setup': 2,\n        'reset_after_stop': True,  # Reset retry count after stopped\n    },\n\n    # === CAPITAL MANAGEMENT ===\n    'capital': {\n        'recycling_pct': 0.5,  # Reinvest 50% of profits\n        'withdraw_pct': 0.5,  # Withdraw 50% of profits\n        'compounding': True,  # Compound profits\n        'base_rebalance': 'daily',  # How often to reset to base capital\n    },\n\n    # === RISK MANAGEMENT ===\n    'risk': {\n        'max_risk_per_trade': 0.02,  # 2% of account per trade\n        'max_portfolio_risk': 0.10,  # Stop trading if 10% drawdown\n        'max_correlation_exposure': 0.15,  # Max exposure to correlated positions\n        'daily_loss_limit': 0.03,  # Stop trading if 3% loss in day\n    },\n\n    # === DATA SOURCE ===\n    'data': {\n        'mode': 'scanner_results',  # OR 'single_ticker' OR 'multi_ticker' OR 'custom'\n        'tickers': None,  # For single/multi mode\n        'scanner_config': None,  # For scanner mode\n        'custom_data_source': None,  # For custom mode\n    },\n\n    # === VALIDATION ===\n    'validation': {\n        'min_trades': 30,\n        'min_win_rate': 0.55,\n        'min_expectancy': 0.10,  # 0.10R per trade\n        'max_drawdown': 0.15,\n        'regime_check': True,  # Must work in multiple regimes\n    },\n}\n```",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::Strategy Definition Framework::Complete Strategy Specification::chunk1",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "Strategy Definition Framework",
+        "Complete Strategy Specification"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Complete Strategy Specification"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "indicator",
+        "pattern",
+        "code",
+        "risk",
+        "position",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "rades': 30,\n        'min_win_rate': 0.55,\n        'min_expectancy': 0.10,  # 0.10R per trade\n        'max_drawdown': 0.15,\n        'regime_check': True,  # Must work in multiple regimes\n    },\n}\n```\n\n\n\n[...previous chunk overlap...]\n\n---",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::Strategy Definition Framework::Complete Strategy Specification::chunk2",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "Strategy Definition Framework",
+        "Complete Strategy Specification"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Complete Strategy Specification"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "indicator",
+        "pattern",
+        "code",
+        "risk",
+        "position",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "## Entry Logic\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::Entry Logic",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "Entry Logic"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Entry Logic"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Entry Types\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::Entry Logic::Entry Types",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "Entry Logic",
+        "Entry Types"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Entry Types"
+      },
+      "tags": []
+    },
+    {
+      "content": "#### Type 1: Scanner-Based Entry\n\n```python",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::EdgeDev Execution System Gold Standard::Entry Logic::Entry Types::Type 1: Scanner-Based Entry",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Execution System Gold Standard",
+        "Entry Logic",
+        "Entry Types",
+        "Type 1: Scanner-Based Entry"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Type 1: Scanner-Based Entry"
+      },
+      "tags": [
+        "scanner",
+        "code"
+      ]
+    },
+    {
+      "content": "# Entry triggered by scanner signal\nentry = {\n    'type': 'scanner_based',\n    'scanner': 'GapFadeScanner',  # References scanner in Archon\n    'signal_filter': {\n        'min_gap': 0.03,  # Minimum 3% gap\n        'min_volume_ratio': 1.5,\n        'max_hold_range': 0.005,  # Hold tight\n    },\n    'initial_position_pct': 0.5,  # Start with 50% position\n}\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Entry triggered by scanner signal",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Entry triggered by scanner signal"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Entry triggered by scanner signal"
+      },
+      "tags": [
+        "scanner",
+        "indicator",
+        "archon",
+        "position"
+      ]
+    },
+    {
+      "content": "# Agent retrieves from Archon:",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Agent retrieves from Archon:",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Agent retrieves from Archon:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Agent retrieves from Archon:"
+      },
+      "tags": [
+        "archon"
+      ]
+    },
+    {
+      "content": "# - Scanner code (V31-compliant)",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::- Scanner code (V31-compliant)",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "- Scanner code (V31-compliant)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "- Scanner code (V31-compliant)"
+      },
+      "tags": [
+        "scanner",
+        "v31",
+        "code"
+      ]
+    },
+    {
+      "content": "# - Best parameter values (from past optimizations)",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::- Best parameter values (from past optimizations)",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "- Best parameter values (from past optimizations)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "- Best parameter values (from past optimizations)"
+      },
+      "tags": [
+        "optimization"
+      ]
+    },
+    {
+      "content": "# - Typical signal characteristics\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::- Typical signal characteristics",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "- Typical signal characteristics"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "- Typical signal characteristics"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "#### Type 2: Custom Signal Entry\n\n```python",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::- Typical signal characteristics::Type 2: Custom Signal Entry",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "- Typical signal characteristics",
+        "Type 2: Custom Signal Entry"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Type 2: Custom Signal Entry"
+      },
+      "tags": [
+        "indicator",
+        "code"
+      ]
+    },
+    {
+      "content": "# Entry based on custom logic (no scanner)\nentry = {\n    'type': 'custom_signal',\n    'condition': 'close < open AND volume > 2x_avg AND close < low_5_bars_ago',\n    'lookback_bars': 20,  # Need 20 bars history\n    'signal_strength': 'min_score_70',  # If signal has strength metric\n    'initial_position_pct': 1.0,  # Full position immediately\n}\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Entry based on custom logic (no scanner)",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Entry based on custom logic (no scanner)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Entry based on custom logic (no scanner)"
+      },
+      "tags": [
+        "scanner",
+        "indicator",
+        "position"
+      ]
+    },
+    {
+      "content": "# Agent generates from Archon knowledge:",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Agent generates from Archon knowledge:",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Agent generates from Archon knowledge:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Agent generates from Archon knowledge:"
+      },
+      "tags": [
+        "archon"
+      ]
+    },
+    {
+      "content": "# - Condition parsing",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::- Condition parsing",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "- Condition parsing"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "- Condition parsing"
+      },
+      "tags": []
+    },
+    {
+      "content": "# - Feature calculation (indicators)",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::- Feature calculation (indicators)",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "- Feature calculation (indicators)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "- Feature calculation (indicators)"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "# - Signal strength scoring\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::- Signal strength scoring",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "- Signal strength scoring"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "- Signal strength scoring"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "#### Type 3: Hybrid Entry\n\n```python",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::- Signal strength scoring::Type 3: Hybrid Entry",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "- Signal strength scoring",
+        "Type 3: Hybrid Entry"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Type 3: Hybrid Entry"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Entry combines scanner + custom confirmation\nentry = {\n    'type': 'hybrid',\n    'primary': 'scanner_signal',  # Scanner provides initial signal\n    'confirmation': 'custom_condition',  # Custom confirms entry\n    'scanner': 'GapFadeScanner',\n    'confirmation_logic': 'close < open AND volume_expanding',\n    'initial_position_pct': 0.75,  # Larger position when confirmed\n}\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Entry combines scanner + custom confirmation",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Entry combines scanner + custom confirmation"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Entry combines scanner + custom confirmation"
+      },
+      "tags": [
+        "scanner",
+        "indicator",
+        "position"
+      ]
+    },
+    {
+      "content": "### Entry Timing\n\n```python\nentry_timing = {\n    'type': 'immediate',  # OR 'confirmation' OR 'limit'\n\n    # Immediate: Enter at signal\n    'immediate': {\n        'price': 'close',  # OR 'open' OR 'next_open'\n    },\n\n    # Confirmation: Wait for confirmation pattern\n    'confirmation': {\n        'pattern': 'weak_close',  # OR 'volume_spike' OR 'breakout'\n        'max_wait_bars': 3,  # Don't wait forever\n        'entry_price': 'close_of_confirm_bar',\n    },\n\n    # Limit: Place limit order\n    'limit': {\n        'discount_from_signal': 0.001,  # 0.1% discount\n        'max_wait_bars': 5,\n        'if_not_filled': 'skip' OR 'market_order',\n    },\n}\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Entry combines scanner + custom confirmation::Entry Timing",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Entry combines scanner + custom confirmation",
+        "Entry Timing"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Entry Timing"
+      },
+      "tags": [
+        "indicator",
+        "pattern",
+        "code",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Position Management\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Entry combines scanner + custom confirmation::Position Management",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Entry combines scanner + custom confirmation",
+        "Position Management"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Position Management"
+      },
+      "tags": [
+        "position"
+      ]
+    },
+    {
+      "content": "### Position Sizing\n\n```python",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Entry combines scanner + custom confirmation::Position Management::Position Sizing",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Entry combines scanner + custom confirmation",
+        "Position Management",
+        "Position Sizing"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Position Sizing"
+      },
+      "tags": [
+        "code",
+        "position"
+      ]
+    },
+    {
+      "content": "# Sizing methods (stored in Archon, retrieved by agent)\nposition_sizing = {\n    'method': 'atr_based',  # Most common for trading\n\n    'atr_based': {\n        'risk_per_trade_pct': 0.01,  # 1% of account\n        'atr_multiplier': 0.8,  # Stop at 0.8x ATR\n        'shares': 'risk_amount / (atr * atr_multiplier)',\n    },\n\n    'fixed_pct': {\n        'risk_per_trade_pct': 0.01,\n        'shares': '(account * risk_pct) / (entry - stop)',\n    },\n\n    'kelly': {\n        'win_rate': 0.60,  # From backtest\n        'avg_win_r': 2.0,\n        'avg_loss_r': 1.0,\n        'kelly_fraction': 0.25,  # Use quarter-Kelly\n        'shares': '(account * kelly_pct) / loss_amount',\n    },\n\n    'volatility_adjusted': {\n        'base_risk_pct': 0.01,\n        'vol_adjustment': 'atr / 20d_avg_atr',\n        'final_risk_pct': 'base_risk * vol_adjustment',\n    },\n}\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Sizing methods (stored in Archon, retrieved by agent)",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Sizing methods (stored in Archon, retrieved by agent)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Sizing methods (stored in Archon, retrieved by agent)"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "archon",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Multi-Position Management\n\n```python",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Sizing methods (stored in Archon, retrieved by agent)::Multi-Position Management",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Sizing methods (stored in Archon, retrieved by agent)",
+        "Multi-Position Management"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Multi-Position Management"
+      },
+      "tags": [
+        "code",
+        "position"
+      ]
+    },
+    {
+      "content": "# Managing multiple simultaneous positions\nposition_management = {\n    'max_positions': 5,  # Maximum concurrent positions\n\n    'position_limits': {\n        'max_per_sector': 2,  # Max 2 positions per sector\n        'max_correlated': 2,  # Max 2 correlated positions\n        'correlation_threshold': 0.7,\n    },\n\n    'sizing_with_multiple': {\n        'method': 'equal_risk',  # Equal risk per position\n        # OR 'equal_weight',  # Equal dollar amount\n        # OR 'volatility_paridad',  # More volatile = smaller position\n    },\n\n    'entry_priority': {\n        'rank_by': 'signal_strength',  # OR 'gap_size' OR 'volume'\n        'max_entries_per_day': 3,\n    },\n}\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Managing multiple simultaneous positions"
+      },
+      "tags": [
+        "indicator",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "## Exit Logic\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Exit Logic",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Exit Logic"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Exit Logic"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Exit Types\n\n```python\nexit_logic = {\n    # 1. Profit Target (R-based)\n    'profit_target': {\n        'enabled': True,\n        'type': 'r_multiple',  # OR 'atr_based' OR 'price'\n        'targets': [\n            {'r': 1.5, 'exit_pct': 0.50},  # Exit 50% at 1.5R\n            {'r': 3.0, 'exit_pct': 0.30},  # Exit 30% at 3.0R\n            {'r': 5.0, 'exit_pct': 0.20},  # Exit 20% at 5.0R\n        ],\n        # Remaining 100% exited by other conditions\n    },\n\n    # 2. Stop Loss\n    'stop_loss': {\n        'initial': {\n            'type': 'atr_based',\n            'atr_multiplier': 0.8,\n            'buffer': 0.001,  # Small buffer to avoid noise\n        },\n        'breakeven': {\n            'enabled': True,\n            'trigger_r': 1.0,  # Move to breakeven after 1R\n        },\n        'trailing': {\n            'enabled': True,\n            'trigger_r': 2.0,  # Start trailing after 2R\n            'type': 'atr_based',\n            'atr_multiplier': 0.5,\n            # Trail stops as price moves in favor\n        },\n    },\n\n    # 3. Time-Based Exit\n    'time_exit': {\n        'enabled': True,\n        'max_holding_minutes': 240,  # 4 hours\n        'end_of_day': True,  # Exit at market close\n        'exit_time': '15:55:00',  # Exit at 3:55 PM ET\n    },\n\n    # 4. Condition-Based Exit\n    'condition_exit': {\n        'enabled': False,\n        'conditions': [\n            'volume_dries_up',  # Volume drops below threshold\n            'momentum_slows',  # Rate of change decreases\n            'pattern_invalidated',  # Setup fails\n        ],\n    },\n\n    # 5. Target Exit Priority\n    'exit_priority': [\n        'stop_loss',      # Check first (protect capital)\n        'profit_target',  # Check second (lock in gains)\n        'time_exit',      # Check third (don't overhold)\n        'condition_exit', # Check fourth\n    ],\n}\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Exit Logic::Exit Types",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Exit Logic",
+        "Exit Types"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Exit Types"
+      },
+      "tags": [
+        "pattern",
+        "code",
+        "risk"
+      ]
+    },
+    {
+      "content": "### Stop Management Implementation",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Exit Logic::Stop Management Implementation::chunk0",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Exit Logic",
+        "Stop Management Implementation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Stop Management Implementation"
+      },
+      "tags": [
+        "strategy",
+        "pattern",
+        "archon",
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Stop Management Implementation\n\n```python\nclass StopManager:\n    \"\"\"\n    Manages all stop types for a position\n\n    Retrieved from Archon:\n    - Stop patterns that work\n    - ATR multiplier preferences\n    - Breakeven triggers\n    - Trailing configurations\n    \"\"\"\n\n    def __init__(self, position, strategy_config):\n        self.position = position\n        self.config = strategy_config['stops']\n\n        # Initialize stops\n        self.initial_stop = self._calculate_initial_stop()\n        self.current_stop = self.initial_stop\n        self.highest_price = position.entry_price  # For longs\n        self.lowest_price = position.entry_price   # For shorts\n\n    def update(self, bar):\n        \"\"\"Update stops based on new bar\"\"\"\n        unrealized_r = self._calculate_unrealized_r(bar)\n\n        # Check breakeven\n        if self.config['breakeven']['enabled']:\n            if unrealized_r >= self.config['breakeven']['trigger_r']:\n                self.current_stop = self.position.entry_price\n\n        # Check trailing\n        if self.config['trailing']['enabled']:\n            if unrealized_r >= self.config['trailing']['trigger_r']:\n                self._update_trailing_stop(bar)\n\n        # Check time stop\n        if self.config['time_stop']['enabled']:\n            if self._check_time_stop(bar):\n                return {'action': 'exit', 'reason': 'time_stop'}\n\n        # Check if stop hit\n        if self._check_stop_hit(bar):\n            return {'action': 'exit', 'reason': 'stop_loss',\n                    'price': self.current_stop}\n\n        return {'action': 'hold', 'current_stop': self.current_stop}\n\n    def _calculate_initial_stop(self):\n        \"\"\"Calculate initial stop based on config\"\"\"\n        if self.config['initial']['type'] == 'atr_based':\n            stop_distance = self.position.atr * self.config['initial']['atr_multiplier']\n\n            if self.position.direction == 'LONG':\n                return self.position.entry_price - stop_distance\n            else:\n                return self.position.entry_price + stop_distance\n\n    def _update_trailing_stop(self, bar):\n        \"\"\"Update trailing stop\"\"\"\n        if self.position.direction == 'LONG':\n            # Update highest price\n            if bar['high'] > self.highest_price:\n                self.highest_price = bar['high']\n\n            # Calculate new trailing stop\n            trail_distance = self.position.atr * self.config['trailing']['atr_multiplier']\n            new_stop = self.highest_price - trail_distance\n\n            # Only move stop up, never down\n            if new_stop > self.current_stop:\n                self.current_stop = new_stop\n```",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Exit Logic::Stop Management Implementation::chunk1",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Exit Logic",
+        "Stop Management Implementation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Stop Management Implementation"
+      },
+      "tags": [
+        "strategy",
+        "pattern",
+        "archon",
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "new_stop = self.highest_price - trail_distance\n\n            # Only move stop up, never down\n            if new_stop > self.current_stop:\n                self.current_stop = new_stop\n```\n\n\n\n[...previous chunk overlap...]\n\n---",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Exit Logic::Stop Management Implementation::chunk2",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Exit Logic",
+        "Stop Management Implementation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Stop Management Implementation"
+      },
+      "tags": [
+        "strategy",
+        "pattern",
+        "archon",
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "## Pyramiding & Scaling\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Pyramiding & Scaling",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Pyramiding & Scaling"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Pyramiding & Scaling"
+      },
+      "tags": [
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### Pyramiding (Adding to Winners)\n\n```python\npyramid_config = {\n    'enabled': True,\n\n    # When to add\n    'trigger': {\n        'type': 'r_based',  # OR 'price_based' OR 'time_based'\n        'r_threshold': 1.0,  # Add when up 1R\n        # OR\n        'price_threshold': 'entry + (2 * atr)',\n        # OR\n        'time_threshold': '30_minutes_after_entry',\n    },\n\n    # How much to add\n    'add_size': {\n        'type': 'pct_of_initial',  # OR 'fixed_risk' OR 'volatility_adjusted'\n        'pct_of_initial': 0.25,  # Add 25% of initial position each time\n        # OR\n        'fixed_risk': 500,  # Add $500 risk worth\n        # OR\n        'volatility_adjusted': 'initial * (entry_atr / current_atr)',\n    },\n\n    # How many times\n    'max_adds': 2,  # Maximum 2 additions\n\n    # Where to add\n    'add_levels': {\n        'type': 'automatic',  # Add at trigger\n        # OR 'predefined': Add at specific price levels\n        'levels': [\n            {'price': 'entry + (1.5 * atr)', 'size_pct': 0.25},\n            {'price': 'entry + (3.0 * atr)', 'size_pct': 0.25},\n        ],\n    },\n\n    # Stop management with pyramiding\n    'stops': {\n        'move_to_breakeven': 'after_first_add',  # After first add-on\n        'trail_all_adds': True,  # Trail all positions together\n    },\n}\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Pyramiding & Scaling::Pyramiding (Adding to Winners)",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Pyramiding & Scaling",
+        "Pyramiding (Adding to Winners)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pyramiding (Adding to Winners)"
+      },
+      "tags": [
+        "code",
+        "risk",
+        "position",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### Scaling (Position Sizing Over Time)\n\n```python\nscaling_config = {\n    'enabled': False,\n\n    # Scale in (build position over time)\n    'scale_in': {\n        'initial_entry': 0.33,  # Start with 33%\n        'second_entry': 0.33,   # Add 33% at confirmation\n        'third_entry': 0.34,    # Add 34% on continuation\n        'conditions': [\n            'initial_entry': 'immediate',\n            'second_entry': 'close_below_open',\n            'third_entry': 'continues_lower',\n        ],\n    },\n\n    # Scale out (exit in pieces)\n    'scale_out': {\n        'first_exit': {'r': 1.5, 'pct': 0.50},\n        'second_exit': {'r': 3.0, 'pct': 0.30},\n        'final_exit': {'r': 5.0, 'pct': 0.20},\n    },\n}\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Pyramiding & Scaling::Scaling (Position Sizing Over Time)",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Pyramiding & Scaling",
+        "Scaling (Position Sizing Over Time)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Scaling (Position Sizing Over Time)"
+      },
+      "tags": [
+        "code",
+        "position",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "## Capital Management\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Capital Management",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Capital Management"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Capital Management"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Recycling Strategies\n\n```python\ncapital_management = {\n    # Base capital configuration\n    'base_capital': 100000,\n    'rebalance_frequency': 'daily',  # Reset to base daily\n\n    # Profit recycling\n    'recycling': {\n        'enabled': True,\n        'recycle_pct': 0.50,  # Reinvest 50% of profits\n        'withdraw_pct': 0.50,  # Withdraw 50% of profits\n        'recycle_delay': 'immediate',  # OR 'after_confirmation'\n    },\n\n    # Compounding\n    'compounding': {\n        'enabled': True,\n        'method': 'full',  # OR 'partial' OR 'kelly_based'\n        'max_growth': 2.0,  # Stop compounding at 2x capital\n    },\n\n    # Drawdown management\n    'drawdown_control': {\n        'max_drawdown_pct': 0.10,  # Stop trading at 10% DD\n        'reduce_size_at': 0.05,  # Reduce position size at 5% DD\n        'reduction_factor': 0.5,  # Reduce by 50%\n        'reset_after_drawdown': True,\n    },\n}\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Capital Management::Recycling Strategies",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Capital Management",
+        "Recycling Strategies"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Recycling Strategies"
+      },
+      "tags": [
+        "strategy",
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Implementation\n\n```python\nclass CapitalManager:\n    \"\"\"\n    Manages account capital and position sizing\n\n    Retrieved from Archon:\n    - Recycling strategies that worked\n    - Risk management rules\n    - Account growth patterns\n    \"\"\"\n\n    def __init__(self, initial_capital, config):\n        self.base_capital = initial_capital\n        self.current_capital = initial_capital\n        self.config = config\n\n    def update_after_trade(self, trade_result):\n        \"\"\"Update capital after trade closes\"\"\"\n        pnl = trade_result['pnl']\n\n        # Apply recycling rules\n        if self.config['recycling']['enabled']:\n            if pnl > 0:  # Profit\n                recycle_amount = pnl * self.config['recycling']['recycle_pct']\n                self.current_capital += recycle_amount\n                # Remaining withdrawn\n            else:  # Loss\n                self.current_capital += pnl  # Full loss applied\n\n        # Check for rebalance\n        if self._should_rebalance():\n            self._rebalance_to_base()\n\n    def get_position_size(self, risk_per_trade, stop_distance):\n        \"\"\"Calculate position size based on current capital and risk\"\"\"\n        risk_amount = self.current_capital * risk_per_trade\n        shares = int(risk_amount / stop_distance)\n        return shares\n\n    def _should_rebalance(self):\n        \"\"\"Check if should reset to base capital\"\"\"\n        # Rebalance daily (or per config)\n        return True  # Simplified\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Capital Management::Implementation",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Capital Management",
+        "Implementation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Implementation"
+      },
+      "tags": [
+        "pattern",
+        "archon",
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "## Risk Management\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Risk Management",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Risk Management"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Risk Management"
+      },
+      "tags": [
+        "risk"
+      ]
+    },
+    {
+      "content": "### Portfolio-Level Risk\n\n```python\nrisk_management = {\n    # Per-trade risk\n    'per_trade': {\n        'max_risk_pct': 0.01,  # 1% of account per trade\n        'max_position_pct': 0.20,  # Max 20% of account in one position\n    },\n\n    # Portfolio risk\n    'portfolio': {\n        'max_open_risk': 0.05,  # Max 5% total risk at once\n        'max_drawdown_limit': 0.10,  # Stop trading at 10% DD\n        'max_daily_loss': 0.03,  # Stop trading for day at 3% loss\n    },\n\n    # Correlation risk\n    'correlation': {\n        'max_correlated_positions': 2,\n        'correlation_threshold': 0.7,\n        'sector_concentration_limit': 0.30,  # Max 30% in one sector\n    },\n\n    # Volatility risk\n    'volatility': {\n        'reduce_size_when_vix_high': True,\n        'vix_threshold': 25,\n        'size_reduction_factor': 0.5,\n    },\n}\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Risk Management::Portfolio-Level Risk",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Risk Management",
+        "Portfolio-Level Risk"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Portfolio-Level Risk"
+      },
+      "tags": [
+        "strategy",
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Implementation\n\n```python\nclass RiskManager:\n    \"\"\"\n    Manages portfolio-level risk\n\n    Retrieved from Archon:\n    - Risk rules that protect capital\n    - Drawdown patterns to avoid\n    - Correlation management\n    \"\"\"\n\n    def __init__(self, account_value, config):\n        self.account_value = account_value\n        self.config = config\n        self.current_risk = 0\n        self.positions = {}\n\n    def can_enter_position(self, proposed_position):\n        \"\"\"Check if new position within risk limits\"\"\"\n        # Check per-trade risk\n        position_risk = proposed_position['risk_amount']\n        if position_risk > self.account_value * self.config['per_trade']['max_risk_pct']:\n            return False, \"Position risk exceeds limit\"\n\n        # Check portfolio risk\n        total_risk = self.current_risk + position_risk\n        if total_risk > self.account_value * self.config['portfolio']['max_open_risk']:\n            return False, \"Portfolio risk exceeds limit\"\n\n        # Check correlation\n        if not self._check_correlation(proposed_position):\n            return False, \"Too correlated to existing positions\"\n\n        return True, \"Position approved\"\n\n    def update_daily_limits(self, daily_pnl):\n        \"\"\"Update daily loss limits\"\"\"\n        if daily_pnl < 0:\n            daily_loss_pct = abs(daily_pnl) / self.account_value\n\n            if daily_loss_pct >= self.config['portfolio']['max_daily_loss']:\n                return 'STOP_TRADING_FOR_DAY'\n\n        return 'CONTINUE'\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Risk Management::Implementation",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Risk Management",
+        "Implementation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Implementation"
+      },
+      "tags": [
+        "strategy",
+        "pattern",
+        "archon",
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "## Retry & Re-entry Rules\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Retry & Re-entry Rules",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Retry & Re-entry Rules"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Retry & Re-entry Rules"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Re-entry After Stop\n\n```python\nretry_config = {\n    'enabled': True,\n\n    # When to retry\n    'conditions': [\n        'signal_reoccurs',  # Same setup appears again\n        'volume_confirms',  # Higher volume on re-signal\n        'trend_continues',  # Original trend still intact\n    ],\n\n    # When NOT to retry\n    'exclusions': [\n        'stop_was_far',  # If stopped far from entry (setup failed)\n        'market_regime_changed',  # Market conditions changed\n        'max_retries_reached',  # Already retried max times\n    ],\n\n    # Retry parameters\n    'max_retries': 2,\n    'cooldown_bars': 5,  # Wait 5 bars before retry\n    'cooldown_minutes': 30,  # OR wait 30 minutes\n    'reset_after_new_signal': True,  # Reset retry count on new signal\n\n    # Position sizing on retry\n    'retry_sizing': {\n        'same_size': False,  # Use same size\n        'reduce_size': True,  # Reduce size on retries\n        'reduction_factor': 0.5,  # 50% size on first retry\n        'min_size': 0.25,  # Min 25% of original\n    },\n}\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Retry & Re-entry Rules::Re-entry After Stop",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Retry & Re-entry Rules",
+        "Re-entry After Stop"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Re-entry After Stop"
+      },
+      "tags": [
+        "indicator",
+        "pattern",
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Implementation\n\n```python\nclass RetryManager:\n    \"\"\"\n    Manages re-entry after stops\n\n    Retrieved from Archon:\n    - Retry patterns that work\n    - When to retry vs when to skip\n    - Sizing adjustments for retries\n    \"\"\"\n\n    def __init__(self, config):\n        self.config = config\n        self.retry_history = {}  # Track retries per setup\n\n    def can_retry(self, original_signal, current_signal, stop_result):\n        \"\"\"Check if retry is allowed\"\"\"\n        setup_id = self._get_setup_id(original_signal)\n\n        # Check exclusions\n        if self._should_exclude(original_signal, stop_result):\n            return False, \"Retry excluded\"\n\n        # Check max retries\n        if setup_id in self.retry_history:\n            if self.retry_history[setup_id]['count'] >= self.config['max_retries']:\n                return False, \"Max retries reached\"\n\n        # Check conditions\n        if not self._check_conditions(original_signal, current_signal):\n            return False, \"Retry conditions not met\"\n\n        return True, \"Retry allowed\"\n\n    def calculate_retry_size(self, original_size, retry_number):\n        \"\"\"Calculate position size for retry\"\"\"\n        if self.config['retry_sizing']['reduce_size']:\n            reduction = self.config['retry_sizing']['reduction_factor']\n            adjusted_size = original_size * (reduction ** retry_number)\n\n            min_size = original_size * self.config['retry_sizing']['min_size']\n            return max(adjusted_size, min_size)\n\n        return original_size\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Retry & Re-entry Rules::Implementation",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Retry & Re-entry Rules",
+        "Implementation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Implementation"
+      },
+      "tags": [
+        "indicator",
+        "pattern",
+        "archon",
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "## Data Input Modes\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Data Input Modes",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Data Input Modes"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Data Input Modes"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Mode 1: Single Ticker\n\n```python",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Managing multiple simultaneous positions::Data Input Modes::Mode 1: Single Ticker",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Managing multiple simultaneous positions",
+        "Data Input Modes",
+        "Mode 1: Single Ticker"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Mode 1: Single Ticker"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Test strategy on one ticker\ndata_config = {\n    'mode': 'single_ticker',\n    'ticker': 'SPY',\n    'start_date': '2020-01-01',\n    'end_date': '2024-12-31',\n    'data_source': 'polygon',  # OR 'alphavantage' OR 'local'\n    'bar_size': 'minute',  # OR 'daily' OR '5minute'\n}\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Test strategy on one ticker",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Test strategy on one ticker"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Test strategy on one ticker"
+      },
+      "tags": [
+        "strategy",
+        "position"
+      ]
+    },
+    {
+      "content": "# Use case: Test execution logic without scanner complexity",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Use case: Test execution logic without scanner complexity",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Use case: Test execution logic without scanner complexity"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Use case: Test execution logic without scanner complexity"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "execution"
+      ]
+    },
+    {
+      "content": "# Example: \"Test if my pyramiding rules work on SPY\"\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Test if my pyramiding rules work on SPY\"",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example: \"Test if my pyramiding rules work on SPY\""
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Example: \"Test if my pyramiding rules work on SPY\""
+      },
+      "tags": [
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### Mode 2: Multi-Ticker\n\n```python",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Test if my pyramiding rules work on SPY\"::Mode 2: Multi-Ticker",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example: \"Test if my pyramiding rules work on SPY\"",
+        "Mode 2: Multi-Ticker"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Mode 2: Multi-Ticker"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Test strategy on specific group of tickers\ndata_config = {\n    'mode': 'multi_ticker',\n    'tickers': ['SPY', 'QQQ', 'IWM', 'DIA'],\n    'start_date': '2020-01-01',\n    'end_date': '2024-12-31',\n    'data_source': 'polygon',\n    'bar_size': 'daily',\n}\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Test strategy on specific group of tickers",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Test strategy on specific group of tickers"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Test strategy on specific group of tickers"
+      },
+      "tags": [
+        "strategy",
+        "position"
+      ]
+    },
+    {
+      "content": "# Use case: Test on liquid ETFs",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Use case: Test on liquid ETFs",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Use case: Test on liquid ETFs"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Use case: Test on liquid ETFs"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Example: \"Test gap fade on major indices\"\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Test gap fade on major indices\"",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example: \"Test gap fade on major indices\""
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Example: \"Test gap fade on major indices\""
+      },
+      "tags": []
+    },
+    {
+      "content": "### Mode 3: Scanner Results\n\n```python",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Test gap fade on major indices\"::Mode 3: Scanner Results",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example: \"Test gap fade on major indices\"",
+        "Mode 3: Scanner Results"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Mode 3: Scanner Results"
+      },
+      "tags": [
+        "scanner",
+        "code"
+      ]
+    },
+    {
+      "content": "# Use scanner to find signals, then backtest\ndata_config = {\n    'mode': 'scanner_results',\n    'scanner': 'GapFadeScanner',\n    'scanner_params': {...},  # Scanner parameters\n    'scanner_date_range': {\n        'start': '2020-01-01',\n        'end': '2024-12-31',\n    },\n    'backtest_data': {\n        'bar_size': 'minute',  # Need minute bars for execution\n        'lookback_days': 5,  # Get 5 days around each signal\n    },\n}\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Use scanner to find signals, then backtest",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Use scanner to find signals, then backtest"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Use scanner to find signals, then backtest"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "position",
+        "execution"
+      ]
+    },
+    {
+      "content": "# Use case: Full workflow (scan \u2192 backtest)",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Use case: Full workflow (scan \u2192 backtest)",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Use case: Full workflow (scan \u2192 backtest)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Use case: Full workflow (scan \u2192 backtest)"
+      },
+      "tags": [
+        "scanner",
+        "backtest"
+      ]
+    },
+    {
+      "content": "# Example: \"Find all gap fades \u2192 Test execution rules\"\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Find all gap fades \u2192 Test execution rules\"",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example: \"Find all gap fades \u2192 Test execution rules\""
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Example: \"Find all gap fades \u2192 Test execution rules\""
+      },
+      "tags": [
+        "strategy",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Mode 4: Custom Signal\n\n```python",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Find all gap fades \u2192 Test execution rules\"::Mode 4: Custom Signal",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example: \"Find all gap fades \u2192 Test execution rules\"",
+        "Mode 4: Custom Signal"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Mode 4: Custom Signal"
+      },
+      "tags": [
+        "indicator",
+        "code"
+      ]
+    },
+    {
+      "content": "# Generate signals from custom logic, then backtest\ndata_config = {\n    'mode': 'custom_signal',\n    'tickers': ['SPY'],  # OR multi-ticker\n    'signal_generator': {\n        'type': 'python_function',  # OR 'indicator_based' OR 'pattern_based'\n        'logic': 'close < open AND volume > 2x_avg',\n        'lookback': 20,\n    },\n    'backtest_data': {\n        'bar_size': 'minute',\n        'date_range': {...},\n    },\n}\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Generate signals from custom logic, then backtest",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Generate signals from custom logic, then backtest"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Generate signals from custom logic, then backtest"
+      },
+      "tags": [
+        "backtest",
+        "indicator",
+        "pattern",
+        "code",
+        "position"
+      ]
+    },
+    {
+      "content": "# Use case: Test custom idea without building scanner",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Use case: Test custom idea without building scanner",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Use case: Test custom idea without building scanner"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Use case: Test custom idea without building scanner"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "# Example: \"Test if weak close + high volume works\"\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Test if weak close + high volume works\"",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example: \"Test if weak close + high volume works\""
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Example: \"Test if weak close + high volume works\""
+      },
+      "tags": []
+    },
+    {
+      "content": "## Execution Engine\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Test if weak close + high volume works\"::Execution Engine",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example: \"Test if weak close + high volume works\"",
+        "Execution Engine"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Execution Engine"
+      },
+      "tags": [
+        "strategy",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Complete Backtest Simulator",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Test if weak close + high volume works\"::Execution Engine::Complete Backtest Simulator::chunk0",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example: \"Test if weak close + high volume works\"",
+        "Execution Engine",
+        "Complete Backtest Simulator"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Complete Backtest Simulator"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "indicator",
+        "pattern",
+        "archon",
+        "code",
+        "risk",
+        "position",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Complete Backtest Simulator\n\n```python\nclass CompleteExecutionEngine:\n    \"\"\"\n    Simulates complete strategy execution\n\n    Retrieved from Archon:\n    - Execution patterns (what works)\n    - Performance baselines\n    - Common pitfalls to avoid\n    \"\"\"\n\n    def __init__(self, strategy_def, data_config):\n        self.strategy = strategy_def\n        self.data_config = data_config\n\n        # Initialize components\n        self.data_loader = self._initialize_data_loader()\n        self.signal_generator = self._initialize_signal_generator()\n        self.position_manager = PositionManager(strategy_def)\n        self.stop_manager = StopManager(strategy_def)\n        self.capital_manager = CapitalManager(strategy_def)\n        self.risk_manager = RiskManager(strategy_def)\n        self.retry_manager = RetryManager(strategy_def)\n\n    def run_backtest(self):\n        \"\"\"Run complete backtest\"\"\"\n        # Load data based on mode\n        data = self.data_loader.load(self.data_config)\n\n        # Generate signals\n        signals = self.signal_generator.generate(data, self.strategy)\n\n        # Process each signal\n        trades = []\n        equity_curve = []\n        account_value = self.strategy['capital']['base_capital']\n\n        for date, bars in data:\n            # Check existing positions\n            for position in list(self.position_manager.positions):\n                # Update stops\n                stop_action = self.stop_manager.update(position, bars)\n\n                # Check pyramiding\n                if self.strategy['pyramid']['enabled']:\n                    if self._check_pyramid_trigger(position):\n                        self._add_to_position(position)\n\n                # Check exits\n                if stop_action['action'] == 'exit':\n                    closed_trade = self.position_manager.close_position(\n                        position,\n                        exit_price=stop_action['price'],\n                        exit_reason=stop_action['reason']\n                    )\n\n                    trades.append(closed_trade)\n                    account_value += closed_trade['pnl']\n\n                    # Check retry\n                    if self.strategy['retry']['enabled']:\n                        if self.retry_manager.can_retry(closed_trade):\n                            # Re-enter logic\n                            pass\n\n            # Check new signals\n            new_signals = [s for s in signals if s['date'] == date]\n\n            for signal in new_signals:\n                # Check risk limits\n                can_enter, reason = self.risk_manager.can_enter_position(signal)\n\n                if can_enter:\n                    # Enter position\n                    position = self.position_manager.open_position(\n                        signal,\n                        account_value,\n                        self.strategy\n                    )\n\n            # Update equity curve\n            equity_curve.append({\n                'date': date,\n                'account_value': account_value,\n                'positions': len(self.position_manager.positions),\n            })\n\n            # Update capital\n            self.capital_manager.update_after_day(equity_curve[-1])\n\n        # Calculate metrics\n        results = self._calculate_metrics(trades, equity_curve)\n\n        # Validate\n        validation = self._validate_strategy(results, self.strategy)\n\n        return {\n            'trades': trades,\n            'equity_curve': equity_curve,\n            'metrics': results,\n            'validation': validation,\n        }\n```",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Test if weak close + high volume works\"::Execution Engine::Complete Backtest Simulator::chunk1",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example: \"Test if weak close + high volume works\"",
+        "Execution Engine",
+        "Complete Backtest Simulator"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Complete Backtest Simulator"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "indicator",
+        "pattern",
+        "archon",
+        "code",
+        "risk",
+        "position",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "(results, self.strategy)\n\n        return {\n            'trades': trades,\n            'equity_curve': equity_curve,\n            'metrics': results,\n            'validation': validation,\n        }\n```\n\n\n\n[...previous chunk overlap...]\n\n---",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Test if weak close + high volume works\"::Execution Engine::Complete Backtest Simulator::chunk2",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example: \"Test if weak close + high volume works\"",
+        "Execution Engine",
+        "Complete Backtest Simulator"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Complete Backtest Simulator"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "indicator",
+        "pattern",
+        "archon",
+        "code",
+        "risk",
+        "position",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Performance Metrics\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Test if weak close + high volume works\"::Performance Metrics",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example: \"Test if weak close + high volume works\"",
+        "Performance Metrics"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Performance Metrics"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "### Trade-Level Metrics\n\n```python\ntrade_metrics = {\n    # Basic stats\n    'total_trades': 'Total number of trades',\n    'avg_trades_per_month': 'Trading frequency',\n\n    # Win/Loss stats\n    'win_rate': 'Percentage of winning trades',\n    'avg_win_r': 'Average win in R-multiples',\n    'avg_loss_r': 'Average loss in R-multiples',\n    'win_loss_ratio': 'Avg win / Avg loss (absolute)',\n    'largest_win_r': 'Best trade',\n    'largest_loss_r': 'Worst trade',\n\n    # Profitability\n    'total_return_r': 'Total profit in R-multiples',\n    'total_return_pct': 'Total percent return on account',\n    'expectancy': 'Average R per trade',\n    'profit_factor': 'Sum wins / Sum losses (absolute)',\n    'sharpe_ratio': 'Return / Volatility ratio',\n    'sortino_ratio': 'Return / Downside volatility',\n\n    # Risk\n    'max_drawdown_r': 'Maximum peak-to-trough decline in R',\n    'max_drawdown_pct': 'Maximum peak-to-trough decline in %',\n    'max_consecutive_losses': 'Worst losing streak',\n    'avg_drawdown': 'Average drawdown',\n\n    # Efficiency\n    'avg_holding_time': 'Average trade duration',\n    'time_in_market_pct': '% time invested',\n}\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Test if weak close + high volume works\"::Performance Metrics::Trade-Level Metrics",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example: \"Test if weak close + high volume works\"",
+        "Performance Metrics",
+        "Trade-Level Metrics"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Trade-Level Metrics"
+      },
+      "tags": [
+        "strategy",
+        "indicator",
+        "code",
+        "risk"
+      ]
+    },
+    {
+      "content": "### Component Analysis\n\n```python",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Example: \"Test if weak close + high volume works\"::Performance Metrics::Component Analysis",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example: \"Test if weak close + high volume works\"",
+        "Performance Metrics",
+        "Component Analysis"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Component Analysis"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# What's adding value?\ncomponent_analysis = {\n    # Entry effectiveness\n    'entry_analysis': {\n        'enter_at_signal': 'How well initial entry performs',\n        'confirmation_entry': 'Does confirmation help?',\n        'limit_entry': 'Does limit order improve?',\n        'skip_without_confirmation': 'Cost of skipping',\n    },\n\n    # Pyramiding effectiveness\n    'pyramid_analysis': {\n        'pyramid_contrib_r': 'R added from pyramiding',\n        'pyramid_win_rate': 'Win rate with pyramid vs without',\n        'optimal_num_adds': 'Best number of additions',\n        'when_pyramid_hurts': 'When adding hurts performance',\n    },\n\n    # Exit effectiveness\n    'exit_analysis': {\n        'stop_efficiency': 'Are stops saving capital?',\n        'target_hit_rate': 'How often targets hit',\n        'trailing_contrib': 'R added from trailing',\n        'time_exit_contrib': 'R added from time stops',\n    },\n\n    # Retry effectiveness\n    'retry_analysis': {\n        'retry_win_rate': 'Win rate on retries vs initial',\n        'retry_contrib_r': 'R added from retries',\n        'when_retry_hurts': 'When retries hurt performance',\n    },\n\n    # Capital impact\n    'capital_analysis': {\n        'recycling_contrib_r': 'R added from recycling',\n        'compounding_effect': 'Impact of compounding',\n        'optimal_recycle_pct': 'Best % to recycle',\n    },\n}\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::What's adding value?",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "What's adding value?"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "What's adding value?"
+      },
+      "tags": [
+        "indicator",
+        "risk",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Validation Framework\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::What's adding value?::Validation Framework",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "What's adding value?",
+        "Validation Framework"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Validation Framework"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Validation Steps\n\n```python\nvalidation_steps = {\n    # Step 1: Basic validation\n    'basic': {\n        'min_trades': 30,\n        'min_win_rate': 0.55,\n        'min_expectancy': 0.10,\n    },\n\n    # Step 2: Statistical validation\n    'statistical': {\n        't_test_significance': 'p_value < 0.05',\n        'sharpe_threshold': '> 1.0',\n        'max_drawdown_limit': '< 0.15',\n    },\n\n    # Step 3: Regime validation\n    'regime': {\n        'bull_market_performance': 'Must be profitable',\n        'bear_market_performance': 'Must be profitable OR flat',\n        'choppy_performance': 'Must be profitable OR flat',\n        'consistency': '>70% of regimes profitable',\n    },\n\n    # Step 4: Walk-forward validation\n    'walk_forward': {\n        'enabled': True,\n        'train_period': '12 months',\n        'test_period': '3 months',\n        'min_consistency': '>70% periods profitable',\n    },\n\n    # Step 5: Forward validation\n    'forward': {\n        'enabled': True,\n        'forward_period': '6 months minimum',\n        'degradation_limit': '<30% from in-sample',\n    },\n}\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::What's adding value?::Validation Framework::Validation Steps",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "What's adding value?",
+        "Validation Framework",
+        "Validation Steps"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Validation Steps"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "### Edge Assessment\n\n```python\nedge_assessment = {\n    # Edge quality\n    'quality_metrics': {\n        'expectancy': '> 0.15R is excellent',\n        'sharpe': '> 2.0 is excellent',\n        'consistency': '<30% std dev is excellent',\n    },\n\n    # Edge durability\n    'durability_metrics': {\n        'walk_forward_pass': '>70% periods pass',\n        'forward_test_pass': '<30% degradation',\n        'regime_stability': 'Works in 2+ regimes',\n    },\n\n    # Edge uniqueness\n    'uniqueness_metrics': {\n        'not_market_return': 'Exceeds buy & hold',\n        'not_random': 'Better than random entries',\n        'pattern_specific': 'Edge from pattern, not beta',\n    },\n\n    # Overall assessment\n    'overall_edge': {\n        'strong_edge': 'Exceeds all thresholds',\n        'moderate_edge': 'Meets most thresholds',\n        'weak_edge': 'Barely passes',\n        'no_edge': 'Fails validation',\n    },\n}\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::What's adding value?::Validation Framework::Edge Assessment",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "What's adding value?",
+        "Validation Framework",
+        "Edge Assessment"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Edge Assessment"
+      },
+      "tags": [
+        "indicator",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "## Archon Integration\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::What's adding value?::Archon Integration",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "What's adding value?",
+        "Archon Integration"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Archon Integration"
+      },
+      "tags": [
+        "archon"
+      ]
+    },
+    {
+      "content": "### Knowledge Structure in Archon\n\n```\nARCHON KNOWLEDGE BASE\n\u251c\u2500\u2500 SCANNER PATTERNS\n\u2502   \u251c\u2500\u2500 V31 Architecture (7 principles)\n\u2502   \u251c\u2500\u2500 Pattern Types (DMR, FBO, Extension, etc.)\n\u2502   \u251c\u2500\u2500 Code Structure Guide\n\u2502   \u2514\u2500\u2500 Scanner Examples\n\u2502\n\u251c\u2500\u2500 EXECUTION PATTERNS\n\u2502   \u251c\u2500\u2500 Entry Types (scanner, custom, hybrid)\n\u2502   \u251c\u2500\u2500 Position Sizing (4 methods)\n\u2502   \u251c\u2500\u2500 Stop Management (initial, breakeven, trailing)\n\u2502   \u251c\u2500\u2500 Target Management (R-based, partial)\n\u2502   \u251c\u2500\u2500 Pyramiding Rules\n\u2502   \u251c\u2500\u2500 Capital Recycling\n\u2502   \u2514\u2500\u2500 Retry Rules\n\u2502\n\u251c\u2500\u2500 BACKTESTING PATTERNS\n\u2502   \u251c\u2500\u2500 Data Input Modes (4 types)\n\u2502   \u251c\u2500\u2500 Execution Engine Patterns\n\u2502   \u251c\u2500\u2500 Performance Metrics\n\u2502   \u251c\u2500\u2500 Validation Framework\n\u2502   \u2514\u2500\u2500 Common Pitfalls\n\u2502\n\u251c\u2500\u2500 TRADING KNOWLEDGE\n\u2502   \u251c\u2500\u2500 Mean Reversion Principles\n\u2502   \u251c\u2500\u2500 Market Regimes\n\u2502   \u251c\u2500\u2500 Edge Assessment\n\u2502   \u251c\u2500\u2500 Risk Management\n\u2502   \u2514\u2500\u2500 Position Management\n\u2502\n\u251c\u2500\u2500 PAST PROJECTS\n\u2502   \u251c\u2500\u2500 Scanners Built (with results)\n\u2502   \u251c\u2500\u2500 Backtests Run (with metrics)\n\u2502   \u251c\u2500\u2500 What Worked (patterns, parameters)\n\u2502   \u2514\u2500\u2500 What Didn't (failures, lessons)\n\u2502\n\u2514\u2500\u2500 CONVERSATIONS\n    \u251c\u2500\u2500 Chat History\n    \u251c\u2500\u2500 User Preferences\n    \u251c\u2500\u2500 Strategy Iterations\n    \u2514\u2500\u2500 Decisions Made\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::What's adding value?::Archon Integration::Knowledge Structure in Archon",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "What's adding value?",
+        "Archon Integration",
+        "Knowledge Structure in Archon"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Knowledge Structure in Archon"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "pattern",
+        "v31",
+        "archon",
+        "code",
+        "risk",
+        "position",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Agent Workflow with Archon\n\n```python",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::What's adding value?::Archon Integration::Agent Workflow with Archon",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "What's adding value?",
+        "Archon Integration",
+        "Agent Workflow with Archon"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Agent Workflow with Archon"
+      },
+      "tags": [
+        "archon",
+        "code"
+      ]
+    },
+    {
+      "content": "# Agent retrieves relevant knowledge before generating code\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Agent retrieves relevant knowledge before generating code",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Agent retrieves relevant knowledge before generating code"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Agent retrieves relevant knowledge before generating code"
+      },
+      "tags": [
+        "archon",
+        "code"
+      ]
+    },
+    {
+      "content": "# Step 1: User describes strategy\nuser_input = \"I want to fade gap ups with pyramiding and trailing stops\"\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 1: User describes strategy",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 1: User describes strategy"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Step 1: User describes strategy"
+      },
+      "tags": [
+        "strategy",
+        "risk",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "# Step 2: Agent queries Archon for relevant knowledge\narchon_query = {\n    'scanner_patterns': ['gap_fade', 'mean_reversion'],\n    'execution_patterns': ['pyramiding', 'trailing_stops'],\n    'past_projects': 'gap_fade strategies with results',\n    'trading_knowledge': ['mean_reversion', 'edge_validation'],\n}\n\nretrieved_knowledge = archon_client.search(archon_query)\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 2: Agent queries Archon for relevant knowledge",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 2: Agent queries Archon for relevant knowledge"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Step 2: Agent queries Archon for relevant knowledge"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "pattern",
+        "archon",
+        "risk",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "# Step 3: Agent generates strategy based on retrieved knowledge\nstrategy_def = agent.generate_strategy(user_input, retrieved_knowledge)\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 3: Agent generates strategy based on retrieved knowledge",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 3: Agent generates strategy based on retrieved knowledge"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Step 3: Agent generates strategy based on retrieved knowledge"
+      },
+      "tags": [
+        "strategy",
+        "archon"
+      ]
+    },
+    {
+      "content": "# Step 4: Agent generates code based on patterns in knowledge\ncode = agent.generate_code(strategy_def, retrieved_knowledge)\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 4: Agent generates code based on patterns in knowledge",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 4: Agent generates code based on patterns in knowledge"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Step 4: Agent generates code based on patterns in knowledge"
+      },
+      "tags": [
+        "strategy",
+        "pattern",
+        "archon",
+        "code"
+      ]
+    },
+    {
+      "content": "# Step 5: Results stored back in Archon\narchon_client.store_project({\n    'strategy': strategy_def,\n    'code': code,\n    'backtest_results': results,\n    'conversation_id': current_chat,\n})\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 5: Results stored back in Archon",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 5: Results stored back in Archon"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Step 5: Results stored back in Archon"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "archon",
+        "code"
+      ]
+    },
+    {
+      "content": "# Step 6: Agent learns from results\narchon_client.store_learning({\n    'what_worked': 'Pyramiding added 0.3R expectancy',\n    'what_didnt': 'Trailing stops reduced win rate',\n    'user_feedback': user_feedback,\n})\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 6: Agent learns from results",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Step 6: Agent learns from results"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Step 6: Agent learns from results"
+      },
+      "tags": [
+        "archon",
+        "risk",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### Growing Knowledge Base\n\n```\nAGENT IMPROVES OVER TIME\n\nDay 1:\n\u251c\u2500\u2500 Limited knowledge\n\u251c\u2500\u2500 Generates decent code\n\u2514\u2500\u2500 Stores results in Archon\n\nDay 30:\n\u251c\u2500\u2500 30 projects stored\n\u251c\u2500\u2500 Knows what patterns work\n\u251c\u2500\u2500 Knows what parameters work\n\u2514\u2500\u2500 Generates better code\n\nDay 90:\n\u251c\u2500\u2500 90 projects stored\n\u251c\u2500\u2500 Knows user preferences\n\u251c\u2500\u2500 Knows market conditions\n\u251c\u2500\u2500 Has proven patterns\n\u2514\u2500\u2500 Generates excellent code\n\nThe agent doesn't just follow templates.\nIt learns from experience stored in Archon.\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 6: Agent learns from results::Growing Knowledge Base",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Step 6: Agent learns from results",
+        "Growing Knowledge Base"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Growing Knowledge Base"
+      },
+      "tags": [
+        "pattern",
+        "archon",
+        "code"
+      ]
+    },
+    {
+      "content": "## Summary: What Makes This Different\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 6: Agent learns from results::Summary: What Makes This Different",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 6: Agent learns from results",
+        "Summary: What Makes This Different"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Summary: What Makes This Different"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Traditional Approach\n```\nUser \u2192 Templates \u2192 Code \u2192 Test\n\u2502      \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2502\nPre-built patterns, rigid, no learning\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 6: Agent learns from results::Summary: What Makes This Different::Traditional Approach",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Step 6: Agent learns from results",
+        "Summary: What Makes This Different",
+        "Traditional Approach"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Traditional Approach"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "### Our Approach (Archon-Powered)\n```\nUser \u2192 Archon Agent \u2192 Code \u2192 Test\n\u2502         \u2193                    \u2193\n\u2502    All Knowledge         Store\n\u2502    + Past Projects       Results\n\u2502    + Conversations       Back\n\u2502    + What Works          Into\n\u2502    + What Doesn't       Archon\n\u2502                         (Learning)\n```\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 6: Agent learns from results::Summary: What Makes This Different::Our Approach (Archon-Powered)",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Step 6: Agent learns from results",
+        "Summary: What Makes This Different",
+        "Our Approach (Archon-Powered)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Our Approach (Archon-Powered)"
+      },
+      "tags": [
+        "archon",
+        "code"
+      ]
+    },
+    {
+      "content": "### Key Difference\n\n**Traditional**: Agent follows rules\n**Ours**: Agent learns from experience\n\n---\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 6: Agent learns from results::Summary: What Makes This Different::Key Difference",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 6: Agent learns from results",
+        "Summary: What Makes This Different",
+        "Key Difference"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Key Difference"
+      },
+      "tags": []
+    },
+    {
+      "content": "## Complete Checklist\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 6: Agent learns from results::Complete Checklist",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 6: Agent learns from results",
+        "Complete Checklist"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Complete Checklist"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Strategy Definition\n- [ ] Entry logic (scanner, custom, or hybrid)\n- [ ] Position sizing (choose method)\n- [ ] Pyramiding rules (if enabled)\n- [ ] Stop management (all types)\n- [ ] Target management (all types)\n- [ ] Retry rules (if enabled)\n- [ ] Capital management (recycling)\n- [ ] Risk management (portfolio level)\n- [ ] Data input mode (4 options)\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 6: Agent learns from results::Complete Checklist::Strategy Definition",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 6: Agent learns from results",
+        "Complete Checklist",
+        "Strategy Definition"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Strategy Definition"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "risk",
+        "position",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### Execution Engine\n- [ ] Data loader (all 4 modes)\n- [ ] Signal generator\n- [ ] Position manager\n- [ ] Stop manager\n- [ ] Pyramid manager\n- [ ] Capital manager\n- [ ] Risk manager\n- [ ] Retry manager\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 6: Agent learns from results::Complete Checklist::Execution Engine",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 6: Agent learns from results",
+        "Complete Checklist",
+        "Execution Engine"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Execution Engine"
+      },
+      "tags": [
+        "strategy",
+        "indicator",
+        "risk",
+        "position",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Performance Analysis\n- [ ] Trade-level metrics (all)\n- [ ] Component analysis (what adds value)\n- [ ] Regime analysis\n- [ ] Edge validation\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 6: Agent learns from results::Complete Checklist::Performance Analysis",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 6: Agent learns from results",
+        "Complete Checklist",
+        "Performance Analysis"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Performance Analysis"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "### Archon Integration\n- [ ] Knowledge retrieval\n- [ ] Pattern matching\n- [ ] Past project reference\n- [ ] Result storage\n- [ ] Learning loop\n\n---\n\n**Document Status**: COMPLETE\n**Version**: 2.0\n**Last Updated**: 2026-01-29\n**Key Feature**: Archon-Powered with Learning & Memory\n",
+      "chunk_id": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md::Step 6: Agent learns from results::Complete Checklist::Archon Integration",
+      "source_file": "EDGEDEV_EXECUTION_SYSTEM_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 6: Agent learns from results",
+        "Complete Checklist",
+        "Archon Integration"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Archon Integration"
+      },
+      "tags": [
+        "pattern",
+        "archon"
+      ]
+    }
+  ]
+}

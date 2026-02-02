@@ -1,0 +1,86 @@
+{
+  "scan_id": "b1ac81e1-cf53-4fa5-902a-91179a89dcc6",
+  "scan_name": "Backside Para B Copy Project (12/31/24 - 01/31/25)",
+  "scanner_type": "Custom Scanner",
+  "timestamp": "2026-01-14T13:42:47.899265",
+  "user_id": "test_user_123",
+  "results_count": 5,
+  "metadata": {
+    "description": "5 results from 12/31/24 to 01/31/25",
+    "scanParams": {
+      "start_date": "2025-01-01",
+      "end_date": "2025-02-01",
+      "filters": {}
+    },
+    "resultCount": 5,
+    "tags": [
+      "scan"
+    ],
+    "isFavorite": false,
+    "tickerUniverse": "US Stocks",
+    "estimatedResults": "5 results",
+    "savedAt": "2026-01-14T18:42:47.891Z"
+  },
+  "results": [
+    {
+      "ticker": "BABA",
+      "date": "2025-01-27",
+      "gapPercent": 0,
+      "volume": 0,
+      "score": 75,
+      "result": "win",
+      "pnl": "+10.5%",
+      "execution_output": "Signal for undefined",
+      "trigger": "D-1",
+      "scanner_type": "Scanner"
+    },
+    {
+      "ticker": "BABA",
+      "date": "2025-01-29",
+      "gapPercent": 0,
+      "volume": 0,
+      "score": 75,
+      "result": "win",
+      "pnl": "+10.5%",
+      "execution_output": "Signal for undefined",
+      "trigger": "D-1",
+      "scanner_type": "Scanner"
+    },
+    {
+      "ticker": "DJT",
+      "date": "2025-01-14",
+      "gapPercent": 0,
+      "volume": 0,
+      "score": 75,
+      "result": "win",
+      "pnl": "+10.5%",
+      "execution_output": "Signal for undefined",
+      "trigger": "D-1",
+      "scanner_type": "Scanner"
+    },
+    {
+      "ticker": "NVNI",
+      "date": "2025-01-27",
+      "gapPercent": 0,
+      "volume": 0,
+      "score": 75,
+      "result": "win",
+      "pnl": "+10.5%",
+      "execution_output": "Signal for undefined",
+      "trigger": "D-1",
+      "scanner_type": "Scanner"
+    },
+    {
+      "ticker": "TEM",
+      "date": "2025-01-22",
+      "gapPercent": 0,
+      "volume": 0,
+      "score": 75,
+      "result": "win",
+      "pnl": "+10.5%",
+      "execution_output": "Signal for undefined",
+      "trigger": "D-1",
+      "scanner_type": "Scanner"
+    }
+  ]
+}

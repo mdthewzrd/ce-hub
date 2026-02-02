@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Claude Terminal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+        }
+        .header {
+            background: #1a1a1a;
+            padding: 10px 15px;
+            border-bottom: 1px solid #333;
+            font-size: 12px;
+            color: #888;
+        }
+        .terminal {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            line-height: 1.5;
+        }
+        .terminal div {
+            margin-bottom: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .prompt {
+            color: #0f0;
+        }
+        .user-input {
+            color: #fff;
+        }
+        .ai-response {
+            color: #ffa657;
+        }
+        .thinking {
+            color: #666;
+        }
+        .input-line {
+            display: flex;
+            align-items: center;
+            background: #000;
+            padding: 10px 15px;
+            border-top: 1px solid #222;
+        }
+        .prompt-symbol {
+            color: #0f0;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        #terminal-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            outline: none;
+        }
+        .model-indicator {
+            position: fixed;
+            top: 45px;
+            right: 10px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            color: #666;
+        }
+        .history-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #888;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            max-height: 70vh;
+        }
+        .modal-header {
+            padding: 12px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-title {
+            color: #ffa657;
+            font-size: 14px;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .modal-body {
+            padding: 12px;
+            max-height: 350px;
+            overflow-y: auto;
+        }
+        .history-item {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            padding: 10px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .history-item:active {
+            border-color: #ffa657;
+        }
+        .history-title {
+            color: #fff;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        .history-meta {
+            color: #666;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Claude Terminal Mobile • GLM 4.6</div>
+
+    <button class="history-btn" onclick="showHistory()">History</button>
+    <div class="model-indicator">GLM 4.6</div>
+
+    <div class="terminal" id="terminal">
+        <div style="color: #666;">Claude Terminal Mobile</div>
+        <div style="color: #666;">Type a message and press Enter</div>
+        <div></div>
+    </div>
+
+    <div class="input-line">
+        <span class="prompt-symbol">></span>
+        <input type="text" id="terminal-input" autofocus />
+    </div>
+
+    <div class="modal" id="history-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Chat History</span>
+                <button class="modal-close" onclick="closeHistory()">&times;</button>
+            </div>
+            <div class="modal-body" id="history-list">
+                <div style="text-align: center; color: #666;">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SERVER_URL = 'http://100.95.223.19:8115';
+        let currentSessionId = localStorage.getItem('claudeTerminalSession') || 'terminal-' + Date.now();
+        localStorage.setItem('claudeTerminalSession', currentSessionId); // Save immediately
+
+        const terminal = document.getElementById('terminal');
+        const input = document.getElementById('terminal-input');
+
+        input.addEventListener('keypress', async (e) => {
+            if (e.key === 'Enter') {
+                const command = input.value.trim();
+                if (!command) return;
+
+                // Show user input
+                terminal.innerHTML += `<div><span class="prompt">></span> <span class="user-input">${command}</span></div>`;
+                input.value = '';
+                terminal.innerHTML += `<div class="thinking">...</div>`;
+                terminal.scrollTop = terminal.scrollHeight;
+
+                try {
+                    const response = await fetch(SERVER_URL + '/claude-chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            question: command,
+                            model: 'glm-4.6',
+                            provider: 'claude-code',
+                            session_id: currentSessionId
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    // Remove thinking indicator
+                    const thinking = terminal.querySelector('.thinking');
+                    if (thinking) thinking.remove();
+
+                    if (data.error) {
+                        terminal.innerHTML += `<div style="color: #f85149;">Error: ${data.output || data.message}</div>`;
+                    } else {
+                        terminal.innerHTML += `<div class="ai-response">${data.output}</div>`;
+                    }
+
+                    // Add new prompt
+                    terminal.innerHTML += `<div></div>`;
+                    terminal.scrollTop = terminal.scrollHeight;
+
+                    // Auto-save
+                    autoSave();
+
+                } catch (error) {
+                    const thinking = terminal.querySelector('.thinking');
+                    if (thinking) thinking.remove();
+                    terminal.innerHTML += `<div style="color: #f85149;">Connection Error: ${error.message}</div>`;
+                    terminal.innerHTML += `<div></div>`;
+                    terminal.scrollTop = terminal.scrollHeight;
+                }
+            }
+        });
+
+        async function autoSave() {
+            try {
+                await fetch(SERVER_URL + '/save-conversation', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        session_id: currentSessionId,
+                        conversation_id: currentSessionId,  // Use same ID
+                        title: `Terminal Chat`,
+                        model: 'glm-4.6'
+                    })
+                });
+            } catch (e) {
+                // Silent
+            }
+        }
+
+        async function showHistory() {
+            const modal = document.getElementById('history-modal');
+            const list = document.getElementById('history-list');
+            modal.classList.add('active');
+            list.innerHTML = '<div style="text-align: center; color: #666;">Loading...</div>';
+
+            try {
+                const response = await fetch(SERVER_URL + '/list-conversations');
+                const data = await response.json();
+
+                if (data.success && data.conversations.length > 0) {
+                    list.innerHTML = data.conversations.map(conv => `
+                        <div class="history-item" onclick="loadConversation('${conv.id}')">
+                            <div class="history-title">${conv.title}</div>
+                            <div class="history-meta">${conv.message_count} messages</div>
+                        </div>
+                    `).join('');
+                } else {
+                    list.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">No history</div>';
+                }
+            } catch (error) {
+                list.innerHTML = `<div style="text-align: center; color: #f85149;">Error</div>`;
+            }
+        }
+
+        function closeHistory() {
+            document.getElementById('history-modal').classList.remove('active');
+        }
+
+        async function loadConversation(id) {
+            closeHistory();
+            try {
+                const response = await fetch(SERVER_URL + '/load-conversation?id=' + id);
+                const data = await response.json();
+
+                if (data.success) {
+                    currentSessionId = id;
+                    localStorage.setItem('claudeTerminalSession', id); // Save for refresh
+                    terminal.innerHTML = '';
+                    data.conversation.messages.forEach(msg => {
+                        if (msg.question) {
+                            terminal.innerHTML += `<div><span class="prompt">></span> <span class="user-input">${msg.question}</span></div>`;
+                        }
+                        if (msg.response) {
+                            terminal.innerHTML += `<div class="ai-response">${msg.response}</div>`;
+                        }
+                    });
+                    terminal.innerHTML += `<div></div>`;
+                    terminal.scrollTop = terminal.scrollHeight;
+                }
+            } catch (error) {
+                alert('Error loading');
+            }
+        }
+
+        // Keep focus on input
+        document.addEventListener('click', () => {
+            input.focus();
+        });
+
+        // Load last session on startup
+        window.addEventListener('load', async () => {
+            terminal.innerHTML = '<div style="color: #666;">Loading previous session...</div>';
+            try {
+                const response = await fetch(SERVER_URL + '/list-conversations');
+                const data = await response.json();
+
+                if (data.success && data.conversations.length > 0) {
+                    await loadConversation(data.conversations[0].id);
+                    terminal.innerHTML += '<div style="color: #666;">Previous session loaded</div>';
+                } else {
+                    terminal.innerHTML = '<div style="color: #666;">Claude Terminal Mobile</div><div style="color: #666;">Type a message and press Enter</div><div></div>';
+                }
+            } catch (e) {
+                terminal.innerHTML = '<div style="color: #666;">Claude Terminal Mobile</div><div style="color: #666;">Type a message and press Enter</div><div></div>';
+            }
+            input.focus();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "taskId": "363ab155-362b-4f93-bbfb-76f2daf5c0c5",
+  "version": {
+    "app": "1.0",
+    "promptPack": "v1.0",
+    "model": "canvas-ai-guided",
+    "providerApi": "1.0.0"
+  },
+  "inputs": {
+    "subject": {
+      "assetId": "363ab155-362b-4f93-bbfb-76f2daf5c0c5",
+      "w": 1024,
+      "h": 768
+    },
+    "glasses": [
+      "glasses_0",
+      "glasses_1",
+      "glasses_2"
+    ]
+  },
+  "generation": {
+    "guidance": 0.6,
+    "refStrength": 0.85,
+    "lightingWeight": 0.7,
+    "reflectionWeight": 0.8,
+    "colorMatchWeight": 0.15,
+    "seed": 674519,
+    "passes": 1
+  },
+  "quality": {
+    "ssim": 0.9918251740646837,
+    "faceDist": 0.16456922332025908,
+    "fit": "pass"
+  },
+  "notes": "Glasses placed using AI-detected face landmarks (extra-large) and glasses dimensions (52mm)"
+}

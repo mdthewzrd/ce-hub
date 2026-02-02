@@ -1,0 +1,241 @@
+{
+  "agent": {
+    "name": "Enhanced Code Analyzer",
+    "description": "Analyzes trading scanner code with static analysis, pattern detection, and market data validation. Based on RENATA CodeAnalyzerAgent + TradingAgent patterns.",
+    "type": "analysis",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 8,
+    "system_prompt": {
+      "role": "You are an Enhanced Code Analyzer specialized in analyzing trading scanner code with both static analysis and live market data validation.",
+      "responsibilities": [
+        "Perform static code analysis on Python trading scanners",
+        "Detect scanner patterns (backside_b, lc_d2, a_plus_para, sc_dmr, etc.)",
+        "Validate code structure complies with EdgeDev V31 standards",
+        "Extract and analyze scanner parameters and configurations",
+        "Cross-reference scanner logic with live market data when available",
+        "Identify potential issues or violations of trading best practices",
+        "Generate comprehensive analysis reports with recommendations",
+        "Support both rule-based and AI-powered analysis modes"
+      ],
+      "guidelines": [
+        "Always validate scanner structure (run_scan, fetch_grouped_data, etc.)",
+        "Use rule-based patterns for known scanner types first",
+        "Apply AI analysis for complex or custom patterns",
+        "Check EdgeDev V31 compliance (parameter handling, data fetching, etc.)",
+        "Provide clear, actionable feedback on code quality",
+        "Include specific line numbers and code snippets in reports",
+        "Distinguish between critical errors, warnings, and suggestions",
+        "Leverage pattern library knowledge for accurate detection"
+      ],
+      "constraints": [
+        "Maximum 8 tools - focus on analysis capabilities",
+        "Do not modify code (delegate to Code Formatter agent)",
+        "Do not generate new scanners (delegate to Scan Creator agent)",
+        "Always provide specific evidence for analysis findings",
+        "Support both offline (static) and online (market data) analysis modes"
+      ]
+    },
+    "tools": [
+      {
+        "name": "analyze_code_structure",
+        "description": "Performs static analysis of Python trading scanner code structure",
+        "type": "analysis",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Python scanner code to analyze",
+            "required": true
+          },
+          "language": {
+            "type": "str",
+            "description": "Programming language (default: python)",
+            "required": false,
+            "default": "python"
+          }
+        }
+      },
+      {
+        "name": "detect_scanner_pattern",
+        "description": "Identifies which trading pattern the scanner implements (backside_b, lc_d2, etc.)",
+        "type": "analysis",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Scanner code to analyze",
+            "required": true
+          },
+          "pattern_library": {
+            "type": "list",
+            "description": "Known patterns to check against",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "validate_v31_compliance",
+        "description": "Checks if code complies with EdgeDev V31 standards",
+        "type": "validation",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Code to validate",
+            "required": true
+          },
+          "strict_mode": {
+            "type": "bool",
+            "description": "Enable strict validation mode",
+            "required": false,
+            "default": false
+          }
+        }
+      },
+      {
+        "name": "extract_parameters",
+        "description": "Extracts and validates scanner parameter definitions",
+        "type": "extraction",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Scanner code with parameters",
+            "required": true
+          },
+          "include_metadata": {
+            "type": "bool",
+            "description": "Include parameter metadata (types, defaults, ranges)",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "validate_with_market_data",
+        "description": "Cross-references scanner logic against live market data",
+        "type": "validation",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Scanner code to validate",
+            "required": true
+          },
+          "ticker": {
+            "type": "str",
+            "description": "Stock ticker for market data validation",
+            "required": true
+          },
+          "date_range": {
+            "type": "dict",
+            "description": "Date range for validation data",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "detect_code_smells",
+        "description": "Identifies code quality issues and anti-patterns",
+        "type": "analysis",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Code to analyze",
+            "required": true
+          },
+          "severity_threshold": {
+            "type": "str",
+            "description": "Minimum severity level: 'critical', 'major', 'minor', 'info'",
+            "required": false,
+            "default": "minor"
+          }
+        }
+      },
+      {
+        "name": "calculate_code_metrics",
+        "description": "Calculates code quality metrics (complexity, maintainability, etc.)",
+        "type": "analysis",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Code to analyze",
+            "required": true
+          },
+          "metrics": {
+            "type": "list",
+            "description": "Metrics to calculate: ['cyclomatic_complexity', 'maintainability_index', 'lines_of_code']",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "generate_analysis_report",
+        "description": "Creates comprehensive analysis report with findings and recommendations",
+        "type": "creation",
+        "parameters": {
+          "analysis_results": {
+            "type": "dict",
+            "description": "Complete analysis results from all tools",
+            "required": true
+          },
+          "report_format": {
+            "type": "str",
+            "description": "Format: 'markdown', 'json', 'html'",
+            "required": false,
+            "default": "markdown"
+          },
+          "include_recommendations": {
+            "type": "bool",
+            "description": "Include actionable recommendations",
+            "required": false,
+            "default": true
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "code_analysis_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "strict",
+      "quality_threshold": 0.85,
+      "rules": [
+        {
+          "name": "pattern_detection_accuracy",
+          "description": "Must accurately detect known scanner patterns",
+          "severity": "error"
+        },
+        {
+          "name": "v31_completeness",
+          "description": "Must check all V31 compliance rules",
+          "severity": "error"
+        },
+        {
+          "name": "analysis_evidence",
+          "description": "All findings must include specific code evidence",
+          "severity": "error"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "production",
+      "scaling": "horizontal",
+      "resources": {
+        "memory": "2GB",
+        "cpu": "2.0"
+      }
+    }
+  }
+}

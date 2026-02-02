@@ -1,0 +1,14 @@
+{
+  "name": "glasses-compositor",
+  "version": "1.0.0",
+  "description": "Standalone Glasses Compositor Server",
+  "main": "glasses-compositor-server.js",
+  "scripts": {
+    "start": "node glasses-compositor-server.js",
+    "dev": "node glasses-compositor-server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}

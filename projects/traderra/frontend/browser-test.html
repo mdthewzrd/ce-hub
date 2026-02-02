@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traderra Command Testing</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background: #2a2a2a;
+        }
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+        .info { color: #2196F3; }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover { background: #45a049; }
+        #results {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Traderra Command Execution Test</h1>
+
+    <div class="test-section">
+        <h2>Manual Testing Steps</h2>
+        <ol>
+            <li>Open <a href="http://localhost:6565" target="_blank" style="color: #4CAF50;">http://localhost:6565</a> in a new tab</li>
+            <li>Open Developer Tools (F12 or Cmd+Option+I)</li>
+            <li>Go to the Console tab</li>
+            <li>Run the test script below</li>
+            <li>Type "go to the dashboard and look at the last 90 days in R" in Renata chat</li>
+            <li>Watch for pattern detection and state changes</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>Browser Console Test Script</h2>
+        <p>Copy this entire script and paste it into your browser console:</p>
+        <button onclick="copyTestScript()">📋 Copy Script</button>
+        <pre id="test-script" style="background: #1e1e1e; padding: 10px; border-radius: 5px; overflow-x: auto;">/**
+ * Traderra Command Test Script
+ * Run this in browser console on http://localhost:6565
+ */
+function runTraderraCommandTest() {
+  console.clear();
+  console.log('🚀 STARTING TRADERRA COMMAND TEST');
+  console.log('===================================');
+
+  // Check initial state
+  const initialState = {
+    path: window.location.pathname,
+    dateRange: window.dateRangeContext?.currentDateRange,
+    displayMode: window.displayModeContext?.displayMode
+  };
+
+  console.log('📊 INITIAL STATE:');
+  console.log('  Path:', initialState.path);
+  console.log('  Date Range:', initialState.dateRange || 'context-not-found');
+  console.log('  Display Mode:', initialState.displayMode || 'context-not-found');
+
+  // Test pattern detection
+  const testMessage = "go to the dashboard and look at the last 90 days in R";
+  const lowerMessage = testMessage.toLowerCase();
+
+  console.log('\\n🧪 PATTERN DETECTION:');
+  console.log('  Message:', testMessage);
+
+  const hasDashboard = lowerMessage.includes('dashboard');
+  const hasLast90Days = lowerMessage.includes('last 90 days');
+  const hasInR = lowerMessage.includes('in r');
+
+  console.log('  Dashboard detected:', hasDashboard ? '✅' : '❌');
+  console.log('  Last 90 days detected:', hasLast90Days ? '✅' : '❌');
+  console.log('  In R detected:', hasInR ? '✅' : '❌');
+
+  const shouldTriggerMultiCommand = hasDashboard && hasLast90Days && hasInR;
+  console.log('  Should trigger multi-command:', shouldTriggerMultiCommand ? '✅' : '❌');
+
+  // Monitor for changes
+  let changeDetected = false;
+  const stateMonitor = setInterval(() => {
+    const currentPath = window.location.pathname;
+    const currentDateRange = window.dateRangeContext?.currentDateRange;
+    const currentDisplayMode = window.displayModeContext?.displayMode;
+
+    if (currentPath !== initialState.path) {
+      console.log('\\n🎯 NAVIGATION DETECTED:');
+      console.log('  From:', initialState.path);
+      console.log('  To:', currentPath);
+      changeDetected = true;
+    }
+
+    if (currentDateRange !== initialState.dateRange && currentDateRange !== undefined) {
+      console.log('\\n📅 DATE RANGE CHANGE DETECTED:');
+      console.log('  From:', initialState.dateRange || 'none');
+      console.log('  To:', currentDateRange);
+      changeDetected = true;
+    }
+
+    if (currentDisplayMode !== initialState.displayMode && currentDisplayMode !== undefined) {
+      console.log('\\n💱 DISPLAY MODE CHANGE DETECTED:');
+      console.log('  From:', initialState.displayMode || 'none');
+      console.log('  To:', currentDisplayMode);
+      changeDetected = true;
+    }
+  }, 500);
+
+  // Auto-stop monitoring after 10 seconds
+  setTimeout(() => {
+    clearInterval(stateMonitor);
+
+    const finalState = {
+      path: window.location.pathname,
+      dateRange: window.dateRangeContext?.currentDateRange,
+      displayMode: window.displayModeContext?.displayMode
+    };
+
+    console.log('\\n📊 FINAL STATE:');
+    console.log('  Path:', finalState.path);
+    console.log('  Date Range:', finalState.dateRange || 'context-not-found');
+    console.log('  Display Mode:', finalState.displayMode || 'context-not-found');
+
+    console.log('\\n🎯 TEST RESULTS:');
+    const navigationSuccess = finalState.path === '/dashboard';
+    const dateRangeSuccess = finalState.dateRange === '90day';
+    const displayModeSuccess = finalState.displayMode === 'r';
+
+    console.log('  Navigation:', navigationSuccess ? '✅ SUCCESS' : '❌ FAILED');
+    console.log('  Date Range:', dateRangeSuccess ? '✅ SUCCESS' : '❌ FAILED');
+    console.log('  Display Mode:', displayModeSuccess ? '✅ SUCCESS' : '❌ FAILED');
+
+    const overallSuccess = navigationSuccess && dateRangeSuccess && displayModeSuccess;
+    console.log('\\n🏆 OVERALL:', overallSuccess ? '✅ ALL TESTS PASSED' : '❌ SOME TESTS FAILED');
+
+    if (!changeDetected) {
+      console.log('\\n⚠️ WARNING: No state changes detected!');
+      console.log('   This suggests the pattern detection or execution is not working.');
+    }
+
+    console.log('\\n💡 Next Steps:');
+    console.log('  1. Check if pattern detection logs appear when you type the command');
+    console.log('  2. Look for any JavaScript errors in the console');
+    console.log('  3. Verify the Renata chat component is properly loaded');
+  }, 10000);
+
+  console.log('\\n⏱️  Monitoring state changes for 10 seconds...');
+  console.log('📝 Now type "go to the dashboard and look at the last 90 days in R" in the Renata chat');
+
+  return { initialState, shouldTriggerMultiCommand };
+}
+
+// Run the test
+runTraderraCommandTest();</pre>
+    </div>
+
+    <div class="test-section">
+        <h2>Quick Context Check</h2>
+        <button onclick="checkContext()">🔍 Check Context Status</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function copyTestScript() {
+            const scriptText = document.getElementById('test-script').textContent;
+            navigator.clipboard.writeText(scriptText).then(() => {
+                alert('📋 Script copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('❌ Failed to copy script');
+            });
+        }
+
+        function checkContext() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<div class="info">Checking contexts...</div>';
+
+            // This would work if we were on the same domain as the app
+            // For now, just show what we'd expect to check
+            results.innerHTML = `
+<div class="info">🔍 Context Status Check</div>
+<div>To check contexts on the running app:</div>
+<ol>
+<li>Open http://localhost:6565 in a new tab</li>
+<li>Open Developer Tools (F12)</li>
+<li>In console, type: <code>window.dateRangeContext?.currentDateRange</code></li>
+<li>In console, type: <code>window.displayModeContext?.displayMode</code></li>
+</ol>
+<div class="success">Expected after working command:</div>
+<ul>
+<li>Path should be: /dashboard</li>
+<li>Date Range should be: 90day</li>
+<li>Display Mode should be: r</li>
+</ul>
+            `;
+        }
+
+        // Auto-check if we can access the app
+        fetch('http://localhost:6565')
+            .then(response => {
+                if (response.ok) {
+                    document.body.innerHTML += '<div class="success" style="position: fixed; bottom: 10px; right: 10px; background: #4CAF50; padding: 10px; border-radius: 5px;">✅ App is running on localhost:6565</div>';
+                }
+            })
+            .catch(() => {
+                document.body.innerHTML += '<div class="error" style="position: fixed; bottom: 10px; right: 10px; background: #f44336; padding: 10px; border-radius: 5px;">❌ Cannot reach app on localhost:6565</div>';
+            });
+    </script>
+</body>
+</html>

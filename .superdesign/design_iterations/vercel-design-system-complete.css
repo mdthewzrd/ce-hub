@@ -1,0 +1,487 @@
+/**
+ * VERCEL GEIST DESIGN SYSTEM - COMPLETE IMPLEMENTATION
+ * Based on official Vercel/Geist design documentation
+ * Source: https://vercel.com/geist/colors, https://vercel.com/design/guidelines
+ */
+
+:root {
+  /* ============================================================================
+     COLOR PALETTE - LIGHT MODE
+     ============================================================================ */
+
+  /* Background Colors */
+  --geist-background: #ffffff;
+  --geist-background-2: #fafafa;
+
+  /* Component Backgrounds (Colors 1-3) */
+  --geist-color-1: #fafafa;
+  --geist-color-2: #eaeaea;
+  --geist-color-3: #999999;
+
+  /* Border Colors (Colors 4-6) */
+  --geist-color-4: #eaeaea;
+  --geist-color-5: #999999;
+  --geist-color-6: #888888;
+
+  /* High Contrast Backgrounds (Colors 7-8) */
+  --geist-color-7: #333333;
+  --geist-color-8: #000000;
+
+  /* Text & Icons (Colors 9-10) */
+  --geist-color-9: #666666;
+  --geist-color-10: #000000;
+
+  /* Status Colors */
+  --geist-success: #0070f3;
+  --geist-success-light: #3291ff;
+  --geist-success-lighter: #d3e5ff;
+  --geist-success-dark: #0761d1;
+
+  --geist-error: #e00;
+  --geist-error-light: #ff1a1a;
+  --geist-error-lighter: #f7d4d6;
+  --geist-error-dark: #c50000;
+
+  --geist-warning: #f5a623;
+  --geist-warning-light: #f7b955;
+  --geist-warning-lighter: #ffefcf;
+  --geist-warning-dark: #ab570a;
+
+  --geist-cyan: #50e3c2;
+  --geist-cyan-light: #79ffe1;
+  --geist-cyan-lighter: #aaffec;
+  --geist-cyan-dark: #29bc9b;
+
+  --geist-violet: #7928ca;
+  --geist-violet-light: #8a63d2;
+  --geist-violet-lighter: #e3d7fc;
+  --geist-violet-dark: #4c2889;
+
+  --geist-alert: #ff0080;
+  --geist-purple: #f81ce5;
+  --geist-magenta: #eb367f;
+
+  /* ============================================================================
+     COLOR PALETTE - DARK MODE
+     ============================================================================ */
+
+  /* Background Colors */
+  --geist-background-dark: #000000;
+  --geist-background-2-dark: #111111;
+
+  /* Component Backgrounds (Colors 1-3) */
+  --geist-color-1-dark: #111111;
+  --geist-color-2-dark: #333333;
+  --geist-color-3-dark: #444444;
+
+  /* Border Colors (Colors 4-6) */
+  --geist-color-4-dark: #333333;
+  --geist-color-5-dark: #444444;
+  --geist-color-6-dark: #666666;
+
+  /* High Contrast Backgrounds (Colors 7-8) */
+  --geist-color-7-dark: #eaeaea;
+  --geist-color-8-dark: #fafafa;
+
+  /* Text & Icons (Colors 9-10) */
+  --geist-color-9-dark: #888888;
+  --geist-color-10-dark: #fafafa;
+
+  /* ============================================================================
+     BORDER SYSTEM
+     ============================================================================ */
+
+  /* Border Widths */
+  --geist-border-width-hairline: 1px;
+  --geist-border-width-thin: 1px;
+  --geist-border-width-medium: 2px;
+  --geist-border-width-thick: 3px;
+
+  /* Border Opacity Levels for Depth */
+  --geist-border-opacity-1: rgba(0, 0, 0, 0.05);
+  --geist-border-opacity-2: rgba(0, 0, 0, 0.1);
+  --geist-border-opacity-3: rgba(0, 0, 0, 0.15);
+  --geist-border-opacity-4: rgba(0, 0, 0, 0.2);
+
+  /* Dark mode border opacity */
+  --geist-border-opacity-dark-1: rgba(255, 255, 255, 0.05);
+  --geist-border-opacity-dark-2: rgba(255, 255, 255, 0.1);
+  --geist-border-opacity-dark-3: rgba(255, 255, 255, 0.15);
+  --geist-border-opacity-dark-4: rgba(255, 255, 255, 0.2);
+
+  /* Border Radius */
+  --geist-radius-sm: 3px;
+  --geist-radius-base: 5px;
+  --geist-radius-md: 8px;
+  --geist-radius-lg: 12px;
+  --geist-radius-xl: 16px;
+
+  /* ============================================================================
+     SHADOW SYSTEM - Layered shadows for ambient + direct light
+     ============================================================================ */
+
+  /* Light Mode Shadows */
+  --geist-shadow-small:
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+
+  --geist-shadow-base:
+    0 4px 8px rgba(0, 0, 0, 0.05),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+
+  --geist-shadow-medium:
+    0 8px 16px rgba(0, 0, 0, 0.08),
+    0 4px 8px rgba(0, 0, 0, 0.1);
+
+  --geist-shadow-large:
+    0 16px 32px rgba(0, 0, 0, 0.08),
+    0 8px 16px rgba(0, 0, 0, 0.1);
+
+  --geist-shadow-xl:
+    0 24px 48px rgba(0, 0, 0, 0.12),
+    0 12px 24px rgba(0, 0, 0, 0.15);
+
+  /* Dark Mode Shadows (more subtle, using glow effect) */
+  --geist-shadow-small-dark:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+
+  --geist-shadow-base-dark:
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+
+  --geist-shadow-medium-dark:
+    0 8px 16px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  --geist-shadow-large-dark:
+    0 16px 32px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  /* Focus Ring */
+  --geist-focus-ring:
+    0 0 0 3px rgba(0, 112, 243, 0.3);
+
+  /* ============================================================================
+     TYPOGRAPHY SCALE - Inter Font Family
+     ============================================================================ */
+
+  --geist-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --geist-font-mono: 'Geist Mono', 'SF Mono', Monaco, 'Cascadia Code',
+    'Roboto Mono', Consolas, 'Courier New', monospace;
+
+  /* Font Sizes - Modular Scale (1.125 = Major Second) */
+  --geist-font-size-xs: 0.75rem;      /* 12px */
+  --geist-font-size-sm: 0.875rem;     /* 14px */
+  --geist-font-size-base: 1rem;       /* 16px */
+  --geist-font-size-md: 1.125rem;     /* 18px */
+  --geist-font-size-lg: 1.25rem;      /* 20px */
+  --geist-font-size-xl: 1.5rem;       /* 24px */
+  --geist-font-size-2xl: 1.875rem;    /* 30px */
+  --geist-font-size-3xl: 2.25rem;     /* 36px */
+  --geist-font-size-4xl: 3rem;        /* 48px */
+
+  /* Font Weights */
+  --geist-font-weight-normal: 400;
+  --geist-font-weight-medium: 500;
+  --geist-font-weight-semibold: 600;
+  --geist-font-weight-bold: 700;
+
+  /* Line Heights */
+  --geist-leading-tight: 1.25;
+  --geist-leading-normal: 1.5;
+  --geist-leading-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --geist-tracking-tight: -0.025em;
+  --geist-tracking-normal: 0;
+  --geist-tracking-wide: 0.025em;
+
+  /* ============================================================================
+     SPACING SYSTEM - 4px base unit
+     ============================================================================ */
+
+  --geist-space-0: 0;
+  --geist-space-1: 0.25rem;    /* 4px */
+  --geist-space-2: 0.5rem;     /* 8px */
+  --geist-space-3: 0.75rem;    /* 12px */
+  --geist-space-4: 1rem;       /* 16px */
+  --geist-space-5: 1.25rem;    /* 20px */
+  --geist-space-6: 1.5rem;     /* 24px */
+  --geist-space-8: 2rem;       /* 32px */
+  --geist-space-10: 2.5rem;    /* 40px */
+  --geist-space-12: 3rem;      /* 48px */
+  --geist-space-16: 4rem;      /* 64px */
+  --geist-space-20: 5rem;      /* 80px */
+  --geist-space-24: 6rem;      /* 96px */
+
+  /* ============================================================================
+     TRANSITIONS & ANIMATIONS
+     ============================================================================ */
+
+  /* Easing Functions */
+  --geist-ease-linear: linear;
+  --geist-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --geist-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --geist-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Durations */
+  --geist-duration-instant: 100ms;
+  --geist-duration-fast: 150ms;
+  --geist-duration-normal: 200ms;
+  --geist-duration-slow: 300ms;
+  --geist-duration-slower: 500ms;
+
+  /* Default Transition */
+  --geist-transition-default:
+    var(--geist-duration-normal) var(--geist-ease-out);
+
+  /* ============================================================================
+     Z-INDEX SCALE
+     ============================================================================ */
+
+  --geist-z-base: 0;
+  --geist-z-dropdown: 100;
+  --geist-z-sticky: 200;
+  --geist-z-fixed: 300;
+  --geist-z-modal-backdrop: 400;
+  --geist-z-modal: 500;
+  --geist-z-popover: 600;
+  --geist-z-tooltip: 700;
+}
+
+/* ============================================================================
+   DARK MODE OVERRIDES
+   Apply when dark mode is active
+   ============================================================================ */
+
+.dark {
+  /* Update CSS variables for dark mode */
+  --geist-background: var(--geist-background-dark);
+  --geist-background-2: var(--geist-background-2-dark);
+  --geist-color-1: var(--geist-color-1-dark);
+  --geist-color-2: var(--geist-color-2-dark);
+  --geist-color-3: var(--geist-color-3-dark);
+  --geist-color-4: var(--geist-color-4-dark);
+  --geist-color-5: var(--geist-color-5-dark);
+  --geist-color-6: var(--geist-color-6-dark);
+  --geist-color-7: var(--geist-color-7-dark);
+  --geist-color-8: var(--geist-color-8-dark);
+  --geist-color-9: var(--geist-color-9-dark);
+  --geist-color-10: var(--geist-color-10-dark);
+}
+
+/* ============================================================================
+   UTILITY CLASSES - Common patterns from Vercel's guidelines
+   ============================================================================ */
+
+/* Crisp Borders - Combine borders & shadows */
+.geist-border-crisp {
+  border: 1px solid var(--geist-color-4);
+  box-shadow: var(--geist-shadow-small);
+}
+
+.dark .geist-border-crisp {
+  border-color: var(--geist-color-4-dark);
+  box-shadow: var(--geist-shadow-small-dark);
+}
+
+/* Focus Ring for Accessibility */
+.geist-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: var(--geist-focus-ring);
+}
+
+/* Nested Radii - Child radius ≤ parent radius */
+.geist-card {
+  border-radius: var(--geist-radius-lg);
+}
+
+.geist-card-inner {
+  border-radius: var(--geist-radius-md); /* Smaller than parent */
+}
+
+/* Tabular Numbers for Data */
+.geist-tabular-nums {
+  font-family: var(--geist-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Typography Scale Examples */
+.geist-h1 {
+  font-size: var(--geist-font-size-4xl);
+  font-weight: var(--geist-font-weight-bold);
+  line-height: var(--geist-leading-tight);
+  letter-spacing: var(--geist-tracking-tight);
+}
+
+.geist-h2 {
+  font-size: var(--geist-font-size-3xl);
+  font-weight: var(--geist-font-weight-bold);
+  line-height: var(--geist-leading-tight);
+}
+
+.geist-h3 {
+  font-size: var(--geist-font-size-2xl);
+  font-weight: var(--geist-font-weight-semibold);
+  line-height: var(--geist-leading-normal);
+}
+
+.geist-body {
+  font-size: var(--geist-font-size-base);
+  font-weight: var(--geist-font-weight-normal);
+  line-height: var(--geist-leading-normal);
+}
+
+.geist-small {
+  font-size: var(--geist-font-size-sm);
+  font-weight: var(--geist-font-weight-normal);
+  line-height: var(--geist-leading-normal);
+  color: var(--geist-color-9);
+}
+
+/* ============================================================================
+   COMPONENT PATTERNS
+   ============================================================================ */
+
+/* Button Base - From Vercel's interaction guidelines */
+.geist-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--geist-space-2) var(--geist-space-4);
+  font-size: var(--geist-font-size-sm);
+  font-weight: var(--geist-font-weight-medium);
+  line-height: var(--geist-leading-tight);
+  border-radius: var(--geist-radius-base);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--geist-transition-default);
+  min-height: 44px; /* Mobile minimum touch target */
+}
+
+.geist-button:hover {
+  background-color: var(--geist-color-2);
+}
+
+.geist-button:active {
+  background-color: var(--geist-color-3);
+}
+
+/* Card Component - Layered shadows */
+.geist-card {
+  background-color: var(--geist-background);
+  border: 1px solid var(--geist-color-4);
+  border-radius: var(--geist-radius-lg);
+  box-shadow: var(--geist-shadow-base);
+  padding: var(--geist-space-6);
+  transition: box-shadow var(--geist-transition-default);
+}
+
+.geist-card:hover {
+  box-shadow: var(--geist-shadow-medium);
+}
+
+/* Input Component - From Vercel's form guidelines */
+.geist-input {
+  width: 100%;
+  padding: var(--geist-space-2) var(--geist-space-3);
+  font-size: var(--geist-font-size-base); /* ≥16px to prevent iOS zoom */
+  font-family: var(--geist-font-family);
+  line-height: var(--geist-leading-normal);
+  color: var(--geist-color-10);
+  background-color: var(--geist-background);
+  border: 1px solid var(--geist-color-4);
+  border-radius: var(--geist-radius-base);
+  transition: border-color var(--geist-transition-default),
+    box-shadow var(--geist-transition-default);
+}
+
+.geist-input:focus {
+  outline: none;
+  border-color: var(--geist-success);
+  box-shadow: var(--geist-focus-ring);
+}
+
+.geist-input::placeholder {
+  color: var(--geist-color-9);
+}
+
+/* ============================================================================
+   ACCESSIBILITY - From Vercel's guidelines
+   ============================================================================ */
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .geist-button,
+  .geist-input,
+  .geist-card {
+    border-width: var(--geist-border-width-medium);
+  }
+}
+
+/* ============================================================================
+   IMPLEMENTATION NOTES
+   ============================================================================ */
+
+/*
+RECOMMENDED USAGE:
+
+1. Import Inter font:
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+2. Add dark mode class to html or body:
+   <html class="dark"> or <body class="dark">
+
+3. Use CSS variables for consistent theming:
+   color: var(--geist-color-10);
+   background: var(--geist-background);
+   border-radius: var(--geist-radius-lg);
+   box-shadow: var(--geist-shadow-base);
+
+4. Border treatments for depth:
+   - Use opacity levels for layered elements
+   - Combine borders with shadows for crispness
+   - Match hue to background for consistency
+
+5. Shadow layering:
+   - Always use at least 2 shadow layers
+   - First layer: ambient light
+   - Second layer: direct light
+   - Dark mode: add subtle glow with white border
+
+6. Typography:
+   - Use Inter for UI text
+   - Use Geist Mono for code/data
+   - Use tabular-nums for numeric data
+   - Maintain proper contrast ratios
+
+7. Spacing:
+   - Use 4px base unit
+   - Prefer even numbers
+   - Consistent padding/margins
+
+8. Interactions:
+   - All hover/focus states increase contrast
+   - Minimum 44px touch targets on mobile
+   - Respect prefers-reduced-motion
+   - Use focus-visible for keyboard navigation
+
+SOURCES:
+- https://vercel.com/geist/colors
+- https://vercel.com/design/guidelines
+- https://geist-ui.dev/en-us/guide/colors
+- https://geist-ui.dev/en-us/guide/themes
+*/

@@ -1,0 +1,7 @@
+{
+  "code": "# daily_para_backside_lite_scan.py\nimport pandas as pd, numpy as np, requests\nfrom datetime import datetime\nfrom concurrent.futures import ThreadPoolExecutor, as_completed\n\n# config\nsession  = requests.Session()\nAPI_KEY  = \"Fm7brz4s23eSocDErnL68cE7wspz2K1I\"\nBASE_URL = \"https://api.polygon.io\"\nMAX_WORKERS = 6\n\nPRINT_FROM = \"2025-01-01\"\nPRINT_TO   = None\n\n# knobs\nP = {\n    \"price_min\"        : 8.0,\n    \"adv20_min_usd\"    : 30_000_000,\n    \"abs_lookback_days\": 1000,\n    \"abs_exclude_days\" : 10,\n    \"pos_abs_max\"      : 0.75,\n    \"trigger_mode\"     : \"D1_or_D2\",\n    \"atr_mult\"         : .9,\n    \"vol_mult\"         : 0.9,\n    \"d1_vol_mult_min\"  : None,\n    \"d1_volume_min\"    : 15_000_000,\n    \"slope5d_min\"      : 3.0,\n    \"high_ema9_mult\"   : 1.05,\n    \"gap_div_atr_min\"   : .75,\n    \"open_over_ema9_min\": .9,\n    \"d1_green_atr_min\"  : 0.30,\n    \"require_open_gt_prev_high\": True,\n}\n\ndef scan():\n    return []",
+  "options": {
+    "enableMultiprocessing": true,
+    "preserveParameterIntegrity": true
+  }
+}

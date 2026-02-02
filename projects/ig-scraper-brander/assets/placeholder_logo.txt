@@ -1,0 +1,19 @@
+# Place your logo here!
+
+## Logo Requirements
+
+1. **Format**: PNG with transparency (recommended)
+2. **Size**: 512x512px or higher (will be scaled down)
+3. **Design**: Simple, readable at small sizes
+4. **File name**: your_logo.png
+
+## Example:
+
+Create a simple logo using any image editor (Canva, Photoshop, etc.):
+- Transparent background
+- Your brand name or symbol
+- High contrast for visibility
+
+## Save as:
+
+assets/your_logo.png

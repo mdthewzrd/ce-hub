@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Frequency Quick-Start Guide | Harmonatica</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* PDF Print Styles */
+        @page {
+            size: letter;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .page {
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+
+            .page:last-child {
+                page-break-after: auto;
+            }
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+        }
+
+        /* Page Container */
+        .page {
+            width: 8.5in;
+            height: 11in;
+            padding: 0.5in;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Cover Page */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1in;
+        }
+
+        .cover-logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cover-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #14b8a6 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .cover-subtitle {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            color: #adbac7;
+            margin-bottom: 2rem;
+        }
+
+        .cover-flower {
+            width: 300px;
+            height: 300px;
+            margin: 2rem auto;
+            opacity: 0.15;
+        }
+
+        .cover-footer {
+            position: absolute;
+            bottom: 0.75in;
+            font-size: 0.75rem;
+            color: #6e7681;
+        }
+
+        /* Content Pages */
+        .content-page {
+            padding: 0.75in 0.75in 0.5in;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(20, 184, 166, 0.2);
+        }
+
+        .page-number {
+            font-size: 0.65rem;
+            color: #6e7681;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Headings */
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #14b8a6;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #a78bfa;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th {
+            background: rgba(20, 184, 166, 0.1);
+            color: #14b8a6;
+            font-weight: 600;
+            text-align: left;
+            padding: 0.5rem;
+            border-bottom: 2px solid rgba(20, 184, 166, 0.3);
+        }
+
+        td {
+            padding: 0.5rem;
+            border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Practice Routine */
+        .routine-section {
+            background: rgba(22, 27, 34, 0.5);
+            border-left: 4px solid #14b8a6;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .routine-step {
+            display: flex;
+            align-items: flex-start;
+            margin: 0.5rem 0;
+        }
+
+        .step-number {
+            background: #14b8a6;
+            color: #0d1117;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* Checklist */
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(22, 27, 34, 0.3);
+            border-radius: 0.25rem;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #14b8a6;
+            border-radius: 4px;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* Info Boxes */
+        .info-box {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefit-list li {
+            padding: 0.25rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .benefit-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #14b8a6;
+            font-weight: 600;
+        }
+
+        /* Remember Section */
+        .remember-section {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid #fbbf24;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .remember-item {
+            margin: 0.5rem 0;
+            font-style: italic;
+        }
+
+        .remember-item strong {
+            color: #fbbf24;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.2) 0%, rgba(167, 139, 250, 0.2) 100%);
+            border: 2px solid rgba(20, 184, 166, 0.5);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .cta-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            color: #14b8a6;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-text {
+            color: #adbac7;
+            margin-bottom: 1rem;
+        }
+
+        .cta-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #14b8a6 0%, #a78bfa 100%);
+            color: #0d1117;
+            padding: 0.75rem 2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 0.65rem;
+            color: #6e7681;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(48, 54, 61, 0.5);
+        }
+
+        /* Print Button */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #14b8a6;
+            color: #0d1117;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            background: #0d9488;
+            transform: translateY(-2px);
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Print Button -->
+    <button class="print-btn" onclick="window.print()">📄 Save as PDF</button>
+
+    <!-- PAGE 1: COVER -->
+    <div class="page cover">
+        <div class="cover-logo">✨</div>
+        <h1 class="cover-title">THE FREQUENCY</h1>
+        <h2 class="cover-subtitle">Quick-Start Guide</h2>
+        <p style="color: #adbac7; font-size: 1.1rem; margin-bottom: 2rem;">
+            Your 7-Day Journey to Transform Your Vibration
+        </p>
+
+        <svg class="cover-flower" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#14b8a6" stroke-width="2" transform="rotate(30,500,500)">
+                <circle cx="347.67708" cy="763.83104" r="152.32292"/>
+                <circle cx="500" cy="763.83104" r="152.32292"/>
+                <circle cx="652.32292" cy="763.83104" r="152.32292"/>
+                <circle cx="271.51562" cy="631.91552" r="152.32292"/>
+                <circle cx="423.83854" cy="631.91552" r="152.32292"/>
+                <circle cx="576.16146" cy="631.91552" r="152.32292"/>
+                <circle cx="728.48438" cy="631.91552" r="152.32292"/>
+                <circle cx="195.35416" cy="500" r="152.32292"/>
+                <circle cx="347.67708" cy="500" r="152.32292"/>
+                <circle cx="500" cy="500" r="152.32292"/>
+                <circle cx="652.32292" cy="500" r="152.32292"/>
+                <circle cx="804.64584" cy="500" r="152.32292"/>
+                <circle cx="271.51562" cy="368.08448" r="152.32292"/>
+                <circle cx="423.83854" cy="368.08448" r="152.32292"/>
+                <circle cx="576.16146" cy="368.08448" r="152.32292"/>
+                <circle cx="728.48438" cy="368.08448" r="152.32292"/>
+                <circle cx="347.67708" cy="236.16896" r="152.32292"/>
+                <circle cx="500" cy="236.16896" r="152.32292"/>
+                <circle cx="652.32292" cy="236.16896" r="152.32292"/>
+            </g>
+        </svg>
+
+        <p style="color: #8b949e; font-size: 0.9rem; max-width: 400px;">
+            Discover the healing power of sound, light, and intention in this practical guide to frequency medicine.
+        </p>
+
+        <div class="cover-footer">
+            © 2026 Harmonatica | harmonatica.com
+        </div>
+    </div>
+
+    <!-- PAGE 2: SOLFEGGIO FREQUENCIES -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1>The 7 Solfeggio Frequencies</h1>
+            <p style="color: #8b949e;">Ancient healing tones for modern transformation</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Frequency</th>
+                    <th>Name</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>174 Hz</strong></td>
+                    <td>Foundation</td>
+                    <td>Relieves pain and stress</td>
+                </tr>
+                <tr>
+                    <td><strong>285 Hz</strong></td>
+                    <td>Quantum Cognition</td>
+                    <td>Repairs tissues and organs</td>
+                </tr>
+                <tr>
+                    <td><strong>396 Hz</strong></td>
+                    <td>Liberating Guilt & Fear</td>
+                    <td>Releases negative emotions</td>
+                </tr>
+                <tr>
+                    <td><strong>417 Hz</strong></td>
+                    <td>Facilitating Change</td>
+                    <td>Removes negative energy</td>
+                </tr>
+                <tr>
+                    <td><strong>528 Hz</strong></td>
+                    <td>DNA Repair</td>
+                    <td>Transformation & miracles</td>
+                </tr>
+                <tr>
+                    <td><strong>639 Hz</strong></td>
+                    <td>Connecting Relationships</td>
+                    <td>Harmonizes relationships</td>
+                </tr>
+                <tr>
+                    <td><strong>741 Hz</strong></td>
+                    <td>Expression/Solutions</td>
+                    <td>Detoxifies cells and organs</td>
+                </tr>
+                <tr>
+                    <td><strong>852 Hz</strong></td>
+                    <td>Returning to Spiritual Order</td>
+                    <td>Awakens intuition</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            <h3>💡 How to Use</h3>
+            <p style="color: #adbac7; margin-bottom: 0.5rem;">Listen to each frequency for 10-15 minutes daily, or choose the specific frequency that matches your current need. Use headphones for best results.</p>
+        </div>
+
+        <div class="page-number">Page 2</div>
+    </div>
+
+    <!-- PAGE 3: DAILY PRACTICE ROUTINE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1>Daily Practice Routine</h1>
+            <p style="color: #8b949e;">10 minutes morning • 10 minutes evening</p>
+        </div>
+
+        <h2>☀️ Morning Routine (5-10 minutes)</h2>
+        <div class="routine-section">
+            <div class="routine-step">
+                <div class="step-number">1</div>
+                <div><strong>Hydrate</strong> — Drink a glass of structured water</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">2</div>
+                <div><strong>Ground</strong> — Stand barefoot on earth for 2 minutes</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">3</div>
+                <div><strong>Breathe</strong> — 5 deep breaths with 432Hz music</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">4</div>
+                <div><strong>Set Intention</strong> — Speak positive affirmations for the day</div>
+            </div>
+        </div>
+
+        <h2>🌙 Evening Routine (5-10 minutes)</h2>
+        <div class="routine-section">
+            <div class="routine-step">
+                <div class="step-number">1</div>
+                <div><strong>Gratitude</strong> — List 3 things you're grateful for</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">2</div>
+                <div><strong>Release</strong> — Release day's stress with 396Hz music</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">3</div>
+                <div><strong>Heart Coherence</strong> — 3 minutes heart-focused breathing</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">4</div>
+                <div><strong>Bless Water</strong> — Place positive intention on tomorrow's water</div>
+            </div>
+        </div>
+
+        <div class="remember-section">
+            <p class="remember-item"><strong>Remember:</strong> Consistency beats intensity. A daily 10-minute practice transforms more than a weekly hour-long session.</p>
+        </div>
+
+        <div class="page-number">Page 3</div>
+    </div>
+
+    <!-- PAGE 4: QUICK REFERENCE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1>Quick Reference</h1>
+            <p style="color: #8b949e;">Find what you need, when you need it</p>
+        </div>
+
+        <h2>🎨 Color Therapy Guide</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Color</th>
+                    <th>Benefits</th>
+                    <th>When to Use</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Red</strong></td>
+                    <td>Energy, vitality, grounding</td>
+                    <td>Fatigue, low energy</td>
+                </tr>
+                <tr>
+                    <td><strong>Orange</strong></td>
+                    <td>Creativity, joy</td>
+                    <td>Depression, lack of motivation</td>
+                </tr>
+                <tr>
+                    <td><strong>Yellow</strong></td>
+                    <td>Mental clarity, confidence</td>
+                    <td>Brain fog, studying</td>
+                </tr>
+                <tr>
+                    <td><strong>Green</strong></td>
+                    <td>Balance, harmony</td>
+                    <td>Stress, imbalance</td>
+                </tr>
+                <tr>
+                    <td><strong>Blue</strong></td>
+                    <td>Calm, communication</td>
+                    <td>Anxiety, throat issues</td>
+                </tr>
+                <tr>
+                    <td><strong>Indigo</strong></td>
+                    <td>Intuition, healing</td>
+                    <td>Sleep issues, intuition blocks</td>
+                </tr>
+                <tr>
+                    <td><strong>Violet</strong></td>
+                    <td>Spiritual connection</td>
+                    <td>Meditation, spiritual growth</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>💧 Water Structuring Methods</h2>
+        <div class="info-box" style="margin-top: 1rem;">
+            <div class="routine-step" style="margin-top: 0;">
+                <div class="step-number">1</div>
+                <div><strong>Vortexing</strong> — Swirl water clockwise 33 times</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">2</div>
+                <div><strong>Intention</strong> — Hold glass and speak positive words</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">3</div>
+                <div><strong>Sunlight</strong> — Expose to direct sunlight for 30 minutes</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">4</div>
+                <div><strong>Crystal</strong> — Place quartz crystal in water overnight</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">5</div>
+                <div><strong>Gratitude</strong> — Say "thank you" before drinking</div>
+            </div>
+        </div>
+
+        <h2>⚡ Quick Frequency Fixes</h2>
+        <table style="margin-top: 1rem;">
+            <thead>
+                <tr>
+                    <th>Issue</th>
+                    <th>Frequency</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Stress</td>
+                    <td>432Hz</td>
+                    <td>10-15 min</td>
+                </tr>
+                <tr>
+                    <td>Pain</td>
+                    <td>174 Hz</td>
+                    <td>20-30 min</td>
+                </tr>
+                <tr>
+                    <td>Insomnia</td>
+                    <td>528Hz</td>
+                    <td>Before bed</td>
+                </tr>
+                <tr>
+                    <td>Anxiety</td>
+                    <td>396Hz</td>
+                    <td>As needed</td>
+                </tr>
+                <tr>
+                    <td>Low Energy</td>
+                    <td>639Hz</td>
+                    <td>Morning</td>
+                </tr>
+                <tr>
+                    <td>Focus</td>
+                    <td>741Hz</td>
+                    <td>While working</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="page-number">Page 4</div>
+    </div>
+
+    <!-- PAGE 5: HEART COHERENCE + RESOURCES -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1>Heart Coherence</h1>
+            <p style="color: #8b949e;">The 3-minute practice that transforms everything</p>
+        </div>
+
+        <div class="info-box" style="margin-top: 1rem;">
+            <h3 style="margin-top: 0;">Heart-Focused Breathing</h3>
+            <div class="routine-step" style="margin-top: 0.75rem;">
+                <div class="step-number">1</div>
+                <div>Focus attention on your heart area</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">2</div>
+                <div>Imagine breathing through your heart</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">3</div>
+                <div>Inhale for 5 counts</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">4</div>
+                <div>Exhale for 5 counts</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">5</div>
+                <div>Feel gratitude or appreciation</div>
+            </div>
+            <div class="routine-step">
+                <div class="step-number">6</div>
+                <div>Continue for 3 minutes</div>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 2rem;">✨ Benefits</h2>
+        <ul class="benefit-list">
+            <li>Reduces cortisol (stress hormone)</li>
+            <li>Balances nervous system</li>
+            <li>Improves heart rate variability</li>
+            <li>Enhances mental clarity</li>
+        </ul>
+
+        <h2 style="margin-top: 2rem;">🛠️ Essential Tools Checklist</h2>
+        <div class="checklist-item">
+            <div class="checkbox"></div>
+            <span>Tuning fork (432Hz or 528Hz)</span>
+        </div>
+        <div class="checklist-item">
+            <div class="checkbox"></div>
+            <span>Singing bowl</span>
+        </div>
+        <div class="checklist-item">
+            <div class="checkbox"></div>
+            <span>Headphones for frequency listening</span>
+        </div>
+        <div class="checklist-item">
+            <div class="checkbox"></div>
+            <span>Glass water containers</span>
+        </div>
+        <div class="checklist-item">
+            <div class="checkbox"></div>
+            <span>Red/NIR light device (optional)</span>
+        </div>
+        <div class="checklist-item">
+            <div class="checkbox"></div>
+            <span>HeartMath biofeedback device (optional)</span>
+        </div>
+
+        <div class="remember-section" style="margin-top: 2rem;">
+            <p class="remember-item"><strong>Consistency > Intensity:</strong> Daily practice beats occasional deep practice.</p>
+            <p class="remember-item"><strong>Intention Matters:</strong> Your focused attention amplifies effects.</p>
+            <p class="remember-item"><strong>Listen to Your Body:</strong> Adjust practices based on how you feel.</p>
+        </div>
+
+        <div class="page-number">Page 5</div>
+    </div>
+
+    <!-- PAGE 6: GO DEEPER (CTA) -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1>Want to Go Deeper?</h1>
+            <p style="color: #8b949e;">The complete guide to vibration healing</p>
+        </div>
+
+        <div class="cta-box">
+            <h2 class="cta-title" style="font-size: 2rem; margin-top: 0;">Hidden in Plain Sight</h2>
+            <p class="cta-text" style="font-size: 1.1rem;">
+                The comprehensive guide covering everything from vortex mathematics to practical healing applications.
+            </p>
+            <div style="margin: 1.5rem 0;">
+                <p style="color: #adbac7; margin-bottom: 0.5rem;">✓ Vortex Mathematics Explained</p>
+                <p style="color: #adbac7; margin-bottom: 0.5rem;">✓ Sacred Geometry Patterns</p>
+                <p style="color: #adbac7; margin-bottom: 0.5rem;">✓ Unified Field Theory</p>
+                <p style="color: #adbac7; margin-bottom: 0.5rem;">✓ Practical Healing Protocols</p>
+                <p style="color: #adbac7; margin-bottom: 0.5rem;">✓ Daily Practice Routines</p>
+            </div>
+            <p style="font-size: 2rem; font-weight: 700; color: #fbbf24; margin: 1rem 0;">$47</p>
+            <a href="#" class="cta-link">Get the Complete Guide →</a>
+        </div>
+
+        <div class="info-box">
+            <h3 style="margin-top: 0;">🎁 Free Resources</h3>
+            <p style="color: #adbac7; margin-bottom: 0.5rem;">
+                <strong>7 Expert Videos:</strong> Watch curated videos on frequency healing, sound therapy, and more.
+            </p>
+            <p style="color: #adbac7; margin-bottom: 0.5rem;">
+                <strong>Daily Email Course:</strong> Join our free 7-day email series for deeper learning.
+            </p>
+            <p style="color: #adbac7;">
+                <strong>Community:</strong> Connect with us on Instagram at @harmonatica
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>This free guide is just the beginning.</p>
+            <p style="margin-top: 0.5rem;">© 2026 Harmonatica | harmonatica.com</p>
+            <p style="margin-top: 0.5rem; font-size: 0.6rem;">For educational purposes only. These practices are complementary to, not a replacement for, professional medical care.</p>
+        </div>
+
+        <div class="page-number">Page 6</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenRouter API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="password"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .log-section {
+            margin-top: 30px;
+            border-top: 2px solid #eee;
+            padding-top: 20px;
+        }
+        .log {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 11px;
+            white-space: pre-wrap;
+        }
+        .test-group {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .test-group h3 {
+            margin-top: 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>OpenRouter API Test Page</h1>
+        <p>This page helps isolate and debug OpenRouter API key functionality.</p>
+
+        <!-- Test 1: Save API Key -->
+        <div class="test-group">
+            <h3>Test 1: Save API Key</h3>
+            <div class="form-group">
+                <label for="apiKey">OpenRouter API Key:</label>
+                <input type="password" id="apiKey" placeholder="sk-or-v1-..." value="">
+            </div>
+            <button onclick="saveApiKey()">Save API Key</button>
+            <button onclick="testGetApiKey()">Test Get API Key</button>
+            <div id="saveResponse" class="response" style="display: none;"></div>
+        </div>
+
+        <!-- Test 2: Direct API Test -->
+        <div class="test-group">
+            <h3>Test 2: Direct OpenRouter API Call</h3>
+            <div class="form-group">
+                <label for="testApiKey">API Key (for test):</label>
+                <input type="password" id="testApiKey" placeholder="Enter key to test">
+            </div>
+            <button onclick="testOpenRouterDirect()">Test Direct API Call</button>
+            <div id="directResponse" class="response" style="display: none;"></div>
+        </div>
+
+        <!-- Test 3: Backend Test -->
+        <div class="test-group">
+            <h3>Test 3: Backend OpenRouter Test</h3>
+            <button onclick="testBackendOpenRouter()">Test Backend API</button>
+            <div id="backendResponse" class="response" style="display: none;"></div>
+        </div>
+
+        <!-- Test 4: Environment Check -->
+        <div class="test-group">
+            <h3>Test 4: Environment & Browser Info</h3>
+            <button onclick="checkEnvironment()">Check Environment</button>
+            <div id="envResponse" class="response" style="display: none;"></div>
+        </div>
+
+        <!-- Log Section -->
+        <div class="log-section">
+            <h3>Console Log</h3>
+            <button onclick="clearLog()">Clear Log</button>
+            <div id="log" class="log"></div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced logging function
+        function log(message, type = 'info') {
+            const timestamp = new Date().toISOString();
+            const logElement = document.getElementById('log');
+            const logEntry = `[${timestamp}] ${type.toUpperCase()}: ${message}\n`;
+            logElement.textContent += logEntry;
+            logElement.scrollTop = logElement.scrollHeight;
+
+            // Also log to console
+            console.log(`[${timestamp}] ${type.toUpperCase()}: ${message}`);
+        }
+
+        function clearLog() {
+            document.getElementById('log').textContent = '';
+            log('Log cleared');
+        }
+
+        function showResponse(elementId, response, isSuccess = null) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = 'response';
+
+            if (isSuccess === true) {
+                element.classList.add('success');
+            } else if (isSuccess === false) {
+                element.classList.add('error');
+            } else {
+                element.classList.add('info');
+            }
+
+            element.textContent = JSON.stringify(response, null, 2);
+        }
+
+        // Test 1: Save API Key
+        async function saveApiKey() {
+            const apiKey = document.getElementById('apiKey').value;
+
+            if (!apiKey) {
+                showResponse('saveResponse', { error: 'Please enter an API key' }, false);
+                log('Save API Key: No key provided', 'error');
+                return;
+            }
+
+            log(`Attempting to save API key (${apiKey.substring(0, 10)}...)`);
+
+            try {
+                // Test different endpoint variations
+                const endpoints = [
+                    '/api/openrouter-key',
+                    '/api/openrouter-key/',
+                    '/openrouter-key'
+                ];
+
+                for (const endpoint of endpoints) {
+                    log(`Trying endpoint: ${endpoint}`);
+
+                    try {
+                        const response = await fetch(endpoint, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ apiKey: apiKey })
+                        });
+
+                        log(`Response status: ${response.status} ${response.statusText}`);
+                        log(`Response headers: ${JSON.stringify([...response.headers.entries()])}`);
+
+                        const responseText = await response.text();
+                        log(`Raw response: ${responseText}`);
+
+                        let responseData;
+                        try {
+                            responseData = JSON.parse(responseText);
+                        } catch (e) {
+                            responseData = { rawResponse: responseText };
+                        }
+
+                        if (response.ok) {
+                            showResponse('saveResponse', responseData, true);
+                            log(`Success saving API key via ${endpoint}`, 'success');
+                            return;
+                        } else {
+                            showResponse('saveResponse', responseData, false);
+                            log(`Failed to save API key via ${endpoint}: ${response.status}`, 'error');
+                        }
+                    } catch (error) {
+                        log(`Error with ${endpoint}: ${error.message}`, 'error');
+                    }
+                }
+
+                showResponse('saveResponse', { error: 'All endpoints failed' }, false);
+
+            } catch (error) {
+                log(`Save API Key Error: ${error.message}`, 'error');
+                log(`Full error: ${error.stack}`, 'error');
+                showResponse('saveResponse', {
+                    error: error.message,
+                    stack: error.stack,
+                    name: error.name
+                }, false);
+            }
+        }
+
+        // Test 1b: Get API Key
+        async function testGetApiKey() {
+            log('Testing get API key');
+
+            try {
+                const response = await fetch('/api/openrouter-key', {
+                    method: 'GET'
+                });
+
+                log(`GET Response status: ${response.status} ${response.statusText}`);
+
+                const responseText = await response.text();
+                log(`GET Raw response: ${responseText}`);
+
+                let responseData;
+                try {
+                    responseData = JSON.parse(responseText);
+                } catch (e) {
+                    responseData = { rawResponse: responseText };
+                }
+
+                showResponse('saveResponse', responseData, response.ok);
+
+            } catch (error) {
+                log(`Get API Key Error: ${error.message}`, 'error');
+                showResponse('saveResponse', { error: error.message }, false);
+            }
+        }
+
+        // Test 2: Direct OpenRouter API Call
+        async function testOpenRouterDirect() {
+            const apiKey = document.getElementById('testApiKey').value;
+
+            if (!apiKey) {
+                showResponse('directResponse', { error: 'Please enter an API key' }, false);
+                return;
+            }
+
+            log('Testing direct OpenRouter API call');
+
+            try {
+                const response = await fetch('https://openrouter.ai/api/v1/models', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                log(`Direct API Response status: ${response.status} ${response.statusText}`);
+
+                const responseText = await response.text();
+                log(`Direct API Raw response: ${responseText}`);
+
+                let responseData;
+                try {
+                    responseData = JSON.parse(responseText);
+                } catch (e) {
+                    responseData = { rawResponse: responseText };
+                }
+
+                showResponse('directResponse', responseData, response.ok);
+
+            } catch (error) {
+                log(`Direct API Error: ${error.message}`, 'error');
+                showResponse('directResponse', { error: error.message }, false);
+            }
+        }
+
+        // Test 3: Backend OpenRouter Test
+        async function testBackendOpenRouter() {
+            log('Testing backend OpenRouter functionality');
+
+            try {
+                const response = await fetch('/api/test-openrouter', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                log(`Backend test response status: ${response.status} ${response.statusText}`);
+
+                const responseText = await response.text();
+                log(`Backend test raw response: ${responseText}`);
+
+                let responseData;
+                try {
+                    responseData = JSON.parse(responseText);
+                } catch (e) {
+                    responseData = { rawResponse: responseText };
+                }
+
+                showResponse('backendResponse', responseData, response.ok);
+
+            } catch (error) {
+                log(`Backend test error: ${error.message}`, 'error');
+                showResponse('backendResponse', { error: error.message }, false);
+            }
+        }
+
+        // Test 4: Environment Check
+        async function checkEnvironment() {
+            log('Checking environment and browser info');
+
+            const envInfo = {
+                userAgent: navigator.userAgent,
+                language: navigator.language,
+                cookieEnabled: navigator.cookieEnabled,
+                onLine: navigator.onLine,
+                platform: navigator.platform,
+                currentUrl: window.location.href,
+                protocol: window.location.protocol,
+                host: window.location.host,
+                origin: window.location.origin,
+                timestamp: new Date().toISOString(),
+                localStorage: {
+                    available: typeof(Storage) !== "undefined",
+                    openrouterApiKey: localStorage.getItem('openrouter_api_key') ? 'Present' : 'Not found'
+                },
+                sessionStorage: {
+                    available: typeof(Storage) !== "undefined",
+                    openrouterApiKey: sessionStorage.getItem('openrouter_api_key') ? 'Present' : 'Not found'
+                }
+            };
+
+            // Check for CSP headers
+            try {
+                const response = await fetch(window.location.href);
+                const cspHeader = response.headers.get('Content-Security-Policy');
+                envInfo.cspHeader = cspHeader || 'Not found';
+            } catch (e) {
+                envInfo.cspHeader = `Error checking: ${e.message}`;
+            }
+
+            showResponse('envResponse', envInfo, true);
+            log('Environment check completed', 'success');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Test page loaded successfully');
+            log('Current URL: ' + window.location.href);
+
+            // Load existing API key if available
+            const existingKey = localStorage.getItem('openrouter_api_key');
+            if (existingKey) {
+                document.getElementById('apiKey').value = existingKey;
+                log('Loaded existing API key from localStorage');
+            }
+        });
+
+        // Log fetch events globally
+        const originalFetch = window.fetch;
+        window.fetch = function(...args) {
+            log(`Fetch called: ${args[0]} ${args[1]?.method || 'GET'}`);
+            return originalFetch.apply(this, args).then(response => {
+                log(`Fetch response: ${response.status} ${response.statusText}`);
+                return response;
+            }).catch(error => {
+                log(`Fetch error: ${error.message}`, 'error');
+                throw error;
+            });
+        };
+
+        // Log navigation events
+        window.addEventListener('error', function(e) {
+            log(`Global error: ${e.error?.message || e.message}`, 'error');
+            log(`Error source: ${e.filename}:${e.lineno}`);
+        });
+
+        // Log unhandled promise rejections
+        window.addEventListener('unhandledrejection', function(e) {
+            log(`Unhandled promise rejection: ${e.reason}`, 'error');
+        });
+    </script>
+</body>
+</html>

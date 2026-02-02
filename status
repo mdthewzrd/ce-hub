@@ -1,0 +1,18 @@
+#!/bin/bash
+# Quick status display
+
+echo ""
+echo "═════════════════════════════════════════════════════════"
+echo "📍 CURRENT STATUS"
+echo "═════════════════════════════════════════════════════════"
+echo ""
+echo "Phase: $(grep 'Current Phase:' $CEHUB_PATH/MASTER_PLAN.md | head -1 | cut -d: -f2)"
+echo ""
+echo "Project: $(grep 'Current Project Focus:' $CEHUB_PATH/MASTER_PLAN.md | head -1 | cut -d: -f2)"
+echo ""
+echo "Working on: $(grep 'Working on:' $CEHUB_PATH/MASTER_PLAN.md | head -1 | cut -d: -f2)"
+echo ""
+echo "═════════════════════════════════════════════════════════"
+echo ""
+echo "Type 'plan' for full master plan"
+echo ""

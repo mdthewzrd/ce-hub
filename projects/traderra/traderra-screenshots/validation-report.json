@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-12-17T18:57:52.959Z",
+  "summary": {
+    "passed": 2,
+    "total": 5,
+    "rate": 40
+  },
+  "results": [
+    {
+      "name": "R-Multiple Display Mode",
+      "command": "in r",
+      "success": false,
+      "commandSent": false,
+      "responseReceived": false,
+      "validation": {},
+      "screenshot": null,
+      "timestamp": "2025-12-17T18:56:46.300Z"
+    },
+    {
+      "name": "Year to Date Range",
+      "command": "ytd",
+      "success": true,
+      "commandSent": true,
+      "responseReceived": true,
+      "validation": {
+        "displayModeChanged": false,
+        "dateRangeChanged": false,
+        "navigationChanged": false,
+        "hasResponse": false,
+        "newContent": true
+      },
+      "screenshot": "traderra-screenshots/2025-12-17T18-57-09-688Z-test-Year-to-Date-Range.png",
+      "timestamp": "2025-12-17T18:57:01.347Z"
+    },
+    {
+      "name": "Combined Command",
+      "command": "show YTD in R",
+      "success": false,
+      "commandSent": false,
+      "responseReceived": false,
+      "validation": {},
+      "screenshot": null,
+      "timestamp": "2025-12-17T18:57:11.825Z"
+    },
+    {
+      "name": "Navigation to Dashboard",
+      "command": "go to dashboard",
+      "success": true,
+      "commandSent": true,
+      "responseReceived": true,
+      "validation": {
+        "displayModeChanged": false,
+        "dateRangeChanged": false,
+        "navigationChanged": false,
+        "hasResponse": false,
+        "newContent": true
+      },
+      "screenshot": "traderra-screenshots/2025-12-17T18-57-35-815Z-test-Navigation-to-Dashboard.png",
+      "timestamp": "2025-12-17T18:57:26.855Z"
+    },
+    {
+      "name": "Analyst Mode",
+      "command": "analyst mode",
+      "success": false,
+      "commandSent": false,
+      "responseReceived": false,
+      "validation": {},
+      "screenshot": null,
+      "timestamp": "2025-12-17T18:57:37.925Z"
+    }
+  ]
+}

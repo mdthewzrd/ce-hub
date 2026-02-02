@@ -1,0 +1,567 @@
+{
+  "scanner_name": "LCD2MultiScanner",
+  "scanner_type": "multi_scanner",
+  "formatted_class_name": "UltraFastRenataLCD2MultiScanner",
+  "description": "LC D2 Multi-Scanner with 12 pattern variations (D3 Frontside/Backside, D4 Para, D2, FBO)",
+  "total_patterns": 12,
+  "output_format": "Ticker, Date, Scanner_Label (3 columns)",
+
+  "mass_parameters": {
+    "description": "Shared parameters applied to ALL 12 scanner patterns",
+    "parameters": {
+      "min_close_price": {
+        "value": 5.0,
+        "type": "float",
+        "description": "Minimum close price (LC scanners focus on higher-priced stocks)",
+        "category": "price_filter"
+      },
+      "min_volume": {
+        "value": 10000000,
+        "type": "int",
+        "description": "Minimum volume (10M shares)",
+        "category": "liquidity_filter"
+      },
+      "min_dollar_volume": {
+        "value": 500000000,
+        "type": "int",
+        "description": "Minimum dollar volume (500M)",
+        "category": "liquidity_filter"
+      },
+      "bullish_close": {
+        "value": true,
+        "type": "bool",
+        "description": "Current close must be >= current open (bullish candle)",
+        "category": "candlestick_filter"
+      },
+      "prev_bullish_close": {
+        "value": true,
+        "type": "bool",
+        "description": "Previous close must be >= previous open",
+        "category": "candlestick_filter"
+      },
+      "ema_trend_aligned": {
+        "value": true,
+        "type": "bool",
+        "description": "EMA trend must be aligned (EMA9 >= EMA20 >= EMA50)",
+        "category": "trend_filter"
+      }
+    }
+  },
+
+  "scanner_patterns": {
+    "LC_Frontside_D3_Extended_1": {
+      "description": "D3 frontside extended pattern (consecutive highs/lows with ATR thresholds)",
+      "individual_parameters": {
+        "high_chg_atr_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Current high change ATR minimum (1.0 ATR)"
+        },
+        "high_chg_atr1_min": {
+          "value": 0.7,
+          "type": "float",
+          "description": "Previous high change ATR minimum (0.7 ATR)"
+        },
+        "dist_h_9ema_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Distance from high to 9 EMA (in ATR)"
+        },
+        "dist_h_20ema_atr_min": {
+          "value": 2.0,
+          "type": "float",
+          "description": "Distance from high to 20 EMA (in ATR)"
+        },
+        "min_close_ua": {
+          "value": 5,
+          "type": "int",
+          "description": "Minimum close unadjusted price"
+        },
+        "h_dist_to_highest_high_20_atr": {
+          "value": 2.5,
+          "type": "float",
+          "description": "Distance to highest high (20 period, in ATR)"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "LC_Backside_D3_Extended_1": {
+      "description": "D3 backside extended pattern (similar to frontside but with backside logic)",
+      "individual_parameters": {
+        "high_chg_atr_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Current high change ATR minimum"
+        },
+        "high_chg_atr1_min": {
+          "value": 0.7,
+          "type": "float",
+          "description": "Previous high change ATR minimum"
+        },
+        "dist_h_9ema_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Distance from high to 9 EMA (in ATR)"
+        },
+        "dist_h_20ema_atr_min": {
+          "value": 2.0,
+          "type": "float",
+          "description": "Distance from high to 20 EMA (in ATR)"
+        },
+        "min_close_ua": {
+          "value": 5,
+          "type": "int",
+          "description": "Minimum close unadjusted price"
+        },
+        "h_dist_to_highest_high_20_atr": {
+          "value": 2.5,
+          "type": "float",
+          "description": "Distance to highest high (20 period, in ATR)"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "LC_Frontside_D3_Extended_2": {
+      "description": "D3 frontside extended variant 2",
+      "individual_parameters": {
+        "high_chg_atr_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Current high change ATR minimum"
+        },
+        "high_chg_atr1_min": {
+          "value": 0.7,
+          "type": "float",
+          "description": "Previous high change ATR minimum"
+        },
+        "dist_h_9ema_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Distance from high to 9 EMA (in ATR)"
+        },
+        "dist_h_20ema_atr_min": {
+          "value": 2.0,
+          "type": "float",
+          "description": "Distance from high to 20 EMA (in ATR)"
+        },
+        "min_close_ua": {
+          "value": 5,
+          "type": "int",
+          "description": "Minimum close unadjusted price"
+        },
+        "h_dist_to_highest_high_20_atr": {
+          "value": 2.5,
+          "type": "float",
+          "description": "Distance to highest high (20 period, in ATR)"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "LC_Backside_D3_Extended_2": {
+      "description": "D3 backside extended variant 2",
+      "individual_parameters": {
+        "high_chg_atr_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Current high change ATR minimum"
+        },
+        "high_chg_atr1_min": {
+          "value": 0.7,
+          "type": "float",
+          "description": "Previous high change ATR minimum"
+        },
+        "dist_h_9ema_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Distance from high to 9 EMA (in ATR)"
+        },
+        "dist_h_20ema_atr_min": {
+          "value": 2.0,
+          "type": "float",
+          "description": "Distance from high to 20 EMA (in ATR)"
+        },
+        "min_close_ua": {
+          "value": 5,
+          "type": "int",
+          "description": "Minimum close unadjusted price"
+        },
+        "h_dist_to_highest_high_20_atr": {
+          "value": 2.5,
+          "type": "float",
+          "description": "Distance to highest high (20 period, in ATR)"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "LC_Frontside_D4_Para": {
+      "description": "D4 frontside parabolic pattern (3-day consecutive with parabolic scoring)",
+      "individual_parameters": {
+        "high_chg_atr_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Current high change ATR minimum"
+        },
+        "high_chg_atr1_min": {
+          "value": 0.7,
+          "type": "float",
+          "description": "Previous high change ATR minimum"
+        },
+        "dist_h_9ema_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Distance from high to 9 EMA (in ATR)"
+        },
+        "dist_h_20ema_atr_min": {
+          "value": 2.0,
+          "type": "float",
+          "description": "Distance from high to 20 EMA (in ATR)"
+        },
+        "min_close_ua": {
+          "value": 5,
+          "type": "int",
+          "description": "Minimum close unadjusted price"
+        },
+        "h_dist_to_highest_high_20_atr": {
+          "value": 2.5,
+          "type": "float",
+          "description": "Distance to highest high (20 period, in ATR)"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "LC_Backside_D4_Para": {
+      "description": "D4 backside parabolic pattern",
+      "individual_parameters": {
+        "high_chg_atr_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Current high change ATR minimum"
+        },
+        "high_chg_atr1_min": {
+          "value": 0.7,
+          "type": "float",
+          "description": "Previous high change ATR minimum"
+        },
+        "dist_h_9ema_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Distance from high to 9 EMA (in ATR)"
+        },
+        "dist_h_20ema_atr_min": {
+          "value": 2.0,
+          "type": "float",
+          "description": "Distance from high to 20 EMA (in ATR)"
+        },
+        "min_close_ua": {
+          "value": 5,
+          "type": "int",
+          "description": "Minimum close unadjusted price"
+        },
+        "h_dist_to_highest_high_20_atr": {
+          "value": 2.5,
+          "type": "float",
+          "description": "Distance to highest high (20 period, in ATR)"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "LC_Frontside_D3_Uptrend": {
+      "description": "D3 frontside uptrend pattern (requires strong uptrend alignment)",
+      "individual_parameters": {
+        "high_chg_atr_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Current high change ATR minimum"
+        },
+        "high_chg_atr1_min": {
+          "value": 0.7,
+          "type": "float",
+          "description": "Previous high change ATR minimum"
+        },
+        "dist_h_9ema_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Distance from high to 9 EMA (in ATR)"
+        },
+        "dist_h_20ema_atr_min": {
+          "value": 2.0,
+          "type": "float",
+          "description": "Distance from high to 20 EMA (in ATR)"
+        },
+        "min_close_ua": {
+          "value": 5,
+          "type": "int",
+          "description": "Minimum close unadjusted price"
+        },
+        "h_dist_to_highest_high_20_atr": {
+          "value": 2.5,
+          "type": "float",
+          "description": "Distance to highest high (20 period, in ATR)"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "LC_Backside_D3": {
+      "description": "D3 backside pattern (standard backside logic)",
+      "individual_parameters": {
+        "high_chg_atr_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Current high change ATR minimum"
+        },
+        "high_chg_atr1_min": {
+          "value": 0.7,
+          "type": "float",
+          "description": "Previous high change ATR minimum"
+        },
+        "dist_h_9ema_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Distance from high to 9 EMA (in ATR)"
+        },
+        "dist_h_20ema_atr_min": {
+          "value": 2.0,
+          "type": "float",
+          "description": "Distance from high to 20 EMA (in ATR)"
+        },
+        "min_close_ua": {
+          "value": 5,
+          "type": "int",
+          "description": "Minimum close unadjusted price"
+        },
+        "h_dist_to_highest_high_20_atr": {
+          "value": 2.5,
+          "type": "float",
+          "description": "Distance to highest high (20 period, in ATR)"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "LC_Frontside_D2_Uptrend": {
+      "description": "D2 frontside uptrend pattern (lower ATR threshold)",
+      "individual_parameters": {
+        "high_chg_atr_min": {
+          "value": 0.75,
+          "type": "float",
+          "description": "Current high change ATR minimum (lower threshold for uptrend)"
+        },
+        "dist_h_9ema_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Distance from high to 9 EMA (in ATR)"
+        },
+        "dist_h_20ema_atr_min": {
+          "value": 2.0,
+          "type": "float",
+          "description": "Distance from high to 20 EMA (in ATR)"
+        },
+        "min_close_ua": {
+          "value": 5,
+          "type": "int",
+          "description": "Minimum close unadjusted price"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "LC_Frontside_D2": {
+      "description": "D2 frontside pattern (standard ATR threshold)",
+      "individual_parameters": {
+        "high_chg_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Current high change ATR minimum (higher threshold)"
+        },
+        "dist_h_9ema_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Distance from high to 9 EMA (in ATR)"
+        },
+        "dist_h_20ema_atr_min": {
+          "value": 2.0,
+          "type": "float",
+          "description": "Distance from high to 20 EMA (in ATR)"
+        },
+        "min_close_ua": {
+          "value": 5,
+          "type": "int",
+          "description": "Minimum close unadjusted price"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "LC_Backside_D2": {
+      "description": "D2 backside pattern",
+      "individual_parameters": {
+        "high_chg_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Current high change ATR minimum"
+        },
+        "dist_h_9ema_atr_min": {
+          "value": 1.5,
+          "type": "float",
+          "description": "Distance from high to 9 EMA (in ATR)"
+        },
+        "dist_h_20ema_atr_min": {
+          "value": 2.0,
+          "type": "float",
+          "description": "Distance from high to 20 EMA (in ATR)"
+        },
+        "min_close_ua": {
+          "value": 5,
+          "type": "int",
+          "description": "Minimum close unadjusted price"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "LC_FBO": {
+      "description": "FBO (First Breakout) pattern - large cap breakout with specific criteria",
+      "individual_parameters": {
+        "high_chg_atr_min": {
+          "value": 0.5,
+          "type": "float",
+          "description": "High change OR high change from PDC ATR minimum (0.5 ATR)"
+        },
+        "close_range_min": {
+          "value": 0.3,
+          "type": "float",
+          "description": "Close range minimum (position in candle, 0-1)"
+        },
+        "min_close_ua": {
+          "value": 2000000000,
+          "type": "int",
+          "description": "Minimum close unadjusted price (2B+ for large caps only)"
+        },
+        "h_dist_to_lowest_low_20_atr": {
+          "value": 4.0,
+          "type": "float",
+          "description": "Distance to lowest low (20 period, in ATR) OR 5 period >= 2"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    }
+  },
+
+  "date_ranges": {
+    "d0_start": "2024-01-01",
+    "d0_end": "2025-10-24",
+    "scan_start": "2023-05-15",
+    "description": "D0 is signal output range, scan_start provides 220-day buffer for EMA200 calculations"
+  },
+
+  "threading": {
+    "stage1_workers": "min(128, cpu_cores * 8)",
+    "stage2_workers": "min(96, cpu_cores * 6)",
+    "batch_size": 200
+  },
+
+  "api": {
+    "base_url": "https://api.polygon.io",
+    "snapshot_endpoint": "/v2/snapshot/locale/us/markets/stocks/tickers",
+    "aggs_endpoint": "/v2/aggs/ticker/{ticker}/range/1/day/{start}/{end}",
+    "api_key": "4r6MZNWLy2ucmhVI7fY8MrvXfXTSmxpy"
+  },
+
+  "data_source": {
+    "type": "snapshot_plus_aggregates",
+    "description": "Stage 1: Snapshot endpoint for current tickers, Stage 2: Aggregates endpoint for individual symbol history",
+    "coverage": "All US equities (filtered by price/volume)",
+    "frequency": "daily"
+  },
+
+  "technical_features": {
+    "atr_period": 14,
+    "ema_periods": [9, 20, 50, 200],
+    "highest_lowest_periods": [5, 20, 50, 100],
+    "gap_features": true,
+    "high_change_features": true,
+    "distance_features": true
+  },
+
+  "renata_integration": {
+    "mass_parameter_commands": [
+      "Increase min price from $5 to $10 across all scanners",
+      "Increase min volume from 10M to 20M across all scanners",
+      "Increase min dollar volume from 500M to 1B across all scanners",
+      "Disable bullish close requirement for all scanners",
+      "Disable EMA trend alignment filter globally"
+    ],
+    "individual_parameter_commands": [
+      "Change LC_Frontside_D2 high_chg_atr_min from 1.5 to 2.0",
+      "Disable LC_Backside_D2 scanner pattern",
+      "Adjust LC_FBO min_close_ua from 2B to 5B",
+      "Increase LC_Frontside_D3_Extended_1 dist_h_9ema_atr_min from 1.5 to 2.0"
+    ]
+  },
+
+  "output_example": {
+    "format": "Ticker, Date, Scanner_Label",
+    "sample_rows": [
+      "AAPL, 2024-12-20, LC_Frontside_D3_Extended_1",
+      "MSFT, 2024-12-20, LC_Backside_D3",
+      "TSLA, 2024-12-20, LC_Frontside_D2",
+      "NVDA, 2024-12-19, LC_FBO",
+      "GOOGL, 2024-12-19, LC_Frontside_D4_Para"
+    ]
+  }
+}

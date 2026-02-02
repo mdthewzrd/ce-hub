@@ -1,0 +1,46 @@
+{
+  "scanner_splitting": {
+    "passed": true,
+    "details": {
+      "successful_extractions": 3,
+      "total_extractions": 3,
+      "success_rate": 100.0
+    },
+    "errors": []
+  },
+  "formatting_process": {
+    "passed": true,
+    "details": {
+      "formatted_successfully": 3,
+      "total_tests": 3,
+      "format_success_rate": 100.0,
+      "configurable_parameters_found": 3,
+      "parameter_success_rate": 100.0
+    },
+    "errors": []
+  },
+  "scanner_execution": {
+    "passed": false,
+    "details": {
+      "successful_executions": 0,
+      "total_tests": 3,
+      "execution_success_rate": 0.0,
+      "total_results": 0,
+      "avg_results_per_scanner": 0
+    },
+    "errors": []
+  },
+  "performance_validation": {
+    "passed": false,
+    "details": {
+      "performance_tests": 0,
+      "avg_performance_score": 0,
+      "total_performance_score": 0
+    },
+    "errors": []
+  },
+  "overall_quality": {
+    "passed": false,
+    "score": 50.0
+  }
+}

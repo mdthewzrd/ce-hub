@@ -319,24 +319,82 @@ def create_comprehensive_html(products, tags):
 
         .edit-options.show { display: flex; }
 
-        .edit-option {
-            padding: 6px 12px;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.2s;
+        .option-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        .edit-option:hover { background: #f0f0f0; }
-        .edit-option.selected { background: #667eea; color: white; border-color: #667eea; }
+        .option-btn {
+            padding: 8px 14px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s;
+            position: relative;
+        }
 
-        .edit-option.style { background: #fff3e0; border-color: #ffe0b2; }
-        .edit-option.style:hover { background: #ffe0b2; }
-        .edit-option.style.selected { background: #e65100; border-color: #e65100; }
+        .option-btn:hover {
+            border-color: #999;
+            transform: scale(1.05);
+        }
 
-        .edit-option.custom {
+        /* GREEN SELECTION RING - Prominent visual feedback */
+        .option-btn.selected {
+            border: 3px solid #4caf50;
+            background: #e8f5e9;
+            color: #2e7d32;
+            font-weight: 700;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+        }
+
+        .option-btn.selected::after {
+            content: '✓';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #4caf50;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Category-specific colors */
+        .option-btn.style { background: #fff3e0; border-color: #ffe0b2; }
+        .option-btn.style:hover { border-color: #ffb74d; }
+        .option-btn.style.selected { border-color: #e65100; background: #ffe0b2; box-shadow: 0 0 0 3px rgba(230, 81, 0, 0.3); }
+        .option-btn.style.selected::after { background: #e65100; }
+
+        .option-btn.material { background: #f3e5f5; border-color: #e1bee7; }
+        .option-btn.material:hover { border-color: #ba68c8; }
+        .option-btn.material.selected { border-color: #7b1fa2; background: #e1bee7; box-shadow: 0 0 0 3px rgba(123, 31, 162, 0.3); }
+        .option-btn.material.selected::after { background: #7b1fa2; }
+
+        .option-btn.face-shape { background: #e8f5e9; border-color: #c8e6c9; }
+        .option-btn.face-shape:hover { border-color: #81c784; }
+        .option-btn.face-shape.selected { border-color: #2e7d32; background: #c8e6c9; box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.3); }
+        .option-btn.face-shape.selected::after { background: #2e7d32; }
+
+        .option-btn.use-case { background: #fff9c4; border-color: #ffe082; }
+        .option-btn.use-case:hover { border-color: #ffd54f; }
+        .option-btn.use-case.selected { border-color: #f57f17; background: #ffe082; box-shadow: 0 0 0 3px rgba(245, 127, 23, 0.3); }
+        .option-btn.use-case.selected::after { background: #f57f17; }
+
+        .option-btn.lens { background: #e3f2fd; border-color: #bbdefb; }
+        .option-btn.lens:hover { border-color: #64b5f6; }
+        .option-btn.lens.selected { border-color: #1565c0; background: #bbdefb; box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.3); }
+        .option-btn.lens.selected::after { background: #1565c0; }
+
+        .option-btn.custom {
             background: #e3f2fd;
             border-color: #2196f3;
             color: #1976d2;
@@ -344,15 +402,54 @@ def create_comprehensive_html(products, tags):
             border-style: dashed;
             border-width: 2px;
         }
-        .edit-option.custom:hover { background: #bbdefb; }
+        .option-btn.custom:hover { background: #bbdefb; }
+        .option-btn.custom.selected {
+            background: #2196f3;
+            color: white;
+            border-style: solid;
+        }
+        .option-btn.custom.selected::after { background: #0d47a1; }
 
-        .edit-option.material { background: #f3e5f5; border-color: #e1bee7; }
-        .edit-option.material:hover { background: #e1bee7; }
-        .edit-option.material.selected { background: #7b1fa2; border-color: #7b1fa2; }
+        .custom-input-container {
+            display: none;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            border: 2px dashed #2196f3;
+        }
 
-        .edit-option.face-shape { background: #e8f5e9; border-color: #c8e6c9; }
-        .edit-option.face-shape:hover { background: #c8e6c9; }
-        .edit-option.face-shape.selected { background: #2e7d32; border-color: #2e7d32; }
+        .custom-input-container.show { display: block; }
+
+        .custom-input-container input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .custom-input-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .custom-input-actions button {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .btn-save-custom { background: #4caf50; color: white; }
+        .btn-cancel-custom { background: #f44336; color: white; }
+
+        .edit-option {
 
         .status-indicator {
             display: inline-block;

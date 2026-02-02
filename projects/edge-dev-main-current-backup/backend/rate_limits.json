@@ -1,0 +1,20 @@
+{
+  "default": {
+    "requests_per_minute": 100,
+    "burst_size": 200
+  },
+  "api_endpoints": {
+    "/api/unified-pipeline/process": {
+      "requests_per_minute": 50,
+      "burst_size": 100
+    },
+    "/api/format-code": {
+      "requests_per_minute": 30,
+      "burst_size": 60
+    }
+  },
+  "whitelist": [
+    "127.0.0.1"
+  ],
+  "blacklist": []
+}

@@ -1,0 +1,113 @@
+{#
+  Single Pattern Scanner Template
+
+  This template generates a scanner for a single trading pattern.
+  It extends the base v31 template with single-pattern specific logic.
+
+  Variables:
+  - All base_v31 variables plus:
+  - pattern_name: Name of the pattern (e.g., "D2_Gap")
+  - entry_conditions: List of entry conditions
+  - pattern_filters: Pattern-specific filter configuration
+#}
+{% extends 'base_v31.py.jinja2' %}
+
+{# Override detect_patterns method for single pattern #}
+{% block detect_patterns %}
+    def detect_patterns(self, stage2_data: pd.DataFrame) -> List[Dict[str, Any]]:
+        """
+        Stage 3: Detect {{ pattern_name }} patterns
+
+        Entry Conditions:
+        {% for condition in entry_conditions %}
+        - {{ condition }}
+        {% endfor %}
+
+        Args:
+            stage2_data: Filtered DataFrame from apply_smart_filters
+
+        Returns:
+            List of dictionaries with pattern results
+        """
+        if stage2_data.empty:
+            return []
+
+        results = []
+
+        {{ pattern_detection_method | indent(8) }}
+
+        return results
+{% endblock %}
+
+{# Override apply_smart_filters to include pattern-specific filters #}
+{% block apply_smart_filters %}
+    def apply_smart_filters(
+        self,
+        stage1_data: pd.DataFrame,
+        workers: int = {{ stage3_workers | default(4) }}
+    ) -> pd.DataFrame:
+        """
+        Stage 2: Apply smart filters for {{ pattern_name }}
+
+        Pattern-specific filters:
+        {% if pattern_filters.min_price %}
+        - Min price: ${{ pattern_filters.min_price }}
+        {% endif %}
+        {% if pattern_filters.max_price %}
+        - Max price: ${{ pattern_filters.max_price }}
+        {% endif %}
+        {% if pattern_filters.min_volume %}
+        - Min volume: {{ pattern_filters.min_volume | number_format }} shares
+        {% endif %}
+        {% if pattern_filters.min_gap_pct %}
+        - Min gap: {{ pattern_filters.min_gap_pct }}%
+        {% endif %}
+
+        Args:
+            stage1_data: Output from fetch_grouped_data
+            workers: Number of parallel workers
+
+        Returns:
+            Filtered DataFrame (stage2_data)
+        """
+        if stage1_data.empty:
+            return pd.DataFrame()
+
+        df = stage1_data.copy()
+
+        # Apply universal smart filters
+        {% if smart_filters.min_prev_close %}
+        df = df[df['close'] >= {{ smart_filters.min_prev_close }}]
+        {% endif %}
+
+        {% if smart_filters.max_prev_close %}
+        df = df[df['close'] <= {{ smart_filters.max_prev_close }}]
+        {% endif %}
+
+        {% if smart_filters.min_prev_volume %}
+        df = df[df['volume'] >= {{ smart_filters.min_prev_volume }}]
+        {% endif %}
+
+        {% if smart_filters.max_prev_volume %}
+        df = df[df['volume'] <= {{ smart_filters.max_prev_volume }}]
+        {% endif %}
+
+        # Apply pattern-specific filters
+        {% if pattern_filters.min_price %}
+        df = df[df['close'] >= {{ pattern_filters.min_price }}]
+        {% endif %}
+
+        {% if pattern_filters.max_price %}
+        df = df[df['close'] <= {{ pattern_filters.max_price }}]
+        {% endif %}
+
+        {% if pattern_filters.min_volume %}
+        df = df[df['volume'] >= {{ pattern_filters.min_volume }}]
+        {% endif %}
+
+        {% if pattern_filters.max_volume %}
+        df = df[df['volume'] <= {{ pattern_filters.max_volume }}]
+        {% endif %}
+
+        return df
+{% endblock %}

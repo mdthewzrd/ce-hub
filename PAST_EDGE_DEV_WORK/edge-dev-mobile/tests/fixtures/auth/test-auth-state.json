@@ -1,0 +1,10 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "http://localhost:5657",
+      "localStorage": [],
+      "sessionStorage": []
+    }
+  ]
+}

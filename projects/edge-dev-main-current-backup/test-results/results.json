@@ -1,0 +1,533 @@
+{
+  "config": {
+    "configFile": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/playwright.config.js",
+    "rootDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/setup/global-setup.js",
+    "globalTeardown": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/setup/global-teardown.js",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "platform": "CE-Hub Trading Platform",
+      "version": "1.0.0",
+      "environment": "test",
+      "timestamp": "2025-12-02T15:11:47.022Z",
+      "validation_type": "User Experience",
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "test-results/html",
+          "open": "on-failure"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/junit.xml"
+        }
+      ],
+      [
+        "line",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "platform": "CE-Hub Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-02T15:11:47.022Z",
+          "validation_type": "User Experience",
+          "actualWorkers": 4
+        },
+        "id": "chromium-desktop",
+        "name": "chromium-desktop",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/build/**"
+        ],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "platform": "CE-Hub Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-02T15:11:47.022Z",
+          "validation_type": "User Experience",
+          "actualWorkers": 4
+        },
+        "id": "firefox-desktop",
+        "name": "firefox-desktop",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/build/**"
+        ],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "platform": "CE-Hub Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-02T15:11:47.022Z",
+          "validation_type": "User Experience",
+          "actualWorkers": 4
+        },
+        "id": "webkit-desktop",
+        "name": "webkit-desktop",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/build/**"
+        ],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "platform": "CE-Hub Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-02T15:11:47.022Z",
+          "validation_type": "User Experience",
+          "actualWorkers": 4
+        },
+        "id": "mobile-chrome",
+        "name": "mobile-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/build/**"
+        ],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "platform": "CE-Hub Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-02T15:11:47.022Z",
+          "validation_type": "User Experience",
+          "actualWorkers": 4
+        },
+        "id": "mobile-safari",
+        "name": "mobile-safari",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/build/**"
+        ],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "platform": "CE-Hub Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-02T15:11:47.022Z",
+          "validation_type": "User Experience",
+          "actualWorkers": 4
+        },
+        "id": "tablet-chrome",
+        "name": "tablet-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/build/**"
+        ],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "platform": "CE-Hub Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-02T15:11:47.022Z",
+          "validation_type": "User Experience",
+          "actualWorkers": 4
+        },
+        "id": "performance-chrome",
+        "name": "performance-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/build/**"
+        ],
+        "testMatch": [
+          "**/performance/*.spec.js"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "platform": "CE-Hub Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-02T15:11:47.022Z",
+          "validation_type": "User Experience",
+          "actualWorkers": 4
+        },
+        "id": "visual-chrome",
+        "name": "visual-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/build/**"
+        ],
+        "testMatch": [
+          "**/visual/*.spec.js"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 4,
+    "webServer": {
+      "command": "npm run dev",
+      "port": 5657,
+      "reuseExistingServer": true,
+      "timeout": 180000,
+      "env": {
+        "NODE_ENV": "test"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "e2e/page-load-basic.spec.js",
+      "file": "e2e/page-load-basic.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Basic Page Load and User Experience",
+          "file": "e2e/page-load-basic.spec.js",
+          "line": 13,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Homepage loads successfully with all critical elements",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6479,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Homepage loaded in 3583ms\n"
+                        },
+                        {
+                          "text": "✓ Header/navigation found\n"
+                        },
+                        {
+                          "text": "✓ Main content area found\n"
+                        },
+                        {
+                          "text": "✓ No JavaScript errors detected\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T15:11:50.037Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0d42ce94725c863cd9d4-edbc372f65337483a736",
+              "file": "e2e/page-load-basic.spec.js",
+              "line": 16,
+              "column": 3
+            },
+            {
+              "title": "Core navigation works correctly",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4612,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "⚠️  No navigation links found\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T15:11:50.046Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0d42ce94725c863cd9d4-cdf491943d55396d757c",
+              "file": "e2e/page-load-basic.spec.js",
+              "line": 99,
+              "column": 3
+            },
+            {
+              "title": "Page responsiveness on different viewports",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 7638,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✓ Desktop viewport rendered successfully\n"
+                        },
+                        {
+                          "text": "✓ Tablet viewport rendered successfully\n"
+                        },
+                        {
+                          "text": "✓ Mobile viewport rendered successfully\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T15:11:50.039Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0d42ce94725c863cd9d4-caef99702eb7a5f1b874",
+              "file": "e2e/page-load-basic.spec.js",
+              "line": 162,
+              "column": 3
+            },
+            {
+              "title": "No critical console errors",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 7421,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Console errors: 1, JS errors: 0\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "⚠️  Critical console errors found:\n"
+                        },
+                        {
+                          "text": "  - Failed to load resource: net::ERR_CONNECTION_REFUSED\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2025-12-02T15:11:50.045Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0d42ce94725c863cd9d4-9c1797078c06ea2abf8e",
+              "file": "e2e/page-load-basic.spec.js",
+              "line": 191,
+              "column": 3
+            },
+            {
+              "title": "Essential functionality is accessible",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium-desktop",
+                  "projectName": "chromium-desktop",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5557,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "✓ Keyboard navigation works\n"
+                        },
+                        {
+                          "text": "Found 34 interactive elements\n"
+                        },
+                        {
+                          "text": "✓ Interactive elements work (dialogs: 0, forms: 1)\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T15:11:54.900Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0d42ce94725c863cd9d4-73464a4079995c64b896",
+              "file": "e2e/page-load-basic.spec.js",
+              "line": 244,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-12-02T15:11:47.025Z",
+    "duration": 13483.207,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

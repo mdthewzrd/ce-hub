@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glasses Compositor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #e5e5e5;
+    }
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #333;
+    }
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #2563eb;
+    }
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .upload-zone {
+      border: 2px dashed #444;
+      transition: all 0.2s;
+    }
+    .upload-zone:hover {
+      border-color: #666;
+    }
+    .upload-zone.has-image {
+      border-style: solid;
+    }
+    .progress-bar {
+      background: #333;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: #3b82f6;
+      transition: width 0.3s;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-8">
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+    <div class="card rounded-lg p-6 max-w-md w-full">
+      <h2 class="text-xl font-bold mb-4">⚙️ Settings</h2>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium mb-2">OpenRouter API Key</label>
+          <input
+            type="password"
+            id="api-key-input"
+            placeholder="sk-or-v1-..."
+            class="w-full bg-black/50 border border-gray-600 rounded p-2 text-sm"
+          >
+          <p class="text-xs text-gray-500 mt-1">
+            Get your key at <a href="https://openrouter.ai/keys" target="_blank" class="text-blue-400 hover:underline">openrouter.ai/keys</a>
+          </p>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="saveApiKey()" class="btn-primary py-2 px-4 rounded text-sm flex-1">Save</button>
+          <button onclick="closeSettings()" class="bg-gray-700 hover:bg-gray-600 py-2 px-4 rounded text-sm flex-1">Cancel</button>
+        </div>
+        <p id="key-status" class="text-xs text-gray-400"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto">
+    <!-- Header -->
+    <div class="mb-8 flex justify-between items-start">
+      <div>
+        <h1 class="text-3xl font-bold mb-2">🕶️ Glasses Compositor</h1>
+        <p class="text-gray-400">Photorealistic glasses compositing while preserving your original photos</p>
+      </div>
+      <button onclick="openSettings()" class="text-gray-400 hover:text-white flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-800">
+        ⚙️ Settings
+      </button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="grid lg:grid-cols-2 gap-6">
+      <!-- Left: Upload Section -->
+      <div class="space-y-6">
+        <!-- Person Photo -->
+        <div class="card rounded-lg p-6">
+          <h2 class="text-lg font-semibold mb-4">👤 Person Photo</h2>
+          <div id="person-upload" class="upload-zone rounded-lg p-8 text-center cursor-pointer" onclick="document.getElementById('person-input').click()">
+            <input type="file" id="person-input" class="hidden" accept="image/*" onchange="handlePersonUpload(event)">
+            <div id="person-preview" class="hidden">
+              <img id="person-image" class="max-h-48 mx-auto rounded mb-2" alt="Person">
+              <p id="person-name" class="text-sm text-gray-400"></p>
+            </div>
+            <div id="person-placeholder">
+              <div class="text-4xl mb-2">📤</div>
+              <p class="text-gray-400">Click or drag to upload person photo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Glasses Photo -->
+        <div class="card rounded-lg p-6">
+          <h2 class="text-lg font-semibold mb-4">👓 Glasses Photo</h2>
+          <div id="glasses-upload" class="upload-zone rounded-lg p-8 text-center cursor-pointer" onclick="document.getElementById('glasses-input').click()">
+            <input type="file" id="glasses-input" class="hidden" accept="image/*" onchange="handleGlassesUpload(event)">
+            <div id="glasses-preview" class="hidden">
+              <img id="glasses-image" class="max-h-48 mx-auto rounded mb-2" alt="Glasses">
+              <p id="glasses-name" class="text-sm text-gray-400"></p>
+            </div>
+            <div id="glasses-placeholder">
+              <div class="text-4xl mb-2">📤</div>
+              <p class="text-gray-400">Click or drag to upload glasses photo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quality Selection -->
+        <div class="card rounded-lg p-6">
+          <h2 class="text-lg font-semibold mb-4">⚙️ Quality</h2>
+          <div class="grid grid-cols-3 gap-3">
+            <button onclick="setQuality('draft')" id="quality-draft" class="quality-btn p-3 rounded border border-gray-600 hover:border-gray-500 transition-all">
+              <div class="font-medium">Draft</div>
+              <div class="text-xs text-gray-400">~$0.005</div>
+            </button>
+            <button onclick="setQuality('standard')" id="quality-standard" class="quality-btn p-3 rounded border border-blue-500 bg-blue-500/10">
+              <div class="font-medium">Standard</div>
+              <div class="text-xs text-gray-400">~$0.01</div>
+            </button>
+            <button onclick="setQuality('high')" id="quality-high" class="quality-btn p-3 rounded border border-gray-600 hover:border-gray-500 transition-all">
+              <div class="font-medium">High</div>
+              <div class="text-xs text-gray-400">~$0.02</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Compose Button -->
+        <button id="compose-btn" onclick="compose()" disabled class="w-full btn-primary py-4 rounded-lg font-semibold text-lg disabled:opacity-50">
+          🚀 Compose Glasses
+        </button>
+      </div>
+
+      <!-- Right: Results Section -->
+      <div class="card rounded-lg p-6">
+        <h2 class="text-lg font-semibold mb-4">📊 Result</h2>
+        <div id="result-area" class="min-h-96">
+          <!-- Initial State -->
+          <div id="result-placeholder" class="flex items-center justify-center h-96 text-gray-500">
+            <div class="text-center">
+              <div class="text-6xl mb-4">🖼️</div>
+              <p>Upload both images and click Compose to get started</p>
+            </div>
+          </div>
+
+          <!-- Processing State -->
+          <div id="result-processing" class="hidden space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="animate-spin text-2xl">⏳</div>
+              <span id="processing-status">Initializing...</span>
+            </div>
+            <div class="progress-bar h-2 rounded-full">
+              <div id="progress-fill" class="progress-fill h-full" style="width: 0%"></div>
+            </div>
+            <p id="progress-text" class="text-sm text-gray-400">0%</p>
+          </div>
+
+          <!-- Result State -->
+          <div id="result-complete" class="hidden space-y-4">
+            <img id="result-image" class="w-full rounded-lg" alt="Result">
+            <div class="flex gap-2">
+              <button onclick="download('png')" class="flex-1 btn-primary py-2 rounded">Download PNG</button>
+              <button onclick="download('jpg')" class="flex-1 bg-gray-700 hover:bg-gray-600 py-2 rounded">Download JPG</button>
+              <button onclick="reset()" class="px-4 bg-gray-700 hover:bg-gray-600 py-2 rounded">🔄</button>
+            </div>
+            <p id="cost-display" class="text-sm text-gray-400"></p>
+          </div>
+
+          <!-- Error State -->
+          <div id="result-error" class="hidden p-6 bg-red-500/10 border border-red-500/30 rounded-lg">
+            <p class="text-red-400">❌ <span id="error-message">Error occurred</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="card rounded-lg p-6 mt-8">
+      <h3 class="font-semibold mb-3">💡 Tips for Best Results</h3>
+      <ul class="text-sm text-gray-400 space-y-2">
+        <li>✅ Use high-resolution photos (at least 1024x1024 pixels)</li>
+        <li>✅ Ensure the person's face is clearly visible and well-lit</li>
+        <li>✅ Choose glasses photos with good lighting and minimal glare</li>
+        <li>✅ Front-facing photos work best for accurate positioning</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    let personImage = null;
+    let glassesImage = null;
+    let quality = 'standard';
+    let currentJobId = null;
+    let pollInterval = null;
+    let apiKey = localStorage.getItem('openrouter_api_key') || '';
+
+    // Settings functions
+    function openSettings() {
+      document.getElementById('settings-modal').classList.remove('hidden');
+      document.getElementById('api-key-input').value = apiKey;
+      updateKeyStatus();
+    }
+
+    function closeSettings() {
+      document.getElementById('settings-modal').classList.add('hidden');
+    }
+
+    function saveApiKey() {
+      const newKey = document.getElementById('api-key-input').value.trim();
+      if (newKey) {
+        apiKey = newKey;
+        localStorage.setItem('openrouter_api_key', apiKey);
+        updateKeyStatus();
+        setTimeout(closeSettings, 500);
+      }
+    }
+
+    function updateKeyStatus() {
+      const status = document.getElementById('key-status');
+      if (apiKey && apiKey.length > 10) {
+        status.textContent = `✅ Key configured: ${apiKey.substring(0, 10)}...`;
+        status.className = 'text-xs text-green-400';
+      } else {
+        status.textContent = '⚠️ No API key configured - add your OpenRouter key to use the tool';
+        status.className = 'text-xs text-yellow-400';
+      }
+    }
+
+    // Call updateKeyStatus on load
+    updateKeyStatus();
+
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const result = reader.result;
+          const base64 = result.split(',')[1];
+          resolve(base64);
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function handlePersonUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const base64 = await fileToBase64(file);
+      personImage = base64;
+
+      document.getElementById('person-preview').classList.remove('hidden');
+      document.getElementById('person-placeholder').classList.add('hidden');
+      document.getElementById('person-image').src = `data:${file.type};base64,${base64}`;
+      document.getElementById('person-name').textContent = file.name;
+      document.getElementById('person-upload').classList.add('has-image');
+
+      updateComposeButton();
+    }
+
+    async function handleGlassesUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const base64 = await fileToBase64(file);
+      glassesImage = base64;
+
+      document.getElementById('glasses-preview').classList.remove('hidden');
+      document.getElementById('glasses-placeholder').classList.add('hidden');
+      document.getElementById('glasses-image').src = `data:${file.type};base64,${base64}`;
+      document.getElementById('glasses-name').textContent = file.name;
+      document.getElementById('glasses-upload').classList.add('has-image');
+
+      updateComposeButton();
+    }
+
+    function setQuality(q) {
+      quality = q;
+      document.querySelectorAll('.quality-btn').forEach(btn => {
+        btn.classList.remove('border-blue-500', 'bg-blue-500/10');
+        btn.classList.add('border-gray-600');
+      });
+      document.getElementById(`quality-${q}`).classList.remove('border-gray-600');
+      document.getElementById(`quality-${q}`).classList.add('border-blue-500', 'bg-blue-500/10');
+    }
+
+    function updateComposeButton() {
+      const btn = document.getElementById('compose-btn');
+      btn.disabled = !personImage || !glassesImage;
+    }
+
+    async function compose() {
+      if (!personImage || !glassesImage) return;
+
+      // Show processing state
+      document.getElementById('result-placeholder').classList.add('hidden');
+      document.getElementById('result-complete').classList.add('hidden');
+      document.getElementById('result-error').classList.add('hidden');
+      document.getElementById('result-processing').classList.remove('hidden');
+
+      try {
+        if (!apiKey) {
+          openSettings();
+          return;
+        }
+
+        const response = await fetch('/api/glasses', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'compose',
+            personImage,
+            glassesImage,
+            quality,
+            apiKey // Pass the API key from frontend
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.success && data.jobId) {
+          currentJobId = data.jobId;
+          pollStatus();
+        } else {
+          throw new Error(data.error || 'Failed to start job');
+        }
+      } catch (error) {
+        showError(error.message);
+      }
+    }
+
+    async function pollStatus() {
+      if (pollInterval) clearInterval(pollInterval);
+
+      pollInterval = setInterval(async () => {
+        try {
+          const response = await fetch('/api/glasses', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'status',
+              jobId: currentJobId
+            })
+          });
+
+          const data = await response.json();
+
+          if (data.success && data.job) {
+            const job = data.job;
+
+            // Update progress
+            document.getElementById('progress-fill').style.width = `${job.progress}%`;
+            document.getElementById('progress-text').textContent = `${job.progress}%`;
+
+            // Update status text
+            const statusText = {
+              queued: 'Queued...',
+              analyzing: 'Analyzing images...',
+              compositing: 'Compositing...',
+              complete: 'Complete!',
+              failed: 'Failed'
+            };
+            document.getElementById('processing-status').textContent = statusText[job.status] || job.status;
+
+            if (job.status === 'complete' && job.result) {
+              clearInterval(pollInterval);
+              showResult(job);
+            } else if (job.status === 'failed') {
+              clearInterval(pollInterval);
+              showError(job.error || 'Processing failed');
+            }
+          }
+        } catch (error) {
+          clearInterval(pollInterval);
+          showError(error.message);
+        }
+      }, 2000);
+    }
+
+    function showResult(job) {
+      document.getElementById('result-processing').classList.add('hidden');
+      document.getElementById('result-complete').classList.remove('hidden');
+      document.getElementById('result-image').src = job.result.imageUrl;
+      document.getElementById('cost-display').textContent = `Cost: $${job.cost.toFixed(4)}`;
+    }
+
+    function showError(message) {
+      document.getElementById('result-processing').classList.add('hidden');
+      document.getElementById('result-error').classList.remove('hidden');
+      document.getElementById('error-message').textContent = message;
+    }
+
+    function download(format) {
+      const img = document.getElementById('result-image');
+      const link = document.createElement('a');
+      link.href = img.src;
+      link.download = `glasses-composition.${format}`;
+      link.click();
+    }
+
+    function reset() {
+      if (pollInterval) clearInterval(pollInterval);
+
+      personImage = null;
+      glassesImage = null;
+      currentJobId = null;
+
+      document.getElementById('person-input').value = '';
+      document.getElementById('glasses-input').value = '';
+
+      document.getElementById('person-preview').classList.add('hidden');
+      document.getElementById('person-placeholder').classList.remove('hidden');
+      document.getElementById('person-upload').classList.remove('has-image');
+
+      document.getElementById('glasses-preview').classList.add('hidden');
+      document.getElementById('glasses-placeholder').classList.remove('hidden');
+      document.getElementById('glasses-upload').classList.remove('has-image');
+
+      document.getElementById('result-placeholder').classList.remove('hidden');
+      document.getElementById('result-processing').classList.add('hidden');
+      document.getElementById('result-complete').classList.add('hidden');
+      document.getElementById('result-error').classList.add('hidden');
+
+      updateComposeButton();
+    }
+
+    // Drag and drop
+    ['person-upload', 'glasses-upload'].forEach(id => {
+      const zone = document.getElementById(id);
+      const inputId = id.replace('-upload', '-input');
+
+      zone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        zone.style.borderColor = '#666';
+      });
+
+      zone.addEventListener('dragleave', () => {
+        zone.style.borderColor = '';
+      });
+
+      zone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        zone.style.borderColor = '';
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) {
+          const input = document.getElementById(inputId);
+          const dt = new DataTransfer();
+          dt.items.add(file);
+          input.files = dt.files;
+          input.dispatchEvent(new Event('change'));
+        }
+      });
+    });
+  </script>
+</body>
+</html>

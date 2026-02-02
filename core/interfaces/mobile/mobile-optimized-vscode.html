@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>📱 Mobile VS Code - Auto-Optimized</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Mobile overlay controls */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid #444;
+            z-index: 10000;
+        }
+
+        .mobile-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #569cd6;
+        }
+
+        .optimization-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #4CAF50;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .optimization-status.pending {
+            background: #ff9800;
+        }
+
+        .optimization-status.error {
+            background: #f44336;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* VS Code frame */
+        .vscode-frame {
+            width: 100%;
+            height: calc(100vh - 60px);
+            margin-top: 60px;
+            border: none;
+        }
+
+        /* Mobile controls hidden by default */
+        .mobile-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 10001;
+        }
+
+        .control-btn {
+            background: #007acc;
+            color: white;
+            border: none;
+            width: 56px;
+            height: 56px;
+            border-radius: 28px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .control-btn:hover {
+            background: #005a9e;
+            transform: scale(1.1);
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 10002;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .mobile-overlay {
+                height: 50px;
+                padding: 0 15px;
+            }
+
+            .mobile-title {
+                font-size: 16px;
+            }
+
+            .vscode-frame {
+                height: calc(100vh - 50px);
+                margin-top: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile overlay -->
+    <div class="mobile-overlay">
+        <div class="mobile-title">📱 Mobile VS Code</div>
+        <div class="optimization-status pending" id="optimizationStatus">
+            <div class="status-dot"></div>
+            <span>Optimizing...</span>
+        </div>
+    </div>
+
+    <!-- VS Code iframe -->
+    <iframe
+        id="vscodeFrame"
+        class="vscode-frame"
+        src="http://100.95.223.19:8080/"
+        allow="clipboard-read; clipboard-write; fullscreen">
+    </iframe>
+
+    <!-- Mobile controls -->
+    <div class="mobile-controls">
+        <button class="control-btn" onclick="reoptimize()" title="Re-optimize for mobile">
+            🔧
+        </button>
+        <button class="control-btn" onclick="toggleFullscreen()" title="Toggle fullscreen">
+            ⛶
+        </button>
+    </div>
+
+    <!-- Toast container -->
+    <div id="toastContainer"></div>
+
+    <script>
+        let vscodeFrame;
+        let optimizationAttempts = 0;
+        let optimizationInterval;
+
+        // Mobile optimization script
+        const MOBILE_OPTIMIZATION_SCRIPT = `
+(function() {
+    console.log('📱 Applying Mobile Optimizations...');
+
+    // Remove existing optimizations
+    const existingStyle = document.getElementById('mobile-optimizations');
+    if (existingStyle) {
+        existingStyle.remove();
+    }
+
+    // Create mobile optimization styles
+    const style = document.createElement('style');
+    style.id = 'mobile-optimizations';
+    style.innerHTML = \`
+        /* Mobile-friendly font sizes */
+        .monaco-workbench {
+            font-size: 16px !important;
+        }
+
+        /* Larger touch targets */
+        .monaco-list-row, .monaco-tree-row {
+            min-height: 44px !important;
+            font-size: 16px !important;
+            padding: 8px 12px !important;
+        }
+
+        /* Hide minimap on mobile */
+        .minimap-shadow-visible,
+        .editor-widget.minimap,
+        .minimap.slider-mouseover {
+            display: none !important;
+        }
+
+        /* Larger scrollbars for touch */
+        .monaco-scrollable-element > .scrollbar {
+            width: 16px !important;
+            height: 16px !important;
+        }
+
+        .monaco-scrollable-element > .scrollbar > .slider {
+            background: rgba(121, 121, 121, 0.8) !important;
+        }
+
+        /* Activity bar mobile optimization */
+        .monaco-workbench .part.activitybar .action-item {
+            width: 60px !important;
+            height: 50px !important;
+        }
+
+        /* Mobile editor optimization */
+        .monaco-editor {
+            font-size: 16px !important;
+            line-height: 1.5 !important;
+        }
+
+        .monaco-editor .view-lines {
+            line-height: 1.5 !important;
+        }
+
+        /* Touch-friendly buttons and inputs */
+        .monaco-button,
+        .monaco-inputbox {
+            min-height: 44px !important;
+            font-size: 16px !important;
+        }
+
+        /* Panel optimization */
+        .monaco-workbench .part.panel {
+            min-height: 200px !important;
+        }
+
+        /* Terminal optimization */
+        .terminal-wrapper,
+        .xterm-screen {
+            font-size: 14px !important;
+            line-height: 1.4 !important;
+        }
+
+        /* Explorer tree optimization */
+        .monaco-tree .monaco-tree-row {
+            height: 44px !important;
+        }
+
+        .monaco-tree .monaco-tree-row .content {
+            line-height: 44px !important;
+        }
+
+        /* Context menu optimization */
+        .monaco-menu .monaco-action-bar .action-item {
+            min-height: 44px !important;
+        }
+
+        /* Tab optimization */
+        .monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container .tab {
+            min-height: 44px !important;
+            padding: 8px 16px !important;
+        }
+
+        /* Settings optimization */
+        .settings-editor .settings-body .settings-tree-container .setting-item {
+            min-height: 60px !important;
+            padding: 12px !important;
+        }
+
+        /* Command palette optimization */
+        .quick-input-widget {
+            font-size: 16px !important;
+        }
+
+        .quick-input-list .monaco-list-row {
+            min-height: 50px !important;
+        }
+
+        /* Notification optimization */
+        .monaco-workbench .notifications-list-container .notification-list-item {
+            min-height: 60px !important;
+            padding: 12px !important;
+        }
+
+        /* Mobile viewport adjustments */
+        @media (max-width: 768px) {
+            /* Force larger touch targets on small screens */
+            .monaco-button,
+            .monaco-inputbox,
+            .monaco-list-row,
+            .monaco-tree-row {
+                min-height: 50px !important;
+                font-size: 18px !important;
+            }
+
+            /* Adjust editor for small screens */
+            .monaco-editor {
+                font-size: 18px !important;
+            }
+        }
+    \`;
+
+    document.head.appendChild(style);
+
+    // Force layout refresh
+    setTimeout(() => {
+        if (window.dispatchEvent) {
+            window.dispatchEvent(new Event('resize'));
+        }
+    }, 100);
+
+    console.log('✅ Mobile optimizations applied successfully!');
+
+    // Signal success to parent window
+    if (window.parent && window.parent !== window) {
+        window.parent.postMessage({
+            type: 'mobile-optimization',
+            status: 'success',
+            message: 'Mobile optimizations applied successfully!'
+        }, '*');
+    }
+
+    return true;
+})();
+`;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            vscodeFrame = document.getElementById('vscodeFrame');
+
+            // Start optimization attempts when iframe loads
+            vscodeFrame.addEventListener('load', function() {
+                showToast('📱 VS Code loaded! Applying mobile optimizations...');
+                startOptimizationProcess();
+            });
+
+            // Listen for messages from VS Code iframe
+            window.addEventListener('message', function(event) {
+                if (event.data && event.data.type === 'mobile-optimization') {
+                    if (event.data.status === 'success') {
+                        updateOptimizationStatus('success', 'Optimized');
+                        showToast('✅ Mobile optimizations applied successfully!');
+                        clearInterval(optimizationInterval);
+                    }
+                }
+            });
+        });
+
+        function startOptimizationProcess() {
+            optimizationAttempts = 0;
+            updateOptimizationStatus('pending', 'Optimizing...');
+
+            // Try optimization every 2 seconds for up to 30 seconds
+            optimizationInterval = setInterval(() => {
+                if (optimizationAttempts >= 15) {
+                    clearInterval(optimizationInterval);
+                    updateOptimizationStatus('error', 'Manual optimization needed');
+                    showToast('⚠️ Auto-optimization failed. Click 🔧 to retry.');
+                    return;
+                }
+
+                attemptOptimization();
+                optimizationAttempts++;
+            }, 2000);
+
+            // Try immediately as well
+            attemptOptimization();
+        }
+
+        function attemptOptimization() {
+            try {
+                const vscodeWindow = vscodeFrame.contentWindow;
+                if (vscodeWindow && vscodeWindow.document) {
+                    // Check if VS Code is loaded by looking for Monaco elements
+                    const monacoElement = vscodeWindow.document.querySelector('.monaco-workbench');
+                    if (monacoElement) {
+                        // Execute optimization script
+                        const script = vscodeWindow.document.createElement('script');
+                        script.textContent = MOBILE_OPTIMIZATION_SCRIPT;
+                        vscodeWindow.document.body.appendChild(script);
+
+                        // Clean up the script element
+                        setTimeout(() => {
+                            script.remove();
+                        }, 1000);
+
+                        updateOptimizationStatus('success', 'Optimized');
+                        showToast('✅ Mobile optimizations applied!');
+                        clearInterval(optimizationInterval);
+                        return true;
+                    }
+                }
+            } catch (error) {
+                // CORS restrictions - this is expected
+                console.log('CORS restriction encountered - will continue trying...');
+            }
+            return false;
+        }
+
+        function reoptimize() {
+            showToast('🔧 Re-applying mobile optimizations...');
+            updateOptimizationStatus('pending', 'Re-optimizing...');
+            startOptimizationProcess();
+        }
+
+        function toggleFullscreen() {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+                showToast('📱 Exited fullscreen mode');
+            } else {
+                document.documentElement.requestFullscreen();
+                showToast('⛶ Entered fullscreen mode');
+            }
+        }
+
+        function updateOptimizationStatus(status, message) {
+            const statusElement = document.getElementById('optimizationStatus');
+            statusElement.className = \`optimization-status \${status}\`;
+            statusElement.querySelector('span').textContent = message;
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+
+            container.appendChild(toast);
+
+            // Show toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+
+            // Hide and remove toast
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 4000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'r' && event.ctrlKey && event.shiftKey) {
+                event.preventDefault();
+                reoptimize();
+            } else if (event.key === 'F11') {
+                event.preventDefault();
+                toggleFullscreen();
+            }
+        });
+
+        console.log('📱 Mobile VS Code Auto-Optimizer loaded');
+        console.log('🔧 Keyboard shortcuts:');
+        console.log('   Ctrl+Shift+R: Re-optimize');
+        console.log('   F11: Toggle fullscreen');
+    </script>
+</body>
+</html>

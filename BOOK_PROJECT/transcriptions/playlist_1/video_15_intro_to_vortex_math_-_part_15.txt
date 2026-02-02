@@ -1,0 +1,167 @@
+================================================================================
+VIDEO TRANSCRIPT: Intro to Vortex Math - Part 15
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: Okay, let me go back a little bit more basic so that I want to make sure that
+
+[00:00:07] **Randy Powell**: everybody understands the basic aspects of this before we get into the
+
+[00:00:12] **Randy Powell**: really complex stuff that I'm not learning now. One question is, well first I just
+
+[00:00:21] **Randy Powell**: want to make sure everybody is understanding what's going on with the
+
+[00:00:24] **Randy Powell**: torus here. What are we talking about? We're talking about the ultimate most
+
+[00:00:28] **Randy Powell**: powerful vortex, the philosopher's stone if you will. It's like a source of
+
+[00:00:34] **Randy Powell**: unlimited energy. Marco describes it better than I can on his videos. I want to
+
+[00:00:41] **Randy Powell**: make sure everybody understands what we're talking about when we talk about
+
+[00:00:44] **Randy Powell**: circuits. Now it's pretty clear here I think this is like a wire being wound and
+
+[00:00:50] **Randy Powell**: on this torus you know you're sewing a circuit coming in where you can't see
+
+[00:00:54] **Randy Powell**: it once it goes through the center but because of the way the math is this is the
+
+[00:00:58] **Randy Powell**: first math that's been able to take you through the center of the hall in
+
+[00:01:02] **Randy Powell**: birding coming out upside down and back around and I figured out how to calculate
+
+[00:01:09] **Randy Powell**: on that to know where every different number is at any given time without
+
+[00:01:13] **Randy Powell**: even having to be able to see it in 3D. I can do it in my head now it's really easy.
+
+[00:01:19] **Randy Powell**: But instead of this all being one circuit that went all the way around to connect
+
+[00:01:23] **Randy Powell**: to itself it's really multiple circuits. So if you just to make sure you
+
+[00:01:28] **Randy Powell**: understand what I'm showing on this model, here's my what I said was a circuit
+
+[00:01:36] **Randy Powell**: it's 1, 2, 4, 8, 7, 5, 1, 4, 7 family number group. Alright that's what I mean with a
+
+[00:01:44] **Randy Powell**: binary triplet it's binary positive negative positive negative but it's actually a
+
+[00:01:48] **Randy Powell**: synchronized triplet of your 1, 4, 7 it's the same with every family number group
+
+[00:01:54] **Randy Powell**: whether it's 3, 9, 6 or 2, 8, 5. Alright it's going in 3 coming out 6 and so when I
+
+[00:02:04] **Randy Powell**: say circuit I'm just talking about a pathway of motion. So what you're seeing in
+
+[00:02:08] **Randy Powell**: a straight line here really should be at an angle really what it is is one of
+
+[00:02:13] **Randy Powell**: these coming in like this and the other ones coming out like this and in between is
+
+[00:02:19] **Randy Powell**: the space which is where the etheron flux field occurs. Alright that's how you
+
+[00:02:25] **Randy Powell**: allow the magnetic field to breathe and to let it pulse and work. So I'm saying on
+
+[00:02:38] **Randy Powell**: the smallest course you can have it's not just two circuit two conductors. It's a
+
+[00:02:47] **Randy Powell**: minimum of six conductors. Alright that's the minimum you can have to have
+
+[00:02:53] **Randy Powell**: unbroken multiplication series to have one interconnected spire and that go up
+
+[00:03:02] **Randy Powell**: in the multiples as I was saying. So when we talk about circuits we're just
+
+[00:03:08] **Randy Powell**: talking about the way the energy is phasing in the way that it's going out and
+
+[00:03:12] **Randy Powell**: the proportion that it has to be in to allow the field to occur. Now the idea
+
+[00:03:19] **Randy Powell**: with all the numbers being in proportion is that if you create the
+
+[00:03:25] **Randy Powell**: electricity per say you get the magnetism which we already know and more
+
+[00:03:30] **Randy Powell**: importantly you get the etherons. This is the only energy higher than the known
+
+[00:03:36] **Randy Powell**: elements that we can model perfectly in this mathematics but if you only have
+
+[00:03:45] **Randy Powell**: one circuit going all the way around you cannot get your unbroken multiplication
+
+[00:03:51] **Randy Powell**: tables which means when we're talking about quantum numbers you don't get this
+
+[00:03:57] **Randy Powell**: lining up you cannot have the shearing even the principles of the coil cannot
+
+[00:04:04] **Randy Powell**: work. Alright but these coils are designed just like our DNA they're designed to
+
+[00:04:10] **Randy Powell**: conduct to conduct energy. Alright they're designed for efficiency for speed your
+
+[00:04:19] **Randy Powell**: brain is like this. So the circuit's going this way going out. This model here is
+
+[00:04:30] **Randy Powell**: based on as I showed in my other video a 36 by 18 so I want to make sure that
+
+[00:04:36] **Randy Powell**: everybody understands that concept of how to build a Taurus. You have to start
+
+[00:04:41] **Randy Powell**: with your mathematical fingerprint we call a mathematical fingerprint of God
+
+[00:04:46] **Randy Powell**: this is a small one but you can you can get your own you can all it has to be is
+
+[00:04:51] **Randy Powell**: nine by nine squares you have to have 162 tiles to make it. Okay and then and I'll
+
+[00:05:03] **Randy Powell**: just again I know I read some of these but I want you to understand the concept of
+
+[00:05:07] **Randy Powell**: what I'm saying to see that it's not just a matter of me having a wrong number.
+
+[00:05:15] **Randy Powell**: Okay well what I'm going to start off because I want we're talking about ratios
+
+[00:05:19] **Randy Powell**: proportions so when we do our axis is and remember every multiplication series
+
+[00:05:26] **Randy Powell**: is modeling and axis of spatial orientation. So if I when I say even numbers I'm
+
+[00:05:35] **Randy Powell**: talking about nine by nine 18 by 18 27 by 27 36 by 36 and that is what was I saying
+
+[00:05:49] **Randy Powell**: I don't know anyway so if we go nine by nine I'm saying there's three nested
+
+[00:05:55] **Randy Powell**: board of C circuits so let me again go over what is a nested board of C circuit
+
+[00:06:02] **Randy Powell**: whereas my regular doubling circuits I have a one two four eight seven five going in here
+
+[00:06:06] **Randy Powell**: one two four eight seven five coming out here my three nine six in the middle this which is
+
+[00:06:12] **Randy Powell**: nine six six nine three that is a nested board of C circuit on a torus like this which is 36 by 18
+
+[00:06:23] **Randy Powell**: there are six of those with 12 conductors but it works like this if you do a nine by nine
+
+[00:06:31] **Randy Powell**: you can have all the principles of your symbol you're going to have three nested
+
+[00:06:37] **Randy Powell**: board of C circuits they do always connect back to themselves you're going to have 18
+
+[00:06:44] **Randy Powell**: board of C's over the surface they're going to be six conductors so if you're making a coil
+
+[00:06:50] **Randy Powell**: with this based on this on this quantum mechanical version of it if you want to say
+
+[00:06:57] **Randy Powell**: you're going to have to have a minimum of six different conductors ultimately I think it should
+
+[00:07:03] **Randy Powell**: be done in a better form than with wires and plastic donuts like that you have to be able to
+
+[00:07:09] **Randy Powell**: preserve the curvature and I talked about that in my other video so for three nested board of C
+
+[00:07:15] **Randy Powell**: circuits there are 18 of these nested board of C's which give this spin orientation which make it
+
+[00:07:24] **Randy Powell**: perfect make it mirror I believe they create boreses that go all the way through
+
+[00:07:33] **Randy Powell**: so nine by nine three nested board of C circuits 18 of those boreses there are in three groups of
+
+[00:07:38] **Randy Powell**: six you have six circuits you have one spire all right and that spire of course consists of 18
+
+[00:07:47] **Randy Powell**: board of C's for an 18 by 18 again just following my inverse square law I have six nested board of C
+
+[00:07:56] **Randy Powell**: circuits 72 board of C's 12 circuits and there are six groups of 12 and then I have two spires
+
+[00:08:05] **Randy Powell**: so there's 36 board of C's per spire and make 72 board of C's I'll just say two more I got 27
+
+[00:08:15] **Randy Powell**: by 27 nine nested board of C circuits 162 board of C's there are nine groups of 18 18 circuits 18
+
+[00:08:25] **Randy Powell**: conductors that makes three spires with 54 board of C's in each spire so I hope everybody falls
+
+[00:08:34] **Randy Powell**: that you can you know go along carry them on yourself it gets really interesting the more you
+
+[00:08:39] **Randy Powell**: make the combinations of the numbers you see how the spires change and how the torus evolves as it
+
+[00:08:47] **Randy Powell**: collects more of this etharon energy if it can maintain stability and resonance

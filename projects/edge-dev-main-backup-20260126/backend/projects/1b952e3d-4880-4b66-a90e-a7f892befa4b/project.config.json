@@ -1,0 +1,21 @@
+{
+  "project_id": "1b952e3d-4880-4b66-a90e-a7f892befa4b",
+  "name": "Backside_B_Renata_Simple",
+  "description": "RENATA V2 transformed Backside B scanner - Simple output (ticker + date only)",
+  "scanners": [],
+  "aggregation_method": "union",
+  "created_at": "2026-01-12T18:31:19.148257",
+  "updated_at": "2026-01-12T18:31:19.148268",
+  "version": 1,
+  "tags": [
+    "RENATA",
+    "V31",
+    "Backside B",
+    "Simple"
+  ],
+  "created_by": "renata-ai-upload",
+  "last_executed": null,
+  "execution_count": 0,
+  "function_name": "run_scan",
+  "has_code": true
+}

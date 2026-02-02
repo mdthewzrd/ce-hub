@@ -1,0 +1,132 @@
+{
+  "comprehensive_state_isolation_test": {
+    "description": "Test all state changes in sequence to validate isolation",
+    "mcp_playwright_commands": [
+      {
+        "step": 1,
+        "action": "Navigate to dashboard and capture baseline",
+        "command": "navigate",
+        "url": "http://localhost:6565/dashboard",
+        "wait": 3000,
+        "screenshot": "step1_baseline.png"
+      },
+      {
+        "step": 2,
+        "action": "Select 7d date range",
+        "command": "click",
+        "selector": "button[text='7d']",
+        "wait": 1000,
+        "screenshot": "step2_7d_selected.png",
+        "validate_console": [
+          "setSelectedRange updating",
+          "selectedRange=week"
+        ]
+      },
+      {
+        "step": 3,
+        "action": "Toggle to R display mode",
+        "command": "click",
+        "selector": "button[text='R']",
+        "wait": 1000,
+        "screenshot": "step3_r_mode_with_7d.png",
+        "validate_state": {
+          "date_range": "7d should still be selected",
+          "display_mode": "R should be active",
+          "expected": "Both states preserved"
+        }
+      },
+      {
+        "step": 4,
+        "action": "Toggle to $ display mode",
+        "command": "click",
+        "selector": "button[text='$']",
+        "wait": 1000,
+        "screenshot": "step4_dollar_mode_with_7d.png",
+        "validate_state": {
+          "date_range": "7d should still be selected",
+          "display_mode": "$ should be active",
+          "expected": "Both states preserved"
+        }
+      },
+      {
+        "step": 5,
+        "action": "Change to Analyst AI mode",
+        "command": "select_option",
+        "selector": "combobox",
+        "value": "Analyst",
+        "wait": 1000,
+        "screenshot": "step5_analyst_mode_full_state.png",
+        "validate_state": {
+          "date_range": "7d should still be selected",
+          "display_mode": "$ should still be active",
+          "ai_mode": "Analyst should be selected",
+          "expected": "All three states preserved"
+        }
+      },
+      {
+        "step": 6,
+        "action": "Change date range to 30d",
+        "command": "click",
+        "selector": "button[text='30d']",
+        "wait": 1000,
+        "screenshot": "step6_30d_full_state.png",
+        "validate_state": {
+          "date_range": "30d should now be selected",
+          "display_mode": "$ should still be active",
+          "ai_mode": "Analyst should still be selected",
+          "expected": "Date range changed, other states preserved"
+        }
+      },
+      {
+        "step": 7,
+        "action": "Change to Coach AI mode",
+        "command": "select_option",
+        "selector": "combobox",
+        "value": "Coach",
+        "wait": 1000,
+        "screenshot": "step7_coach_mode_full_state.png",
+        "validate_state": {
+          "date_range": "30d should still be selected",
+          "display_mode": "$ should still be active",
+          "ai_mode": "Coach should be selected",
+          "expected": "AI mode changed, other states preserved"
+        }
+      },
+      {
+        "step": 8,
+        "action": "Final validation - All date ranges",
+        "command": "multi_click_sequence",
+        "sequence": [
+          "90d",
+          "All",
+          "7d"
+        ],
+        "wait_between": 500,
+        "screenshot_after_each": true,
+        "validate_persistence": {
+          "display_mode": "$ should remain active throughout",
+          "ai_mode": "Coach should remain selected throughout"
+        }
+      }
+    ]
+  },
+  "rapid_state_change_test": {
+    "description": "Test rapid state changes to identify race conditions",
+    "commands": [
+      "Navigate to dashboard",
+      "Rapidly cycle through: 7d->30d->90d->All (500ms intervals)",
+      "Rapidly toggle: $->R->$->R (300ms intervals)",
+      "Rapidly switch AI modes: Renata->Analyst->Coach->Mentor (400ms intervals)",
+      "Validate final state matches last selections"
+    ]
+  },
+  "cross_navigation_state_test": {
+    "description": "Test state persistence across page navigation",
+    "commands": [
+      "Set specific state: 7d + $ + Analyst",
+      "Navigate to /journal (should 404)",
+      "Navigate back to /dashboard",
+      "Validate state restoration or expected reset behavior"
+    ]
+  }
+}

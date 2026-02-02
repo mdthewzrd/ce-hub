@@ -1,0 +1,7 @@
+{
+  "date_range": {
+    "start_date": "2025-01-01",
+    "end_date": "2025-11-01"
+  },
+  "timeout_seconds": 180
+}

@@ -1,0 +1,20 @@
+# Instagram Audio Module Requirements
+
+# Spotify API
+spotipy==2.23.0
+
+# Audio processing
+pydub==0.25.1
+ffmpeg-python==0.2.0
+
+# Video processing
+moviepy==1.0.3
+
+# HTTP requests
+requests==2.31.0
+
+# Database (already in main requirements)
+sqlite3  # Built-in
+
+# Utilities
+python-dotenv==1.0.0

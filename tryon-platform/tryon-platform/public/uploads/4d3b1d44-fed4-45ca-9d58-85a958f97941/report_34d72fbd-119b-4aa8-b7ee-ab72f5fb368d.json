@@ -1,0 +1,37 @@
+{
+  "taskId": "34d72fbd-119b-4aa8-b7ee-ab72f5fb368d",
+  "version": {
+    "app": "1.0",
+    "promptPack": "v1.0",
+    "model": "nano-banana-gemini",
+    "providerApi": "1.0.0"
+  },
+  "inputs": {
+    "subject": {
+      "assetId": "34d72fbd-119b-4aa8-b7ee-ab72f5fb368d",
+      "w": 1024,
+      "h": 768
+    },
+    "glasses": [
+      "glasses_0",
+      "glasses_1",
+      "glasses_2",
+      "glasses_3"
+    ]
+  },
+  "generation": {
+    "guidance": 0.2,
+    "refStrength": 0.75,
+    "lightingWeight": 0.7,
+    "reflectionWeight": 0.3,
+    "colorMatchWeight": 0.15,
+    "seed": 908795,
+    "passes": 1
+  },
+  "quality": {
+    "ssim": 0.9990159106508831,
+    "faceDist": 0.20251684281047944,
+    "fit": "pass"
+  },
+  "notes": "Glasses successfully added with realistic lighting and reflections using Nano Banana model"
+}

@@ -1,0 +1,83 @@
+Image_ID,Chapter,Image_Type,Spec_File,Status,Priority,Title,Notes
+INT_01,Intro,Natural Pattern Overlay,int_01_spec.md,Pending,1,Nautilus Shell with Golden Spiral,Opening spread pattern
+INT_02,Intro,Cosmic Pattern,int_02_spec.md,Pending,1,Spiral Galaxy Comparison,Scale comparison (nautilus to galaxy)
+INT_03,Intro,Historical Photo,int_03_spec.md,Pending,1,Abydos Flower of Life,Ancient wisdom proof
+INT_04,Intro,Pattern in Body,int_04_spec.md,Pending,2,Human Eye Iris Pattern,Human body pattern
+INT_05,Intro,Natural Fibonacci,int_05_spec.md,Pending,1,Sunflower Seed Spirals,Fibonacci demo
+INT_06,Intro,Fractal Pattern,int_06_spec.md,Pending,2,Romanesco Broccoli,Nature's fractals
+INT_07,Intro,Weather Torus,int_07_spec.md,Pending,2,Hurricane from Space,Torus in nature
+INT_08,Intro,Sacred Architecture,int_08_spec.md,Pending,2,Gothic Rose Window,Built patterns
+INT_09,Intro,Simple Torus,int_09_spec.md,Pending,3,Smoke Ring Torus,Simple torus demo
+INT_10,Intro,Author Photo,int_10_spec.md,Pending,2,Trust Section Photo,Personal connection
+CH1_01,Ch1,Sacred Geometry,ch1_01_spec.md,Pending,1,Flower of Life Complete,Complete Flower of Life pattern
+CH1_02,Ch1,Sacred Geometry,ch1_02_spec.md,Pending,1,Seed of Life,Foundation of Flower of Life
+CH1_03,Ch1,Sacred Geometry,ch1_03_spec.md,Pending,1,Metatron's Cube,Dervied from Flower of Life
+CH1_04,Ch1,Natural Fibonacci,ch1_04_spec.md,Pending,2,Pinecone Spiral,8 and 13 spirals (Fibonacci)
+CH1_05,Ch1,Natural Fibonacci,ch1_05_spec.md,Pending,2,Fern Unfurling,Fractal spiral growth
+CH1_06,Ch1,Pattern in Body,ch1_06_spec.md,Pending,2,DNA Helix,DNA follows golden ratio
+CH1_07,Ch1,Cosmic Pattern,ch1_07_spec.md,Pending,2,Atom Structure,Toroidal electron cloud
+CH1_08,Ch1,Cosmic Pattern,ch1_08_spec.md,Pending,2,Planetary Orbits,Elliptical patterns
+CH1_09,Ch1,Water Pattern,ch1_09_spec.md,Pending,2,Water Droplet Ripple,Expanding circles
+CH1_10,Ch1,Natural Pattern,ch1_10_spec.md,Pending,3,Spider Web,Radial symmetry
+CH1_11,Ch1,Natural Pattern,ch1_11_spec.md,Pending,2,Snowflake Crystal,Hexagonal symmetry
+CH1_12,Ch1,Natural Pattern,ch1_12_spec.md,Pending,2,Tree Branch Fractal,Self-similar branching
+CH1_13,Ch1,Natural Pattern,ch1_13_spec.md,Pending,3,Peacock Feather,Fibonacci in color display
+CH1_14,Ch1,Physics Pattern,ch1_14_spec.md,Pending,2,Wave Interference,Pattern mathematics
+CH1_15,Ch1,Physics Pattern,ch1_15_spec.md,Pending,3,Light Prism Spectrum,Color frequencies
+CH2_01,Ch2,Number Map,ch2_01_spec.md,Pending,1,Simple Number Circle 1-9,Foundation number map
+CH2_02,Ch2,Number Map,ch2_02_spec.md,Pending,2,Multiplication Wheel,Modular arithmetic
+CH2_03,Ch2,3D Torus,ch2_03_spec.md,Pending,1,3D Torus Model,Torus shape visualization
+CH2_04,Ch2,Natural Torus,ch2_04_spec.md,Pending,2,Apple Cut Horizontal,Torus cross-section
+CH2_05,Ch2,Torus Formation,ch2_05_spec.md,Pending,2,Smoke Ring Formation,Formation sequence
+CH2_06,Ch2,Magnetic Field,ch2_06_spec.md,Pending,2,Magnetic Field Lines,Toroidal field
+CH2_07,Ch2,Natural Vortex,ch2_07_spec.md,Pending,2,Water Vortex,Natural vortex pattern
+CH2_08,Ch2,Cosmic Spiral,ch2_08_spec.md,Pending,2,Galaxy Spiral Arms,Toroidal galaxy structure
+CH2_09,Ch2,Weather Eye,ch2_09_spec.md,Pending,2,Hurricane Eye Structure,Eye of the storm
+CH2_10,Ch2,Natural Chambered,ch2_10_spec.md,Pending,2,Chambered Nautilus,Growth chambers
+CH2_11,Ch2,Fibonacci Template,ch2_11_spec.md,Pending,2,Golden Spiral Template,Phi ratio spiral
+CH2_12,Ch2,Phi in Body,ch2_12_spec.md,Pending,1,Vitruvian Man,Human phi proportions
+CH2_13,Ch2,Phi DNA,ch2_13_spec.md,Pending,2,DNA Phi Proportions,DNA geometry
+CH2_14,Ch2,Phi Architecture,ch2_14_spec.md,Pending,2,Great Pyramid Phi,Pi and phi encoded
+CH2_15,Ch2,Phi Art,ch2_15_spec.md,Pending,3,Parthenon Temple,Classical architecture
+CH2_16,Ch2,Phi Art,ch2_16_spec.md,Pending,2,Art Composition Grid,Golden ratio in art
+CH2_17,Ch2,Tesla Portrait,ch2_17_spec.md,Pending,2,Tesla Quote Graphic,3-6-9 reference
+CH2_18,Ch2,Energy Flow,ch2_18_spec.md,Pending,2,Energy Flow Diagram,Doubling circuit
+CH3_01,Ch3,Historical Site,ch3_01_spec.md,Pending,1,Abydos Flower of Life,Detail carving
+CH3_02,Ch3,Historical Site,ch3_02_spec.md,Pending,2,Osiris Temple,Temple carving context
+CH3_03,Ch3,Historical,ch3_03_spec.md,Pending,2,Gobekli Tepe Turkey,Oldest known temple
+CH3_04,Ch3,Platonic Solid,ch3_04_spec.md,Pending,1,Tetrahedron 3D,Fire element
+CH3_05,Ch3,Platonic Solid,ch3_05_spec.md,Pending,1,Cube Crystal,Earth element
+CH3_06,Ch3,Platonic Solid,ch3_06_spec.md,Pending,1,Octahedron 3D,Air element
+CH3_07,Ch3,Platonic Solid,ch3_07_spec.md,Pending,1,Dodecahedron,Universe/ether element
+CH3_08,Ch3,Platonic Solid,ch3_08_spec.md,Pending,1,Icosahedron,Water element
+CH3_09,Ch3,Renaissance Art,ch3_09_spec.md,Pending,2,Da Vinci Platonic Drawings,Leonardo's sketches
+CH3_10,Ch3,Ancient Text,ch3_10_spec.md,Pending,2,Vedic Manuscript,Ancient texts reference
+CH3_11,Ch3,Tesla Tech,ch3_11_spec.md,Pending,1,Wardenclyffe Tower,Tesla's wireless system
+CH3_12,Ch3,Plasma Phenomenon,ch3_12_spec.md,Pending,1,Ball Lightning,Natural plasma
+CH3_13,Ch3,Lab Plasma,ch3_13_spec.md,Pending,2,Plasma Lab Experiment,Modern research
+CH3_14,Ch3,Modern Device,ch3_14_spec.md,Pending,1,Thunderstorm Generator,Bendall device
+CH3_15,Ch3,Ancient Tech,ch3_15_spec.md,Pending,2,Egyptian Hieroglyphs,Ancient electricity evidence
+CH3_16,Ch3,Ancient Tech,ch3_16_spec.md,Pending,2,Baghdad Battery,Ancient battery
+CH3_17,Ch3,Sacred Geometry,ch3_17_spec.md,Pending,1,Metatron Derivation,From Flower of Life
+CH3_18,Ch3,Platonic Set,ch3_18_spec.md,Pending,1,All Five Platonic Solids,Complete set
+CH4_01,Ch4,Healing Chart,ch4_01_spec.md,Pending,1,Heart Coherence Graph,HeartMath research
+CH4_02,Ch4,Bio-field Imaging,ch4_02_spec.md,Pending,2,Kirlian Photography,Bio-field evidence
+CH4_03,Ch4,Bio-field Imaging,ch4_03_spec.md,Pending,2,GDV Aura Imaging,Modern bio-field imaging
+CH4_04,Ch4,Water Structure,ch4_04_spec.md,Pending,2,Water Crystal Pattern,Structured water
+CH4_05,Ch4,Historical Device,ch4_05_spec.md,Pending,2,Rife Machine,Frequency therapy
+CH4_06,Ch4,Sound Pattern,ch4_06_spec.md,Pending,2,Cymatic Pattern,Sound creates form
+CH4_07,Ch4,Therapy Tool,ch4_07_spec.md,Pending,2,Tuning Fork Therapy,Sound healing
+CH4_08,Ch4,Healing Device,ch4_08_spec.md,Pending,2,PEMF Device,Pulsed EMF therapy
+CH4_09,Ch4,Light Therapy,ch4_09_spec.md,Pending,2,Red Light Therapy,Photobiomodulation
+CH4_10,Ch4,Brainwave States,ch4_10_spec.md,Pending,2,Brainwave States Chart,Meditation research
+CH4_11,Ch4,Energy Centers,ch4_11_spec.md,Pending,1,Chakra System,Energy centers
+CH4_12,Ch4,Body Energy,ch4_12_spec.md,Pending,2,Meridian Chart,Acupuncture pathways
+CH4_13,Ch4,Future Tech,ch4_13_spec.md,Pending,2,Free Energy Concept,Emerging technology
+CH4_14,Ch4,Future Vision,ch4_14_spec.md,Pending,2,Clean Energy Future,Sustainable vision
+CH4_15,Ch4,Community,ch4_15_spec.md,Pending,2,Community Circle,Group connection
+CH4_16,Ch4,Call to Action,ch4_16_spec.md,Pending,1,The Doorway Opens,Closing call to action
+CH4_17,Ch4,Vision Statement,ch4_17_spec.md,Pending,2,World Transformed Vision,Future possibility
+CH4_18,Ch4,Shareable Quote,ch4_18_spec.md,Pending,2,Doorway Quote Graphic,Social media shareable
+CH4_19,Ch4,Interactive Exercise,ch4_19_spec.md,Pending,2,Pattern Recognition Exercise,Reader engagement
+CH4_20,Ch4,Key Takeaways,ch4_20_spec.md,Pending,1,Chapter Summary Points,Quick reference
+CH4_21,Ch4,Summary Infographic,ch4_21_spec.md,Pending,1,Chapter 4 Complete Summary,Visual journey summary

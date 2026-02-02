@@ -1,0 +1,24 @@
+{
+  "name": "edge-dev-production",
+  "version": "1.0.0",
+  "description": "Edge.dev Production Environment",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "build": "npm run build && npm run optimize",
+    "optimize": "next optimize",
+    "deploy": "npm run build && npm run start",
+    "monitor": "pm2 start ecosystem.config.js",
+    "test": "npm run test:production"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "helmet": "^7.0.0",
+    "cors": "^2.8.5",
+    "compression": "^1.7.4",
+    "rate-limiter-flexible": "^5.0.0"
+  },
+  "devDependencies": {
+    "pm2": "^5.2.0",
+    "@types/node": "^20.0.0"
+  }
+}

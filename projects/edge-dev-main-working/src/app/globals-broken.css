@@ -1,0 +1,796 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    /* Light theme (for reference, but Edge-dev uses dark) */
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 220.9 39.3% 11%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
+    --radius: 0.375rem;
+  }
+
+  .dark {
+    /* Traderra Dark Studio Theme */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 90%;
+    --card: 0 0% 6.7%;
+    --card-foreground: 0 0% 90%;
+    --popover: 0 0% 6.7%;
+    --popover-foreground: 0 0% 90%;
+    --primary: 45 93% 35%; /* Darker gold/amber color */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 90%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 10%;
+    --input: 0 0% 10%;
+    --ring: 214 100% 59%;
+
+    /* Traderra Studio specific colors */
+    --studio-gold: #D4AF37;
+    --studio-bg: #0a0a0a;
+    --studio-bg-secondary: #111111;
+    --studio-text: #e5e5e5;
+    --studio-text-muted: #666666;
+    --studio-text-secondary: #999999;
+    --studio-border: #1a1a1a;
+    --studio-card-bg: #111111;
+    --studio-info: #3b82f6;
+  }
+}
+
+@layer base {
+  * {
+    border-color: rgb(75 85 99); /* gray-600 equivalent */
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    background-color: #0a0a0a !important;
+  }
+
+  html.dark {
+    /* Force dark mode for Edge-dev */
+  }
+
+  html *, body * {
+    color: inherit;
+  }
+
+  /* Professional scroll bars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--ring)), 0 0 0 4px hsl(var(--background));
+  }
+
+  /* Selection styles */
+  ::selection {
+    background-color: hsl(var(--primary) / 0.2);
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@layer components {
+  /* Force dark theme on all elements */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Studio theme components */
+  .studio-bg {
+    @apply bg-[#0a0a0a];
+    background-color: #0a0a0a !important;
+  }
+
+  .studio-surface {
+    @apply bg-[#111111] border border-[#1a1a1a];
+    background-color: #111111 !important;
+    border-color: #1a1a1a !important;
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.2),
+      0 1px 0px rgba(255, 255, 255, 0.06) inset;
+  }
+
+  .studio-border {
+    @apply border-[#1a1a1a];
+    border-color: #1a1a1a !important;
+  }
+
+  .studio-text {
+    @apply text-[#e5e5e5];
+    color: #e5e5e5 !important;
+  }
+
+  .studio-muted {
+    @apply text-[#666666];
+    color: #666666 !important;
+  }
+
+  /* Trading-specific styles */
+  .profit-text {
+    color: #10b981; /* trading-profit color */
+  }
+
+  .loss-text {
+    color: #ef4444; /* trading-loss color */
+  }
+
+  .neutral-text {
+    color: #6b7280; /* trading-neutral color */
+  }
+
+  /* Professional animations */
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #3b82f6;
+    }
+    to {
+      text-shadow: 0 0 20px #3b82f6, 0 0 30px #3b82f6;
+    }
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  /* Metric tiles with professional depth */
+  .metric-tile {
+    background-color: #111111;
+    border: 1px solid #1a1a1a;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.25),
+      0 4px 8px rgba(0, 0, 0, 0.15),
+      0 1px 0px rgba(255, 255, 255, 0.06) inset,
+      0 -1px 0px rgba(0, 0, 0, 0.1) inset;
+  }
+
+  .metric-tile:hover {
+    transform: translateY(-2px);
+    background-color: #161616 !important;
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.3),
+      0 8px 16px rgba(0, 0, 0, 0.2),
+      0 16px 32px rgba(0, 0, 0, 0.1),
+      0 1px 0px rgba(255, 255, 255, 0.08) inset,
+      0 -1px 0px rgba(0, 0, 0, 0.15) inset;
+  }
+
+  .metric-tile-value {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .metric-tile-label {
+    font-size: 0.875rem;
+    color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Professional buttons with depth */
+  .btn-primary {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease-out;
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      0 4px 8px rgba(0, 0, 0, 0.15),
+      0 1px 0px rgba(255, 255, 255, 0.1) inset,
+      0 -1px 0px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  .btn-primary:hover {
+    background-color: hsl(var(--primary) / 0.9);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.25),
+      0 8px 16px rgba(0, 0, 0, 0.2),
+      0 1px 0px rgba(255, 255, 255, 0.15) inset,
+      0 -1px 0px rgba(0, 0, 0, 0.3) inset;
+  }
+
+  .btn-primary:active {
+    transform: translateY(0px);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 1px 0px rgba(255, 255, 255, 0.05) inset,
+      0 -1px 0px rgba(0, 0, 0, 0.4) inset;
+  }
+
+  .btn-secondary {
+    background-color: #111111;
+    border: 1px solid #1a1a1a;
+    color: #e5e5e5;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease-out;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.2),
+      0 1px 0px rgba(255, 255, 255, 0.05) inset,
+      0 -1px 0px rgba(0, 0, 0, 0.1) inset;
+  }
+
+  .btn-secondary:hover {
+    background-color: #161616;
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-0.5px);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.25),
+      0 4px 8px rgba(0, 0, 0, 0.15),
+      0 1px 0px rgba(255, 255, 255, 0.08) inset,
+      0 -1px 0px rgba(0, 0, 0, 0.15) inset;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground px-4 py-2 rounded-lg font-medium;
+    transition: all 0.2s ease-out;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-ghost:hover {
+    transform: translateY(-0.5px);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.15),
+      0 1px 0px rgba(255, 255, 255, 0.05) inset;
+  }
+
+  /* Chart container with elevated depth */
+  .chart-container {
+    @apply studio-surface rounded-lg p-6;
+    min-height: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.25),
+      0 8px 16px rgba(0, 0, 0, 0.2),
+      0 16px 32px rgba(0, 0, 0, 0.1),
+      0 1px 0px rgba(255, 255, 255, 0.08) inset,
+      0 -1px 0px rgba(0, 0, 0, 0.15) inset;
+  }
+
+  /* Renata AI chat styles */
+  .ai-message {
+    @apply studio-surface rounded-lg p-4 mb-4 border-l-2 border-primary/50;
+  }
+
+  .ai-message.analyst {
+    @apply border-l-red-500/50;
+  }
+
+  .ai-message.coach {
+    @apply border-l-blue-500/50;
+  }
+
+  .ai-message.mentor {
+    @apply border-l-green-500/50;
+  }
+
+  /* Loading states */
+  .skeleton {
+    @apply animate-pulse bg-muted rounded;
+  }
+
+  /* Professional form styles with depth */
+  .form-input {
+    @apply studio-surface studio-border rounded-lg px-3 py-2 text-sm placeholder:studio-muted;
+    transition: all 0.2s ease-out;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.2) inset,
+      0 1px 0px rgba(255, 255, 255, 0.05);
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: hsl(var(--primary)) !important;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.3) inset,
+      0 0 0 2px rgba(var(--primary), 0.2),
+      0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Status indicators */
+  .status-online {
+    @apply h-2 w-2 bg-green-500 rounded-full animate-pulse-soft;
+  }
+
+  .status-offline {
+    @apply h-2 w-2 bg-red-500 rounded-full;
+  }
+
+  .status-loading {
+    @apply h-2 w-2 bg-yellow-500 rounded-full animate-pulse;
+  }
+
+  /* AI-Enhanced Trading Interface Styles */
+  .studio-card {
+    @apply studio-surface rounded-lg p-6;
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.25),
+      0 4px 8px rgba(0, 0, 0, 0.15),
+      0 1px 0px rgba(255, 255, 255, 0.06) inset,
+      0 -1px 0px rgba(0, 0, 0, 0.1) inset;
+  }
+
+  .studio-card-elevated {
+    @apply studio-card;
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.3),
+      0 8px 16px rgba(0, 0, 0, 0.2),
+      0 16px 32px rgba(0, 0, 0, 0.1),
+      0 1px 0px rgba(255, 255, 255, 0.08) inset,
+      0 -1px 0px rgba(0, 0, 0, 0.15) inset;
+  }
+
+  .studio-card-large {
+    @apply studio-card;
+    min-height: 400px;
+  }
+
+  .studio-metric-card {
+    @apply studio-surface rounded-lg p-4 border studio-border;
+    transition: all 0.2s ease-out;
+  }
+
+  .studio-metric-card:hover {
+    transform: translateY(-1px);
+    background-color: #161616 !important;
+  }
+
+  .studio-metric-value {
+    @apply text-xl font-semibold studio-text;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .studio-metric-label {
+    @apply text-xs uppercase tracking-wide studio-muted;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  .studio-input {
+    @apply studio-surface studio-border rounded-lg px-3 py-2 text-sm studio-text;
+    background-color: var(--studio-card-bg) !important;
+    border-color: var(--studio-border) !important;
+    color: var(--studio-text) !important;
+    transition: all 0.2s ease-out;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.2) inset,
+      0 1px 0px rgba(255, 255, 255, 0.05);
+  }
+
+  .studio-input:focus {
+    outline: none;
+    border-color: var(--studio-gold) !important;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.3) inset,
+      0 0 0 2px rgba(212, 175, 55, 0.2),
+      0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  .studio-input::placeholder {
+    color: var(--studio-text-muted) !important;
+  }
+
+  .studio-table {
+    @apply w-full text-sm;
+  }
+
+  .studio-table thead th {
+    @apply text-xs uppercase tracking-wide studio-muted p-3 text-left border-b studio-border;
+    background-color: var(--studio-bg-secondary) !important;
+  }
+
+  .studio-table tbody td {
+    @apply p-3 border-b studio-border;
+  }
+
+  .studio-table tbody tr {
+    @apply hover:bg-gray-800/50 cursor-pointer transition-colors;
+  }
+
+  .studio-table tbody tr.selected {
+    background-color: rgba(212, 175, 55, 0.1) !important;
+    border-color: rgba(212, 175, 55, 0.3) !important;
+  }
+
+  .studio-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  }
+
+  .studio-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .studio-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .studio-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+  }
+
+  .studio-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .studio-header {
+    @apply border-b studio-border;
+    background-color: var(--studio-bg-secondary) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .section-header {
+    @apply flex items-center gap-3 mb-6;
+  }
+
+  .section-icon {
+    @apply h-6 w-6;
+  }
+
+  .section-title {
+    @apply text-xl font-semibold;
+  }
+
+  .section-spacing {
+    @apply mb-8;
+  }
+
+  .content-bumper-all {
+    @apply p-6;
+  }
+
+  .sidebar-professional {
+    @apply p-6;
+  }
+
+  .sidebar-project-item {
+    @apply transition-all duration-200;
+  }
+
+  .sidebar-project-item.active {
+    border-color: var(--studio-gold) !important;
+  }
+
+  .professional-container {
+    @apply p-8;
+  }
+
+  .metrics-grid {
+    @apply grid grid-cols-2 gap-4;
+  }
+
+  .status-positive {
+    @apply text-green-400 font-semibold;
+  }
+
+  .status-negative {
+    @apply text-red-400 font-semibold;
+  }
+
+  .chart-container {
+    @apply min-h-[400px];
+  }
+
+  /* AI-specific animations */
+  .studio-spinner {
+    @apply animate-spin h-4 w-4 border-2 border-primary/30 border-t-primary rounded-full;
+  }
+
+  @keyframes ai-pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  .ai-pulse {
+    animation: ai-pulse 2s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Professional spacing */
+  .section-spacing {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  .container-spacing {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Glass effect */
+  .glass {
+    background-color: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgb(75 85 99 / 0.5); /* gray-600/50 equivalent */
+  }
+
+  /* Trading-specific utilities */
+  .pnl-positive {
+    color: #10b981; /* trading-profit color */
+  }
+
+  .pnl-negative {
+    color: #ef4444; /* trading-loss color */
+  }
+
+  .pnl-neutral {
+    color: #6b7280; /* trading-neutral color */
+  }
+
+  /* Metric formatting */
+  .metric-value {
+    @apply font-semibold;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  /* Standardized number font for all financial data */
+  .number-font {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  .metric-change-positive {
+    color: #10b981; /* trading-profit color */
+  }
+
+  .metric-change-negative {
+    color: #ef4444; /* trading-loss color */
+  }
+
+  /* Professional shadows - Multi-layer depth system */
+  .shadow-studio-subtle {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.15),
+      0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-studio {
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      0 4px 8px rgba(0, 0, 0, 0.15),
+      0 1px 0px rgba(255, 255, 255, 0.05) inset;
+  }
+
+  .shadow-studio-lg {
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.25),
+      0 8px 16px rgba(0, 0, 0, 0.2),
+      0 16px 32px rgba(0, 0, 0, 0.1),
+      0 1px 0px rgba(255, 255, 255, 0.08) inset;
+  }
+
+  .shadow-studio-prominent {
+    box-shadow:
+      0 8px 16px rgba(0, 0, 0, 0.3),
+      0 16px 32px rgba(0, 0, 0, 0.25),
+      0 32px 64px rgba(0, 0, 0, 0.15),
+      0 1px 0px rgba(255, 255, 255, 0.1) inset;
+  }
+
+  /* Elevated surface shadows */
+  .shadow-elevated {
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.2),
+      0 4px 6px rgba(0, 0, 0, 0.15),
+      0 1px 0px rgba(255, 255, 255, 0.06) inset,
+      0 -1px 0px rgba(0, 0, 0, 0.1) inset;
+  }
+
+  /* Spacious Layout Adjustments - Creates better spacing feel */
+  .dashboard-container {
+    /* Remove aggressive scaling, use subtle spacing improvements */
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Increase overall container max widths for more breathing room */
+  .max-w-7xl {
+    max-width: 82rem; /* Slightly increased from 80rem */
+  }
+
+  .max-w-6xl {
+    max-width: 74rem; /* Slightly increased from 72rem */
+  }
+
+  /* Increase grid gaps for better spacing */
+  .grid {
+    gap: 1.25rem; /* Slightly increased base grid gap */
+  }
+
+  /* Enhanced padding for main containers */
+  .main-content {
+    padding: 2rem; /* Increased from default */
+  }
+
+  /* Metric cards - slightly larger and more spaced */
+  .metric-card {
+    padding: 1.25rem; /* Moderately increased padding */
+    margin-bottom: 1.25rem;
+  }
+
+  /* Chart containers - more breathing room */
+  .chart-container {
+    padding: 1.25rem;
+    margin: 1rem 0;
+  }
+
+  /* Performance overview spacing */
+  .performance-overview {
+    gap: 1.5rem; /* Moderately increased gap between performance metrics */
+  }
+
+  /* Slightly larger text for better readability */
+  .dashboard-text {
+    font-size: 1.05em; /* 5% larger base text */
+  }
+
+  /* Interactive shadow states */
+  .shadow-interactive {
+    transition: box-shadow 0.2s ease-out;
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.15),
+      0 1px 0px rgba(255, 255, 255, 0.05) inset;
+  }
+
+  .shadow-interactive:hover {
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.2),
+      0 8px 16px rgba(0, 0, 0, 0.15),
+      0 1px 0px rgba(255, 255, 255, 0.08) inset;
+    transform: translateY(-1px);
+  }
+
+  /* Dark theme date input styling */
+  input[type="date"] {
+    @apply bg-[#1a1a1a] border border-[#2a2a2a] text-[#e5e5e5];
+    color-scheme: dark;
+    background-color: #1a1a1a !important;
+    border-color: #2a2a2a !important;
+    color: #e5e5e5 !important;
+  }
+
+  input[type="date"]:focus {
+    @apply ring-2 ring-primary border-primary;
+    border-color: hsl(var(--primary)) !important;
+    box-shadow: 0 0 0 2px rgba(var(--primary), 0.2) !important;
+  }
+
+  /* Force dark theme on date picker calendar popup */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(0.8);
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  /* Dark theme styling for the calendar popup itself */
+  input[type="date"]::-webkit-datetime-edit {
+    color: #e5e5e5 !important;
+    background-color: #1a1a1a !important;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    background-color: #1a1a1a !important;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-text {
+    color: #e5e5e5 !important;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-month-field,
+  input[type="date"]::-webkit-datetime-edit-day-field,
+  input[type="date"]::-webkit-datetime-edit-year-field {
+    color: #e5e5e5 !important;
+    background-color: #1a1a1a !important;
+  }
+
+  /* Additional dark theme support for various browsers */
+  input[type="date"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+  }
+
+  input[type="date"]::-webkit-clear-button {
+    -webkit-appearance: none;
+    display: none;
+  }
+}

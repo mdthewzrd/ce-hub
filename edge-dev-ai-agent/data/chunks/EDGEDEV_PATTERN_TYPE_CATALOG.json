@@ -1,0 +1,1515 @@
+{
+  "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+  "chunk_count": 94,
+  "chunks": [
+    {
+      "content": "# EdgeDev Pattern Type Catalog\n**Comprehensive Guide to Different Trading Pattern Approaches**\n\n**Purpose**: Document ALL pattern types used in EdgeDev, not just Backside B variants.\n\n**Research Date**: 2026-01-29\n**Status**: COMPLETE - Pattern Diversity Analysis\n\n---\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::EdgeDev Pattern Type Catalog",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Pattern Type Catalog"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "EdgeDev Pattern Type Catalog"
+      },
+      "tags": [
+        "strategy",
+        "pattern"
+      ]
+    },
+    {
+      "content": "## Table of Contents\n\n1. [Pattern Type Matrix](#pattern-type-matrix)\n2. [Multi-Day Momentum (DMR)](#1-multi-day-momentum-dmr)\n3. [Fade Breakout (FBO)](#2-fade-breakout-fbo)\n4. [Extension Gaps](#3-extension-gaps)\n5. [Parabolic Extensions (Daily Para)](#4-parabolic-extensions-daily-para)\n6. [Frontside Extensions (FRD)](#5-frontside-extensions-frd)\n7. [3-Day Trigger (LC 3 Day)](#6-3-day-trigger-lc-3-day)\n8. [Code Structure Comparison](#code-structure-comparison)\n9. [Parameter System Patterns](#parameter-system-patterns)\n10. [When to Use Which Pattern](#when-to-use-which-pattern)\n\n---\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::EdgeDev Pattern Type Catalog::Table of Contents",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Pattern Type Catalog",
+        "Table of Contents"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Table of Contents"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "## Pattern Type Matrix\n\n| Pattern Type | Direction | Time Horizon | Core Logic | Complexity |\n|--------------|----------|--------------|-------------|------------|\n| **DMR** | Long | Multi-day (D2-D4) | Trigger high \u2192 continuation | High |\n| **FBO** | Short | 1-2 days | Gap into resistance \u2192 fade | High |\n| **Extension Gap** | Long | Daily | Extended move \u2192 gap continuation | Medium |\n| **Daily Para** | Long | Daily | Parabolic extension \u2192 continuation | Medium |\n| **FRD EXT Gap** | Long | Daily | Frontside extension + gap | Medium |\n| **LC 3d Gap** | Long | Daily | 3-day gap setup | Low |\n| **Backside B** | Short | Daily | Gap up \u2192 hold high \u2192 fade | Medium |\n\n**Key Insight**: Each pattern type targets a DIFFERENT market condition and behavior.\n\n---\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::EdgeDev Pattern Type Catalog::Pattern Type Matrix",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Pattern Type Catalog",
+        "Pattern Type Matrix"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Pattern Type Matrix"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "## 1. Multi-Day Momentum (DMR)\n\n**File**: `SC DMR SCAN.py`\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::EdgeDev Pattern Type Catalog::1. Multi-Day Momentum (DMR)",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Pattern Type Catalog",
+        "1. Multi-Day Momentum (DMR)"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "1. Multi-Day Momentum (DMR)"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "### What It Is\nMulti-day setup where a strong trigger high is followed by continuation patterns over 2-4 days.\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::EdgeDev Pattern Type Catalog::1. Multi-Day Momentum (DMR)::What It Is",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Pattern Type Catalog",
+        "1. Multi-Day Momentum (DMR)",
+        "What It Is"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What It Is"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "### Core Logic\n```\nD-10 to D-2: Strong uptrend, forming a \"trigger high\"\nD-1: Consolidation or pause\nD0: Gap open + continuation trigger\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::EdgeDev Pattern Type Catalog::1. Multi-Day Momentum (DMR)::Core Logic",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Pattern Type Catalog",
+        "1. Multi-Day Momentum (DMR)",
+        "Core Logic"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Core Logic"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Key Parameters\n```python",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::EdgeDev Pattern Type Catalog::1. Multi-Day Momentum (DMR)::Key Parameters",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Pattern Type Catalog",
+        "1. Multi-Day Momentum (DMR)",
+        "Key Parameters"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Key Parameters"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Trigger high validation\nvalid_trig_high = (\n    prev_high >= prev_high_2 and\n    prev_high >= prev_high_3 and\n    ...\n    prev_high >= prev_high_10  # Highest in last 10 periods\n)\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Trigger high validation",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Trigger high validation"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Trigger high validation"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Pre-market gap\ndol_pmh_gap >= prev_range * 0.5\npct_pmh_gap >= 0.5  # 0.5% gap in pre-market\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Pre-market gap",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Pre-market gap"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Pre-market gap"
+      },
+      "tags": []
+    },
+    {
+      "content": "# D0 continuation\ngap >= 0.2  # At least 0.2% gap\ndol_gap >= prev_range * 0.3\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::D0 continuation",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "D0 continuation"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "D0 continuation"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Setup Variants\n1. **D2 PM Setup**: Parabolic move + pre-market gap\n2. **D2 PMH Break**: Gap + trade through pre-market high\n3. **D2 No PMH Break**: Gap + don't trade PMH\n4. **D2 Extreme Gap**: Massive gap (>1x range)\n5. **D3**: Two days of strong moves\n6. **D4**: Three days of strong moves\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::D0 continuation::Setup Variants",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "D0 continuation",
+        "Setup Variants"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Setup Variants"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "### When to Use\n- **Market Condition**: Strong momentum markets\n- **Stock Type**: High beta, high volatility\n- **Volatility**: Expansion periods\n- **Timeframe**: Bull markets, strong uptrends\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::D0 continuation::Setup Variants::When to Use",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "D0 continuation",
+        "Setup Variants",
+        "When to Use"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "When to Use"
+      },
+      "tags": []
+    },
+    {
+      "content": "### What Makes It Unique\n- **Multi-day persistence**: Not just a 1-day setup\n- **Trigger high validation**: Must be THE high in a window\n- **Pre-market analysis**: Uses PM data for confirmation\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::D0 continuation::Setup Variants::What Makes It Unique",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "D0 continuation",
+        "Setup Variants",
+        "What Makes It Unique"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What Makes It Unique"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "### Code Structure\n```python",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::D0 continuation::Setup Variants::Code Structure",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "D0 continuation",
+        "Setup Variants",
+        "Code Structure"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Code Structure"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Step 1: Calculate valid trigger high\ndf['valid_trig_high'] = (\n    df['prev_high'] >= df['prev_high_2'] &  # Highest of last 10\n    df['prev_high'] >= df['prev_high_3'] &\n    ...\n    df['prev_high'] >= df['prev_high_10']\n)\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 1: Calculate valid trigger high",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 1: Calculate valid trigger high"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Step 1: Calculate valid trigger high"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Step 2: Calculate pre-market gap\ndf['dol_pmh_gap'] = df['pm_high'] - df['prev_close']\ndf['pct_pmh_gap'] = df['pm_high'] / df['prev_close'] - 1\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 2: Calculate pre-market gap",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 2: Calculate pre-market gap"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Step 2: Calculate pre-market gap"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Step 3: Pattern-specific conditions\ndf['d2_pm_setup'] = (\n    df['valid_trig_high'] &\n    (df['prev_high'] / df['prev_close_1'] - 1) >= 1 &  # Doubled\n    df['dol_pmh_gap'] >= df['prev_range'] * 0.5 &\n    df['prev_close_range'] >= 0.5 &  # Strong D-1\n    df['prev_close'] >= df['prev_open']  # Green D-1\n)\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 3: Pattern-specific conditions",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Step 3: Pattern-specific conditions"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Step 3: Pattern-specific conditions"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "## 2. Fade Breakout (FBO)\n\n**File**: `daily fbo/mold 1 scan.py`\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 3: Pattern-specific conditions::2. Fade Breakout (FBO)",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 3: Pattern-specific conditions",
+        "2. Fade Breakout (FBO)"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "2. Fade Breakout (FBO)"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "### What It Is\nFades a gap-up INTO resistance. The logic is: stock gaps up toward a significant high, then fades.\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 3: Pattern-specific conditions::2. Fade Breakout (FBO)::What It Is",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 3: Pattern-specific conditions",
+        "2. Fade Breakout (FBO)",
+        "What It Is"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What It Is"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Core Logic\n```\nHistorical (1000 days): Find significant high\nBetween (level date \u2192 D0): Pullback required\nD0: Gap UP toward level \u2192 Touch/fade \u2192 Short signal\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 3: Pattern-specific conditions::2. Fade Breakout (FBO)::Core Logic",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Step 3: Pattern-specific conditions",
+        "2. Fade Breakout (FBO)",
+        "Core Logic"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Core Logic"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "### Key Parameters\n```python",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 3: Pattern-specific conditions::2. Fade Breakout (FBO)::Key Parameters",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Step 3: Pattern-specific conditions",
+        "2. Fade Breakout (FBO)",
+        "Key Parameters"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Key Parameters"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Level selection\nlookback_days_for_level = 1000  # Look back 1000 days\nsig_require_pivot = True  # Level must be pivot high\nsig_level_pos_abs_min = 0.85  # In top 15% of range\nsig_prom_atr_min = 1.5  # Prominence vs valleys\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Level selection",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Level selection"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Level selection"
+      },
+      "tags": []
+    },
+    {
+      "content": "# D0 gap conditions\ngap_min_pct = 2.0  # Must gap at least 2%\ntouch_tol_pct = 1.0  # Within 1% of level counts\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::D0 gap conditions",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "D0 gap conditions"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "D0 gap conditions"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Pullback between\nmin_low_pullback_min_pct = 10.0  # Must pull back 10% from level\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Pullback between",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Pullback between"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Pullback between"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Significance Metrics\n```python",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Pullback between::Significance Metrics",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Pullback between",
+        "Significance Metrics"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Significance Metrics"
+      },
+      "tags": [
+        "indicator",
+        "code"
+      ]
+    },
+    {
+      "content": "# Where is level in absolute range?\nLevelPosAbs = (level - abs_low) / (abs_top - abs_low)\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Where is level in absolute range?",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Where is level in absolute range?"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Where is level in absolute range?"
+      },
+      "tags": []
+    },
+    {
+      "content": "# What % of absolute high?\nLevelPctOfTop = level / abs_top\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::What % of absolute high?",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "What % of absolute high?"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "What % of absolute high?"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Is this a real pivot high?\nIsPivotHigh = level is higher than surrounding highs\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Is this a real pivot high?",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Is this a real pivot high?"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Is this a real pivot high?"
+      },
+      "tags": []
+    },
+    {
+      "content": "# How prominent vs local valleys?\nLevelPivotProm_ATR = (level - local_valley) / ATR\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::How prominent vs local valleys?",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "How prominent vs local valleys?"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "How prominent vs local valleys?"
+      },
+      "tags": []
+    },
+    {
+      "content": "### When to Use\n- **Market Condition**: Choppy, range-bound markets\n- **Stock Type: Names hitting resistance\n- **Volatility**: Low to medium\n- **Timeframe**: Any, but best in ranging markets\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::How prominent vs local valleys?::When to Use",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "How prominent vs local valleys?",
+        "When to Use"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "When to Use"
+      },
+      "tags": []
+    },
+    {
+      "content": "### What Makes It Unique\n- **Historical level validation**: Uses 1000-day lookback\n- **Pivot detection**: Level must be technically significant\n- **Pullback requirement**: Must pull away from level first\n- **Direction**: SHORT (unlike most others)\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::How prominent vs local valleys?::When to Use::What Makes It Unique",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "How prominent vs local valleys?",
+        "When to Use",
+        "What Makes It Unique"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What Makes It Unique"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Code Structure\n```python",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::How prominent vs local valleys?::When to Use::Code Structure",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "How prominent vs local valleys?",
+        "When to Use",
+        "Code Structure"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Code Structure"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Step 1: Find significant high\ndef pick_level_date(m, d0, p):\n    # Look back 1000 days\n    prior = m[(m.index >= d0 - timedelta(days=1000)) & (m.index < d0)]\n\n    # Find pivot highs\n    pivots = _pivot_high_dates(prior, left=3, right=3)\n\n    # Prefer pivot, fallback to max\n    if pivots:\n        return last_occurrence_of_max(prior.loc[pivots][\"High\"])\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 1: Find significant high",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 1: Find significant high"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Step 1: Find significant high"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Step 2: Validate significance\nsig = significance_metrics(m, level_date, d0, p)",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 2: Validate significance",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 2: Validate significance"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Step 2: Validate significance"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "# Returns: LevelPosAbs, IsPivotHigh, LevelPivotProm_ATR, etc.\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Returns: LevelPosAbs, IsPivotHigh, LevelPivotProm_ATR, etc.",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Returns: LevelPosAbs, IsPivotHigh, LevelPivotProm_ATR, etc."
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Returns: LevelPosAbs, IsPivotHigh, LevelPivotProm_ATR, etc."
+      },
+      "tags": []
+    },
+    {
+      "content": "# Step 3: Check D0 gap toward level\ngap_pct = (open - prev_close) / prev_close * 100\ntouch_pct = (open - level) / level * 100  # How close to level?\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 3: Check D0 gap toward level",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Step 3: Check D0 gap toward level"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Step 3: Check D0 gap toward level"
+      },
+      "tags": []
+    },
+    {
+      "content": "## 3. Extension Gaps\n\n**File**: `LC 3d Gap/scan.py`\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 3: Check D0 gap toward level::3. Extension Gaps",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 3: Check D0 gap toward level",
+        "3. Extension Gaps"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "3. Extension Gaps"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "### What It Is\nGaps that occur AFTER an extended move (not reversal gaps, continuation gaps).\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 3: Check D0 gap toward level::3. Extension Gaps::What It Is",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Step 3: Check D0 gap toward level",
+        "3. Extension Gaps",
+        "What It Is"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What It Is"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Core Logic\n```\nD-65 to D-5: Extended uptrend (measured by EMA distance)\nD-2: Strong push higher\nD-1: New high (swing high)\nD0: Gap open \u2192 continuation\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 3: Check D0 gap toward level::3. Extension Gaps::Core Logic",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Step 3: Check D0 gap toward level",
+        "3. Extension Gaps",
+        "Core Logic"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Core Logic"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Key Parameters\n```python",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Step 3: Check D0 gap toward level::3. Extension Gaps::Key Parameters",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Step 3: Check D0 gap toward level",
+        "3. Extension Gaps",
+        "Key Parameters"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Key Parameters"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# EMA distance (as multiple of ATR)\nday_14_avg_ema_10 >= 0.25  # Extended over 14 days\nday_7_avg_ema_10 >= 0.25   # Extended over 7 days\nday_3_avg_ema_10 >= 0.5    # Recently extended\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::EMA distance (as multiple of ATR)",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EMA distance (as multiple of ATR)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "EMA distance (as multiple of ATR)"
+      },
+      "tags": []
+    },
+    {
+      "content": "# D-1 strength\nday_1_ema_distance_10 >= 1.5  # High is 1.5x ATR above EMA\nday_1_ema_distance_30 >= 3.0  # High is 3x ATR above EMA\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::D-1 strength",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "D-1 strength"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "D-1 strength"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Gap requirements\nday_0_gap >= 0.5 * ATR  # Gap at least half ATR\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Gap requirements",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Gap requirements"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Gap requirements"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Swing High Detection\n```python\ndef calculate_swing_high(data, start_offset, end_offset):\n    \"\"\"\n    Find highest high that is surrounded by lower highs.\n\n    A swing high is a local maximum.\n    \"\"\"\n    swing_highs = []\n\n    for i in range(1, len(range_data) - 1):\n        if (curr_high > prev_high and\n            curr_high > next_high):\n            swing_highs.append(curr_high)\n\n    return max(swing_highs)\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Gap requirements::Swing High Detection",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Gap requirements",
+        "Swing High Detection"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Swing High Detection"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "### When to Use\n- **Market Condition**: Trending markets with extended moves\n- **Stock Type**: Momentum names\n- **Volatility**: Medium to high\n- **Timeframe**: Bull markets\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Gap requirements::Swing High Detection::When to Use",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Gap requirements",
+        "Swing High Detection",
+        "When to Use"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "When to Use"
+      },
+      "tags": []
+    },
+    {
+      "content": "### What Makes It Unique\n- **Extension detection**: Measures how extended stock already is\n- **Multi-timeframe EMA**: Uses both 10 and 30 period EMAs\n- **Swing high validation**: Recent high must be \"real\"\n- **Gap continuation**: Gap is AFTER extension, not the start\n\n---\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Gap requirements::Swing High Detection::What Makes It Unique",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Gap requirements",
+        "Swing High Detection",
+        "What Makes It Unique"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What Makes It Unique"
+      },
+      "tags": []
+    },
+    {
+      "content": "## 4. Parabolic Extensions (Daily Para)\n\n**File**: `Daily Para/other half a+ scan.py`\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Gap requirements::4. Parabolic Extensions (Daily Para)",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Gap requirements",
+        "4. Parabolic Extensions (Daily Para)"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "4. Parabolic Extensions (Daily Para)"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "### What It Is\nParabolic move detection - stocks that are accelerating upward.\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Gap requirements::4. Parabolic Extensions (Daily Para)::What It Is",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Gap requirements",
+        "4. Parabolic Extensions (Daily Para)",
+        "What It Is"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What It Is"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Core Logic\n```\nD-50 to D-1: Accelerating uptrend\nD-1: Strong green candle\nD0: Gap open + continuation\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Gap requirements::4. Parabolic Extensions (Daily Para)::Core Logic",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Gap requirements",
+        "4. Parabolic Extensions (Daily Para)",
+        "Core Logic"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Core Logic"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Key Parameters\n```python",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Gap requirements::4. Parabolic Extensions (Daily Para)::Key Parameters",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Gap requirements",
+        "4. Parabolic Extensions (Daily Para)",
+        "Key Parameters"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Key Parameters"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Slope requirements (measured in %)\nslope3d_min = 10    # 3-day slope >= 10%\nslope5d_min = 20    # 5-day slope >= 20%\nslope15d_min = 40   # 15-day slope >= 40%\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Slope requirements (measured in %)",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Slope requirements (measured in %)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Slope requirements (measured in %)"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Custom 50-day slope\nslope50d = (ema9[-4] - ema9[-50]) / ema9[-50] * 100\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Custom 50-day slope",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Custom 50-day slope"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Custom 50-day slope"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Gap requirements\ngap_div_atr_min = 0.5  # Gap >= 0.5x ATR\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Gap requirements",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Gap requirements"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Gap requirements"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Position within range\nupper_70_range >= 65  # Close in upper 70% of D-1 range\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Position within range",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Position within range"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Position within range"
+      },
+      "tags": [
+        "position"
+      ]
+    },
+    {
+      "content": "### Metrics\n```python",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Position within range::Metrics",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Position within range",
+        "Metrics"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Metrics"
+      },
+      "tags": [
+        "indicator",
+        "code"
+      ]
+    },
+    {
+      "content": "# Slope = EMA change over time\nSlope_9_3d = (ema9 - ema9.shift(3)) / ema9.shift(3) * 100\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Slope = EMA change over time",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Slope = EMA change over time"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Slope = EMA change over time"
+      },
+      "tags": []
+    },
+    {
+      "content": "# 50-day slope (custom window)\nSlope_9_4to50d = (ema9.shift(4) - ema9.shift(50)) / ema9.shift(50) * 100\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::50-day slope (custom window)",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "50-day slope (custom window)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "50-day slope (custom window)"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Gap vs ATR\ngap_div_atr = gap / (0.5 * atr)\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Gap vs ATR",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Gap vs ATR"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Gap vs ATR"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Close position in range\nupper_70_range = (close - low) / (high - low) * 100\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position in range",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Close position in range"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Close position in range"
+      },
+      "tags": [
+        "position"
+      ]
+    },
+    {
+      "content": "### When to Use\n- **Market Condition**: Meme stocks, speculative frenzies\n- **Stock Type**: High beta, small caps\n- **Volatility**: High\n- **Timeframe**: Speculative periods\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position in range::When to Use",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Close position in range",
+        "When to Use"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "When to Use"
+      },
+      "tags": []
+    },
+    {
+      "content": "### What Makes It Unique\n- **Acceleration focus**: Measures rate of change, not just level\n- **Multiple slope windows**: 3d, 5d, 15d, 50d\n- **Upper range requirement**: Stock must close strong\n- **Parabolic detection**: Finds accelerating moves\n\n---\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position in range::When to Use::What Makes It Unique",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Close position in range",
+        "When to Use",
+        "What Makes It Unique"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What Makes It Unique"
+      },
+      "tags": []
+    },
+    {
+      "content": "## 5. Frontside Extensions (FRD)\n\n**File**: `FRD EXT Gap/scan.py`\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position in range::5. Frontside Extensions (FRD)",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Close position in range",
+        "5. Frontside Extensions (FRD)"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "5. Frontside Extensions (FRD)"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "### What It Is\n\"Frontside\" means the FIRST extended move before a consolidation or reversal.\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position in range::5. Frontside Extensions (FRD)::What It Is",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Close position in range",
+        "5. Frontside Extensions (FRD)",
+        "What It Is"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What It Is"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Core Logic\n```\nHistorical: Stock in downtrend or consolidation\nRecent: Frontside breakout begins\nD0: Gap confirms frontside extension\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position in range::5. Frontside Extensions (FRD)::Core Logic",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Close position in range",
+        "5. Frontside Extensions (FRD)",
+        "Core Logic"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Core Logic"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Key Concept\n- **Frontside** = First leg up after downtrend/consolidation\n- **Backside** = Parabolic extension after already extended\n- **FRD** = Frontside detection\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position in range::5. Frontside Extensions (FRD)::Key Concept",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Close position in range",
+        "5. Frontside Extensions (FRD)",
+        "Key Concept"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Key Concept"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Key Parameters\n```python",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position in range::5. Frontside Extensions (FRD)::Key Parameters",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Close position in range",
+        "5. Frontside Extensions (FRD)",
+        "Key Parameters"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Key Parameters"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# EMA distance thresholds\nhigh_to_ema9_div_atr >= 1.75   # Breaking out\nhigh_to_ema30_div_atr >= 4.0    # Clear of long-term MA\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::EMA distance thresholds",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EMA distance thresholds"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "EMA distance thresholds"
+      },
+      "tags": []
+    },
+    {
+      "content": "# % change vs ATR\npct_change_7d_div_atr >= 2     # 7-day move >= 2x ATR\npct_change_14d_div_atr >= 3.5  # 14-day move >= 3.5x ATR\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::% change vs ATR",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "% change vs ATR"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "% change vs ATR"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Gap requirements\ngap_div_atr >= 2  # Gap >= 2x ATR (very large gap)\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Gap requirements",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Gap requirements"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Gap requirements"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Close position\nupper_70_range >= 65  # Strong close\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Close position"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Close position"
+      },
+      "tags": [
+        "position"
+      ]
+    },
+    {
+      "content": "### When to Use\n- **Market Condition**: Reversal from downtrend\n- **Stock Type**: Value names breaking out\n- **Volatility**: Low to medium (then increases)\n- **Timeframe**: Bottoming process\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position::When to Use",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Close position",
+        "When to Use"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "When to Use"
+      },
+      "tags": []
+    },
+    {
+      "content": "### What Makes It Unique\n- **Reversal detection**: Finds first leg up, not continuation\n- **Large gap requirement**: Gap must be >= 2x ATR\n- **Multiple timeframes**: 7d, 14d momentum validation\n- **EMA break**: Clear of long-term moving averages\n\n---\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position::When to Use::What Makes It Unique",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Close position",
+        "When to Use",
+        "What Makes It Unique"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What Makes It Unique"
+      },
+      "tags": []
+    },
+    {
+      "content": "## 6. 3-Day Trigger (LC 3 Day)\n\n**File**: `LC 3 Day Trig/scan.py` (referenced)\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position::6. 3-Day Trigger (LC 3 Day)",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Close position",
+        "6. 3-Day Trigger (LC 3 Day)"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "6. 3-Day Trigger (LC 3 Day)"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "### What It Is\nSimple 3-day pattern setup with gap trigger.\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position::6. 3-Day Trigger (LC 3 Day)::What It Is",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Close position",
+        "6. 3-Day Trigger (LC 3 Day)",
+        "What It Is"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What It Is"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "### Core Logic\n```\nD-3: Setup begins\nD-2: Continued setup\nD-1: Preparation\nD0: Gap triggers entry\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position::6. 3-Day Trigger (LC 3 Day)::Core Logic",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Close position",
+        "6. 3-Day Trigger (LC 3 Day)",
+        "Core Logic"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Core Logic"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "### When to Use\n- **Market Condition**: Any\n- **Complexity**: Simple pattern for quick testing\n- **Learning**: Good for understanding basics\n\n---\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position::6. 3-Day Trigger (LC 3 Day)::When to Use",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Close position",
+        "6. 3-Day Trigger (LC 3 Day)",
+        "When to Use"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "When to Use"
+      },
+      "tags": [
+        "backtest",
+        "pattern"
+      ]
+    },
+    {
+      "content": "## Code Structure Comparison\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position::Code Structure Comparison",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Close position",
+        "Code Structure Comparison"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Code Structure Comparison"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "### Pattern A: Multi-Pattern Scanner (DMR-style)\n\n```python",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Close position::Code Structure Comparison::Pattern A: Multi-Pattern Scanner (DMR-style)",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Close position",
+        "Code Structure Comparison",
+        "Pattern A: Multi-Pattern Scanner (DMR-style)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern A: Multi-Pattern Scanner (DMR-style)"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# Structure: Single pass, multiple pattern flags\nfor i, row in df.iterrows():\n    df['d2_pm_setup'] = condition_set_1\n    df['d2_pmh_break'] = condition_set_2\n    df['d3'] = condition_set_3\n    df['d4'] = condition_set_4\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Structure: Single pass, multiple pattern flags",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Structure: Single pass, multiple pattern flags"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Structure: Single pass, multiple pattern flags"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "# Output: One row per ticker per day, multiple True/False flags\n```\n\n**Pros**: Efficient single pass\n**Cons**: Complex logic, harder to debug\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Output: One row per ticker per day, multiple True/False flags",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Output: One row per ticker per day, multiple True/False flags"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Output: One row per ticker per day, multiple True/False flags"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Pattern B: Single Pattern Per File\n\n```python",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Output: One row per ticker per day, multiple True/False flags::Pattern B: Single Pattern Per File",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Output: One row per ticker per day, multiple True/False flags",
+        "Pattern B: Single Pattern Per File"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern B: Single Pattern Per File"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# Structure: One pattern, simple logic\nfor symbol in symbols:\n    if condition_met:\n        results.append({\n            'ticker': symbol,\n            'date': date,\n            'setup_type': 'FBO'\n        })\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Structure: One pattern, simple logic",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Structure: One pattern, simple logic"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Structure: One pattern, simple logic"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "# Output: List of setups found\n```\n\n**Pros**: Simple, easy to debug\n**Cons**: Inefficient for multiple patterns\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Output: List of setups found",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Output: List of setups found"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Output: List of setups found"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "### Pattern C: Class-Based (V31)\n\n```python\nclass TradingScanner:\n    def run_scan(self):\n        stage1 = self.fetch_data()\n        stage2a = self.compute_simple_features(stage1)\n        stage2b = self.apply_filters(stage2a)\n        stage3a = self.compute_full_features(stage2b)\n        results = self.detect_patterns(stage3a)\n        return results\n```\n\n**Pros**: Modular, testable, fast\n**Cons**: More boilerplate\n\n---\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Output: List of setups found::Pattern C: Class-Based (V31)",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Output: List of setups found",
+        "Pattern C: Class-Based (V31)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern C: Class-Based (V31)"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "pattern",
+        "v31",
+        "code"
+      ]
+    },
+    {
+      "content": "## Parameter System Patterns\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Output: List of setups found::Parameter System Patterns",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Output: List of setups found",
+        "Parameter System Patterns"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Parameter System Patterns"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "### Pattern 1: Threshold-Based (Most Common)\n\n```python\nparams = {\n    'gap_min': 0.5,           # Gap >= 0.5%\n    'volume_min': 10_000_000,  # Volume >= 10M\n    'atr_mult': 2.0           # Distance >= 2x ATR\n}\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Output: List of setups found::Parameter System Patterns::Pattern 1: Threshold-Based (Most Common)",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Output: List of setups found",
+        "Parameter System Patterns",
+        "Pattern 1: Threshold-Based (Most Common)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 1: Threshold-Based (Most Common)"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# Usage: if gap >= params['gap_min']\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Usage: if gap >= params['gap_min']",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage: if gap >= params['gap_min']"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage: if gap >= params['gap_min']"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Pattern 2: Range-Based\n\n```python\nparams = {\n    'level_pos_abs_min': 0.85,     # In top 15%\n    'level_pos_abs_max': 0.95,     # But not top 5%\n    'pivot_percentile_min': 0.85    # Top 15% of pivots\n}\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Usage: if gap >= params['gap_min']::Pattern 2: Range-Based",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage: if gap >= params['gap_min']",
+        "Pattern 2: Range-Based"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 2: Range-Based"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# Usage: if params['min'] <= value <= params['max']\n```\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Usage: if params['min'] <= value <= params['max']",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage: if params['min'] <= value <= params['max']"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage: if params['min'] <= value <= params['max']"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Pattern 3: Multi-Condition\n\n```python\nparams = {\n    'require_prev_green': True,\n    'require_pm_h_high': True,\n    'require_volume_confirm': False\n}\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Usage: if params['min'] <= value <= params['max']::Pattern 3: Multi-Condition",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage: if params['min'] <= value <= params['max']",
+        "Pattern 3: Multi-Condition"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 3: Multi-Condition"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# Usage: All required conditions must be True\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Usage: All required conditions must be True",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage: All required conditions must be True"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage: All required conditions must be True"
+      },
+      "tags": []
+    },
+    {
+      "content": "## When to Use Which Pattern\n\n| Market Condition | Use Pattern | Rationale |\n|------------------|-------------|------------|\n| Strong momentum, breaking out | DMR | Ride the trend |\n| Resistance holds, choppy | FBO | Fade failed breakouts |\n| Extended move continues | Extension Gap | Parabolic continuation |\n| Acceleration phase | Daily Para | Catch the rocket |\n| Bottoming, reversal | FRD EXT Gap | First leg up |\n| Simple setup test | LC 3d | Quick validation |\n\n---\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Usage: All required conditions must be True::When to Use Which Pattern",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Usage: All required conditions must be True",
+        "When to Use Which Pattern"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "When to Use Which Pattern"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "## Key Takeaways for AI Agent Development\n\n1. **NOT ONE PATTERN TYPE**: Backside B is just one of MANY\n2. **DIFFERENT LOGIC**: Each pattern type has fundamentally different detection logic\n3. **DIFFERENT PARAMETERS**: Each uses different metrics and thresholds\n4. **DIFFERENT MARKET CONDITIONS**: Each targets different market behavior\n5. **CODE STRUCTURE VARIETY**: Simple scripts, class-based, multi-pattern\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Usage: All required conditions must be True::Key Takeaways for AI Agent Development",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Usage: All required conditions must be True",
+        "Key Takeaways for AI Agent Development"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Key Takeaways for AI Agent Development"
+      },
+      "tags": [
+        "indicator",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "### AI Agent Must Be Able To:\n\n1. **Identify pattern type** from user description\n2. **Choose appropriate code structure** for that pattern\n3. **Generate correct parameters** for that pattern type\n4. **Validate against A+ examples** of THAT pattern type\n5. **Debug using pattern-specific logic**\n\n---\n\n**Document Status**: COMPLETE\n**Version**: 1.0\n**Last Updated**: 2026-01-29\n",
+      "chunk_id": "EDGEDEV_PATTERN_TYPE_CATALOG.md::Usage: All required conditions must be True::Key Takeaways for AI Agent Development::AI Agent Must Be Able To:",
+      "source_file": "EDGEDEV_PATTERN_TYPE_CATALOG.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "Usage: All required conditions must be True",
+        "Key Takeaways for AI Agent Development",
+        "AI Agent Must Be Able To:"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "AI Agent Must Be Able To:"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    }
+  ]
+}

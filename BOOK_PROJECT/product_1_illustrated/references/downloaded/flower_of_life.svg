@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1400" width="1400" height="1400">
+  <defs>
+    <radialGradient id="spaceGradient" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" style="stop-color:#1a237e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0e27;stop-opacity:1" />
+    </radialGradient>
+
+    <filter id="violetGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffed4e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffd700;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1400" height="1400" fill="url(#spaceGradient)" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Prata&amp;display=swap');
+  </style>
+
+  <!-- Title - Clean -->
+  <text x="700" y="100" text-anchor="middle" font-family="Prata, serif" font-size="56" font-weight="400" fill="#ffd700" letter-spacing="6">FLOWER OF LIFE</text>
+
+  <!-- Large Flower of Life Pattern - Centered, Clean -->
+  <g transform="translate(700, 750)">
+    <!-- Central circle with glow -->
+    <circle cx="0" cy="0" r="150" stroke="url(#goldGradient)" stroke-width="3" filter="url(#violetGlow)"/>
+
+    <!-- First ring (6 circles) -->
+    <g stroke="url(#goldGradient)" stroke-width="2.5" fill="none" opacity="0.7">
+      <circle cx="0" cy="-150" r="150" />
+      <circle cx="130" cy="-75" r="150" />
+      <circle cx="130" cy="75" r="150" />
+      <circle cx="0" cy="150" r="150" />
+      <circle cx="-130" cy="75" r="150" />
+      <circle cx="-130" cy="-75" r="150" />
+    </g>
+
+    <!-- Second ring -->
+    <g stroke="url(#goldGradient)" stroke-width="2" fill="none" opacity="0.5">
+      <circle cx="0" cy="-300" r="150" />
+      <circle cx="260" cy="-150" r="150" />
+      <circle cx="260" cy="150" r="150" />
+      <circle cx="0" cy="300" r="150" />
+      <circle cx="-260" cy="150" r="150" />
+      <circle cx="-260" cy="-150" r="150" />
+    </g>
+
+    <!-- Center point -->
+    <circle cx="0" cy="0" r="12" fill="#7b1fa2" filter="url(#violetGlow)"/>
+    <circle cx="0" cy="0" r="6" fill="#ffd700"/>
+  </g>
+
+  <!-- Subtle outer circle -->
+  <circle cx="700" cy="750" r="450" stroke="#ffd700" stroke-width="1" fill="none" opacity="0.15"/>
+
+  <!-- Minimal bottom text -->
+  <g transform="translate(700, 1280)">
+    <text x="0" y="0" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#ffffff" opacity="0.7" letter-spacing="3">19 CIRCLES · ONE PATTERN · ALL CREATION</text>
+  </g>
+
+  <!-- Subtle corner accents -->
+  <g stroke="#ffd700" stroke-width="1" fill="none" opacity="0.2">
+    <path d="M50,150 L50,50 L150,50" />
+    <path d="M1350,150 L1350,50 L1250,50" />
+    <path d="M50,1250 L50,1350 L150,1350" />
+    <path d="M1350,1250 L1350,1350 L1250,1350" />
+  </g>
+</svg>

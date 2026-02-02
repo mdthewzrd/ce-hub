@@ -1,0 +1,407 @@
+{
+  "timestamp": "2025-11-22T22-27-14-651Z",
+  "config": {
+    "baseUrl": "http://localhost:6565",
+    "timeout": 10000,
+    "screenshotDir": "test-screenshots",
+    "verbose": true
+  },
+  "summary": {
+    "totalTests": 6,
+    "passedTests": 0,
+    "failedTests": 6,
+    "passRate": 0
+  },
+  "results": [
+    {
+      "id": "ytd_dollar_stats",
+      "name": "YTD Dollar Mode Statistics Page",
+      "commands": [
+        {
+          "type": "navigateToPage",
+          "payload": {
+            "page": "statistics"
+          }
+        },
+        {
+          "type": "setDisplayMode",
+          "payload": {
+            "mode": "dollar"
+          }
+        },
+        {
+          "type": "setDateRange",
+          "payload": {
+            "range": "ytd"
+          }
+        }
+      ],
+      "expectedStates": {
+        "page": "statistics",
+        "displayMode": "dollar",
+        "dateRange": "ytd"
+      },
+      "priority": "high",
+      "startTime": 1763850416546,
+      "results": {
+        "commandExecution": {
+          "success": false,
+          "error": {
+            "data": null,
+            "errors": [
+              {
+                "message": "Unknown operation"
+              }
+            ]
+          }
+        },
+        "stateValidation": {
+          "page": {
+            "success": true,
+            "expected": "statistics"
+          },
+          "displayMode": {
+            "success": true,
+            "expected": "dollar"
+          },
+          "dateRange": {
+            "success": false,
+            "expected": "ytd"
+          }
+        },
+        "screenshots": []
+      },
+      "success": false,
+      "endTime": 1763850418591,
+      "duration": 2045
+    },
+    {
+      "id": "7d_r_dashboard",
+      "name": "7 Day R-Mode Dashboard",
+      "commands": [
+        {
+          "type": "navigateToPage",
+          "payload": {
+            "page": "dashboard"
+          }
+        },
+        {
+          "type": "setDisplayMode",
+          "payload": {
+            "mode": "r"
+          }
+        },
+        {
+          "type": "setDateRange",
+          "payload": {
+            "range": "7d"
+          }
+        }
+      ],
+      "expectedStates": {
+        "page": "dashboard",
+        "displayMode": "r",
+        "dateRange": "7d"
+      },
+      "priority": "high",
+      "startTime": 1763850419593,
+      "results": {
+        "commandExecution": {
+          "success": false,
+          "error": {
+            "data": null,
+            "errors": [
+              {
+                "message": "Unknown operation"
+              }
+            ]
+          }
+        },
+        "stateValidation": {
+          "page": {
+            "success": true,
+            "expected": "dashboard"
+          },
+          "displayMode": {
+            "success": true,
+            "expected": "r"
+          },
+          "dateRange": {
+            "success": true,
+            "expected": "7d"
+          }
+        },
+        "screenshots": []
+      },
+      "success": false,
+      "endTime": 1763850421604,
+      "duration": 2011
+    },
+    {
+      "id": "complex_sequence",
+      "name": "Complex State Transition Sequence",
+      "commands": [
+        {
+          "type": "navigateToPage",
+          "payload": {
+            "page": "dashboard"
+          }
+        },
+        {
+          "type": "setDisplayMode",
+          "payload": {
+            "mode": "dollar"
+          }
+        },
+        {
+          "type": "setDateRange",
+          "payload": {
+            "range": "7d"
+          }
+        },
+        {
+          "type": "navigateToPage",
+          "payload": {
+            "page": "statistics"
+          }
+        },
+        {
+          "type": "setDisplayMode",
+          "payload": {
+            "mode": "r"
+          }
+        },
+        {
+          "type": "setDateRange",
+          "payload": {
+            "range": "ytd"
+          }
+        }
+      ],
+      "expectedStates": {
+        "page": "statistics",
+        "displayMode": "r",
+        "dateRange": "ytd"
+      },
+      "priority": "high",
+      "startTime": 1763850422605,
+      "results": {
+        "commandExecution": {
+          "success": false,
+          "error": {
+            "data": null,
+            "errors": [
+              {
+                "message": "Unknown operation"
+              }
+            ]
+          }
+        },
+        "stateValidation": {
+          "page": {
+            "success": true,
+            "expected": "statistics"
+          },
+          "displayMode": {
+            "success": true,
+            "expected": "r"
+          },
+          "dateRange": {
+            "success": true,
+            "expected": "ytd"
+          }
+        },
+        "screenshots": []
+      },
+      "success": false,
+      "endTime": 1763850424615,
+      "duration": 2010
+    },
+    {
+      "id": "30d_dollar_dashboard",
+      "name": "30 Day Dollar Dashboard",
+      "commands": [
+        {
+          "type": "navigateToPage",
+          "payload": {
+            "page": "dashboard"
+          }
+        },
+        {
+          "type": "setDisplayMode",
+          "payload": {
+            "mode": "dollar"
+          }
+        },
+        {
+          "type": "setDateRange",
+          "payload": {
+            "range": "30d"
+          }
+        }
+      ],
+      "expectedStates": {
+        "page": "dashboard",
+        "displayMode": "dollar",
+        "dateRange": "30d"
+      },
+      "priority": "medium",
+      "startTime": 1763850425616,
+      "results": {
+        "commandExecution": {
+          "success": false,
+          "error": {
+            "data": null,
+            "errors": [
+              {
+                "message": "Unknown operation"
+              }
+            ]
+          }
+        },
+        "stateValidation": {
+          "page": {
+            "success": true,
+            "expected": "dashboard"
+          },
+          "displayMode": {
+            "success": true,
+            "expected": "dollar"
+          },
+          "dateRange": {
+            "success": true,
+            "expected": "30d"
+          }
+        },
+        "screenshots": []
+      },
+      "success": false,
+      "endTime": 1763850427627,
+      "duration": 2011
+    },
+    {
+      "id": "all_r_stats",
+      "name": "All Time R-Mode Statistics",
+      "commands": [
+        {
+          "type": "navigateToPage",
+          "payload": {
+            "page": "statistics"
+          }
+        },
+        {
+          "type": "setDisplayMode",
+          "payload": {
+            "mode": "r"
+          }
+        },
+        {
+          "type": "setDateRange",
+          "payload": {
+            "range": "all"
+          }
+        }
+      ],
+      "expectedStates": {
+        "page": "statistics",
+        "displayMode": "r",
+        "dateRange": "all"
+      },
+      "priority": "medium",
+      "startTime": 1763850428627,
+      "results": {
+        "commandExecution": {
+          "success": false,
+          "error": {
+            "data": null,
+            "errors": [
+              {
+                "message": "Unknown operation"
+              }
+            ]
+          }
+        },
+        "stateValidation": {
+          "page": {
+            "success": true,
+            "expected": "statistics"
+          },
+          "displayMode": {
+            "success": true,
+            "expected": "r"
+          },
+          "dateRange": {
+            "success": true,
+            "expected": "all"
+          }
+        },
+        "screenshots": []
+      },
+      "success": false,
+      "endTime": 1763850430638,
+      "duration": 2011
+    },
+    {
+      "id": "90d_dollar_stats",
+      "name": "90 Day Dollar Statistics",
+      "commands": [
+        {
+          "type": "navigateToPage",
+          "payload": {
+            "page": "statistics"
+          }
+        },
+        {
+          "type": "setDisplayMode",
+          "payload": {
+            "mode": "dollar"
+          }
+        },
+        {
+          "type": "setDateRange",
+          "payload": {
+            "range": "90d"
+          }
+        }
+      ],
+      "expectedStates": {
+        "page": "statistics",
+        "displayMode": "dollar",
+        "dateRange": "90d"
+      },
+      "priority": "medium",
+      "startTime": 1763850431638,
+      "results": {
+        "commandExecution": {
+          "success": false,
+          "error": {
+            "data": null,
+            "errors": [
+              {
+                "message": "Unknown operation"
+              }
+            ]
+          }
+        },
+        "stateValidation": {
+          "page": {
+            "success": true,
+            "expected": "statistics"
+          },
+          "displayMode": {
+            "success": false,
+            "expected": "dollar"
+          },
+          "dateRange": {
+            "success": true,
+            "expected": "90d"
+          }
+        },
+        "screenshots": []
+      },
+      "success": false,
+      "endTime": 1763850433649,
+      "duration": 2011
+    }
+  ]
+}

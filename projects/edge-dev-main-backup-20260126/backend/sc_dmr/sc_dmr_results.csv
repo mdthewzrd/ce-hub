@@ -1,0 +1,62 @@
+Ticker,Date,Scanner_Label
+NITO,2025-01-03,"D2_Extreme_Gap, D2_Extreme_Intraday_Run, D2_PM_Setup, D2_PM_Setup_2"
+CRNC,2025-01-06,D2_PMH_Break
+KITT,2025-01-06,"D2_PMH_Break, D2_PM_Setup"
+NVNI,2025-01-27,D2_PM_Setup
+QNTM,2025-02-06,"D2_PM_Setup, D3_Alt"
+DOMH,2025-02-11,"D2_Extreme_Gap, D2_PMH_Break, D2_PM_Setup"
+AIFF,2025-02-12,D2_PM_Setup
+TRNR,2025-03-03,"D2_PM_Setup, D3"
+GV,2025-03-06,"D2_Extreme_Gap, D2_PMH_Break, D2_PM_Setup"
+PSTV,2025-03-07,"D2_PMH_Break, D2_PM_Setup"
+DWTX,2025-03-12,D4
+CRVO,2025-03-13,D2_PMH_Break
+IBO,2025-03-21,"D2_Extreme_Intraday_Run, D2_PM_Setup, D2_PM_Setup_2"
+ICCT,2025-04-01,"D2_Extreme_Intraday_Run, D2_PM_Setup, D2_PM_Setup_2"
+SOXS,2025-04-07,D3_Alt
+UVIX,2025-04-07,"D3, D3_Alt"
+VXX,2025-04-07,D3_Alt
+SBEV,2025-04-16,"D2_Extreme_Gap, D2_PMH_Break, D2_PM_Setup"
+AREC,2025-04-17,D2_PM_Setup
+CEP,2025-04-25,D2_PM_Setup
+OMEX,2025-04-25,"D2_Extreme_Gap, D2_PMH_Break, D2_PM_Setup, D2_PM_Setup_2"
+NVNI,2025-05-01,"D2_Extreme_Gap, D2_PMH_Break, D2_PM_Setup"
+KIDZ,2025-05-02,"D2_PMH_Break, D2_PM_Setup"
+ASST,2025-05-08,"D2_Extreme_Gap, D2_Extreme_Intraday_Run, D2_PM_Setup, D2_PM_Setup_2"
+ZKIN,2025-05-09,"D2_Extreme_Gap, D2_PMH_Break, D2_PM_Setup"
+SYTA,2025-05-19,D2_PM_Setup
+LVWR,2025-05-28,"D2_PMH_Break, D2_PM_Setup"
+SBET,2025-05-30,"D2_PMH_Break, D2_PM_Setup"
+BMGL,2025-06-02,"D2_PMH_Break, D2_PM_Setup"
+MCTR,2025-06-04,D2_PM_Setup
+KNW,2025-06-09,"D2_Extreme_Gap, D2_PMH_Break, D2_PM_Setup, D2_PM_Setup_2"
+KLTO,2025-06-10,"D2_PMH_Break, D2_PM_Setup, D2_PM_Setup_2"
+NKTR,2025-06-25,D2_PM_Setup
+SRFM,2025-06-25,D2_PM_Setup
+BMNR,2025-07-01,"D2_Extreme_Intraday_Run, D2_PM_Setup, D2_PM_Setup_2"
+LIXT,2025-07-03,"D2_Extreme_Intraday_Run, D2_PM_Setup, D2_PM_Setup_2, D3_Alt"
+WOLF,2025-07-08,"D2_PMH_Break, D3_Alt"
+PROK,2025-07-09,"D2_PMH_Break, D2_PM_Setup"
+ABVE,2025-07-11,"D2_Extreme_Gap, D2_PMH_Break, D2_PM_Setup, D2_PM_Setup_2"
+OPEN,2025-07-17,D3_Alt
+BTCS,2025-07-17,D3_Alt
+OPEN,2025-07-21,D2_PM_Setup
+HCTI,2025-07-25,"D2_PMH_Break, D2_PM_Setup"
+MCVT,2025-07-28,D2_PMH_Break
+ATNF,2025-08-13,"D2_PMH_Break, D2_PM_Setup"
+THAR,2025-08-21,"D2_PMH_Break, D2_PM_Setup"
+PTNM,2025-09-10,D2_PM_Setup
+OPI,2025-09-16,D4
+SLNH,2025-09-23,"D2_PMH_Break, D3_Alt"
+WOLF,2025-09-30,"D2_PMH_Break, D2_PM_Setup"
+SPRB,2025-10-07,"D2_PMH_Break, D2_PM_Setup"
+SCWO,2025-10-09,"D2_PMH_Break, D2_PM_Setup"
+GWH,2025-10-13,D2_PM_Setup_2
+STI,2025-10-14,D2_PM_Setup
+UAMY,2025-10-14,D3_Alt
+AQMS,2025-10-14,"D2_Extreme_Gap, D2_Extreme_Intraday_Run, D2_PM_Setup, D2_PM_Setup_2"
+NVTS,2025-10-14,D3_Alt
+FLNC,2025-10-15,D3_Alt
+RANI,2025-10-22,"D3_Alt, D4"
+BYND,2025-10-22,"D2_Extreme_Gap, D2_PMH_Break, D2_PM_Setup, D2_PM_Setup_2, D3, D3_Alt, D4"
+IBIO,2025-10-23,D3_Alt

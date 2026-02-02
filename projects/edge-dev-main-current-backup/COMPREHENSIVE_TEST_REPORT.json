@@ -1,0 +1,274 @@
+{
+  "test_summary": {
+    "total_tests": 14,
+    "passed_tests": 11,
+    "failed_tests": 3,
+    "success_rate": 78.57142857142857,
+    "total_execution_time": 16.88254404067993
+  },
+  "phase_results": {
+    "Phase 1": {
+      "total": 3,
+      "passed": 2,
+      "failed": 1
+    },
+    "Phase 2": {
+      "total": 3,
+      "passed": 2,
+      "failed": 1
+    },
+    "Phase 3": {
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "Phase 4": {
+      "total": 3,
+      "passed": 2,
+      "failed": 1
+    },
+    "Integration": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0
+    }
+  },
+  "detailed_results": [
+    {
+      "phase": "Phase 1",
+      "category": "Security",
+      "test_name": "No Exposed API Keys",
+      "success": false,
+      "execution_time": 13.092862129211426,
+      "details": {
+        "patterns_checked": 8,
+        "exposed_keys_found": 19,
+        "secure_env_files": 1,
+        "total_env_files": 9
+      },
+      "errors": []
+    },
+    {
+      "phase": "Phase 1",
+      "category": "Security",
+      "test_name": "Secure Environment Variables",
+      "success": true,
+      "execution_time": 0.4199249744415283,
+      "details": {
+        "env_files_count": 9,
+        "has_production_env": false,
+        "secure_usage_count": 12,
+        "total_env_usage": 31
+      },
+      "errors": []
+    },
+    {
+      "phase": "Phase 1",
+      "category": "Security",
+      "test_name": "API Key Rotation Mechanisms",
+      "success": true,
+      "execution_time": 1.5959782600402832,
+      "details": {
+        "documentation_files": 50,
+        "example_env_files": 3,
+        "has_key_management_docs": true
+      },
+      "errors": []
+    },
+    {
+      "phase": "Phase 2",
+      "category": "Formatter",
+      "test_name": "Unified Production Formatter Exists",
+      "success": true,
+      "execution_time": 0.0004417896270751953,
+      "details": {
+        "production_formatter_exists": true,
+        "unified_pipeline_exists": true,
+        "has_formatting_result": true,
+        "has_production_formatter": true,
+        "has_parameter_extractor": true,
+        "formatter_size": 49380
+      },
+      "errors": []
+    },
+    {
+      "phase": "Phase 2",
+      "category": "Formatter",
+      "test_name": "Formatter Functionality Test",
+      "success": true,
+      "execution_time": 0.6108307838439941,
+      "details": {
+        "formatter_imported": true,
+        "function_call_successful": true,
+        "result_success": false,
+        "result_has_scanner_type": true,
+        "result_has_parameters": true
+      },
+      "errors": []
+    },
+    {
+      "phase": "Phase 2",
+      "category": "Formatter",
+      "test_name": "Formatter Consolidation Verification",
+      "success": false,
+      "execution_time": 0.002318143844604492,
+      "details": {
+        "old_formatters_found": 13,
+        "old_formatter_files": [
+          "debug_formatter_simple.py",
+          "debug_formatter.py",
+          "test_sophisticated_formatter.py",
+          "debug_formatter_simple.py",
+          "test_formatting_bypass_direct.py",
+          "test_comprehensive_split_and_format.py",
+          "debug_formatter.py",
+          "test_formatting_final_verification.py",
+          "test_formatting_process.py",
+          "formatted_backside_scanner.py",
+          "test_sophisticated_formatter.py",
+          "test_formatting_syntax_issue.py",
+          "test_formatting_bypass_verification.py"
+        ],
+        "consolidation_evidence": true,
+        "production_formatter_exists": true
+      },
+      "errors": []
+    },
+    {
+      "phase": "Phase 3",
+      "category": "Cleanup",
+      "test_name": "File Count Cleanup Verification",
+      "success": true,
+      "execution_time": 0.005057096481323242,
+      "details": {
+        "total_files": 1830,
+        "python_files": 446,
+        "target_files": 150000,
+        "reduction_achieved": true
+      },
+      "errors": []
+    },
+    {
+      "phase": "Phase 3",
+      "category": "Cleanup",
+      "test_name": "Directory Structure Cleanup",
+      "success": true,
+      "execution_time": 0.00015592575073242188,
+      "details": {
+        "problematic_dirs_found": 0,
+        "problematic_dirs": [],
+        "missing_essential_dirs": 0,
+        "missing_dirs": [],
+        "essential_dirs_present": 4
+      },
+      "errors": []
+    },
+    {
+      "phase": "Phase 3",
+      "category": "Cleanup",
+      "test_name": "Storage Optimization Verification",
+      "success": true,
+      "execution_time": 1.148615837097168,
+      "details": {
+        "estimated_size_gb": 1.4,
+        "target_size_gb": 3.0,
+        "size_optimized": true
+      },
+      "errors": []
+    },
+    {
+      "phase": "Phase 4",
+      "category": "Pipeline",
+      "test_name": "Unified Pipeline Files Exist",
+      "success": true,
+      "execution_time": 0.0003800392150878906,
+      "details": {
+        "backend_files_exist": true,
+        "frontend_files_exist": true,
+        "has_pipeline_class": true,
+        "has_process_function": true,
+        "has_pipeline_result": true,
+        "backend_file_list": [
+          "unified_pipeline.py",
+          "routes/unified_pipeline.py"
+        ],
+        "frontend_file_list": [
+          "unifiedPipelineService.ts"
+        ]
+      },
+      "errors": []
+    },
+    {
+      "phase": "Phase 4",
+      "category": "Pipeline",
+      "test_name": "Pipeline API Endpoints Test",
+      "success": false,
+      "execution_time": 0.0042362213134765625,
+      "details": {
+        "execution_error": "mutable default <class 'list'> for field errors is not allowed: use default_factory"
+      },
+      "errors": [
+        "Execution error: mutable default <class 'list'> for field errors is not allowed: use default_factory"
+      ]
+    },
+    {
+      "phase": "Phase 4",
+      "category": "Pipeline",
+      "test_name": "Frontend Pipeline Integration",
+      "success": true,
+      "execution_time": 0.00019121170043945312,
+      "details": {
+        "exec_page_exists": true,
+        "has_unified_import": true,
+        "has_pipeline_toggle": true,
+        "has_pipeline_state": true,
+        "has_zap_icon": true,
+        "integration_complete": true
+      },
+      "errors": []
+    },
+    {
+      "phase": "Integration",
+      "category": "E2E",
+      "test_name": "End-to-End Workflow Test",
+      "success": true,
+      "execution_time": 0.00045013427734375,
+      "details": {
+        "phases_complete": 4,
+        "total_phases": 4,
+        "phase_results": {
+          "phase1_complete": true,
+          "phase2_complete": true,
+          "phase3_complete": true,
+          "phase4_complete": true
+        },
+        "overall_success": true
+      },
+      "errors": []
+    },
+    {
+      "phase": "Integration",
+      "category": "Health",
+      "test_name": "System Health Check",
+      "success": true,
+      "execution_time": 0.00014328956604003906,
+      "details": {
+        "healthy_components": 8,
+        "total_components": 8,
+        "health_checks": {
+          "backend_structure": true,
+          "frontend_structure": true,
+          "package_json": true,
+          "node_modules": true,
+          "production_formatter": true,
+          "unified_pipeline": true,
+          "exec_dashboard": true,
+          "pipeline_service": true
+        },
+        "health_percentage": 100.0
+      },
+      "errors": []
+    }
+  ],
+  "overall_status": "FAILED"
+}

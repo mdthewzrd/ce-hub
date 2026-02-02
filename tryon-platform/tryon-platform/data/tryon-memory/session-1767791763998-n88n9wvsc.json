@@ -1,0 +1,99 @@
+{
+  "sessionId": "session-1767791763998-n88n9wvsc",
+  "task": "Generate virtual try-on image.\n\nIMPORTANT: Use these EXACT file paths and parameters:\n- Subject photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/1b2a6c97-61a3-43bb-a3cf-392a757a972b/subject_2_547649680e1afa32cb008ff8bf925da5.jpg\n- Glasses photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_1_IMG_2109.jpg\n- Task ID (REQUIRED for generate_tryon_image): a4a0c58c-a2cc-4f22-87d1-d5465a1a6a00\n\nWhen calling generate_tryon_image, you MUST include these parameters:\n- subjectPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/1b2a6c97-61a3-43bb-a3cf-392a757a972b/subject_2_547649680e1afa32cb008ff8bf925da5.jpg\"\n- glassesPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_1_IMG_2109.jpg\"\n- taskId: \"a4a0c58c-a2cc-4f22-87d1-d5465a1a6a00\" (this is REQUIRED!)\n\nDO NOT make up file paths. Use the paths provided above exactly as written.",
+  "results": [
+    {
+      "success": true,
+      "data": {
+        "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/1b2a6c97-61a3-43bb-a3cf-392a757a972b/subject_2_547649680e1afa32cb008ff8bf925da5_result_a4a0c58c-a2cc-4f22-87d1-d5465a1a6a00.jpg",
+        "report": {
+          "taskId": "a4a0c58c-a2cc-4f22-87d1-d5465a1a6a00",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Hybrid Canvas + AI (realistic blending)",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "a4a0c58c-a2cc-4f22-87d1-d5465a1a6a00",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767791766377,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Hybrid Canvas + AI (realistic blending)"
+        },
+        "generationMethod": "Hybrid Canvas + AI (realistic blending)"
+      }
+    }
+  ],
+  "evaluation": {
+    "score": 85,
+    "finalResult": {
+      "success": true,
+      "data": {
+        "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/1b2a6c97-61a3-43bb-a3cf-392a757a972b/subject_2_547649680e1afa32cb008ff8bf925da5_result_a4a0c58c-a2cc-4f22-87d1-d5465a1a6a00.jpg",
+        "report": {
+          "taskId": "a4a0c58c-a2cc-4f22-87d1-d5465a1a6a00",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Hybrid Canvas + AI (realistic blending)",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "a4a0c58c-a2cc-4f22-87d1-d5465a1a6a00",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767791766377,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Hybrid Canvas + AI (realistic blending)"
+        },
+        "generationMethod": "Hybrid Canvas + AI (realistic blending)"
+      }
+    },
+    "shouldRetry": false
+  },
+  "timestamp": "2026-01-07T13:16:08.766Z",
+  "toolsUsed": [
+    "generate_tryon_image",
+    "retry_generation",
+    "verify_quality",
+    "quick_quality_check"
+  ]
+}

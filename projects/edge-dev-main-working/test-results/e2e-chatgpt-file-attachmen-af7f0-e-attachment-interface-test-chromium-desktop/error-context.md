@@ -1,0 +1,241 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e7]:
+          - img [ref=e9]
+          - generic [ref=e17]:
+            - heading "Traderra" [level=1] [ref=e18]
+            - paragraph [ref=e19]: AI Trading Platform
+        - button "Upload Strategy" [ref=e21] [cursor=pointer]:
+          - img [ref=e22]
+          - text: Upload Strategy
+        - generic [ref=e26]:
+          - heading "Projects" [level=3] [ref=e27]
+          - generic [ref=e28]:
+            - button "Load saved projects" [ref=e29] [cursor=pointer]:
+              - img [ref=e30]
+            - button "Save projects locally" [ref=e33] [cursor=pointer]:
+              - img [ref=e34]
+            - button "Refresh projects list" [ref=e38] [cursor=pointer]:
+              - img [ref=e39]
+        - button "Renata AI Assistant" [ref=e45] [cursor=pointer]:
+          - img [ref=e47]
+          - generic [ref=e55]:
+            - generic [ref=e56]: Renata
+            - generic [ref=e57]: AI Assistant
+        - generic [ref=e59]: Traderra v2.0
+      - generic [ref=e60]:
+        - banner [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - generic [ref=e64]:
+                - generic [ref=e65]:
+                  - img [ref=e66]
+                  - generic [ref=e74]: Traderra
+                - generic [ref=e75]: edge.dev
+              - generic [ref=e76]:
+                - img [ref=e77]
+                - generic [ref=e80]: Market Scanner
+                - generic [ref=e81]: •
+                - generic [ref=e82]: Real-time Analysis
+            - generic [ref=e83]:
+              - generic [ref=e84]:
+                - button "Table view" [pressed] [ref=e85] [cursor=pointer]:
+                  - img [ref=e86]
+                  - generic [ref=e88]: Table
+                - button "Chart view" [ref=e89] [cursor=pointer]:
+                  - img [ref=e90]
+                  - generic [ref=e92]: Chart
+              - generic [ref=e93]:
+                - generic [ref=e94]:
+                  - generic [ref=e95]: "FROM:"
+                  - textbox "FROM:" [ref=e96]: 2025-01-01
+                - generic [ref=e97]:
+                  - generic [ref=e98]: "TO:"
+                  - textbox "TO:" [ref=e99]: 2025-11-19
+                - generic [ref=e100]:
+                  - button "30D" [ref=e101] [cursor=pointer]
+                  - button "90D" [ref=e102] [cursor=pointer]
+                  - button "2024" [ref=e103] [cursor=pointer]
+              - button "Run Scan" [ref=e104] [cursor=pointer]:
+                - img [ref=e105]
+                - text: Run Scan
+              - button "Preview Parameters" [ref=e107] [cursor=pointer]:
+                - img [ref=e108]
+                - text: Preview Parameters
+        - main [ref=e111]:
+          - generic [ref=e113]:
+            - generic [ref=e114]:
+              - generic [ref=e115]:
+                - generic [ref=e116]:
+                  - img [ref=e117]
+                  - heading "Scan Results- Dec 31 to Nov 18, 2025" [level=3] [ref=e119]:
+                    - text: Scan Results
+                    - generic [ref=e120]: "- Dec 31 to Nov 18, 2025"
+                - table [ref=e122]:
+                  - rowgroup [ref=e123]:
+                    - row "TICKER DATE GAP % ↓ VOLUME SCORE" [ref=e124]:
+                      - cell "TICKER" [ref=e125] [cursor=pointer]
+                      - cell "DATE" [ref=e126] [cursor=pointer]
+                      - cell "GAP % ↓" [ref=e127] [cursor=pointer]
+                      - cell "VOLUME" [ref=e128] [cursor=pointer]
+                      - cell "SCORE" [ref=e129] [cursor=pointer]
+                  - rowgroup [ref=e130]:
+                    - row "AAPL 11/21/24 8.5% 45.2M 0.0" [ref=e131] [cursor=pointer]:
+                      - cell "AAPL" [ref=e132]
+                      - cell "11/21/24" [ref=e133]
+                      - cell "8.5%" [ref=e134]
+                      - cell "45.2M" [ref=e135]
+                      - cell "0.0" [ref=e136]
+                    - row "GOOGL 11/21/24 5.2% 23.4M 0.0" [ref=e137] [cursor=pointer]:
+                      - cell "GOOGL" [ref=e138]
+                      - cell "11/21/24" [ref=e139]
+                      - cell "5.2%" [ref=e140]
+                      - cell "23.4M" [ref=e141]
+                      - cell "0.0" [ref=e142]
+                    - row "MSFT 11/21/24 3.8% 31.2M 0.0" [ref=e143] [cursor=pointer]:
+                      - cell "MSFT" [ref=e144]
+                      - cell "11/21/24" [ref=e145]
+                      - cell "3.8%" [ref=e146]
+                      - cell "31.2M" [ref=e147]
+                      - cell "0.0" [ref=e148]
+              - generic [ref=e149]:
+                - generic [ref=e150]:
+                  - img [ref=e151]
+                  - heading "Statistics" [level=3] [ref=e154]
+                - generic [ref=e155]:
+                  - generic [ref=e156] [cursor=pointer]:
+                    - generic [ref=e157]: Total Results
+                    - generic [ref=e158]: "3"
+                  - generic [ref=e159] [cursor=pointer]:
+                    - generic [ref=e160]: Avg Gap %
+                    - generic [ref=e161]: 5.8%
+                  - generic [ref=e162] [cursor=pointer]:
+                    - generic [ref=e163]: Avg Volume
+                    - generic [ref=e164]: 33.3M
+                  - generic [ref=e165] [cursor=pointer]:
+                    - generic [ref=e166]: Date Range
+                    - generic [ref=e167]: 90d
+                - generic [ref=e168]:
+                  - generic [ref=e169]:
+                    - text: "📈 Selected:"
+                    - generic [ref=e170]: SPY
+                  - generic [ref=e171]: Showing day timeframe • 60 days
+            - generic [ref=e172]:
+              - generic [ref=e173]:
+                - img [ref=e174]
+                - heading "Chart Analysis" [level=3] [ref=e177]
+              - generic [ref=e179]:
+                - generic [ref=e181]:
+                  - generic [ref=e182]:
+                    - button "DAY" [ref=e183]
+                    - button "HOUR" [ref=e184]
+                    - button "15MIN" [ref=e185]
+                    - button "5MIN" [ref=e186]
+                  - generic [ref=e187]:
+                    - button "Previous Trading Day" [ref=e188] [cursor=pointer]:
+                      - img [ref=e189]
+                    - generic [ref=e191]:
+                      - generic [ref=e192]: Day 0
+                      - generic [ref=e193]: Nov 26
+                    - button "Next Trading Day" [ref=e194] [cursor=pointer]:
+                      - img [ref=e195]
+                    - button "Reset to LC Pattern Day (Day 0)" [disabled] [ref=e197]:
+                      - img [ref=e198]
+                    - generic [ref=e201]:
+                      - generic [ref=e202]: "JUMP:"
+                      - button "+3" [ref=e203] [cursor=pointer]
+                      - button "+7" [ref=e204] [cursor=pointer]
+                      - button "+14" [ref=e205] [cursor=pointer]
+                      - button "D0" [disabled] [ref=e206]
+                - generic [ref=e207]:
+                  - generic [ref=e210]:
+                    - img:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Sep 082025
+                            - generic:
+                              - generic: Sep 222025
+                            - generic:
+                              - generic: Oct 062025
+                            - generic:
+                              - generic: Oct 202025
+                            - generic:
+                              - generic: Nov 032025
+                            - generic:
+                              - generic: Nov 172025
+                          - generic:
+                            - generic:
+                              - generic: "640"
+                            - generic:
+                              - generic: "650"
+                            - generic:
+                              - generic: "660"
+                            - generic:
+                              - generic: "670"
+                            - generic:
+                              - generic: "680"
+                            - generic:
+                              - generic: "690"
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: "0"
+                            - generic:
+                              - generic: 50M
+                            - generic:
+                              - generic: 100M
+                            - generic:
+                              - generic: 150M
+                    - img:
+                      - generic:
+                        - generic:
+                          - generic: SPY - DAY Chart
+                    - toolbar [ref=e233]:
+                      - button "Download plot as a PNG" [ref=e235] [cursor=pointer]:
+                        - img [ref=e236]
+                      - generic [ref=e238]:
+                        - button "Zoom" [ref=e239] [cursor=pointer]:
+                          - img [ref=e240]
+                        - button "Pan" [ref=e242] [cursor=pointer]:
+                          - img [ref=e243]
+                      - generic [ref=e245]:
+                        - button "Zoom in" [ref=e246] [cursor=pointer]:
+                          - img [ref=e247]
+                        - button "Zoom out" [ref=e249] [cursor=pointer]:
+                          - img [ref=e250]
+                        - button "Autoscale" [ref=e252] [cursor=pointer]:
+                          - img [ref=e253]
+                        - button "Reset axes" [ref=e255] [cursor=pointer]:
+                          - img [ref=e256]
+                    - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: SPY
+                        - generic: Nov 26, 2025
+                        - generic: O:677.63
+                        - generic: H:681.70
+                        - generic: L:676.72
+                        - generic: C:681.15
+                        - generic: V:32.3M
+                        - generic: "|"
+                        - generic: +3.52 (0.52%)
+    - button "Chat with Renata AI" [ref=e258]:
+      - img [ref=e259]
+      - generic [ref=e261]: Chat with Renata AI
+  - button "Open Next.js Dev Tools" [ref=e267] [cursor=pointer]:
+    - img [ref=e268]
+  - alert [ref=e271]
+  - button "× bd5c9079-929b-4d55-bdc9-16d1c8181b71 !" [ref=e272]:
+    - generic "Hide Inspector" [ref=e273] [cursor=pointer]: ×
+    - img "bd5c9079-929b-4d55-bdc9-16d1c8181b71" [ref=e275]
+    - generic [ref=e279]: "!"
+  - img [ref=e280]
+```

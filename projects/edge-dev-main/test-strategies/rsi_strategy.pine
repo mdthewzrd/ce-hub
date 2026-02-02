@@ -1,0 +1,40 @@
+//@version=5
+strategy("RSI Mean Reversion Strategy", overlay=true)
+
+// Input parameters
+rsi_period = input.int(14, title="RSI Period")
+rsi_oversold = input.int(30, title="RSI Oversold Level")
+rsi_overbought = input.int(70, title="RSI Overbought Level")
+stop_loss_pct = input.float(2.0, title="Stop Loss %")
+take_profit_pct = input.float(3.0, title="Take Profit %")
+
+// Calculate RSI
+rsi = ta.rsi(close, rsi_period)
+
+// Entry conditions
+long_condition = rsi < rsi_oversold and close > ta.sma(close, 50)
+short_condition = rsi > rsi_overbought and close < ta.sma(close, 50)
+
+// Exit conditions
+long_exit = rsi > rsi_overbought
+short_exit = rsi < rsi_oversold
+
+// Strategy execution
+if long_condition
+    strategy.entry("Long", strategy.long)
+    strategy.exit("Long Exit", "Long", stop=close * (1 - stop_loss_pct/100), limit=close * (1 + take_profit_pct/100))
+
+if short_condition
+    strategy.entry("Short", strategy.short)
+    strategy.exit("Short Exit", "Short", stop=close * (1 + stop_loss_pct/100), limit=close * (1 - take_profit_pct/100))
+
+if long_exit
+    strategy.close("Long")
+
+if short_exit
+    strategy.close("Short")
+
+// Plot indicators
+plot(ta.sma(close, 50), title="SMA 50", color=color.blue)
+bgcolor(rsi < rsi_oversold ? color.new(color.green, 80) : na)
+bgcolor(rsi > rsi_overbought ? color.new(color.red, 80) : na)

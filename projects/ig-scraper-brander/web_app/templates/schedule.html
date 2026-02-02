@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduling - Harmonatica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a1;
+            --accent: #6366f1;
+            --border: #262626;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding-top: 64px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar-brand .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 48px;
+        }
+
+        .navbar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .navbar-nav a:hover { background: rgba(99, 102, 241, 0.1); }
+        .navbar-nav a.active { background: rgba(99, 102, 241, 0.2); color: var(--accent); }
+
+        .glass {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .scheduled-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: #818cf8; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/main" class="navbar-brand">
+            <div class="logo"><i class="fas fa-infinity text-white"></i></div>
+            <div><h1>Harmonatica</h1><p>Content Studio</p></div>
+        </a>
+        <div class="navbar-nav">
+            <a href="/main"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="/browse"><i class="fas fa-search"></i> Browse <span style="background: linear-gradient(135deg, #8b5cf6, #6366f1);" class="badge">New</span></a>
+            <a href="/scrape"><i class="fas fa-video"></i> Scraper</a>
+            <a href="/library"><i class="fas fa-folder"></i> Production</a>
+            <a href="/brand-voice"><i class="fas fa-microphone"></i> Brand Voice</a>
+            <a href="/settings"><i class="fas fa-cog"></i> Settings</a>
+        </div>
+    </nav>
+
+    <div style="padding: 24px;">
+        <div class="glass rounded-xl p-6 mb-6">
+            <h1 class="text-2xl font-bold mb-2">Content Schedule</h1>
+            <p class="text-gray-400">Plan and schedule your Instagram posts</p>
+        </div>
+
+        <div id="scheduleList" class="space-y-4">
+            <!-- Scheduled items will load here -->
+        </div>
+
+        <div id="emptyState" class="glass rounded-xl p-12 text-center">
+            <i class="fas fa-calendar-alt text-6xl text-gray-600 mb-4"></i>
+            <h2 class="text-xl font-bold mb-2">No Scheduled Content</h2>
+            <p class="text-gray-400">Go to the Library to schedule content for posting</p>
+            <a href="/library" class="btn btn-primary" style="margin-top: 16px;">
+                <i class="fas fa-folder mr-2"></i>Go to Library
+            </a>
+        </div>
+    </div>
+
+    <script>
+        async function loadSchedule() {
+            try {
+                const response = await fetch('/api/schedule?upcoming=true');
+                const data = await response.json();
+
+                if (data.success && data.count > 0) {
+                    document.getElementById('emptyState').classList.add('hidden');
+                    document.getElementById('scheduleList').innerHTML = data.items.map(item => `
+                        <div class="scheduled-item">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="text-sm text-gray-400 mb-2">
+                                        <i class="fas fa-clock mr-2"></i>${new Date(item.scheduled_for).toLocaleString()}
+                                    </div>
+                                    <p class="mb-2">${item.caption || 'No caption'}</p>
+                                    <div class="text-sm text-gray-500">${item.account || ''}</div>
+                                </div>
+                                <button onclick="markPosted(${item.id})" class="btn btn-primary">
+                                    <i class="fas fa-check mr-2"></i>Mark Posted
+                                </button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading schedule:', error);
+            }
+        }
+
+        async function markPosted(scheduleId) {
+            if (!confirm('Mark this as posted?')) return;
+
+            try {
+                const response = await fetch(`/api/schedule/${scheduleId}/post`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+
+                if (response.ok) {
+                    loadSchedule();
+                }
+            } catch (error) {
+                console.error('Error marking as posted:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadSchedule);
+    </script>
+</body>
+</html>

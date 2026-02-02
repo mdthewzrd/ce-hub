@@ -1,0 +1,289 @@
+================================================================================
+VIDEO TRANSCRIPT: Advanced Vortex Math - Part 4
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: If one, okay.
+
+[00:00:03] **Randy Powell**: I'm just filling in my doubling circuit.
+
+[00:00:05] **Randy Powell**: You can see now already that there's never any break.
+
+[00:00:08] **Randy Powell**: Let's try another doubling circuit.
+
+[00:00:10] **Randy Powell**: Let's see, I've got, I know here I'm gonna have a negative eight.
+
+[00:00:16] **Randy Powell**: So here's my negative five, okay.
+
+[00:00:20] **Randy Powell**: I'm gonna count one, two, positive seven.
+
+[00:00:24] **Randy Powell**: One, two, so this is gonna be a negative eight.
+
+[00:00:30] **Randy Powell**: Two, so this is gonna be a positive four.
+
+[00:00:38] **Randy Powell**: Negative two is already there, okay.
+
+[00:00:43] **Randy Powell**: So you can see clearly I hope when I'm making doubling circuits around this.
+
+[00:00:49] **Randy Powell**: Let's just fill the rest in.
+
+[00:00:51] **Randy Powell**: Eight, seven, six, five, four, three, five, six, seven, eight, nine, six, seven, eight,
+
+[00:00:59] **Randy Powell**: nine, one, two, six, five, four.
+
+[00:01:05] **Randy Powell**: So I'm writing upside down.
+
+[00:01:07] **Randy Powell**: Three, two, I could still fill in my doubling circuit here.
+
+[00:01:13] **Randy Powell**: I've got two, one, five, seven, eight, four, okay.
+
+[00:01:23] **Randy Powell**: It always works in any way that you do it.
+
+[00:01:27] **Randy Powell**: Okay, so what I'm showing here now is that spires are not what they're really modeling,
+
+[00:01:36] **Randy Powell**: just like everything else, are overlapping doubling circuits.
+
+[00:01:41] **Randy Powell**: So I shouldn't say overlapping, but interconnected doubling circuits.
+
+[00:01:47] **Randy Powell**: So let me show you again on this torus where it might be easier to see.
+
+[00:01:50] **Randy Powell**: Here's my positive eight.
+
+[00:01:52] **Randy Powell**: Next blue when following that line, negative seven.
+
+[00:01:57] **Randy Powell**: Positive five, negative one, okay.
+
+[00:02:03] **Randy Powell**: Positive two, let's try another one.
+
+[00:02:06] **Randy Powell**: Let's say here's a positive five, okay.
+
+[00:02:10] **Randy Powell**: Negative one, positive two.
+
+[00:02:14] **Randy Powell**: Let's go the other way.
+
+[00:02:16] **Randy Powell**: We have positive five, so it should be a negative seven.
+
+[00:02:19] **Randy Powell**: That's exactly what it is.
+
+[00:02:20] **Randy Powell**: Negative seven, positive eight, okay.
+
+[00:02:24] **Randy Powell**: Interlace doubling circuits.
+
+[00:02:26] **Randy Powell**: I've challenged and promised everyone go and try it on your own.
+
+[00:02:31] **Randy Powell**: That's what's going on here.
+
+[00:02:32] **Randy Powell**: What we need for these coils, if the quantized numerical torus is correct, are inter, are
+
+[00:02:39] **Randy Powell**: multiple circuits.
+
+[00:02:42] **Randy Powell**: All firing in a sequence, okay, which I can't explain.
+
+[00:02:47] **Randy Powell**: That was too complicated for right here.
+
+[00:02:50] **Randy Powell**: We want to get it on 3D visuals.
+
+[00:02:51] **Randy Powell**: I'm inviting people who are working on the coils.
+
+[00:02:53] **Randy Powell**: If you want to work with me, you can contact me.
+
+[00:02:56] **Randy Powell**: I would like to try and develop designs, more designs.
+
+[00:03:01] **Randy Powell**: I already have some based on this modeling.
+
+[00:03:04] **Randy Powell**: Now I'm going to show you, I'll show you some other ways you can approach it.
+
+[00:03:13] **Randy Powell**: Just so you can see, one way you can do this is on a flat piece of paper.
+
+[00:03:23] **Randy Powell**: Just like I did, the old fashioned way by hand.
+
+[00:03:28] **Randy Powell**: Take you a little while.
+
+[00:03:30] **Randy Powell**: Each of these quadrants that I'm showing here, this would be one, two, three, four, five, six.
+
+[00:03:35] **Randy Powell**: Each of those quadrants is a nine by nine, okay.
+
+[00:03:39] **Randy Powell**: I'm claiming that that's the smallest possible torus you can make.
+
+[00:03:43] **Randy Powell**: A nine by nine.
+
+[00:03:45] **Randy Powell**: By linking those torus smaller toruses together, you can make larger groups.
+
+[00:03:50] **Randy Powell**: There's a pattern to how the circuits change, but no matter how many circuits you have,
+
+[00:03:56] **Randy Powell**: no matter how many doubling patterns you have, they always connect back to themselves.
+
+[00:04:01] **Randy Powell**: They're always unbroken.
+
+[00:04:03] **Randy Powell**: You always have unbroken multiplication tables, and your nested board of sequences never change.
+
+[00:04:11] **Randy Powell**: I don't ever have to move a number.
+
+[00:04:13] **Randy Powell**: I can just add more and more in, and the pattern always works.
+
+[00:04:17] **Randy Powell**: The other thing is, no matter what combination of numbers, I always have unbroken, doubling
+
+[00:04:25] **Randy Powell**: circuit spires all the way around the torus, and it's one sequence that comes in, comes
+
+[00:04:31] **Randy Powell**: back out around many, many times, depending on how many numbers you have here.
+
+[00:04:38] **Randy Powell**: Here's another sheet.
+
+[00:04:40] **Randy Powell**: This is showing where I filled in the nested board of sequences numbers.
+
+[00:04:44] **Randy Powell**: If you look closely at this, or if you do it yourself, you'll find that it's the same
+
+[00:04:49] **Randy Powell**: number pattern in every single quadrant.
+
+[00:04:52] **Randy Powell**: Doesn't matter.
+
+[00:04:53] **Randy Powell**: You can keep adrenate adding.
+
+[00:04:56] **Randy Powell**: I shouldn't really call them quadrants, but I don't know what else to call them squares.
+
+[00:04:59] **Randy Powell**: You can keep adding squares in, and you never have to move any numbers.
+
+[00:05:05] **Randy Powell**: I could draw this square, fill in its numbers, and I could add one over here.
+
+[00:05:10] **Randy Powell**: Same numbers, never breaks here.
+
+[00:05:14] **Randy Powell**: Never alters a sequence, and you always have spires connecting.
+
+[00:05:18] **Randy Powell**: You can work it out on your own, find out for yourself.
+
+[00:05:23] **Randy Powell**: Just to take it a step further so that you know I do my homework, I did it in a higher
+
+[00:05:28] **Randy Powell**: base system for those of you who worked in that really complicated stuff of this.
+
+[00:05:33] **Randy Powell**: I'm about to read you off the numbers for these.
+
+[00:05:35] **Randy Powell**: This is base 26.
+
+[00:05:39] **Randy Powell**: It's the next step up from a base 10, or modular 9.
+
+[00:05:43] **Randy Powell**: This is base 26.
+
+[00:05:44] **Randy Powell**: This is what the Taurus skin looks like for a base 26.
+
+[00:05:47] **Randy Powell**: There's actually four circuits instead of two and one gap space.
+
+[00:05:53] **Randy Powell**: They're mirror imaging each other.
+
+[00:05:55] **Randy Powell**: They also have a sequence to their vortices and how they work.
+
+[00:05:59] **Randy Powell**: I can now, I've written out that sequence and I can now prove and show what that sequence
+
+[00:06:04] **Randy Powell**: is.
+
+[00:06:05] **Randy Powell**: Still not one interconnected circuit.
+
+[00:06:08] **Randy Powell**: There's multiple interlaced circuits depending on how many of these squares.
+
+[00:06:13] **Randy Powell**: So whereas I showed you one squares of 9 by 9, this is one square of a 25 by 25.
+
+[00:06:19] **Randy Powell**: Okay?
+
+[00:06:20] **Randy Powell**: So let me now read to you the numbers.
+
+[00:06:22] **Randy Powell**: If I haven't lost everybody already, I'm just trying to get this out there so that people,
+
+[00:06:29] **Randy Powell**: if you want, you can contact me on it.
+
+[00:06:31] **Randy Powell**: I'm not kidding about the work that I'm saying.
+
+[00:06:33] **Randy Powell**: This completely changes the picture of vortex based mathematics.
+
+[00:06:39] **Randy Powell**: One thing I should show you before I read out the numbers, I never did say, in that case,
+
+[00:06:45] **Randy Powell**: the original winding pattern, this star shape that goes all around, well what is it modeling?
+
+[00:06:51] **Randy Powell**: Well I'll show you.
+
+[00:06:53] **Randy Powell**: When you're talking about a 1 or let's just start with a, let's start with an 8.
+
+[00:06:57] **Randy Powell**: We're just doing family number groups so it doesn't matter.
+
+[00:07:02] **Randy Powell**: This 8, whereas the winding sequence would carry it down.
+
+[00:07:06] **Randy Powell**: What is it really modeling?
+
+[00:07:07] **Randy Powell**: Okay?
+
+[00:07:08] **Randy Powell**: So here I go 8, 6, 7, 7, 6.
+
+[00:07:13] **Randy Powell**: Here's my 5.
+
+[00:07:15] **Randy Powell**: The 8's connecting to this 5 on the same blue spiral.
+
+[00:07:20] **Randy Powell**: And then it's this 2 here.
+
+[00:07:23] **Randy Powell**: So the pattern of the spires is actually going here, here in family number groups, then
+
+[00:07:30] **Randy Powell**: I go to my next 8, which is 180 degrees across.
+
+[00:07:34] **Randy Powell**: So in other words, by the sequencing of the nested vortices, I am preserving the same pattern
+
+[00:07:41] **Randy Powell**: in the original winding of the coil.
+
+[00:07:43] **Randy Powell**: The difference is, whereas this coil is being wound, really what I consider in a 2-dimensional
+
+[00:07:52] **Randy Powell**: fashion, it's flat in other words, even though it's winding around a donut, it's not
+
+[00:07:57] **Randy Powell**: actually winding correctly.
+
+[00:08:00] **Randy Powell**: Because when, in my winding pattern, instead of having a straight line coming here, mine
+
+[00:08:07] **Randy Powell**: would curve around, crossing these other numbers, but the family number groups aren't all
+
+[00:08:14] **Randy Powell**: the same distance from the center.
+
+[00:08:16] **Randy Powell**: Just like in our symbol where we've got one out here, one in the middle, and one close
+
+[00:08:21] **Randy Powell**: to the inside, when you've modeled them according to spires, that's exactly what you have to.
+
+[00:08:27] **Randy Powell**: One out here on the outside, one in the middle, and one on the inside, all triangulated
+
+[00:08:32] **Randy Powell**: in the same pattern.
+
+[00:08:34] **Randy Powell**: So with my winding pattern, I wouldn't come straight up over the surface of the torus
+
+[00:08:39] **Randy Powell**: in order to shoot back at another angle, I would have a much more gradual curve that connected
+
+[00:08:45] **Randy Powell**: to this number down towards the base, down here, on the same doubling circuit.
+
+[00:08:52] **Randy Powell**: And when it gets to this number, it's up here, so that I preserve this S curve along
+
+[00:08:57] **Randy Powell**: the winding of the coil.
+
+[00:08:59] **Randy Powell**: This is super important, it's not being done right now with the current winding.
+
+[00:09:03] **Randy Powell**: This S curve is not preserved.
+
+[00:09:05] **Randy Powell**: So my winding would come around at an angle, it would cross here, come back around, again,
+
+[00:09:12] **Randy Powell**: crossing the family number groups, but at different distances from the center, going inside,
+
+[00:09:18] **Randy Powell**: back around, and connecting right at 180 degrees across.
+
+[00:09:23] **Randy Powell**: Okay?
+
+[00:09:24] **Randy Powell**: I hope you follow me on that.
+
+[00:09:27] **Randy Powell**: Alright, let me read you out just to round some of this off.
+
+[00:09:32] **Randy Powell**: You can contact me by the way, my email, which is tricky, TRICKY, underscore, noses, GNOSIS,
+
+[00:09:43] **Randy Powell**: at Yahoo.com.
+
+[00:09:44] **Randy Powell**: You can write me, I'm willing to work with people on building coils.
+
+[00:09:48] **Randy Powell**: And making a large claim about this, I'm inviting everyone to dissect my work.
+
+[00:09:54] **Randy Powell**: Okay?
+
+[00:09:55] **Randy Powell**: And I'll be the first one happy at the pie eating ceremony if...

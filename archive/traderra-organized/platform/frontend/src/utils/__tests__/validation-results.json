@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-10-20T13:23:06.223Z",
+  "totalTrades": 1760,
+  "expectedTrades": 1760,
+  "processingTime": 21,
+  "pnlAccuracy": 100,
+  "optionsTrades": 14,
+  "infiniteHandling": true,
+  "allTestsPass": true,
+  "sampleData": [
+    {
+      "id": "import_1",
+      "symbol": "GWH",
+      "side": "Short",
+      "pnl": 503.928,
+      "pnlPercent": 1.98,
+      "commission": 63.5,
+      "entryPrice": 3.38,
+      "exitPrice": 3.34,
+      "quantity": 16920,
+      "date": "2025-10-10"
+    },
+    {
+      "id": "import_2",
+      "symbol": "BJDX",
+      "side": "Short",
+      "pnl": 1606.7067,
+      "pnlPercent": 7.66,
+      "commission": 440.402,
+      "entryPrice": 4.11,
+      "exitPrice": 3.46,
+      "quantity": 13000,
+      "date": "2025-10-09"
+    },
+    {
+      "id": "import_3",
+      "symbol": "SLNH",
+      "side": "Short",
+      "pnl": 1032.765,
+      "pnlPercent": 11.32,
+      "commission": 46.775,
+      "entryPrice": 3.18,
+      "exitPrice": 2.71,
+      "quantity": 6000,
+      "date": "2025-09-23"
+    },
+    {
+      "id": "import_4",
+      "symbol": "BOXL",
+      "side": "Short",
+      "pnl": 2331.0003,
+      "pnlPercent": 15.58,
+      "commission": 160.4715,
+      "entryPrice": 6.9,
+      "exitPrice": 5.35,
+      "quantity": 4634,
+      "date": "2025-09-22"
+    },
+    {
+      "id": "import_5",
+      "symbol": "WLDS",
+      "side": "Short",
+      "pnl": -3470.5044,
+      "pnlPercent": -13.36,
+      "commission": 19,
+      "entryPrice": 6.78,
+      "exitPrice": 7.31,
+      "quantity": 7620,
+      "date": "2025-09-10"
+    }
+  ]
+}

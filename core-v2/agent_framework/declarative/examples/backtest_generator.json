@@ -1,0 +1,217 @@
+{
+  "agent": {
+    "name": "Backtest Generator",
+    "description": "Specialized agent for running backtests and calculating trading performance metrics",
+    "type": "analysis",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 6,
+    "system_prompt": {
+      "role": "You are a Backtest Generator specialized in running historical simulations and calculating comprehensive trading performance metrics.",
+      "responsibilities": [
+        "Execute backtests on historical market data",
+        "Calculate performance metrics (returns, Sharpe, drawdown, etc.)",
+        "Generate equity curves and trade logs",
+        "Analyze trade statistics (win rate, avg win/loss, etc.)",
+        "Compare performance across different parameter sets",
+        "Identify strengths and weaknesses of strategies"
+      ],
+      "guidelines": [
+        "Always validate input data before running backtests",
+        "Use realistic transaction costs and slippage",
+        "Calculate multiple metrics for comprehensive assessment",
+        "Provide context for metrics (e.g., benchmark comparison)",
+        "Highlight both periods of strong and weak performance",
+        "Generate visual outputs when helpful (equity curves, drawdown charts)"
+      ],
+      "constraints": [
+        "Maximum 6 tools - focus only on backtesting",
+        "Do not create scanner logic (use scan creator agent)",
+        "Do not optimize parameters (use parameter optimizer agent)",
+        "Always include transaction costs in backtests",
+        "Be conservative with assumptions (better to underestimate than overestimate performance)"
+      ]
+    },
+    "tools": [
+      {
+        "name": "run_backtest",
+        "description": "Executes a backtest on historical data with given scanner parameters",
+        "type": "calculation",
+        "parameters": {
+          "scanner_config": {
+            "type": "dict",
+            "description": "Scanner configuration and parameters",
+            "required": true
+          },
+          "market_data": {
+            "type": "dict",
+            "description": "Historical market data (OHLCV format)",
+            "required": true
+          },
+          "initial_capital": {
+            "type": "float",
+            "description": "Starting capital for the backtest",
+            "required": false,
+            "default": 100000
+          },
+          "transaction_costs": {
+            "type": "dict",
+            "description": "Commission and slippage settings",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "calculate_performance_metrics",
+        "description": "Calculates comprehensive performance metrics from backtest results",
+        "type": "calculation",
+        "parameters": {
+          "trade_log": {
+            "type": "list",
+            "description": "List of all trades from backtest",
+            "required": true
+          },
+          "equity_curve": {
+            "type": "list",
+            "description": "Equity curve values over time",
+            "required": true
+          },
+          "benchmark_returns": {
+            "type": "list",
+            "description": "Benchmark returns for comparison",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "analyze_trade_statistics",
+        "description": "Analyzes trade-level statistics (win rate, avg hold time, profit factor, etc.)",
+        "type": "analysis",
+        "parameters": {
+          "trades": {
+            "type": "list",
+            "description": "List of individual trades",
+            "required": true
+          },
+          "group_by": {
+            "type": "str",
+            "description": "Group trades by: 'none', 'month', 'symbol', 'long_short'",
+            "required": false,
+            "default": "none"
+          }
+        }
+      },
+      {
+        "name": "generate_equity_report",
+        "description": "Generates a visual equity curve and drawdown chart",
+        "type": "creation",
+        "parameters": {
+          "equity_curve": {
+            "type": "list",
+            "description": "Equity values over time",
+            "required": true
+          },
+          "include_drawdown": {
+            "type": "bool",
+            "description": "Include drawdown subplot",
+            "required": false,
+            "default": true
+          },
+          "include_benchmark": {
+            "type": "bool",
+            "description": "Include benchmark comparison",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "compare_parameter_sets",
+        "description": "Compares backtest results across different parameter configurations",
+        "type": "analysis",
+        "parameters": {
+          "results": {
+            "type": "dict",
+            "description": "Dictionary of parameter sets to their backtest results",
+            "required": true
+          },
+          "comparison_metrics": {
+            "type": "list",
+            "description": "Metrics to compare (e.g., ['sharpe', 'total_return', 'max_drawdown'])",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "generate_backtest_report",
+        "description": "Creates a comprehensive backtest report with all key findings",
+        "type": "creation",
+        "parameters": {
+          "backtest_results": {
+            "type": "dict",
+            "description": "Complete backtest results",
+            "required": true
+          },
+          "focus_areas": {
+            "type": "list",
+            "description": "Areas to focus on in the report",
+            "required": false
+          },
+          "recommendation_level": {
+            "type": "str",
+            "description": "Level of recommendation detail: 'brief', 'standard', 'detailed'",
+            "required": false,
+            "default": "standard"
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "backtest_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "moderate",
+      "quality_threshold": 0.8,
+      "rules": [
+        {
+          "name": "transaction_costs_included",
+          "description": "Backtests must include realistic transaction costs",
+          "severity": "error"
+        },
+        {
+          "name": "metric_completeness",
+          "description": "Must calculate core metrics (returns, drawdown, Sharpe)",
+          "severity": "error"
+        },
+        {
+          "name": "result_realism",
+          "description": "Performance should be realistic, not overly optimistic",
+          "severity": "warning"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "production",
+      "scaling": "horizontal",
+      "resources": {
+        "memory": "2GB",
+        "cpu": "2.0"
+      }
+    }
+  }
+}

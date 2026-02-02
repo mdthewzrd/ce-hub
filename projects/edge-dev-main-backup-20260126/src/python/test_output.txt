@@ -1,0 +1,70 @@
+======================================================================
+RENATA REBUILD INTEGRATION TEST
+======================================================================
+
+📝 Test Code:
+----------------------------------------------------------------------
+
+import pandas as pd
+import requests
+
+API_KEY = 'test_key'
+
+def scan_ticker(ticker):
+    url = f"https://api.polygon.io/{ticker}"
+    data = requests.get(url).json()
+    return data
+
+if __name__ == "__main__":
+    results = scan_ticker("AAPL")
+    print(results)
+
+----------------------------------------------------------------------
+
+🔧 Initializing components...
+📚 Loading 7 reference templates...
+  ✅ Loaded: a_plus_para
+  ✅ Loaded: lc_3d_gap
+  ✅ Loaded: extended_gap
+  ✅ Loaded: sc_dmr
+  ✅ Loaded: backside_b
+  ✅ Loaded: lc_d2
+  ✅ Loaded: d1_gap
+📚 Loaded 7 templates successfully
+
+🔍 Extracting structure patterns...
+  📊 a_plus_para: Single-scan structure
+  📊 lc_3d_gap: Single-scan structure
+  📊 extended_gap: Single-scan structure
+  📊 sc_dmr: Single-scan structure
+  📊 backside_b: Single-scan structure
+  📊 lc_d2: Single-scan structure
+  📊 d1_gap: Single-scan structure
+
+📊 Pattern extraction complete:
+  - Single-scan patterns: 7
+  - Multi-scan patterns: 0
+======================================================================
+PATTERN LIBRARY - INITIALIZING
+======================================================================
+
+📚 Analyzing 7 templates for patterns...
+
+
+✅ Pattern extraction complete:
+  - Total patterns: 38
+  - Categories: 6
+    - data_fetching: 7 patterns
+    - parallel_processing: 7 patterns
+    - api_optimization: 7 patterns
+    - data_filtering: 5 patterns
+    - data_transformation: 5 patterns
+    - code_organization: 7 patterns
+✅ Components initialized
+
+🔍 Analyzing code...
+Traceback (most recent call last):
+  File "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/src/python/test_integration.py", line 53, in <module>
+    print(f"   Scanner Type: {analysis.scanner_type.value}")
+                              ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CodeAnalysisResult' object has no attribute 'scanner_type'

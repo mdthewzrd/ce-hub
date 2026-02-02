@@ -1,0 +1,100 @@
+{
+  "success": true,
+  "scanner": "backside_para_b",
+  "date_range": {
+    "start": "2025-01-01",
+    "end": "2025-11-01"
+  },
+  "parameters": {
+    "price_min": 8.0,
+    "price_max": 1000.0,
+    "atr_mult": 0.9,
+    "vol_mult": 0.9,
+    "min_volume": 500000,
+    "rsi_max": 70.0
+  },
+  "total_results": 3,
+  "results": [
+    {
+      "Ticker": "AMD",
+      "Date": "2025-05-14",
+      "Trigger": "D-1",
+      "PosAbs_1000d": 0.651,
+      "D1_Body/ATR": 0.65,
+      "D1Vol(shares)": 55659513,
+      "D1Vol/Avg": 1.39,
+      "VolSig(max D-1,D-2)/Avg": 1.39,
+      "Gap/ATR": 1.75,
+      "Open>PrevHigh": true,
+      "Open/EMA9": 1.13,
+      "D1>H(D-2)": true,
+      "D1Close>D2Close": true,
+      "Slope9_5d": 8.81,
+      "High-EMA9/ATR(trigger)": 2.22,
+      "ADV20_$": 3957011614,
+      "scanner_type": "backside_para_b",
+      "parameters_used": {
+        "price_min": 8.0,
+        "price_max": 1000.0,
+        "atr_mult": 0.9,
+        "vol_mult": 0.9,
+        "min_volume": 500000,
+        "rsi_max": 70.0
+      }
+    },
+    {
+      "Ticker": "INTC",
+      "Date": "2025-08-15",
+      "Trigger": "D-1",
+      "PosAbs_1000d": 0.627,
+      "D1_Body/ATR": 2.1,
+      "D1Vol(shares)": 188052460,
+      "D1Vol/Avg": 1.74,
+      "VolSig(max D-1,D-2)/Avg": 1.74,
+      "Gap/ATR": 1.29,
+      "Open>PrevHigh": true,
+      "Open/EMA9": 1.13,
+      "D1>H(D-2)": true,
+      "D1Close>D2Close": true,
+      "Slope9_5d": 9.3,
+      "High-EMA9/ATR(trigger)": 3.01,
+      "ADV20_$": 2208548219,
+      "scanner_type": "backside_para_b",
+      "parameters_used": {
+        "price_min": 8.0,
+        "price_max": 1000.0,
+        "atr_mult": 0.9,
+        "vol_mult": 0.9,
+        "min_volume": 500000,
+        "rsi_max": 70.0
+      }
+    },
+    {
+      "Ticker": "LYFT",
+      "Date": "2025-05-09",
+      "Trigger": "D-1",
+      "PosAbs_1000d": 0.587,
+      "D1_Body/ATR": 0.38,
+      "D1Vol(shares)": 23502101,
+      "D1Vol/Avg": 2.03,
+      "VolSig(max D-1,D-2)/Avg": 2.03,
+      "Gap/ATR": 3.26,
+      "Open>PrevHigh": true,
+      "Open/EMA9": 1.09,
+      "D1>H(D-2)": true,
+      "D1Close>D2Close": true,
+      "Slope9_5d": 10.26,
+      "High-EMA9/ATR(trigger)": 1.09,
+      "ADV20_$": 146575624,
+      "scanner_type": "backside_para_b",
+      "parameters_used": {
+        "price_min": 8.0,
+        "price_max": 1000.0,
+        "atr_mult": 0.9,
+        "vol_mult": 0.9,
+        "min_volume": 500000,
+        "rsi_max": 70.0
+      }
+    }
+  ]
+}

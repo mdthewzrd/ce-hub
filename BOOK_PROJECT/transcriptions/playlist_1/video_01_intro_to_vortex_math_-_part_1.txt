@@ -1,0 +1,155 @@
+================================================================================
+VIDEO TRANSCRIPT: Intro to Vortex Math - Part 1
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: When I want to start with is just the very basic concept. What is vortex-based mathematics?
+
+[00:00:06] **Randy Powell**: What is it saying? What are its applications?
+
+[00:00:11] **Randy Powell**: Well first of all, vortex-based mathematics, Marco, his original claim,
+
+[00:00:17] **Randy Powell**: was that he had tapped into and could model mathematically a previously unobserved
+
+[00:00:26] **Randy Powell**: invisible
+
+[00:00:27] **Randy Powell**: energy. Okay, that energy is referred to by many names and has been by many people.
+
+[00:00:34] **Randy Powell**: It's been called takions or monopoles. You might call it gravitons.
+
+[00:00:42] **Randy Powell**: You might call it radiant energy, chi, prana. You might just call it energy or e,
+
+[00:00:50] **Randy Powell**: like as an e equals mc squared. It is the motive driving force behind all reality.
+
+[00:00:58] **Randy Powell**: It is the initial impulse positive force behind creation.
+
+[00:01:05] **Randy Powell**: Okay, this energy is characterized by its linearity. In other words, it moves in a straight line.
+
+[00:01:14] **Randy Powell**: Every bit of mass Einstein's relativity will tell us everything with even a slight bit of
+
+[00:01:19] **Randy Powell**: mass, even a photon, which is supposed to have no mass, but even a photon coming from a distant
+
+[00:01:27] **Randy Powell**: star was seen to curve around the sun, proving that relativity existed. So this shows that all
+
+[00:01:37] **Randy Powell**: mass, all matter, is in a curved motion, a relative motion. This energy is different from that.
+
+[00:01:45] **Randy Powell**: It penetrates everything. Nothing can resist it, and it leaves a grain on everything.
+
+[00:01:54] **Randy Powell**: It is undecained and eternal. Okay, and it is the control and standard upon which all of creation
+
+[00:02:04] **Randy Powell**: is based. So that is what I want to describe. Here is in this symbol before you, those of you who are
+
+[00:02:12] **Randy Powell**: familiar with the map have seen this. Marco refers to it as the symbol of enlightenment.
+
+[00:02:20] **Randy Powell**: It is a mathematical decryption of what's known as the most great name of God and the
+
+[00:02:27] **Randy Powell**: Baha'i faith. I came to this work initially because of my lifelong search for the understanding
+
+[00:02:36] **Randy Powell**: of how to intonate the most great name of God. But without going into religious mysticism,
+
+[00:02:43] **Randy Powell**: I'm simply trying to point out that these numbers and everything that I'm going to show,
+
+[00:02:48] **Randy Powell**: even what this energy really is and does, the closest thing that you can get to it is sound.
+
+[00:02:55] **Randy Powell**: What this is is a model for sound, for resonance, for harmonics. Numbers are harmonics. They're musical.
+
+[00:03:04] **Randy Powell**: They are polarized. They create color. They create all the effects that we see.
+
+[00:03:10] **Randy Powell**: And these are just simple whole numbers. I'm not talking about any kind of ecoteric or complex numbers.
+
+[00:03:18] **Randy Powell**: Okay, so around the circle, we see all the numbers we are familiar with. We start here with one,
+
+[00:03:26] **Randy Powell**: we have one, two, three, four, five, six, seven, eight, nine. All right. So those are all the
+
+[00:03:37] **Randy Powell**: single digit numbers known. I don't know if anyone has ever and any of the talk I've ever done
+
+[00:03:44] **Randy Powell**: suggested another single digit number that exists. Any other number is going to at least create
+
+[00:03:50] **Randy Powell**: double digits, triple digits. And what we're showing here is that if you add those numbers back together,
+
+[00:03:58] **Randy Powell**: which is a common practice and numerology and computer science, it's called finding the digital root.
+
+[00:04:06] **Randy Powell**: Okay. What it does is reveals an underlying pattern underneath any
+
+[00:04:13] **Randy Powell**: bigger number that you can find or any infinite series. Everything has an underlying pattern to it.
+
+[00:04:20] **Randy Powell**: And these single digit numbers will give you the underlying pattern. And what we're looking for in
+
+[00:04:26] **Randy Powell**: nature is patterns. We want to model fractals, self-similar forms. All this is based on patterns.
+
+[00:04:34] **Randy Powell**: And this is a way you can create all these patterns and you can model a higher dimensional energy.
+
+[00:04:41] **Randy Powell**: Okay. And show how it's creating those patterns. So these are our simple numbers. One through nine.
+
+[00:04:47] **Randy Powell**: We're going in a clockwise and right-handed direction around the circle. Okay.
+
+[00:04:55] **Randy Powell**: So let's just what we're saying here with this symbol is that with it you can do all the functions
+
+[00:05:02] **Randy Powell**: of math, which is addition, subtraction, division, multiplication. There's no other known functions of
+
+[00:05:12] **Randy Powell**: math. All of those functions of math can be done instantaneously, simultaneously. And they can be
+
+[00:05:20] **Randy Powell**: shown to be revealed in one single map, which can do every function of math, which can model every
+
+[00:05:28] **Randy Powell**: principle of physics, which can model chemistry, the periodic table, which can model genetics and biology.
+
+[00:05:39] **Randy Powell**: That you can do every function of math as one. So I wanted to show you how those work and how
+
+[00:05:47] **Randy Powell**: they relate to the symbol. And then what this symbol ultimately produces, which is the real
+
+[00:05:54] **Randy Powell**: goal of the work. Okay. So let's start here with one. It's a really easy number. Oftentimes,
+
+[00:06:04] **Randy Powell**: they say one is the loneliest number, or we might think of one god, one universe. It is a cohesive
+
+[00:06:14] **Randy Powell**: number, a unity. Okay. So we start with one. What is one doing on the symbol? Well, if we draw a straight
+
+[00:06:21] **Randy Powell**: line connecting it to the next number, it goes to two. And what that is is called doubling. One
+
+[00:06:29] **Randy Powell**: doubled becomes two. Okay. Two, if it doubles, and we follow this line again, it comes four.
+
+[00:06:40] **Randy Powell**: Four, if we double, again, following our line becomes eight. Eight doubled then is sixteen. But
+
+[00:06:50] **Randy Powell**: here I have a seven. How come is that? Because if we add six and one together, we get seven.
+
+[00:06:58] **Randy Powell**: And again, we're looking for underlying the pattern, underlying the big numbers, the sequences
+
+[00:07:05] **Randy Powell**: of numbers. We have patterns of single digit numbers. So when we get to sixteen, six and one is seven.
+
+[00:07:12] **Randy Powell**: So that's my next number. Sixteen double is thirty two. But I have a five here.
+
+[00:07:20] **Randy Powell**: Then again, if I add three plus two is five. I could just as well say seven double, just fourteen.
+
+[00:07:29] **Randy Powell**: Four plus one is going to be five, too. So it doesn't matter how I do it. Okay. Let's stick with
+
+[00:07:35] **Randy Powell**: thirty two. Thirty two doubled is going to be sixty four. Bring me back up here. But here I have
+
+[00:07:42] **Randy Powell**: a one. But six plus four equals ten. And one plus zero comes back to one. Sixty four doubled is
+
+[00:07:52] **Randy Powell**: one twenty eight. Eight plus two is ten. Ten plus one is eleven. And one plus one is two.
+
+[00:08:00] **Randy Powell**: One twenty eight doubled is two fifty six, which reduces back to four. Two fifty six doubled is five
+
+[00:08:09] **Randy Powell**: twelve, reducing back to eight. Five twelve doubled is one thousand and twenty four, which reduces
+
+[00:08:18] **Randy Powell**: back to seven. One thousand twenty four doubled is two thousand and forty eight, which reduces back to five.
+
+[00:08:26] **Randy Powell**: No matter how many times I go around, no matter what numbers I take and no matter what
+
+[00:08:32] **Randy Powell**: combination I do. In other words, I could say this is eleven. Where my two is here is one
+
+[00:08:39] **Randy Powell**: plus one is two. Eleven doubled is twenty two and two plus two is four. There's no possible way
+
+[00:08:46] **Randy Powell**: to break this doubling sequence. Why is that significant? Okay. Because doubling is how
+
+[00:08:56] **Randy Powell**: vibration and motion occurs. And this energy, which is going to be represented by our number nine,
+
+[00:09:04] **Randy Powell**: this taquion, monopole, what we're going to call etharons, this energy is the source of all motion,
+
+[00:09:16] **Randy Powell**: of all vibration, of all time, of heat. It's the source of life. It's what keeps everything moving
+
+[00:09:24] **Randy Powell**: forward.

@@ -1,0 +1,22 @@
+{
+  "sessionId": "session-1767789097147-77k2x6n3c",
+  "task": "Generate virtual try-on image.\n\nIMPORTANT: Use these EXACT file paths and parameters:\n- Subject photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/e97156bd-dfa9-4d27-a6cf-29b026a8089e/subject_0_cb1837cb2b5177c2ce5805665279d3fc.jpg\n- Glasses photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/2e817d16-2b75-4222-8f9d-578c94312d84/glasses_2_716736982946_P00_2e5cc48a-8d4e-453d-bcc6-7e9ad0051257.webp\n- Task ID (REQUIRED for generate_tryon_image): 1616177b-ae4c-429c-ade2-b989a383a974\n\nWhen calling generate_tryon_image, you MUST include these parameters:\n- subjectPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/e97156bd-dfa9-4d27-a6cf-29b026a8089e/subject_0_cb1837cb2b5177c2ce5805665279d3fc.jpg\"\n- glassesPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/2e817d16-2b75-4222-8f9d-578c94312d84/glasses_2_716736982946_P00_2e5cc48a-8d4e-453d-bcc6-7e9ad0051257.webp\"\n- taskId: \"1616177b-ae4c-429c-ade2-b989a383a974\" (this is REQUIRED!)\n\nDO NOT make up file paths. Use the paths provided above exactly as written.",
+  "results": [
+    {
+      "success": false,
+      "error": "Failed to process image with Gemini: Error: Unsupported image type",
+      "data": null
+    }
+  ],
+  "evaluation": {
+    "score": 0,
+    "shouldRetry": true
+  },
+  "timestamp": "2026-01-07T12:31:41.803Z",
+  "toolsUsed": [
+    "generate_tryon_image",
+    "retry_generation",
+    "verify_quality",
+    "quick_quality_check"
+  ]
+}

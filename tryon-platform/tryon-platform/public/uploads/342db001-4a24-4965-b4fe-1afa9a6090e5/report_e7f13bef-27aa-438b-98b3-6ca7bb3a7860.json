@@ -1,0 +1,34 @@
+{
+  "taskId": "e7f13bef-27aa-438b-98b3-6ca7bb3a7860",
+  "version": {
+    "app": "1.0",
+    "promptPack": "v1.0",
+    "model": "Canvas-first (preserves original 100%)",
+    "providerApi": "1.0.0"
+  },
+  "inputs": {
+    "subject": {
+      "assetId": "e7f13bef-27aa-438b-98b3-6ca7bb3a7860",
+      "w": 736,
+      "h": 1308
+    },
+    "glasses": [
+      "glasses_0"
+    ]
+  },
+  "generation": {
+    "guidance": 0.7,
+    "refStrength": 0.8,
+    "lightingWeight": 0.5,
+    "reflectionWeight": 0.3,
+    "colorMatchWeight": 0.5,
+    "seed": 1767988365138,
+    "passes": 1
+  },
+  "quality": {
+    "ssim": 0.995,
+    "faceDist": 0,
+    "fit": "pass"
+  },
+  "notes": "Glasses added using Canvas-first (preserves original 100%) - original photo preserved 100%"
+}

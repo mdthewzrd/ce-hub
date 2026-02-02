@@ -1,0 +1,46 @@
+#!/bin/bash
+# Claude CLI - Quick interface to Claude Code with auto-transform
+# Usage: claude "your message here"
+
+CEHUB_PATH="/Users/michaeldurante/ai dev/ce-hub"
+
+# Check if message was provided
+if [ -z "$1" ]; then
+    echo "🤖 Claude CLI"
+    echo ""
+    echo "Usage: claude \"your message here\""
+    echo ""
+    echo "Examples:"
+    echo "  claude \"fix the bug in scanner\""
+    echo "  claude \"add vector search to the database\""
+    echo "  claude \"edit scanner.py to use async\""
+    echo ""
+    echo "This will automatically transform your message and open it in Claude Code."
+    exit 0
+fi
+
+# Join all arguments into a single message
+MESSAGE="$*"
+
+# Transform the message
+TRANSFORMED=$(cd "$CEHUB_PATH" && python transform.py "$MESSAGE" 2>/dev/null)
+
+if [ -z "$TRANSFORMED" ]; then
+    echo "❌ Transform failed"
+    exit 1
+fi
+
+# Output the transformed message
+echo "$TRANSFORMED"
+
+# Copy to clipboard for easy pasting
+echo "$TRANSFORMED" | pbcopy
+
+echo ""
+echo "✅ Transformed message copied to clipboard!"
+echo "   Paste into Claude Code to send."
+
+# Optional: Try to open Claude Code with the message
+# This depends on how Claude Code is invoked on your system
+# Uncomment if you have a way to invoke it:
+# code --wait <(echo "$TRANSFORMED")

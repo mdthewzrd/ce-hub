@@ -1,0 +1,27 @@
+{
+  "project_id": "1b6a330d-1e77-40b8-a430-79977f1d154d",
+  "name": "backside para b copy",
+  "description": "Scanner project created from backside para b copy.py via Renata AI",
+  "scanners": [
+    {
+      "scanner_id": "backside para b copy_scanner_1",
+      "scanner_file": "/Users/michaeldurante/ai dev/ce-hub/edge-dev/projects/1b6a330d-1e77-40b8-a430-79977f1d154d/scanners/backside para b copy_scanner_1.py",
+      "parameter_file": "/Users/michaeldurante/ai dev/ce-hub/edge-dev/projects/1b6a330d-1e77-40b8-a430-79977f1d154d/parameters/backside para b copy_scanner_1_params.json",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 0
+    }
+  ],
+  "aggregation_method": "union",
+  "tags": [
+    "uploaded",
+    "renata-ai",
+    "scanner"
+  ],
+  "created_at": "2025-12-12T10:12:40.857227",
+  "updated_at": "2025-12-12T10:12:40.857234",
+  "version": 1,
+  "created_by": null,
+  "last_executed": null,
+  "execution_count": 0
+}

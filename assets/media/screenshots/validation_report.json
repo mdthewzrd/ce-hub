@@ -1,0 +1,17 @@
+{
+  "testSuite": "Visual Frontend Validation",
+  "timestamp": "2025-11-19T14:36:03.457Z",
+  "totalTests": 1,
+  "passedTests": 0,
+  "failedTests": 1,
+  "results": [
+    {
+      "testName": "quick_test_dashboard",
+      "command": "Go to dashboard",
+      "success": false,
+      "validationResults": "Chat input not found",
+      "screenshots": [],
+      "timestamp": "2025-11-19T14:36:03.456Z"
+    }
+  ]
+}

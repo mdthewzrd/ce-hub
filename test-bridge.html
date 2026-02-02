@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CE-Hub Bridge Test</title>
+</head>
+<body>
+    <h1>CE-Hub Bridge Connection Test</h1>
+    <p>Testing bridge connectivity...</p>
+    <div id="result"></div>
+
+    <script>
+        async function testBridge() {
+            try {
+                const response = await fetch('http://100.95.223.19:8113/health');
+                const data = await response.json();
+                document.getElementById('result').innerHTML = `
+                    <h2>✅ Bridge Connected!</h2>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('result').innerHTML = `
+                    <h2>❌ Bridge Connection Failed</h2>
+                    <p>Error: ${error.message}</p>
+                `;
+            }
+        }
+
+        testBridge();
+    </script>
+</body>
+</html>

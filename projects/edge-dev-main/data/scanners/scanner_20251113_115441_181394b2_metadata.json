@@ -1,0 +1,10 @@
+{
+  "scanner_id": "scanner_20251113_115441_181394b2",
+  "scanner_name": "lc_frontside_d3_extended_1_scanner_formatted",
+  "user_id": "default_user",
+  "created_at": "2025-11-13T11:54:41.315359",
+  "parameters_count": 72,
+  "code_length": 33712,
+  "status": "ready",
+  "extraction_method": "multi_scanner_separation"
+}

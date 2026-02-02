@@ -1,0 +1,27 @@
+{
+  "project_id": "295174f0-f9e5-4ebd-b12b-527d9eb1c132",
+  "name": "user_workflow_test",
+  "description": "Scanner project created from user_workflow_test.py via Renata AI",
+  "scanners": [
+    {
+      "scanner_id": "user_workflow_test_scanner_1",
+      "scanner_file": "/Users/michaeldurante/ai dev/ce-hub/edge-dev/projects/295174f0-f9e5-4ebd-b12b-527d9eb1c132/scanners/user_workflow_test_scanner_1.py",
+      "parameter_file": "/Users/michaeldurante/ai dev/ce-hub/edge-dev/projects/295174f0-f9e5-4ebd-b12b-527d9eb1c132/parameters/user_workflow_test_scanner_1_params.json",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 0
+    }
+  ],
+  "aggregation_method": "union",
+  "tags": [
+    "uploaded",
+    "renata-ai",
+    "scanner"
+  ],
+  "created_at": "2025-12-12T13:53:03.568618",
+  "updated_at": "2025-12-12T13:53:03.568620",
+  "version": 1,
+  "created_by": null,
+  "last_executed": null,
+  "execution_count": 0
+}

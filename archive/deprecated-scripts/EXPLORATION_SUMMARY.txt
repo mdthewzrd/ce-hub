@@ -1,0 +1,139 @@
+CE-HUB CODEBASE EXPLORATION - EXECUTIVE SUMMARY
+================================================
+
+EXPLORATION DATE: November 5, 2025
+THOROUGHNESS LEVEL: Medium (Focused Overview)
+STATUS: Complete
+
+KEY FINDINGS
+============
+
+1. THREE-PROJECT ECOSYSTEM
+   - Edge-dev (Next.js 16, Port 5657) - Trading platform with charts
+   - Planner-chat (Express.js, Port 3000) - AI chat interface  
+   - Supporting services & documentation
+
+2. MAIN PORT CONFIGURATION
+   Port 5657 → http://localhost:5657 (Edge-dev Trading Dashboard)
+   Port 3000 → http://localhost:3000 (Planner-chat)
+   Port 8000 → http://localhost:8000 (FastAPI Backend - inferred)
+
+3. TECHNOLOGY STACK
+   Frontend: Next.js 16, React 19, TypeScript, Tailwind CSS, Plotly.js
+   Backend: Python FastAPI, Pandas, Plotly
+   Chart Library: Plotly.js with Candlestick support
+   Storage: LocalStorage + Backend JSON files
+   API: Polygon API for market data
+
+4. COMPLETE USER INTERACTION FLOW
+   Upload Code → Extract Parameters → Run Scan → View Results → Click Row → Load Chart → Navigate Days
+
+5. CRITICAL FILES (MUST UNDERSTAND)
+   Frontend Main: /edge-dev/src/app/page.tsx (46KB)
+   Charts: /edge-dev/src/components/EdgeChart.tsx (18.5KB)
+   Scanner Backend: /edge-dev/backend/core/scanner.py (65.7KB)
+   API Bridge: /edge-dev/src/app/api/systematic/scan/route.ts
+   Services: /edge-dev/src/services/fastApiScanService.ts
+
+6. SCAN EXECUTION ARCHITECTURE
+   - LC (Liquid Core) pattern detection
+   - D2 (Double) pattern analysis
+   - Extended hours support (4am-8pm)
+   - ATR, EMA, Volume metrics
+   - Multi-day pattern progression
+
+7. CHART TEMPLATES CONFIGURATION
+   day      → 90 days, 1 bar/day, daily OHLC
+   hour     → 90 days, 16 bars/day, 1-min resampled, extended hours
+   15min    → 15 days, 64 bars/day, 1-min resampled, extended hours
+   5min     → 5 days, 192 bars/day, 1-min resampled, extended hours
+
+8. DATA FLOW ARCHITECTURE
+   Polygon API → Data Processing → Chart Rendering (Plotly)
+                                 → LocalStorage (Saved Scans)
+                                 → Backend Scanner → Results Table
+
+9. SAVED SCANS FUNCTIONALITY
+   Storage: Browser LocalStorage (key: 'saved_scans')
+   UI Components: SavedScansSidebar, SaveScanModal
+   Persistence: Full scan parameters + results cache
+   CRUD: Create, Load, Delete, Rename, Toggle Favorite
+
+10. DAY NAVIGATION SYSTEM
+    Reference Day: LC pattern date (Day 0)
+    Navigation: Previous/Next trading days
+    Max Days: Dynamic based on available data
+    Components: ChartDayNavigation.tsx
+    Logic: /edge-dev/src/utils/chartDayNavigation.ts
+
+IMMEDIATE NEXT STEPS
+====================
+
+If you need to:
+
+1. ADD NEW SCANNING FEATURES
+   → Start: /edge-dev/backend/core/scanner.py
+   → Document: Parameter extraction in /edge-dev/src/app/page.tsx
+   → Integrate: /edge-dev/src/app/api/systematic/scan/route.ts
+
+2. MODIFY CHART DISPLAY
+   → Edit: /edge-dev/src/components/EdgeChart.tsx
+   → Data source: /edge-dev/src/utils/polygonData.ts
+   → Processing: /edge-dev/src/utils/dataProcessing.ts
+
+3. CHANGE RESULT HANDLING
+   → Main logic: /edge-dev/src/app/page.tsx (lines 19-35, 98-107)
+   → Save system: /edge-dev/src/components/SaveScanModal.tsx
+   → Retrieval: /edge-dev/src/hooks/useSavedScans.ts
+
+4. DEBUG ISSUES
+   → Results not showing: Check deduplicateResults() in page.tsx
+   → Charts not loading: Verify fetchRealData() and Polygon API
+   → Parameters not extracted: Review extractFiltersFromCode()
+   → Backend errors: Monitor /edge-dev/backend/core/scanner.py
+
+RESOURCE LOCATIONS
+==================
+
+Complete Exploration Report: CODEBASE_EXPLORATION_REPORT.md
+Quick Reference Guide: CODEBASE_QUICK_REFERENCE.md
+This Summary: EXPLORATION_SUMMARY.txt
+
+All files saved to: /Users/michaeldurante/ai dev/ce-hub/
+
+CRITICAL INFORMATION
+====================
+
+Polygon API Key: 4r6MZNWLy2ucmhVI7fY8MrvXfXTSmxpy
+Cached Market Data: /edge-dev/backend/*_data.json (~150 files)
+Market Calendar: NYSE trading hours, holidays
+Extended Hours: 4am - 8pm daily
+Result Deduplication: Frontend line 19-35 in page.tsx
+
+TESTING & DEPLOYMENT
+====================
+
+Testing Framework: Playwright
+Test Location: /edge-dev/tests/e2e/
+Test Commands:
+  npm run test:charts    → Chart interaction tests
+  npm run test:trading   → Trading UI tests
+  npm run test:basic     → Basic page load tests
+
+Development: npm run dev (Port 5657)
+Production: npm run build && npm run start
+
+CONCLUSION
+==========
+
+The CE-Hub codebase is a well-architected trading platform with:
+- Complete end-to-end scanning → charting workflow
+- Advanced parameter preservation & integrity systems
+- Full TypeScript type safety
+- Comprehensive test coverage with Playwright
+- Multi-timeframe chart support with extended hours
+- Persistent scan management via LocalStorage
+
+All core functionality is in place. Secondary projects (planner-chat, documentation) provide supporting services.
+
+For questions, refer to CODEBASE_EXPLORATION_REPORT.md for detailed architecture.

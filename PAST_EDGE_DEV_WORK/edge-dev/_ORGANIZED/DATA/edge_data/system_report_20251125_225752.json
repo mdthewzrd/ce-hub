@@ -1,0 +1,96 @@
+{
+  "report_timestamp": "2025-11-25T22:57:52.446407",
+  "system_status": {
+    "system_health": "BULLETPROOF",
+    "uptime": "2025-11-25T22:57:52.446410",
+    "statistics": {
+      "initialized": true,
+      "last_validation": {
+        "timestamp": "2025-11-25T22:57:52.444240",
+        "scanner_name": "frontend_test_backside",
+        "is_valid": true,
+        "checksum": "283b6b8112be172b"
+      },
+      "total_scanners_run": 1,
+      "error_count": 0,
+      "parameter_integrity_violations": 0
+    },
+    "error_statistics": {
+      "total_errors": 0,
+      "by_severity": {},
+      "by_category": {},
+      "by_scanner": {},
+      "recent_errors": []
+    },
+    "active_scanners": [
+      "backside_b",
+      "half_a_plus",
+      "lc_multiscanner"
+    ],
+    "data_directory": "edge_data",
+    "parameter_integrity_status": "ACTIVE",
+    "last_system_check": "2025-11-25T22:57:52.446413"
+  },
+  "parameter_validations": {
+    "backside_b": {
+      "is_valid": true,
+      "parameter_checksum": "283b6b8112be172b",
+      "config_checksum": "24d11aa644ece0d0896dff00f7f98134ed24d976e744b15d3cc5a25240317512",
+      "errors": [],
+      "warnings": []
+    },
+    "half_a_plus": {
+      "is_valid": false,
+      "parameter_checksum": "8fdba90b065e1380",
+      "config_checksum": "abe579662f8bb0fc6068068c6e907041da276d2096f91dd1c8a71018f5f55d0f",
+      "errors": [
+        "Missing required parameters: slope15d_min, high_ema9_mult, high_ema20_mult, pct7d_low_div_atr_min, pct14d_low_div_atr_min, atr_pct_change_min, prev_close_min, pct2d_div_atr_min, pct3d_div_atr_min, exclude_recent_days"
+      ],
+      "warnings": []
+    },
+    "lc_multiscanner": {
+      "is_valid": false,
+      "parameter_checksum": "18fad12a18806a08",
+      "config_checksum": "d7c3272d0bca6cc26705d4e01d4e24f02a19f32bfb57f89fede7b42adb2a08ce",
+      "errors": [
+        "Missing required parameters: abs_lookback_days, slope5d_min, d1_volume_min"
+      ],
+      "warnings": []
+    }
+  },
+  "scanner_templates": {
+    "backside_b": {
+      "enabled": true,
+      "default_symbols": [
+        "TSLA",
+        "NVDA",
+        "AMD",
+        "AAPL",
+        "MSFT"
+      ],
+      "description": "Conservative institutional-grade scanner"
+    },
+    "half_a_plus": {
+      "enabled": true,
+      "default_symbols": [
+        "TSLA",
+        "NVDA",
+        "AMD",
+        "AAPL",
+        "MSFT"
+      ],
+      "description": "Original Half A+ scanner with exact parameters"
+    },
+    "lc_multiscanner": {
+      "enabled": true,
+      "default_symbols": [
+        "XPEV",
+        "LI",
+        "BILI",
+        "AI",
+        "PLTR"
+      ],
+      "description": "Small-cap growth focused scanner"
+    }
+  }
+}

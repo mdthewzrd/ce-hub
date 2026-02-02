@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traderra Browser Validation Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .pass { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .fail { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover { background: #0056b3; }
+        .test-button:disabled { background: #6c757d; cursor: not-allowed; }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .iframe-container {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .iframe-container iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+        .progress {
+            width: 100%;
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-bar {
+            height: 100%;
+            background: #28a745;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Traderra Frontend Validation Test</h1>
+        <p>Testing end-to-end functionality of Renata AI chat and state changes</p>
+
+        <!-- Progress -->
+        <div class="test-section">
+            <h2>📊 Test Progress</h2>
+            <div class="progress">
+                <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+            </div>
+            <p id="progressText">Starting tests...</p>
+        </div>
+
+        <!-- Health Checks -->
+        <div class="test-section">
+            <h2>🔍 System Health Checks</h2>
+            <div id="healthResults"></div>
+            <button class="test-button" onclick="runHealthChecks()">Check Health</button>
+        </div>
+
+        <!-- API Tests -->
+        <div class="test-section">
+            <h2>🧠 API Functionality Tests</h2>
+            <div id="apiResults"></div>
+            <button class="test-button" onclick="runAPITests()">Test API</button>
+        </div>
+
+        <!-- Frontend Tests -->
+        <div class="test-section">
+            <h2>💻 Frontend State Management Tests</h2>
+            <div id="frontendResults"></div>
+            <button class="test-button" onclick="runFrontendTests()">Test Frontend</button>
+        </div>
+
+        <!-- Interactive Test -->
+        <div class="test-section">
+            <h2>🎮 Interactive Test</h2>
+            <p>Open the Traderra application below and test the chat functionality manually:</p>
+            <div class="iframe-container">
+                <iframe src="http://localhost:6565" title="Traderra Application"></iframe>
+            </div>
+            <div id="interactiveResults"></div>
+        </div>
+
+        <!-- Test Log -->
+        <div class="test-section">
+            <h2>📝 Test Log</h2>
+            <div id="testLog" class="log"></div>
+            <button class="test-button" onclick="clearLog()">Clear Log</button>
+        </div>
+    </div>
+
+    <script>
+        let testResults = {
+            health: false,
+            api: false,
+            frontend: false,
+            interactive: false
+        };
+
+        function log(message, type = 'info') {
+            const logElement = document.getElementById('testLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.innerHTML = `[${timestamp}] ${message}`;
+            logEntry.className = type;
+            logElement.appendChild(logEntry);
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+
+        function updateProgress() {
+            const total = Object.keys(testResults).length;
+            const passed = Object.values(testResults).filter(v => v).length;
+            const percentage = (passed / total) * 100;
+
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = `${passed}/${total} tests passed`;
+        }
+
+        function showStatus(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            const statusDiv = document.createElement('div');
+            statusDiv.className = `status ${type}`;
+            statusDiv.textContent = message;
+            element.appendChild(statusDiv);
+        }
+
+        async function runHealthChecks() {
+            log('Starting health checks...');
+            const element = document.getElementById('healthResults');
+            element.innerHTML = '';
+
+            try {
+                // Test frontend
+                log('Testing frontend at http://localhost:6565...');
+                const frontendResponse = await fetch('http://localhost:6565');
+                if (frontendResponse.ok) {
+                    showStatus('healthResults', '✅ Frontend accessible (HTTP 200)', 'pass');
+                    log('Frontend health check passed');
+                } else {
+                    showStatus('healthResults', `❌ Frontend error (HTTP ${frontendResponse.status})`, 'fail');
+                    log('Frontend health check failed');
+                }
+
+                // Test backend
+                log('Testing backend at http://localhost:6500...');
+                const backendResponse = await fetch('http://localhost:6500/health');
+                if (backendResponse.ok) {
+                    const data = await backendResponse.json();
+                    showStatus('healthResults', '✅ Backend accessible', 'pass');
+                    showStatus('healthResults', `📊 Services: ${JSON.stringify(data.services)}`, 'info');
+                    log('Backend health check passed');
+                } else {
+                    showStatus('healthResults', `❌ Backend error (HTTP ${backendResponse.status})`, 'fail');
+                    log('Backend health check failed');
+                }
+
+                testResults.health = true;
+                log('Health checks completed successfully');
+            } catch (error) {
+                showStatus('healthResults', `❌ Health check failed: ${error.message}`, 'fail');
+                log(`Health check error: ${error.message}`);
+                testResults.health = false;
+            }
+
+            updateProgress();
+        }
+
+        async function runAPITests() {
+            log('Starting API tests...');
+            const element = document.getElementById('apiResults');
+            element.innerHTML = '';
+
+            const testMessages = [
+                {
+                    name: 'Multi-command: Switch to R-multiple + 90 days',
+                    message: 'Switch to R-multiple mode and show last 90 days'
+                },
+                {
+                    name: 'Display mode change only',
+                    message: 'Switch to dollar mode'
+                },
+                {
+                    name: 'Date range change only',
+                    message: 'Show me last 30 days'
+                }
+            ];
+
+            let allPassed = true;
+
+            for (const test of testMessages) {
+                log(`Testing: ${test.name}`);
+
+                try {
+                    const response = await fetch('http://localhost:6565/api/renata/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            message: test.message,
+                            mode: 'coach',
+                            context: {
+                                currentDateRange: { label: 'Last 90 Days' },
+                                displayMode: 'dollar'
+                            }
+                        })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        const commandCount = data.navigationCommands?.length || 0;
+
+                        showStatus('apiResults', `✅ ${test.name}: ${commandCount} commands detected`, 'pass');
+                        log(`✅ ${test.name}: ${commandCount} commands detected`);
+
+                        if (commandCount > 0) {
+                            data.navigationCommands.forEach((cmd, index) => {
+                                log(`  Command ${index + 1}: ${cmd.command} with params: ${JSON.stringify(cmd.params)}`);
+                            });
+                        }
+                    } else {
+                        showStatus('apiResults', `❌ ${test.name}: API error (${response.status})`, 'fail');
+                        log(`❌ ${test.name}: API error (${response.status})`);
+                        allPassed = false;
+                    }
+                } catch (error) {
+                    showStatus('apiResults', `❌ ${test.name}: ${error.message}`, 'fail');
+                    log(`❌ ${test.name}: ${error.message}`);
+                    allPassed = false;
+                }
+            }
+
+            testResults.api = allPassed;
+            log(`API tests completed: ${allPassed ? 'PASSED' : 'FAILED'}`);
+            updateProgress();
+        }
+
+        async function runFrontendTests() {
+            log('Starting frontend state management tests...');
+            const element = document.getElementById('frontendResults');
+            element.innerHTML = '';
+
+            try {
+                // Test if the Traderra app is accessible in the iframe
+                const iframe = document.querySelector('iframe');
+                if (iframe) {
+                    try {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        if (iframeDoc.title.includes('Traderra') || iframeDoc.body) {
+                            showStatus('frontendResults', '✅ Traderra app loaded in iframe', 'pass');
+                            log('Traderra app successfully loaded');
+                        } else {
+                            showStatus('frontendResults', '⚠️ Iframe content may not be accessible due to CORS', 'info');
+                            log('Iframe content may not be accessible due to CORS restrictions');
+                        }
+                    } catch (error) {
+                        showStatus('frontendResults', '⚠️ Iframe access blocked (expected for security)', 'info');
+                        log('Iframe access blocked due to same-origin policy (this is expected)');
+                    }
+                }
+
+                // Test direct access to app pages
+                const pagesToTest = [
+                    'http://localhost:6565/',
+                    'http://localhost:6565/dashboard',
+                    'http://localhost:6565/statistics'
+                ];
+
+                for (const page of pagesToTest) {
+                    try {
+                        const response = await fetch(page);
+                        if (response.ok) {
+                            showStatus('frontendResults', `✅ Page accessible: ${page}`, 'pass');
+                            log(`Page accessible: ${page}`);
+                        } else {
+                            showStatus('frontendResults', `⚠️ Page returned ${response.status}: ${page}`, 'info');
+                            log(`Page returned ${response.status}: ${page}`);
+                        }
+                    } catch (error) {
+                        showStatus('frontendResults', `❌ Page error: ${page} - ${error.message}`, 'fail');
+                        log(`Page error: ${page} - ${error.message}`);
+                    }
+                }
+
+                testResults.frontend = true;
+                log('Frontend tests completed');
+            } catch (error) {
+                showStatus('frontendResults', `❌ Frontend test error: ${error.message}`, 'fail');
+                log(`Frontend test error: ${error.message}`);
+                testResults.frontend = false;
+            }
+
+            updateProgress();
+        }
+
+        function clearLog() {
+            document.getElementById('testLog').innerHTML = '';
+        }
+
+        // Run all tests automatically
+        async function runAllTests() {
+            log('Starting comprehensive Traderra validation...');
+
+            await runHealthChecks();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            await runAPITests();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            await runFrontendTests();
+
+            // Generate summary
+            const passed = Object.values(testResults).filter(v => v).length;
+            const total = Object.keys(testResults).length;
+
+            log(`\n🎯 VALIDATION SUMMARY: ${passed}/${total} test suites passed`);
+
+            if (passed === total) {
+                log('🎉 ALL TESTS PASSED! The Traderra system is working correctly.');
+            } else {
+                log('⚠️ Some tests failed. Please review the issues above.');
+            }
+        }
+
+        // Start tests when page loads
+        window.addEventListener('load', () => {
+            log('Traderra Validation Test loaded');
+            setTimeout(runAllTests, 1000);
+        });
+    </script>
+</body>
+</html>

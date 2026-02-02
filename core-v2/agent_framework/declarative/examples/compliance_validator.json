@@ -1,0 +1,298 @@
+{
+  "agent": {
+    "name": "Automated Compliance Validator",
+    "description": "Ensures all generated and modified code meets EdgeDev V31 standards with comprehensive validation, rule checking, and compliance reporting. Based on ValidatorAgent + V31 checking patterns.",
+    "type": "validation",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 8,
+    "system_prompt": {
+      "role": "You are an Automated Compliance Validator specialized in ensuring code meets EdgeDev V31 standards through comprehensive validation and rule checking.",
+      "responsibilities": [
+        "Validate code against EdgeDev V31 standards",
+        "Check scanner structure compliance (run_scan, fetch_grouped_data, etc.)",
+        "Verify parameter handling and type definitions",
+        "Ensure proper error handling and validation",
+        "Check docstring and documentation standards",
+        "Validate naming conventions and code style",
+        "Generate detailed compliance reports",
+        "Provide actionable recommendations for fixing violations"
+      ],
+      "guidelines": [
+        "Check all V31 structural requirements (functions, parameters, returns)",
+        "Validate ScannerConfig format compliance",
+        "Ensure proper type hints throughout code",
+        "Check for appropriate error handling",
+        "Verify docstring completeness and format",
+        "Validate parameter validation logic",
+        "Check for security best practices",
+        "Ensure code follows EdgeDev naming conventions",
+        "Provide specific line numbers for violations",
+        "Distinguish between critical, major, and minor issues"
+      ],
+      "constraints": [
+        "Maximum 8 tools - focus on validation capabilities",
+        "Do not modify code (delegate to Code Formatter agent)",
+        "Do not generate new code (only validate existing)",
+        "All checks must be automated and deterministic",
+        "Provide clear, actionable feedback for each violation",
+        "Support both strict and lenient validation modes"
+      ]
+    },
+    "tools": [
+      {
+        "name": "validate_scanner_structure",
+        "description": "Validates scanner code structure complies with V31 requirements",
+        "type": "validation",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Scanner code to validate",
+            "required": true
+          },
+          "required_functions": {
+            "type": "list",
+            "description": "Required functions: ['run_scan', 'fetch_grouped_data']",
+            "required": false
+          },
+          "strict_mode": {
+            "type": "bool",
+            "description": "Enable strict structural validation",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "validate_parameter_handling",
+        "description": "Checks parameter definitions, types, and validation logic",
+        "type": "validation",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Code with parameter definitions",
+            "required": true
+          },
+          "require_type_hints": {
+            "type": "bool",
+            "description": "Require type hints for all parameters",
+            "required": false,
+            "default": true
+          },
+          "require_defaults": {
+            "type": "bool",
+            "description": "Require default values for parameters",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "validate_return_format",
+        "description": "Validates run_scan() returns proper ScannerConfig format",
+        "type": "validation",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Scanner code to check",
+            "required": true
+          },
+          "scanner_config_schema": {
+            "type": "dict",
+            "description": "Expected ScannerConfig schema",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "check_error_handling",
+        "description": "Validates proper error handling and validation",
+        "type": "validation",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Code to check for error handling",
+            "required": true
+          },
+          "require_try_except": {
+            "type": "bool",
+            "description": "Require try-except blocks",
+            "required": false,
+            "default": true
+          },
+          "require_validation": {
+            "type": "bool",
+            "description": "Require input validation",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "validate_documentation",
+        "description": "Checks docstring completeness and format",
+        "type": "validation",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Code to check documentation",
+            "required": true
+          },
+          "require_function_docs": {
+            "type": "bool",
+            "description": "Require docstrings for all functions",
+            "required": false,
+            "default": true
+          },
+          "require_param_docs": {
+            "type": "bool",
+            "description": "Require parameter documentation",
+            "required": false,
+            "default": true
+          },
+          "docstring_style": {
+            "type": "str",
+            "description": "Docstring style: 'google', 'numpy', 'sphinx'",
+            "required": false,
+            "default": "google"
+          }
+        }
+      },
+      {
+        "name": "check_naming_conventions",
+        "description": "Validates code follows EdgeDev naming conventions",
+        "type": "validation",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Code to check naming",
+            "required": true
+          },
+          "function_naming": {
+            "type": "str",
+            "description": "Function naming style: 'snake_case', 'camelCase'",
+            "required": false,
+            "default": "snake_case"
+          },
+          "variable_naming": {
+            "type": "str",
+            "description": "Variable naming style",
+            "required": false,
+            "default": "snake_case"
+          }
+        }
+      },
+      {
+        "name": "check_security_practices",
+        "description": "Validates security best practices",
+        "type": "validation",
+        "parameters": {
+          "code": {
+            "type": "str",
+            "description": "Code to check for security issues",
+            "required": true
+          },
+          "check_sql_injection": {
+            "type": "bool",
+            "description": "Check for SQL injection vulnerabilities",
+            "required": false,
+            "default": true
+          },
+          "check_hardcoded_secrets": {
+            "type": "bool",
+            "description": "Check for hardcoded secrets/API keys",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "generate_compliance_report",
+        "description": "Creates comprehensive compliance report with all findings",
+        "type": "creation",
+        "parameters": {
+          "validation_results": {
+            "type": "dict",
+            "description": "Results from all validation checks",
+            "required": true
+          },
+          "severity_filter": {
+            "type": "str",
+            "description": "Minimum severity to include: 'critical', 'major', 'minor', 'info'",
+            "required": false,
+            "default": "minor"
+          },
+          "include_recommendations": {
+            "type": "bool",
+            "description": "Include fix recommendations",
+            "required": false,
+            "default": true
+          },
+          "report_format": {
+            "type": "str",
+            "description": "Report format: 'markdown', 'json', 'html'",
+            "required": false,
+            "default": "markdown"
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "v31_standards_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "strict",
+      "quality_threshold": 0.95,
+      "rules": [
+        {
+          "name": "structure_completeness",
+          "description": "Must check all V31 structural requirements",
+          "severity": "error"
+        },
+        {
+          "name": "parameter_validation",
+          "description": "Must validate all parameter definitions",
+          "severity": "error"
+        },
+        {
+          "name": "return_format_compliance",
+          "description": "Must check ScannerConfig return format",
+          "severity": "error"
+        },
+        {
+          "name": "error_handling_presence",
+          "description": "Must verify error handling exists",
+          "severity": "error"
+        },
+        {
+          "name": "documentation_completeness",
+          "description": "Must check docstring completeness",
+          "severity": "major"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "production",
+      "scaling": "horizontal",
+      "resources": {
+        "memory": "2GB",
+        "cpu": "2.0"
+      }
+    }
+  }
+}

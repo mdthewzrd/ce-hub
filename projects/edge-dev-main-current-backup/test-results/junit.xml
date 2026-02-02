@@ -1,0 +1,46 @@
+<testsuites id="" name="" tests="5" failures="0" skipped="0" errors="0" time="13.483207">
+<testsuite name="e2e/page-load-basic.spec.js" timestamp="2025-12-02T15:11:49.624Z" hostname="chromium-desktop" tests="5" failures="0" skipped="0" time="31.707" errors="0">
+<testcase name="Basic Page Load and User Experience › Homepage loads successfully with all critical elements" classname="e2e/page-load-basic.spec.js" time="6.479">
+<system-out>
+<![CDATA[Homepage loaded in 3583ms
+✓ Header/navigation found
+✓ Main content area found
+✓ No JavaScript errors detected
+]]>
+</system-out>
+</testcase>
+<testcase name="Basic Page Load and User Experience › Core navigation works correctly" classname="e2e/page-load-basic.spec.js" time="4.612">
+<system-out>
+<![CDATA[⚠️  No navigation links found
+]]>
+</system-out>
+</testcase>
+<testcase name="Basic Page Load and User Experience › Page responsiveness on different viewports" classname="e2e/page-load-basic.spec.js" time="7.638">
+<system-out>
+<![CDATA[✓ Desktop viewport rendered successfully
+✓ Tablet viewport rendered successfully
+✓ Mobile viewport rendered successfully
+]]>
+</system-out>
+</testcase>
+<testcase name="Basic Page Load and User Experience › No critical console errors" classname="e2e/page-load-basic.spec.js" time="7.421">
+<system-out>
+<![CDATA[Console errors: 1, JS errors: 0
+]]>
+</system-out>
+<system-err>
+<![CDATA[⚠️  Critical console errors found:
+  - Failed to load resource: net::ERR_CONNECTION_REFUSED
+]]>
+</system-err>
+</testcase>
+<testcase name="Basic Page Load and User Experience › Essential functionality is accessible" classname="e2e/page-load-basic.spec.js" time="5.557">
+<system-out>
+<![CDATA[✓ Keyboard navigation works
+Found 34 interactive elements
+✓ Interactive elements work (dialogs: 0, forms: 1)
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

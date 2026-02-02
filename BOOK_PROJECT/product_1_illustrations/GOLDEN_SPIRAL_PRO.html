@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Golden Spiral - Publication Quality Illustration</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background-dark: #0a0a0a;
+            --primary-gold: #d97706;
+            --gold-light: #f59e0b;
+            --gold-dark: #b45309;
+            --text-off-white: #e5e5e5;
+            --text-muted: #a3a3a3;
+            --grid-line: rgba(217, 119, 6, 0.1);
+            --shadow-subtle: rgba(217, 119, 6, 0.05);
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--background-dark);
+            color: var(--text-off-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            color: var(--primary-gold);
+            margin-bottom: 12px;
+            letter-spacing: 0.02em;
+            text-shadow: 0 0 30px rgba(217, 119, 6, 0.3);
+        }
+
+        .header .subtitle {
+            font-family: 'Jost', sans-serif;
+            font-size: clamp(0.875rem, 2vw, 1.1rem);
+            font-weight: 300;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .illustration-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+            border-radius: 4px;
+            padding: 40px;
+            box-shadow:
+                0 0 0 1px rgba(217, 119, 6, 0.1),
+                0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                0 0 100px rgba(217, 119, 6, 0.05);
+            overflow: hidden;
+        }
+
+        .illustration-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.03) 0%, transparent 50%),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+                linear-gradient(var(--grid-line) 1px, transparent 1px);
+            background-size:
+                100% 100%,
+                50px 50px,
+                50px 50px;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .svg-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(217, 119, 6, 0.2));
+        }
+
+        .caption {
+            text-align: center;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        .caption p {
+            font-family: 'Jost', sans-serif;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--text-muted);
+        }
+
+        .caption .formula {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+            color: var(--primary-gold);
+            margin-top: 16px;
+            padding: 12px 20px;
+            background: rgba(217, 119, 6, 0.05);
+            border-radius: 4px;
+            display: inline-block;
+            letter-spacing: 0.05em;
+        }
+
+        .metadata {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(217, 119, 6, 0.1);
+        }
+
+        .metadata-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .metadata-item .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .metadata-item .value {
+            font-family: 'EB Garamond', serif;
+            font-size: 1rem;
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes spiralDraw {
+            from {
+                stroke-dashoffset: 2000;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(217, 119, 6, 0.2));
+            }
+            50% {
+                filter: drop-shadow(0 0 30px rgba(217, 119, 6, 0.4));
+            }
+        }
+
+        .spiral-path {
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 0;
+            animation: spiralDraw 3s ease-out forwards, glowPulse 4s ease-in-out infinite 3s;
+        }
+
+        .rectangle {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .rectangle:nth-child(1) { animation-delay: 0.1s; }
+        .rectangle:nth-child(2) { animation-delay: 0.2s; }
+        .rectangle:nth-child(3) { animation-delay: 0.3s; }
+        .rectangle:nth-child(4) { animation-delay: 0.4s; }
+        .rectangle:nth-child(5) { animation-delay: 0.5s; }
+        .rectangle:nth-child(6) { animation-delay: 0.6s; }
+        .rectangle:nth-child(7) { animation-delay: 0.7s; }
+        .rectangle:nth-child(8) { animation-delay: 0.8s; }
+
+        .arc {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .arc:nth-child(9) { animation-delay: 0.9s; }
+        .arc:nth-child(10) { animation-delay: 1.0s; }
+        .arc:nth-child(11) { animation-delay: 1.1s; }
+        .arc:nth-child(12) { animation-delay: 1.2s; }
+        .arc:nth-child(13) { animation-delay: 1.3s; }
+        .arc:nth-child(14) { animation-delay: 1.4s; }
+        .arc:nth-child(15) { animation-delay: 1.5s; }
+        .arc:nth-child(16) { animation-delay: 1.6s; }
+
+        .label {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+            animation-delay: 2s;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .illustration-wrapper {
+                padding: 20px;
+            }
+
+            .header {
+                margin-bottom: 30px;
+            }
+
+            .metadata {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .illustration-wrapper {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>The Golden Spiral</h1>
+            <p class="subtitle">Nature's Perfect Proportion</p>
+        </div>
+
+        <div class="illustration-wrapper">
+            <div class="svg-container">
+                <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <!-- Glow filter for the spiral -->
+                        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+
+                        <!-- Gradient for the spiral line -->
+                        <linearGradient id="spiralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#d97706;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#f59e0b;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+                        </linearGradient>
+
+                        <!-- Subtle fill for rectangles -->
+                        <pattern id="rectPattern" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+                            <rect x="0" y="0" width="2" height="2" fill="rgba(217, 119, 6, 0.02)"/>
+                        </pattern>
+                    </defs>
+
+                    <!-- Background -->
+                    <rect width="800" height="800" fill="transparent"/>
+
+                    <!-- Fibonacci Rectangles (with increasing sizes) -->
+                    <g class="rectangles">
+                        <!-- 1x1 square -->
+                        <rect class="rectangle" x="50" y="50" width="100" height="100"
+                              fill="url(#rectPattern)" stroke="rgba(217, 119, 6, 0.2)" stroke-width="1"/>
+
+                        <!-- 1x1 square -->
+                        <rect class="rectangle" x="150" y="50" width="100" height="100"
+                              fill="url(#rectPattern)" stroke="rgba(217, 119, 6, 0.2)" stroke-width="1"/>
+
+                        <!-- 2x2 rectangle -->
+                        <rect class="rectangle" x="50" y="150" width="200" height="200"
+                              fill="url(#rectPattern)" stroke="rgba(217, 119, 6, 0.2)" stroke-width="1"/>
+
+                        <!-- 3x3 rectangle -->
+                        <rect class="rectangle" x="250" y="50" width="300" height="300"
+                              fill="url(#rectPattern)" stroke="rgba(217, 119, 6, 0.2)" stroke-width="1"/>
+
+                        <!-- 5x5 rectangle -->
+                        <rect class="rectangle" x="50" y="350" width="500" height="500"
+                              fill="url(#rectPattern)" stroke="rgba(217, 119, 6, 0.2)" stroke-width="1"/>
+                    </g>
+
+                    <!-- Golden Spiral Arcs -->
+                    <g class="arcs" filter="url(#glow)">
+                        <!-- Arc 1: 1x1 (90 degrees) -->
+                        <path class="arc"
+                              d="M 150 150 A 100 100 0 0 1 150 50"
+                              fill="none"
+                              stroke="url(#spiralGradient)"
+                              stroke-width="3"
+                              stroke-linecap="round"/>
+
+                        <!-- Arc 2: 1x1 (90 degrees) -->
+                        <path class="arc"
+                              d="M 150 50 A 100 100 0 0 1 250 150"
+                              fill="none"
+                              stroke="url(#spiralGradient)"
+                              stroke-width="3"
+                              stroke-linecap="round"/>
+
+                        <!-- Arc 3: 2x2 (90 degrees) -->
+                        <path class="arc"
+                              d="M 250 150 A 200 200 0 0 1 50 350"
+                              fill="none"
+                              stroke="url(#spiralGradient)"
+                              stroke-width="3"
+                              stroke-linecap="round"/>
+
+                        <!-- Arc 4: 3x3 (90 degrees) -->
+                        <path class="arc"
+                              d="M 50 350 A 300 300 0 0 1 550 50"
+                              fill="none"
+                              stroke="url(#spiralGradient)"
+                              stroke-width="3"
+                              stroke-linecap="round"/>
+
+                        <!-- Arc 5: 5x5 (90 degrees) - continuing the spiral -->
+                        <path class="arc"
+                              d="M 550 50 A 500 500 0 0 1 50 850"
+                              fill="none"
+                              stroke="url(#spiralGradient)"
+                              stroke-width="3"
+                              stroke-linecap="round"
+                              transform="translate(0, -50)"/>
+                    </g>
+
+                    <!-- Fibonacci sequence labels -->
+                    <g class="label" font-family="JetBrains Mono, monospace" font-size="12" fill="#d97706">
+                        <text x="100" y="105" text-anchor="middle" opacity="0.6">1</text>
+                        <text x="200" y="105" text-anchor="middle" opacity="0.6">1</text>
+                        <text x="150" y="255" text-anchor="middle" opacity="0.6">2</text>
+                        <text x="400" y="205" text-anchor="middle" opacity="0.6">3</text>
+                        <text x="300" y="605" text-anchor="middle" opacity="0.6">5</text>
+                    </g>
+
+                    <!-- Center point marker -->
+                    <circle class="label" cx="150" cy="150" r="4" fill="#d97706" opacity="0.8"/>
+
+                    <!-- Golden Ratio Phi symbol -->
+                    <text class="label"
+                          x="680" y="750"
+                          font-family="EB Garamond, serif"
+                          font-size="48"
+                          fill="#d97706"
+                          opacity="0.3">φ</text>
+
+                    <!-- Continuous spiral path (smooth version) -->
+                    <path class="spiral-path"
+                          d="M 150 150
+                             Q 150 50 250 50
+                             Q 350 50 350 150
+                             Q 350 350 50 350
+                             Q 50 550 550 550
+                             Q 750 550 750 50
+                             Q 750 -250 50 -250"
+                          fill="none"
+                          stroke="url(#spiralGradient)"
+                          stroke-width="4"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          opacity="0.9"
+                          filter="url(#glow)"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="caption">
+            <p>
+                The Golden Spiral is a logarithmic spiral that grows outward by a factor of the golden ratio φ (approximately 1.618)
+                for every quarter turn it makes. It appears throughout nature, from the arrangement of leaves on a stem to the
+                spiral arms of galaxies, embodying the mathematical relationship that has fascinated artists, architects, and
+                mathematicians for millennia.
+            </p>
+            <div class="formula">φ = (1 + √5) / 2 ≈ 1.6180339887...</div>
+        </div>
+
+        <div class="metadata">
+            <div class="metadata-item">
+                <span class="label">Sequence</span>
+                <span class="value">1, 1, 2, 3, 5, 8, 13, 21...</span>
+            </div>
+            <div class="metadata-item">
+                <span class="label">Golden Ratio</span>
+                <span class="value">1.618034</span>
+            </div>
+            <div class="metadata-item">
+                <span class="label">Growth Factor</span>
+                <span class="value">φ per 90°</span>
+            </div>
+            <div class="metadata-item">
+                <span class="label">License</span>
+                <span class="value">CC0 1.0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Optional: Add subtle parallax effect on mouse move
+        document.addEventListener('DOMContentLoaded', () => {
+            const wrapper = document.querySelector('.illustration-wrapper');
+            const svg = wrapper.querySelector('svg');
+
+            wrapper.addEventListener('mousemove', (e) => {
+                const rect = wrapper.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+                const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+
+                svg.style.transform = `
+                    perspective(1000px)
+                    rotateY(${x * 5}deg)
+                    rotateX(${-y * 5}deg)
+                    scale(1.02)
+                `;
+            });
+
+            wrapper.addEventListener('mouseleave', () => {
+                svg.style.transform = 'perspective(1000px) rotateY(0) rotateX(0) scale(1)';
+            });
+
+            // Reset transform with transition
+            svg.style.transition = 'transform 0.3s ease-out';
+        });
+    </script>
+</body>
+</html>

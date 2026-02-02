@@ -1,0 +1,222 @@
+{
+  "agent": {
+    "name": "Scan Creator",
+    "description": "Specialized agent for creating trading scanners with precise entry and exit criteria",
+    "type": "creator",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 7,
+    "system_prompt": {
+      "role": "You are a Trading Scanner Creator specialized in defining and implementing trading scanners with clear, testable entry and exit conditions.",
+      "responsibilities": [
+        "Design scanner logic based on pattern requirements",
+        "Define entry conditions with precise criteria",
+        "Define exit conditions with stop loss and take profit",
+        "Create parameter schemas for the scanner",
+        "Generate test cases to validate scanner logic",
+        "Ensure scanner code is clean and maintainable"
+      ],
+      "guidelines": [
+        "Every scanner must have clear, unambiguous entry conditions",
+        "Parameters must have realistic min/max ranges",
+        "Include risk management (stop loss, position sizing)",
+        "Generate scanner code that follows best practices",
+        "Always provide example parameter values",
+        "Test scanner logic with sample data"
+      ],
+      "constraints": [
+        "Maximum 7 tools - focus on scanner creation only",
+        "Do not implement backtesting logic (delegate to backtest agent)",
+        "Do not implement parameter optimization (delegate to optimizer agent)",
+        "Scanner parameters must be bounded (no infinite ranges)",
+        "Every scanner must include risk management parameters"
+      ]
+    },
+    "tools": [
+      {
+        "name": "define_entry_conditions",
+        "description": "Defines the entry conditions for a trading scanner",
+        "type": "creation",
+        "parameters": {
+          "pattern_type": {
+            "type": "str",
+            "description": "Pattern type: 'gap', 'breakout', 'reversal', 'trend_follow'",
+            "required": true
+          },
+          "conditions": {
+            "type": "list",
+            "description": "List of condition definitions",
+            "required": true
+          },
+          "timeframe": {
+            "type": "str",
+            "description": "Trading timeframe",
+            "required": true
+          }
+        }
+      },
+      {
+        "name": "define_exit_conditions",
+        "description": "Defines exit conditions including stop loss and take profit",
+        "type": "creation",
+        "parameters": {
+          "exit_strategy": {
+            "type": "str",
+            "description": "Strategy: 'fixed', 'trailing', 'conditional'",
+            "required": true
+          },
+          "stop_loss": {
+            "type": "dict",
+            "description": "Stop loss configuration",
+            "required": true
+          },
+          "take_profit": {
+            "type": "dict",
+            "description": "Take profit configuration",
+            "required": true
+          }
+        }
+      },
+      {
+        "name": "design_parameter_schema",
+        "description": "Creates the parameter schema for scanner configuration",
+        "type": "creation",
+        "parameters": {
+          "scanner_type": {
+            "type": "str",
+            "description": "Type of scanner being created",
+            "required": true
+          },
+          "required_params": {
+            "type": "list",
+            "description": "Required parameters with types and ranges",
+            "required": true
+          },
+          "optional_params": {
+            "type": "list",
+            "description": "Optional parameters with defaults",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "generate_scanner_code",
+        "description": "Generates Python code for the scanner implementation",
+        "type": "creation",
+        "parameters": {
+          "scanner_spec": {
+            "type": "dict",
+            "description": "Complete scanner specification",
+            "required": true
+          },
+          "code_style": {
+            "type": "str",
+            "description": "Code style preference",
+            "required": false,
+            "default": "clean"
+          }
+        }
+      },
+      {
+        "name": "validate_scanner_logic",
+        "description": "Validates that scanner logic is sound and testable",
+        "type": "validation",
+        "parameters": {
+          "scanner_code": {
+            "type": "str",
+            "description": "Generated scanner code to validate",
+            "required": true
+          },
+          "test_cases": {
+            "type": "list",
+            "description": "Test cases to run against the scanner",
+            "required": true
+          }
+        }
+      },
+      {
+        "name": "create_test_data",
+        "description": "Generates synthetic test data for scanner validation",
+        "type": "creation",
+        "parameters": {
+          "pattern_type": {
+            "type": "str",
+            "description": "Type of pattern to generate data for",
+            "required": true
+          },
+          "num_samples": {
+            "type": "int",
+            "description": "Number of test samples to generate",
+            "required": false,
+            "default": 100
+          }
+        }
+      },
+      {
+        "name": "document_scanner",
+        "description": "Creates comprehensive documentation for the scanner",
+        "type": "creation",
+        "parameters": {
+          "scanner_spec": {
+            "type": "dict",
+            "description": "Scanner specification to document",
+            "required": true
+          },
+          "include_examples": {
+            "type": "bool",
+            "description": "Include usage examples",
+            "required": false,
+            "default": true
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "scanner_creation_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "strict",
+      "quality_threshold": 0.85,
+      "rules": [
+        {
+          "name": "entry_condition_clarity",
+          "description": "Entry conditions must be unambiguous",
+          "severity": "error"
+        },
+        {
+          "name": "parameter_boundedness",
+          "description": "All parameters must have min/max bounds",
+          "severity": "error"
+        },
+        {
+          "name": "risk_management_included",
+          "description": "Scanner must include stop loss logic",
+          "severity": "error"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "production",
+      "scaling": "single_instance",
+      "resources": {
+        "memory": "1GB",
+        "cpu": "1.0"
+      }
+    }
+  }
+}

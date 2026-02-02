@@ -1,0 +1,82 @@
+/* Comprehensive CSS fix for button click issues */
+
+/* Force interactive behavior on all buttons */
+button,
+[role="button"],
+.cursor-pointer {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Specific fixes for display mode toggle buttons */
+[data-testid="display-mode-toggles"] button,
+[data-testid="dollar-button"],
+[data-testid="percent-button"],
+[data-testid="r-button"] {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  user-select: none !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* Remove any potential overlays or pseudo-elements that might block clicks */
+[data-testid="display-mode-toggles"]::before,
+[data-testid="display-mode-toggles"]::after,
+[data-testid="display-mode-toggles"] *::before,
+[data-testid="display-mode-toggles"] *::after {
+  pointer-events: none !important;
+}
+
+/* Ensure no parent elements are blocking pointer events */
+.studio-surface,
+.studio-bg,
+.space-y-4,
+.flex,
+.items-center,
+.justify-between {
+  pointer-events: auto !important;
+}
+
+/* Force visibility and interactivity */
+[data-testid="display-mode-toggles"] {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: flex !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* Reset any potential transform or positioning issues */
+[data-testid="display-mode-toggles"] button {
+  transform: none !important;
+  position: relative !important;
+  overflow: visible !important;
+  clip: none !important;
+  clip-path: none !important;
+}
+
+/* Mobile touch improvements */
+@media (hover: none) and (pointer: coarse) {
+  [data-testid="display-mode-toggles"] button {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    touch-action: manipulation !important;
+  }
+}
+
+/* Debug styles for visibility */
+.debug-mode [data-testid="display-mode-toggles"] {
+  border: 2px solid #ff0000 !important;
+  background: rgba(255, 0, 0, 0.1) !important;
+}
+
+.debug-mode [data-testid="display-mode-toggles"] button {
+  border: 1px solid #00ff00 !important;
+  background: rgba(0, 255, 0, 0.1) !important;
+}

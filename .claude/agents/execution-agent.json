@@ -1,0 +1,262 @@
+{
+  "name": "execution-agent",
+  "description": "Professional trade execution and order management agent with broker integrations",
+  "version": "1.0.0",
+  "author": "CE-Hub Trading Team",
+  "capabilities": [
+    "order execution management",
+    "broker integration",
+    "order type optimization",
+    "slippage minimization",
+    "execution quality analysis",
+    "trade reconciliation",
+    "execution venue selection",
+    "algorithmic execution",
+    "liquidity seeking",
+    "execution cost analysis"
+  ],
+  "tools": [
+    "broker-apis",
+    "order-router",
+    "execution-algorithms",
+    "slippage-calculator",
+    "market-impact-analyzer",
+    "trade-reconciler"
+  ],
+  "integrations": [
+    "interactive-brokers-api",
+    "alpaca-trading-api",
+    "polygon-real-time",
+    "tradier-api",
+    "ccex-crypto-exchanges"
+  ],
+  "dependencies": {
+    "ib-api": "^9.81.1",
+    "alpaca-trade-api": "^3.0.0",
+    "polygon-api-client": "^3.0.0",
+    "websockets": "^11.0.0",
+    "asyncio": "^3.4.3",
+    "pandas": "^2.0.0",
+    "numpy": "^1.24.0",
+    "scipy": "^1.10.0"
+  },
+  "supported_brokers": [
+    {
+      "name": "interactive_brokers",
+      "api_endpoint": "twsapi",
+      "supported_markets": ["stocks", "options", "futures", "forex", "crypto"],
+      "order_types": ["market", "limit", "stop", "stop_limit", "trailing_stop"],
+      "algo_orders": ["twap", "vwap", "iceberg", "percent_volume"]
+    },
+    {
+      "name": "alpaca",
+      "api_endpoint": "https://api.alpaca.markets",
+      "supported_markets": ["stocks", "crypto"],
+      "order_types": ["market", "limit", "stop", "stop_limit", "trailing_stop"],
+      "algo_orders": ["twap", "vwap"]
+    }
+  ],
+  "execution_algorithms": [
+    {
+      "name": "twap",
+      "description": "Time-Weighted Average Price execution",
+      "parameters": {
+        "duration_minutes": 60,
+        "slice_interval": 30,
+        "participation_rate": 0.1
+      }
+    },
+    {
+      "name": "vwap",
+      "description": "Volume-Weighted Average Price execution",
+      "parameters": {
+        "duration_minutes": 60,
+        "volume_profile": "historical",
+        "participation_rate": 0.15
+      }
+    },
+    {
+      "name": "iceberg",
+      "description": "Iceberg order execution",
+      "parameters": {
+        "display_quantity": 100,
+        "randomize_size": true,
+        "min_slice_size": 10
+      }
+    },
+    {
+      "name": "liquidity_seeking",
+      "description": "Liquidity seeking algorithm",
+      "parameters": {
+        "max_participation": 0.2,
+        "passive_ratio": 0.7,
+        "spread_tolerance": 0.0001
+      }
+    }
+  ],
+  "order_management": {
+    "order_lifecycle": [
+      "new",
+      "submitted",
+      "acknowledged",
+      "partially_filled",
+      "filled",
+      "cancelled",
+      "rejected"
+    ],
+    "cancellation_policies": [
+      {
+        "name": "time_based",
+        "description": "Cancel orders after specified time",
+        "default_timeout": 300
+      },
+      {
+        "name": "price_based",
+        "description": "Cancel if price moves significantly",
+        "price_threshold": 0.005
+      },
+      {
+        "name": "liquidity_based",
+        "description": "Cancel if liquidity dries up",
+        "min_volume": 10000
+      }
+    ]
+  },
+  "execution_metrics": {
+    "cost_analysis": [
+      "explicit_costs",
+      "implicit_costs",
+      "timing_costs",
+      "opportunity_costs",
+      "total_cost_bps"
+    ],
+    "quality_measures": [
+      "implementation_shortfall",
+      "slippage_bps",
+      "fill_rate",
+      "execution_speed_ms",
+      "market_impact_bps"
+    ],
+    "benchmarking": [
+      "vwap_performance",
+      "twap_performance",
+      "market_performance",
+      "decision_performance"
+    ]
+  },
+  "risk_controls": {
+    "pre_trade": [
+      {
+        "name": "position_limits",
+        "description": "Check position size limits",
+        "max_position": 0.05
+      },
+      {
+        "name": "liquidity_check",
+        "description": "Verify sufficient market liquidity",
+        "min_daily_volume": 1000000
+      },
+      {
+        "name": "price_validation",
+        "description": "Validate order price合理性",
+        "price_deviation": 0.05
+      }
+    ],
+    "post_trade": [
+      {
+        "name": "trade_confirmation",
+        "description": "Verify trade details",
+        "tolerance_bps": 5
+      },
+      {
+        "name": "reconciliation",
+        "description": "Match broker and internal records",
+        "auto_reconcile": true
+      }
+    ]
+  },
+  "market_data_requirements": {
+    "real_time_feeds": [
+      "level_1_quotes",
+      "level_2_depth",
+      "time_and_sales",
+      "market_statistics"
+    ],
+    "historical_data": [
+      "ohlcv_1min",
+      "ohlcv_daily",
+      "trade_tape",
+      "quote_tape"
+    ]
+  },
+  "api_endpoints": [
+    {
+      "method": "POST",
+      "path": "/execution/place-order",
+      "description": "Place new trade order",
+      "parameters": {
+        "symbol": "string",
+        "side": "string",
+        "quantity": "number",
+        "order_type": "string",
+        "price": "number",
+        "time_in_force": "string",
+        "execution_algorithm": "string",
+        "broker": "string"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/execution/cancel-order",
+      "description": "Cancel existing order",
+      "parameters": {
+        "order_id": "string",
+        "broker": "string"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/execution/order-status/{order_id}",
+      "description": "Get order status",
+      "parameters": {
+        "order_id": "string",
+        "include_fills": "boolean"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/execution/portfolio",
+      "description": "Get current portfolio positions",
+      "parameters": {
+        "broker": "string",
+        "include_cash": "boolean"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/execution/analyze-quality",
+      "description": "Analyze execution quality",
+      "parameters": {
+        "order_id": "string",
+        "benchmark": "string",
+        "analysis_period": "string"
+      }
+    }
+  ],
+  "monitoring": {
+    "metrics": [
+      "order_execution_time",
+      "fill_rate",
+      "slippage_bps",
+      "execution_cost",
+      "order_rejection_rate",
+      "broker_connectivity"
+    ],
+    "alerts": {
+      "execution_failure": true,
+      "high_slippage": 0.0010,
+      "broker_disconnect": true,
+      "order_rejection": 0.1
+    }
+  }
+}

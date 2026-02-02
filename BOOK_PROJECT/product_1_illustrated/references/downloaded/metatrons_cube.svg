@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1400" width="1400" height="1400">
+  <defs>
+    <radialGradient id="spaceGradient" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" style="stop-color:#1a237e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0e27;stop-opacity:1" />
+    </radialGradient>
+
+    <filter id="violetGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffed4e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffd700;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1400" height="1400" fill="url(#spaceGradient)" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Prata&amp;display=swap');
+  </style>
+
+  <!-- Title -->
+  <text x="700" y="100" text-anchor="middle" font-family="Prata, serif" font-size="56" font-weight="400" fill="#ffd700" letter-spacing="6">METATRON'S CUBE</text>
+
+  <!-- Metatron's Cube - Large, Centered, Clean -->
+  <g transform="translate(700, 750)">
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="350" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.3"/>
+
+    <!-- 13 Circles -->
+    <g fill="none" stroke="url(#goldGradient)" stroke-width="2.5" opacity="0.6">
+      <!-- Center -->
+      <circle cx="0" cy="0" r="100"/>
+
+      <!-- Inner ring of 6 -->
+      <circle cx="0" cy="-100" r="100"/>
+      <circle cx="87" cy="-50" r="100"/>
+      <circle cx="87" cy="50" r="100"/>
+      <circle cx="0" cy="100" r="100"/>
+      <circle cx="-87" cy="50" r="100"/>
+      <circle cx="-87" cy="-50" r="100"/>
+
+      <!-- Outer ring of 6 -->
+      <circle cx="0" cy="-200" r="100" opacity="0.4"/>
+      <circle cx="173" cy="-100" r="100" opacity="0.4"/>
+      <circle cx="173" cy="100" r="100" opacity="0.4"/>
+      <circle cx="0" cy="200" r="100" opacity="0.4"/>
+      <circle cx="-173" cy="100" r="100" opacity="0.4"/>
+      <circle cx="-173" cy="-100" r="100" opacity="0.4"/>
+    </g>
+
+    <!-- Connecting lines (star tetrahedron projection) -->
+    <g stroke="#ffd700" stroke-width="2.5" fill="none" opacity="0.8">
+      <!-- Two interlocking triangles -->
+      <polygon points="0,-100 87,50 -87,50" stroke-width="3"/>
+      <polygon points="0,100 87,-50 -87,-50" stroke-width="3"/>
+      <!-- Hexagon -->
+      <polygon points="0,-100 87,-50 87,50 0,100 -87,50 -87,-50" stroke-width="1.5"/>
+    </g>
+
+    <!-- 13 vertex points -->
+    <g fill="#7b1fa2" opacity="0.9">
+      <circle cx="0" cy="0" r="10" filter="url(#violetGlow)"/>
+      <circle cx="0" cy="-100" r="8"/>
+      <circle cx="87" cy="-50" r="8"/>
+      <circle cx="87" cy="50" r="8"/>
+      <circle cx="0" cy="100" r="8"/>
+      <circle cx="-87" cy="50" r="8"/>
+      <circle cx="-87" cy="-50" r="8"/>
+    </g>
+
+    <!-- Gold centers on vertices -->
+    <g fill="#ffd700">
+      <circle cx="0" cy="0" r="5"/>
+      <circle cx="0" cy="-100" r="4"/>
+      <circle cx="87" cy="-50" r="4"/>
+      <circle cx="87" cy="50" r="4"/>
+      <circle cx="0" cy="100" r="4"/>
+      <circle cx="-87" cy="50" r="4"/>
+      <circle cx="-87" cy="-50" r="4"/>
+    </g>
+  </g>
+
+  <!-- Key insight -->
+  <g transform="translate(700, 1250)">
+    <text x="0" y="0" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#ffffff" opacity="0.7" letter-spacing="3">13 CIRCLES · ALL 5 PLATONIC SOLIDS · PATTERN OF CREATION</text>
+  </g>
+
+  <!-- Subtle corner accents -->
+  <g stroke="#ffd700" stroke-width="1" fill="none" opacity="0.2">
+    <path d="M50,150 L50,50 L150,50" />
+    <path d="M1350,150 L1350,50 L1250,50" />
+    <path d="M50,1250 L50,1350 L150,1350" />
+    <path d="M1350,1250 L1350,1350 L1250,1350" />
+  </g>
+</svg>

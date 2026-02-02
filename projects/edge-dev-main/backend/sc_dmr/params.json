@@ -1,0 +1,437 @@
+{
+  "scanner_name": "SCDMRMultiScanner",
+  "scanner_type": "multi_scanner",
+  "formatted_class_name": "UltraFastRenataSCDMRMultiScanner",
+  "description": "SC DMR Multi-Scanner with 10 pattern variations (D2 PM Setup, D2 PMH Break, D2 Extreme, D3, D4)",
+  "total_patterns": 10,
+  "output_format": "Ticker, Date, Scanner_Label (3 columns)",
+
+  "mass_parameters": {
+    "description": "Shared parameters applied to ALL 10 scanner patterns",
+    "parameters": {
+      "prev_close_min": {
+        "value": 0.75,
+        "type": "float",
+        "description": "Minimum previous close price (dollar filter)",
+        "category": "price_filter"
+      },
+      "prev_volume_min": {
+        "value": 10000000,
+        "type": "int",
+        "description": "Minimum previous volume (10M shares)",
+        "category": "liquidity_filter"
+      },
+      "prev_close_bullish": {
+        "value": true,
+        "type": "bool",
+        "description": "Previous close must be >= previous open (bullish candle)",
+        "category": "candlestick_filter"
+      },
+      "valid_trig_high_enabled": {
+        "value": true,
+        "type": "bool",
+        "description": "Enable 10-period high validation (prev_high must be highest of last 10)",
+        "category": "validation_filter"
+      }
+    }
+  },
+
+  "scanner_patterns": {
+    "D2_PM_Setup": {
+      "description": "D2 Pre-Market Setup (4 variants combined with OR logic)",
+      "individual_parameters": {
+        "prev_high_gain_min": {
+          "value": 0.2,
+          "type": "float",
+          "description": "Minimum previous high % gain (0.2 = 20%)"
+        },
+        "pmh_gap_range_mult": {
+          "value": 0.5,
+          "type": "float",
+          "description": "PMH gap vs previous range multiplier"
+        },
+        "pmh_gap_pct_min": {
+          "value": 0.5,
+          "type": "float",
+          "description": "PMH gap % minimum (0.5 = 50%)"
+        },
+        "prev_close_range_min": {
+          "value": 0.5,
+          "type": "float",
+          "description": "Previous close range minimum (position in candle)"
+        },
+        "high_vs_low_mult": {
+          "value": 1.5,
+          "type": "float",
+          "description": "High vs low multiplier (high >= low * 1.5)"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "D2_PM_Setup_2": {
+      "description": "D2 Pre-Market Setup variant 2 (stricter requirements)",
+      "individual_parameters": {
+        "prev_high_gain_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Higher gain requirement (1.0 = 100%)"
+        },
+        "pmh_gap_range_mult": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Higher PMH gap requirement"
+        },
+        "pmh_gap_pct_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Higher PMH gap % requirement"
+        },
+        "prev_close_range_min": {
+          "value": 0.3,
+          "type": "float",
+          "description": "Lower close range requirement"
+        },
+        "high_vs_low_mult": {
+          "value": 1.5,
+          "type": "float",
+          "description": "High vs low multiplier"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "D2_PMH_Break": {
+      "description": "D2 Pre-Market High Break with gap >= 0.2",
+      "individual_parameters": {
+        "prev_high_gain_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Previous high % gain minimum (100%)"
+        },
+        "prev_gap_min": {
+          "value": 0.2,
+          "type": "float",
+          "description": "Previous gap % minimum (20%)"
+        },
+        "gap_range_mult": {
+          "value": 0.3,
+          "type": "float",
+          "description": "Gap vs previous range multiplier"
+        },
+        "opening_range_min": {
+          "value": 0.5,
+          "type": "float",
+          "description": "Opening range minimum"
+        },
+        "prev_close_range_min": {
+          "value": 0.5,
+          "type": "float",
+          "description": "Previous close range minimum"
+        },
+        "high_vs_low_mult": {
+          "value": 1.5,
+          "type": "float",
+          "description": "High vs low multiplier"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "D2_PMH_Break_1": {
+      "description": "D2 Pre-Market High Break with gap < 0.2",
+      "individual_parameters": {
+        "prev_high_gain_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Previous high % gain minimum"
+        },
+        "prev_gap_max": {
+          "value": 0.2,
+          "type": "float",
+          "description": "Previous gap % maximum (< 20%)"
+        },
+        "gap_range_mult": {
+          "value": 0.3,
+          "type": "float",
+          "description": "Gap vs range multiplier"
+        },
+        "opening_range_min": {
+          "value": 0.5,
+          "type": "float",
+          "description": "Opening range minimum"
+        },
+        "prev_close_range_min": {
+          "value": 0.5,
+          "type": "float",
+          "description": "Previous close range minimum"
+        },
+        "high_vs_low_mult": {
+          "value": 1.5,
+          "type": "float",
+          "description": "High vs low multiplier"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "D2_No_PMH_Break": {
+      "description": "D2 pattern without pre-market high break (high < PMH)",
+      "individual_parameters": {
+        "prev_high_gain_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Previous high % gain minimum"
+        },
+        "prev_gap_min": {
+          "value": 0.2,
+          "type": "float",
+          "description": "Previous gap minimum (20%)"
+        },
+        "gap_range_mult": {
+          "value": 0.3,
+          "type": "float",
+          "description": "Gap vs range multiplier"
+        },
+        "opening_range_min": {
+          "value": 0.5,
+          "type": "float",
+          "description": "Opening range minimum"
+        },
+        "prev_close_range_min": {
+          "value": 0.5,
+          "type": "float",
+          "description": "Previous close range minimum"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "D2_Extreme_Gap": {
+      "description": "D2 Extreme Gap pattern (gap >= 1x previous range)",
+      "individual_parameters": {
+        "prev_high_gain_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Previous high % gain minimum"
+        },
+        "gap_range_mult": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Gap vs range multiplier (1.0 = gap >= 1x range)"
+        },
+        "prev_close_range_min": {
+          "value": 0.3,
+          "type": "float",
+          "description": "Previous close range minimum"
+        },
+        "high_vs_low_mult": {
+          "value": 1.5,
+          "type": "float",
+          "description": "High vs low multiplier"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "D2_Extreme_Intraday_Run": {
+      "description": "D2 Extreme Intraday Run pattern",
+      "individual_parameters": {
+        "prev_high_gain_min": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Previous high % gain minimum"
+        },
+        "intraday_run_range_mult": {
+          "value": 1.0,
+          "type": "float",
+          "description": "Intraday run vs range multiplier (high - open >= 1x range)"
+        },
+        "gap_range_mult": {
+          "value": 0.3,
+          "type": "float",
+          "description": "Gap vs range multiplier"
+        },
+        "prev_close_range_min": {
+          "value": 0.5,
+          "type": "float",
+          "description": "Previous close range minimum"
+        },
+        "high_vs_low_mult": {
+          "value": 1.5,
+          "type": "float",
+          "description": "High vs low multiplier"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "D3": {
+      "description": "D3 pattern (2-day consecutive gaps)",
+      "individual_parameters": {
+        "prev_high_gain_min": {
+          "value": 0.2,
+          "type": "float",
+          "description": "Previous high % gain minimum"
+        },
+        "prev_gap_min": {
+          "value": 0.2,
+          "type": "float",
+          "description": "Previous gap minimum (day -1)"
+        },
+        "prev_gap_2_min": {
+          "value": 0.2,
+          "type": "float",
+          "description": "Previous gap minimum (day -2)"
+        },
+        "gap_range_mult": {
+          "value": 0.3,
+          "type": "float",
+          "description": "Gap vs range multiplier"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "D3_Alt": {
+      "description": "D3 Alternative pattern (2-day consecutive highs with larger gap)",
+      "individual_parameters": {
+        "prev_high_gain_min": {
+          "value": 0.2,
+          "type": "float",
+          "description": "Previous high % gain minimum"
+        },
+        "prev_high_2_gain_min": {
+          "value": 0.2,
+          "type": "float",
+          "description": "Previous high (day -2) % gain minimum"
+        },
+        "gap_range_mult": {
+          "value": 0.5,
+          "type": "float",
+          "description": "Gap vs range multiplier (higher threshold)"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    },
+
+    "D4": {
+      "description": "D4 pattern (3-day consecutive pattern with progressive closes and highs)",
+      "individual_parameters": {
+        "prev_high_gain_min": {
+          "value": 0.2,
+          "type": "float",
+          "description": "Previous high % gain minimum"
+        },
+        "prev_high_2_gain_min": {
+          "value": 0.2,
+          "type": "float",
+          "description": "Previous high (day -2) % gain minimum"
+        },
+        "prev_high_3_gain_min": {
+          "value": 0.2,
+          "type": "float",
+          "description": "Previous high (day -3) % gain minimum"
+        },
+        "gap_range_mult": {
+          "value": 0.3,
+          "type": "float",
+          "description": "Gap vs range multiplier"
+        },
+        "enabled": {
+          "value": true,
+          "type": "bool",
+          "description": "Enable this scanner pattern"
+        }
+      }
+    }
+  },
+
+  "date_ranges": {
+    "d0_start": "2024-01-01",
+    "d0_end": "2025-10-24",
+    "scan_start": "2023-10-01",
+    "description": "D0 is signal output range, scan_start provides 10+ day buffer for prev_high_10 calculations"
+  },
+
+  "threading": {
+    "stage1_workers": "min(128, cpu_cores * 8)",
+    "stage2_workers": "min(96, cpu_cores * 6)",
+    "batch_size": 200
+  },
+
+  "api": {
+    "base_url": "https://api.polygon.io",
+    "grouped_endpoint": "/v2/aggs/grouped/locale/us/market/stocks/{date}",
+    "api_key": "4r6MZNWLy2ucmhVI7fY8MrvXfXTSmxpy"
+  },
+
+  "data_source": {
+    "type": "polygon_grouped",
+    "description": "Uses Polygon grouped endpoint to fetch ALL stocks (no ticker list needed)",
+    "coverage": "All US equities",
+    "frequency": "daily"
+  },
+
+  "renata_integration": {
+    "mass_parameter_commands": [
+      "Increase min price from $0.75 to $5 across all scanners",
+      "Increase min volume from 10M to 20M across all scanners",
+      "Disable bullish close requirement for all scanners",
+      "Enable/disable valid trigger high validation globally"
+    ],
+    "individual_parameter_commands": [
+      "Change D2_PMH_Break gap threshold from 0.2 to 0.3",
+      "Increase D2_PM_Setup_2 PMH gap requirement from 1.0 to 1.5",
+      "Disable D2_No_PMH_Break scanner pattern",
+      "Adjust D3 gap range multiplier from 0.3 to 0.5"
+    ]
+  },
+
+  "output_example": {
+    "format": "Ticker, Date, Scanner_Label",
+    "sample_rows": [
+      "AAPL, 2024-12-20, D2_PMH_Break",
+      "MSFT, 2024-12-20, D3",
+      "TSLA, 2024-12-20, D2_Extreme_Gap",
+      "NVDA, 2024-12-19, D2_PM_Setup",
+      "GOOGL, 2024-12-19, D4"
+    ]
+  }
+}

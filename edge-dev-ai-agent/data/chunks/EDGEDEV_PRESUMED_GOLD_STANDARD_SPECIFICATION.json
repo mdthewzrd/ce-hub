@@ -1,0 +1,2090 @@
+{
+  "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+  "chunk_count": 121,
+  "chunks": [
+    {
+      "content": "# EdgeDev Codebase Research Report",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::EdgeDev Codebase Research Report",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Codebase Research Report"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "EdgeDev Codebase Research Report"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "## Presumed \"Gold Standard\" Specification for Scanners, Backtests, and Code Structure\n\n**Research Date**: 2026-01-29\n**Research Scope**: Comprehensive analysis of EdgeDev codebase patterns\n**Status**: RESEARCH COMPLETE - Ready for Review\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::EdgeDev Codebase Research Report::Presumed \"Gold Standard\" Specification for Scanners, Backtests, and Code Structure",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Codebase Research Report",
+        "Presumed \"Gold Standard\" Specification for Scanners, Backtests, and Code Structure"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Presumed \"Gold Standard\" Specification for Scanners, Backtests, and Code Structure"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "## Executive Summary\n\nThis research document synthesizes patterns from **133+ scanner files**, **6+ backtest engines**, and **hundreds of supporting files** to extract the \"presumed gold standard\" for production-ready trading code in the EdgeDev ecosystem.\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::EdgeDev Codebase Research Report::Executive Summary",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Codebase Research Report",
+        "Executive Summary"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Executive Summary"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "pattern",
+        "code",
+        "position"
+      ]
+    },
+    {
+      "content": "### Key Findings\n\n1. **Two Distinct Scanner Architectures Exist**:\n   - **V31 Class-Based** (Modern, scalable, 360x faster)\n   - **Standalone Script-Based** (Simple, direct execution pattern)\n\n2. **Backside B Pattern Dominates** (75+ variants)\n   - The most battle-tested pattern in the codebase\n   - Multiple working implementations available\n   - Clear parameter structure and detection logic\n\n3. **Backtesting Has Two Approaches**:\n   - Simple P&L simulation (fast, for validation)\n   - Enhanced intraday simulation (slow, accurate)\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::EdgeDev Codebase Research Report::Executive Summary::Key Findings",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Codebase Research Report",
+        "Executive Summary",
+        "Key Findings"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Key Findings"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "pattern",
+        "v31",
+        "code",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Table of Contents\n\n1. [Scanner Architecture Patterns](#scanner-architecture-patterns)\n2. [Backtest Specifications](#backtest-specifications)\n3. [Code Structure Standards](#code-structure-standards)\n4. [Data Structure Requirements](#data-structure-requirements)\n5. [Parameter System Design](#parameter-system-design)\n6. [API Integration Patterns](#api-integration-patterns)\n7. [Workflow Best Practices](#workflow-best-practices)\n8. [Validation Checklists](#validation-checklists)\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::EdgeDev Codebase Research Report::Table of Contents",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Codebase Research Report",
+        "Table of Contents"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Table of Contents"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "## 1. Scanner Architecture Patterns\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::EdgeDev Codebase Research Report::1. Scanner Architecture Patterns",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Codebase Research Report",
+        "1. Scanner Architecture Patterns"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "1. Scanner Architecture Patterns"
+      },
+      "tags": [
+        "scanner",
+        "pattern"
+      ]
+    },
+    {
+      "content": "### Pattern A: V31 Class-Based Architecture (Recommended for Production)\n\n**File References**:\n- `/projects/edge-dev-main/V31_GOLD_STANDARD_SPECIFICATION.md` (Complete specification)\n- `/projects/edge-dev-main/V31_QUICK_REFERENCE.md` (Quick reference card)\n- `/projects/edge-dev-main/optimized_backside_b_scanner.py` (Working example)\n\n**Core Structure**:",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::EdgeDev Codebase Research Report::1. Scanner Architecture Patterns::Pattern A: V31 Class-Based Architecture (Recommended for Production)::chunk0",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "EdgeDev Codebase Research Report",
+        "1. Scanner Architecture Patterns",
+        "Pattern A: V31 Class-Based Architecture (Recommended for Production)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern A: V31 Class-Based Architecture (Recommended for Production)"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "indicator",
+        "pattern",
+        "v31",
+        "code",
+        "optimization",
+        "execution"
+      ]
+    },
+    {
+      "content": "(Complete specification)\n- `/projects/edge-dev-main/V31_QUICK_REFERENCE.md` (Quick reference card)\n- `/projects/edge-dev-main/optimized_backside_b_scanner.py` (Working example)\n\n**Core Structure**:\n\n\n\n[...previous chunk overlap...]\n\n```python\nimport pandas as pd\nimport numpy as np\nimport requests\nfrom datetime import datetime, timedelta\nfrom concurrent.futures import ThreadPoolExecutor, as_completed\nimport pandas_market_calendars as mcal\nfrom typing import List, Dict, Optional\n\nclass BacksideBScanner:\n    \"\"\"\n    Single-pattern scanner using v31 5-stage architecture\n\n    Stages:\n    1. fetch_grouped_data() - Fetch all tickers for all dates\n    2a. compute_simple_features() - prev_close, adv20, price_range\n    2b. apply_smart_filters() - Validate D0, preserve historical\n    3a. compute_full_features() - EMA, ATR, slopes, etc.\n    3b. detect_patterns() - Pattern detection logic\n    \"\"\"\n\n    def __init__(self, api_key: str, d0_start: str, d0_end: str):\n        \"\"\"Initialize scanner with date range and historical buffer\"\"\"\n\n        # Store user's original D0 range separately\n        self.d0_start_user = d0_start\n        self.d0_end_user = d0_end\n\n        # Calculate historical data range\n        lookback_buffer = self.params['abs_lookback_days'] + 50\n        scan_start_dt = pd.to_datetime(self.d0_start_user) - pd.Timedelta(days=lookback_buffer)\n        self.scan_start = scan_start_dt.strftime('%Y-%m-%d')\n        self.d0_end = self.d0_end_user\n\n        # API Configuration\n        self.api_key = api_key\n        self.base_url = \"https://api.polygon.io\"\n        self.session = requests.Session()\n\n        # Workers\n        self.stage1_workers = 5\n        self.stage3_workers = 10\n\n        # Parameters (flat structure)\n        self.params = {\n            \"price_min\": 8.0,\n            \"adv20_min_usd\": 30_000_000,\n            \"abs_lookback_days\": 1000,\n            \"abs_exclude_days\": 10,\n            # ... pattern-specific params\n        }\n\n    def run_scan(self):\n        \"\"\"Main execution method - 5-stage pipeline\"\"\"\n        # Stage 1\n        stage1_data = self.fetch_grouped_data()\n\n        # Stage 2a\n        stage2a_data = self.compute_simple_features(stage1_data)\n\n        # Stage 2b\n        stage2b_data = self.apply_smart_filters(stage2a_data)\n\n        # Stage 3a\n        stage3a_data = self.compute_full_features(stage2b_data)\n\n        # Stage 3b\n        stage3_results = self.detect_patterns(stage3a_data)\n\n        return stage3_results\n```",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::EdgeDev Codebase Research Report::1. Scanner Architecture Patterns::Pattern A: V31 Class-Based Architecture (Recommended for Production)::chunk1",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Codebase Research Report",
+        "1. Scanner Architecture Patterns",
+        "Pattern A: V31 Class-Based Architecture (Recommended for Production)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern A: V31 Class-Based Architecture (Recommended for Production)"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "indicator",
+        "pattern",
+        "v31",
+        "code",
+        "optimization",
+        "execution"
+      ]
+    },
+    {
+      "content": "# Stage 3a\n        stage3a_data = self.compute_full_features(stage2b_data)\n\n        # Stage 3b\n        stage3_results = self.detect_patterns(stage3a_data)\n\n        return stage3_results\n```\n\n\n\n[...previous chunk overlap...]\n\n**Required Methods**:\n\n| Method | Purpose | Critical Requirements |\n|--------|---------|----------------------|\n| `__init__(api_key, d0_start, d0_end)` | Initialize | MUST calculate historical buffer |\n| `run_scan()` | Main execution | Calls all 5 stages in order |\n| `fetch_grouped_data()` | Stage 1 | Use mcal, parallel fetching |\n| `compute_simple_features()` | Stage 2a | Per-ticker operations |\n| `apply_smart_filters()` | Stage 2b | Separate historical/D0 |\n| `compute_full_features()` | Stage 3a | All technical indicators |\n| `detect_patterns()` | Stage 3b | Pattern-specific logic |\n\n---",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::EdgeDev Codebase Research Report::1. Scanner Architecture Patterns::Pattern A: V31 Class-Based Architecture (Recommended for Production)::chunk2",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Codebase Research Report",
+        "1. Scanner Architecture Patterns",
+        "Pattern A: V31 Class-Based Architecture (Recommended for Production)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern A: V31 Class-Based Architecture (Recommended for Production)"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "indicator",
+        "pattern",
+        "v31",
+        "code",
+        "optimization",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Pattern B: Standalone Script Architecture (Simple)\n\n**File References**:\n- `/projects/edge-dev-main/backend/SIMPLE_TEST_SCANNER.py`\n- `/projects/edge-dev-main/backend/proven_backside_scanner.py`\n\n**Core Structure**:\n\n```python\nimport pandas as pd\nimport numpy as np\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::EdgeDev Codebase Research Report::1. Scanner Architecture Patterns::Pattern B: Standalone Script Architecture (Simple)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Codebase Research Report",
+        "1. Scanner Architecture Patterns",
+        "Pattern B: Standalone Script Architecture (Simple)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern B: Standalone Script Architecture (Simple)"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# Required: SYMBOLS list for the scanner\nSYMBOLS = [\n    'AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA', 'META', 'NVDA', 'NFLX',\n    'AMD', 'INTC', 'CRM', 'ORCL', 'ADBE', 'PYPL', 'SHOP', 'SQ'\n]\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Required: SYMBOLS list for the scanner",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Required: SYMBOLS list for the scanner"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Required: SYMBOLS list for the scanner"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "# Required: scan_symbol function\ndef scan_symbol(symbol, start_date, end_date):\n    \"\"\"\n    Scanner function - must match this signature\n    \"\"\"\n    try:\n        # Detection logic here\n\n        if signal_detected:\n            result = {\n                'symbol': symbol,\n                'date': end_date,\n                'gap_percent': gap_percent,\n                'volume_ratio': volume_ratio,\n                # ... other fields\n            }\n            return [result]\n\n        return []\n\n    except Exception as e:\n        print(f\"Error scanning {symbol}: {str(e)}\")\n        return []\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Required: scan_symbol function",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Required: scan_symbol function"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Required: scan_symbol function"
+      },
+      "tags": [
+        "scanner",
+        "indicator",
+        "code"
+      ]
+    },
+    {
+      "content": "# Optional: Scanner configuration\nSCANNER_CONFIG = {\n    'name': 'Simple Scanner',\n    'description': 'Simple standalone scanner',\n    'timeframe': 'Daily'\n}\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Optional: Scanner configuration",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Optional: Scanner configuration"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Optional: Scanner configuration"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "# Entry point\nif __name__ == \"__main__\":\n    print(\"Scanner - Verification Mode\")\n    # Test logic here\n```\n\n**Key Requirements**:\n- `SYMBOLS` list at module level\n- `scan_symbol(symbol, start_date, end_date)` function\n- Returns list of dict results\n- Optional `SCANNER_CONFIG` dict\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Entry point",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Entry point"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Entry point"
+      },
+      "tags": [
+        "scanner",
+        "code"
+      ]
+    },
+    {
+      "content": "### Critical Architecture Principles (From V31 Spec)\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Entry point::Critical Architecture Principles (From V31 Spec)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Entry point",
+        "Critical Architecture Principles (From V31 Spec)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Critical Architecture Principles (From V31 Spec)"
+      },
+      "tags": [
+        "v31"
+      ]
+    },
+    {
+      "content": "#### Principle 1: Market Calendar Integration\n\n```python\nimport pandas_market_calendars as mcal\n\ndef get_trading_dates(self, start_date: str, end_date: str) -> List[str]:\n    \"\"\"Get all valid trading days between start and end date\"\"\"\n    nyse = mcal.get_calendar('NYSE')\n    trading_days = nyse.valid_days(\n        start_date=pd.to_datetime(start_date),\n        end_date=pd.to_datetime(end_date)\n    )\n    return [date.strftime('%Y-%m-%d') for date in trading_days]\n```\n\n**WHY**: Accounts for holidays, early closes, skip weekends correctly\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Entry point::Critical Architecture Principles (From V31 Spec)::Principle 1: Market Calendar Integration",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Entry point",
+        "Critical Architecture Principles (From V31 Spec)",
+        "Principle 1: Market Calendar Integration"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Principle 1: Market Calendar Integration"
+      },
+      "tags": [
+        "strategy",
+        "code"
+      ]
+    },
+    {
+      "content": "#### Principle 2: Historical Buffer Calculation\n\n```python\ndef __init__(self, api_key: str, d0_start: str, d0_end: str):\n    self.d0_start_user = d0_start\n    self.d0_end_user = d0_end\n\n    # Calculate historical buffer\n    lookback_buffer = self.params['abs_lookback_days'] + 50\n    scan_start_dt = pd.to_datetime(self.d0_start_user) - pd.Timedelta(days=lookback_buffer)\n    self.scan_start = scan_start_dt.strftime('%Y-%m-%d')\n    self.d0_end = self.d0_end_user\n```\n\n**WHY**: ABS window needs 1000+ days of history to calculate position\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Entry point::Critical Architecture Principles (From V31 Spec)::Principle 1: Market Calendar Integration::Principle 2: Historical Buffer Calculation",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Entry point",
+        "Critical Architecture Principles (From V31 Spec)",
+        "Principle 1: Market Calendar Integration",
+        "Principle 2: Historical Buffer Calculation"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Principle 2: Historical Buffer Calculation"
+      },
+      "tags": [
+        "scanner",
+        "code",
+        "position"
+      ]
+    },
+    {
+      "content": "#### Principle 3: Per-Ticker Operations\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Entry point::Critical Architecture Principles (From V31 Spec)::Principle 1: Market Calendar Integration::Principle 3: Per-Ticker Operations",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Entry point",
+        "Critical Architecture Principles (From V31 Spec)",
+        "Principle 1: Market Calendar Integration",
+        "Principle 3: Per-Ticker Operations"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Principle 3: Per-Ticker Operations"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# \u2705 CORRECT: adv20 computed per ticker\ndf['adv20_usd'] = (df['close'] * df['volume']).groupby(df['ticker']).transform(\n    lambda x: x.rolling(window=20, min_periods=20).mean()\n)\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::\u2705 CORRECT: adv20 computed per ticker",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "\u2705 CORRECT: adv20 computed per ticker"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u2705 CORRECT: adv20 computed per ticker"
+      },
+      "tags": []
+    },
+    {
+      "content": "# \u274c WRONG: adv20 computed across entire dataframe\ndf['adv20_usd'] = (df['close'] * df['volume']).rolling(20).mean()\n```\n\n**WHY**: Each ticker has different price/volume scales\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::\u274c WRONG: adv20 computed across entire dataframe",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u274c WRONG: adv20 computed across entire dataframe"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u274c WRONG: adv20 computed across entire dataframe"
+      },
+      "tags": [
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "#### Principle 4: Historical/D0 Separation\n\n```python\ndef apply_smart_filters(self, df: pd.DataFrame):\n    \"\"\"CRITICAL: Separate historical from D0 output range\"\"\"\n\n    # Separate historical from output range\n    df_historical = df[~df['date'].between(self.d0_start_user, self.d0_end_user)].copy()\n    df_output_range = df[df['date'].between(self.d0_start_user, self.d0_end_user)].copy()\n\n    # Apply filters ONLY to D0 dates\n    df_output_filtered = df_output_range[\n        (df_output_range['prev_close'] >= self.params['price_min']) &\n        (df_output_range['adv20_usd'] >= self.params['adv20_min_usd']) &\n        (df_output_range['price_range'] >= 0.50) &\n        (df_output_range['volume'] >= 1_000_000)\n    ].copy()\n\n    # COMBINE historical + filtered D0\n    df_combined = pd.concat([df_historical, df_output_filtered], ignore_index=True)\n\n    return df_combined\n```\n\n**WHY**: Historical data needed for ABS window calculations, only D0 dates need validation\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::\u274c WRONG: adv20 computed across entire dataframe::Principle 4: Historical/D0 Separation",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u274c WRONG: adv20 computed across entire dataframe",
+        "Principle 4: Historical/D0 Separation"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Principle 4: Historical/D0 Separation"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "#### Principle 5: Parallel Processing\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::\u274c WRONG: adv20 computed across entire dataframe::Principle 4: Historical/D0 Separation::Principle 5: Parallel Processing",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u274c WRONG: adv20 computed across entire dataframe",
+        "Principle 4: Historical/D0 Separation",
+        "Principle 5: Parallel Processing"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Principle 5: Parallel Processing"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Stage 1: Parallel date fetching\nwith ThreadPoolExecutor(max_workers=self.stage1_workers) as executor:\n    future_to_date = {\n        executor.submit(self._fetch_grouped_day, date_str): date_str\n        for date_str in trading_dates\n    }\n\n    for future in as_completed(future_to_date):\n        data = future.result()\n        all_data.append(data)\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Stage 1: Parallel date fetching",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Stage 1: Parallel date fetching"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Stage 1: Parallel date fetching"
+      },
+      "tags": [
+        "strategy",
+        "v31"
+      ]
+    },
+    {
+      "content": "# Stage 3: Parallel ticker processing (pre-sliced)\nticker_data_list = [\n    (ticker, ticker_df.copy(), d0_start_dt, d0_end_dt)\n    for ticker, ticker_df in df.groupby('ticker')\n]\n\nwith ThreadPoolExecutor(max_workers=self.stage3_workers) as executor:\n    future_to_ticker = {\n        executor.submit(self._process_ticker_optimized_pre_sliced, ticker_data): ticker_data[0]\n        for ticker_data in ticker_data_list\n    }\n```\n\n**WHY**: 360x speedup (6-8 minutes \u2192 10-30 seconds)\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Stage 3: Parallel ticker processing (pre-sliced)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Stage 3: Parallel ticker processing (pre-sliced)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Stage 3: Parallel ticker processing (pre-sliced)"
+      },
+      "tags": [
+        "v31",
+        "optimization"
+      ]
+    },
+    {
+      "content": "#### Principle 6: Two-Pass Feature Computation\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Stage 3: Parallel ticker processing (pre-sliced)::Principle 6: Two-Pass Feature Computation",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Stage 3: Parallel ticker processing (pre-sliced)",
+        "Principle 6: Two-Pass Feature Computation"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Principle 6: Two-Pass Feature Computation"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Stage 2a: Simple features (cheap to compute)\ndef compute_simple_features(self, df: pd.DataFrame):\n    df['prev_close'] = df.groupby('ticker')['close'].shift(1)\n    df['adv20_usd'] = (df['close'] * df['volume']).groupby(df['ticker']).transform(\n        lambda x: x.rolling(window=20, min_periods=20).mean()\n    )\n    df['price_range'] = df['high'] - df['low']\n    return df\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Stage 2a: Simple features (cheap to compute)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Stage 2a: Simple features (cheap to compute)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Stage 2a: Simple features (cheap to compute)"
+      },
+      "tags": [
+        "v31"
+      ]
+    },
+    {
+      "content": "# Stage 3a: Full features (expensive, only compute on filtered data)\ndef compute_full_features(self, df: pd.DataFrame):\n    for ticker, group in df.groupby('ticker'):\n        group['ema_9'] = group['close'].ewm(span=9, adjust=False).mean()\n        group['atr'] = compute_atr(group)\n        # ... more features\n```\n\n**WHY**: Don't compute expensive features on data that will be filtered\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Stage 3a: Full features (expensive, only compute on filtered data)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Stage 3a: Full features (expensive, only compute on filtered data)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Stage 3a: Full features (expensive, only compute on filtered data)"
+      },
+      "tags": [
+        "v31"
+      ]
+    },
+    {
+      "content": "## 2. Backtest Specifications\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Stage 3a: Full features (expensive, only compute on filtered data)::2. Backtest Specifications",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Stage 3a: Full features (expensive, only compute on filtered data)",
+        "2. Backtest Specifications"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "2. Backtest Specifications"
+      },
+      "tags": [
+        "backtest"
+      ]
+    },
+    {
+      "content": "### Backtest Type A: Simple P&L Simulation\n\n**File Reference**: `/projects/edge-dev-main/src/utils/backtest_script.py`\n\n**Core Structure**:\n\n```python\nimport pandas as pd\nimport numpy as np\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Stage 3a: Full features (expensive, only compute on filtered data)::2. Backtest Specifications::Backtest Type A: Simple P&L Simulation",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Stage 3a: Full features (expensive, only compute on filtered data)",
+        "2. Backtest Specifications",
+        "Backtest Type A: Simple P&L Simulation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Backtest Type A: Simple P&L Simulation"
+      },
+      "tags": [
+        "backtest",
+        "code"
+      ]
+    },
+    {
+      "content": "# Key configuration variables\nd_risk = 1000  # Risk per trade in dollars\np_risk = 0.01  # Risk percentage (1%)\nstart_capital = 100000\n\ndef comp_pnl(df_daily_pnl, start_capital):\n    \"\"\"Calculate compound P&L\"\"\"\n    sim_pnl_comp = start_capital\n    for i, row in df_daily_pnl.iterrows():\n        if i == 0:\n            prev_sim_pnl_comp = start_capital\n        else:\n            prev_sim_pnl_comp = df_daily_pnl.loc[i-1, 'sim_pnl_comp']\n        df_daily_pnl.loc[i, 'sim_pnl_comp'] = (\n            df_daily_pnl.loc[i, 'pnl'] * ((prev_sim_pnl_comp * p_risk) / d_risk) +\n            prev_sim_pnl_comp\n        )\n    return df_daily_pnl\n\ndef stats_by_trade(df):\n    \"\"\"Calculate trade statistics\"\"\"\n    if len(df) == 0:\n        return {}\n\n    win_trades = df[df['pnl'] > 0]\n    loss_trades = df[df['pnl'] < 0]\n\n    win_rate = len(win_trades) / len(df) if len(df) > 0 else 0\n    avg_win = win_trades['R_pnl'].mean() if len(win_trades) > 0 else 0\n    avg_loss = loss_trades['R_pnl'].mean() if len(loss_trades) > 0 else 0\n\n    if abs(avg_loss) > 0:\n        avg_wl_ratio = abs(avg_win) / abs(avg_loss)\n    else:\n        avg_wl_ratio = float('inf')\n\n    total_profit = df['cum_R_pnl'].iloc[-1] if len(df) > 0 else 0\n    ev = (win_rate * avg_win) + ((1 - win_rate) * avg_loss)\n    kelly = win_rate - ((1 - win_rate) / avg_wl_ratio) if avg_wl_ratio > 0 else 0",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Key configuration variables::chunk0",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Key configuration variables"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Key configuration variables"
+      },
+      "tags": [
+        "indicator",
+        "risk"
+      ]
+    },
+    {
+      "content": "_profit = df['cum_R_pnl'].iloc[-1] if len(df) > 0 else 0\n    ev = (win_rate * avg_win) + ((1 - win_rate) * avg_loss)\n    kelly = win_rate - ((1 - win_rate) / avg_wl_ratio) if avg_wl_ratio > 0 else 0\n\n\n\n[...previous chunk overlap...]\n\n    return {\n        'total_trades': len(df),\n        'winners': len(win_trades),\n        'losers': len(loss_trades),\n        'win_rate': win_rate,\n        'avg_win': avg_win,\n        'avg_loss': avg_loss,\n        'avg_wl_ratio': avg_wl_ratio,\n        'total_profit_r': total_profit,\n        'expected_value': ev,\n        'kelly': kelly\n    }\n```\n\n**Required Metrics**:\n- `total_trades`: Total number of trades\n- `winners`: Winning trades count\n- `losers`: Losing trades count\n- `win_rate`: Percentage of winning trades\n- `avg_win`: Average win amount (R-multiple)\n- `avg_loss`: Average loss amount (R-multiple)\n- `avg_wl_ratio`: Win/loss ratio\n- `total_profit_r`: Total profit in R-multiples\n- `expected_value`: Expected value per trade\n- `kelly`: Kelly criterion\n\n---",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Key configuration variables::chunk1",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Key configuration variables"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Key configuration variables"
+      },
+      "tags": [
+        "indicator",
+        "risk"
+      ]
+    },
+    {
+      "content": "### Backtest Type B: Enhanced Intraday Simulation\n\n**File Reference**: `/projects/edge-dev-main/src/utils/enhanced_backtest_engine.py`\n\n**Core Structure**:\n\n```python\nclass EnhancedBacktestEngine:\n    def __init__(self, config: Dict = None):\n        self.config = config or {}\n\n        # Risk management\n        self.d_risk = self.config.get('risk_per_trade_dollars', 1000)\n        self.p_risk = self.config.get('risk_percentage', 0.01)\n        self.start_capital = self.config.get('start_capital', 100000)\n\n        # Exit strategies\n        self.exit_strategies = {\n            'lc_momentum': {\n                'profit_target_atr': 2.0,\n                'stop_loss_atr': 0.8,\n                'trailing_stop_atr': 0.5,\n                'time_exit_minutes': 240,\n                'volume_exit_threshold': 0.3\n            },\n            'parabolic': {\n                'profit_target_atr': 3.0,\n                'stop_loss_atr': 1.0,\n                'trailing_stop_atr': 0.8,\n                'time_exit_minutes': 180,\n                'momentum_exit_threshold': 0.5\n            }\n        }\n\n    def run_enhanced_backtest(self, scan_results: List[Dict]) -> Dict:\n        \"\"\"Run enhanced backtest with real intraday data\"\"\"\n        all_trades = []\n\n        for scan_result in scan_results:\n            trade_result = self.simulate_trade_with_intraday_data(scan_result)\n            if trade_result:\n                all_trades.append(trade_result)\n\n        performance_metrics = self.calculate_enhanced_metrics(all_trades)\n\n        return {\n            'success': True,\n            'trades': all_trades,\n            'summary': performance_metrics\n        }\n```\n\n**Enhanced Features**:\n- Real intraday data fetching\n- Multiple exit strategies\n- Trailing stops\n- Volume-based exits\n- Time-based exits\n- Comprehensive performance analytics\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Key configuration variables::Backtest Type B: Enhanced Intraday Simulation",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Key configuration variables",
+        "Backtest Type B: Enhanced Intraday Simulation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Backtest Type B: Enhanced Intraday Simulation"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "indicator",
+        "code",
+        "risk"
+      ]
+    },
+    {
+      "content": "## 3. Code Structure Standards\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Key configuration variables::3. Code Structure Standards",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Key configuration variables",
+        "3. Code Structure Standards"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "3. Code Structure Standards"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "### Required Imports\n\n```python\nimport pandas as pd\nimport numpy as np\nimport requests\nfrom datetime import datetime, timedelta\nfrom concurrent.futures import ThreadPoolExecutor, as_completed\nimport pandas_market_calendars as mcal\nfrom typing import List, Dict, Optional, Any\n```\n\n**File Reference**: All production scanners use these imports\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Key configuration variables::3. Code Structure Standards::Required Imports",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Key configuration variables",
+        "3. Code Structure Standards",
+        "Required Imports"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Required Imports"
+      },
+      "tags": [
+        "scanner",
+        "code"
+      ]
+    },
+    {
+      "content": "### Column Naming Convention\n\n| Stage | Columns | Format |\n|-------|---------|--------|\n| Stage 1 Output | `ticker`, `date`, `open`, `high`, `low`, `close`, `volume` | lowercase |\n| Stage 2a/2b | Add: `prev_close`, `adv20_usd`, `price_range` | lowercase |\n| Stage 3a | Add: `ema_9`, `atr`, `vol_avg`, etc. | lowercase |\n| Detection Loop | Access via: `r1['Close']`, `r0['atr']` | Capitalized |\n\n**WHY**: Stage 1-3 use lowercase for DataFrame operations, detection loop uses capitalized Series access\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Key configuration variables::3. Code Structure Standards::Column Naming Convention",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Key configuration variables",
+        "3. Code Structure Standards",
+        "Column Naming Convention"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Column Naming Convention"
+      },
+      "tags": [
+        "v31"
+      ]
+    },
+    {
+      "content": "### Date Handling Standards\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Key configuration variables::3. Code Structure Standards::Date Handling Standards",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Key configuration variables",
+        "3. Code Structure Standards",
+        "Date Handling Standards"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Date Handling Standards"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Stage 1-3: Store as datetime\ndf['date'] = pd.to_datetime(df['date'])\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Stage 1-3: Store as datetime",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Stage 1-3: Store as datetime"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Stage 1-3: Store as datetime"
+      },
+      "tags": [
+        "v31"
+      ]
+    },
+    {
+      "content": "# Detection loop: Access as Timestamp\nd0 = ticker_df.iloc[i]['date']\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Detection loop: Access as Timestamp",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Detection loop: Access as Timestamp"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Detection loop: Access as Timestamp"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Comparison\nd0_start_dt = pd.to_datetime(self.d0_start_user)\nd0_end_dt = pd.to_datetime(self.d0_end_user)\n\nif d0 < d0_start_dt or d0 > d0_end_dt:\n    continue\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Comparison",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Comparison"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Comparison"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Error Handling Patterns\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Comparison::Error Handling Patterns",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Comparison",
+        "Error Handling Patterns"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Error Handling Patterns"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# Graceful handling of missing data\ntry:\n    m = add_daily_metrics(ticker_data_indexed)\nexcept:\n    continue\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Graceful handling of missing data",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Graceful handling of missing data"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Graceful handling of missing data"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "# Early data validation\nif len(ticker_df) < 100:\n    return []\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Early data validation",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Early data validation"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Early data validation"
+      },
+      "tags": []
+    },
+    {
+      "content": "# NaN checks\nif not (pd.notna(pos_abs_prev) and pos_abs_prev <= self.params['pos_abs_max']):\n    continue\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::NaN checks",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "NaN checks"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "NaN checks"
+      },
+      "tags": []
+    },
+    {
+      "content": "## 4. Data Structure Requirements\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::NaN checks::4. Data Structure Requirements",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "NaN checks",
+        "4. Data Structure Requirements"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "4. Data Structure Requirements"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Input Data Structure (from API)\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::NaN checks::4. Data Structure Requirements::Input Data Structure (from API)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "NaN checks",
+        "4. Data Structure Requirements",
+        "Input Data Structure (from API)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Input Data Structure (from API)"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Polygon grouped endpoint returns:\n{\n    \"results\": [\n        {\n            \"T\": \"AAPL\",  # Ticker\n            \"t\": 1609459200000,  # Timestamp (ms)\n            \"o\": 150.25,  # Open\n            \"h\": 152.00,  # High\n            \"l\": 149.50,  # Low\n            \"c\": 151.75,  # Close\n            \"v\": 50000000  # Volume\n        }\n    ]\n}\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Polygon grouped endpoint returns:",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Polygon grouped endpoint returns:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Polygon grouped endpoint returns:"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Convert to DataFrame:\ndf = pd.DataFrame(data['results'])\ndf = df.rename(columns={\n    'T': 'ticker',\n    'v': 'volume',\n    'o': 'open',\n    'c': 'close',\n    'h': 'high',\n    'l': 'low',\n    't': 'timestamp',\n})\ndf['date'] = pd.to_datetime(df['timestamp'], unit='ms').dt.strftime('%Y-%m-%d')\ndf = df[['ticker', 'date', 'open', 'high', 'low', 'close', 'volume']]\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Convert to DataFrame:",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Convert to DataFrame:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Convert to DataFrame:"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Output Data Structure (Scan Results)\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Convert to DataFrame:::Output Data Structure (Scan Results)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Convert to DataFrame:",
+        "Output Data Structure (Scan Results)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Output Data Structure (Scan Results)"
+      },
+      "tags": [
+        "scanner",
+        "code"
+      ]
+    },
+    {
+      "content": "# Single pattern scanner returns:\n[\n    {\n        \"Ticker\": \"AAPL\",\n        \"Date\": \"2024-01-15\",\n        \"Gap/ATR\": 1.25,\n        \"D1_Body/ATR\": 0.75,\n        \"PosAbs_1000d\": 0.45,\n        \"D1Vol(shares)\": 50000000,\n        \"D1Vol/Avg\": 1.8,\n        \"Trigger\": \"D1_or_D2\",\n        # ... pattern-specific fields\n    }\n]\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Single pattern scanner returns:",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Single pattern scanner returns:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Single pattern scanner returns:"
+      },
+      "tags": [
+        "scanner",
+        "pattern"
+      ]
+    },
+    {
+      "content": "# Multi-pattern scanner returns:\n[\n    {\n        \"Ticker\": \"AAPL\",\n        \"Date\": \"2024-01-15\",\n        \"Scanner_Label\": \"D2_PM_Setup\",  # Pattern identifier\n        # ... pattern-specific fields\n    }\n]\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Multi-pattern scanner returns:",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Multi-pattern scanner returns:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Multi-pattern scanner returns:"
+      },
+      "tags": [
+        "scanner",
+        "pattern"
+      ]
+    },
+    {
+      "content": "## 5. Parameter System Design\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Multi-pattern scanner returns:::5. Parameter System Design",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Multi-pattern scanner returns:",
+        "5. Parameter System Design"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "5. Parameter System Design"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Parameter Structure Pattern\n\n```python\nself.params = {\n    # === Mass Parameters (shared across all patterns) ===\n    \"price_min\": 8.0,\n    \"adv20_min_usd\": 30_000_000,\n\n    # === Backside B Pattern Parameters ===\n    # Backside context\n    \"abs_lookback_days\": 1000,\n    \"abs_exclude_days\": 10,\n    \"pos_abs_max\": 0.75,\n\n    # Trigger mold\n    \"trigger_mode\": \"D1_or_D2\",\n    \"atr_mult\": 0.9,\n    \"vol_mult\": 0.9,\n\n    # D0 gates\n    \"gap_div_atr_min\": 0.75,\n    \"open_over_ema9_min\": 0.9,\n    \"d1_green_atr_min\": 0.30,\n\n    # === SC DMR Pattern Parameters ===\n    # D2_PM_Setup\n    \"d2_pm_setup_gain_min\": 0.2,\n    \"d2_pm_setup_dol_pmh_gap_vs_range_min\": 0.5,\n    \"d2_pm_setup_pct_pmh_gap_min\": 0.5,\n\n    # D2_PMH_Break\n    \"d2_pmh_break_gain_min\": 1.0,\n    \"d2_pmh_break_gap_min\": 0.2,\n\n    # D3/D4\n    \"d3_gain_min\": 0.2,\n    \"d3_gap_min\": 0.2,\n    \"d4_gain_min\": 0.2,\n}\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Multi-pattern scanner returns:::5. Parameter System Design::Parameter Structure Pattern",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Multi-pattern scanner returns:",
+        "5. Parameter System Design",
+        "Parameter Structure Pattern"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Parameter Structure Pattern"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "### Parameter Access Patterns\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Multi-pattern scanner returns:::5. Parameter System Design::Parameter Access Patterns",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Multi-pattern scanner returns:",
+        "5. Parameter System Design",
+        "Parameter Access Patterns"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Parameter Access Patterns"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# In __init__: Store as dict\nself.params = {\"price_min\": 8.0, ...}\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::In __init__: Store as dict",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "In __init__: Store as dict"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "In __init__: Store as dict"
+      },
+      "tags": []
+    },
+    {
+      "content": "# In methods: Access via self.params\nif r1['Close'] >= self.params['price_min']:\n    ...\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::In methods: Access via self.params",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "In methods: Access via self.params"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "In methods: Access via self.params"
+      },
+      "tags": []
+    },
+    {
+      "content": "# In detection loop: Use local copy\nP_local = self.params\nif P_local[\"price_min\"]:\n    ...\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::In detection loop: Use local copy",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "In detection loop: Use local copy"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "In detection loop: Use local copy"
+      },
+      "tags": []
+    },
+    {
+      "content": "## 6. API Integration Patterns\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::In detection loop: Use local copy::6. API Integration Patterns",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "In detection loop: Use local copy",
+        "6. API Integration Patterns"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "6. API Integration Patterns"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "### Polygon API Configuration\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::In detection loop: Use local copy::6. API Integration Patterns::Polygon API Configuration",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "In detection loop: Use local copy",
+        "6. API Integration Patterns",
+        "Polygon API Configuration"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Polygon API Configuration"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Standard configuration\nAPI_KEY = \"Fm7brz4s23eSocDErnL68cE7wspz2K1I\"  # Should be env variable\nBASE_URL = \"https://api.polygon.io\"\nsession = requests.Session()\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Standard configuration",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Standard configuration"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Standard configuration"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Grouped endpoint (V31 preferred)\ndef fetch_grouped_data(self):\n    url = f\"{self.base_url}/v2/aggs/grouped/locale/us/market/stocks/{date_str}\"\n    response = self.session.get(url, params={\n        'apiKey': self.api_key,\n        'adjusted': 'true'\n    })\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Grouped endpoint (V31 preferred)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Grouped endpoint (V31 preferred)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Grouped endpoint (V31 preferred)"
+      },
+      "tags": [
+        "v31"
+      ]
+    },
+    {
+      "content": "# Individual ticker endpoint (legacy)\ndef fetch_daily(tkr: str, start: str, end: str):\n    url = f\"{self.base_url}/v2/aggs/ticker/{tkr}/range/1/day/{start}/{end}\"\n    response = self.session.get(url, params={\n        \"apiKey\": API_KEY,\n        \"adjusted\": \"true\",\n        \"sort\": \"asc\",\n        \"limit\": 50000\n    })\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Individual ticker endpoint (legacy)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Individual ticker endpoint (legacy)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Individual ticker endpoint (legacy)"
+      },
+      "tags": []
+    },
+    {
+      "content": "### API Rate Limiting\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Individual ticker endpoint (legacy)::API Rate Limiting",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Individual ticker endpoint (legacy)",
+        "API Rate Limiting"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "API Rate Limiting"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# V31 uses grouped endpoint: 1 call per day (not per ticker)",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::V31 uses grouped endpoint: 1 call per day (not per ticker)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "V31 uses grouped endpoint: 1 call per day (not per ticker)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "V31 uses grouped endpoint: 1 call per day (not per ticker)"
+      },
+      "tags": [
+        "v31"
+      ]
+    },
+    {
+      "content": "# Legacy uses individual ticker: N calls per ticker per day\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Legacy uses individual ticker: N calls per ticker per day",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Legacy uses individual ticker: N calls per ticker per day"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Legacy uses individual ticker: N calls per ticker per day"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Standard rate limiting\nimport time\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Standard rate limiting",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Standard rate limiting"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Standard rate limiting"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Between ticker fetches\ntime.sleep(0.1)  # 100ms delay\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Between ticker fetches",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Between ticker fetches"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Between ticker fetches"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Between date fetches (grouped endpoint)",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Between date fetches (grouped endpoint)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Between date fetches (grouped endpoint)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Between date fetches (grouped endpoint)"
+      },
+      "tags": []
+    },
+    {
+      "content": "# No delay needed with ThreadPoolExecutor\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::No delay needed with ThreadPoolExecutor",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "No delay needed with ThreadPoolExecutor"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "No delay needed with ThreadPoolExecutor"
+      },
+      "tags": []
+    },
+    {
+      "content": "## 7. Workflow Best Practices\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::No delay needed with ThreadPoolExecutor::7. Workflow Best Practices",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "No delay needed with ThreadPoolExecutor",
+        "7. Workflow Best Practices"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "7. Workflow Best Practices"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Development Workflow\n\n1. **Create Scanner**\n   - Choose architecture (V31 class-based or standalone script)\n   - Implement required methods/functions\n   - Define parameters\n\n2. **Test Locally**\n   - Use small symbol list (5-10 symbols)\n   - Use short date range (1-2 months)\n   - Verify output structure\n\n3. **Validate**\n   - Run full symbol list\n   - Run full date range\n   - Check performance metrics\n\n4. **Deploy**\n   - Add to project\n   - Configure parameters\n   - Monitor execution\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::No delay needed with ThreadPoolExecutor::7. Workflow Best Practices::Development Workflow",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "No delay needed with ThreadPoolExecutor",
+        "7. Workflow Best Practices",
+        "Development Workflow"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Development Workflow"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "indicator",
+        "v31",
+        "code",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Testing Strategy\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::No delay needed with ThreadPoolExecutor::7. Workflow Best Practices::Testing Strategy",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "No delay needed with ThreadPoolExecutor",
+        "7. Workflow Best Practices",
+        "Testing Strategy"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Testing Strategy"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "code"
+      ]
+    },
+    {
+      "content": "# Simple test scanner\nclass TestScanner:\n    def __init__(self):\n        self.params = {\n            'min_price': 5.0,\n            'min_volume': 1000000\n        }\n        self.symbols = ['AAPL', 'MSFT', 'GOOGL']\n\n    def run_scan(self):\n        results = []\n        for symbol in self.symbols:\n            # Simple logic: find every 3rd symbol\n            if hash(symbol) % 3 == 0:\n                results.append({\n                    'symbol': symbol,\n                    'date': '2024-01-15',\n                    'test': True\n                })\n        return results\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Simple test scanner",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Simple test scanner"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Simple test scanner"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "## 8. Validation Checklists\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Simple test scanner::8. Validation Checklists",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Simple test scanner",
+        "8. Validation Checklists"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "8. Validation Checklists"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Scanner Validation Checklist\n\n**V31 Class-Based Scanner**:\n- [ ] Uses `pandas_market_calendars` for trading days\n- [ ] Calculates historical buffer in `__init__`\n- [ ] Has 5-stage pipeline (fetch, simple_features, smart_filters, full_features, detect_patterns)\n- [ ] Stage 1 uses parallel fetching (ThreadPoolExecutor)\n- [ ] Stage 2b separates historical from D0 dates\n- [ ] Stage 2b combines historical + filtered D0\n- [ ] All operations use per-ticker groupby/transform\n- [ ] Stage 3a computes features per-ticker\n- [ ] Stage 3b uses pre-sliced data for parallel processing\n- [ ] Detection loop filters by D0 range (early exit)\n- [ ] Parameters stored in `self.params` dict\n- [ ] Returns list of signal dicts from detect_patterns\n\n**Standalone Script Scanner**:\n- [ ] Has `SYMBOLS` list at module level\n- [ ] Has `scan_symbol(symbol, start_date, end_date)` function\n- [ ] Returns list of dict results\n- [ ] Has optional `SCANNER_CONFIG` dict\n- [ ] Handles exceptions gracefully\n- [ ] Provides progress feedback\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Simple test scanner::8. Validation Checklists::Scanner Validation Checklist",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Simple test scanner",
+        "8. Validation Checklists",
+        "Scanner Validation Checklist"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Scanner Validation Checklist"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "indicator",
+        "pattern",
+        "v31",
+        "code"
+      ]
+    },
+    {
+      "content": "### Backtest Validation Checklist\n\n- [ ] Calculates all required metrics\n- [ ] Handles edge cases (no trades, all wins, all losses)\n- [ ] Uses proper position sizing\n- [ ] Accounts for slippage (enhanced version)\n- [ ] Uses realistic exit strategies\n- [ ] Provides comprehensive statistics\n- [ ] Handles missing data gracefully\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Simple test scanner::8. Validation Checklists::Backtest Validation Checklist",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Simple test scanner",
+        "8. Validation Checklists",
+        "Backtest Validation Checklist"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Backtest Validation Checklist"
+      },
+      "tags": [
+        "backtest",
+        "indicator",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Code Quality Checklist\n\n- [ ] Follows PEP 8 style guide\n- [ ] Has docstrings for all functions/classes\n- [ ] Has type hints (Python 3.6+)\n- [ ] Handles exceptions properly\n- [ ] Logs progress and errors\n- [ ] Has parameter validation\n- [ ] Has data validation\n- [ ] Is testable in isolation\n- [ ] Has no hardcoded values (use parameters)\n- [ ] Has no magic numbers (use named constants)\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Simple test scanner::8. Validation Checklists::Code Quality Checklist",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Simple test scanner",
+        "8. Validation Checklists",
+        "Code Quality Checklist"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Code Quality Checklist"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "## 9. Common Patterns and Anti-Patterns\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Simple test scanner::9. Common Patterns and Anti-Patterns",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Simple test scanner",
+        "9. Common Patterns and Anti-Patterns"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "9. Common Patterns and Anti-Patterns"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "### Common Anti-Patterns\n\n**\u274c Anti-Pattern 1**: Using weekday() for trading days\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Simple test scanner::9. Common Patterns and Anti-Patterns::Common Anti-Patterns",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Simple test scanner",
+        "9. Common Patterns and Anti-Patterns",
+        "Common Anti-Patterns"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Common Anti-Patterns"
+      },
+      "tags": [
+        "strategy",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# WRONG\nif current_date.weekday() < 5:  # Monday-Friday\n    # Process data\n```\n\n**\u2705 Correct Pattern**: Use pandas_market_calendars\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::WRONG",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "WRONG"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "WRONG"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# RIGHT\nnyse = mcal.get_calendar('NYSE')\ntrading_dates = nyse.valid_days(start_date, end_date)\n```\n\n---\n\n**\u274c Anti-Pattern 2**: Computing indicators across entire dataframe\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::RIGHT",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "RIGHT"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "RIGHT"
+      },
+      "tags": [
+        "strategy",
+        "indicator",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# WRONG\ndf['adv20'] = (df['close'] * df['volume']).rolling(20).mean()\n```\n\n**\u2705 Correct Pattern**: Compute per-ticker\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::WRONG",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "WRONG"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "WRONG"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# RIGHT\ndf['adv20'] = (df['close'] * df['volume']).groupby(df['ticker']).transform(\n    lambda x: x.rolling(window=20, min_periods=20).mean()\n)\n```\n\n---\n\n**\u274c Anti-Pattern 3**: Filtering historical data\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::RIGHT",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "RIGHT"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "RIGHT"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# WRONG\ndf_filtered = df[df['date'] >= d0_start]  # Loses historical data\n```\n\n**\u2705 Correct Pattern**: Separate and recombine\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::WRONG",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "WRONG"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "WRONG"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# RIGHT\ndf_historical = df[~df['date'].between(d0_start, d0_end)]\ndf_output = df[df['date'].between(d0_start, d0_end)]\ndf_output_filtered = df_output[condition]\ndf_combined = pd.concat([df_historical, df_output_filtered])\n```\n\n---\n\n**\u274c Anti-Pattern 4**: Sequential processing\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::RIGHT",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "RIGHT"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "RIGHT"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# WRONG\nresults = []\nfor symbol in symbols:\n    data = fetch_daily(symbol)  # Slow sequential\n    results.append(process(data))\n```\n\n**\u2705 Correct Pattern**: Parallel processing\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::WRONG",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "WRONG"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "WRONG"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# RIGHT\nwith ThreadPoolExecutor(max_workers=10) as executor:\n    futures = {executor.submit(fetch_and_process, symbol): symbol for symbol in symbols}\n    for future in as_completed(futures):\n        results.append(future.result())\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::RIGHT",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "RIGHT"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "RIGHT"
+      },
+      "tags": []
+    },
+    {
+      "content": "## 10. Recommended Tools and Libraries\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::RIGHT::10. Recommended Tools and Libraries",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "RIGHT",
+        "10. Recommended Tools and Libraries"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "10. Recommended Tools and Libraries"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Required Libraries\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::RIGHT::10. Recommended Tools and Libraries::Required Libraries",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "RIGHT",
+        "10. Recommended Tools and Libraries",
+        "Required Libraries"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Required Libraries"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Data manipulation\nimport pandas as pd\nimport numpy as np\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Data manipulation",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Data manipulation"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Data manipulation"
+      },
+      "tags": []
+    },
+    {
+      "content": "# API requests\nimport requests\nfrom concurrent.futures import ThreadPoolExecutor, as_completed\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::API requests",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "API requests"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "API requests"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Date/time handling\nfrom datetime import datetime, timedelta\nimport pandas_market_calendars as mcal\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Date/time handling",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Date/time handling"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Date/time handling"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Type hints\nfrom typing import List, Dict, Optional, Any\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Type hints",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Type hints"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Type hints"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Optional Libraries\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Type hints::Optional Libraries",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Type hints",
+        "Optional Libraries"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Optional Libraries"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Visualization (for testing)\nimport matplotlib.pyplot as plt\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Visualization (for testing)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Visualization (for testing)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Visualization (for testing)"
+      },
+      "tags": [
+        "backtest"
+      ]
+    },
+    {
+      "content": "# Progress tracking\nfrom tqdm import tqdm\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Progress tracking",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Progress tracking"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Progress tracking"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Configuration management\nimport yaml\nimport json\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Configuration management",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Configuration management"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Configuration management"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Logging\nimport logging\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Logging",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Logging"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Logging"
+      },
+      "tags": []
+    },
+    {
+      "content": "## 11. Integration with EdgeDev System\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Logging::11. Integration with EdgeDev System",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Logging",
+        "11. Integration with EdgeDev System"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "11. Integration with EdgeDev System"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Project Structure\n\n```\nedge-dev-main/\n\u251c\u2500\u2500 backend/\n\u2502   \u251c\u2500\u2500 scanner.py              # Main scanner file\n\u2502   \u251c\u2500\u2500 backtest.py             # Backtesting engine\n\u2502   \u2514\u2500\u2500 main.py                 # API endpoints\n\u251c\u2500\u2500 src/\n\u2502   \u251c\u2500\u2500 app/\n\u2502   \u2502   \u2514\u2500\u2500 api/\n\u2502   \u2502       \u2514\u2500\u2500 systematic/\n\u2502   \u2502           \u2514\u2500\u2500 scan/\n\u2502   \u2502               \u2514\u2500\u2500 route.ts  # Frontend integration\n\u2502   \u2514\u2500\u2500 types/\n\u2502       \u2514\u2500\u2500 projectTypes.ts      # Type definitions\n\u2514\u2500\u2500 data/\n    \u2514\u2500\u2500 projects.json            # Project storage\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Logging::11. Integration with EdgeDev System::Project Structure",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Logging",
+        "11. Integration with EdgeDev System",
+        "Project Structure"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Project Structure"
+      },
+      "tags": [
+        "scanner",
+        "backtest"
+      ]
+    },
+    {
+      "content": "### API Integration Pattern\n\n```python",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Logging::11. Integration with EdgeDev System::API Integration Pattern",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Logging",
+        "11. Integration with EdgeDev System",
+        "API Integration Pattern"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "API Integration Pattern"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# Frontend (TypeScript)\nconst response = await fetch('/api/systematic/scan', {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({\n        scanner_type: 'backside_b',\n        date_range: {\n            start_date: '2024-01-01',\n            end_date: '2024-12-31'\n        },\n        parameters: scanner_params\n    })\n});\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Frontend (TypeScript)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Frontend (TypeScript)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Frontend (TypeScript)"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "# Backend (Python/FastAPI)\n@app.post('/api/systematic/scan')\nasync def execute_scan(request: ScanRequest):\n    scanner = BacksideBScanner(\n        api_key=os.getenv('POLYGON_API_KEY'),\n        d0_start=request.date_range.start_date,\n        d0_end=request.date_range.end_date\n    )\n    results = scanner.run_scan()\n    return {'results': results}\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Backend (Python/FastAPI)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Backend (Python/FastAPI)"
+      },
+      "tags": [
+        "scanner",
+        "code"
+      ]
+    },
+    {
+      "content": "## 12. Uncertainties and Questions for User\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::12. Uncertainties and Questions for User",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "12. Uncertainties and Questions for User"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "12. Uncertainties and Questions for User"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Questions Requiring Clarification\n\n1. **Scanner Architecture Preference**:\n   - Should new scanners be V31 class-based or standalone scripts?\n   - Is there a performance requirement that dictates the choice?\n\n2. **Backtest Fidelity**:\n   - Should backtests use simple P&L simulation or enhanced intraday simulation?\n   - What level of accuracy is required for decision-making?\n\n3. **Parameter Management**:\n   - Should parameters be stored in code, database, or configuration files?\n   - How should parameter versioning be handled?\n\n4. **Error Handling**:\n   - Should scanners fail fast or gracefully handle errors?\n   - What level of logging is required in production?\n\n5. **Testing Requirements**:\n   - Should all scanners have automated tests?\n   - What test coverage percentage is required?\n\n6. **Performance Benchmarks**:\n   - What are the acceptable execution times for different scanner types?\n   - How many symbols can be scanned in a single execution?\n\n7. **Data Quality**:\n   - How should missing or corrupted data be handled?\n   - What data validation checks should be in place?\n\n8. **Integration Points**:\n   - Are there specific API endpoints that must be used?\n   - How should results be formatted for frontend consumption?\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::12. Uncertainties and Questions for User::Questions Requiring Clarification",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "12. Uncertainties and Questions for User",
+        "Questions Requiring Clarification"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Questions Requiring Clarification"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "v31",
+        "code",
+        "execution"
+      ]
+    },
+    {
+      "content": "## 13. Recommendations\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::13. Recommendations",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "13. Recommendations"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "13. Recommendations"
+      },
+      "tags": []
+    },
+    {
+      "content": "### For New Scanner Development\n\n1. **Start with V31 class-based architecture** for production scanners\n2. **Use standalone scripts** for simple prototypes and testing\n3. **Implement all 5 stages** for optimal performance\n4. **Follow the validation checklists** before deployment\n5. **Test with small datasets first**, then scale up\n6. **Document parameters** and their effects\n7. **Use version control** for scanner iterations\n8. **Monitor performance** in production\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::13. Recommendations::For New Scanner Development",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "13. Recommendations",
+        "For New Scanner Development"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "For New Scanner Development"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "v31",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### For Backtest Development\n\n1. **Start with simple P&L simulation** for validation\n2. **Add intraday simulation** for accuracy when needed\n3. **Calculate all required metrics** consistently\n4. **Handle edge cases** (no trades, extreme values)\n5. **Document assumptions** (slippage, commissions, etc.)\n6. **Validate against real trades** when possible\n7. **Track performance over time**\n8. **Compare strategies** using consistent metrics\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::13. Recommendations::For Backtest Development",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "13. Recommendations",
+        "For Backtest Development"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "For Backtest Development"
+      },
+      "tags": [
+        "backtest",
+        "indicator"
+      ]
+    },
+    {
+      "content": "### For Code Quality\n\n1. **Follow PEP 8** style guidelines\n2. **Add type hints** for all functions\n3. **Write docstrings** for all classes and functions\n4. **Handle exceptions** gracefully\n5. **Log progress** and errors\n6. **Use constants** instead of magic numbers\n7. **Validate inputs** (parameters, data)\n8. **Write tests** for critical logic\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::13. Recommendations::For Code Quality",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "13. Recommendations",
+        "For Code Quality"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "For Code Quality"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "## Conclusion\n\nThis research document provides a comprehensive overview of the EdgeDev codebase patterns and standards. The \"presumed gold standard\" is based on analysis of production code, working scanners, and established patterns.\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Conclusion",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Conclusion"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Conclusion"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "### Key Takeaways\n\n1. **V31 architecture is the modern standard** - 360x faster, scalable, maintainable\n2. **Backside B pattern is most battle-tested** - 75+ variants, proven results\n3. **Two-pass computation is critical** - Simple features \u2192 Filter \u2192 Full features\n4. **Per-ticker operations are mandatory** - Correctness depends on it\n5. **Historical data preservation is essential** - ABS window needs 1000+ days\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Conclusion::Key Takeaways",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Conclusion",
+        "Key Takeaways"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Key Takeaways"
+      },
+      "tags": [
+        "pattern",
+        "v31"
+      ]
+    },
+    {
+      "content": "### Next Steps\n\n1. Review this document with stakeholders\n2. Clarify uncertainties and questions\n3. Validate assumptions with team\n4. Create implementation guides based on this research\n5. Establish code review standards\n6. Develop automated validation tools\n\n---\n\n**Document Status**: RESEARCH COMPLETE\n**Last Updated**: 2026-01-29\n**Version**: 1.0\n**Author**: Claude (Research Agent)\n**Reviewed By**: [PENDING]\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Conclusion::Next Steps",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Conclusion",
+        "Next Steps"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Next Steps"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "## Appendix A: File References\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Appendix A: File References",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Appendix A: File References"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Appendix A: File References"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Key Specification Documents\n- `/projects/edge-dev-main/V31_GOLD_STANDARD_SPECIFICATION.md` - Complete V31 specification\n- `/projects/edge-dev-main/V31_QUICK_REFERENCE.md` - Quick reference card\n- `/projects/edge-dev-main/MASTER_UNIFIED_SCANNER_TEMPLATE.py` - Template code\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Appendix A: File References::Key Specification Documents",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Appendix A: File References",
+        "Key Specification Documents"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Key Specification Documents"
+      },
+      "tags": [
+        "scanner",
+        "v31",
+        "code"
+      ]
+    },
+    {
+      "content": "### Working Scanner Examples\n- `/projects/edge-dev-main/backend/SIMPLE_TEST_SCANNER.py` - Simple test scanner\n- `/projects/edge-dev-main/backend/optimized_backside_b_scanner.py` - Optimized Backside B\n- `/projects/edge-dev-main/backend/proven_backside_scanner.py` - Proven working scanner\n- `/projects/edge-dev-main/backend/fixed_backside_b_scanner.py` - Fixed version\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Appendix A: File References::Working Scanner Examples",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Appendix A: File References",
+        "Working Scanner Examples"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Working Scanner Examples"
+      },
+      "tags": [
+        "scanner",
+        "optimization"
+      ]
+    },
+    {
+      "content": "### Backtest Engines\n- `/projects/edge-dev-main/src/utils/backtest_script.py` - Simple backtest\n- `/projects/edge-dev-main/src/utils/enhanced_backtest_engine.py` - Enhanced backtest\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Appendix A: File References::Backtest Engines",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Appendix A: File References",
+        "Backtest Engines"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Backtest Engines"
+      },
+      "tags": [
+        "backtest"
+      ]
+    },
+    {
+      "content": "### Type Definitions\n- `/projects/edge-dev-main/src/types/projectTypes.ts` - TypeScript types\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Appendix A: File References::Type Definitions",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Appendix A: File References",
+        "Type Definitions"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Type Definitions"
+      },
+      "tags": []
+    },
+    {
+      "content": "## Appendix B: Parameter Reference\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Appendix B: Parameter Reference",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Appendix B: Parameter Reference"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Appendix B: Parameter Reference"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Common Parameter Categories\n\n**Market Filters**:\n- `price_min`: Minimum stock price (default: 8.0)\n- `adv20_min_usd`: Minimum 20-day average dollar volume (default: 30,000,000)\n- `volume_min`: Minimum daily volume (default: 1,000,000)\n\n**Technical Indicators**:\n- `atr_mult`: ATR multiplier (default: 0.9)\n- `vol_mult`: Volume multiplier (default: 0.9)\n- `ema_periods`: EMA periods to use (default: [9, 20, 50])\n\n**Pattern Specific**:\n- `abs_lookback_days`: Lookback for absolute position (default: 1000)\n- `gap_div_atr_min`: Minimum gap/ATR ratio (default: 0.75)\n- `open_over_ema9_min`: Minimum open/EMA9 ratio (default: 0.9)\n\n---\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Appendix B: Parameter Reference::Common Parameter Categories",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Appendix B: Parameter Reference",
+        "Common Parameter Categories"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Common Parameter Categories"
+      },
+      "tags": [
+        "indicator",
+        "pattern",
+        "position"
+      ]
+    },
+    {
+      "content": "## Appendix C: Performance Benchmarks\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Appendix C: Performance Benchmarks",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Appendix C: Performance Benchmarks"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Appendix C: Performance Benchmarks"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Scanner Execution Times\n\n| Scanner Type | Symbols | Date Range | Execution Time |\n|--------------|---------|------------|----------------|\n| V31 Class-Based | 100 | 1 year | 10-30 seconds |\n| V31 Class-Based | 1000 | 1 year | 30-60 seconds |\n| Standalone Script | 100 | 1 year | 2-5 minutes |\n| Standalone Script | 1000 | 1 year | 10-20 minutes |\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Appendix C: Performance Benchmarks::Scanner Execution Times",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Appendix C: Performance Benchmarks",
+        "Scanner Execution Times"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Scanner Execution Times"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "v31",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Backtest Execution Times\n\n| Backtest Type | Trades | Intraday Data | Execution Time |\n|---------------|--------|---------------|----------------|\n| Simple P&L | 100 | No | <1 second |\n| Simple P&L | 1000 | No | 1-2 seconds |\n| Enhanced | 100 | Yes | 30-60 seconds |\n| Enhanced | 1000 | Yes | 5-10 minutes |\n\n---\n\n**END OF RESEARCH DOCUMENT**\n",
+      "chunk_id": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md::Backend (Python/FastAPI)::Appendix C: Performance Benchmarks::Backtest Execution Times",
+      "source_file": "EDGEDEV_PRESUMED_GOLD_STANDARD_SPECIFICATION.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Backend (Python/FastAPI)",
+        "Appendix C: Performance Benchmarks",
+        "Backtest Execution Times"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Backtest Execution Times"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "execution"
+      ]
+    }
+  ]
+}

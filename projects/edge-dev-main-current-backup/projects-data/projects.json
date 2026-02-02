@@ -1,0 +1,24 @@
+{
+  "projects": [
+    {
+      "id": "fffe5ba6-fde9-4b09-b8f0-6be92417bd43",
+      "name": "Backside Para B Copy",
+      "description": "Auto-generated from Renata chat: Backside Para B Copy",
+      "scannerType": "trading",
+      "createdAt": "2025-12-02T19:16:56.872Z",
+      "updatedAt": "2025-12-02T19:16:56.872Z",
+      "status": "draft",
+      "scannerCode": "# Default scanner code\nsymbols = []",
+      "results": [],
+      "configuration": {},
+      "metadata": {
+        "aggregation_method": "union",
+        "tags": [
+          "uploaded",
+          "auto-generated"
+        ]
+      },
+      "scanners": []
+    }
+  ]
+}

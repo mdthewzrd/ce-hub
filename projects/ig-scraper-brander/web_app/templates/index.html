@@ -1,0 +1,3345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraper - Harmonatica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a1;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --border: #262626;
+            --success: #22c55e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding-top: 64px;
+        }
+
+        /* Top Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar-brand .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-brand h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .navbar-brand p {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 48px;
+        }
+
+        .navbar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .navbar-nav a:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: white;
+        }
+
+        .navbar-nav a.active {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent);
+        }
+
+        .navbar-nav .badge {
+            background: var(--accent);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        .navbar-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .navbar-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .navbar-btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .navbar-btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .navbar-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .navbar-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .glass {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+        }
+
+        .video-card {
+            transition: all 0.2s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tag {
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-original { background: rgba(99, 102, 241, 0.2); color: #818cf8; }
+        .tag-processed { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active { display: flex; }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        input[type="checkbox"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        input[type="checkbox"]:checked {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        select, input, textarea {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        select:focus, input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: var(--accent-hover); }
+        .btn-secondary { background: var(--border); color: white; }
+        .btn-secondary:hover { background: #333; }
+        .btn-danger { background: #ef4444; color: white; }
+        .btn-danger:hover { background: #dc2626; }
+
+        .scrollbar-thin::-webkit-scrollbar { width: 6px; }
+        .scrollbar-thin::-webkit-scrollbar-track { background: var(--bg-tertiary); }
+        .scrollbar-thin::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+        .sidebar {
+            width: 300px;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: var(--bg-secondary);
+        }
+
+        .main-content {
+            margin-left: 300px;
+            padding: 24px;
+        }
+
+        .account-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .account-item:hover { background: var(--bg-tertiary); }
+
+        .loading-spinner {
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .caption-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .engagement-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 4px;
+            font-size: 11px;
+        }
+
+        .filter-chip {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .filter-chip:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        .filter-chip.active {
+            background: rgba(99, 102, 241, 0.3);
+            color: var(--accent);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .post-card {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--bg-secondary);
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .post-card:hover {
+            transform: scale(1.02);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .post-card.selected {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+        }
+
+        .post-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-checkbox {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .post-type-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            z-index: 5;
+        }
+
+        .post-type-badge.video {
+            background: rgba(236, 72, 153, 0.9);
+            color: white;
+        }
+
+        .post-type-badge.image {
+            background: rgba(107, 114, 128, 0.9);
+            color: white;
+        }
+
+        .post-engagement {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 8px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            font-size: 11px;
+            color: white;
+        }
+
+        .saved-account-chip {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .saved-account-chip:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .opacity-50 {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="navbar">
+        <a href="/main" class="navbar-brand">
+            <div class="logo">
+                <i class="fas fa-infinity text-white"></i>
+            </div>
+            <div>
+                <h1>Harmonatica</h1>
+                <p>Content Studio</p>
+            </div>
+        </a>
+
+        <div class="navbar-nav">
+            <a href="/main">
+                <i class="fas fa-th-large"></i>
+                Dashboard
+            </a>
+            <a href="/browse">
+                <i class="fas fa-search"></i>
+                Browse
+                <span class="badge" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);">New</span>
+            </a>
+            <a href="/scrape" class="active">
+                <i class="fas fa-video"></i>
+                Scraper
+                <span class="badge" id="libraryCount">62</span>
+            </a>
+            <a href="/library">
+                <i class="fas fa-folder"></i>
+                Production
+            </a>
+            <a href="/brand-voice">
+                <i class="fas fa-microphone"></i>
+                Brand Voice
+            </a>
+            <a href="/offers">
+                <i class="fas fa-gift"></i>
+                Offers
+                <span class="badge badge-orange">New</span>
+            </a>
+            <a href="/settings">
+                <i class="fas fa-cog"></i>
+                Settings
+            </a>
+        </div>
+
+        <div class="navbar-right">
+            <button onclick="openScraperModal()" class="navbar-btn navbar-btn-primary">
+                <i class="fas fa-play mr-2"></i>Start Scraper
+            </button>
+            <button onclick="refreshData()" class="navbar-btn navbar-btn-secondary">
+                <i class="fas fa-sync-alt mr-2"></i>Refresh
+            </button>
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                <span class="text-xs font-bold">M</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content" style="margin-left: 0; padding: 24px;">
+        <!-- Stats Bar -->
+        <div class="grid grid-cols-7 gap-4 mb-6" id="statsBar">
+            <div class="glass rounded-xl p-4">
+                <div class="text-2xl font-bold gradient-text" id="statTotal">0</div>
+                <div class="text-xs text-gray-500">Total Videos</div>
+            </div>
+            <div class="glass rounded-xl p-4">
+                <div class="text-2xl font-bold gradient-text" id="statLikes">0</div>
+                <div class="text-xs text-gray-500">Total Likes</div>
+            </div>
+            <div class="glass rounded-xl p-4">
+                <div class="text-2xl font-bold gradient-text" id="statViews">0</div>
+                <div class="text-xs text-gray-500">Total Views</div>
+            </div>
+            <div class="glass rounded-xl p-4">
+                <div class="text-2xl font-bold gradient-text" id="statSize">0 MB</div>
+                <div class="text-xs text-gray-500">Total Size</div>
+            </div>
+            <div class="glass rounded-xl p-4">
+                <div class="text-2xl font-bold gradient-text" id="statAccounts">0</div>
+                <div class="text-xs text-gray-500">Accounts</div>
+            </div>
+            <div class="glass rounded-xl p-4">
+                <div class="text-2xl font-bold gradient-text" id="statTracked">0</div>
+                <div class="text-xs text-gray-500">Tracked</div>
+            </div>
+            <div class="glass rounded-xl p-4">
+                <div class="text-2xl font-bold gradient-text" id="statSaved">0</div>
+                <div class="text-xs text-gray-500">Saved</div>
+            </div>
+        </div>
+
+        <!-- Active Scrapers Status -->
+        <div id="activeScrapers" class="glass rounded-xl p-4 mb-6 hidden">
+            <div class="flex items-center justify-between mb-3 cursor-pointer" onclick="toggleScraperPanel()">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-spinner fa-spin text-indigo-400"></i>
+                    <span class="font-medium">Active Scrapers</span>
+                    <span class="badge" id="scraperCount">0 running</span>
+                </div>
+                <i id="scraperPanelToggle" class="fas fa-chevron-up text-gray-400"></i>
+            </div>
+            <div id="scraperList" class="space-y-2">
+                <!-- Scraper items will be rendered here -->
+            </div>
+        </div>
+
+        <!-- View Toggle & Filters Bar -->
+        <div class="glass rounded-xl p-4 mb-6">
+            <!-- View Toggle & Account Selector -->
+            <div class="flex items-center gap-4 flex-wrap mb-4 pb-4 border-b border-white/10">
+                <div class="flex items-center gap-2">
+                    <span class="text-sm text-gray-400">View:</span>
+                    <button id="videoViewBtn" onclick="switchView('video')" class="px-4 py-2 rounded-lg text-sm font-medium transition-all" style="background: rgba(99, 102, 241, 0.2); color: #6366f1;">
+                        <i class="fas fa-th-large mr-2"></i>Video View
+                    </button>
+                    <button id="accountViewBtn" onclick="switchView('account')" class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-400 hover:text-white">
+                        <i class="fas fa-user-circle mr-2"></i>Account View
+                    </button>
+                </div>
+
+                <div class="flex-1 min-w-[250px]">
+                    <label class="text-xs text-gray-500 mb-1 block">Select Account</label>
+                    <select id="accountFilter" onchange="onAccountChange()" class="w-full">
+                        <option value="">All Accounts</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex items-center gap-4 flex-wrap">
+                <div class="flex-1 min-w-[200px]">
+                    <input type="text" id="searchInput" placeholder="Search captions..."
+                        class="w-full">
+                </div>
+
+                <select id="sortFilter">
+                    <option value="date">Sort: Date</option>
+                    <option value="views">Sort: Views</option>
+                    <option value="likes">Sort: Likes</option>
+                    <option value="comments">Sort: Comments</option>
+                    <option value="size">Sort: Size</option>
+                </select>
+
+                <select id="sortOrder">
+                    <option value="desc">Descending</option>
+                    <option value="asc">Ascending</option>
+                </select>
+
+                <select id="processedFilter">
+                    <option value="all">All Videos</option>
+                    <option value="false">Originals</option>
+                    <option value="true">Processed</option>
+                </select>
+
+                <select id="downloadedFilter">
+                    <option value="all">All Status</option>
+                    <option value="false">New</option>
+                    <option value="true">Tracked</option>
+                </select>
+
+                <select id="savedFilter">
+                    <option value="all">Saved: All</option>
+                    <option value="saved">Saved Only</option>
+                    <option value="unsaved">Unsaved</option>
+                </select>
+
+                <input type="number" id="minLikes" placeholder="Min likes" class="w-32">
+
+                <input type="number" id="minViews" placeholder="Min views" class="w-32">
+
+                <button onclick="openFilterModal()" class="btn btn-secondary">
+                    <i class="fas fa-filter mr-2"></i>Filter
+                </button>
+
+                <button onclick="clearFilters()" class="btn btn-secondary">
+                    <i class="fas fa-times mr-2"></i>Clear
+                </button>
+
+                <button onclick="refreshData()" class="btn btn-secondary">
+                    <i class="fas fa-sync"></i>
+                </button>
+
+                <button onclick="selectAll()" class="text-sm text-gray-400 hover:text-white">
+                    Select All
+                </button>
+            </div>
+
+            <!-- Active Filters Badge (moved outside modal) -->
+            <div id="activeFiltersBadge" class="hidden mt-3 pt-3 border-t border-white/10">
+                <div class="flex items-center gap-3 flex-wrap">
+                    <span class="text-sm text-gray-400">
+                        <i class="fas fa-filter mr-1"></i>Active Filters:
+                    </span>
+                    <div id="activeFiltersTags" class="flex flex-wrap gap-2"></div>
+                    <span id="activeFiltersCount" class="text-sm text-indigo-400 font-medium ml-auto"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Grid -->
+        <div id="videoGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        </div>
+
+        <!-- Account View (Hidden by default) -->
+        <div id="accountView" class="hidden space-y-6">
+            <!-- Account cards will be rendered here -->
+        </div>
+
+        <div id="emptyState" class="hidden text-center py-20">
+            <i class="fas fa-video text-6xl text-gray-700 mb-4"></i>
+            <p class="text-gray-500">No videos found</p>
+        </div>
+
+        <div id="loadingState" class="hidden text-center py-20">
+            <div class="loading-spinner" style="margin:0 auto;width:40px;height:40px;"></div>
+        </div>
+    </div>
+
+    <!-- Selected Videos Panel (Fixed Bottom) -->
+    <div id="selectedPanel" class="fixed bottom-0 left-0 right-0 bg-gray-900/95 backdrop-blur-sm border-t border-white/10 transform translate-y-full transition-transform duration-300 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <span class="text-white font-semibold"><span id="selectedCount">0</span> videos selected</span>
+                    <button onclick="selectAll()" class="text-sm text-indigo-400 hover:text-indigo-300">
+                        Select All
+                    </button>
+                    <button onclick="selectedVideos.clear(); updateSelectedCount(); renderVideos(getFilteredVideos());" class="text-sm text-gray-400 hover:text-white">
+                        Clear Selection
+                    </button>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="markSelectedAsSaved()" class="btn btn-secondary">
+                        <i class="fas fa-bookmark mr-2"></i>Mark as Saved
+                    </button>
+                    <button onclick="downloadSelected()" class="btn btn-primary">
+                        <i class="fas fa-download mr-2"></i>Download (<span id="selectedDownloadCount">0</span>)
+                    </button>
+                    <button onclick="deleteSelectedVideos()" class="btn bg-red-600 hover:bg-red-700">
+                        <i class="fas fa-trash mr-2"></i>Delete (<span id="selectedDeleteCount">0</span>)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Account Modal -->
+    <div id="addAccountModal" class="modal">
+        <div class="modal-content">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold">Add Account to Track</h2>
+                <button onclick="closeAddAccountModal()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm text-gray-400 mb-1">Account Username</label>
+                    <input type="text" id="newAccountUsername" placeholder="e.g., nuatlantis" class="w-full">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-1">Notes</label>
+                    <textarea id="newAccountNotes" placeholder="Any notes about this account..." class="w-full h-20"></textarea>
+                </div>
+                <button onclick="saveAccount()" class="btn btn-primary w-full">Save Account</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scraper Modal -->
+    <div id="scraperModal" class="modal">
+        <div class="modal-content" style="max-width: 900px; max-height: 90vh; display: flex; flex-direction: column; padding: 0;">
+            <!-- Fixed Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-700" style="flex-shrink: 0;">
+                <h2 class="text-xl font-bold">Browse & Select Videos</h2>
+                <button onclick="closeScraperModal()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Scrollable Content Area -->
+            <div style="flex: 1; overflow-y: auto; padding: 16px;">
+                <!-- Profile Search -->
+                <div class="mb-6">
+                    <div class="flex gap-3">
+                        <input type="text" id="profileUsernameInput" placeholder="Enter Instagram username (@account)"
+                            class="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white"
+                            onkeyup="if(event.key==='Enter') loadProfileForScraper()">
+                        <button onclick="loadProfileForScraper()" class="btn btn-primary">
+                            <i class="fas fa-search mr-2"></i>Load Profile
+                        </button>
+                    </div>
+                    <!-- Refresh Session Button (hidden by default) -->
+                    <div id="refreshSessionContainer" class="hidden mt-3">
+                        <button onclick="refreshInstagramSession()" class="btn btn-secondary w-full text-orange-400">
+                            <i class="fas fa-sync-alt mr-2"></i>Refresh Instagram Session (Login Required)
+                        </button>
+                        <p class="text-xs text-gray-500 mt-2">Click to log in to Instagram. Your credentials are only saved locally on this computer.</p>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2">Or select from saved accounts below</p>
+                </div>
+
+                <!-- Profile Info -->
+                <div id="profileInfo" class="hidden mb-6 p-4 rounded-xl" style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3);">
+                    <div class="flex items-center gap-4">
+                        <img id="profilePic" class="w-16 h-16 rounded-full object-cover">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-1">
+                                <h3 id="profileName" class="font-bold text-lg">@username</h3>
+                                <span id="profileVerified" class="hidden text-blue-400"><i class="fas fa-check-circle"></i></span>
+                                <span id="profileSavedBadge" class="hidden ml-2 px-2 py-0.5 rounded-full text-xs font-medium" style="background: rgba(34, 197, 94, 0.2); color: #4ade80;">
+                                    <i class="fas fa-bookmark mr-1"></i>Saved
+                                </span>
+                            </div>
+                            <p id="profileBio" class="text-sm text-gray-400 mb-2"></p>
+                            <div class="flex gap-4 text-sm">
+                                <span><strong id="profilePosts">0</strong> posts</span>
+                                <span><strong id="profileFollowers">0</strong> followers</span>
+                                <span><strong id="profileFollowing">0</strong> following</span>
+                            </div>
+                        </div>
+                        <button id="saveProfileBtn" onclick="saveCurrentProfile()" class="btn btn-secondary text-sm" title="Save this profile for quick access">
+                            <i class="fas fa-bookmark mr-1"></i>Save Profile
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Start with saved accounts -->
+                <div id="savedAccountsQuickStart" class="mb-6">
+                    <h4 class="text-sm font-medium text-gray-400 mb-2">Quick Start - Select Saved Account:</h4>
+                    <div id="savedAccountsForScraping" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <!-- Filters -->
+                <div id="scraperFilters" class="hidden mb-4 flex flex-wrap gap-2">
+                    <button onclick="filterScraperPosts('all')" class="filter-chip active" data-filter="all">
+                        All Posts
+                    </button>
+                    <button onclick="filterScraperPosts('videos')" class="filter-chip" data-filter="videos">
+                        <i class="fas fa-video mr-1"></i>Videos Only
+                    </button>
+                    <button onclick="filterScraperPosts('engagement')" class="filter-chip" data-filter="engagement">
+                        <i class="fas fa-heart mr-1"></i>High Engagement
+                    </button>
+                    <button onclick="filterScraperPosts('recent')" class="filter-chip" data-filter="recent">
+                        <i class="fas fa-clock mr-1"></i>Most Recent
+                    </button>
+                    <button onclick="filterScraperPosts('unscraped')" class="filter-chip" data-filter="unscraped">
+                        <i class="fas fa-download mr-1"></i>New Only
+                    </button>
+                </div>
+
+                <!-- Posts Grid -->
+                <div id="postsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-4">
+                    <!-- Posts will be rendered here -->
+                </div>
+
+                <!-- Load More Button -->
+                <div id="loadMoreContainer" class="hidden text-center py-4 space-y-3">
+                    <div class="flex gap-3 justify-center">
+                        <button id="loadMoreBtn" onclick="loadMorePosts()" class="btn btn-secondary flex-1 max-w-xs">
+                            <i class="fas fa-chevron-down mr-2"></i>Load More
+                        </button>
+                        <button id="loadAllBtn" onclick="loadAllPosts()" class="btn btn-primary flex-1 max-w-xs">
+                            <i class="fas fa-layer-group mr-2"></i>Load All
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-500">Load All may take a while for accounts with many posts</p>
+                </div>
+
+                <!-- No More Posts Message -->
+                <div id="noMorePosts" class="hidden text-center py-4 text-gray-500 text-sm">
+                    <i class="fas fa-check-circle mr-2"></i>All posts loaded
+                </div>
+
+                <!-- Loading State -->
+                <div id="scraperLoading" class="hidden text-center py-8">
+                    <i class="fas fa-spinner fa-spin text-3xl text-indigo-400 mb-3"></i>
+                    <p class="text-gray-400">Loading profile...</p>
+                </div>
+
+                <!-- Empty State -->
+                <div id="scraperEmptyState" class="text-center py-8">
+                    <i class="fas fa-search text-4xl text-gray-600 mb-3"></i>
+                    <p class="text-gray-400">Enter an Instagram username above to browse their content</p>
+                </div>
+
+                <!-- Quick Start Section (original quick mode) -->
+                <div id="quickStartSection" class="mt-6 pt-6 border-t border-gray-700">
+                    <h4 class="text-sm font-medium text-gray-400 mb-3">Or Quick Start (Bulk Download):</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Max Videos per Account</label>
+                            <input type="number" id="scraperMaxVideos" value="15" class="w-full">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Delay (sec)</label>
+                            <input type="number" id="scraperDelay" value="10" class="w-full">
+                        </div>
+                    </div>
+                    <textarea id="scraperAccounts" placeholder="Enter usernames (one per line):&#10;nuatlantis&#10;spiritualzone999" class="w-full h-20 mb-3"></textarea>
+                    <button onclick="startBulkScraper()" class="btn btn-primary w-full">
+                        <i class="fas fa-play mr-2"></i>Start Bulk Scraping
+                    </button>
+                </div>
+            </div>
+
+            <!-- Fixed Footer with Selection Bar -->
+            <div id="selectionBar" class="hidden p-4 border-t border-gray-700" style="flex-shrink: 0; background: rgba(15, 15, 20, 0.95); backdrop-filter: blur(12px);">
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <span class="text-sm"><strong id="scraperSelectedCount">0</strong> selected</span>
+                        <span class="text-sm text-green-400"><i class="fas fa-check-circle mr-1"></i><strong id="scrapedCount">0</strong> already downloaded</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="selectAllVisible()" class="btn btn-secondary text-sm">
+                            Select All New
+                        </button>
+                        <button onclick="downloadSelectedVideos()" class="btn btn-success text-sm" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                            <i class="fas fa-download mr-2"></i>Download Selected
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Preview Modal for Scraper -->
+    <div id="videoPreviewModal" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold">Preview</h2>
+                <button onclick="closeVideoPreviewModal()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="videoPreviewContent">
+                <!-- Preview content will be rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Modal -->
+    <div id="filterModal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold">Filter Videos</h2>
+                <button onclick="closeFilterModal()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Account Filter -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Account</label>
+                    <select id="modalAccountFilter" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white">
+                        <option value="">All Accounts</option>
+                    </select>
+                </div>
+
+                <!-- Search -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Search</label>
+                    <input type="text" id="modalSearchInput" placeholder="Search captions, filenames..." class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white">
+                </div>
+
+                <!-- Min Likes -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Minimum Likes</label>
+                    <input type="number" id="modalMinLikes" placeholder="e.g., 1000" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white">
+                </div>
+
+                <!-- Saved Status -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Saved Status</label>
+                    <select id="modalSavedFilter" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white">
+                        <option value="all">All Videos</option>
+                        <option value="saved">Saved Only</option>
+                        <option value="unsaved">Unsaved Only</option>
+                    </select>
+                </div>
+
+                <!-- Processed Status -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Video Type</label>
+                    <select id="modalProcessedFilter" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white">
+                        <option value="all">All Videos</option>
+                        <option value="false">Originals</option>
+                        <option value="true">Processed</option>
+                    </select>
+                </div>
+
+                <!-- Min Views -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Minimum Views</label>
+                    <input type="number" id="modalMinViews" placeholder="e.g., 10000" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white">
+                </div>
+            </div>
+
+            <div class="flex gap-3 mt-6">
+                <button onclick="applyModalFilters(); closeFilterModal();" class="flex-1 btn btn-primary">
+                    <i class="fas fa-check mr-2"></i>Apply Filters
+                </button>
+                <button onclick="clearModalFilters(); closeFilterModal();" class="flex-1 btn btn-secondary">
+                    <i class="fas fa-times mr-2"></i>Clear All
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Preview Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content" style="max-width: 900px; width: 95%;">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold" id="videoModalTitle">Video Preview</h2>
+                <button onclick="closeVideoModal()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="videoModalContent">
+                <!-- Video content will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allVideos = [];
+        let selectedVideos = new Set();
+        let savedVideos = new Set();
+        let savedAccounts = [];
+        let selectedAccountsForScraping = new Set();
+        let currentView = 'video'; // 'video' or 'account'
+        let customManyChatKeywords = [];
+        let allBrandVoiceProfiles = []; // Store all brand voice profiles
+        let allVideoUsage = {}; // Store video usage data: {filename: [accounts]}
+        let offersData = []; // Store offers data
+
+        // Load custom keywords from localStorage on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCustomKeywords();
+            loadBrandVoiceProfiles();
+            loadOffers(); // Load offers
+            loadVideoUsage();
+            loadVideoUsage();
+        });
+
+        // Load video usage data from API
+        // Load offers data
+        async function loadOffers() {
+            try {
+                const response = await fetch('/api/offers');
+                const data = await response.json();
+                if (data.success) {
+                    offersData = data.offers || [];
+                    console.log('Loaded', offersData.length, 'offers');
+                }
+            } catch (error) {
+                console.error('Error loading offers:', error);
+            }
+        }
+
+        async function loadVideoUsage() {
+            try {
+                const response = await fetch('/api/video-usage');
+                const data = await response.json();
+                if (data.success) {
+                    allVideoUsage = data.usage || {};
+                    console.log('Loaded video usage data:', Object.keys(allVideoUsage).length, 'videos');
+                }
+            } catch (error) {
+                console.error('Error loading video usage:', error);
+            }
+        }
+
+        // Load brand voice profiles from API
+        async function loadBrandVoiceProfiles() {
+            try {
+                const response = await fetch('/api/brand-voice');
+                const data = await response.json();
+                if (data.success) {
+                    allBrandVoiceProfiles = data.profiles || [];
+                    console.log('Loaded brand voice profiles:', allBrandVoiceProfiles.length);
+                }
+            } catch (error) {
+                console.error('Error loading brand voice profiles:', error);
+            }
+        }
+
+        function loadCustomKeywords() {
+            const stored = localStorage.getItem('customManyChatKeywords');
+            customManyChatKeywords = stored ? JSON.parse(stored) : [];
+        }
+
+        function saveCustomKeyword(keyword) {
+            keyword = keyword.trim().toUpperCase();
+            if (keyword && !customManyChatKeywords.includes(keyword)) {
+                customManyChatKeywords.push(keyword);
+                localStorage.setItem('customManyChatKeywords', JSON.stringify(customManyChatKeywords));
+                return true;
+            }
+            return false;
+        }
+
+        function populateCustomKeywords(filenameId) {
+            const optgroup = document.getElementById('customKeywordsGroup_' + filenameId);
+            if (!optgroup) return;
+
+            // Clear existing custom options
+            optgroup.innerHTML = '';
+
+            // Add custom keywords
+            customManyChatKeywords.forEach(keyword => {
+                const option = document.createElement('option');
+                option.value = keyword;
+                option.textContent = keyword;
+                optgroup.appendChild(option);
+            });
+        }
+
+        // View switching
+        function switchView(view) {
+            currentView = view;
+            const videoGrid = document.getElementById('videoGrid');
+            const accountView = document.getElementById('accountView');
+            const videoBtn = document.getElementById('videoViewBtn');
+            const accountBtn = document.getElementById('accountViewBtn');
+
+            if (view === 'video') {
+                videoGrid.classList.remove('hidden');
+                accountView.classList.add('hidden');
+                videoBtn.style.background = 'rgba(99, 102, 241, 0.2)';
+                videoBtn.style.color = '#6366f1';
+                accountBtn.style.background = 'transparent';
+                accountBtn.style.color = '#a1a1a1';
+                renderVideos(getFilteredVideos());
+            } else {
+                videoGrid.classList.add('hidden');
+                accountView.classList.remove('hidden');
+                accountBtn.style.background = 'rgba(99, 102, 241, 0.2)';
+                accountBtn.style.color = '#6366f1';
+                videoBtn.style.background = 'transparent';
+                videoBtn.style.color = '#a1a1a1';
+                renderAccountView();
+            }
+        }
+
+        // Account change handler
+        function onAccountChange() {
+            const accountFilter = document.getElementById('accountFilter').value;
+            if (accountFilter && currentView === 'video') {
+                // When an account is selected, switch to video view filtered by that account
+                renderVideos(getFilteredVideos());
+            } else if (currentView === 'account') {
+                renderAccountView();
+            }
+        }
+
+        // Render account view
+        function renderAccountView() {
+            const videos = getFilteredVideos();
+            const accountView = document.getElementById('accountView');
+
+            // Group videos by account
+            const accounts = {};
+            videos.forEach(video => {
+                if (!accounts[video.account]) {
+                    accounts[video.account] = {
+                        name: video.account,
+                        videos: [],
+                        totalLikes: 0,
+                        totalViews: 0,
+                        totalSize: 0,
+                        savedCount: 0
+                    };
+                }
+                accounts[video.account].videos.push(video);
+                accounts[video.account].totalLikes += video.likes || 0;
+                accounts[video.account].totalViews += video.views || 0;
+                accounts[video.account].totalSize += video.size || 0;
+                if (savedVideos.has(video.filename)) {
+                    accounts[video.account].savedCount++;
+                }
+            });
+
+            // Sort accounts by video count
+            const sortedAccounts = Object.values(accounts).sort((a, b) => b.videos.length - a.videos.length);
+
+            if (sortedAccounts.length === 0) {
+                accountView.innerHTML = `
+                    <div class="text-center py-20">
+                        <i class="fas fa-users text-6xl text-gray-700 mb-4"></i>
+                        <p class="text-gray-500">No accounts found</p>
+                    </div>
+                `;
+                return;
+            }
+
+            accountView.innerHTML = sortedAccounts.map(account => {
+                const accountInitial = account.name.charAt(0).toUpperCase();
+                const accountColor = stringToColor(account.name);
+
+                return `
+                <div class="glass rounded-xl p-6">
+                    <!-- Account Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-20 h-20 rounded-full flex items-center justify-center flex-shrink-0 text-3xl font-bold text-white"
+                                 style="background: linear-gradient(135deg, ${accountColor});">
+                                ${accountInitial}
+                            </div>
+                            <div>
+                                <h2 class="text-2xl font-bold">@${account.name}</h2>
+                                <p class="text-gray-400">${account.videos.length} videos</p>
+                            </div>
+                        </div>
+                        <button onclick="selectAccountAndSwitchView('${account.name}')" class="btn btn-secondary">
+                            <i class="fas fa-th mr-2"></i>View Videos
+                        </button>
+                    </div>
+
+                    <!-- Account Stats -->
+                    <div class="grid grid-cols-4 gap-4 mb-6">
+                        <div class="text-center p-4 rounded-lg" style="background: rgba(34, 197, 94, 0.1);">
+                            <div class="text-xl font-bold text-green-400">${formatNumber(account.totalLikes)}</div>
+                            <div class="text-xs text-gray-400">Total Likes</div>
+                        </div>
+                        <div class="text-center p-4 rounded-lg" style="background: rgba(59, 130, 246, 0.1);">
+                            <div class="text-xl font-bold text-blue-400">${formatNumber(account.totalViews)}</div>
+                            <div class="text-xs text-gray-400">Total Views</div>
+                        </div>
+                        <div class="text-center p-4 rounded-lg" style="background: rgba(168, 85, 247, 0.1);">
+                            <div class="text-xl font-bold text-purple-400">${(account.totalSize / 1024 / 1024).toFixed(1)} MB</div>
+                            <div class="text-xs text-gray-400">Total Size</div>
+                        </div>
+                        <div class="text-center p-4 rounded-lg" style="background: rgba(234, 179, 8, 0.1);">
+                            <div class="text-xl font-bold text-yellow-400">${account.savedCount}</div>
+                            <div class="text-xs text-gray-400">Saved</div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Videos Preview -->
+                    <div class="flex gap-3 overflow-x-auto pb-3">
+                        ${account.videos.slice(0, 5).map(video => `
+                            <div class="flex-shrink-0 w-32 cursor-pointer hover:opacity-80 transition-opacity" onclick="openVideoModal('${video.filename}')">
+                                <div class="aspect-square rounded-lg bg-gray-800 mb-2 overflow-hidden relative group">
+                                    <video src="/video/${video.filename}"
+                                           class="w-full h-full object-cover"
+                                           muted
+                                           preload="metadata"
+                                           onloadeddata="this.parentElement.querySelector('.play-overlay')?.remove()">
+                                    </video>
+                                    <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition-all pointer-events-none">
+                                        <i class="fas fa-play text-white text-xl opacity-70"></i>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-400 truncate">
+                                    <i class="fas fa-heart mr-1"></i>${formatNumber(video.likes || 0)}
+                                </p>
+                            </div>
+                        `).join('')}
+                        ${account.videos.length > 5 ? `
+                            <div class="flex-shrink-0 w-32 flex items-center justify-center rounded-lg border border-white/10 hover:border-white/30 transition-colors cursor-pointer" onclick="selectAccountAndSwitchView('${account.name}')">
+                                <div class="text-center">
+                                    <span class="text-sm text-gray-400">+${account.videos.length - 5}</span>
+                                    <p class="text-xs text-gray-500">more</p>
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        // Generate consistent color from string
+        function stringToColor(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            const colors = [
+                ['#6366f1', '#8b5cf6'], // Indigo to Purple
+                ['#ec4899', '#f43f5e'], // Pink to Rose
+                ['#14b8a6', '#06b6d4'], // Teal to Cyan
+                ['#f97316', '#fb923c'], // Orange
+                ['#22c55e', '#4ade80'], // Green
+                ['#eab308', '#facc15'], // Yellow
+                ['#8b5cf6', '#a78bfa'], // Purple
+                ['#06b6d4', '#22d3ee'], // Cyan
+            ];
+            return colors[Math.abs(hash) % colors.length].join(', ');
+        }
+
+        // Select account and switch to video view
+        function selectAccountAndSwitchView(accountName) {
+            document.getElementById('accountFilter').value = accountName;
+            switchView('video');
+            renderVideos(getFilteredVideos());
+        }
+
+        // Format number helper
+        function formatNumber(num) {
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num.toString();
+        }
+
+        async function loadSavedVideos() {
+            try {
+                const response = await fetch('/api/saved');
+                const data = await response.json();
+                savedVideos = new Set(data.saved || []);
+            } catch (error) {
+                console.error('Error loading saved videos:', error);
+            }
+        }
+
+        async function toggleSaved(filename) {
+            event.stopPropagation();
+            try {
+                const isSaved = savedVideos.has(filename);
+                const method = isSaved ? 'DELETE' : 'POST';
+
+                const response = await fetch(`/api/video/${filename}/save`, {
+                    method: method
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    if (isSaved) {
+                        savedVideos.delete(filename);
+                    } else {
+                        savedVideos.add(filename);
+                    }
+                    renderVideos(getFilteredVideos());
+                }
+            } catch (error) {
+                console.error('Error toggling saved status:', error);
+            }
+        }
+
+        async function loadVideos() {
+            showLoading(true);
+            try {
+                const sortBy = document.getElementById('sortFilter').value;
+                const sortOrder = document.getElementById('sortOrder').value;
+
+                const response = await fetch(`/api/videos?sort_by=${sortBy}&sort_order=${sortOrder}`);
+                const data = await response.json();
+                allVideos = data.videos;
+                renderVideos(allVideos);
+            } catch (error) {
+                console.error('Error loading videos:', error);
+            }
+            showLoading(false);
+        }
+
+        async function loadAccounts() {
+            try {
+                const response = await fetch('/api/accounts');
+                const data = await response.json();
+                savedAccounts = data.saved_accounts || [];
+
+                // Populate account filter
+                const select = document.getElementById('accountFilter');
+                select.innerHTML = '<option value="">All Accounts</option>';
+                (data.accounts || []).forEach(account => {
+                    select.innerHTML += `<option value="${account}">${account}</option>`;
+                });
+
+                renderSavedAccounts();
+            } catch (error) {
+                console.error('Error loading accounts:', error);
+            }
+        }
+
+        function renderSavedAccounts() {
+            const container = document.getElementById('savedAccountsList');
+            const scraperContainer = document.getElementById('savedAccountsForScraping');
+
+            if (savedAccounts.length === 0) {
+                container.innerHTML = '<p class="text-sm text-gray-500">No saved accounts</p>';
+                if (scraperContainer) scraperContainer.innerHTML = '<p class="text-sm text-gray-500">No saved accounts</p>';
+                return;
+            }
+
+            container.innerHTML = savedAccounts.map(acc => `
+                <div class="account-item group">
+                    <input type="checkbox" class="account-checkbox" data-username="${acc.username}"
+                        onchange="updateSelectedAccountsForScraping('${acc.username}')">
+                    <div class="flex-1">
+                        <div class="font-medium">@${acc.username}</div>
+                        ${acc.notes ? `<div class="text-xs text-gray-500">${acc.notes}</div>` : ''}
+                    </div>
+                    <button onclick="deleteAccount('${acc.username}')" class="text-red-400 hover:text-red-300 opacity-0 group-hover:opacity-100">
+                        <i class="fas fa-trash text-xs"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            if (scraperContainer) {
+                scraperContainer.innerHTML = savedAccounts.map(acc => `
+                    <button class="saved-account-chip" onclick="quickLoadAccount('${acc.username}')">
+                        <i class="fas fa-user-circle mr-1"></i>@${acc.username}
+                    </button>
+                `).join('');
+            }
+        }
+
+        function quickLoadAccount(username) {
+            document.getElementById('profileUsernameInput').value = username;
+            loadProfileForScraper();
+        }
+
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const data = await response.json();
+                document.getElementById('statTotal').textContent = data.total_videos;
+                document.getElementById('statLikes').textContent = data.total_likes.toLocaleString();
+                document.getElementById('statViews').textContent = data.total_views.toLocaleString();
+                document.getElementById('statSize').textContent = data.total_size_mb + ' MB';
+                document.getElementById('statAccounts').textContent = data.accounts;
+                document.getElementById('statTracked').textContent = data.tracked_downloads;
+                document.getElementById('statSaved').textContent = savedVideos.size;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        function renderVideos(videos) {
+            const grid = document.getElementById('videoGrid');
+            const empty = document.getElementById('emptyState');
+
+            if (videos.length === 0) {
+                grid.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+
+            empty.classList.add('hidden');
+            grid.innerHTML = videos.map(video => `
+                <div class="video-card glass rounded-xl overflow-hidden cursor-pointer group ${selectedVideos.has(video.filename) ? 'ring-2 ring-indigo-500' : ''}"
+                    onclick="openVideoModal('${video.filename}')">
+
+                    <div class="relative aspect-video bg-black">
+                        <video src="/video/${video.filename}?raw=1"
+                            class="w-full h-full object-cover"
+                            muted
+                            onmouseover="this.play().catch(() => {})"
+                            onmouseout="this.pause(); this.currentTime = 0;">
+                        </video>
+
+                        <div class="absolute top-2 left-2">
+                            <input type="checkbox"
+                                ${selectedVideos.has(video.filename) ? 'checked' : ''}
+                                onclick="event.stopPropagation(); toggleVideo('${video.filename}')">
+                        </div>
+
+                        <div class="absolute top-2 right-2 flex gap-2 flex-wrap items-end">
+                            ${video.processed ? '<span class="tag tag-processed">Processed</span>' : '<span class="tag tag-original">Original</span>'}
+                            ${savedVideos.has(video.filename) ? '<span class="tag" style="background:rgba(34,197,94,0.3);color:#4ade80;"><i class="fas fa-check"></i> Saved</span>' : ''}
+                            ${allVideoUsage[video.filename] ? `
+                                <div class="flex gap-1 ml-1">
+                                    ${allVideoUsage[video.filename].map(account => {
+                                        // Get first letter of account for the badge
+                                        const initial = account.charAt(0).toUpperCase();
+                                        return `<span class="w-6 h-6 rounded-full bg-purple-600 text-white text-xs flex items-center justify-center font-bold" title="Used by @${account}">${initial}</span>`;
+                                    }).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+
+                    </div>
+
+                    <div class="p-3">
+                        <div class="text-xs text-gray-500 mb-1">
+                            <i class="fas fa-user mr-1"></i>@${video.account}
+                        </div>
+                        ${video.caption ? `<div class="caption-text mb-2">${video.caption}</div>` : ''}
+
+                        <div class="flex items-center gap-3 text-xs text-gray-600 mb-2">
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-play text-green-500"></i>
+                                ${(video.views || 0).toLocaleString()}
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-heart text-red-500"></i>
+                                ${(video.likes || 0).toLocaleString()}
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-comment text-blue-500"></i>
+                                ${(video.comments || 0).toLocaleString()}
+                            </span>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-3">
+                            <span class="text-xs text-gray-500">${video.size_mb} MB</span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="event.stopPropagation(); openVideoModal('${video.filename}')" class="text-white hover:text-indigo-400 p-1.5 transition-colors" title="Preview">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                                <button onclick="event.stopPropagation(); toggleSaved('${video.filename}')" class="${savedVideos.has(video.filename) ? 'text-green-400 hover:text-green-300' : 'text-gray-400 hover:text-gray-300'} p-1.5 transition-colors" title="${savedVideos.has(video.filename) ? 'Saved' : 'Save'}">
+                                    <i class="fas ${savedVideos.has(video.filename) ? 'fa-check-circle' : 'fa-bookmark'}"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleVideo(filename) {
+            if (selectedVideos.has(filename)) {
+                selectedVideos.delete(filename);
+            } else {
+                selectedVideos.add(filename);
+            }
+            updateSelectedCount();
+            renderVideos(getFilteredVideos());
+        }
+
+        function selectAll() {
+            if (selectedVideos.size === getFilteredVideos().length) {
+                selectedVideos.clear();
+            } else {
+                selectedVideos = new Set(getFilteredVideos().map(v => v.filename));
+            }
+            updateSelectedCount();
+            renderVideos(getFilteredVideos());
+        }
+
+        function updateSelectedCount() {
+            const count = selectedVideos.size;
+            document.getElementById('selectedCount').textContent = count;
+            document.getElementById('selectedDownloadCount').textContent = count;
+            document.getElementById('selectedDeleteCount').textContent = count;
+
+            const panel = document.getElementById('selectedPanel');
+            if (count > 0) {
+                panel.classList.remove('translate-y-full');
+            } else {
+                panel.classList.add('translate-y-full');
+            }
+        }
+
+        async function markSelectedAsSaved() {
+            for (const filename of selectedVideos) {
+                if (!savedVideos.has(filename)) {
+                    await fetch(`/api/video/${filename}/save`, { method: 'POST' });
+                    savedVideos.add(filename);
+                }
+            }
+            selectedVideos.clear();
+            updateSelectedCount();
+            renderVideos(getFilteredVideos());
+        }
+
+        function downloadSelected() {
+            for (const filename of selectedVideos) {
+                window.open(`/api/download/${filename}`, '_blank');
+            }
+        }
+
+        function getFilteredVideos() {
+            const account = document.getElementById('accountFilter').value;
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const minLikes = document.getElementById('minLikes').value;
+            const minViews = document.getElementById('minViews').value;
+            const processed = document.getElementById('processedFilter').value;
+            const downloaded = document.getElementById('downloadedFilter').value;
+            const saved = document.getElementById('savedFilter').value;
+
+            return allVideos.filter(v => {
+                // Account filter
+                if (account && account !== '' && v.account !== account) return false;
+
+                // Search filter
+                if (search && search !== '') {
+                    const captionMatch = v.caption && v.caption.toLowerCase().includes(search);
+                    const filenameMatch = v.filename && v.filename.toLowerCase().includes(search);
+                    const accountMatch = v.account && v.account.toLowerCase().includes(search);
+                    if (!captionMatch && !filenameMatch && !accountMatch) return false;
+                }
+
+                // Min likes filter
+                if (minLikes && minLikes !== '' && v.likes < parseInt(minLikes)) return false;
+
+                // Min views filter
+                if (minViews && minViews !== '' && v.views < parseInt(minViews)) return false;
+
+                // Processed filter
+                if (processed === 'true' && !v.processed) return false;
+                if (processed === 'false' && v.processed) return false;
+
+                // Downloaded filter
+                if (downloaded === 'true' && !v.downloaded) return false;
+                if (downloaded === 'false' && v.downloaded) return false;
+
+                // Saved filter
+                if (saved === 'saved' && !savedVideos.has(v.filename)) return false;
+                if (saved === 'unsaved' && savedVideos.has(v.filename)) return false;
+
+                return true;
+            });
+        }
+
+        function applyFilters() {
+            const filtered = getFilteredVideos();
+            renderVideos(filtered);
+            updateActiveFiltersBadge(filtered.length);
+        }
+
+        function clearFilters() {
+            document.getElementById('accountFilter').value = '';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('minLikes').value = '';
+            document.getElementById('minViews').value = '';
+            document.getElementById('processedFilter').value = 'all';
+            document.getElementById('downloadedFilter').value = 'all';
+            document.getElementById('savedFilter').value = 'all';
+            renderVideos(allVideos);
+            updateActiveFiltersBadge(allVideos.length);
+        }
+
+        // Filter Modal Functions
+        function openFilterModal() {
+            const modal = document.getElementById('filterModal');
+
+            // Sync current filter values to modal
+            document.getElementById('modalAccountFilter').value = document.getElementById('accountFilter').value;
+            document.getElementById('modalSearchInput').value = document.getElementById('searchInput').value;
+            document.getElementById('modalMinLikes').value = document.getElementById('minLikes').value;
+            document.getElementById('modalSavedFilter').value = document.getElementById('savedFilter').value;
+            document.getElementById('modalProcessedFilter').value = document.getElementById('processedFilter').value;
+            document.getElementById('modalMinViews').value = document.getElementById('minViews').value;
+
+            // Populate accounts dropdown
+            const accountSelect = document.getElementById('modalAccountFilter');
+            const accounts = [...new Set(allVideos.map(v => v.account))];
+            accountSelect.innerHTML = '<option value="">All Accounts</option>' +
+                accounts.map(acc => `<option value="${acc}" ${document.getElementById('accountFilter').value === acc ? 'selected' : ''}>@${acc}</option>`).join('');
+
+            modal.classList.add('active');
+        }
+
+        function closeFilterModal() {
+            document.getElementById('filterModal').classList.remove('active');
+        }
+
+        function applyModalFilters() {
+            // Get values from modal
+            const account = document.getElementById('modalAccountFilter').value;
+            const search = document.getElementById('modalSearchInput').value;
+            const minLikes = document.getElementById('modalMinLikes').value;
+            const saved = document.getElementById('modalSavedFilter').value;
+            const processed = document.getElementById('modalProcessedFilter').value;
+            const minViews = document.getElementById('modalMinViews').value;
+
+            // Apply to main filters
+            document.getElementById('accountFilter').value = account;
+            document.getElementById('searchInput').value = search;
+            document.getElementById('minLikes').value = minLikes;
+            document.getElementById('savedFilter').value = saved;
+            document.getElementById('processedFilter').value = processed;
+            document.getElementById('minViews').value = minViews;
+
+            // Filter videos
+            let filtered = allVideos.filter(v => {
+                if (account && v.account !== account) return false;
+                if (search && search !== '') {
+                    const captionMatch = v.caption && v.caption.toLowerCase().includes(search.toLowerCase());
+                    const filenameMatch = v.filename && v.filename.toLowerCase().includes(search.toLowerCase());
+                    if (!captionMatch && !filenameMatch) return false;
+                }
+                if (minLikes && minLikes !== '' && v.likes < parseInt(minLikes)) return false;
+                if (saved === 'saved' && !savedVideos.has(v.filename)) return false;
+                if (saved === 'unsaved' && savedVideos.has(v.filename)) return false;
+                if (processed === 'true' && !v.processed) return false;
+                if (processed === 'false' && v.processed) return false;
+                if (minViews && minViews !== '' && v.views < parseInt(minViews)) return false;
+                return true;
+            });
+
+            renderVideos(filtered);
+            updateActiveFiltersBadge(filtered.length);
+        }
+
+        function clearModalFilters() {
+            document.getElementById('modalAccountFilter').value = '';
+            document.getElementById('modalSearchInput').value = '';
+            document.getElementById('modalMinLikes').value = '';
+            document.getElementById('modalSavedFilter').value = 'all';
+            document.getElementById('modalProcessedFilter').value = 'all';
+            document.getElementById('modalMinViews').value = '';
+
+            clearFilters(); // This already updates the badge
+        }
+
+        function updateActiveFiltersBadge(count) {
+            const badge = document.getElementById('activeFiltersBadge');
+            const tagsContainer = document.getElementById('activeFiltersTags');
+            const countSpan = document.getElementById('activeFiltersCount');
+
+            // Build active filter tags
+            const tags = [];
+            const account = document.getElementById('accountFilter').value;
+            const search = document.getElementById('searchInput').value;
+            const minLikes = document.getElementById('minLikes').value;
+            const minViews = document.getElementById('minViews').value;
+            const processed = document.getElementById('processedFilter').value;
+            const saved = document.getElementById('savedFilter').value;
+            const downloaded = document.getElementById('downloadedFilter').value;
+
+            if (account) tags.push(`<span class="text-xs bg-indigo-600/30 text-indigo-300 px-2 py-1 rounded-full border border-indigo-500/30">@${account}</span>`);
+            if (search) tags.push(`<span class="text-xs bg-purple-600/30 text-purple-300 px-2 py-1 rounded-full border border-purple-500/30">Search: "${search}"</span>`);
+            if (minLikes) tags.push(`<span class="text-xs bg-red-600/30 text-red-300 px-2 py-1 rounded-full border border-red-500/30">≥${minLikes} likes</span>`);
+            if (minViews) tags.push(`<span class="text-xs bg-teal-600/30 text-teal-300 px-2 py-1 rounded-full border border-teal-500/30">≥${minViews} views</span>`);
+            if (processed === 'true') tags.push(`<span class="text-xs bg-green-600/30 text-green-300 px-2 py-1 rounded-full border border-green-500/30">Processed</span>`);
+            if (processed === 'false') tags.push(`<span class="text-xs bg-gray-600/30 text-gray-300 px-2 py-1 rounded-full border border-gray-500/30">Originals</span>`);
+            if (saved === 'saved') tags.push(`<span class="text-xs bg-emerald-600/30 text-emerald-300 px-2 py-1 rounded-full border border-emerald-500/30">Saved</span>`);
+            if (saved === 'unsaved') tags.push(`<span class="text-xs bg-orange-600/30 text-orange-300 px-2 py-1 rounded-full border border-orange-500/30">Unsaved</span>`);
+            if (downloaded === 'true') tags.push(`<span class="text-xs bg-blue-600/30 text-blue-300 px-2 py-1 rounded-full border border-blue-500/30">Tracked</span>`);
+            if (downloaded === 'false') tags.push(`<span class="text-xs bg-yellow-600/30 text-yellow-300 px-2 py-1 rounded-full border border-yellow-500/30">New</span>`);
+
+            if (tags.length > 0 || count < allVideos.length) {
+                badge.classList.remove('hidden');
+                tagsContainer.innerHTML = tags.join('');
+                countSpan.textContent = `Showing ${count} of ${allVideos.length} videos`;
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        function refreshData() {
+            loadVideos();
+            loadAccounts();
+            loadStats();
+        }
+
+        function openVideoModal(filename) {
+            const video = allVideos.find(v => v.filename === filename);
+            if (!video) return;
+
+            const modal = document.getElementById('videoModal');
+            const content = document.getElementById('videoModalContent');
+            const title = document.getElementById('videoModalTitle');
+
+            title.textContent = `@${video.account}`;
+
+            const isSaved = savedVideos.has(video.filename);
+
+            content.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- LEFT COLUMN: Video + Stats + Original Caption -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-black rounded-xl overflow-hidden mb-4">
+                            <video id="modalVideo" src="/video/${video.filename}?raw=1" controls autoplay class="w-full" style="max-height: 50vh;">
+                            </video>
+                        </div>
+
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+                            <div class="glass rounded-xl p-3 text-center">
+                                <div class="text-lg font-bold text-green-400">${(video.views || 0).toLocaleString()}</div>
+                                <div class="text-xs text-gray-500">Views</div>
+                            </div>
+                            <div class="glass rounded-xl p-3 text-center">
+                                <div class="text-lg font-bold text-red-400">${(video.likes || 0).toLocaleString()}</div>
+                                <div class="text-xs text-gray-500">Likes</div>
+                            </div>
+                            <div class="glass rounded-xl p-3 text-center">
+                                <div class="text-lg font-bold text-blue-400">${(video.comments || 0).toLocaleString()}</div>
+                                <div class="text-xs text-gray-500">Comments</div>
+                            </div>
+                            <div class="glass rounded-xl p-3 text-center">
+                                <div class="text-lg font-bold text-purple-400">${video.size_mb} MB</div>
+                                <div class="text-xs text-gray-500">Size</div>
+                            </div>
+                        </div>
+
+                        ${video.caption ? `
+                        <div class="glass rounded-xl p-4 mb-4">
+                            <h3 class="text-sm font-semibold mb-2 text-gray-400">Original Caption</h3>
+                            <p class="text-sm text-gray-300 whitespace-pre-wrap">${video.caption}</p>
+                        </div>
+                        ` : ''}
+                    </div>
+
+                    <!-- RIGHT COLUMN: Preparation Controls -->
+                    <div class="lg:col-span-1">
+                        <div class="glass rounded-xl p-4 sticky top-4" style="border: 2px solid #7c3aed;">
+                            <h3 class="text-lg font-bold mb-4" style="color: #a78bfa;">
+                                <i class="fas fa-magic mr-2"></i>Prepare for Posting
+                            </h3>
+
+                            <!-- Instagram Account Selector -->
+                            <div class="mb-4">
+                                <h4 class="text-sm font-semibold mb-2 text-gray-400">
+                                    <i class="fab fa-instagram mr-2"></i>Post to Account
+                                </h4>
+                                <select id="selectedAccount_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50" onchange="filterBrandVoicesByAccount('${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}', this.value)">
+                                    <option value="">-- Select Instagram account --</option>
+                                    ${[...new Set(allBrandVoiceProfiles.map(p => p.account_username))].map(account => `
+                                        <option value="${account}">@${account}</option>
+                                    `).join('')}
+                                </select>
+                                <p class="text-xs text-gray-500 mt-1">Which Instagram account will post this</p>
+                            </div>
+
+                            <!-- Brand Voice Selector -->
+                            <div class="mb-4">
+                                <h4 class="text-sm font-semibold mb-2 text-gray-400">
+                                    <i class="fas fa-microphone-alt mr-2"></i>Brand Voice
+                                </h4>
+                                <select id="selectedBrandVoice_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50">
+                                    <option value="">-- Select account first --</option>
+                                    ${allBrandVoiceProfiles.map(profile => `
+                                        <option value="${profile.id}" data-account="${profile.account_username}" class="brand-voice-option-${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}" style="display: none;">
+                                            ${profile.profile_name || profile.brand_name || profile.account_username}
+                                            ${profile.is_clone ? `<span class="text-xs text-purple-400">(${profile.brand_name || profile.account_username})</span>` : ''}
+                                        </option>
+                                    `).join('')}
+                                </select>
+                                <p class="text-xs text-gray-500 mt-1">Select a voice for this account</p>
+                            </div>
+
+                            <!-- Usage Indicators -->
+                            ${allVideoUsage[video.filename] && allVideoUsage[video.filename].length > 0 ? `
+                            <div class="mb-4 p-3 rounded-lg bg-purple-900/20 border border-purple-500/30">
+                                <h4 class="text-sm font-semibold mb-2" style="color: #a78bfa;">
+                                    <i class="fas fa-history mr-2"></i>Previously Used By
+                                </h4>
+                                <div class="flex flex-wrap gap-2">
+                                    ${allVideoUsage[video.filename].map(account => `
+                                        <span class="px-2 py-1 rounded-full text-xs font-medium bg-purple-600 text-white">
+                                            <i class="fas fa-check mr-1"></i>@${account}
+                                        </span>
+                                    `).join('')}
+                                </div>
+                                <p class="text-xs text-gray-400 mt-2">This video has already been used by the accounts above</p>
+                            </div>
+                            ` : ''}
+
+                            <!-- Audio Processing -->
+                            <div class="mb-4">
+                                <h4 class="text-sm font-semibold mb-2 text-gray-400">
+                                    <i class="fas fa-headphones mr-2"></i>Audio Processing
+                                </h4>
+                                <label class="flex items-center gap-3 p-3 rounded-lg bg-gray-900 border border-gray-700 cursor-pointer hover:border-purple-500/50 transition-colors">
+                                    <input type="checkbox" id="isolateVocals_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}" class="w-5 h-5 rounded border-gray-600 text-purple-600 focus:ring-purple-500 focus:ring-2">
+                                    <div class="flex-1">
+                                        <span class="text-sm font-medium text-white">Isolate Vocals</span>
+                                        <p class="text-xs text-gray-500">Separate dialogue from music</p>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- AI Caption Setup (Always On) -->
+                            <div class="mb-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-400">
+                                        <i class="fas fa-robot mr-2"></i>AI Caption Setup
+                                    </h4>
+                                    <span class="text-xs px-2 py-1 rounded-full bg-green-600/20 text-green-400 border border-green-500/30">
+                                        <i class="fas fa-check mr-1"></i>Enabled
+                                    </span>
+                                </div>
+                                <p class="text-xs text-gray-500 mb-3">Caption generation happens in the library. Configure options here.</p>
+
+                                <!-- ManyChat Keyword (Toggleable) -->
+                                <div class="mb-3">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <input type="checkbox" id="useManyChat_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}" class="w-4 h-4 rounded border-gray-600 text-purple-600 focus:ring-purple-500 focus:ring-2" onchange="toggleManyChatSelection('${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}')">
+                                        <label for="useManyChat_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}" class="text-sm font-medium text-white cursor-pointer">ManyChat Keyword</label>
+                                        <i class="fas fa-chevron-down text-xs text-gray-500 transition-transform ml-auto" id="manyChatChevron_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}"></i>
+                                    </div>
+                                    <div id="manychatSelection_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}" class="hidden mt-2">
+                                        <select id="manychatKeyword_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-sm text-white mb-2" onchange="toggleCustomKeywordModal(this.value, '${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}')">
+                                            <option value="">Select keyword...</option>
+                                            <option value="LINK">LINK (Default)</option>
+                                            <option value="GROWTH">GROWTH</option>
+                                            <option value="CONTENT">CONTENT</option>
+                                            <option value="OFFER">OFFER</option>
+                                            <option value="DM">DM</option>
+                                            <option value="STORY">STORY</option>
+                                            <optgroup label="Your Custom Keywords" id="customKeywordsGroup_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}">
+                                                <!-- Custom keywords will be loaded here -->
+                                            </optgroup>
+                                            <option value="ADD_NEW">+ Add New Keyword</option>
+                                        </select>
+                                        <input type="text" id="manychatCustom_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-sm text-white hidden" placeholder="Type new keyword and press Enter...">
+                                    </div>
+                                </div>
+
+                                <!-- CTA Selection -->
+                                <div class="mb-4">
+                                    <h4 class="text-sm font-semibold mb-2 text-gray-400">
+                                        <i class="fas fa-bullhorn mr-2"></i>Call-to-Action
+                                    </h4>
+                                    <select id="ctaSelect_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-sm text-white" onchange="addCTA('${video.filename}', this.value)">
+                                        <option value="">No CTA</option>
+                                        ${offersData.map(offer => `
+                                            <option value="${offer.manychat_keyword}" data-benefit="${offer.benefit_statement}">${offer.name} (${offer.manychat_keyword})</option>
+                                        `).join('')}
+                                    </select>
+                                    <p class="text-xs text-gray-500 mt-1">Select an offer to add its CTA</p>
+                                </div>
+
+                                <!-- Notes for AI (Optional) -->
+                                <div>
+                                    <label class="text-sm font-medium text-white mb-2 block">Notes for this post (optional)</label>
+                                    <textarea id="aiNotes_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-white" rows="3" placeholder="Add context for this specific caption...&#10;&#10;Examples:&#10;- Focus on the transformation aspect&#10;- Highlight the emotional journey&#10;- Mention the specific problem being solved"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Ready for Posting -->
+                            <div class="mb-4">
+                                <button onclick="saveToReadyContent('${video.filename}')" class="w-full py-3 px-4 rounded-lg font-bold text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700" style="box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);">
+                                    <i class="fas fa-paper-plane mr-2"></i>Send
+                                </button>
+                                <div id="saveStatus_${video.filename.replace(/[^a-zA-Z0-9]/g, '_')}" class="text-center text-xs text-gray-500 mt-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Original Action Buttons (Full Width) -->
+                <div class="flex gap-3 mt-4">
+                    <button onclick="event.stopPropagation(); toggleSaved('${video.filename}'); setTimeout(() => openVideoModal('${video.filename}'), 100);" class="flex-1 py-2 px-4 rounded-lg font-medium ${isSaved ? 'bg-green-600 hover:bg-green-700 text-white' : 'bg-gray-700 hover:bg-gray-600 text-white'}">
+                        <i class="fas ${isSaved ? 'fa-check-circle' : 'fa-bookmark'} mr-2"></i>${isSaved ? 'Saved' : 'Save'}
+                    </button>
+                    <a href="/api/download/${video.filename}" class="flex-1 py-2 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-center font-medium">
+                        <i class="fas fa-download mr-2"></i>Download
+                    </a>
+                    <button onclick="event.stopPropagation(); deleteVideo('${video.filename}')" class="flex-1 py-2 px-4 rounded-lg bg-red-600 hover:bg-red-700 text-white font-medium">
+                        <i class="fas fa-trash mr-2"></i>Delete
+                    </button>
+                </div>
+            `;
+
+            // Populate custom ManyChat keywords
+            const filenameId = filename.replace(/[^a-zA-Z0-9]/g, '_');
+            populateCustomKeywords(filenameId);
+
+            modal.classList.add('active');
+        }
+
+        // ===== PREPARATION FUNCTIONS =====
+
+        async function isolateVocals(filename) {
+            const statusId = 'vocalStatus_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+            const statusEl = document.getElementById(statusId);
+
+            if (statusEl) {
+                statusEl.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>Processing...';
+                statusEl.className = 'text-xs text-purple-400 py-2 px-2';
+            }
+
+            try {
+                const response = await fetch('/api/audio/isolate-vocals', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ filename: filename })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    if (statusEl) {
+                        statusEl.innerHTML = '<i class="fas fa-check-circle mr-1"></i>Vocals isolated!';
+                        statusEl.className = 'text-xs text-green-400 py-2 px-2';
+                    }
+                    showToast('Vocals isolated successfully!');
+                } else {
+                    throw new Error(data.error || 'Failed to isolate vocals');
+                }
+            } catch (error) {
+                if (statusEl) {
+                    statusEl.innerHTML = '<i class="fas fa-exclamation-circle mr-1"></i>Failed';
+                    statusEl.className = 'text-xs text-red-400 py-2 px-2';
+                }
+                showToast('Error: ' + error.message);
+            }
+        }
+
+        async function generateAICaption(filename, account) {
+            const captionId = 'aiCaption_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+            const keywordId = 'manychatKeyword_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+            const notesId = 'aiNotes_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+            const accountId = 'selectedAccount_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+            const captionEl = document.getElementById(captionId);
+            const keywordEl = document.getElementById(keywordId);
+            const notesEl = document.getElementById(notesId);
+            const accountEl = document.getElementById(accountId);
+
+            // Get selected account from dropdown (priority over passed account)
+            const selectedAccount = accountEl && accountEl.value ? accountEl.value : account;
+
+            if (!selectedAccount) {
+                showToast('Please select an account first');
+                return;
+            }
+
+            const selectedKeyword = keywordEl ? keywordEl.value : null;
+            const notes = notesEl ? notesEl.value : '';
+
+            captionEl.value = 'Generating AI caption...';
+            captionEl.disabled = true;
+
+            try {
+                const response = await fetch('/api/caption/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        filename: filename,
+                        account: selectedAccount,
+                        original_caption: captionEl.value,
+                        manychat_keyword: selectedKeyword,
+                        notes: notes
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success && data.caption) {
+                    captionEl.value = data.caption;
+                    captionEl.disabled = false;
+                    showToast('Caption generated successfully!');
+                } else {
+                    throw new Error(data.error || 'Failed to generate caption');
+                }
+            } catch (error) {
+                captionEl.value = captionEl.getAttribute('placeholder') || '';
+                captionEl.disabled = false;
+                showToast('Error: ' + error.message);
+            }
+        }
+
+        function regenerateCaption(filename) {
+            // Simply regenerate with the currently selected account
+            const accountId = 'selectedAccount_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+            const accountEl = document.getElementById(accountId);
+            const selectedAccount = accountEl ? accountEl.value : '';
+            generateAICaption(filename, selectedAccount);
+        }
+
+        function toggleCustomKeywordModal(value, filenameId) {
+            const customInput = document.getElementById('manychatCustom_' + filenameId);
+            const select = document.getElementById('manychatKeyword_' + filenameId);
+
+            if (value === 'ADD_NEW') {
+                // Show input field for adding new keyword
+                customInput.classList.remove('hidden');
+                customInput.placeholder = 'Type new keyword and press Enter...';
+                customInput.focus();
+
+                // Change handler to save on Enter
+                customInput.onkeydown = (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const newKeyword = customInput.value.trim().toUpperCase();
+                        if (newKeyword) {
+                            if (saveCustomKeyword(newKeyword)) {
+                                // Repopulate all dropdowns and select the new keyword
+                                populateCustomKeywords(filenameId);
+                                select.value = newKeyword;
+                                customInput.classList.add('hidden');
+                                customInput.value = '';
+                                customInput.onkeydown = null;
+                                showToast(`Keyword "${newKeyword}" added!`);
+                            } else {
+                                showToast('Keyword already exists');
+                            }
+                        }
+                    } else if (e.key === 'Escape') {
+                        // Cancel and reset
+                        select.value = '';
+                        customInput.classList.add('hidden');
+                        customInput.value = '';
+                        customInput.onkeydown = null;
+                    }
+                };
+            } else {
+                customInput.classList.add('hidden');
+                customInput.value = '';
+                customInput.onkeydown = null;
+            }
+        }
+
+        function toggleManyChatSelection(filenameId) {
+            const checkbox = document.getElementById('useManyChat_' + filenameId);
+            const selectionDiv = document.getElementById('manychatSelection_' + filenameId);
+            const chevron = document.getElementById('manyChatChevron_' + filenameId);
+
+            if (checkbox.checked) {
+                selectionDiv.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+            } else {
+                selectionDiv.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
+            }
+        }
+
+        function filterBrandVoicesByAccount(filenameId, selectedAccount) {
+            const brandVoiceSelect = document.getElementById('selectedBrandVoice_' + filenameId);
+            const options = brandVoiceSelect.querySelectorAll('.brand-voice-option-' + filenameId);
+
+            // Hide all options first
+            options.forEach(option => {
+                option.style.display = 'none';
+            });
+
+            // Reset selection
+            brandVoiceSelect.value = '';
+
+            if (selectedAccount) {
+                // Show only brand voices for the selected account
+                options.forEach(option => {
+                    if (option.getAttribute('data-account') === selectedAccount) {
+                        option.style.display = 'block';
+                    }
+                });
+
+                // Auto-select the first brand voice for this account
+                const firstVisible = Array.from(options).find(opt => opt.style.display !== 'none');
+                if (firstVisible) {
+                    brandVoiceSelect.value = firstVisible.value;
+                }
+            }
+        }
+
+        // Add ManyChat CTA to a video's caption
+        function addCTA(filename, manychatKeyword) {
+            const safeFilename = filename.replace(/[^a-zA-Z0-9]/g, '_');
+            const notesTextarea = document.getElementById('aiNotes_' + safeFilename);
+
+            if (!manychatKeyword || manychatKeyword === '') {
+                // Clear CTA from notes
+                const currentNotes = notesTextarea.value;
+                const ctaRegex = /\n\n--- CTA ---[\s\S]*?(?=\n\n|$)/;
+                notesTextarea.value = currentNotes.replace(ctaRegex, '').trim();
+                showToast('CTA removed', 'info');
+                return;
+            }
+
+            // Get benefit from the selected option
+            const ctaSelect = document.getElementById('ctaSelect_' + safeFilename);
+            const selectedOption = ctaSelect.options[ctaSelect.selectedIndex];
+            const benefit = selectedOption?.getAttribute('data-benefit') || 'exclusive content';
+
+            // Add CTA text to notes (will be used by caption generator)
+            const ctaText = `\n\n--- CTA ---\n💬 ${benefit}\nComment "${manychatKeyword}" to get it!`;
+
+            // Append to notes
+            notesTextarea.value = (notesTextarea.value || '') + ctaText;
+
+            showToast('CTA added! This will be included when caption is generated.', 'success');
+        }
+
+        async function saveToReadyContent(filename) {
+            const keywordId = 'manychatKeyword_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+            const accountId = 'selectedAccount_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+            const brandVoiceId = 'selectedBrandVoice_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+            const useManyChatId = 'useManyChat_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+            const isolateVocalsId = 'isolateVocals_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+            const statusId = 'saveStatus_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+
+            const accountEl = document.getElementById(accountId);
+            const brandVoiceEl = document.getElementById(brandVoiceId);
+            const selectedAccount = accountEl ? accountEl.value : null;
+            const selectedBrandVoice = brandVoiceEl ? brandVoiceEl.value : null;
+            const useManyChat = document.getElementById(useManyChatId)?.checked || false;
+            const isolateVocals = document.getElementById(isolateVocalsId)?.checked || false;
+            const manychatKeyword = useManyChat ? (document.getElementById(keywordId)?.value || '') : '';
+            const notes = document.getElementById('aiNotes_' + filename.replace(/[^a-zA-Z0-9]/g, '_'))?.value || '';
+
+            // Check if video has already been used by the selected account
+            if (selectedAccount && allVideoUsage[filename] && allVideoUsage[filename].includes(selectedAccount)) {
+                const confirmed = confirm(
+                    `⚠️ This video has already been used by @${selectedAccount}.\n\n` +
+                    `Are you sure you want to send it again? This may create duplicate content.`
+                );
+                if (!confirmed) {
+                    return; // User cancelled
+                }
+            }
+
+            const statusEl = document.getElementById(statusId);
+            statusEl.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>Sending to library...';
+
+            try {
+                // Just add to source_content - AI will process in background
+                const response = await fetch('/api/source/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        filename: filename,
+                        manychat_keyword: manychatKeyword,
+                        notes: notes,
+                        selected_account: selectedAccount,
+                        brand_voice_id: selectedBrandVoice,
+                        isolate_vocals: isolateVocals
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    statusEl.innerHTML = '<i class="fas fa-check-circle mr-1"></i>Sent to library! <a href="/library" class="text-green-400 hover:underline">View in Library</a>';
+                    statusEl.className = 'text-center text-sm text-green-400 mt-2';
+                    showToast('Sent to library! AI will process in background.');
+
+                    // Update local video usage data
+                    if (selectedAccount) {
+                        if (!allVideoUsage[filename]) {
+                            allVideoUsage[filename] = [];
+                        }
+                        if (!allVideoUsage[filename].includes(selectedAccount)) {
+                            allVideoUsage[filename].push(selectedAccount);
+                        }
+                    }
+
+                    // Disable the Send button to prevent double-clicks
+                    const sendBtn = statusEl.closest('.video-modal-content')?.querySelector('button[onclick*="saveToReadyContent"]');
+                    if (sendBtn) {
+                        sendBtn.disabled = true;
+                        sendBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                    }
+                } else {
+                    throw new Error(data.error || 'Failed to send');
+                }
+            } catch (error) {
+                statusEl.innerHTML = '<i class="fas fa-exclamation-circle mr-1"></i>Failed to send';
+                statusEl.className = 'text-center text-sm text-red-400 mt-2';
+                showToast('Error: ' + error.message);
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-4 right-4 bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white text-sm z-50';
+            toast.innerHTML = `<i class="fas fa-info-circle mr-2"></i>${message}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            if (video) {
+                video.pause();
+                video.src = '';
+            }
+            modal.classList.remove('active');
+        }
+
+        async function deleteVideo(filename) {
+            if (!confirm(`Are you sure you want to delete this video? This action cannot be undone.`)) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/video/${filename}/delete`, {
+                    method: 'POST'
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Remove from saved videos set
+                    savedVideos.delete(filename);
+
+                    // Remove from selected videos
+                    selectedVideos.delete(filename);
+                    updateSelectedCount();
+
+                    // Remove from allVideos and re-render
+                    allVideos = allVideos.filter(v => v.filename !== filename);
+                    renderVideos(getFilteredVideos());
+
+                    // Close modal
+                    closeVideoModal();
+
+                    // Refresh stats
+                    loadStats();
+
+                    // Show success message
+                    alert(`Video deleted successfully! (${data.files_deleted} file(s) removed)`);
+                } else {
+                    alert(`Failed to delete video: ${data.error}`);
+                }
+            } catch (error) {
+                console.error('Error deleting video:', error);
+                alert('Failed to delete video. Please try again.');
+            }
+        }
+
+        async function deleteSelectedVideos() {
+            const filenames = Array.from(selectedVideos);
+
+            if (filenames.length === 0) {
+                alert('No videos selected');
+                return;
+            }
+
+            if (!confirm(`Are you sure you want to delete ${filenames.length} video(s)? This action cannot be undone.`)) {
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/videos/bulk-delete', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ filenames: filenames })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Remove from saved videos set
+                    filenames.forEach(f => savedVideos.delete(f));
+
+                    // Clear selection
+                    selectedVideos.clear();
+                    updateSelectedCount();
+
+                    // Reload videos from server
+                    await loadVideos();
+
+                    // Close panel if it was the selected panel showing only those videos
+                    renderVideos(allVideos);
+
+                    // Refresh stats
+                    loadStats();
+
+                    alert(`Deleted ${data.deleted_count} video(s) successfully!`);
+                } else {
+                    alert(`Failed to delete some videos: ${data.failed_count} failed`);
+                }
+            } catch (error) {
+                console.error('Error deleting videos:', error);
+                alert('Failed to delete videos. Please try again.');
+            }
+        }
+
+        // Enhanced Scraper Variables
+        let scraperAllPosts = [];
+        let scraperSelectedPosts = new Set();
+        let downloadedPosts = new Set(); // Track individual downloaded post shortcodes
+        let currentProfile = '';
+        let currentFilter = 'all';
+        let scrapedAccounts = new Set(); // Track accounts that have been scraped
+        let showOnlyUnscraped = false;
+
+        // Pagination state
+        let scraperCurrentPage = 0;
+        let scraperHasMore = true;
+        let scraperPostsPerPage = 24;
+        let scraperLoadingMore = false;
+        let scraperLastShortcode = null; // Track last post shortcode for pagination
+
+        // Load profile for scraper modal
+        async function loadProfileForScraper(isLoadingMore = false) {
+            const username = document.getElementById('profileUsernameInput').value.trim().replace('@', '');
+            if (!username) {
+                alert('Please enter a username');
+                return;
+            }
+
+            // Reset state if not loading more
+            if (!isLoadingMore) {
+                console.log('Loading profile for:', username);
+                document.getElementById('scraperLoading').classList.remove('hidden');
+                document.getElementById('scraperEmptyState').classList.add('hidden');
+                document.getElementById('profileInfo').classList.add('hidden');
+                document.getElementById('postsGrid').innerHTML = '';
+                document.getElementById('scraperFilters').classList.add('hidden');
+                document.getElementById('selectionBar').classList.add('hidden');
+                document.getElementById('loadMoreContainer').classList.add('hidden');
+                document.getElementById('noMorePosts').classList.add('hidden');
+
+                // Reset pagination
+                scraperCurrentPage = 0;
+                scraperHasMore = true;
+                scraperAllPosts = [];
+                scraperSelectedPosts.clear();
+                scraperLastShortcode = null;
+            } else {
+                scraperLoadingMore = true;
+                document.getElementById('loadMoreBtn').disabled = true;
+                document.getElementById('loadMoreBtn').innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Loading...';
+            }
+
+            try {
+                // Load profile data (only on initial load)
+                if (!isLoadingMore) {
+                    const profileRes = await fetch(`/api/ig/profile?username=${username}`);
+                    const profileData = await profileRes.json();
+
+                    if (!profileData.success) {
+                        console.error('Profile error:', profileData.error);
+                        alert(profileData.error || 'Failed to load profile');
+                        return;
+                    }
+
+                    currentProfile = username;
+                    displayProfileInfo(profileData);
+
+                    // Load already-downloaded posts for this profile
+                    const scrapedRes = await fetch(`/api/ig/scraped-videos?account=${username}`);
+                    const scrapedData = await scrapedRes.json();
+                    if (scrapedData.success && scrapedData.videos) {
+                        // Populate downloadedPosts Set with the shortcodes
+                        downloadedPosts.clear();
+                        scrapedData.videos.forEach(shortcode => {
+                            downloadedPosts.add(shortcode);
+                        });
+                        console.log(`Already downloaded ${scrapedData.video_count} posts for @${username}:`, Array.from(downloadedPosts));
+                    }
+                }
+
+                // Load posts with pagination
+                const limit = scraperPostsPerPage;
+                let apiUrl = `/api/ig/posts?username=${username}&limit=${limit}`;
+
+                // Add after_shortcode parameter for pagination (load more)
+                if (isLoadingMore && scraperLastShortcode) {
+                    apiUrl += `&after_shortcode=${scraperLastShortcode}`;
+                }
+
+                const postsRes = await fetch(apiUrl);
+                const postsData = await postsRes.json();
+
+                if (postsData.success) {
+                    const newPosts = postsData.posts || [];
+
+                    if (isLoadingMore) {
+                        // Append to existing posts
+                        scraperAllPosts = [...scraperAllPosts, ...newPosts];
+                    } else {
+                        scraperAllPosts = newPosts;
+                    }
+
+                    // Track the last shortcode for next pagination
+                    if (newPosts.length > 0) {
+                        scraperLastShortcode = newPosts[newPosts.length - 1].shortcode;
+                    }
+
+                    // Check if there are more posts (got full page means likely more)
+                    scraperHasMore = newPosts.length === limit;
+                    scraperCurrentPage++;
+
+                    // Update UI - apply current filter if active
+                    const postsToRender = getFilteredPosts();
+                    renderScraperPosts(postsToRender, isLoadingMore);
+                    document.getElementById('scraperFilters').classList.remove('hidden');
+                    document.getElementById('selectionBar').classList.remove('hidden');
+
+                    // Update Load More button
+                    updateLoadMoreButton();
+                } else {
+                    console.error('Posts error:', postsData.error);
+                    alert(postsData.error || 'Failed to load posts');
+                    if (isLoadingMore) {
+                        updateLoadMoreButton();
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading profile:', error);
+                const errorMsg = error.message || error.toString();
+
+                // Check for Instagram login errors
+                if (errorMsg.includes('login') || errorMsg.includes('authenticated') || errorMsg.includes('404') || errorMsg.includes('403')) {
+                    alert('Instagram Login Required\n\nInstagram requires you to log in. Please click "Refresh Session" below and enter your Instagram credentials when prompted.\n\nThis is an Instagram security measure - your credentials are only saved locally on your computer.');
+                    // Show refresh session button
+                    showRefreshSessionButton();
+                } else {
+                    alert('Failed to load profile: ' + errorMsg + '\n\nMake sure you\'re accessing this page from http://localhost:4412');
+                }
+                if (isLoadingMore) {
+                    updateLoadMoreButton();
+                }
+            } finally {
+                document.getElementById('scraperLoading').classList.add('hidden');
+                if (isLoadingMore) {
+                    updateLoadMoreButton();
+                }
+            }
+        }
+
+        function showRefreshSessionButton() {
+            document.getElementById('refreshSessionContainer').classList.remove('hidden');
+        }
+
+        async function refreshInstagramSession() {
+            try {
+                const response = await fetch('/api/ig/refresh-session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Session refreshed successfully! Please try loading the profile again.');
+                    document.getElementById('refreshSessionContainer').classList.add('hidden');
+                } else if (data.needs_credentials) {
+                    // Need to show login form or provide instructions
+                    alert('Instagram Login Required\n\nTo use Instagram scraping, you need to log in.\n\nPlease run this command in your terminal:\n\ncd web_app && python3 -c "from instaloader import Instaloader; L = Instaloader(); L.login(YOUR_USERNAME, YOUR_PASSWORD); L.save_session_to_file(\'../instagram_session\')"\n\nReplace YOUR_USERNAME and YOUR_PASSWORD with your actual Instagram credentials.');
+                } else {
+                    alert('Failed to refresh session: ' + (data.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error refreshing session:', error);
+                alert('Failed to refresh session. Check the console for details.');
+            }
+        }
+
+        // Load more posts (called by Load More button)
+        async function loadMorePosts() {
+            if (scraperLoadingMore || !scraperHasMore) {
+                return;
+            }
+            await loadProfileForScraper(true);
+        }
+
+        // Load all remaining posts from the profile
+        async function loadAllPosts() {
+            if (scraperLoadingMore || !scraperHasMore) {
+                return;
+            }
+
+            if (!confirm('This will fetch all remaining posts from this profile. It may take a while for accounts with many posts. Continue?')) {
+                return;
+            }
+
+            // Show loading state on Load All button
+            scraperLoadingMore = true;
+            const loadAllBtn = document.getElementById('loadAllBtn');
+            loadAllBtn.disabled = true;
+            loadAllBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Loading All...';
+
+            const username = currentProfile;
+            if (!username) {
+                alert('No profile loaded');
+                updateLoadMoreButton();
+                return;
+            }
+
+            try {
+                let batchCount = 0;
+                // Keep fetching until we've loaded everything
+                while (scraperHasMore) {
+                    const limit = scraperPostsPerPage;
+                    let apiUrl = `/api/ig/posts?username=${username}&limit=${limit}`;
+
+                    if (scraperLastShortcode) {
+                        apiUrl += `&after_shortcode=${scraperLastShortcode}`;
+                    }
+
+                    const postsRes = await fetch(apiUrl);
+                    const postsData = await postsRes.json();
+
+                    if (!postsData.success) {
+                        console.error('Error loading posts:', postsData.error);
+                        break;
+                    }
+
+                    const newPosts = postsData.posts || [];
+
+                    if (newPosts.length === 0) {
+                        break;
+                    }
+
+                    // Add new posts
+                    scraperAllPosts = [...scraperAllPosts, ...newPosts];
+                    batchCount++;
+
+                    // Update last shortcode
+                    scraperLastShortcode = newPosts[newPosts.length - 1].shortcode;
+
+                    // Check if there are more posts
+                    scraperHasMore = newPosts.length === limit;
+
+                    // Update button with progress
+                    loadAllBtn.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i>Loading... (${scraperAllPosts.length} posts)`;
+
+                    // Update UI with current progress
+                    const postsToRender = getFilteredPosts();
+                    renderScraperPosts(postsToRender, false); // Re-render to show all loaded posts
+
+                    // Small delay to avoid overwhelming the API
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                }
+
+                // Final UI update
+                const postsToRender = getFilteredPosts();
+                renderScraperPosts(postsToRender, false);
+                updateLoadMoreButton();
+
+                showToast(`Loaded ${scraperAllPosts.length} total posts!`);
+            } catch (error) {
+                console.error('Error loading all posts:', error);
+                alert('Failed to load all posts: ' + error.message);
+            } finally {
+                scraperLoadingMore = false;
+                updateLoadMoreButton();
+            }
+        }
+
+        // Update Load More button visibility and state
+        function updateLoadMoreButton() {
+            const loadMoreContainer = document.getElementById('loadMoreContainer');
+            const noMorePosts = document.getElementById('noMorePosts');
+
+            // Reset loading state
+            scraperLoadingMore = false;
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const loadAllBtn = document.getElementById('loadAllBtn');
+            loadMoreBtn.disabled = false;
+            loadMoreBtn.innerHTML = '<i class="fas fa-chevron-down mr-2"></i>Load More';
+            loadAllBtn.disabled = false;
+            loadAllBtn.innerHTML = '<i class="fas fa-layer-group mr-2"></i>Load All';
+
+            if (scraperHasMore && scraperAllPosts.length > 0) {
+                // Show Load More button
+                loadMoreContainer.classList.remove('hidden');
+                noMorePosts.classList.add('hidden');
+            } else if (scraperAllPosts.length > 0) {
+                // Show "All posts loaded" message
+                loadMoreContainer.classList.add('hidden');
+                noMorePosts.classList.remove('hidden');
+            } else {
+                // Hide both (no posts loaded)
+                loadMoreContainer.classList.add('hidden');
+                noMorePosts.classList.add('hidden');
+            }
+        }
+
+        function displayProfileInfo(profile) {
+            document.getElementById('profileInfo').classList.remove('hidden');
+            document.getElementById('profilePic').src = profile.profile_pic_url || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%236366f1"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/%3E%3C/svg%3E';
+            document.getElementById('profileName').textContent = '@' + profile.username;
+            document.getElementById('profileBio').textContent = profile.biography || '';
+            document.getElementById('profilePosts').textContent = formatNumber(profile.posts_count || 0);
+            document.getElementById('profileFollowers').textContent = formatNumber(profile.followers || 0);
+            document.getElementById('profileFollowing').textContent = formatNumber(profile.following || 0);
+
+            const verifiedBadge = document.getElementById('profileVerified');
+            if (profile.is_verified) {
+                verifiedBadge.classList.remove('hidden');
+            } else {
+                verifiedBadge.classList.add('hidden');
+            }
+
+            // Check if profile is saved and update UI
+            updateProfileSavedStatus(profile.username);
+        }
+
+        function isProfileSaved(username) {
+            return savedAccounts.some(acc => acc.username === username);
+        }
+
+        function updateProfileSavedStatus(username) {
+            const isSaved = isProfileSaved(username);
+            const saveBtn = document.getElementById('saveProfileBtn');
+            const savedBadge = document.getElementById('profileSavedBadge');
+
+            if (isSaved) {
+                saveBtn.innerHTML = '<i class="fas fa-check mr-1"></i>Saved';
+                saveBtn.classList.add('opacity-50');
+                saveBtn.disabled = true;
+                savedBadge.classList.remove('hidden');
+            } else {
+                saveBtn.innerHTML = '<i class="fas fa-bookmark mr-1"></i>Save Profile';
+                saveBtn.classList.remove('opacity-50');
+                saveBtn.disabled = false;
+                savedBadge.classList.add('hidden');
+            }
+        }
+
+        async function saveCurrentProfile() {
+            if (!currentProfile) {
+                alert('No profile loaded');
+                return;
+            }
+
+            if (isProfileSaved(currentProfile)) {
+                alert('Profile already saved!');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/accounts/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: currentProfile,
+                        notes: `Followers: ${document.getElementById('profileFollowers').textContent}`
+                    })
+                });
+
+                if (response.ok) {
+                    // Reload saved accounts
+                    await loadAccounts();
+                    // Update UI
+                    updateProfileSavedStatus(currentProfile);
+                    // Show success message
+                    showToast(`@${currentProfile} saved to your profiles!`);
+                } else {
+                    alert('Failed to save profile');
+                }
+            } catch (error) {
+                console.error('Error saving profile:', error);
+                alert('Failed to save profile');
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-4 right-4 glass rounded-lg p-4 z-50';
+            toast.style.background = 'rgba(34, 197, 94, 0.2)';
+            toast.style.border = '1px solid rgba(34, 197, 94, 0.3)';
+            toast.innerHTML = `<i class="fas fa-check-circle text-green-500 mr-2"></i>${message}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function formatNumber(num) {
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num.toString();
+        }
+
+        function filterScraperPosts(filter) {
+            currentFilter = filter;
+
+            // Handle special toggle for unscraped only
+            if (filter === 'unscraped') {
+                showOnlyUnscraped = !showOnlyUnscraped;
+                // Update chip appearance
+                document.querySelectorAll('.filter-chip').forEach(chip => {
+                    if (chip.dataset.filter === 'unscraped') {
+                        if (showOnlyUnscraped) {
+                            chip.classList.add('active');
+                        } else {
+                            chip.classList.remove('active');
+                        }
+                    }
+                });
+            } else {
+                showOnlyUnscraped = false;
+                // Update active chip for regular filters
+                document.querySelectorAll('.filter-chip').forEach(chip => {
+                    chip.classList.remove('active');
+                    if (chip.dataset.filter === filter) {
+                        chip.classList.add('active');
+                    }
+                });
+            }
+
+            const filtered = getFilteredPosts();
+            renderScraperPosts(filtered);
+        }
+
+        function getFilteredPosts() {
+            let filtered = [...scraperAllPosts];
+
+            switch (currentFilter) {
+                case 'videos':
+                    filtered = filtered.filter(p => p.is_video);
+                    break;
+                case 'engagement':
+                    filtered = filtered.filter(p => (p.likes || 0) > 1000);
+                    filtered.sort((a, b) => (b.likes || 0) - (a.likes || 0));
+                    break;
+                case 'recent':
+                    filtered.sort((a, b) => new Date(b.taken_at) - new Date(a.taken_at));
+                    break;
+            }
+
+            // Filter out scraped if showOnlyUnscraped is true
+            if (showOnlyUnscraped) {
+                filtered = filtered.filter(p => !scrapedAccounts.has(currentProfile));
+            }
+
+            return filtered;
+        }
+
+        function renderScraperPosts(posts, isLoadingMore = false) {
+            const container = document.getElementById('postsGrid');
+
+            if (posts.length === 0) {
+                if (!isLoadingMore) {
+                    container.innerHTML = '<p class="text-gray-400 col-span-full text-center py-8">No posts found</p>';
+                }
+                return;
+            }
+
+            const postsHTML = posts.map(post => {
+                const isSelected = scraperSelectedPosts.has(post.shortcode);
+                const isDownloaded = downloadedPosts.has(post.shortcode);
+
+                return `
+                    <div class="post-card ${isSelected ? 'selected' : ''} ${isDownloaded ? 'opacity-75' : ''}" data-shortcode="${post.shortcode}" onclick="togglePostSelection('${post.shortcode}')">
+                        ${isDownloaded ? `
+                            <div class="absolute top-2 left-2 z-20 bg-green-500 text-white rounded-full w-7 h-7 flex items-center justify-center" title="Already downloaded">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                        ` : ''}
+
+                        ${!isDownloaded ? `
+                            <input type="checkbox" class="post-checkbox"
+                                ${isSelected ? 'checked' : ''}
+                                onclick="event.stopPropagation(); togglePostSelection('${post.shortcode}')">
+                        ` : ''}
+
+                        <span class="post-type-badge ${post.is_video ? 'video' : 'image'}">
+                            <i class="fas fa-${post.is_video ? 'video' : 'image'}"></i>
+                        </span>
+
+                        ${post.is_video && post.video_url ? `
+                            <video src="${post.video_url}" muted loop
+                                onmouseover="this.play().catch(()=>{})"
+                                onmouseout="this.pause();this.currentTime=0;">
+                            </video>
+                        ` : `
+                            <img src="${post.display_url}" alt="Post">
+                        `}
+
+                        ${isDownloaded ? `
+                            <div class="absolute inset-0 bg-green-500/10 flex items-center justify-center">
+                                <span class="text-green-400 text-xs font-medium">Downloaded</span>
+                            </div>
+                        ` : ''}
+
+                        <div class="post-engagement">
+                            <span><i class="fas fa-heart mr-1"></i>${formatNumber(post.likes || 0)}</span>
+                            ${post.is_video ? `<span class="ml-2"><i class="fas fa-eye mr-1"></i>${formatNumber(post.views || 0)}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Append or replace based on isLoadingMore
+            if (isLoadingMore) {
+                // Only append posts that aren't already in the DOM
+                const existingShortcodes = new Set(
+                    Array.from(container.querySelectorAll('.post-card')).map(el => el.dataset.shortcode)
+                );
+                const newPostsHTML = posts.filter(post => !existingShortcodes.has(post.shortcode))
+                    .map(post => {
+                        const isSelected = scraperSelectedPosts.has(post.shortcode);
+                        return `
+                            <div class="post-card ${isSelected ? 'selected' : ''} ${isAccountScraped ? 'opacity-50' : ''}" data-shortcode="${post.shortcode}" onclick="togglePostSelection('${post.shortcode}')">
+                                ${isAccountScraped ? `
+                                    <div class="absolute top-2 left-2 z-20 bg-green-500 text-white rounded-full w-7 h-7 flex items-center justify-center" title="559 videos already downloaded from this account">
+                                        <i class="fas fa-check text-xs"></i>
+                                    </div>
+                                ` : ''}
+
+                                ${!isAccountScraped ? `
+                                    <input type="checkbox" class="post-checkbox"
+                                        ${isSelected ? 'checked' : ''}
+                                        onclick="event.stopPropagation(); togglePostSelection('${post.shortcode}')">
+                                ` : ''}
+
+                                <span class="post-type-badge ${post.is_video ? 'video' : 'image'}" style="${isAccountScraped ? 'top: 10px; right: 8px;' : ''}">
+                                    <i class="fas fa-${post.is_video ? 'video' : 'image'}"></i>
+                                </span>
+
+                                ${post.is_video && post.video_url ? `
+                                    <video src="${post.video_url}" muted loop
+                                        onmouseover="this.play().catch(()=>{})"
+                                        onmouseout="this.pause();this.currentTime=0;">
+                                    </video>
+                                ` : `
+                                    <img src="${post.display_url}" alt="Post">
+                                `}
+
+                                ${isAccountScraped ? `
+                                    <div class="absolute inset-0 bg-green-500/10 flex items-center justify-center">
+                                        <span class="text-green-400 text-xs font-medium">559 Downloaded</span>
+                                    </div>
+                                ` : ''}
+
+                                <div class="post-engagement">
+                                    <span><i class="fas fa-heart mr-1"></i>${formatNumber(post.likes || 0)}</span>
+                                    ${post.is_video ? `<span class="ml-2"><i class="fas fa-eye mr-1"></i>${formatNumber(post.views || 0)}</span>` : ''}
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                if (newPostsHTML) {
+                    container.innerHTML += newPostsHTML;
+                }
+            } else {
+                container.innerHTML = postsHTML;
+            }
+
+            document.getElementById('scraperSelectedCount').textContent = scraperSelectedPosts.size;
+
+            // Update scraped count - count how many of the visible posts are downloaded
+            const scrapedInList = posts.filter(post => downloadedPosts.has(post.shortcode)).length;
+            const scrapedEl = document.getElementById('scrapedCount');
+            if (scrapedEl) {
+                scrapedEl.textContent = scrapedInList;
+            }
+        }
+
+        function togglePostSelection(shortcode) {
+            // Don't allow selecting already downloaded posts
+            if (downloadedPosts.has(shortcode)) {
+                return;
+            }
+
+            if (scraperSelectedPosts.has(shortcode)) {
+                scraperSelectedPosts.delete(shortcode);
+            } else {
+                scraperSelectedPosts.add(shortcode);
+            }
+
+            // Update the specific post card without re-rendering entire grid
+            const postCard = document.querySelector(`[data-shortcode="${shortcode}"]`);
+            if (postCard) {
+                if (scraperSelectedPosts.has(shortcode)) {
+                    postCard.classList.add('selected');
+                } else {
+                    postCard.classList.remove('selected');
+                }
+                // Update checkbox state
+                const checkbox = postCard.querySelector('.post-checkbox');
+                if (checkbox) {
+                    checkbox.checked = scraperSelectedPosts.has(shortcode);
+                }
+            }
+
+            // Update selected count
+            document.getElementById('scraperSelectedCount').textContent = scraperSelectedPosts.size;
+        }
+
+        function selectAllVisible() {
+            const filtered = getFilteredPosts();
+            filtered.forEach(post => {
+                // Only select if account hasn't been scraped
+                if (!scrapedAccounts.has(currentProfile)) {
+                    scraperSelectedPosts.add(post.shortcode);
+                }
+            });
+            // Re-render to update checkboxes
+            const postsToRender = getFilteredPosts();
+            renderScraperPosts(postsToRender, false);
+        }
+
+        async function downloadSelectedVideos() {
+            if (scraperSelectedPosts.size === 0) {
+                alert('Please select at least one video');
+                return;
+            }
+
+            if (!currentProfile) {
+                alert('Please load a profile first');
+                return;
+            }
+
+            const shortcodes = Array.from(scraperSelectedPosts);
+
+            try {
+                const response = await fetch('/api/ig/download-selected', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        shortcodes: shortcodes,
+                        account: currentProfile
+                    })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    // Track the newly downloaded posts
+                    data.downloaded.forEach(item => {
+                        downloadedPosts.add(item.shortcode);
+                    });
+                    alert(`Successfully downloaded ${data.downloaded.length} video(s)!`);
+                    // Re-render posts to update the "already downloaded" indicators
+                    const postsToRender = getFilteredPosts();
+                    renderScraperPosts(postsToRender, false);
+                } else {
+                    alert(data.error || 'Failed to download videos');
+                }
+            } catch (error) {
+                console.error('Error downloading videos:', error);
+                alert('Failed to download videos. Please try again.');
+            }
+        }
+
+        function openVideoPreviewModal(shortcode) {
+            const post = scraperAllPosts.find(p => p.shortcode === shortcode);
+            if (!post) return;
+
+            const modal = document.getElementById('videoPreviewModal');
+            const content = document.getElementById('videoPreviewContent');
+
+            content.innerHTML = `
+                <div class="space-y-4">
+                    ${post.is_video && post.video_url ? `
+                        <video src="${post.video_url}" controls class="w-full rounded-lg" style="max-height: 400px;"></video>
+                    ` : `
+                        <img src="${post.display_url}" class="w-full rounded-lg">
+                    `}
+
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <div class="text-2xl font-bold text-pink-500">${formatNumber(post.likes || 0)}</div>
+                            <div class="text-xs text-gray-400">Likes</div>
+                        </div>
+                        ${post.is_video ? `
+                            <div>
+                                <div class="text-2xl font-bold text-blue-500">${formatNumber(post.views || 0)}</div>
+                                <div class="text-xs text-gray-400">Views</div>
+                            </div>
+                        ` : `
+                            <div>
+                                <div class="text-2xl font-bold text-blue-500">${formatNumber(post.comments || 0)}</div>
+                                <div class="text-xs text-gray-400">Comments</div>
+                            </div>
+                        `}
+                        <div>
+                            <div class="text-sm text-gray-400">
+                                ${new Date(post.taken_at * 1000).toLocaleDateString()}
+                            </div>
+                        </div>
+                    </div>
+
+                    ${post.caption ? `
+                        <div class="bg-gray-800 rounded-lg p-3">
+                            <p class="text-sm">${post.caption.substring(0, 200)}${post.caption.length > 200 ? '...' : ''}</p>
+                        </div>
+                    ` : ''}
+
+                    <div class="flex gap-3">
+                        ${scraperSelectedPosts.has(post.shortcode) ? `
+                            <button onclick="togglePostSelection('${post.shortcode}'); closeVideoPreviewModal(); filterScraperPosts(currentFilter);" class="btn btn-secondary flex-1">
+                                <i class="fas fa-times mr-2"></i>Deselect
+                            </button>
+                        ` : `
+                            <button onclick="togglePostSelection('${post.shortcode}'); closeVideoPreviewModal(); filterScraperPosts(currentFilter);" class="btn btn-primary flex-1">
+                                <i class="fas fa-check mr-2"></i>Select
+                            </button>
+                        `}
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function closeVideoPreviewModal() {
+            document.getElementById('videoPreviewModal').classList.remove('active');
+        }
+
+        function startBulkScraper() {
+            // Use the original bulk scraper functionality
+            const accountsInput = document.getElementById('scraperAccounts').value;
+            const accounts = accountsInput.split('\n').map(a => a.trim()).filter(a => a);
+
+            if (accounts.length === 0) {
+                alert('Please enter at least one account');
+                return;
+            }
+
+            closeScraperModal();
+
+            // Trigger the original startScraper with these accounts
+            document.getElementById('scraperAccounts').value = accounts.join('\n');
+            startScraper();
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSavedVideos();
+            loadVideos();
+            loadAccounts();
+            loadStats();
+            checkScraperStatus();
+
+            // Close modal on background click
+            document.getElementById('videoModal').addEventListener('click', (e) => {
+                if (e.target.id === 'videoModal') {
+                    closeVideoModal();
+                }
+            });
+
+            // Close filter modal on background click
+            document.getElementById('filterModal').addEventListener('click', (e) => {
+                if (e.target.id === 'filterModal') {
+                    closeFilterModal();
+                }
+            });
+        });
+
+        // Account management
+        function openAddAccountModal() {
+            document.getElementById('addAccountModal').classList.add('active');
+        }
+
+        function closeAddAccountModal() {
+            document.getElementById('addAccountModal').classList.remove('active');
+        }
+
+        async function saveAccount() {
+            const username = document.getElementById('newAccountUsername').value.trim();
+            const notes = document.getElementById('newAccountNotes').value.trim();
+
+            if (!username) {
+                alert('Please enter a username');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/accounts/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, notes })
+                });
+
+                if (response.ok) {
+                    document.getElementById('newAccountUsername').value = '';
+                    document.getElementById('newAccountNotes').value = '';
+                    closeAddAccountModal();
+                    loadAccounts();
+                }
+            } catch (error) {
+                console.error('Error saving account:', error);
+            }
+        }
+
+        async function deleteAccount(username) {
+            if (!confirm(`Delete @${username}?`)) return;
+
+            try {
+                await fetch(`/api/accounts/${username}`, { method: 'DELETE' });
+                loadAccounts();
+            } catch (error) {
+                console.error('Error deleting account:', error);
+            }
+        }
+
+        // Scraper
+        function openScraperModal() {
+            document.getElementById('scraperModal').classList.add('active');
+            // Reset scraper state
+            scrapedAccounts.clear();
+            scraperAllPosts = [];
+            scraperSelectedPosts.clear();
+            currentProfile = '';
+            currentFilter = 'all';
+            showOnlyUnscraped = false;
+            // Reset pagination state
+            scraperCurrentPage = 0;
+            scraperHasMore = true;
+            scraperLoadingMore = false;
+            scraperLastShortcode = null;
+            document.getElementById('profileUsernameInput').value = '';
+            document.getElementById('profileInfo').classList.add('hidden');
+            document.getElementById('postsGrid').innerHTML = '';
+            document.getElementById('scraperFilters').classList.add('hidden');
+            document.getElementById('selectionBar').classList.add('hidden');
+            document.getElementById('loadMoreContainer').classList.add('hidden');
+            document.getElementById('noMorePosts').classList.add('hidden');
+            document.getElementById('refreshSessionContainer').classList.add('hidden');
+            document.getElementById('scraperEmptyState').classList.remove('hidden');
+            // Load saved accounts for quick start
+            loadAccounts();
+        }
+
+        function closeScraperModal() {
+            document.getElementById('scraperModal').classList.remove('active');
+        }
+
+        function updateSelectedAccountsForScraping(username) {
+            // Handle checkbox changes
+        }
+
+        async function startScraper() {
+            let accountsInput = document.getElementById('scraperAccounts').value;
+            let accounts = [];
+
+            // Parse input (can be usernames or URLs)
+            if (accountsInput) {
+                const lines = accountsInput.split('\n').filter(l => l.trim());
+                for (let line of lines) {
+                    line = line.trim();
+                    // Extract username from URL or use directly
+                    const match = line.match(/instagram\.com\/([^\/]+)/);
+                    if (match) {
+                        accounts.push(match[1]);
+                    } else if (line && !line.startsWith('http')) {
+                        accounts.push(line.replace('@', ''));
+                    }
+                }
+            }
+
+            // Add checked accounts from saved list
+            document.querySelectorAll('.scrape-account-checkbox:checked').forEach(cb => {
+                if (!accounts.includes(cb.value)) {
+                    accounts.push(cb.value);
+                }
+            });
+
+            if (accounts.length === 0) {
+                alert('Please enter at least one account');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/scraper/start', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ accounts })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    closeScraperModal();
+                    showScraperRunning(true);
+                    // Immediately update scraper display
+                    updateScraperDisplay();
+                    // Poll for status updates
+                    setTimeout(checkScraperStatus, 2000);
+                } else {
+                    alert(data.error || 'Failed to start scraper');
+                }
+            } catch (error) {
+                console.error('Error starting scraper:', error);
+            }
+        }
+
+        async function checkScraperStatus() {
+            try {
+                const response = await fetch('/api/scraper/status');
+                const data = await response.json();
+
+                updateScraperDisplay(data);
+
+                if (data.running) {
+                    setTimeout(checkScraperStatus, 3000);
+                } else {
+                    // All scrapers finished, refresh data
+                    loadVideos();
+                    loadAccounts();
+                }
+            } catch (error) {
+                console.error('Error checking scraper status:', error);
+            }
+        }
+
+        function updateScraperDisplay(data) {
+            const activeScrapersEl = document.getElementById('activeScrapers');
+            const scraperListEl = document.getElementById('scraperList');
+            const scraperCountEl = document.getElementById('scraperCount');
+
+            // If data not provided, fetch it
+            if (!data) {
+                fetch('/api/scraper/status')
+                    .then(r => r.json())
+                    .then(data => updateScraperDisplay(data));
+                return;
+            }
+
+            const scrapers = data.scrapers || [];
+            const runningScrapers = scrapers.filter(s => s.status === 'running');
+
+            if (scrapers.length === 0) {
+                activeScrapersEl.classList.add('hidden');
+                return;
+            }
+
+            activeScrapersEl.classList.remove('hidden');
+            scraperCountEl.textContent = `${runningScrapers.length} running`;
+
+            // Render each scraper
+            scraperListEl.innerHTML = scrapers.map(scraper => {
+                const statusColor = scraper.status === 'running' ? 'text-green-400' :
+                                   scraper.status === 'completed' ? 'text-blue-400' :
+                                   'text-yellow-400';
+                const statusIcon = scraper.status === 'running' ? 'fa-spinner fa-spin' :
+                                  scraper.status === 'completed' ? 'fa-check-circle' :
+                                  'fa-stop-circle';
+                const startTime = new Date(scraper.started_at);
+                const timeElapsed = Math.floor((Date.now() - startTime.getTime()) / 1000);
+                const timeStr = timeElapsed < 60 ? `${timeElapsed}s` :
+                               timeElapsed < 3600 ? `${Math.floor(timeElapsed/60)}m` :
+                               `${Math.floor(timeElapsed/3600)}h`;
+
+                return `
+                    <div class="flex items-center justify-between p-3 rounded-lg" style="background: rgba(0,0,0,0.3);">
+                        <div class="flex items-center gap-3">
+                            <i class="fas ${statusIcon} ${statusColor}"></i>
+                            <div>
+                                <div class="font-medium">${scraper.accounts.join(', ')}</div>
+                                <div class="text-xs text-gray-400">
+                                    Started ${timeStr} ago • ${scraper.accounts.length} account${scraper.accounts.length > 1 ? 's' : ''}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs ${statusColor} font-medium capitalize">${scraper.status}</span>
+                            ${scraper.status === 'running' ? `
+                                <button onclick="stopScraper('${scraper.id}')" class="text-xs text-red-400 hover:text-red-300 px-2 py-1 rounded border border-red-400/30 hover:border-red-400/50">
+                                    Stop
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function stopScraper(scraperId) {
+            if (!confirm('Stop this scraper?')) return;
+
+            try {
+                const response = await fetch(`/api/scraper/${scraperId}`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+                if (data.success) {
+                    updateScraperDisplay();
+                }
+            } catch (error) {
+                console.error('Error stopping scraper:', error);
+            }
+        }
+
+        function toggleScraperPanel() {
+            const scraperList = document.getElementById('scraperList');
+            const toggleIcon = document.getElementById('scraperPanelToggle');
+
+            if (scraperList.classList.contains('hidden')) {
+                scraperList.classList.remove('hidden');
+                toggleIcon.classList.remove('fa-chevron-down');
+                toggleIcon.classList.add('fa-chevron-up');
+            } else {
+                scraperList.classList.add('hidden');
+                toggleIcon.classList.remove('fa-chevron-up');
+                toggleIcon.classList.add('fa-chevron-down');
+            }
+        }
+
+        function showScraperRunning(running) {
+            const activeScrapersEl = document.getElementById('activeScrapers');
+            if (running) {
+                activeScrapersEl.classList.remove('hidden');
+                updateScraperDisplay();
+            } else {
+                activeScrapersEl.classList.add('hidden');
+            }
+        }
+
+        function showLoading(show) {
+            document.getElementById('loadingState').classList.toggle('hidden', !show);
+            document.getElementById('videoGrid').classList.toggle('hidden', show);
+        }
+
+        // Search on Enter
+        document.getElementById('searchInput').addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') applyFilters();
+        });
+
+        // Sort change - reload from server to get sorted data
+        document.getElementById('sortFilter').addEventListener('change', loadVideos);
+        document.getElementById('sortOrder').addEventListener('change', loadVideos);
+
+        // Auto-apply filters when changed
+        ['accountFilter', 'savedFilter', 'processedFilter', 'downloadedFilter'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('change', applyFilters);
+        });
+
+        // Search on Enter key
+        document.getElementById('searchInput').addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') applyFilters();
+        });
+
+        // Min likes filter on Enter
+        document.getElementById('minLikes').addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') applyFilters();
+        });
+
+        // Min views filter on Enter
+        document.getElementById('minViews').addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') applyFilters();
+        });
+    </script>
+</body>
+</html>

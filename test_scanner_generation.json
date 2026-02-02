@@ -1,0 +1,7 @@
+{
+  "scanner_description": "Create a backside_b scanner that finds stocks gapping down 2% with high volume",
+  "generate_scanner": true,
+  "scan_date": "2025-12-20",
+  "enable_validation": true,
+  "enable_learning": true
+}

@@ -1,0 +1,57 @@
+{
+  "startTime": "2025-12-03T18:27:38.672Z",
+  "steps": [
+    {
+      "step": "Launch browser",
+      "status": "IN_PROGRESS",
+      "timestamp": "2025-12-03T18:27:38.675Z",
+      "details": ""
+    },
+    {
+      "step": "Launch browser",
+      "status": "PASS",
+      "timestamp": "2025-12-03T18:27:39.629Z",
+      "details": "Browser launched successfully"
+    },
+    {
+      "step": "Navigate to platform",
+      "status": "IN_PROGRESS",
+      "timestamp": "2025-12-03T18:27:39.629Z",
+      "details": ""
+    },
+    {
+      "step": "Navigate to platform",
+      "status": "PASS",
+      "timestamp": "2025-12-03T18:27:43.535Z",
+      "details": "Title: edge.dev, URL: http://localhost:5656/?cache_cleared=1"
+    },
+    {
+      "step": "Upload test file via Renata API",
+      "status": "IN_PROGRESS",
+      "timestamp": "2025-12-03T18:27:43.535Z",
+      "details": ""
+    },
+    {
+      "step": "Monitor code formatting via Renata API",
+      "status": "IN_PROGRESS",
+      "timestamp": "2025-12-03T18:27:55.162Z",
+      "details": ""
+    }
+  ],
+  "errors": [
+    {
+      "error": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "context": "Browser Console",
+      "timestamp": "2025-12-03T18:27:40.175Z",
+      "stack": "Error: Failed to load resource: net::ERR_CONNECTION_REFUSED\n    at Page.<anonymous> (/Users/michaeldurante/ai dev/ce-hub/projects/comprehensive_workflow_test.js:81:26)\n    at Page._callHandler (/Users/michaeldurante/node_modules/playwright-core/lib/client/eventEmitter.js:66:29)\n    at Page.emit (/Users/michaeldurante/node_modules/playwright-core/lib/client/eventEmitter.js:56:12)\n    at Proxy.<anonymous> (/Users/michaeldurante/node_modules/playwright-core/lib/client/browserContext.js:96:14)\n    at Proxy._callHandler (/Users/michaeldurante/node_modules/playwright-core/lib/client/eventEmitter.js:66:29)\n    at Proxy.emit (/Users/michaeldurante/node_modules/playwright-core/lib/client/eventEmitter.js:56:12)\n    at Connection.dispatch (/Users/michaeldurante/node_modules/playwright-core/lib/client/connection.js:175:21)\n    at Immediate._onImmediate (/Users/michaeldurante/node_modules/playwright-core/lib/inProcessFactory.js:48:85)\n    at process.processImmediate (node:internal/timers:504:21)"
+    },
+    {
+      "error": "Formatting timed out after 60 seconds",
+      "context": "Main test execution",
+      "timestamp": "2025-12-03T18:29:25.204Z",
+      "stack": "Error: Formatting timed out after 60 seconds\n    at performComprehensiveTest (/Users/michaeldurante/ai dev/ce-hub/projects/comprehensive_workflow_test.js:191:23)"
+    }
+  ],
+  "success": false,
+  "duration": 106532
+}

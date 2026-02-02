@@ -1,0 +1,233 @@
+{
+  "id": "session-1767745270783-5vlljicu3",
+  "text": "Task: Generate virtual try-on image.\n\nIMPORTANT: Use these EXACT file paths and parameters:\n- Subject photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/ultimate-test-1767745270528/subject_0.jpg\n- Glasses photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/2e817d16-2b75-4222-8f9d-578c94312d84/glasses_2_716736982946_P00_2e5cc48a-8d4e-453d-bcc6-7e9ad0051257.webp\n- Task ID (REQUIRED for generate_tryon_image): 5dcc9e53-cd4f-4fa7-9e12-5986a3675ad7\n\nWhen calling generate_tryon_image, you MUST include these parameters:\n- subjectPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/ultimate-test-1767745270528/subject_0.jpg\"\n- glassesPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/2e817d16-2b75-4222-8f9d-578c94312d84/glasses_2_716736982946_P00_2e5cc48a-8d4e-453d-bcc6-7e9ad0051257.webp\"\n- taskId: \"5dcc9e53-cd4f-4fa7-9e12-5986a3675ad7\" (this is REQUIRED!)\n\nDO NOT make up file paths. Use the paths provided above exactly as written.\nResult: 85/100",
+  "metadata": {
+    "task": "Generate virtual try-on image.\n\nIMPORTANT: Use these EXACT file paths and parameters:\n- Subject photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/ultimate-test-1767745270528/subject_0.jpg\n- Glasses photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/2e817d16-2b75-4222-8f9d-578c94312d84/glasses_2_716736982946_P00_2e5cc48a-8d4e-453d-bcc6-7e9ad0051257.webp\n- Task ID (REQUIRED for generate_tryon_image): 5dcc9e53-cd4f-4fa7-9e12-5986a3675ad7\n\nWhen calling generate_tryon_image, you MUST include these parameters:\n- subjectPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/ultimate-test-1767745270528/subject_0.jpg\"\n- glassesPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/2e817d16-2b75-4222-8f9d-578c94312d84/glasses_2_716736982946_P00_2e5cc48a-8d4e-453d-bcc6-7e9ad0051257.webp\"\n- taskId: \"5dcc9e53-cd4f-4fa7-9e12-5986a3675ad7\" (this is REQUIRED!)\n\nDO NOT make up file paths. Use the paths provided above exactly as written.",
+    "results": [
+      {
+        "success": true,
+        "data": {
+          "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/ultimate-test-1767745270528/subject_0_result_5dcc9e53-cd4f-4fa7-9e12-5986a3675ad7.jpg",
+          "report": {
+            "taskId": "5dcc9e53-cd4f-4fa7-9e12-5986a3675ad7",
+            "version": {
+              "app": "1.0",
+              "promptPack": "v1.0",
+              "model": "Gemini 2.0 Flash Exp",
+              "providerApi": "1.0.0"
+            },
+            "inputs": {
+              "subject": {
+                "assetId": "5dcc9e53-cd4f-4fa7-9e12-5986a3675ad7",
+                "w": 1024,
+                "h": 768
+              },
+              "glasses": [
+                "glasses_0"
+              ]
+            },
+            "generation": {
+              "guidance": 0.7,
+              "refStrength": 0.8,
+              "lightingWeight": 0.5,
+              "reflectionWeight": 0.3,
+              "colorMatchWeight": 0.5,
+              "seed": 1767745272897,
+              "passes": 1
+            },
+            "quality": {
+              "ssim": 0.991,
+              "faceDist": 0.23,
+              "fit": "pass"
+            },
+            "notes": "Glasses successfully added using Gemini 2.0 Flash Exp"
+          },
+          "generationMethod": "Gemini 2.0 Flash Exp"
+        }
+      }
+    ],
+    "evaluation": {
+      "score": 85,
+      "finalResult": {
+        "success": true,
+        "data": {
+          "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/ultimate-test-1767745270528/subject_0_result_5dcc9e53-cd4f-4fa7-9e12-5986a3675ad7.jpg",
+          "report": {
+            "taskId": "5dcc9e53-cd4f-4fa7-9e12-5986a3675ad7",
+            "version": {
+              "app": "1.0",
+              "promptPack": "v1.0",
+              "model": "Gemini 2.0 Flash Exp",
+              "providerApi": "1.0.0"
+            },
+            "inputs": {
+              "subject": {
+                "assetId": "5dcc9e53-cd4f-4fa7-9e12-5986a3675ad7",
+                "w": 1024,
+                "h": 768
+              },
+              "glasses": [
+                "glasses_0"
+              ]
+            },
+            "generation": {
+              "guidance": 0.7,
+              "refStrength": 0.8,
+              "lightingWeight": 0.5,
+              "reflectionWeight": 0.3,
+              "colorMatchWeight": 0.5,
+              "seed": 1767745272897,
+              "passes": 1
+            },
+            "quality": {
+              "ssim": 0.991,
+              "faceDist": 0.23,
+              "fit": "pass"
+            },
+            "notes": "Glasses successfully added using Gemini 2.0 Flash Exp"
+          },
+          "generationMethod": "Gemini 2.0 Flash Exp"
+        }
+      },
+      "shouldRetry": false
+    },
+    "sessionId": "session-1767745270783-5vlljicu3",
+    "timestamp": "2026-01-07T00:21:18.042Z",
+    "toolsUsed": [
+      "generate_tryon_image",
+      "retry_generation",
+      "verify_quality",
+      "quick_quality_check"
+    ]
+  },
+  "embedding": [
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.03508771929824561,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.03508771929824561,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.03508771929824561,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.03508771929824561,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.03508771929824561,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0
+  ]
+}

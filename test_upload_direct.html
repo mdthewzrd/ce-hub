@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct File Upload Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #e5e5e5;
+        }
+        .container {
+            background: #2a2a2a;
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid #444;
+        }
+        .success {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            margin: 10px 0;
+        }
+        .error {
+            color: #f44336;
+            background: rgba(244, 67, 54, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            margin: 10px 0;
+        }
+        .info {
+            color: #2196F3;
+            background: rgba(33, 150, 243, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            margin: 10px 0;
+        }
+        button {
+            background: #D4AF37;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #B8941F;
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+            padding: 10px;
+            background: #333;
+            border: 1px solid #555;
+            border-radius: 5px;
+            color: #e5e5e5;
+            width: 100%;
+        }
+        #results {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            background: #333;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #555;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Direct File Upload Test</h1>
+
+        <div class="info">
+            <strong>Test the actual upload API directly</strong><br>
+            This bypasses any browser issues and tests the API directly.
+        </div>
+
+        <h3>Step 1: Select a Python file</h3>
+        <input type="file" id="fileInput" accept=".py,.txt" />
+
+        <h3>Step 2: Test Upload</h3>
+        <button onclick="testUpload()" id="testBtn">📤 Upload File</button>
+        <button onclick="clearResults()" id="clearBtn">🗑️ Clear Results</button>
+
+        <div id="results"></div>
+
+        <h3>What this tests:</h3>
+        <ul>
+            <li>✅ Frontend → Next.js API Route communication</li>
+            <li>✅ File upload handling</li>
+            <li>✅ Backend processing</li>
+            <li>✅ Response parsing</li>
+            <li>✅ Error handling</li>
+        </ul>
+    </div>
+
+    <script>
+        function log(message, type = 'info') {
+            const results = document.getElementById('results');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type;
+            results.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+            results.scrollTop = results.scrollHeight;
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            log('Results cleared');
+        }
+
+        async function testUpload() {
+            const fileInput = document.getElementById('fileInput');
+            const testBtn = document.getElementById('testBtn');
+
+            if (!fileInput.files[0]) {
+                log('❌ Please select a file first', 'error');
+                return;
+            }
+
+            testBtn.disabled = true;
+            testBtn.textContent = '⏳ Uploading...';
+
+            log('🧪 Starting direct API test...', 'info');
+
+            try {
+                const formData = new FormData();
+                formData.append('scanFile', fileInput.files[0]);
+                formData.append('formatterType', 'edge');
+                formData.append('message', 'Direct upload test');
+
+                log(`📤 Uploading: ${fileInput.files[0].name} (${fileInput.files[0].size} bytes)`, 'info');
+
+                // Test the API directly
+                const response = await fetch('http://localhost:5656/api/format-scan', {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'cors' // Explicitly set CORS mode
+                });
+
+                log(`📊 Response Status: ${response.status} ${response.statusText}`, 'info');
+
+                // Get raw response text first
+                const responseText = await response.text();
+                log(`📦 Raw Response: ${responseText.substring(0, 200)}${responseText.length > 200 ? '...' : ''}`, 'info');
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status} - ${responseText}`);
+                }
+
+                // Try to parse as JSON
+                let data;
+                try {
+                    data = JSON.parse(responseText);
+                } catch (parseError) {
+                    throw new Error(`Invalid JSON response: ${parseError.message}`);
+                }
+
+                log(`✅ JSON parsed successfully!`, 'success');
+                log(`📋 Success: ${data.success}`, data.success ? 'success' : 'error');
+
+                if (data.success) {
+                    log(`🆔 Project ID: ${data.project_id}`, 'success');
+                    log(`📈 Stats: ${JSON.stringify(data.stats || {})}`, 'success');
+                    log(`🔧 Changes: ${data.changes ? data.changes.length : 0} changes applied`, 'success');
+
+                    // Test project execution if we got a project ID
+                    if (data.project_id) {
+                        log('\n📋 STEP 3: TEST PROJECT EXECUTION', 'info');
+                        await testExecution(data.project_id);
+                    }
+
+                    log('\n🎉 UPLOAD TEST COMPLETE!', 'success');
+                    log('✅ The file upload system is working correctly!', 'success');
+                } else {
+                    log(`❌ Upload failed: ${data.error || 'Unknown error'}`, 'error');
+                }
+
+            } catch (error) {
+                log(`❌ Upload failed: ${error.message}`, 'error');
+                log(`Error Type: ${error.constructor.name}`, 'info');
+                log(`Stack: ${error.stack}`, 'info');
+            } finally {
+                testBtn.disabled = false;
+                testBtn.textContent = '📤 Upload File';
+            }
+        }
+
+        async function testExecution(projectId) {
+            try {
+                const execData = {
+                    date_range: {
+                        start_date: "2025-01-01",
+                        end_date: "2025-11-25"
+                    },
+                    symbols: ["AAPL", "TSLA", "MSFT"]
+                };
+
+                log(`🎯 Testing execution for ${execData.symbols.length} symbols`, 'info');
+
+                const execResponse = await fetch(`http://localhost:5659/api/projects/${projectId}/execute`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(execData)
+                });
+
+                log(`📊 Execution Status: ${execResponse.status} ${execResponse.statusText}`, 'info');
+
+                if (execResponse.ok) {
+                    const execResult = await execResponse.json();
+                    log(`✅ Execution successful!`, 'success');
+                    log(`🚀 Status: ${execResult.status}`, 'success');
+                    log(`🆔 Execution ID: ${execResult.execution_id}`, 'success');
+                } else {
+                    const execError = await execResponse.text();
+                    log(`❌ Execution failed: ${execResponse.status} - ${execError}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ Execution error: ${error.message}`, 'error');
+            }
+        }
+
+        // Initial status
+        window.onload = function() {
+            log('🚀 Direct Upload Test Tool Ready', 'success');
+            log('📡 Will test: http://localhost:5656/api/format-scan', 'info');
+            log('📡 Will test execution on: http://localhost:5659', 'info');
+            log('', 'info');
+        };
+    </script>
+</body>
+</html>

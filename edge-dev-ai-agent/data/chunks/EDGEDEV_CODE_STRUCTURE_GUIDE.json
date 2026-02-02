@@ -1,0 +1,1227 @@
+{
+  "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+  "chunk_count": 73,
+  "chunks": [
+    {
+      "content": "# EdgeDev Code Structure Guide\n**How to Write Scanner Code - Methodology & Patterns**\n\n**Purpose**: Teach the PATTERNS of writing good scanner code, regardless of specific pattern type.\n\n**Research Date**: 2026-01-29\n**Status**: COMPLETE - Code Structure Methodology\n\n---\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::EdgeDev Code Structure Guide",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Code Structure Guide"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "EdgeDev Code Structure Guide"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "## Table of Contents\n\n1. [The Scanner Development Framework](#the-scanner-development-framework)\n2. [Expressing a Mold in Code](#expressing-a-mold-in-code)\n3. [Code Structure Patterns](#code-structure-patterns)\n4. [Parameter System Design](#parameter-system-design)\n5. [Data Flow Architecture](#data-flow-architecture)\n6. [Validation Patterns](#validation-patterns)\n7. [Anti-Patterns to Avoid](#anti-patterns-to-avoid)\n8. [Code Templates](#code-templates)\n\n---\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::EdgeDev Code Structure Guide::Table of Contents",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Code Structure Guide",
+        "Table of Contents"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Table of Contents"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "## The Scanner Development Framework\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::EdgeDev Code Structure Guide::The Scanner Development Framework",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Code Structure Guide",
+        "The Scanner Development Framework"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "The Scanner Development Framework"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "### The Process (From Idea to Working Scanner)",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::EdgeDev Code Structure Guide::The Scanner Development Framework::The Process (From Idea to Working Scanner)::chunk0",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Code Structure Guide",
+        "The Scanner Development Framework",
+        "The Process (From Idea to Working Scanner)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "The Process (From Idea to Working Scanner)"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "v31",
+        "code"
+      ]
+    },
+    {
+      "content": "### The Process (From Idea to Working Scanner)\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                        SCANNER DEVELOPMENT LIFECYCLE                    \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502                                                                         \u2502\n\u2502  1. DESCRIBE THE MOLD (Plain English)                                 \u2502\n\u2502     \"Stock runs up for 5-10 days, gaps up 3%+, holds high, fades\"     \u2502\n\u2502                          \u2502                                              \u2502\n\u2502                          \u25bc                                              \u2502\n\u2502  2. IDENTIFY A+ EXAMPLES (Real Trades)                                \u2502\n\u2502     \u2022 NVDA Jan 8, 2025: 4.2% gap, held 0.3% range, closed down      \u2502\n\u2502     \u2022 TSLA Dec 3, 2024: 3.8% gap, held tight, faded 2.1%            \u2502\n\u2502     \u2022 AAPL Nov 15, 2024: 5.1% gap, perfect fade                     \u2502\n\u2502                          \u2502                                              \u2502\n\u2502                          \u25bc                                              \u2502\n\u2502  3. EXTRACT PARAMETERS FROM A+ (Quantify the Mold)                  \u2502\n\u2502     From NVDA Jan 8:                                                 \u2502\n\u2502     \u2022 gap_percent = 4.2%     \u2192 min_gap = 3.5%                        \u2502\n\u2502     \u2022 hold_range = 0.3%     \u2192 max_hold = 0.5%                        \u2502\n\u2502     \u2022 fade_amount = -1.8%   \u2192 min_fade = -1.0%                       \u2502\n\u2502     \u2022 volume_ratio = 2.1x    \u2192 min_vol_ratio = 2.0                     \u2502\n\u2502                          \u2502                                              \u2502\n\u2502                          \u25bc                                              \u2502\n\u2502  4. CHOOSE CODE STRUCTURE (Based on complexity)                     \u2502\n\u2502     Simple?  \u2192 Standalone script                                     \u2502\n\u2502     Medium?  \u2192 Function-based                                         \u2502\n\u2502     Complex? \u2192 Class-based (V31)                                       \u2502\n\u2502                          \u2502                                              \u2502\n\u2502                          \u25bc                                              \u2502\n\u2502  5. IMPLEMENT THE MOLD (Write code)                                  \u2502\n\u2502     \u2022 Data fetching                                                   \u2502\n\u2502     \u2022 Feature calculation                                            \u2502\n\u2502     \u2022 Pattern detection                                             \u2502\n\u2502     \u2022 Result filtering                                               \u2502\n\u2502                          \u2502                                              \u2502\n\u2502                          \u25bc                                              \u2502\n\u2502  6. VALIDATE WITH A+ (Ground truth test)                            \u2502\n\u2502     \u2022 Run scanner on dates around A+ examples                       \u2502\n\u2502     \u2022 NVDA Jan 8 MUST appear in results                             \u2502\n\u2502     \u2022 Visual spot-check on random results                           \u2502\n\u2502                          \u2502                                              \u2502\n\u2502                          \u25bc                                              \u2502\n\u2502  7. DEBUG WITH PARAMETER CHECKING (See what failed)                \u2502\n\u2502     \u2022 Why didn't AAPL trigger?                                     \u2502\n\u2502     \u2022 Check each parameter value on that date                       \u2502\n\u2502     \u2022 Adjust thresholds if needed                                   \u2502\n\u2502                          \u2502                                              \u2502\n\u2502                          \u25bc                                              \u2502\n\u2502  8. EXPAND TO HISTORICAL (Full date range)                          \u2502\n\u2502     \u2022 Run on 1-2 years of data                                       \u2502\n\u2502     \u2022 Verify edge potential                                         \u2502\n\u2502     \u2022 Save working scanner                                          \u2502\n\u2502                                                                         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::EdgeDev Code Structure Guide::The Scanner Development Framework::The Process (From Idea to Working Scanner)::chunk1",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Code Structure Guide",
+        "The Scanner Development Framework",
+        "The Process (From Idea to Working Scanner)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "The Process (From Idea to Working Scanner)"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "v31",
+        "code"
+      ]
+    },
+    {
+      "content": "\u2502\n\u2502                                                                         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n\n\n[...previous chunk overlap...]\n\n---",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::EdgeDev Code Structure Guide::The Scanner Development Framework::The Process (From Idea to Working Scanner)::chunk2",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Code Structure Guide",
+        "The Scanner Development Framework",
+        "The Process (From Idea to Working Scanner)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "The Process (From Idea to Working Scanner)"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "v31",
+        "code"
+      ]
+    },
+    {
+      "content": "## Expressing a Mold in Code\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::EdgeDev Code Structure Guide::Expressing a Mold in Code",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Code Structure Guide",
+        "Expressing a Mold in Code"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Expressing a Mold in Code"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "### What is a \"Mold\"?\n\nA **mold** is the pattern shape you're looking for. It's the visual/technical criteria that define \"this is a setup.\"\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::EdgeDev Code Structure Guide::Expressing a Mold in Code::What is a \"Mold\"?",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Code Structure Guide",
+        "Expressing a Mold in Code",
+        "What is a \"Mold\"?"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What is a \"Mold\"?"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "### Example: Gap-and-Fade Mold\n\n**Plain English Description:**\n```\nI want stocks that:\n1. Have been running up for 5-10 days (uptrend)\n2. Gap up at least 3% on D0\n3. Open near the high and hold it (within 0.5% range)\n4. Close weak (below open)\n5. Had high volume on the gap\n```\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::EdgeDev Code Structure Guide::Expressing a Mold in Code::Example: Gap-and-Fade Mold",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Code Structure Guide",
+        "Expressing a Mold in Code",
+        "Example: Gap-and-Fade Mold"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Example: Gap-and-Fade Mold"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Step 1: Break Down the Mold into Testable Conditions\n\n```python",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::EdgeDev Code Structure Guide::Expressing a Mold in Code::Step 1: Break Down the Mold into Testable Conditions",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Code Structure Guide",
+        "Expressing a Mold in Code",
+        "Step 1: Break Down the Mold into Testable Conditions"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Step 1: Break Down the Mold into Testable Conditions"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Condition 1: Uptrend (5-10 days)",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Condition 1: Uptrend (5-10 days)",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Condition 1: Uptrend (5-10 days)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Condition 1: Uptrend (5-10 days)"
+      },
+      "tags": []
+    },
+    {
+      "content": "# How to test: Check if recent closes are higher than older closes\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::How to test: Check if recent closes are higher than older closes",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "How to test: Check if recent closes are higher than older closes"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "How to test: Check if recent closes are higher than older closes"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Condition 2: Gap up >= 3%",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Condition 2: Gap up >= 3%",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Condition 2: Gap up >= 3%"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Condition 2: Gap up >= 3%"
+      },
+      "tags": []
+    },
+    {
+      "content": "# How to test: (open - prev_close) / prev_close >= 0.03\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::How to test: (open - prev_close) / prev_close >= 0.03",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "How to test: (open - prev_close) / prev_close >= 0.03"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "How to test: (open - prev_close) / prev_close >= 0.03"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Condition 3: Hold the high (within 0.5%)",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Condition 3: Hold the high (within 0.5%)",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Condition 3: Hold the high (within 0.5%)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Condition 3: Hold the high (within 0.5%)"
+      },
+      "tags": []
+    },
+    {
+      "content": "# How to test: (high - open) / open <= 0.005\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::How to test: (high - open) / open <= 0.005",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "How to test: (high - open) / open <= 0.005"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "How to test: (high - open) / open <= 0.005"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Condition 4: Close weak",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Condition 4: Close weak",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Condition 4: Close weak"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Condition 4: Close weak"
+      },
+      "tags": []
+    },
+    {
+      "content": "# How to test: close < open\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::How to test: close < open",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "How to test: close < open"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "How to test: close < open"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Condition 5: High volume",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Condition 5: High volume",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Condition 5: High volume"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Condition 5: High volume"
+      },
+      "tags": []
+    },
+    {
+      "content": "# How to test: volume >= avg_volume * 2\n```\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::How to test: volume >= avg_volume * 2",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "How to test: volume >= avg_volume * 2"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "How to test: volume >= avg_volume * 2"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Step 2: Calculate Parameters from A+ Example\n\n```python",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::How to test: volume >= avg_volume * 2::Step 2: Calculate Parameters from A+ Example",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "How to test: volume >= avg_volume * 2",
+        "Step 2: Calculate Parameters from A+ Example"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Step 2: Calculate Parameters from A+ Example"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# A+ Example: NVDA on Jan 8, 2025\nexample = {\n    'date': '2025-01-08',\n    'gap_pct': 4.2,      # 4.2% gap\n    'hold_range': 0.3,  # Held within 0.3% of high\n    'close_change': -1.8,  # Closed down 1.8%\n    'volume_ratio': 2.1  # 2.1x average volume\n}\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::A+ Example: NVDA on Jan 8, 2025",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "A+ Example: NVDA on Jan 8, 2025"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "A+ Example: NVDA on Jan 8, 2025"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Convert to scanner parameters with tolerance\nparams = {\n    'min_gap': 3.5,          # 4.2 * 0.9 (10% tolerance)\n    'max_hold_range': 0.5,  # 0.3 * 1.1 (10% tolerance)\n    'require_close_down': True,\n    'min_volume_ratio': 2.0  # 2.1 * 0.95\n}\n```\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Convert to scanner parameters with tolerance",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Convert to scanner parameters with tolerance"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Convert to scanner parameters with tolerance"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "### Step 3: Implement the Mold in Code\n\n```python\ndef detect_gap_and_fade(df, params):\n    \"\"\"\n    Detect gap-and-fade mold.\n\n    Returns: DataFrame with boolean 'is_setup' column\n    \"\"\"\n    # Calculate required features\n    df['gap_pct'] = (df['open'] - df['close'].shift(1)) / df['close'].shift(1)\n    df['hold_range'] = (df['high'] - df['open']) / df['open']\n    df['close_down'] = df['close'] < df['open']\n    df['avg_volume'] = df['volume'].rolling(20).mean()\n    df['volume_ratio'] = df['volume'] / df['avg_volume']\n\n    # Uptrend condition (5-10 day lookback)\n    df['is_uptrend'] = (\n        df['close'] > df['close'].shift(5) &  # Higher than 5 days ago\n        df['close'] > df['close'].shift(10)  # Higher than 10 days ago\n    )\n\n    # Apply the mold\n    df['is_setup'] = (\n        (df['gap_pct'] >= params['min_gap']) &\n        (df['hold_range'] <= params['max_hold_range']) &\n        (df['close_down'] == True) &\n        (df['volume_ratio'] >= params['min_volume_ratio']) &\n        (df['is_uptrend'] == True)\n    )\n\n    return df\n```\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Convert to scanner parameters with tolerance::Step 3: Implement the Mold in Code",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Convert to scanner parameters with tolerance",
+        "Step 3: Implement the Mold in Code"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Step 3: Implement the Mold in Code"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "### Key Principle: Each Condition is Independent\n\n```python",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Convert to scanner parameters with tolerance::Step 3: Implement the Mold in Code::Key Principle: Each Condition is Independent",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Convert to scanner parameters with tolerance",
+        "Step 3: Implement the Mold in Code",
+        "Key Principle: Each Condition is Independent"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Key Principle: Each Condition is Independent"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# \u2705 CORRECT: Each condition tested separately\ncondition1 = df['gap_pct'] >= params['min_gap']\ncondition2 = df['hold_range'] <= params['max_hold_range']\ncondition3 = df['close'] < df['open']\ncondition4 = df['volume_ratio'] >= params['min_volume_ratio']\ncondition5 = df['is_uptrend']\n\nall_conditions = condition1 & condition2 & condition3 & condition4 & condition5\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u2705 CORRECT: Each condition tested separately",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "\u2705 CORRECT: Each condition tested separately"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u2705 CORRECT: Each condition tested separately"
+      },
+      "tags": []
+    },
+    {
+      "content": "# \u274c WRONG: Nested conditions make debugging impossible\nif df['gap_pct'] >= params['min_gap']:\n    if df['hold_range'] <= params['max_hold_range']:\n        if df['close'] < df['open']:\n            # Can't debug which condition failed\n            pass\n```\n\n**Why This Matters**: When debugging, you want to see:\n- Condition 1: \u2713 PASSED\n- Condition 2: \u2717 FAILED (hold_range was 0.6%, max is 0.5%)\n- Condition 3: \u2713 PASSED\n- ...\n\n---\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u274c WRONG: Nested conditions make debugging impossible",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u274c WRONG: Nested conditions make debugging impossible"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u274c WRONG: Nested conditions make debugging impossible"
+      },
+      "tags": []
+    },
+    {
+      "content": "## Code Structure Patterns\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u274c WRONG: Nested conditions make debugging impossible::Code Structure Patterns",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "\u274c WRONG: Nested conditions make debugging impossible",
+        "Code Structure Patterns"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Code Structure Patterns"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "### Pattern 1: Standalone Script (Simple Patterns)\n\n**When to Use**: Testing ideas, simple patterns, quick validation\n\n```python\nimport pandas as pd\nimport requests\n\nAPI_KEY = \"your_key\"\nBASE_URL = \"https://api.polygon.io\"\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u274c WRONG: Nested conditions make debugging impossible::Code Structure Patterns::Pattern 1: Standalone Script (Simple Patterns)",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u274c WRONG: Nested conditions make debugging impossible",
+        "Code Structure Patterns",
+        "Pattern 1: Standalone Script (Simple Patterns)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 1: Standalone Script (Simple Patterns)"
+      },
+      "tags": [
+        "backtest",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# Configuration\nSYMBOLS = ['AAPL', 'MSFT', 'GOOGL', 'TSLA', 'NVDA']\nSTART_DATE = \"2024-01-01\"\nEND_DATE = \"2024-12-31\"\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Configuration",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Configuration"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Configuration"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Parameters\nPARAMS = {\n    'min_gap': 0.03,\n    'min_volume': 10_000_000\n}\n\ndef fetch_data(symbol, start, end):\n    \"\"\"Fetch OHLC data for a symbol.\"\"\"\n    url = f\"{BASE_URL}/v2/aggs/ticker/{symbol}/range/1/day/{start}/{end}\"\n    resp = requests.get(url, params={'apiKey': API_KEY})\n    data = resp.json().get('results', [])\n    return pd.DataFrame(data)\n\ndef scan_symbol(symbol, start, end, params):\n    \"\"\"Scan one symbol for the pattern.\"\"\"\n    df = fetch_data(symbol, start, end)\n\n    # Calculate features\n    df['gap'] = (df['o'] - df['c'].shift(1)) / df['c'].shift(1)\n\n    # Apply conditions\n    setups = df[df['gap'] >= params['min_gap']]\n\n    # Format results\n    results = []\n    for idx, row in setups.iterrows():\n        results.append({\n            'symbol': symbol,\n            'date': row['t'],\n            'gap': row['gap']\n        })\n\n    return results\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Parameters",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parameters"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Parameters"
+      },
+      "tags": [
+        "scanner",
+        "pattern"
+      ]
+    },
+    {
+      "content": "# Main execution\nif __name__ == '__main__':\n    all_results = []\n    for symbol in SYMBOLS:\n        results = scan_symbol(symbol, START_DATE, END_DATE, PARAMS)\n        all_results.extend(results)\n\n    print(f\"Found {len(all_results)} setups\")\n```\n\n**Pros**: Simple, fast to write\n**Cons**: Not scalable, hard to maintain\n\n---\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Main execution",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Main execution"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Main execution"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "pattern",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Pattern 2: Function-Based (Medium Complexity)\n\n**When to Use**: Multiple patterns, reusable code\n\n```python\nimport pandas as pd\nimport requests\nfrom typing import List, Dict\n\nclass ScannerConfig:\n    \"\"\"Configuration for scanner parameters.\"\"\"\n    min_gap: float = 0.03\n    min_volume: int = 10_000_000\n    min_price: float = 10.0\n\ndef fetch_data(symbols: List[str], start: str, end: str) -> pd.DataFrame:\n    \"\"\"Fetch data for multiple symbols.\"\"\"\n    all_data = []\n    for symbol in symbols:\n        # Fetch logic here\n        pass\n    return pd.concat(all_data)\n\ndef calculate_features(df: pd.DataFrame) -> pd.DataFrame:\n    \"\"\"Calculate all required features.\"\"\"\n    df['gap'] = (df['open'] - df['close'].shift(1)) / df['close'].shift(1)\n    df['volume_avg'] = df['volume'].rolling(20).mean()\n    df['volume_ratio'] = df['volume'] / df['volume_avg']\n    return df\n\ndef detect_pattern(df: pd.DataFrame, config: ScannerConfig) -> pd.DataFrame:\n    \"\"\"Detect the pattern.\"\"\"\n    setups = df[\n        (df['gap'] >= config.min_gap) &\n        (df['volume'] >= config.min_volume) &\n        (df['close'] >= config.min_price)\n    ]\n    return setups\n\ndef run_scan(symbols: List[str], start: str, end: str, config: ScannerConfig) -> List[Dict]:\n    \"\"\"Main scan execution.\"\"\"\n    df = fetch_data(symbols, start, end)\n    df = calculate_features(df)\n    setups = detect_pattern(df, config)\n    return setups.to_dict('records')\n```\n\n**Pros**: Modular, testable, reusable\n**Cons**: More boilerplate\n\n---\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Main execution::Pattern 2: Function-Based (Medium Complexity)",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Main execution",
+        "Pattern 2: Function-Based (Medium Complexity)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 2: Function-Based (Medium Complexity)"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "pattern",
+        "code",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Pattern 3: Class-Based V31 (Production)\n\n**When to Use**: Complex patterns, high performance requirements",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Main execution::Pattern 2: Function-Based (Medium Complexity)::Pattern 3: Class-Based V31 (Production)::chunk0",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Main execution",
+        "Pattern 2: Function-Based (Medium Complexity)",
+        "Pattern 3: Class-Based V31 (Production)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 3: Class-Based V31 (Production)"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "pattern",
+        "v31",
+        "code"
+      ]
+    },
+    {
+      "content": "### Pattern 3: Class-Based V31 (Production)\n\n**When to Use**: Complex patterns, high performance requirements\n\n```python\nimport pandas as pd\nimport requests\nfrom concurrent.futures import ThreadPoolExecutor\nimport pandas_market_calendars as mcal\n\nclass TradingScanner:\n    \"\"\"\n    Production scanner using V31 architecture.\n\n    5-Stage Pipeline:\n    1. Fetch grouped data\n    2a. Compute simple features\n    2b. Apply smart filters\n    3a. Compute full features\n    3b. Detect patterns\n    \"\"\"\n\n    def __init__(self, api_key: str, d0_start: str, d0_end: str):\n        \"\"\"Initialize scanner.\"\"\"\n        # Configuration\n        self.api_key = api_key\n        self.base_url = \"https://api.polygon.io\"\n        self.session = requests.Session()\n\n        # Date range\n        self.d0_start_user = d0_start\n        self.d0_end_user = d0_end\n\n        # Calculate historical buffer\n        lookback = self.params.get('abs_lookback_days', 1000) + 50\n        scan_start = pd.to_datetime(d0_start) - pd.Timedelta(days=lookback)\n        self.scan_start = scan_start.strftime('%Y-%m-%d')\n\n        # Parameters\n        self.params = {\n            'price_min': 8.0,\n            'adv20_min_usd': 30_000_000,\n            # ... pattern-specific params\n        }\n\n        # Workers\n        self.stage1_workers = 5\n        self.stage3_workers = 10\n\n    def run_scan(self) -> List[Dict]:\n        \"\"\"Execute the 5-stage pipeline.\"\"\"\n        # Stage 1: Fetch\n        stage1_data = self.fetch_grouped_data()\n\n        # Stage 2a: Simple features\n        stage2a_data = self.compute_simple_features(stage1_data)\n\n        # Stage 2b: Smart filters\n        stage2b_data = self.apply_smart_filters(stage2a_data)\n\n        # Stage 3a: Full features\n        stage3a_data = self.compute_full_features(stage2b_data)\n\n        # Stage 3b: Detect\n        results = self.detect_patterns(stage3a_data)\n\n        return results\n\n    def fetch_grouped_data(self) -> pd.DataFrame:\n        \"\"\"Stage 1: Fetch all tickers for all dates.\"\"\"\n        # Implementation here\n        pass\n\n    def compute_simple_features(self, df: pd.DataFrame) -> pd.DataFrame:\n        \"\"\"Stage 2a: Compute cheap features.\"\"\"\n        df['prev_close'] = df.groupby('ticker')['close'].shift(1)\n        df['adv20'] = (df['close'] * df['volume']).groupby(df['ticker']).transform(\n            lambda x: x.rolling(20, min_periods=20).mean()\n        )\n        return df\n\n    def apply_smart_filters(self, df: pd.DataFrame) -> pd.DataFrame:\n        \"\"\"Stage 2b: Filter D0, preserve historical.\"\"\"\n        # Separate historical from D0\n        df_historical = df[~df['date'].between(self.d0_start_user, self.d0_end_user)]\n        df_output = df[df['date'].between(self.d0_start_user, self.d0_end_user)]\n\n        # Filter only D0\n        df_filtered = df_output[\n            (df_output['prev_close'] >= self.params['price_min']) &\n            (df_output['adv20'] >= self.params['adv20_min_usd'])\n        ]\n\n        # Recombine\n        return pd.concat([df_historical, df_filtered])\n\n    def compute_full_features(self, df: pd.DataFrame) -> pd.DataFrame:\n        \"\"\"Stage 3a: Compute expensive features.\"\"\"\n        # EMA, ATR, slopes, etc.\n        pass\n\n    def detect_patterns(self, df: pd.DataFrame) -> List[Dict]:\n        \"\"\"Stage 3b: Pattern detection logic.\"\"\"\n        # Pattern-specific detection\n        pass\n```",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Main execution::Pattern 2: Function-Based (Medium Complexity)::Pattern 3: Class-Based V31 (Production)::chunk1",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Main execution",
+        "Pattern 2: Function-Based (Medium Complexity)",
+        "Pattern 3: Class-Based V31 (Production)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 3: Class-Based V31 (Production)"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "pattern",
+        "v31",
+        "code"
+      ]
+    },
+    {
+      "content": "ATR, slopes, etc.\n        pass\n\n    def detect_patterns(self, df: pd.DataFrame) -> List[Dict]:\n        \"\"\"Stage 3b: Pattern detection logic.\"\"\"\n        # Pattern-specific detection\n        pass\n```\n\n\n\n[...previous chunk overlap...]\n\n**Pros**: Fast, scalable, maintainable\n**Cons**: More complex, higher learning curve\n\n---",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Main execution::Pattern 2: Function-Based (Medium Complexity)::Pattern 3: Class-Based V31 (Production)::chunk2",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Main execution",
+        "Pattern 2: Function-Based (Medium Complexity)",
+        "Pattern 3: Class-Based V31 (Production)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 3: Class-Based V31 (Production)"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "pattern",
+        "v31",
+        "code"
+      ]
+    },
+    {
+      "content": "## Parameter System Design\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Main execution::Parameter System Design",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Main execution",
+        "Parameter System Design"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Parameter System Design"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Pattern 1: Flat Dictionary (Simple)\n\n```python\nparams = {\n    'min_gap': 0.03,\n    'max_hold_range': 0.005,\n    'min_volume': 10_000_000,\n    'min_price': 10.0\n}\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Main execution::Parameter System Design::Pattern 1: Flat Dictionary (Simple)",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Main execution",
+        "Parameter System Design",
+        "Pattern 1: Flat Dictionary (Simple)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 1: Flat Dictionary (Simple)"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# Usage: df['gap'] >= params['min_gap']\n```\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Usage: df['gap'] >= params['min_gap']",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage: df['gap'] >= params['min_gap']"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage: df['gap'] >= params['min_gap']"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Pattern 2: Grouped by Category (Better)\n\n```python\nparams = {\n    # Price filters\n    'price_min': 10.0,\n    'gap_min': 0.03,\n    'hold_range_max': 0.005,\n\n    # Volume filters\n    'volume_min': 10_000_000,\n    'volume_ratio_min': 2.0,\n    'adv20_min_usd': 30_000_000,\n\n    # Trend filters\n    'require_uptrend': True,\n    'require_d1_green': True,\n\n    # Significance filters\n    'level_pos_abs_min': 0.85,\n    'is_pivot_high': True\n}\n```\n\n**Benefits**:\n- Easy to find related parameters\n- Simple to document\n- Clear what each group controls\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Usage: df['gap'] >= params['min_gap']::Pattern 2: Grouped by Category (Better)",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage: df['gap'] >= params['min_gap']",
+        "Pattern 2: Grouped by Category (Better)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 2: Grouped by Category (Better)"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "### Pattern 3: Parameter Objects (Advanced)\n\n```python\nfrom dataclasses import dataclass\nfrom typing import Optional\n\n@dataclass\nclass ScannerParams:\n    \"\"\"Type-safe parameter configuration.\"\"\"\n\n    # Price parameters\n    price_min: float = 10.0\n    gap_min: float = 0.03\n    hold_range_max: float = 0.005\n\n    # Volume parameters\n    volume_min: int = 10_000_000\n    volume_ratio_min: float = 2.0\n\n    # Toggle parameters\n    require_uptrend: bool = True\n    require_d1_green: bool = True\n\n    def validate(self) -> List[str]:\n        \"\"\"Validate parameters for consistency.\"\"\"\n        errors = []\n        if self.gap_min < 0:\n            errors.append(\"gap_min must be positive\")\n        if self.price_min < 1:\n            errors.append(\"price_min too low\")\n        return errors\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Usage: df['gap'] >= params['min_gap']::Pattern 2: Grouped by Category (Better)::Pattern 3: Parameter Objects (Advanced)",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage: df['gap'] >= params['min_gap']",
+        "Pattern 2: Grouped by Category (Better)",
+        "Pattern 3: Parameter Objects (Advanced)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 3: Parameter Objects (Advanced)"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# Usage\nparams = ScannerParams(\n    price_min=10.0,\n    gap_min=0.03\n)\n\nif errors := params.validate():\n    print(f\"Invalid parameters: {errors}\")\n```\n\n**Benefits**:\n- Type safety\n- Validation built-in\n- IDE autocomplete\n- Self-documenting\n\n---\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Usage",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "## Data Flow Architecture\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Usage::Data Flow Architecture",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Usage",
+        "Data Flow Architecture"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Data Flow Architecture"
+      },
+      "tags": []
+    },
+    {
+      "content": "### The Golden Rule: Separate Historical from D0\n\n```python",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Usage::Data Flow Architecture::The Golden Rule: Separate Historical from D0",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage",
+        "Data Flow Architecture",
+        "The Golden Rule: Separate Historical from D0"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "The Golden Rule: Separate Historical from D0"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# \u274c WRONG: Loses historical data\ndf_filtered = df[df['date'] >= d0_start]\ndf_filtered['atr'] = df_filtered['atr'].rolling(14).mean()  # WRONG! Lost history\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u274c WRONG: Loses historical data",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "\u274c WRONG: Loses historical data"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u274c WRONG: Loses historical data"
+      },
+      "tags": []
+    },
+    {
+      "content": "# \u2705 CORRECT: Preserve historical data\ndf_historical = df[df['date'] < d0_start]  # Keep for context\ndf_d0 = df[df['date'] >= d0_start]\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u2705 CORRECT: Preserve historical data",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "\u2705 CORRECT: Preserve historical data"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u2705 CORRECT: Preserve historical data"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Calculate on full dataset, then filter\ndf['atr'] = df['atr'].rolling(14).mean()\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Calculate on full dataset, then filter",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Calculate on full dataset, then filter"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Calculate on full dataset, then filter"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Filter D0 for output, keep historical for computation\ndf_output = df_d0[\n    (df_d0['gap'] >= params['min_gap']) &\n    (df_d0['volume'] >= params['volume_min'])\n]\n```\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Filter D0 for output, keep historical for computation",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Filter D0 for output, keep historical for computation"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Filter D0 for output, keep historical for computation"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Why This Matters\n\nMany indicators need historical data:\n- **ATR**: Needs 14+ periods\n- **EMA**: Needs period length\n- **Slope**: Needs window length\n- **Position in range**: Needs 1000-day window\n\nIf you filter before calculating, you get WRONG results.\n\n---\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Filter D0 for output, keep historical for computation::Why This Matters",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Filter D0 for output, keep historical for computation",
+        "Why This Matters"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Why This Matters"
+      },
+      "tags": [
+        "indicator",
+        "position"
+      ]
+    },
+    {
+      "content": "## Validation Patterns\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Filter D0 for output, keep historical for computation::Validation Patterns",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Filter D0 for output, keep historical for computation",
+        "Validation Patterns"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Validation Patterns"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "### Pattern 1: A+ Example Validation\n\n```python\ndef validate_with_a_plus_examples(scanner, a_plus_examples, params):\n    \"\"\"\n    Validate that scanner finds A+ examples.\n\n    Args:\n        scanner: Scanner function\n        a_plus_examples: List of {'symbol': 'NVDA', 'date': '2025-01-08'}\n        params: Scanner parameters\n\n    Returns:\n        Validation results\n    \"\"\"\n    results = []\n\n    for example in a_plus_examples:\n        # Run scanner around that date\n        start = (pd.to_datetime(example['date']) - timedelta(days=5)).strftime('%Y-%m-%d')\n        end = (pd.to_datetime(example['date']) + timedelta(days=5)).strftime('%Y-%m-%d')\n\n        setups = scanner(example['symbol'], start, end, params)\n\n        # Check if A+ example is found\n        found = any(\n            s['date'] == example['date'] and\n            s['symbol'] == example['symbol']\n            for s in setups\n        )\n\n        results.append({\n            'example': example,\n            'found': found\n        })\n\n    return results\n```\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Filter D0 for output, keep historical for computation::Validation Patterns::Pattern 1: A+ Example Validation",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Filter D0 for output, keep historical for computation",
+        "Validation Patterns",
+        "Pattern 1: A+ Example Validation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 1: A+ Example Validation"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "### Pattern 2: Parameter Debugging\n\n```python\ndef debug_parameters_on_date(symbol, date, params):\n    \"\"\"\n    Show what each parameter value is on a specific date.\n\n    Useful for understanding why a setup didn't trigger.\n    \"\"\"\n    df = fetch_data(symbol, date, date)\n\n    # Calculate all parameters\n    gap_pct = (df['open'] / df['close'].shift(1) - 1).iloc[0]\n    hold_range = (df['high'] - df['open']) / df['open'].iloc[0]\n    close_down = df['close'].iloc[0] < df['open'].iloc[0]\n    volume_ratio = df['volume'].iloc[0] / df['volume'].rolling(20).mean().iloc[0]\n\n    # Check each condition\n    print(f\"{symbol} on {date}:\")\n    print(f\"  gap_pct: {gap_pct:.4f} >= {params['min_gap']:.4f} ? {gap_pct >= params['min_gap']}\")\n    print(f\"  hold_range: {hold_range:.4f} <= {params['max_hold_range']:.4f} ? {hold_range <= params['max_hold_range']}\")\n    print(f\"  close_down: {close_down} (required: True)\")\n    print(f\"  volume_ratio: {volume_ratio:.2f} >= {params['min_volume_ratio']:.2f} ? {volume_ratio >= params['min_volume_ratio']}\")\n```\n\n**Output**:\n```\nNVDA on 2025-01-08:\n  gap_pct: 0.0420 >= 0.0300 ? True\n  hold_range: 0.0030 <= 0.0050 ? True\n  close_down: True (required: True)\n  volume_ratio: 2.10 >= 2.00 ? True\n\n\u2713 ALL CONDITIONS PASSED\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Filter D0 for output, keep historical for computation::Validation Patterns::Pattern 2: Parameter Debugging",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Filter D0 for output, keep historical for computation",
+        "Validation Patterns",
+        "Pattern 2: Parameter Debugging"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pattern 2: Parameter Debugging"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "## Anti-Patterns to Avoid\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Filter D0 for output, keep historical for computation::Anti-Patterns to Avoid",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Filter D0 for output, keep historical for computation",
+        "Anti-Patterns to Avoid"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Anti-Patterns to Avoid"
+      },
+      "tags": [
+        "pattern"
+      ]
+    },
+    {
+      "content": "### Anti-Pattern 1: Nested Conditions\n\n```python",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Filter D0 for output, keep historical for computation::Anti-Patterns to Avoid::Anti-Pattern 1: Nested Conditions",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Filter D0 for output, keep historical for computation",
+        "Anti-Patterns to Avoid",
+        "Anti-Pattern 1: Nested Conditions"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Anti-Pattern 1: Nested Conditions"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# \u274c WRONG: Hard to debug\nif gap >= params['min_gap']:\n    if volume >= params['min_volume']:\n        if close < open:\n            if is_uptrend:\n                return True\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u274c WRONG: Hard to debug",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "\u274c WRONG: Hard to debug"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u274c WRONG: Hard to debug"
+      },
+      "tags": []
+    },
+    {
+      "content": "# \u2705 CORRECT: Flat conditions\nall_passed = (\n    (gap >= params['min_gap']) and\n    (volume >= params['min_volume']) and\n    (close < open) and\n    is_uptrend\n)\nreturn all_passed\n```\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u2705 CORRECT: Flat conditions",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u2705 CORRECT: Flat conditions"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u2705 CORRECT: Flat conditions"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Anti-Pattern 2: Magic Numbers\n\n```python",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u2705 CORRECT: Flat conditions::Anti-Pattern 2: Magic Numbers",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u2705 CORRECT: Flat conditions",
+        "Anti-Pattern 2: Magic Numbers"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Anti-Pattern 2: Magic Numbers"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# \u274c WRONG: What is 0.03? What is 10000000?\nif gap >= 0.03 and volume >= 10000000:\n    pass\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u274c WRONG: What is 0.03? What is 10000000?",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "\u274c WRONG: What is 0.03? What is 10000000?"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u274c WRONG: What is 0.03? What is 10000000?"
+      },
+      "tags": []
+    },
+    {
+      "content": "# \u2705 CORRECT: Named parameters\nGAP_MIN = 0.03\nVOLUME_MIN = 10_000_000\n\nif gap >= GAP_MIN and volume >= VOLUME_MIN:\n    pass\n```\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u2705 CORRECT: Named parameters",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u2705 CORRECT: Named parameters"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u2705 CORRECT: Named parameters"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Anti-Pattern 3: Forward-Looking Bias\n\n```python",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u2705 CORRECT: Named parameters::Anti-Pattern 3: Forward-Looking Bias",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u2705 CORRECT: Named parameters",
+        "Anti-Pattern 3: Forward-Looking Bias"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Anti-Pattern 3: Forward-Looking Bias"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# \u274c WRONG: Uses future data in calculation\ndf['future_return'] = df['close'].shift(-2)  # Peeks into future\ndf['signal'] = df['future_return'] > 0  # Impossible to know in real-time\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u274c WRONG: Uses future data in calculation",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "\u274c WRONG: Uses future data in calculation"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u274c WRONG: Uses future data in calculation"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "# \u2705 CORRECT: Only use current and past data\ndf['signal'] = (\n    df['gap'] >= params['min_gap']  # Known at open\n)  # All data from current or past\n```\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u2705 CORRECT: Only use current and past data",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u2705 CORRECT: Only use current and past data"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u2705 CORRECT: Only use current and past data"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "### Anti-Pattern 4: Not Grouping by Ticker\n\n```python",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u2705 CORRECT: Only use current and past data::Anti-Pattern 4: Not Grouping by Ticker",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u2705 CORRECT: Only use current and past data",
+        "Anti-Pattern 4: Not Grouping by Ticker"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Anti-Pattern 4: Not Grouping by Ticker"
+      },
+      "tags": [
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# \u274c WRONG: Calculates across all tickers together\ndf['adv20'] = (df['close'] * df['volume']).rolling(20).mean()",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u274c WRONG: Calculates across all tickers together",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "\u274c WRONG: Calculates across all tickers together"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u274c WRONG: Calculates across all tickers together"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Problem: AAPL's volume affects MSFT's average\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Problem: AAPL's volume affects MSFT's average",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Problem: AAPL's volume affects MSFT's average"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Problem: AAPL's volume affects MSFT's average"
+      },
+      "tags": []
+    },
+    {
+      "content": "# \u2705 CORRECT: Per-ticker calculation\ndf['adv20'] = (df['close'] * df['volume']).groupby(df['ticker']).transform(\n    lambda x: x.rolling(20, min_periods=20).mean()\n)\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u2705 CORRECT: Per-ticker calculation",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u2705 CORRECT: Per-ticker calculation"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "\u2705 CORRECT: Per-ticker calculation"
+      },
+      "tags": []
+    },
+    {
+      "content": "## Code Templates\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u2705 CORRECT: Per-ticker calculation::Code Templates",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "\u2705 CORRECT: Per-ticker calculation",
+        "Code Templates"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Code Templates"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "### Template 1: Simple Mean Reversion Scanner",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u2705 CORRECT: Per-ticker calculation::Code Templates::Template 1: Simple Mean Reversion Scanner::chunk0",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "\u2705 CORRECT: Per-ticker calculation",
+        "Code Templates",
+        "Template 1: Simple Mean Reversion Scanner"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Template 1: Simple Mean Reversion Scanner"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "### Template 1: Simple Mean Reversion Scanner\n\n```python\nimport pandas as pd\nimport requests\nfrom typing import List, Dict\n\nAPI_KEY = \"your_key\"\nBASE_URL = \"https://api.polygon.io\"\n\nclass MeanReversionScanner:\n    \"\"\"Base template for mean reversion scanners.\"\"\"\n\n    def __init__(self, params: Dict):\n        self.params = params\n        self.session = requests.Session()\n\n    def fetch_data(self, symbols: List[str], start: str, end: str) -> pd.DataFrame:\n        \"\"\"Fetch data for symbols.\"\"\"\n        all_data = []\n        for symbol in symbols:\n            url = f\"{BASE_URL}/v2/aggs/ticker/{symbol}/range/1/day/{start}/{end}\"\n            resp = self.session.get(url, params={'apiKey': API_KEY})\n            data = resp.json().get('results', [])\n            if data:\n                df = pd.DataFrame(data)\n                df['symbol'] = symbol\n                all_data.append(df)\n        return pd.concat(all_data, ignore_index=True)\n\n    def calculate_features(self, df: pd.DataFrame) -> pd.DataFrame:\n        \"\"\"Calculate features. Override in subclass.\"\"\"\n        df['gap'] = (df['o'] - df['c'].shift(1)) / df['c'].shift(1)\n        df['volume_avg'] = df.groupby('symbol')['v'].transform(\n            lambda x: x.rolling(20).mean()\n        )\n        return df\n\n    def detect_setup(self, df: pd.DataFrame) -> pd.DataFrame:\n        \"\"\"Detect setup. Override in subclass.\"\"\"\n        raise NotImplementedError(\"Subclass must implement detect_setup\")\n\n    def scan(self, symbols: List[str], start: str, end: str) -> List[Dict]:\n        \"\"\"Run the scan.\"\"\"\n        df = self.fetch_data(symbols, start, end)\n        df = self.calculate_features(df)\n        setups = self.detect_setup(df)\n        return setups.to_dict('records')\n\n\nclass GapAndFadeScanner(MeanReversionScanner):\n    \"\"\"Concrete implementation: Gap and fade setup.\"\"\"\n\n    def detect_setup(self, df: pd.DataFrame) -> pd.DataFrame:\n        \"\"\"Detect gap-and-fade pattern.\"\"\"\n        return df[\n            (df['gap'] >= self.params.get('min_gap', 0.03)) &\n            (df['volume'] >= self.params.get('min_volume', 10_000_000)) &\n            (df['c'] < df['o'])  # Close down (weak close)\n        ]",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::\u2705 CORRECT: Per-ticker calculation::Code Templates::Template 1: Simple Mean Reversion Scanner::chunk1",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "\u2705 CORRECT: Per-ticker calculation",
+        "Code Templates",
+        "Template 1: Simple Mean Reversion Scanner"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Template 1: Simple Mean Reversion Scanner"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "# Usage\nscanner = GapAndFadeScanner(params={\n    'min_gap': 0.03,\n    'min_volume': 10_000_000\n})\n\nresults = scanner.scan(\n    symbols=['AAPL', 'MSFT', 'TSLA'],\n    start='2024-01-01',\n    end='2024-12-31'\n)\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Usage",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage"
+      },
+      "tags": [
+        "scanner"
+      ]
+    },
+    {
+      "content": "## Summary: The Methodology\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Usage::Summary: The Methodology",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Usage",
+        "Summary: The Methodology"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Summary: The Methodology"
+      },
+      "tags": []
+    },
+    {
+      "content": "### When Building ANY Scanner:\n\n1. **Start with the Mold**: What does the setup look like?\n2. **Find A+ Examples**: Real trades that represent the mold\n3. **Extract Parameters**: Quantify what makes those trades work\n4. **Choose Structure**: Simple, Function, or Class-based\n5. **Implement**: Write the code\n6. **Validate**: Check against A+ examples\n7. **Debug**: Use parameter checking to fix issues\n8. **Expand**: Run on historical data\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Usage::Summary: The Methodology::When Building ANY Scanner:",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "Usage",
+        "Summary: The Methodology",
+        "When Building ANY Scanner:"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "When Building ANY Scanner:"
+      },
+      "tags": [
+        "scanner",
+        "pattern",
+        "code"
+      ]
+    },
+    {
+      "content": "### Key Principles:\n\n1. **Flat Conditions**: Never nest if-statements\n2. **Named Parameters**: No magic numbers\n3. **Per-Ticker Operations**: Always group by ticker\n4. **Preserve Historical**: Keep historical data for calculations\n5. **Validate Continuously**: Always check against A+ examples\n6. **Debug Visually**: Look at charts to verify\n\n---\n\n**Document Status**: COMPLETE\n**Version**: 1.0\n**Last Updated**: 2026-01-29\n",
+      "chunk_id": "EDGEDEV_CODE_STRUCTURE_GUIDE.md::Usage::Summary: The Methodology::Key Principles:",
+      "source_file": "EDGEDEV_CODE_STRUCTURE_GUIDE.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "Usage",
+        "Summary: The Methodology",
+        "Key Principles:"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Key Principles:"
+      },
+      "tags": []
+    }
+  ]
+}

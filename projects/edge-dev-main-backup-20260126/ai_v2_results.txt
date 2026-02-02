@@ -1,0 +1,24 @@
+📊 Signal Output Range (D0): 2025-01-02 to 2025-01-02
+📊 Historical Data Range: 2022-02-17 to 2025-01-02
+
+======================================================================
+Testing AI-FORMATTED V2 SCANNER (Fixed)
+======================================================================
+
+🚀 Starting Backside B Messy scan...
+🚀 Fetching data for 722 trading days...
+✅ Fetched data for 722 days, 0 failed
+📊 Applying smart filters on 7776847 rows...
+✅ Filtered down to 1186106 rows
+🔍 Detecting patterns for 3512 unique tickers...
+✅ Processed 3512 tickers, 0 failed
+🎯 Found 0 signals
+Traceback (most recent call last):
+  File "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test_ai_v2_runner.py", line 27, in <module>
+    if results:
+       ^^^^^^^
+  File "/Users/michaeldurante/.venv/lib/python3.13/site-packages/pandas/core/generic.py", line 1580, in __nonzero__
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().

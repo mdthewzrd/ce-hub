@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude API Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117;
+            color: #f0f6fc;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #58a6ff;
+            text-align: center;
+        }
+
+        .test-area {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #f0f6fc;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background: #238636;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #2ea043;
+        }
+
+        .result {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+            white-space: pre-wrap;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 14px;
+            min-height: 50px;
+        }
+
+        .error {
+            color: #f85149;
+        }
+
+        .success {
+            color: #56d364;
+        }
+
+        .loading {
+            color: #f79c42;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Claude API Test</h1>
+
+        <div class="test-area">
+            <h2>Test Claude Commands</h2>
+            <input type="text" id="questionInput" placeholder="Ask Claude a question (try with $ symbols)..."
+                   value="What does $ mean in bash commands?">
+            <button onclick="askClaude()">Ask Claude</button>
+            <div id="result" class="result">Results will appear here...</div>
+        </div>
+
+        <div class="test-area">
+            <h2>Quick Tests</h2>
+            <button onclick="testSimple()" style="margin-bottom: 10px;">Test: "What is 2+2?"</button>
+            <button onclick="testDollarSign()" style="margin-bottom: 10px;">Test: "Explain $ in bash"</button>
+            <button onclick="testCommand()" style="margin-bottom: 10px;">Test: "How do I use git status?"</button>
+        </div>
+    </div>
+
+    <script>
+        async function askClaude() {
+            const question = document.getElementById('questionInput').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!question.trim()) {
+                resultDiv.innerHTML = '<span class="error">Please enter a question</span>';
+                return;
+            }
+
+            resultDiv.innerHTML = '<span class="loading">🤖 Asking Claude...</span>';
+
+            try {
+                const response = await fetch('http://100.95.223.19:8106/claude', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        question: question
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    resultDiv.innerHTML = `<span class="error">❌ Error: ${data.output}</span>`;
+                } else {
+                    resultDiv.innerHTML = `<span class="success">✅ Claude Response:</span>\n\n${data.output}`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ Network Error: ${error.message}</span>`;
+            }
+        }
+
+        function testSimple() {
+            document.getElementById('questionInput').value = 'What is 2+2?';
+            askClaude();
+        }
+
+        function testDollarSign() {
+            document.getElementById('questionInput').value = 'What does the $ symbol mean in bash commands?';
+            askClaude();
+        }
+
+        function testCommand() {
+            document.getElementById('questionInput').value = 'How do I use git status to check my repository?';
+            askClaude();
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('questionInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                askClaude();
+            }
+        });
+    </script>
+</body>
+</html>

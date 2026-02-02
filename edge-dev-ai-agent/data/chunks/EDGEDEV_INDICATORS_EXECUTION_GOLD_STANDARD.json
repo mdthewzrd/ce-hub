@@ -1,0 +1,1724 @@
+{
+  "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+  "chunk_count": 98,
+  "chunks": [
+    {
+      "content": "# EdgeDev Indicators & Execution Gold Standard\n**Complete Framework for Indicators, Position Sizing, and Execution Strategies**\n\n**Version**: 1.0\n**Date**: 2026-01-29\n**Status**: COMPLETE - Ready for Implementation\n\n---\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::EdgeDev Indicators & Execution Gold Standard",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Indicators & Execution Gold Standard"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "EdgeDev Indicators & Execution Gold Standard"
+      },
+      "tags": [
+        "strategy",
+        "indicator",
+        "position",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Table of Contents\n\n1. [Package Requirements](#package-requirements)\n2. [Indicator Library](#indicator-library)\n3. [Building Custom Indicators](#building-custom-indicators)\n4. [Position Sizing Methods](#position-sizing-methods)\n5. [Pyramiding Strategies](#pyramiding-strategies)\n6. [Capital Recycling](#capital-recycling)\n7. [Execution Strategies](#execution-strategies)\n8. [Stop Management](#stop-management)\n9. [Target Management](#target-management)\n10. [Complete Execution Framework](#complete-execution-framework)\n\n---\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::EdgeDev Indicators & Execution Gold Standard::Table of Contents",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Indicators & Execution Gold Standard",
+        "Table of Contents"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Table of Contents"
+      },
+      "tags": [
+        "strategy",
+        "indicator",
+        "risk",
+        "position",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Package Requirements\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::EdgeDev Indicators & Execution Gold Standard::Package Requirements",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Indicators & Execution Gold Standard",
+        "Package Requirements"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Package Requirements"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Core Data Packages\n\n```python",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::EdgeDev Indicators & Execution Gold Standard::Package Requirements::Core Data Packages",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Indicators & Execution Gold Standard",
+        "Package Requirements",
+        "Core Data Packages"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Core Data Packages"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# requirements.txt for EdgeDev Gold Standard\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::requirements.txt for EdgeDev Gold Standard",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "requirements.txt for EdgeDev Gold Standard"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "requirements.txt for EdgeDev Gold Standard"
+      },
+      "tags": []
+    },
+    {
+      "content": "# === CORE DATA ===\npandas>=2.0.0              # Data manipulation\nnumpy>=1.24.0              # Numerical computing\nrequests>=2.31.0           # HTTP requests (Polygon API)\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::=== CORE DATA ===",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "=== CORE DATA ==="
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "=== CORE DATA ==="
+      },
+      "tags": []
+    },
+    {
+      "content": "# === MARKET CALENDAR ===\npandas-market-calendars>=4.3.0  # Trading days, holidays\npytz>=2023.3               # Timezone handling\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::=== MARKET CALENDAR ===",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "=== MARKET CALENDAR ==="
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "=== MARKET CALENDAR ==="
+      },
+      "tags": [
+        "strategy"
+      ]
+    },
+    {
+      "content": "# === TECHNICAL ANALYSIS ===",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::=== TECHNICAL ANALYSIS ===",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "=== TECHNICAL ANALYSIS ==="
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "=== TECHNICAL ANALYSIS ==="
+      },
+      "tags": []
+    },
+    {
+      "content": "# NOTE: We implement indicators ourselves (see below)",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::NOTE: We implement indicators ourselves (see below)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "NOTE: We implement indicators ourselves (see below)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "NOTE: We implement indicators ourselves (see below)"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "# No external TA libraries required - gives full control\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::No external TA libraries required - gives full control",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "No external TA libraries required - gives full control"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "No external TA libraries required - gives full control"
+      },
+      "tags": []
+    },
+    {
+      "content": "# === PARALLEL PROCESSING ===\nconcurrent.futures         # Built-in (no install needed)\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::=== PARALLEL PROCESSING ===",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "=== PARALLEL PROCESSING ==="
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "=== PARALLEL PROCESSING ==="
+      },
+      "tags": []
+    },
+    {
+      "content": "# === BACKTESTING ===",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::=== BACKTESTING ===",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "=== BACKTESTING ==="
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "=== BACKTESTING ==="
+      },
+      "tags": [
+        "backtest"
+      ]
+    },
+    {
+      "content": "# We use custom backtest engines (see backtest_gold_standard.md)\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::We use custom backtest engines (see backtest_gold_standard.md)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "We use custom backtest engines (see backtest_gold_standard.md)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "We use custom backtest engines (see backtest_gold_standard.md)"
+      },
+      "tags": [
+        "backtest"
+      ]
+    },
+    {
+      "content": "# === VISUALIZATION (Optional) ===\nmatplotlib>=3.7.0          # Plotting (optional)\nplotly>=5.18.0             # Interactive charts (optional)\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::=== VISUALIZATION (Optional) ===",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "=== VISUALIZATION (Optional) ==="
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "=== VISUALIZATION (Optional) ==="
+      },
+      "tags": []
+    },
+    {
+      "content": "### Why No TA-Lib?\n\n```python",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::=== VISUALIZATION (Optional) ===::Why No TA-Lib?",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "=== VISUALIZATION (Optional) ===",
+        "Why No TA-Lib?"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Why No TA-Lib?"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# WE IMPLEMENT OUR OWN INDICATORS\n#",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::WE IMPLEMENT OUR OWN INDICATORS",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "WE IMPLEMENT OUR OWN INDICATORS"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "WE IMPLEMENT OUR OWN INDICATORS"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "# Why:",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Why:",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Why:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Why:"
+      },
+      "tags": []
+    },
+    {
+      "content": "# 1. Full control over calculations",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::1. Full control over calculations",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "1. Full control over calculations"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "1. Full control over calculations"
+      },
+      "tags": []
+    },
+    {
+      "content": "# 2. No external dependencies",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::2. No external dependencies",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "2. No external dependencies"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "2. No external dependencies"
+      },
+      "tags": []
+    },
+    {
+      "content": "# 3. Can optimize for our specific needs",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::3. Can optimize for our specific needs",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "3. Can optimize for our specific needs"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "3. Can optimize for our specific needs"
+      },
+      "tags": [
+        "optimization"
+      ]
+    },
+    {
+      "content": "# 4. Transparent logic (no black boxes)",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::4. Transparent logic (no black boxes)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "4. Transparent logic (no black boxes)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "4. Transparent logic (no black boxes)"
+      },
+      "tags": []
+    },
+    {
+      "content": "# 5. Easy to modify/extend\n#",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::5. Easy to modify/extend",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "5. Easy to modify/extend"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "5. Easy to modify/extend"
+      },
+      "tags": []
+    },
+    {
+      "content": "# TA-Lib disadvantages:",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::TA-Lib disadvantages:",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "TA-Lib disadvantages:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "TA-Lib disadvantages:"
+      },
+      "tags": []
+    },
+    {
+      "content": "# - Binary installation issues (especially on Mac M1/M2)",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::- Binary installation issues (especially on Mac M1/M2)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "- Binary installation issues (especially on Mac M1/M2)"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "- Binary installation issues (especially on Mac M1/M2)"
+      },
+      "tags": []
+    },
+    {
+      "content": "# - Limited customization",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::- Limited customization",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "- Limited customization"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "- Limited customization"
+      },
+      "tags": []
+    },
+    {
+      "content": "# - Black box calculations",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::- Black box calculations",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "- Black box calculations"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "- Black box calculations"
+      },
+      "tags": []
+    },
+    {
+      "content": "# - Outdated maintenance\n#",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::- Outdated maintenance",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "- Outdated maintenance"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "- Outdated maintenance"
+      },
+      "tags": []
+    },
+    {
+      "content": "# All indicators below are pure pandas/numpy implementations\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::All indicators below are pure pandas/numpy implementations",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "All indicators below are pure pandas/numpy implementations"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "All indicators below are pure pandas/numpy implementations"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "## Indicator Library\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::All indicators below are pure pandas/numpy implementations::Indicator Library",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "All indicators below are pure pandas/numpy implementations",
+        "Indicator Library"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Indicator Library"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "### Core Indicators (Must Have)\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::All indicators below are pure pandas/numpy implementations::Indicator Library::Core Indicators (Must Have)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "All indicators below are pure pandas/numpy implementations",
+        "Indicator Library",
+        "Core Indicators (Must Have)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Core Indicators (Must Have)"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "#### 1. Moving Averages\n\n```python\ndef sma(series: pd.Series, period: int) -> pd.Series:\n    \"\"\"Simple Moving Average\"\"\"\n    return series.rolling(window=period, min_periods=period).mean()\n\ndef ema(series: pd.Series, period: int) -> pd.Series:\n    \"\"\"Exponential Moving Average (Wilder's smoothing)\"\"\"\n    return series.ewm(span=period, adjust=False).mean()\n\ndef vwap(df: pd.DataFrame) -> pd.Series:\n    \"\"\"Volume-Weighted Average Price\"\"\"\n    typical_price = (df['high'] + df['low'] + df['close']) / 3\n    vwap_value = (typical_price * df['volume']).cumsum() / df['volume'].cumsum()\n    return vwap_value\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::All indicators below are pure pandas/numpy implementations::Indicator Library::Core Indicators (Must Have)::1. Moving Averages",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "All indicators below are pure pandas/numpy implementations",
+        "Indicator Library",
+        "Core Indicators (Must Have)",
+        "1. Moving Averages"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "1. Moving Averages"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Usage example:\ndf['ema_9'] = ema(df['close'], 9)\ndf['ema_30'] = ema(df['close'], 30)\ndf['sma_50'] = sma(df['close'], 50)\ndf['vwap'] = vwap(df)\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage example:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage example:"
+      },
+      "tags": []
+    },
+    {
+      "content": "#### 2. Volatility Indicators\n\n```python\ndef atr(df: pd.DataFrame, period: int = 14) -> pd.Series:\n    \"\"\"\n    Average True Range (Wilder's smoothing)\n\n    Measures market volatility. Used for:\n    - Position sizing\n    - Stop loss placement\n    - Target calculation\n    \"\"\"\n    high = df['high']\n    low = df['low']\n    close = df['close']\n\n    # True Range calculation\n    tr1 = high - low\n    tr2 = abs(high - close.shift(1))\n    tr3 = abs(low - close.shift(1))\n\n    tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)\n\n    # Wilder's smoothing (EMA-style)\n    atr_series = tr.ewm(alpha=1/period, adjust=False).mean()\n\n    return atr_series\n\ndef bollinger_bands(series: pd.Series, period: int = 20, std_dev: float = 2.0) -> pd.DataFrame:\n    \"\"\"Bollinger Bands\"\"\"\n    middle = sma(series, period)\n    std = series.rolling(window=period).std()\n\n    upper = middle + (std * std_dev)\n    lower = middle - (std * std_dev)\n\n    bandwidth = (upper - lower) / middle\n    percent_b = (series - lower) / (upper - lower)\n\n    return pd.DataFrame({\n        'bb_middle': middle,\n        'bb_upper': upper,\n        'bb_lower': lower,\n        'bb_bandwidth': bandwidth,\n        'bb_percent_b': percent_b\n    })\n\ndef keltner_channels(df: pd.DataFrame, ema_period: int = 20,\n                     atr_period: int = 10, atr_mult: float = 2.0) -> pd.DataFrame:\n    \"\"\"Keltner Channels\"\"\"\n    middle = ema(df['close'], ema_period)\n    atr_value = atr(df, atr_period)\n\n    upper = middle + (atr_value * atr_mult)\n    lower = middle - (atr_value * atr_mult)\n\n    return pd.DataFrame({\n        'kc_middle': middle,\n        'kc_upper': upper,\n        'kc_lower': lower,\n        'kc_atr': atr_value\n    })\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:::2. Volatility Indicators",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage example:",
+        "2. Volatility Indicators"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "2. Volatility Indicators"
+      },
+      "tags": [
+        "indicator",
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "# Usage example:\ndf['atr'] = atr(df, 14)\ndf['atr_30'] = atr(df, 30)\nbb = bollinger_bands(df['close'], 20, 2.0)\ndf = pd.concat([df, bb], axis=1)\nkc = keltner_channels(df, 20, 10, 2.0)\ndf = pd.concat([df, kc], axis=1)\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage example:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage example:"
+      },
+      "tags": []
+    },
+    {
+      "content": "#### 3. Momentum Indicators\n\n```python\ndef rsi(series: pd.Series, period: int = 14) -> pd.Series:\n    \"\"\"\n    Relative Strength Index\n\n    0-100 scale:\n    - >70 = Overbought\n    - <30 = Oversold\n    \"\"\"\n    delta = series.diff()\n    gain = delta.where(delta > 0, 0)\n    loss = -delta.where(delta < 0, 0)\n\n    avg_gain = gain.rolling(window=period).mean()\n    avg_loss = loss.rolling(window=period).mean()\n\n    rs = avg_gain / avg_loss\n    rsi_value = 100 - (100 / (1 + rs))\n\n    return rsi_value\n\ndef macd(series: pd.Series, fast: int = 12, slow: int = 26,\n         signal: int = 9) -> pd.DataFrame:\n    \"\"\"MACD (Moving Average Convergence Divergence)\"\"\"\n    ema_fast = ema(series, fast)\n    ema_slow = ema(series, slow)\n\n    macd_line = ema_fast - ema_slow\n    signal_line = ema(macd_line, signal)\n    histogram = macd_line - signal_line\n\n    return pd.DataFrame({\n        'macd': macd_line,\n        'macd_signal': signal_line,\n        'macd_histogram': histogram\n    })\n\ndef stoch_oscillator(df: pd.DataFrame, k_period: int = 14,\n                     d_period: int = 3) -> pd.DataFrame:\n    \"\"\"Stochastic Oscillator\"\"\"\n    low_min = df['low'].rolling(window=k_period).min()\n    high_max = df['high'].rolling(window=k_period).max()\n\n    k_percent = 100 * ((df['close'] - low_min) / (high_max - low_min))\n    d_percent = k_percent.rolling(window=d_period).mean()\n\n    return pd.DataFrame({\n        'stoch_k': k_percent,\n        'stoch_d': d_percent\n    })\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:::3. Momentum Indicators",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage example:",
+        "3. Momentum Indicators"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "3. Momentum Indicators"
+      },
+      "tags": [
+        "indicator",
+        "code",
+        "risk",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "# Usage example:\ndf['rsi'] = rsi(df['close'], 14)\nmacd_df = macd(df['close'], 12, 26, 9)\ndf = pd.concat([df, macd_df], axis=1)\nstoch_df = stoch_oscillator(df, 14, 3)\ndf = pd.concat([df, stoch_df], axis=1)\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage example:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage example:"
+      },
+      "tags": []
+    },
+    {
+      "content": "#### 4. Volume Indicators\n\n```python\ndef adv(df: pd.DataFrame, period: int = 20) -> pd.Series:\n    \"\"\"Average Daily Volume (dollar volume)\"\"\"\n    dollar_volume = df['close'] * df['volume']\n    return dollar_volume.rolling(window=period, min_periods=1).mean()\n\ndef volume_profile_tier(df: pd.DataFrame, n_tiers: int = 3) -> pd.Series:\n    \"\"\"\n    Volume Profile Tier\n\n    Classifies each bar's volume into tiers:\n    - Tier 1: Highest volume (top 33%)\n    - Tier 2: Medium volume (middle 33%)\n    - Tier 3: Low volume (bottom 33%)\n    \"\"\"\n    volume_percentiles = df['volume'].rank(pct=True)\n\n    tiers = pd.cut(\n        volume_percentiles,\n        bins=[0, 1/n_tiers, 2/n_tiers, 1.0],\n        labels=[f'Tier {i+1}' for i in range(n_tiers)],\n        include_lowest=True\n    )\n\n    return tiers\n\ndef obv(df: pd.DataFrame) -> pd.Series:\n    \"\"\"On-Balance Volume\"\"\"\n    obv_value = (np.sign(df['close'].diff()) * df['volume']).fillna(0).cumsum()\n    return obv_value\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:::4. Volume Indicators",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage example:",
+        "4. Volume Indicators"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "4. Volume Indicators"
+      },
+      "tags": [
+        "indicator",
+        "code",
+        "execution"
+      ]
+    },
+    {
+      "content": "# Usage example:\ndf['adv20'] = adv(df, 20)\ndf['volume_tier'] = volume_profile_tier(df, 3)\ndf['obv'] = obv(df)\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage example:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage example:"
+      },
+      "tags": []
+    },
+    {
+      "content": "#### 5. Price Derivatives\n\n```python\ndef rate_of_change(series: pd.Series, period: int = 10) -> pd.Series:\n    \"\"\"Rate of Change (ROC) - % change over period\"\"\"\n    return ((series - series.shift(period)) / series.shift(period)) * 100\n\ndef momentum(series: pd.Series, period: int = 10) -> pd.Series:\n    \"\"\"Momentum - absolute price change over period\"\"\"\n    return series - series.shift(period)\n\ndef williams_r(df: pd.DataFrame, period: int = 14) -> pd.Series:\n    \"\"\"Williams %R\"\"\"\n    high_max = df['high'].rolling(window=period).max()\n    low_min = df['low'].rolling(window=period).min()\n\n    wr = -100 * ((high_max - df['close']) / (high_max - low_min))\n\n    return wr\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:::5. Price Derivatives",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage example:",
+        "5. Price Derivatives"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "5. Price Derivatives"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "# Usage example:\ndf['roc_10'] = rate_of_change(df['close'], 10)\ndf['momentum_5'] = momentum(df['close'], 5)\ndf['williams_r'] = williams_r(df, 14)\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage example:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage example:"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Extension Indicators (For Mean Reversion)\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:::Extension Indicators (For Mean Reversion)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Usage example:",
+        "Extension Indicators (For Mean Reversion)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Extension Indicators (For Mean Reversion)"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "#### Extension Metrics\n\n```python\ndef ema_distance(df: pd.DataFrame, ema_period: int = 9) -> pd.Series:\n    \"\"\"\n    Distance from EMA as multiple of ATR\n\n    Used to measure how extended price is from mean.\n    Positive = above EMA, Negative = below EMA\n    \"\"\"\n    ema_value = ema(df['close'], ema_period)\n    atr_value = atr(df, 14)\n\n    distance = (df['close'] - ema_value) / atr_value\n\n    return distance\n\ndef extension_score(df: pd.DataFrame, short_ema: int = 9,\n                    long_ema: int = 30, lookback: int = 14) -> pd.Series:\n    \"\"\"\n    Extension Score (0-100)\n\n    Combines multiple extension metrics:\n    - EMA distance (short and long)\n    - Slope (rate of change)\n    - Position in recent range\n    \"\"\"\n    # EMA distances\n    dist_short = ema_distance(df, short_ema)\n    dist_long = ema_distance(df, long_ema)\n\n    # Normalize to 0-100 based on lookback\n    dist_short_norm = (dist_short - dist_short.rolling(lookback).min()) / \\\n                      (dist_short.rolling(lookback).max() - dist_short.rolling(lookback).min()) * 100\n\n    # Slope (ROC over recent period)\n    slope = rate_of_change(df['close'], lookback)\n\n    # Position in range\n    range_high = df['high'].rolling(lookback).max()\n    range_low = df['low'].rolling(lookback).min()\n    position_pct = ((df['close'] - range_low) / (range_high - range_low)) * 100\n\n    # Combine (weighted average)\n    score = (dist_short_norm * 0.4 + position_pct * 0.4 + slope * 0.2)\n\n    return score\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:::Extension Indicators (For Mean Reversion)::Extension Metrics",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage example:",
+        "Extension Indicators (For Mean Reversion)",
+        "Extension Metrics"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Extension Metrics"
+      },
+      "tags": [
+        "indicator",
+        "code",
+        "position"
+      ]
+    },
+    {
+      "content": "# Usage example:\ndf['ema9_distance'] = ema_distance(df, 9)\ndf['ema30_distance'] = ema_distance(df, 30)\ndf['extension_score'] = extension_score(df, 9, 30, 14)\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage example:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage example:"
+      },
+      "tags": []
+    },
+    {
+      "content": "#### Parabolic Detection\n\n```python\ndef parabolic_score(df: pd.DataFrame, ema_period: int = 9,\n                    slope_periods: list = [3, 7, 14]) -> pd.Series:\n    \"\"\"\n    Parabolic Score (0-100)\n\n    Detects accelerating upward moves:\n    - High EMA distance\n    - Increasing slope (acceleration)\n    - Multiple expanding gaps\n    \"\"\"\n    # EMA distance\n    dist = ema_distance(df, ema_period)\n\n    # Slopes at multiple timeframes\n    slopes = [rate_of_change(df['close'], p) for p in slope_periods]\n\n    # Slope acceleration (short slope > long slope)\n    acceleration = slopes[0] - slopes[-1]  # 3-period - 14-period\n\n    # Count recent gaps\n    gap_pct = (df['open'] / df['close'].shift(1) - 1) * 100\n    recent_gaps = (gap_pct.rolling(5).sum() > 0).astype(int)\n\n    # Combine signals\n    dist_norm = ((dist - dist.rolling(50).min()) /\n                 (dist.rolling(50).max() - dist.rolling(50).min())) * 100\n\n    score = (dist_norm * 0.4 +\n             (acceleration * 10) * 0.3 +\n             recent_gaps * 20 * 0.3)\n\n    return score.clip(0, 100)\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:::Parabolic Detection",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Usage example:",
+        "Parabolic Detection"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Parabolic Detection"
+      },
+      "tags": [
+        "indicator",
+        "code"
+      ]
+    },
+    {
+      "content": "# Usage example:\ndf['parabolic_score'] = parabolic_score(df, 9, [3, 7, 14])",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Usage example:",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "Usage example:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Usage example:"
+      },
+      "tags": []
+    },
+    {
+      "content": "# Parabolic condition: score > 70\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Parabolic condition: score > 70"
+      },
+      "tags": []
+    },
+    {
+      "content": "## Building Custom Indicators\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Building Custom Indicators",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Building Custom Indicators"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Building Custom Indicators"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "### Template for Custom Indicators\n\n```python\ndef custom_indicator(df: pd.DataFrame, **params) -> pd.Series:\n    \"\"\"\n    Template for custom indicator\n\n    Steps:\n    1. Validate inputs\n    2. Calculate intermediate values\n    3. Apply indicator logic\n    4. Return result\n    \"\"\"\n\n    # 1. Validate inputs\n    required_columns = ['open', 'high', 'low', 'close', 'volume']\n    if not all(col in df.columns for col in required_columns):\n        raise ValueError(f\"DataFrame must have: {required_columns}\")\n\n    # 2. Extract parameters with defaults\n    period = params.get('period', 14)\n    multiplier = params.get('multiplier', 2.0)\n\n    # 3. Calculate indicator\n    # ... your logic here ...\n\n    # 4. Return result\n    return df['result_column']\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Building Custom Indicators::Template for Custom Indicators",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Building Custom Indicators",
+        "Template for Custom Indicators"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Template for Custom Indicators"
+      },
+      "tags": [
+        "indicator",
+        "code"
+      ]
+    },
+    {
+      "content": "### Example: Gap Fade Indicator\n\n```python\ndef gap_fade_strength(df: pd.DataFrame, lookback: int = 20) -> pd.DataFrame:\n    \"\"\"\n    Measures strength of gap fade signal\n\n    Combines:\n    - Gap size\n    - Volume confirmation\n    - Pre-market hold\n    - Intraday fade progress\n    \"\"\"\n    # Gap metrics\n    df['gap_pct'] = (df['open'] / df['close'].shift(1) - 1) * 100\n    df['gap_vs_range'] = (df['open'] - df['close'].shift(1)) / df['high'].shift(1) - df['low'].shift(1)\n\n    # Volume confirmation\n    df['volume_ratio'] = df['volume'] / df['volume'].rolling(30).mean()\n\n    # Hold strength (how well gap held)\n    df['hold_range'] = (df['high'] - df['open']) / df['open'] * 100\n\n    # Fade progress\n    df['fade_progress'] = (df['open'] - df['close']) / (df['high'] - df['low']) * 100\n\n    # Combine into strength score\n    df['gap_fade_score'] = (\n        (df['gap_pct'] > 2.0).astype(int) * 25 +\n        (df['volume_ratio'] > 1.5).astype(int) * 25 +\n        (df['hold_range'] < 0.5).astype(int) * 25 +\n        (df['fade_progress'] > 50).astype(int) * 25\n    )\n\n    return df[['gap_pct', 'gap_vs_range', 'volume_ratio',\n               'hold_range', 'fade_progress', 'gap_fade_score']]\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Building Custom Indicators::Example: Gap Fade Indicator",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Building Custom Indicators",
+        "Example: Gap Fade Indicator"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Example: Gap Fade Indicator"
+      },
+      "tags": [
+        "indicator",
+        "code",
+        "position"
+      ]
+    },
+    {
+      "content": "### Example: Multi-Timeframe Confirmation\n\n```python\ndef mtf_confirmation(df_daily: pd.DataFrame, df_hourly: pd.DataFrame,\n                    indicator: str = 'ema') -> pd.Series:\n    \"\"\"\n    Multi-Timeframe Confirmation\n\n    Checks if signal is confirmed across timeframes\n    \"\"\"\n    # Resample hourly to daily\n    hourly_daily = df_hourly.resample('D').agg({\n        'open': 'first',\n        'high': 'max',\n        'low': 'min',\n        'close': 'last',\n        'volume': 'sum'\n    })\n\n    # Calculate indicator on both timeframes\n    if indicator == 'ema':\n        daily_signal = df_daily['close'] > ema(df_daily['close'], 9)\n        hourly_signal = hourly_daily['close'] > ema(hourly_daily['close'], 9)\n\n    # Confirm if both agree\n    confirmation = daily_signal & hourly_signal\n\n    return confirmation\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Building Custom Indicators::Example: Multi-Timeframe Confirmation",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Building Custom Indicators",
+        "Example: Multi-Timeframe Confirmation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Example: Multi-Timeframe Confirmation"
+      },
+      "tags": [
+        "indicator",
+        "code"
+      ]
+    },
+    {
+      "content": "## Position Sizing Methods\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Position Sizing Methods",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Position Sizing Methods"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Position Sizing Methods"
+      },
+      "tags": [
+        "position"
+      ]
+    },
+    {
+      "content": "### Method 1: Fixed Dollar Risk\n\n**Simple**: Risk same dollar amount per trade\n\n```python\ndef fixed_dollar_risk_sizing(entry_price: float, stop_price: float,\n                             risk_dollars: float = 1000) -> dict:\n    \"\"\"\n    Fixed dollar risk per trade\n\n    Example: Risk $1000 per trade regardless of account size\n    \"\"\"\n    risk_per_share = abs(entry_price - stop_price)\n    shares = int(risk_dollars / risk_per_share)\n\n    position_size = shares * entry_price\n\n    return {\n        'shares': shares,\n        'position_size': position_size,\n        'risk_dollars': risk_dollars,\n        'risk_r': risk_dollars / risk_dollars  # Always 1R\n    }\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Position Sizing Methods::Method 1: Fixed Dollar Risk",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Position Sizing Methods",
+        "Method 1: Fixed Dollar Risk"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Method 1: Fixed Dollar Risk"
+      },
+      "tags": [
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Method 2: Fixed Percentage Risk\n\n**Proportional**: Risk same % of account per trade\n\n```python\ndef fixed_pct_risk_sizing(entry_price: float, stop_price: float,\n                          account_value: float, risk_pct: float = 0.01) -> dict:\n    \"\"\"\n    Fixed percentage risk per trade\n\n    Example: Risk 1% of account per trade\n    \"\"\"\n    risk_dollars = account_value * risk_pct\n    risk_per_share = abs(entry_price - stop_price)\n    shares = int(risk_dollars / risk_per_share)\n\n    position_size = shares * entry_price\n\n    return {\n        'shares': shares,\n        'position_size': position_size,\n        'risk_dollars': risk_dollars,\n        'risk_r': 1.0,  # By definition\n        'risk_pct_of_account': risk_pct * 100\n    }\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Position Sizing Methods::Method 2: Fixed Percentage Risk",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Position Sizing Methods",
+        "Method 2: Fixed Percentage Risk"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Method 2: Fixed Percentage Risk"
+      },
+      "tags": [
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Method 3: ATR-Based Sizing (Volatility Adjusted)\n\n**Adaptive**: Size positions based on market volatility\n\n```python\ndef atr_based_sizing(entry_price: float, atr: float,\n                     account_value: float, risk_pct: float = 0.01,\n                     atr_multiplier: float = 0.8) -> dict:\n    \"\"\"\n    ATR-based position sizing\n\n    Stop = atr_multiplier * ATR away from entry\n    Position sized to risk risk_pct of account\n    \"\"\"\n    # Calculate stop distance\n    stop_distance = atr * atr_multiplier\n\n    # Calculate risk amount\n    risk_dollars = account_value * risk_pct\n\n    # Calculate shares\n    shares = int(risk_dollars / stop_distance)\n\n    position_size = shares * entry_price\n    stop_price = entry_price - stop_distance  # For long\n\n    return {\n        'shares': shares,\n        'position_size': position_size,\n        'stop_price': stop_price,\n        'risk_dollars': risk_dollars,\n        'atr': atr,\n        'risk_r': 1.0\n    }\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Position Sizing Methods::Method 3: ATR-Based Sizing (Volatility Adjusted)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Position Sizing Methods",
+        "Method 3: ATR-Based Sizing (Volatility Adjusted)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Method 3: ATR-Based Sizing (Volatility Adjusted)"
+      },
+      "tags": [
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Method 4: Kelly Criterion (Optimal Growth)\n\n**Mathematical**: Calculate optimal position size for growth\n\n```python\ndef kelly_sizing(entry_price: float, stop_price: float, target_price: float,\n                win_rate: float, account_value: float,\n                kelly_fraction: float = 0.25) -> dict:\n    \"\"\"\n    Kelly Criterion position sizing\n\n    WARNING: Use fraction of Kelly (quarter-Kelly is common)\n    Full Kelly is too aggressive for most traders\n    \"\"\"\n    # Calculate win/loss amounts\n    win_amount = abs(target_price - entry_price)\n    loss_amount = abs(entry_price - stop_price)\n\n    # Win/loss ratio\n    win_loss_ratio = win_amount / loss_amount\n\n    # Kelly %\n    kelly_pct = win_rate - ((1 - win_rate) / win_loss_ratio)\n\n    # Use fraction of Kelly\n    adjusted_kelly_pct = kelly_pct * kelly_fraction\n\n    # Calculate position\n    risk_dollars = account_value * adjusted_kelly_pct\n    shares = int(risk_dollars / loss_amount)\n\n    position_size = shares * entry_price\n\n    return {\n        'shares': shares,\n        'position_size': position_size,\n        'kelly_pct': kelly_pct * 100,\n        'adjusted_kelly_pct': adjusted_kelly_pct * 100,\n        'risk_dollars': risk_dollars,\n        'kelly_fraction': kelly_fraction\n    }\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Position Sizing Methods::Method 4: Kelly Criterion (Optimal Growth)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Position Sizing Methods",
+        "Method 4: Kelly Criterion (Optimal Growth)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Method 4: Kelly Criterion (Optimal Growth)"
+      },
+      "tags": [
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Position Sizing Comparison\n\n| Method | Pros | Cons | Best For |\n|--------|------|------|----------|\n| **Fixed Dollar** | Simple, predictable | Doesn't scale with account | Small accounts, beginners |\n| **Fixed %** | Scales with account | Risk varies with volatility | General trading |\n| **ATR-Based** | Adjusts for volatility | Requires ATR calculation | Most trading strategies |\n| **Kelly** | Optimal growth | Too aggressive, requires good data | Advanced traders (use fraction) |\n\n---\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Position Sizing Methods::Position Sizing Comparison",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Position Sizing Methods",
+        "Position Sizing Comparison"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Position Sizing Comparison"
+      },
+      "tags": [
+        "strategy",
+        "risk",
+        "position",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "## Pyramiding Strategies\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Pyramiding Strategies",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Pyramiding Strategies"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Pyramiding Strategies"
+      },
+      "tags": [
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### What Is Pyramiding?\n\nAdding to winning positions as they move in your favor.\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Pyramiding Strategies::What Is Pyramiding?",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Pyramiding Strategies",
+        "What Is Pyramiding?"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What Is Pyramiding?"
+      },
+      "tags": [
+        "position",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### Pyramiding Method 1: Fixed Add-Ons\n\n```python\ndef pyramid_fixed_addons(initial_entry: float, stop_price: float,\n                        target_price: float, initial_shares: int,\n                        num_addons: int = 2, addon_pct: float = 0.5) -> dict:\n    \"\"\"\n    Fixed add-on pyramiding\n\n    Add fixed % of initial position at predetermined levels\n    \"\"\"\n    add_levels = []\n    total_shares = initial_shares\n    total_cost = initial_entry * initial_shares\n\n    for i in range(1, num_addons + 1):\n        # Calculate add level (spread between entry and target)\n        level_progress = i / (num_addons + 1)\n        add_price = initial_entry + (target_price - initial_entry) * level_progress\n\n        # Calculate add-on shares\n        addon_shares = int(initial_shares * addon_pct)\n\n        add_levels.append({\n            'level': i,\n            'price': add_price,\n            'shares': addon_shares,\n            'cost': addon_shares * add_price\n        })\n\n        total_shares += addon_shares\n        total_cost += addon_shares * add_price\n\n    avg_price = total_cost / total_shares\n    total_potential_profit = (target_price - avg_price) * total_shares\n\n    return {\n        'initial_shares': initial_shares,\n        'add_levels': add_levels,\n        'total_shares': total_shares,\n        'avg_price': avg_price,\n        'total_cost': total_cost,\n        'total_potential_profit': total_potential_profit\n    }\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Pyramiding Strategies::Pyramiding Method 1: Fixed Add-Ons",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Pyramiding Strategies",
+        "Pyramiding Method 1: Fixed Add-Ons"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pyramiding Method 1: Fixed Add-Ons"
+      },
+      "tags": [
+        "code",
+        "risk",
+        "position",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### Pyramiding Method 2: Volatility-Adjusted\n\n```python\ndef pyramid_volatility_adjusted(initial_entry: float, atr: float,\n                                initial_shares: int, num_addons: int = 2,\n                                atr_spacing: float = 1.5) -> dict:\n    \"\"\"\n    Volatility-adjusted pyramiding\n\n    Add positions at ATR-based intervals\n    \"\"\"\n    add_levels = []\n    total_shares = initial_shares\n    total_cost = initial_entry * initial_shares\n\n    for i in range(1, num_addons + 1):\n        # Add level is ATR-spaced above previous level\n        if i == 1:\n            add_price = initial_entry + (atr * atr_spacing)\n        else:\n            add_price = add_levels[-1]['price'] + (atr * atr_spacing)\n\n        # Add-on shares (could reduce size as price increases)\n        addon_shares = int(initial_shares * 0.5)  # Half size\n\n        add_levels.append({\n            'level': i,\n            'price': add_price,\n            'shares': addon_shares,\n            'cost': addon_shares * add_price,\n            'atr_from_entry': (add_price - initial_entry) / atr\n        })\n\n        total_shares += addon_shares\n        total_cost += addon_shares * add_price\n\n    avg_price = total_cost / total_shares\n\n    return {\n        'initial_shares': initial_shares,\n        'add_levels': add_levels,\n        'total_shares': total_shares,\n        'avg_price': avg_price,\n        'total_cost': total_cost\n    }\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Pyramiding Strategies::Pyramiding Method 2: Volatility-Adjusted",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Pyramiding Strategies",
+        "Pyramiding Method 2: Volatility-Adjusted"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pyramiding Method 2: Volatility-Adjusted"
+      },
+      "tags": [
+        "code",
+        "position",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### Pyramiding Risk Management\n\n```python\ndef pyramid_stop_management(initial_entry: float, initial_stop: float,\n                           add_levels: list, trailing_stop_atr: float = 1.0,\n                           atr: float = None) -> dict:\n    \"\"\"\n    Manage stops when pyramiding\n\n    Strategy: Move stop to breakeven after first add-on,\n              then trail by ATR\n    \"\"\"\n    stops = []\n\n    # Initial stop\n    stops.append({\n        'position': 'Initial',\n        'stop_price': initial_stop,\n        'action': 'Initial stop placement'\n    })\n\n    # After first add-on: Move to breakeven\n    if len(add_levels) > 0:\n        stops.append({\n            'position': 'After Add 1',\n            'stop_price': initial_entry,  # Breakeven\n            'action': 'Moved to breakeven'\n        })\n\n        # After subsequent add-ons: Trail by ATR\n        for i, level in enumerate(add_levels[1:], start=2):\n            if atr:\n                trail_stop = level['price'] - (atr * trailing_stop_atr)\n                stops.append({\n                    'position': f'After Add {i}',\n                    'stop_price': trail_stop,\n                    'action': f'Trailing stop ({trailing_stop_atr}x ATR)'\n                })\n\n    return stops\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Pyramiding Strategies::Pyramiding Risk Management",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Pyramiding Strategies",
+        "Pyramiding Risk Management"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pyramiding Risk Management"
+      },
+      "tags": [
+        "strategy",
+        "code",
+        "risk",
+        "position",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### Pyramiding Rules\n\n1. **Only pyramid winners**: Never add to losing positions\n2. **Reduced size**: Each add-on should be smaller than initial\n3. **Predefined levels**: Know your add levels before entering\n4. **Stop management**: Move stop to breakeven after first add\n5. **Maximum pyramids**: Usually 2-3 add-ons max\n\n---\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Pyramiding Strategies::Pyramiding Rules",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Pyramiding Strategies",
+        "Pyramiding Rules"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Pyramiding Rules"
+      },
+      "tags": [
+        "risk",
+        "position",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "## Capital Recycling\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Capital Recycling",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Capital Recycling"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Capital Recycling"
+      },
+      "tags": []
+    },
+    {
+      "content": "### What Is Capital Recycling?\n\nReusing capital + profits from closed trades for new trades.\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Capital Recycling::What Is Capital Recycling?",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Capital Recycling",
+        "What Is Capital Recycling?"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What Is Capital Recycling?"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Simple Recycling (100% Reinvestment)\n\n```python\ndef simple_recycling(account_value: float, win_rate: float,\n                    avg_win_r: float, avg_loss_r: float,\n                    num_trades: int) -> dict:\n    \"\"\"\n    Simple 100% recycling simulation\n\n    Reinvest all capital + profits on each trade\n    \"\"\"\n    equity = account_value\n    equity_curve = [equity]\n\n    for i in range(num_trades):\n        # Determine win/loss based on win_rate\n        is_win = np.random.random() < win_rate\n\n        if is_win:\n            result_r = avg_win_r\n        else:\n            result_r = avg_loss_r\n\n        # Calculate P&L\n        risk_pct = 0.01  # 1% risk per trade\n        risk_dollars = equity * risk_pct\n        pnl_dollars = risk_dollars * result_r\n\n        # Update equity\n        equity += pnl_dollars\n        equity_curve.append(equity)\n\n    total_return = (equity - account_value) / account_value\n\n    return {\n        'initial_equity': account_value,\n        'final_equity': equity,\n        'total_return_pct': total_return * 100,\n        'equity_curve': equity_curve\n    }\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Capital Recycling::Simple Recycling (100% Reinvestment)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Capital Recycling",
+        "Simple Recycling (100% Reinvestment)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Simple Recycling (100% Reinvestment)"
+      },
+      "tags": [
+        "code",
+        "risk"
+      ]
+    },
+    {
+      "content": "### Fractional Recycling (Conservative)\n\n```python\ndef fractional_recycling(account_value: float, win_rate: float,\n                        avg_win_r: float, avg_loss_r: float,\n                        num_trades: int, reinvest_pct: float = 0.5) -> dict:\n    \"\"\"\n    Fractional recycling\n\n    Only reinvest portion of profits, withdraw rest\n    \"\"\"\n    base_equity = account_value\n    equity = account_value\n    equity_curve = [equity]\n    withdrawn = []\n\n    for i in range(num_trades):\n        # Determine win/loss\n        is_win = np.random.random() < win_rate\n\n        if is_win:\n            result_r = avg_win_r\n        else:\n            result_r = avg_loss_r\n\n        # Calculate P&L\n        risk_pct = 0.01\n        risk_dollars = equity * risk_pct\n        pnl_dollars = risk_dollars * result_r\n\n        # Update equity\n        equity += pnl_dollars\n\n        # Withdraw portion of profits\n        if pnl_dollars > 0:\n            withdrawal = pnl_dollars * (1 - reinvest_pct)\n            equity -= withdrawal\n            withdrawn.append(withdrawal)\n        else:\n            withdrawn.append(0)\n\n        equity_curve.append(equity)\n\n    total_withdrawn = sum(withdrawn)\n    total_return = (equity - base_equity) / base_equity\n\n    return {\n        'initial_equity': account_value,\n        'final_equity': equity,\n        'total_withdrawn': total_withdrawn,\n        'total_return_pct': total_return * 100,\n        'equity_curve': equity_curve,\n        'withdrawals': withdrawn\n    }\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Capital Recycling::Fractional Recycling (Conservative)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Capital Recycling",
+        "Fractional Recycling (Conservative)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Fractional Recycling (Conservative)"
+      },
+      "tags": [
+        "code",
+        "risk"
+      ]
+    },
+    {
+      "content": "### Kelly Recycling (Optimal Growth)\n\n```python\ndef kelly_recycling(account_value: float, win_rate: float,\n                   avg_win_r: float, avg_loss_r: float,\n                   num_trades: int, kelly_fraction: float = 0.25) -> dict:\n    \"\"\"\n    Kelly-based recycling\n\n    Position size adjusts based on Kelly criterion\n    \"\"\"\n    equity = account_value\n    equity_curve = [equity]\n    position_sizes = []\n\n    # Calculate Kelly %\n    win_loss_ratio = abs(avg_win_r / avg_loss_r)\n    kelly_pct = win_rate - ((1 - win_rate) / win_loss_ratio)\n    adjusted_kelly_pct = kelly_pct * kelly_fraction\n\n    for i in range(num_trades):\n        # Determine win/loss\n        is_win = np.random.random() < win_rate\n\n        if is_win:\n            result_r = avg_win_r\n        else:\n            result_r = avg_loss_r\n\n        # Calculate position size (based on Kelly)\n        risk_dollars = equity * adjusted_kelly_pct\n\n        # Calculate P&L\n        pnl_dollars = risk_dollars * result_r\n\n        # Track position size\n        position_sizes.append({\n            'trade': i + 1,\n            'equity_before': equity,\n            'position_size_pct': adjusted_kelly_pct * 100,\n            'position_size_dollars': risk_dollars\n        })\n\n        # Update equity\n        equity += pnl_dollars\n        equity_curve.append(equity)\n\n    total_return = (equity - account_value) / account_value\n\n    return {\n        'initial_equity': account_value,\n        'final_equity': equity,\n        'kelly_pct': kelly_pct * 100,\n        'adjusted_kelly_pct': adjusted_kelly_pct * 100,\n        'total_return_pct': total_return * 100,\n        'equity_curve': equity_curve,\n        'position_sizes': position_sizes\n    }\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Capital Recycling::Kelly Recycling (Optimal Growth)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Capital Recycling",
+        "Kelly Recycling (Optimal Growth)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Kelly Recycling (Optimal Growth)"
+      },
+      "tags": [
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Recycling Comparison\n\n| Method | Growth | Risk | Best For |\n|--------|--------|------|----------|\n| **Simple 100%** | Max | High | Aggressive growth, high win rate |\n| **Fractional** | Medium | Medium | Balanced growth + income |\n| **Kelly** | Optimal | Variable | Professional traders (use fraction) |\n\n---\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Capital Recycling::Recycling Comparison",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Capital Recycling",
+        "Recycling Comparison"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Recycling Comparison"
+      },
+      "tags": [
+        "risk"
+      ]
+    },
+    {
+      "content": "## Execution Strategies\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Execution Strategies",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Execution Strategies"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Execution Strategies"
+      },
+      "tags": [
+        "strategy",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Strategy 1: Immediate Entry\n\n```python\ndef immediate_entry(signal: dict, current_price: float,\n                   position_sizing_fn, **sizing_params) -> dict:\n    \"\"\"\n    Enter immediately on signal\n\n    No waiting for confirmation\n    \"\"\"\n    # Calculate position size\n    sizing = position_sizing_fn(\n        entry_price=current_price,\n        stop_price=signal['stop_price'],\n        **sizing_params\n    )\n\n    return {\n        'entry_price': current_price,\n        'entry_time': datetime.now(),\n        'shares': sizing['shares'],\n        'position_size': sizing['position_size'],\n        'stop_price': sizing.get('stop_price', signal['stop_price']),\n        'target_price': signal.get('target_price'),\n        'entry_reason': 'Immediate entry on signal'\n    }\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Execution Strategies::Strategy 1: Immediate Entry",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Execution Strategies",
+        "Strategy 1: Immediate Entry"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Strategy 1: Immediate Entry"
+      },
+      "tags": [
+        "strategy",
+        "indicator",
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Strategy 2: Confirmation Entry\n\n```python\ndef confirmation_entry(signal: dict, bars: list,\n                      position_sizing_fn, confirmation_bars: int = 1,\n                      **sizing_params) -> dict:\n    \"\"\"\n    Wait for confirmation before entering\n\n    Examples:\n    - For gap fade: Wait for first red bar after gap\n    - For breakout: Wait for close above breakout level\n    \"\"\"\n    # Check for confirmation\n    confirmed = False\n    entry_price = None\n    entry_bar_idx = None\n\n    for i in range(confirmation_bars, len(bars)):\n        bar = bars[i]\n\n        # Confirmation logic (example: weak close)\n        if bar['close'] < bar['open']:\n            confirmed = True\n            entry_price = bar['close']\n            entry_bar_idx = i\n            break\n\n    if not confirmed:\n        return {'error': 'Confirmation not triggered'}\n\n    # Calculate position size\n    sizing = position_sizing_fn(\n        entry_price=entry_price,\n        stop_price=signal['stop_price'],\n        **sizing_params\n    )\n\n    return {\n        'entry_price': entry_price,\n        'entry_time': bar['datetime'],\n        'shares': sizing['shares'],\n        'position_size': sizing['position_size'],\n        'stop_price': sizing.get('stop_price', signal['stop_price']),\n        'target_price': signal.get('target_price'),\n        'entry_bar_index': entry_bar_idx,\n        'entry_reason': f'Confirmation after {confirmation_bars} bars'\n    }\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Execution Strategies::Strategy 2: Confirmation Entry",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Execution Strategies",
+        "Strategy 2: Confirmation Entry"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Strategy 2: Confirmation Entry"
+      },
+      "tags": [
+        "strategy",
+        "indicator",
+        "code",
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Strategy 3: Limit Order Entry\n\n```python\ndef limit_order_entry(signal: dict, current_price: float,\n                     limit_discount: float = 0.001,\n                     position_sizing_fn, **sizing_params) -> dict:\n    \"\"\"\n    Place limit order at discount to current price\n\n    Good for:\n    - Getting better fill\n    - Avoiding chasing\n    - Reducing slippage\n    \"\"\"\n    # Calculate limit price\n    if signal['direction'] == 'LONG':\n        limit_price = current_price * (1 - limit_discount)\n    else:  # SHORT\n        limit_price = current_price * (1 + limit_discount)\n\n    # Calculate position size\n    sizing = position_sizing_fn(\n        entry_price=limit_price,\n        stop_price=signal['stop_price'],\n        **sizing_params\n    )\n\n    return {\n        'entry_type': 'LIMIT',\n        'limit_price': limit_price,\n        'current_price': current_price,\n        'discount_pct': limit_discount * 100,\n        'shares': sizing['shares'],\n        'position_size': sizing['position_size'],\n        'stop_price': sizing.get('stop_price', signal['stop_price']),\n        'target_price': signal.get('target_price'),\n        'entry_reason': f'Limit order at {limit_discount*100:.1f}% discount'\n    }\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Execution Strategies::Strategy 3: Limit Order Entry",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Execution Strategies",
+        "Strategy 3: Limit Order Entry"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Strategy 3: Limit Order Entry"
+      },
+      "tags": [
+        "strategy",
+        "indicator",
+        "code",
+        "risk",
+        "position",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Stop Management\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Stop Management",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Stop Management"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Stop Management"
+      },
+      "tags": [
+        "risk"
+      ]
+    },
+    {
+      "content": "### Stop Types\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Stop Management::Stop Types",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Stop Management",
+        "Stop Types"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Stop Types"
+      },
+      "tags": [
+        "risk"
+      ]
+    },
+    {
+      "content": "#### 1. Fixed Stop (Price-Based)\n\n```python\ndef fixed_stop(entry_price: float, direction: str,\n               stop_distance: float) -> float:\n    \"\"\"\n    Fixed dollar or percentage stop\n\n    Example: Stop $2 below entry, or 2% below entry\n    \"\"\"\n    if direction == 'LONG':\n        stop_price = entry_price - stop_distance\n    else:  # SHORT\n        stop_price = entry_price + stop_distance\n\n    return stop_price\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Stop Management::Stop Types::1. Fixed Stop (Price-Based)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Stop Management",
+        "Stop Types",
+        "1. Fixed Stop (Price-Based)"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "1. Fixed Stop (Price-Based)"
+      },
+      "tags": [
+        "code",
+        "risk"
+      ]
+    },
+    {
+      "content": "#### 2. ATR Stop (Volatility-Based)\n\n```python\ndef atr_stop(entry_price: float, direction: str,\n             atr: float, atr_multiplier: float = 1.5) -> float:\n    \"\"\"\n    ATR-based stop\n\n    Stop distance = ATR * multiplier\n    Adjusts automatically to market volatility\n    \"\"\"\n    stop_distance = atr * atr_multiplier\n\n    if direction == 'LONG':\n        stop_price = entry_price - stop_distance\n    else:  # SHORT\n        stop_price = entry_price + stop_distance\n\n    return stop_price\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Stop Management::Stop Types::2. ATR Stop (Volatility-Based)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Stop Management",
+        "Stop Types",
+        "2. ATR Stop (Volatility-Based)"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "2. ATR Stop (Volatility-Based)"
+      },
+      "tags": [
+        "code",
+        "risk"
+      ]
+    },
+    {
+      "content": "#### 3. Trailing Stop (Breakeven + Trail)",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Stop Management::Stop Types::3. Trailing Stop (Breakeven + Trail)::chunk0",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Stop Management",
+        "Stop Types",
+        "3. Trailing Stop (Breakeven + Trail)"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "3. Trailing Stop (Breakeven + Trail)"
+      },
+      "tags": [
+        "code",
+        "risk"
+      ]
+    },
+    {
+      "content": "#### 3. Trailing Stop (Breakeven + Trail)\n\n```python\nclass TrailingStop:\n    \"\"\"Trailing stop management\"\"\"\n\n    def __init__(self, entry_price: float, direction: str,\n                 initial_stop: float, trail_atr: float,\n                 atr: float, breakeven_after_r: float = 1.0):\n        self.entry_price = entry_price\n        self.direction = direction\n        self.initial_stop = initial_stop\n        self.trail_atr = trail_atr\n        self.atr = atr\n        self.breakeven_after_r = breakeven_after_r\n\n        self.highest_price = entry_price  # For longs\n        self.lowest_price = entry_price   # For shorts\n        self.current_stop = initial_stop\n\n    def update(self, high: float, low: float) -> dict:\n        \"\"\"Update stop based on new price data\"\"\"\n        stop_action = None\n\n        if self.direction == 'LONG':\n            # Update highest price\n            if high > self.highest_price:\n                self.highest_price = high\n\n                # Check if breakeven should be triggered\n                unrealized_r = (self.highest_price - self.entry_price) / \\\n                               (self.entry_price - self.initial_stop)\n\n                if unrealized_r >= self.breakeven_after_r:\n                    # Move to breakeven\n                    new_stop = self.entry_price\n                    if new_stop > self.current_stop:\n                        self.current_stop = new_stop\n                        stop_action = 'Moved to breakeven'\n\n                # Trail stop\n                trail_stop = self.highest_price - (self.trail_atr * self.atr)\n                if trail_stop > self.current_stop:\n                    self.current_stop = trail_stop\n                    stop_action = 'Trailing stop raised'\n\n        else:  # SHORT\n            # Update lowest price\n            if low < self.lowest_price:\n                self.lowest_price = low\n\n                # Check if breakeven should be triggered\n                unrealized_r = (self.entry_price - self.lowest_price) / \\\n                               (self.initial_stop - self.entry_price)\n\n                if unrealized_r >= self.breakeven_after_r:\n                    # Move to breakeven\n                    new_stop = self.entry_price\n                    if new_stop < self.current_stop:\n                        self.current_stop = new_stop\n                        stop_action = 'Moved to breakeven'\n\n                # Trail stop\n                trail_stop = self.lowest_price + (self.trail_atr * self.atr)\n                if trail_stop < self.current_stop:\n                    self.current_stop = trail_stop\n                    stop_action = 'Trailing stop lowered'\n\n        return {\n            'current_stop': self.current_stop,\n            'highest_price': self.highest_price if self.direction == 'LONG' else None,\n            'lowest_price': self.lowest_price if self.direction == 'SHORT' else None,\n            'action': stop_action\n        }\n```",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Stop Management::Stop Types::3. Trailing Stop (Breakeven + Trail)::chunk1",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Stop Management",
+        "Stop Types",
+        "3. Trailing Stop (Breakeven + Trail)"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "3. Trailing Stop (Breakeven + Trail)"
+      },
+      "tags": [
+        "code",
+        "risk"
+      ]
+    },
+    {
+      "content": "rice': self.highest_price if self.direction == 'LONG' else None,\n            'lowest_price': self.lowest_price if self.direction == 'SHORT' else None,\n            'action': stop_action\n        }\n```\n\n\n\n[...previous chunk overlap...]\n\n---",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Stop Management::Stop Types::3. Trailing Stop (Breakeven + Trail)::chunk2",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Stop Management",
+        "Stop Types",
+        "3. Trailing Stop (Breakeven + Trail)"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "3. Trailing Stop (Breakeven + Trail)"
+      },
+      "tags": [
+        "code",
+        "risk"
+      ]
+    },
+    {
+      "content": "## Target Management\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Target Management",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Target Management"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Target Management"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Target Types\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Target Management::Target Types",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Target Management",
+        "Target Types"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Target Types"
+      },
+      "tags": []
+    },
+    {
+      "content": "#### 1. Fixed Target (R-Multiple)\n\n```python\ndef fixed_r_target(entry_price: float, direction: str,\n                   stop_distance: float, target_r: float = 2.0) -> float:\n    \"\"\"\n    Fixed R-multiple target\n\n    Example: Target at 2R (2x the risk)\n    \"\"\"\n    target_distance = stop_distance * target_r\n\n    if direction == 'LONG':\n        target_price = entry_price + target_distance\n    else:  # SHORT\n        target_price = entry_price - target_distance\n\n    return target_price\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Target Management::Target Types::1. Fixed Target (R-Multiple)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Target Management",
+        "Target Types",
+        "1. Fixed Target (R-Multiple)"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "1. Fixed Target (R-Multiple)"
+      },
+      "tags": [
+        "code",
+        "risk"
+      ]
+    },
+    {
+      "content": "#### 2. ATR Target (Volatility-Based)\n\n```python\ndef atr_target(entry_price: float, direction: str,\n               atr: float, atr_multiplier: float = 2.0) -> float:\n    \"\"\"\n    ATR-based target\n\n    Target = ATR * multiplier away from entry\n    \"\"\"\n    target_distance = atr * atr_multiplier\n\n    if direction == 'LONG':\n        target_price = entry_price + target_distance\n    else:  # SHORT\n        target_price = entry_price - target_distance\n\n    return target_price\n```\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Target Management::Target Types::2. ATR Target (Volatility-Based)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Target Management",
+        "Target Types",
+        "2. ATR Target (Volatility-Based)"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "2. ATR Target (Volatility-Based)"
+      },
+      "tags": [
+        "code"
+      ]
+    },
+    {
+      "content": "#### 3. Partial Targets (Scale Out)\n\n```python\ndef partial_targets(entry_price: float, direction: str,\n                   stop_distance: float, target_levels: list) -> list:\n    \"\"\"\n    Partial targets at multiple levels\n\n    Example: Exit 50% at 1R, 30% at 2R, 20% at 3R\n    \"\"\"\n    targets = []\n\n    for level in target_levels:\n        r_multiple = level['r']\n        exit_pct = level['exit_pct']\n\n        target_distance = stop_distance * r_multiple\n\n        if direction == 'LONG':\n            target_price = entry_price + target_distance\n        else:  # SHORT\n            target_price = entry_price - target_distance\n\n        targets.append({\n            'level': len(targets) + 1,\n            'r_multiple': r_multiple,\n            'target_price': target_price,\n            'exit_pct': exit_pct\n        })\n\n    return targets\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Parabolic condition: score > 70::Target Management::Target Types::3. Partial Targets (Scale Out)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Parabolic condition: score > 70",
+        "Target Management",
+        "Target Types",
+        "3. Partial Targets (Scale Out)"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "3. Partial Targets (Scale Out)"
+      },
+      "tags": [
+        "code",
+        "risk",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "# Example usage:\ntarget_levels = [\n    {'r': 1.5, 'exit_pct': 0.5},   # Exit 50% at 1.5R\n    {'r': 2.5, 'exit_pct': 0.3},   # Exit 30% at 2.5R\n    {'r': 4.0, 'exit_pct': 0.2},   # Exit 20% at 4R\n]\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example usage:"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "Example usage:"
+      },
+      "tags": []
+    },
+    {
+      "content": "## Complete Execution Framework\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Complete Execution Framework",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example usage:",
+        "Complete Execution Framework"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Complete Execution Framework"
+      },
+      "tags": [
+        "strategy",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Full Trade Simulator",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Complete Execution Framework::Full Trade Simulator::chunk0",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example usage:",
+        "Complete Execution Framework",
+        "Full Trade Simulator"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Full Trade Simulator"
+      },
+      "tags": [
+        "strategy",
+        "indicator",
+        "code",
+        "risk",
+        "position",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Full Trade Simulator\n\n```python\nclass CompleteTradeSimulator:\n    \"\"\"\n    Complete execution simulation with:\n    - Entry logic\n    - Position sizing\n    - Stop management\n    - Target management\n    - Exit logic\n    - Pyramiding\n    \"\"\"\n\n    def __init__(self, account_value: float, config: dict = None):\n        self.account_value = account_value\n        self.config = config or {}\n\n        # Execution settings\n        self.entry_method = self.config.get('entry_method', 'confirmation')\n        self.position_sizing_method = self.config.get('sizing_method', 'atr_based')\n        self.stop_method = self.config.get('stop_method', 'trailing_atr')\n        self.target_method = self.config.get('target_method', 'partial_r')\n\n        # Parameters\n        self.risk_pct = self.config.get('risk_pct', 0.01)\n        self.atr_period = self.config.get('atr_period', 14)\n        self.stop_atr_mult = self.config.get('stop_atr_mult', 0.8)\n        self.target_atr_mult = self.config.get('target_atr_mult', 2.0)\n        self.trailing_atr_mult = self.config.get('trailing_atr_mult', 0.5)\n        self.breakeven_after_r = self.config.get('breakeven_after_r', 1.0)\n\n        # Pyramiding\n        self.pyramid_enabled = self.config.get('pyramid_enabled', False)\n        self.num_pyramids = self.config.get('num_pyramids', 2)\n\n    def simulate_trade(self, signal: dict, intraday_data: list) -> dict:\n        \"\"\"\n        Simulate complete trade from entry to exit\n        \"\"\"\n        # Step 1: Calculate entry\n        entry = self._calculate_entry(signal, intraday_data)\n\n        if 'error' in entry:\n            return entry\n\n        # Step 2: Calculate position size\n        sizing = self._calculate_position_size(entry, signal)\n\n        # Step 3: Initialize stop management\n        stop_manager = self._initialize_stop_manager(entry, signal)\n\n        # Step 4: Initialize targets\n        targets = self._calculate_targets(entry, signal)\n\n        # Step 5: Simulate through bars\n        trade_result = self._simulate_execution(\n            entry, sizing, stop_manager, targets, intraday_data\n        )\n\n        return trade_result\n\n    def _calculate_entry(self, signal: dict, bars: list) -> dict:\n        \"\"\"Calculate entry price and time\"\"\"\n        if self.entry_method == 'immediate':\n            return {\n                'entry_price': bars[0]['open'],\n                'entry_time': bars[0]['datetime'],\n                'entry_bar_index': 0\n            }\n        elif self.entry_method == 'confirmation':\n            # Wait for confirmation (example: weak close)\n            for i, bar in enumerate(bars):\n                if bar['close'] < bar['open']:\n                    return {\n                        'entry_price': bar['close'],\n                        'entry_time': bar['datetime'],\n                        'entry_bar_index': i,\n                        'entry_reason': 'Confirmation: weak close'\n                    }\n            return {'error': 'No confirmation triggered'}\n\n    def _calculate_position_size(self, entry: dict, signal: dict) -> dict:\n        \"\"\"Calculate position size\"\"\"\n        if self.position_sizing_method == 'fixed_pct':\n            return fixed_pct_risk_sizing(\n                entry_price=entry['entry_price'],\n                stop_price=signal['stop_price'],\n                account_value=self.account_value,\n                risk_pct=self.risk_pct\n            )\n        elif self.position_sizing_method == 'atr_based':\n            return atr_based_sizing(\n                entry_price=entry['entry_price'],\n                atr=signal['atr'],\n                account_value=self.account_value,\n                risk_pct=self.risk_pct,\n                atr_multiplier=self.stop_atr_mult\n            )\n        else:\n            raise ValueError(f\"Unknown sizing method: {self.position_sizing_method}\")\n\n    def _initialize_stop_manager(self, entry: dict, signal: dict) -> TrailingStop:\n        \"\"\"Initialize stop manager\"\"\"\n        direction = signal.get('direction', 'LONG')\n\n        if self.stop_method == 'trailing_atr':\n            return TrailingStop(\n                entry_price=entry['entry_price'],\n                direction=direction,\n                initial_stop=signal['stop_price'],\n                trail_atr=self.trailing_atr_mult,\n                atr=signal['atr'],\n                breakeven_after_r=self.breakeven_after_r\n            )\n        else:\n            raise ValueError(f\"Unknown stop method: {self.stop_method}\")\n\n    def _calculate_targets(self, entry: dict, signal: dict) -> list:\n        \"\"\"Calculate profit targets\"\"\"\n        if self.target_method == 'partial_r':\n            return partial_targets(\n                entry_price=entry['entry_price'],\n                direction=signal.get('direction', 'LONG'),\n                stop_distance=abs(entry['entry_price'] - signal['stop_price']),\n                target_levels=[\n                    {'r': 1.5, 'exit_pct': 0.5},\n                    {'r': 2.5, 'exit_pct': 0.3},\n                    {'r': 4.0, 'exit_pct': 0.2}\n                ]\n            )\n        else:\n            raise ValueError(f\"Unknown target method: {self.target_method}\")\n\n    def _simulate_execution(self, entry: dict, sizing: dict,\n                           stop_manager: TrailingStop, targets: list,\n                           bars: list) -> dict:\n        \"\"\"Simulate trade execution through bars\"\"\"\n        entry_bar = entry['entry_bar_index']\n        entry_price = entry['entry_price']\n        direction = 'LONG'  # or from signal\n\n        # Track position state\n        total_shares = sizing['shares']\n        remaining_shares = total_shares\n        realized_pnl = 0\n        trades = []\n\n        for i in range(entry_bar + 1, len(bars)):\n            bar = bars[i]\n\n            # Update trailing stop\n            stop_update = stop_manager.update(bar['high'], bar['low'])\n            current_stop = stop_update['current_stop']\n\n            # Check for partial target exits\n            for target in targets:\n                if target['remaining_shares'] > 0:\n                    if direction == 'LONG' and bar['high'] >= target['target_price']:\n                        # Exit portion at target\n                        exit_shares = int(remaining_shares * target['exit_pct'])\n                        exit_pnl = (target['target_price'] - entry_price) * exit_shares\n                        realized_pnl += exit_pnl\n                        remaining_shares -= exit_shares\n\n                        trades.append({\n                            'exit_type': 'target',\n                            'level': target['level'],\n                            'price': target['target_price'],\n                            'shares': exit_shares,\n                            'pnl': exit_pnl,\n                            'time': bar['datetime']\n                        })\n\n            # Check stop loss\n            if direction == 'LONG' and bar['low'] <= current_stop:\n                # Exit remaining at stop\n                exit_pnl = (current_stop - entry_price) * remaining_shares\n                realized_pnl += exit_pnl\n\n                trades.append({\n                    'exit_type': 'stop',\n                    'price': current_stop,\n                    'shares': remaining_shares,\n                    'pnl': exit_pnl,\n                    'time': bar['datetime'],\n                    'reason': stop_update['action']\n                })\n\n                remaining_shares = 0\n                break\n\n            # Check EOD exit\n            if i == len(bars) - 1 and remaining_shares > 0:\n                exit_pnl = (bar['close'] - entry_price) * remaining_shares\n                realized_pnl += exit_pnl\n\n                trades.append({\n                    'exit_type': 'eod',\n                    'price': bar['close'],\n                    'shares': remaining_shares,\n                    'pnl': exit_pnl,\n                    'time': bar['datetime']\n                })\n\n                remaining_shares = 0\n                break\n\n        # Calculate final metrics\n        r_multiple = realized_pnl / (sizing['risk_dollars'] or 1)\n\n        return {\n            'entry_price': entry_price,\n            'entry_time': entry['entry_time'],\n            'total_shares': total_shares,\n            'realized_pnl': realized_pnl,\n            'r_multiple': r_multiple,\n            'trades': trades,\n            'final_stop': stop_manager.current_stop\n        }\n```",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Complete Execution Framework::Full Trade Simulator::chunk1",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example usage:",
+        "Complete Execution Framework",
+        "Full Trade Simulator"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Full Trade Simulator"
+      },
+      "tags": [
+        "strategy",
+        "indicator",
+        "code",
+        "risk",
+        "position",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "shares': total_shares,\n            'realized_pnl': realized_pnl,\n            'r_multiple': r_multiple,\n            'trades': trades,\n            'final_stop': stop_manager.current_stop\n        }\n```\n\n\n\n[...previous chunk overlap...]\n\n---",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Complete Execution Framework::Full Trade Simulator::chunk2",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "Example usage:",
+        "Complete Execution Framework",
+        "Full Trade Simulator"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Full Trade Simulator"
+      },
+      "tags": [
+        "strategy",
+        "indicator",
+        "code",
+        "risk",
+        "position",
+        "pyramiding",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Summary: Gold Standard Checklist\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Summary: Gold Standard Checklist",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example usage:",
+        "Summary: Gold Standard Checklist"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Summary: Gold Standard Checklist"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Packages\n- [ ] pandas >= 2.0.0\n- [ ] numpy >= 1.24.0\n- [ ] requests >= 2.31.0\n- [ ] pandas-market-calendars >= 4.3.0\n- [ ] No TA-Lib (use custom implementations)\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Summary: Gold Standard Checklist::Packages",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example usage:",
+        "Summary: Gold Standard Checklist",
+        "Packages"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Packages"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Indicators (Core)\n- [ ] SMA, EMA, VWAP\n- [ ] ATR, Bollinger Bands, Keltner Channels\n- [ ] RSI, MACD, Stochastic\n- [ ] ADV, Volume Profile, OBV\n- [ ] Rate of Change, Momentum, Williams %R\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Summary: Gold Standard Checklist::Indicators (Core)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example usage:",
+        "Summary: Gold Standard Checklist",
+        "Indicators (Core)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Indicators (Core)"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "### Indicators (Extension)\n- [ ] EMA Distance, Extension Score\n- [ ] Parabolic Score\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Summary: Gold Standard Checklist::Indicators (Extension)",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example usage:",
+        "Summary: Gold Standard Checklist",
+        "Indicators (Extension)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Indicators (Extension)"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "### Position Sizing\n- [ ] Fixed dollar risk\n- [ ] Fixed percentage risk\n- [ ] ATR-based sizing (default)\n- [ ] Kelly criterion (optional)\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Summary: Gold Standard Checklist::Position Sizing",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example usage:",
+        "Summary: Gold Standard Checklist",
+        "Position Sizing"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Position Sizing"
+      },
+      "tags": [
+        "risk",
+        "position"
+      ]
+    },
+    {
+      "content": "### Execution\n- [ ] Immediate entry\n- [ ] Confirmation entry (default)\n- [ ] Limit order entry\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Summary: Gold Standard Checklist::Execution",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example usage:",
+        "Summary: Gold Standard Checklist",
+        "Execution"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Execution"
+      },
+      "tags": [
+        "strategy",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Stop Management\n- [ ] Fixed stop\n- [ ] ATR stop (default)\n- [ ] Trailing stop with breakeven\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Summary: Gold Standard Checklist::Stop Management",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example usage:",
+        "Summary: Gold Standard Checklist",
+        "Stop Management"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Stop Management"
+      },
+      "tags": [
+        "risk"
+      ]
+    },
+    {
+      "content": "### Target Management\n- [ ] Fixed R target\n- [ ] ATR target\n- [ ] Partial targets (scale out)\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Summary: Gold Standard Checklist::Target Management",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example usage:",
+        "Summary: Gold Standard Checklist",
+        "Target Management"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Target Management"
+      },
+      "tags": [
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### Advanced\n- [ ] Pyramiding (add to winners)\n- [ ] Capital recycling\n- [ ] Kelly-based sizing\n\n---\n\n**Document Status**: COMPLETE\n**Version**: 1.0\n**Last Updated**: 2026-01-29\n",
+      "chunk_id": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md::Example usage:::Summary: Gold Standard Checklist::Advanced",
+      "source_file": "EDGEDEV_INDICATORS_EXECUTION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "Example usage:",
+        "Summary: Gold Standard Checklist",
+        "Advanced"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Advanced"
+      },
+      "tags": [
+        "position",
+        "pyramiding"
+      ]
+    }
+  ]
+}

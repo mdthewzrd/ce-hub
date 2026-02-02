@@ -1,0 +1,5 @@
+{
+  "uploaded_code": "import pandas as pd\nimport asyncio\n\nasync def main():\n    print(\"LC D2 sophisticated scanner execution test\")\n    # Simulate sophisticated LC D2 scanner logic\n    df_lc = [\n        {\"ticker\": \"QNTM\", \"score\": 85.5, \"date\": \"2024-10-25\"},\n        {\"ticker\": \"RGTI\", \"score\": 78.2, \"date\": \"2024-10-25\"}\n    ]\n    await asyncio.sleep(0.1)\n    print(f\"Found {len(df_lc)} LC candidates\")\n    return df_lc\n\nif __name__ == \"__main__\":\n    import asyncio\n    asyncio.run(main())",
+  "start_date": "2024-01-01",
+  "end_date": "2024-12-31"
+}

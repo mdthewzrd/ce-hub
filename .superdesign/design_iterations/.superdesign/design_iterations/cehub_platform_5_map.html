@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CE-Hub Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xyflow/react@latest/dist/style.css">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@xyflow/react@latest/dist/umd/index.js"></script>
+    <style>
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --bg-tertiary: #111111;
+            --bg-elevated: #1a1a1a;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-default: rgba(255, 255, 255, 0.1);
+            --border-strong: rgba(255, 255, 255, 0.15);
+            --text-primary: #ededed;
+            --text-secondary: #a1a1a1;
+            --text-tertiary: #737373;
+            --text-muted: #525252;
+            --accent-primary: #ffffff;
+            --accent-success: #22c55e;
+            --accent-warning: #eab308;
+            --accent-error: #ef4444;
+            --accent-info: #3b82f6;
+            --glow-subtle: 0 0 20px rgba(255,255,255,0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        /* Map Container */
+        .workflow-map-container {
+            width: 100%;
+            min-height: 500px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Map Path */
+        .map-path {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(34, 197, 94, 0.3) 0%,
+                rgba(34, 197, 94, 0.3) 50%,
+                rgba(113, 112, 255, 0.3) 50%,
+                rgba(113, 112, 255, 0.3) 55%,
+                rgba(255, 255, 255, 0.08) 55%,
+                rgba(255, 255, 255, 0.08) 100%
+            );
+            border-radius: 2px;
+        }
+
+        /* Phase Node */
+        .map-phase {
+            position: relative;
+            width: 280px;
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .map-phase:hover {
+            border-color: var(--border-default);
+            transform: scale(1.02);
+        }
+
+        .map-phase.completed {
+            border-color: rgba(34, 197, 94, 0.3);
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, var(--bg-elevated) 100%);
+        }
+
+        .map-phase.active {
+            border-color: rgba(113, 112, 255, 0.5);
+            background: linear-gradient(135deg, rgba(113, 112, 255, 0.1) 0%, var(--bg-elevated) 100%);
+            box-shadow: 0 0 40px rgba(113, 112, 255, 0.15);
+        }
+
+        .map-phase.pending {
+            border-color: var(--border-subtle);
+            opacity: 0.5;
+        }
+
+        /* Phase Indicator on Path */
+        .phase-marker {
+            position: absolute;
+            left: -158px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .map-phase.completed .phase-marker {
+            background: var(--accent-success);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .map-phase.active .phase-marker {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            animation: pulse-marker 2s ease-in-out infinite;
+        }
+
+        .map-phase.pending .phase-marker {
+            background: var(--border-default);
+            color: var(--text-muted);
+        }
+
+        @keyframes pulse-marker {
+            0%, 100% { transform: translateY(-50%) scale(1); box-shadow: 0 0 30px rgba(255, 255, 255, 0.3); }
+            50% { transform: translateY(-50%) scale(1.1); box-shadow: 0 0 40px rgba(255, 255, 255, 0.5); }
+        }
+
+        /* Phase Content */
+        .phase-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .phase-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .map-phase.completed .phase-status {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--accent-success);
+        }
+
+        .map-phase.active .phase-status {
+            background: rgba(113, 112, 255, 0.15);
+            color: var(--accent-primary);
+        }
+
+        .map-phase.pending .phase-status {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+        }
+
+        /* Task Progress */
+        .phase-tasks {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .task-progress {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .task-progress-bar {
+            flex: 1;
+            height: 4px;
+            background: var(--border-subtle);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .task-progress-fill {
+            height: 100%;
+            background: var(--accent-success);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .map-phase.active .task-progress-fill {
+            background: var(--accent-primary);
+        }
+
+        /* You Are Here Badge */
+        .you-are-here-badge {
+            position: absolute;
+            right: -12px;
+            top: -12px;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            animation: bounce-in 0.5s ease;
+        }
+
+        @keyframes bounce-in {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Navigation Buttons */
+        .map-navigation {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-default);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--border-strong);
+            color: var(--text-primary);
+        }
+
+        /* Progress Summary */
+        .map-progress-summary {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 16px;
+            min-width: 180px;
+        }
+
+        .summary-title {
+            font-size: 11px;
+            color: var(--text-tertiary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .summary-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .summary-stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .summary-stat-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .summary-stat-value.highlight {
+            color: var(--accent-primary);
+        }
+
+        /* Platform Layout */
+        .platform-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr 320px;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-subtle);
+            padding: 20px;
+        }
+
+        .main-content {
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .right-panel {
+            background: var(--bg-secondary);
+            border-left: 1px solid var(--border-subtle);
+            padding: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="platform-layout">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="mb-8">
+                <h2 class="text-lg font-bold mb-1">CE-Hub</h2>
+                <p class="text-xs" style="color: var(--text-tertiary);">Context Engineering</p>
+            </div>
+
+            <nav class="space-y-2">
+                <div class="p-3 rounded-lg" style="background: var(--bg-elevated); border: 1px solid var(--border-subtle);">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="folder" class="w-4 h-4" style="color: var(--accent-success);"></i>
+                        <div class="flex-1">
+                            <div class="text-sm font-medium">CE-Hub Platform</div>
+                            <div class="text-xs" style="color: var(--text-tertiary);">PRODUCE Phase</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-3 rounded-lg" style="border: 1px solid var(--border-subtle);">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="folder" class="w-4 h-4" style="color: var(--text-muted);"></i>
+                        <div class="flex-1">
+                            <div class="text-sm font-medium" style="color: var(--text-secondary);">Trading Scanner</div>
+                            <div class="text-xs" style="color: var(--text-tertiary);">PLAN Phase</div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="section-header">
+                <span class="section-title">Workflow Map</span>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs" style="color: var(--text-tertiary);">PRODUCE • 55%</span>
+                </div>
+            </div>
+
+            <!-- Map Container -->
+            <div class="workflow-map-container">
+                <!-- Path Line -->
+                <div class="map-path"></div>
+
+                <!-- Progress Summary -->
+                <div class="map-progress-summary">
+                    <div class="summary-title">Your Journey</div>
+                    <div class="summary-stat">
+                        <span class="summary-stat-label">Progress</span>
+                        <span class="summary-stat-value highlight">55%</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="summary-stat-label">Completed</span>
+                        <span class="summary-stat-value">2/4</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="summary-stat-label">Current</span>
+                        <span class="summary-stat-value">PRODUCE</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="summary-stat-label">Tasks Left</span>
+                        <span class="summary-stat-value">12</span>
+                    </div>
+                </div>
+
+                <!-- Phase 1: PLAN (Completed) -->
+                <div class="map-phase completed" data-phase="plan">
+                    <div class="phase-marker">✓</div>
+                    <div class="phase-name">PLAN</div>
+                    <div class="phase-status">
+                        <i data-lucide="check-circle" class="w-3 h-3"></i>
+                        <span>Completed</span>
+                    </div>
+                    <div class="phase-tasks">
+                        <div>All tasks completed</div>
+                        <div class="task-progress">
+                            <div class="task-progress-bar">
+                                <div class="task-progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <span>3/3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2: RESEARCH (Completed) -->
+                <div class="map-phase completed" data-phase="research">
+                    <div class="phase-marker">✓</div>
+                    <div class="phase-name">RESEARCH</div>
+                    <div class="phase-status">
+                        <i data-lucide="check-circle" class="w-3 h-3"></i>
+                        <span>Completed</span>
+                    </div>
+                    <div class="phase-tasks">
+                        <div>Patterns identified & documented</div>
+                        <div class="task-progress">
+                            <div class="task-progress-bar">
+                                <div class="task-progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <span>4/4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3: PRODUCE (Active) -->
+                <div class="map-phase active" data-phase="produce">
+                    <div class="you-are-here-badge">YOU ARE HERE</div>
+                    <div class="phase-marker">→</div>
+                    <div class="phase-name">PRODUCE</div>
+                    <div class="phase-status">
+                        <i data-lucide="clock" class="w-3 h-3"></i>
+                        <span>In Progress</span>
+                    </div>
+                    <div class="phase-tasks">
+                        <div>Building Guardian UI components</div>
+                        <div class="task-progress">
+                            <div class="task-progress-bar">
+                                <div class="task-progress-fill" style="width: 55%;"></div>
+                            </div>
+                            <span>3/6</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4: INGEST (Pending) -->
+                <div class="map-phase pending" data-phase="ingest">
+                    <div class="phase-marker">4</div>
+                    <div class="phase-name">INGEST</div>
+                    <div class="phase-status">
+                        <i data-lucide="lock" class="w-3 h-3"></i>
+                        <span>Locked</span>
+                    </div>
+                    <div class="phase-tasks">
+                        <div>Complete PRODUCE phase to unlock</div>
+                        <div class="task-progress">
+                            <div class="task-progress-bar">
+                                <div class="task-progress-fill" style="width: 0%;"></div>
+                            </div>
+                            <span>0/3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="map-navigation">
+                    <button class="nav-btn" onclick="scrollToPhase('plan')">
+                        <i data-lucide="arrow-up" class="w-3 h-3 inline mr-1"></i>
+                        Back to Plan
+                    </button>
+                    <button class="nav-btn" onclick="scrollToPhase('produce')">
+                        <i data-lucide="crosshair" class="w-3 h-3 inline mr-1"></i>
+                        Current
+                    </button>
+                    <button class="nav-btn" onclick="scrollToPhase('ingest')" style="opacity: 0.5; cursor: not-allowed;" disabled>
+                        <i data-lucide="arrow-down" class="w-3 h-3 inline mr-1"></i>
+                        Next Phase
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="right-panel">
+            <div class="mb-6">
+                <h3 class="text-sm font-medium mb-4">Current Task</h3>
+                <div class="p-4 rounded-lg" style="background: var(--bg-elevated); border: 1px solid var(--border-subtle);">
+                    <div class="text-xs mb-2" style="color: var(--accent-primary);">PRODUCE-2</div>
+                    <div class="text-sm font-medium mb-2">Create Guardian UI Components</div>
+                    <div class="text-xs" style="color: var(--text-tertiary);">
+                        Build the interface for Guardian agent warnings and guidance
+                    </div>
+                    <div class="mt-4 pt-4" style="border-top: 1px solid var(--border-subtle);">
+                        <div class="flex items-center justify-between text-xs mb-2">
+                            <span style="color: var(--text-secondary);">Progress</span>
+                            <span style="color: var(--text-primary);">60%</span>
+                        </div>
+                        <div class="w-full h-1" style="background: var(--border-subtle); border-radius: 1px;">
+                            <div class="h-full" style="background: var(--accent-primary); width: 60%; border-radius: 1px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-sm font-medium mb-4">Quick Actions</h3>
+                <div class="space-y-2">
+                    <button class="w-full p-3 text-left rounded-lg text-sm flex items-center gap-2" style="background: var(--bg-elevated); border: 1px solid var(--border-subtle);">
+                        <i data-lucide="message-square" class="w-4 h-4"></i>
+                        <span>Ask Guardian</span>
+                    </button>
+                    <button class="w-full p-3 text-left rounded-lg text-sm flex items-center gap-2" style="background: var(--bg-elevated); border: 1px solid var(--border-subtle);">
+                        <i data-lucide="file-text" class="w-4 h-4"></i>
+                        <span>View Documentation</span>
+                    </button>
+                    <button class="w-full p-3 text-left rounded-lg text-sm flex items-center gap-2" style="background: var(--bg-elevated); border: 1px solid var(--border-subtle);">
+                        <i data-lucide="git-branch" class="w-4 h-4"></i>
+                        <span>View in Archon</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Scroll to phase function
+        function scrollToPhase(phaseId) {
+            const phase = document.querySelector(`[data-phase="${phaseId}"]`);
+            if (phase) {
+                phase.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Add click handlers to phases
+        document.querySelectorAll('.map-phase').forEach(phase => {
+            phase.addEventListener('click', () => {
+                const phaseName = phase.querySelector('.phase-name').textContent;
+                console.log(`Clicked on ${phaseName} phase`);
+                // Could open phase details or navigate
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1400" width="1400" height="1400">
+  <defs>
+    <radialGradient id="spaceGradient" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" style="stop-color:#1a237e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0e27;stop-opacity:1" />
+    </radialGradient>
+
+    <filter id="violetGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffed4e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffd700;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1400" height="1400" fill="url(#spaceGradient)" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Prata&amp;display=swap');
+  </style>
+
+  <!-- Title - Clean, Bold, Unique Font -->
+  <text x="700" y="100" text-anchor="middle" font-family="Prata, serif" font-size="56" font-weight="400" fill="#ffd700" letter-spacing="6">THE GOLDEN RATIO</text>
+
+  <!-- Fibonacci Spiral - Large, Centered, Clean -->
+  <g transform="translate(700, 750)">
+    <!-- Large golden rectangles forming spiral -->
+    <g fill="none" stroke="url(#goldGradient)" stroke-width="3" opacity="0.9">
+      <rect x="-10" y="-10" width="20" height="20" />
+      <rect x="-10" y="-30" width="20" height="20" />
+      <rect x="-50" y="-30" width="40" height="40" />
+      <rect x="-50" y="10" width="60" height="60" />
+      <rect x="50" y="-110" width="100" height="100" />
+      <rect x="-150" y="10" width="160" height="160" />
+    </g>
+
+    <!-- Golden Spiral -->
+    <path d="M 0,0
+             Q 0,-20 -10,-20
+             Q -50,-20 -50,30
+             Q -50,90 10,90
+             Q 110,90 110,-30
+             Q 110,-150 -80,-150
+             Q -200,-150 -200,50"
+          fill="none"
+          stroke="#7b1fa2"
+          stroke-width="5"
+          stroke-linecap="round"
+          filter="url(#violetGlow)"/>
+  </g>
+
+  <!-- Phi Symbol - Prominent -->
+  <g transform="translate(700, 1100)">
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.5"/>
+    <text x="0" y="25" text-anchor="middle" font-family="Cinzel, serif" font-size="72" font-weight="700" fill="#ffd700">φ</text>
+    <text x="0" y="60" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="400" fill="#ffffff" opacity="0.9">1.6180339887...</text>
+  </g>
+
+  <!-- Minimal Fibonacci Sequence -->
+  <g transform="translate(700, 1280)">
+    <text x="0" y="0" text-anchor="middle" font-family="Space Mono, monospace" font-size="20" fill="#ffd700" opacity="0.8" letter-spacing="2">1 · 1 · 2 · 3 · 5 · 8 · 13 · 21 · 34 · 55 · 89 · 144</text>
+  </g>
+
+  <!-- Subtle corner accents -->
+  <g stroke="#ffd700" stroke-width="1" fill="none" opacity="0.2">
+    <path d="M50,150 L50,50 L150,50" />
+    <path d="M1350,150 L1350,50 L1250,50" />
+    <path d="M50,1250 L50,1350 L150,1350" />
+    <path d="M1350,1250 L1350,1350 L1250,1350" />
+  </g>
+</svg>

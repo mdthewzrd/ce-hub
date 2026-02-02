@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Claude Terminal - Background Mode</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+        }
+        .header {
+            background: #1a1a1a;
+            padding: 8px 10px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #444;
+        }
+        .status-indicator.online { background: #00ff00; box-shadow: 0 0 10px #00ff00; }
+        .status-indicator.working { background: #ffa657; animation: pulse 1s infinite; }
+        .status-indicator.offline { background: #ff0000; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .terminal {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            line-height: 1.5;
+        }
+        .terminal div { margin-bottom: 8px; white-space: pre-wrap; word-wrap: break-word; }
+        .prompt { color: #0f0; }
+        .user-input { color: #fff; }
+        .ai-response { color: #ffa657; }
+        .status { color: #666; font-size: 11px; }
+        .input-line {
+            display: flex;
+            align-items: center;
+            background: #000;
+            padding: 10px 15px;
+            border-top: 1px solid #222;
+        }
+        .prompt-symbol { color: #0f0; margin-right: 8px; font-weight: bold; }
+        #terminal-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            outline: none;
+        }
+        .bg-mode-bar {
+            background: #1a1a1a;
+            padding: 8px;
+            display: flex;
+            gap: 8px;
+            border-top: 1px solid #333;
+            font-size: 10px;
+        }
+        .bg-btn {
+            flex: 1;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #888;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .bg-btn:active { background: #3a3a3a; }
+        .bg-btn.active { background: #ffa657; color: #000; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="status-indicator" id="status-indicator"></div>
+            <span style="font-size: 10px; color: #666;" id="status-text">Connecting...</span>
+        </div>
+        <span style="font-size: 10px; color: #666;">GLM 4.6</span>
+    </div>
+
+    <div class="terminal" id="terminal">
+        <div style="color: #666;">Claude Terminal - Background Mode</div>
+        <div style="color: #666;">Close browser, Claude keeps working</div>
+        <div id="loading-msg" style="color: #666;">Loading...</div>
+    </div>
+
+    <div class="bg-mode-bar">
+        <button class="bg-btn" id="sync-btn" onclick="syncChat()">🔄 Sync Now</button>
+        <button class="bg-btn" id="bg-mode-btn" onclick="toggleBgMode()">Background: OFF</button>
+    </div>
+
+    <div class="input-line">
+        <span class="prompt-symbol">></span>
+        <input type="text" id="terminal-input" placeholder="Type message..." />
+    </div>
+
+    <script>
+        const SERVER_URL = 'http://100.95.223.19:8115';
+        let currentSessionId = localStorage.getItem('claudeTerminalSession') || 'terminal-' + Date.now();
+        localStorage.setItem('claudeTerminalSession', currentSessionId);
+        let backgroundMode = false;
+        let isOnline = false;
+        let syncInterval = null;
+
+        const terminal = document.getElementById('terminal');
+        const input = document.getElementById('terminal-input');
+        const statusIndicator = document.getElementById('status-indicator');
+        const statusText = document.getElementById('status-text');
+        const bgModeBtn = document.getElementById('bg-mode-btn');
+
+        function setOnline(online) {
+            isOnline = online;
+            if (online) {
+                statusIndicator.className = 'status-indicator online';
+                statusText.textContent = 'Connected';
+            } else {
+                statusIndicator.className = 'status-indicator offline';
+                statusText.textContent = 'Offline';
+            }
+        }
+
+        function setWorking(working) {
+            if (working) {
+                statusIndicator.className = 'status-indicator working';
+                statusText.textContent = 'Claude working...';
+            } else if (isOnline) {
+                statusIndicator.className = 'status-indicator online';
+                statusText.textContent = 'Connected';
+            }
+        }
+
+        async function checkStatus() {
+            try {
+                const response = await fetch(SERVER_URL + '/health', {
+                    method: 'GET',
+                    cache: 'no-cache',
+                    signal: AbortSignal.timeout(3000)
+                });
+                setOnline(response.ok);
+                return response.ok;
+            } catch (e) {
+                setOnline(false);
+                return false;
+            }
+        }
+
+        async function syncChat() {
+            if (!isOnline) {
+                terminal.innerHTML += `<div class="status">⚠️ Server offline - cannot sync</div>`;
+                return;
+            }
+
+            terminal.innerHTML += `<div class="status">🔄 Syncing...</div>`;
+            terminal.scrollTop = terminal.scrollHeight;
+
+            try {
+                const response = await fetch(SERVER_URL + '/load-conversation?id=' + currentSessionId);
+                const data = await response.json();
+
+                if (data.success) {
+                    const msgCount = data.conversation.messages.length;
+                    terminal.innerHTML = '';
+                    data.conversation.messages.forEach(msg => {
+                        if (msg.question) {
+                            terminal.innerHTML += `<div><span class="prompt">></span> <span class="user-input">${msg.question}</span></div>`;
+                        }
+                        if (msg.response) {
+                            terminal.innerHTML += `<div class="ai-response">${msg.response}</div>`;
+                        }
+                    });
+                    terminal.innerHTML += `<div></div>`;
+                    terminal.innerHTML += `<div class="status">✓ Synced (${msgCount} messages)</div>`;
+                    terminal.innerHTML += `<div></div>`;
+                } else {
+                    terminal.innerHTML += `<div class="status">No messages yet</div>`;
+                }
+            } catch (e) {
+                terminal.innerHTML += `<div class="status">Sync failed</div>`;
+            }
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function toggleBgMode() {
+            backgroundMode = !backgroundMode;
+            if (backgroundMode) {
+                bgModeBtn.textContent = 'Background: ON';
+                bgModeBtn.classList.add('active');
+                terminal.innerHTML += `<div class="status">🟢 Background mode ON</div>`;
+                terminal.innerHTML += `<div class="status">Close browser, Claude keeps working</div>`;
+                terminal.innerHTML += `<div class="status">Click "Sync Now" when you return</div>`;
+                terminal.innerHTML += `<div></div>`;
+
+                // Auto-sync every 5 seconds in background mode
+                if (syncInterval) clearInterval(syncInterval);
+                syncInterval = setInterval(syncChat, 5000);
+            } else {
+                bgModeBtn.textContent = 'Background: OFF';
+                bgModeBtn.classList.remove('active');
+                terminal.innerHTML += `<div class="status">🔴 Background mode OFF</div>`;
+                if (syncInterval) {
+                    clearInterval(syncInterval);
+                    syncInterval = null;
+                }
+            }
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        input.addEventListener('keypress', async (e) => {
+            if (e.key === 'Enter') {
+                const command = input.value.trim();
+                if (!command) return;
+
+                terminal.innerHTML += `<div><span class="prompt">></span> <span class="user-input">${command}</span></div>`;
+                input.value = '';
+                terminal.innerHTML += `<div class="status">Sending...</div>`;
+                terminal.scrollTop = terminal.scrollHeight;
+
+                try {
+                    setWorking(true);
+                    const response = await fetch(SERVER_URL + '/claude-chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            question: command,
+                            model: 'glm-4.6',
+                            provider: 'claude-code',
+                            session_id: currentSessionId
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    // Remove status messages
+                    terminal.querySelectorAll('.status').forEach(el => el.remove());
+
+                    if (data.error) {
+                        terminal.innerHTML += `<div style="color: #f85149;">Error: ${data.output || data.message}</div>`;
+                    } else {
+                        terminal.innerHTML += `<div class="ai-response">${data.output}</div>`;
+                    }
+
+                    terminal.innerHTML += `<div></div>`;
+                    terminal.scrollTop = terminal.scrollHeight;
+                    setWorking(false);
+
+                } catch (error) {
+                    terminal.querySelectorAll('.status').forEach(el => el.remove());
+                    terminal.innerHTML += `<div style="color: #f85149;">Connection Error</div>`;
+                    terminal.innerHTML += `<div class="status">Request queued - will send when connected</div>`;
+                    terminal.innerHTML += `<div></div>`;
+                    terminal.scrollTop = terminal.scrollHeight;
+                    setWorking(false);
+                    setOnline(false);
+                }
+            }
+        });
+
+        // Save terminal content
+        function saveTerminal() {
+            localStorage.setItem('claudeTerminalContent', terminal.innerHTML);
+        }
+
+        // Initialize
+        window.addEventListener('load', async () => {
+            terminal.innerHTML = '<div style="color: #666;">Claude Terminal - Background Mode</div><div style="color: #666;">Loading...</div>';
+
+            const online = await checkStatus();
+
+            if (online) {
+                await syncChat();
+            } else {
+                const saved = localStorage.getItem('claudeTerminalContent');
+                if (saved) {
+                    terminal.innerHTML = saved;
+                    terminal.innerHTML += `<div class="status">⚠️ Offline - showing cached content</div>`;
+                    terminal.innerHTML += `<div></div>`;
+                } else {
+                    terminal.innerHTML = '<div style="color: #666;">Claude Terminal - Background Mode</div><div style="color: #f85149;">Server offline</div><div></div>';
+                }
+            }
+
+            terminal.scrollTop = terminal.scrollHeight;
+            saveTerminal();
+
+            // Keep checking status
+            setInterval(checkStatus, 5000);
+            setInterval(saveTerminal, 5000);
+
+            input.focus();
+        });
+
+        // Save before leaving
+        window.addEventListener('beforeunload', saveTerminal);
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && backgroundMode) {
+                saveTerminal();
+            }
+        });
+    </script>
+</body>
+</html>

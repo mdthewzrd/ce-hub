@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile VS Code Dark Mode Injector</title>
+</head>
+<body style="background: #1e1e1e; color: #d4d4d4; font-family: monospace; padding: 20px;">
+    <h1>📱 Mobile VS Code Dark Mode Injector</h1>
+
+    <p>Copy and paste this JavaScript into your browser console on the VS Code page to instantly apply dark mode and mobile optimizations:</p>
+
+    <div style="background: #2d2d30; padding: 15px; border-radius: 5px; margin: 20px 0; overflow-x: auto;">
+        <code style="white-space: pre-wrap; font-size: 12px;" id="injector-code">
+// Mobile VS Code Dark Mode & Mobile Optimization Injector
+(function() {
+    console.log('🌙 Applying Mobile Dark Mode...');
+
+    // Create and inject CSS
+    const style = document.createElement('style');
+    style.id = 'mobile-dark-override';
+    style.innerHTML = `
+        /* FORCE DARK MODE - MOBILE OPTIMIZED */
+        body, .monaco-workbench, .monaco-editor, .monaco-editor-background {
+            background-color: #1e1e1e !important;
+            color: #d4d4d4 !important;
+        }
+
+        /* Activity Bar - Dark */
+        .monaco-workbench .part.activitybar {
+            background-color: #1e1e1e !important;
+            border-right: 1px solid #2d2d30 !important;
+        }
+        .monaco-workbench .part.activitybar .composite-bar .action-item {
+            color: #cccccc !important;
+            min-width: 48px !important;
+            min-height: 48px !important;
+            padding: 8px !important;
+        }
+        .monaco-workbench .part.activitybar .composite-bar .action-item.active {
+            background-color: #007acc !important;
+            color: #ffffff !important;
+        }
+
+        /* Sidebar - Dark */
+        .monaco-workbench .part.sidebar {
+            background-color: #252526 !important;
+            color: #cccccc !important;
+        }
+
+        /* Editor - Dark */
+        .monaco-editor, .monaco-editor .margin, .monaco-editor .monaco-editor-background {
+            background-color: #1e1e1e !important;
+            color: #d4d4d4 !important;
+            font-size: 16px !important;
+            line-height: 24px !important;
+        }
+
+        /* Hide minimap on mobile */
+        .monaco-editor .minimap {
+            display: none !important;
+        }
+
+        /* Panel - Dark */
+        .monaco-workbench .part.panel {
+            background-color: #1e1e1e !important;
+            color: #d4d4d4 !important;
+        }
+
+        /* Status Bar - Dark */
+        .monaco-workbench .part.statusbar {
+            background-color: #007acc !important;
+            color: #ffffff !important;
+        }
+
+        /* Title Bar - Dark */
+        .monaco-workbench .part.titlebar {
+            background-color: #3c3c3c !important;
+            color: #cccccc !important;
+        }
+
+        /* Tabs - Dark */
+        .monaco-workbench .part.editor .content .tab {
+            background-color: #2d2d30 !important;
+            color: #ffffff !important;
+            min-width: 120px !important;
+            font-size: 14px !important;
+            padding: 8px 12px !important;
+        }
+        .monaco-workbench .part.editor .content .tab.active {
+            background-color: #1e1e1e !important;
+            color: #ffffff !important;
+        }
+
+        /* Mobile Portrait Optimizations */
+        @media (max-width: 768px) and (orientation: portrait) {
+            .monaco-editor {
+                font-size: 16px !important;
+                line-height: 24px !important;
+            }
+            .monaco-workbench .part.sidebar {
+                font-size: 14px !important;
+            }
+            .monaco-scrollable-element > .scrollbar {
+                width: 14px !important;
+                height: 14px !important;
+            }
+            .xterm {
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+            }
+        }
+
+        /* Terminal - Dark */
+        .xterm {
+            background-color: #1e1e1e !important;
+            color: #d4d4d4 !important;
+        }
+        .xterm .xterm-viewport {
+            background-color: #1e1e1e !important;
+        }
+
+        /* Menu and Context Menus - Dark */
+        .monaco-menu {
+            background-color: #2d2d30 !important;
+            color: #cccccc !important;
+            border: 1px solid #464647 !important;
+        }
+        .monaco-menu .monaco-action-bar .action-item .action-label {
+            color: #cccccc !important;
+        }
+        .monaco-menu .monaco-action-bar .action-item .action-label:hover {
+            background-color: #094771 !important;
+            color: #ffffff !important;
+        }
+
+        /* Input Elements - Dark */
+        .monaco-dropdown, .monaco-inputbox {
+            background-color: #3c3c3c !important;
+            color: #cccccc !important;
+            border: 1px solid #464647 !important;
+        }
+
+        /* Force all borders to be dark */
+        * {
+            border-color: #464647 !important;
+        }
+    `;
+
+    // Remove existing override if present
+    const existing = document.getElementById('mobile-dark-override');
+    if (existing) existing.remove();
+
+    // Add new styles
+    document.head.appendChild(style);
+
+    // Force theme change through VS Code API if available
+    if (window.vscode) {
+        try {
+            window.vscode.postMessage({
+                command: 'setTheme',
+                theme: 'Default Dark+'
+            });
+        } catch (e) {
+            console.log('VS Code API not available, using CSS override');
+        }
+    }
+
+    console.log('✅ Mobile Dark Mode Applied!');
+    console.log('📱 Mobile optimizations active for portrait mode');
+
+})();
+        </code>
+    </div>
+
+    <h2>🚀 How to Use:</h2>
+    <ol style="line-height: 1.6;">
+        <li>Go to your NEW VS Code URL: <strong>https://michaels-macbook-pro-2.tail6d4c6d.ts.net:8092/</strong></li>
+        <li>Login with password: <strong>ce-hub-dev</strong></li>
+        <li>VS Code should now have mobile optimizations applied automatically</li>
+        <li>If you still see light mode or desktop layout, open browser console and run the JavaScript above</li>
+        <li><strong>The NEW URL (8092) has fresh mobile settings!</strong></li>
+    </ol>
+
+    <h2>⚡ Quick Copy Button:</h2>
+    <button onclick="copyToClipboard()" style="background: #007acc; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
+        📋 Copy JavaScript Code
+    </button>
+
+    <p style="margin-top: 20px; color: #ffcc00;">
+        <strong>Note:</strong> This instantly applies dark mode and mobile optimizations without needing to restart VS Code or wait for settings to reload.
+    </p>
+
+    <script>
+        function copyToClipboard() {
+            const code = document.getElementById('injector-code').textContent;
+            navigator.clipboard.writeText(code).then(function() {
+                alert('✅ JavaScript code copied to clipboard! Now paste it in VS Code browser console.');
+            }, function(err) {
+                alert('❌ Failed to copy. Please manually select and copy the code.');
+            });
+        }
+    </script>
+</body>
+</html>

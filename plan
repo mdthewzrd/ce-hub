@@ -1,0 +1,4 @@
+#!/bin/bash
+# Quick command to show your master plan and current status
+
+cat "/Users/michaeldurante/ai dev/ce-hub/MASTER_PLAN.md"

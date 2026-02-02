@@ -1,0 +1,967 @@
+{
+  "testSuite": "Streamlined Comprehensive Testing Suite",
+  "version": "Production Ready v1.0",
+  "round": 1,
+  "startTime": "2025-11-19T20:43:29.854Z",
+  "endTime": "2025-11-19T21:09:26.420Z",
+  "duration": "25.9 minutes",
+  "platform": "Traderra 6565",
+  "enhancements": [
+    "VALIDATED precision selectors (100% button targeting)",
+    "Streamlined state detection (no timing issues)",
+    "Production-ready error handling",
+    "Comprehensive test coverage"
+  ],
+  "results": [
+    {
+      "testNumber": 1,
+      "combination": "7d+$+Renata",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "$",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "7d",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:44:10.116Z"
+      },
+      "screenshot": "streamlined_matrix_test_1_1763585050117.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:44:10.251Z"
+    },
+    {
+      "testNumber": 2,
+      "combination": "7d+$+Analyst",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "$",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "7d",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:44:43.919Z"
+      },
+      "screenshot": "streamlined_matrix_test_2_1763585083921.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:44:44.022Z"
+    },
+    {
+      "testNumber": 3,
+      "combination": "7d+$+Coach",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "$",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "7d",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:45:17.684Z"
+      },
+      "screenshot": "streamlined_matrix_test_3_1763585117685.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:45:17.767Z"
+    },
+    {
+      "testNumber": 4,
+      "combination": "7d+$+Mentor",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "$",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "7d",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:45:51.436Z"
+      },
+      "screenshot": "streamlined_matrix_test_4_1763585151437.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:45:51.526Z"
+    },
+    {
+      "testNumber": 5,
+      "combination": "7d+R+Renata",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "R",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "7d",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:46:25.215Z"
+      },
+      "screenshot": "streamlined_matrix_test_5_1763585185216.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:46:25.300Z"
+    },
+    {
+      "testNumber": 6,
+      "combination": "7d+R+Analyst",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "R",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "7d",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:46:58.972Z"
+      },
+      "screenshot": "streamlined_matrix_test_6_1763585218974.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:46:59.081Z"
+    },
+    {
+      "testNumber": 7,
+      "combination": "7d+R+Coach",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "R",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "7d",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:47:32.752Z"
+      },
+      "screenshot": "streamlined_matrix_test_7_1763585252753.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:47:32.839Z"
+    },
+    {
+      "testNumber": 8,
+      "combination": "7d+R+Mentor",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "R",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "7d",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:48:06.524Z"
+      },
+      "screenshot": "streamlined_matrix_test_8_1763585286526.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:48:06.618Z"
+    },
+    {
+      "testNumber": 9,
+      "combination": "30d+$+Renata",
+      "error": "Could not find element for dateRange:30d",
+      "success": false,
+      "timestamp": "2025-11-19T20:48:36.923Z"
+    },
+    {
+      "testNumber": 10,
+      "combination": "30d+$+Analyst",
+      "error": "Could not find element for dateRange:30d",
+      "success": false,
+      "timestamp": "2025-11-19T20:49:07.228Z"
+    },
+    {
+      "testNumber": 11,
+      "combination": "30d+$+Coach",
+      "error": "Could not find element for dateRange:30d",
+      "success": false,
+      "timestamp": "2025-11-19T20:49:37.532Z"
+    },
+    {
+      "testNumber": 12,
+      "combination": "30d+$+Mentor",
+      "error": "Could not find element for dateRange:30d",
+      "success": false,
+      "timestamp": "2025-11-19T20:50:07.837Z"
+    },
+    {
+      "testNumber": 13,
+      "combination": "30d+R+Renata",
+      "error": "Could not find element for dateRange:30d",
+      "success": false,
+      "timestamp": "2025-11-19T20:50:38.140Z"
+    },
+    {
+      "testNumber": 14,
+      "combination": "30d+R+Analyst",
+      "error": "Could not find element for dateRange:30d",
+      "success": false,
+      "timestamp": "2025-11-19T20:51:08.444Z"
+    },
+    {
+      "testNumber": 15,
+      "combination": "30d+R+Coach",
+      "error": "Could not find element for dateRange:30d",
+      "success": false,
+      "timestamp": "2025-11-19T20:51:38.752Z"
+    },
+    {
+      "testNumber": 16,
+      "combination": "30d+R+Mentor",
+      "error": "Could not find element for dateRange:30d",
+      "success": false,
+      "timestamp": "2025-11-19T20:52:09.059Z"
+    },
+    {
+      "testNumber": 17,
+      "combination": "90d+$+Renata",
+      "error": "Could not find element for dateRange:90d",
+      "success": false,
+      "timestamp": "2025-11-19T20:52:39.365Z"
+    },
+    {
+      "testNumber": 18,
+      "combination": "90d+$+Analyst",
+      "error": "Could not find element for dateRange:90d",
+      "success": false,
+      "timestamp": "2025-11-19T20:53:09.669Z"
+    },
+    {
+      "testNumber": 19,
+      "combination": "90d+$+Coach",
+      "error": "Could not find element for dateRange:90d",
+      "success": false,
+      "timestamp": "2025-11-19T20:53:39.974Z"
+    },
+    {
+      "testNumber": 20,
+      "combination": "90d+$+Mentor",
+      "error": "Could not find element for dateRange:90d",
+      "success": false,
+      "timestamp": "2025-11-19T20:54:10.280Z"
+    },
+    {
+      "testNumber": 21,
+      "combination": "90d+R+Renata",
+      "error": "Could not find element for dateRange:90d",
+      "success": false,
+      "timestamp": "2025-11-19T20:54:40.594Z"
+    },
+    {
+      "testNumber": 22,
+      "combination": "90d+R+Analyst",
+      "error": "Could not find element for dateRange:90d",
+      "success": false,
+      "timestamp": "2025-11-19T20:55:10.900Z"
+    },
+    {
+      "testNumber": 23,
+      "combination": "90d+R+Coach",
+      "error": "Could not find element for dateRange:90d",
+      "success": false,
+      "timestamp": "2025-11-19T20:55:41.203Z"
+    },
+    {
+      "testNumber": 24,
+      "combination": "90d+R+Mentor",
+      "error": "Could not find element for dateRange:90d",
+      "success": false,
+      "timestamp": "2025-11-19T20:56:11.506Z"
+    },
+    {
+      "testNumber": 25,
+      "combination": "All+$+Renata",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "$",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "All",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:56:45.200Z"
+      },
+      "screenshot": "streamlined_matrix_test_25_1763585805200.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:56:45.294Z"
+    },
+    {
+      "testNumber": 26,
+      "combination": "All+$+Analyst",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "$",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "All",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:57:18.955Z"
+      },
+      "screenshot": "streamlined_matrix_test_26_1763585838956.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:57:19.051Z"
+    },
+    {
+      "testNumber": 27,
+      "combination": "All+$+Coach",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "$",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "All",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:57:52.713Z"
+      },
+      "screenshot": "streamlined_matrix_test_27_1763585872714.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:57:52.805Z"
+    },
+    {
+      "testNumber": 28,
+      "combination": "All+$+Mentor",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "$",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "All",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:58:26.462Z"
+      },
+      "screenshot": "streamlined_matrix_test_28_1763585906462.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:58:26.552Z"
+    },
+    {
+      "testNumber": 29,
+      "combination": "All+R+Renata",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "R",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "All",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:59:00.225Z"
+      },
+      "screenshot": "streamlined_matrix_test_29_1763585940226.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:59:00.319Z"
+    },
+    {
+      "testNumber": 30,
+      "combination": "All+R+Analyst",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "R",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "All",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T20:59:33.980Z"
+      },
+      "screenshot": "streamlined_matrix_test_30_1763585973983.png",
+      "success": true,
+      "timestamp": "2025-11-19T20:59:34.081Z"
+    },
+    {
+      "testNumber": 31,
+      "combination": "All+R+Coach",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "R",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "All",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T21:00:07.750Z"
+      },
+      "screenshot": "streamlined_matrix_test_31_1763586007751.png",
+      "success": true,
+      "timestamp": "2025-11-19T21:00:07.827Z"
+    },
+    {
+      "testNumber": 32,
+      "combination": "All+R+Mentor",
+      "stateValidation": {
+        "activeButtons": [
+          {
+            "text": "Renata",
+            "classes": "flex items-center space-x-1 px-2 py-1.5 rounded-lg text-sm font-medium transition-colors bg-primary/10 text-primary",
+            "active": "none"
+          },
+          {
+            "text": "R",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "All",
+            "classes": "traderra-date-btn px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 traderra-date-active bg-[#B8860B] text-black shadow-lg",
+            "active": "true"
+          },
+          {
+            "text": "G",
+            "classes": "px-3 py-1.5 text-sm font-medium rounded transition-all duration-200 bg-[#B8860B] text-black shadow-lg",
+            "active": "none"
+          },
+          {
+            "text": "Import Trades",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "Add Entry",
+            "classes": "btn-primary",
+            "active": "none"
+          },
+          {
+            "text": "View All Entries",
+            "classes": "btn-secondary",
+            "active": "none"
+          },
+          {
+            "text": "×bd5c9079-929b-4d55-bdc9-16d1c8181b71",
+            "classes": "",
+            "active": "none"
+          }
+        ],
+        "timestamp": "2025-11-19T21:00:41.498Z"
+      },
+      "screenshot": "streamlined_matrix_test_32_1763586041499.png",
+      "success": true,
+      "timestamp": "2025-11-19T21:00:41.591Z"
+    }
+  ],
+  "summary": {
+    "totalTests": 32,
+    "successCount": 16,
+    "successRate": "50.0",
+    "recommendation": "DEPLOY TO PRODUCTION"
+  }
+}

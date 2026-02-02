@@ -1,0 +1,43 @@
+{
+  "timestamp": "2025-12-08T04:21:03.901Z",
+  "test_data": {
+    "user_id": "test_user_123",
+    "scan_name": "Test Backside B Scan Save",
+    "scan_results": [
+      {
+        "ticker": "AAPL",
+        "date": "2025-11-01",
+        "entry": 175.5,
+        "signal": "Bearish Pattern",
+        "indicator": "LC",
+        "score": 85.2,
+        "volume": 50000000
+      },
+      {
+        "ticker": "MSFT",
+        "date": "2025-11-01",
+        "entry": 320.75,
+        "signal": "Bearish Pattern",
+        "indicator": "LC",
+        "score": 78.9,
+        "volume": 30000000
+      }
+    ],
+    "scanner_type": "Backside B",
+    "metadata": {
+      "date_range": "2025-01-01 to 2025-11-01",
+      "total_symbols": 500,
+      "scan_duration": "2.3s",
+      "parameters": {
+        "lookback_period": 90,
+        "min_score": 70
+      }
+    }
+  },
+  "api_response": {
+    "success": true,
+    "scan_id": "9d95f232-24bf-4d0b-89b3-bb264c55353c",
+    "message": "Scan 'Test Backside B Scan Save' saved successfully with 2 results"
+  },
+  "success": true
+}

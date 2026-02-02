@@ -1,0 +1,21 @@
+{
+  "project_id": "6dc54511-347d-465d-abd2-879f13d29d94",
+  "name": "Backside_B_Renata_Test",
+  "description": "RENATA V2 transformed Backside B scanner - 100% V31 compliant",
+  "scanners": [],
+  "aggregation_method": "union",
+  "created_at": "2026-01-12T13:58:09.169035",
+  "updated_at": "2026-01-12T13:58:09.169053",
+  "version": 1,
+  "tags": [
+    "RENATA",
+    "V31",
+    "Backside B",
+    "Test"
+  ],
+  "created_by": "renata-ai-upload",
+  "last_executed": null,
+  "execution_count": 0,
+  "function_name": "run_scan",
+  "has_code": true
+}

@@ -1,0 +1,40 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    // MOBILE LAYOUT OVERRIDES
+    "workbench.panel.defaultLocation": "right",
+    "workbench.panel.opensMaximized": "always",
+    "workbench.activityBar.visible": false,
+    "workbench.sideBar.location": "right",
+    "workbench.panel.defaultSize": 80,
+
+    // FORCE DARK THEME
+    "workbench.colorTheme": "Default Dark+",
+
+    // MOBILE TERMINAL SETUP
+    "terminal.integrated.defaultLocation": "panel",
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.lineHeight": 1.5,
+
+    // MOBILE EDITOR SETTINGS
+    "editor.fontSize": 18,
+    "editor.lineHeight": 26,
+    "editor.minimap.enabled": false,
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 60,
+
+    // BREADCRUMBS OFF TO SAVE SPACE
+    "breadcrumbs.enabled": false,
+
+    // AUTO-SAVE FOR MOBILE
+    "files.autoSave": "onFocusChange",
+    "files.autoSaveDelay": 500
+  },
+  "extensions": {
+    "recommendations": []
+  }
+}

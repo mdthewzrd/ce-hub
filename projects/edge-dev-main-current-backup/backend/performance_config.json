@@ -1,0 +1,26 @@
+{
+  "compression": {
+    "enabled": true,
+    "algorithms": [
+      "gzip",
+      "brotli"
+    ],
+    "min_size": 1024
+  },
+  "caching": {
+    "enabled": true,
+    "strategy": "redis",
+    "ttl": 300,
+    "max_size": "100MB"
+  },
+  "database": {
+    "pool_size": 20,
+    "max_overflow": 30,
+    "connection_timeout": 30
+  },
+  "static_files": {
+    "cdn_enabled": false,
+    "browser_caching": true,
+    "cache_duration": 86400
+  }
+}

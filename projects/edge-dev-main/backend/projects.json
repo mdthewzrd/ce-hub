@@ -1,0 +1,17 @@
+[
+  {
+    "id": "default-trading-project",
+    "name": "Default Trading Project",
+    "title": "Default Trading Project",
+    "description": "Default project for trading scanners",
+    "created_at": "2026-01-03T16:45:00.000Z",
+    "updated_at": "2026-01-03T16:45:00.000Z",
+    "status": "active",
+    "scanner_count": 0,
+    "type": "Trading Scanner",
+    "enhanced": true,
+    "aggregation_method": "union",
+    "tags": ["scanner", "trading", "default"],
+    "scanners": []
+  }
+]

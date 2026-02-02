@@ -1,0 +1,24 @@
+{
+  "database": {
+    "enabled": true,
+    "schedule": "0 2 * * *",
+    "retention": 30,
+    "compression": true
+  },
+  "files": {
+    "enabled": true,
+    "schedule": "0 3 * * *",
+    "directories": [
+      "/app/uploads",
+      "/app/logs",
+      "/app/backups"
+    ],
+    "retention": 7
+  },
+  "offsite": {
+    "enabled": false,
+    "service": "aws_s3",
+    "bucket": "edge-dev-backups",
+    "schedule": "0 4 * * 0"
+  }
+}

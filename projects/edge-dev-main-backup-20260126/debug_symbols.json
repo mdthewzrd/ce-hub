@@ -1,0 +1,8 @@
+{
+  "message": "Debug test to check symbol injection - execute this simple test:\n\n```python\nimport pandas as pd\nimport sys\n\nprint(f\"SYMBOLS length: {len(SYMBOLS) if 'SYMBOLS' in globals() else 'NOT DEFINED'}\")\nprint(f\"First 5 symbols: {SYMBOLS[:5] if 'SYMBOLS' in globals() else 'N/A'}\")\nprint(f\"Total symbols: {len(SYMBOLS) if 'SYMBOLS' in globals() else 'N/A'}\")\n\n# Test basic scan\nif 'SYMBOLS' in globals():\n    print(f\"✅ SYMBOLS properly defined with {len(SYMBOLS)} symbols\")\nelse:\n    print(\"❌ SYMBOLS not defined - this is the problem\")\n    sys.exit(1)\n\n# Return simple result\nresult = {\n    \"success\": True,\n    \"symbols_scanned\": len(SYMBOLS),\n    \"message\": f\"Test complete - {len(SYMBOLS)} symbols processed\"\n}\n\nimport json\nprint(json.dumps(result, indent=2))\n```",
+  "personality": "formatter",
+  "context": {
+    "page": "renata-popup",
+    "timestamp": "2025-11-26T19:55:00.000Z"
+  }
+}

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden in Plain Sight - High Quality Illustrations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #e5e5e5;
+            font-family: 'Jost', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #d97706;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .illustrations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .illustration-card {
+            background: #111;
+            border-radius: 16px;
+            padding: 40px;
+            border: 2px solid #1a1a1a;
+        }
+
+        .illustration-card:hover {
+            border-color: #d97706;
+        }
+
+        .illustration-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            color: #e5e5e5;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .illustration-subtitle {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .svg-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0a0a0a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .caption {
+            font-size: 13px;
+            color: #999;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .large-illustration {
+            background: #111;
+            border-radius: 16px;
+            padding: 50px;
+            border: 2px solid #d97706;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1200px) {
+            .illustrations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 High Quality Illustrations</h1>
+        <p class="subtitle">Mathematically accurate SVG visualizations for "Hidden in Plain Sight"</p>
+
+        <!-- Large Golden Ratio Feature -->
+        <div class="large-illustration">
+            <h2 class="illustration-title" style="font-size: 36px; margin-bottom: 10px;">The Golden Spiral</h2>
+            <p class="illustration-subtitle">φ = 1.6180339887...</p>
+            <div class="svg-container" style="background: transparent; padding: 0;">
+                <svg viewBox="0 0 800 800" width="700" height="700">
+                    <defs>
+                        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#d97706;stop-opacity:0.8" />
+                            <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0.6" />
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- Fibonacci squares -->
+                    <rect x="50" y="50" width="500" height="500" fill="none" stroke="#333" stroke-width="1"/>
+                    <rect x="50" y="50" width="309" height="309" fill="none" stroke="#333" stroke-width="1"/>
+                    <rect x="359" y="50" width="191" height="191" fill="none" stroke="#333" stroke-width="1"/>
+                    <rect x="359" y="241" width="118" height="118" fill="none" stroke="#333" stroke-width="1"/>
+                    <rect x="441" y="241" width="73" height="73" fill="none" stroke="#333" stroke-width="1"/>
+                    <rect x="441" y="314" width="45" height="45" fill="none" stroke="#333" stroke-width="1"/>
+                    <rect x="469" y="314" width="28" height="28" fill="none" stroke="#333" stroke-width="1"/>
+                    <rect x="469" y="342" width="17" height="17" fill="none" stroke="#333" stroke-width="1"/>
+
+                    <!-- Golden spiral -->
+                    <path d="M 50 550
+                             Q 50 50, 550 50
+                             Q 550 241, 359 241
+                             Q 359 359, 441 359
+                             Q 441 314, 469 314
+                             Q 469 342, 486 342
+                             Q 486 335, 479 335"
+                          fill="none"
+                          stroke="url(#goldGradient)"
+                          stroke-width="4"
+                          filter="url(#glow)"
+                          stroke-linecap="round"/>
+
+                    <!-- Arcs for smooth spiral -->
+                    <path d="M 50 550 A 500 500 0 0 1 550 50"
+                          fill="none" stroke="url(#goldGradient)" stroke-width="3" filter="url(#glow)"/>
+                    <path d="M 550 50 A 309 309 0 0 1 359 359"
+                          fill="none" stroke="url(#goldGradient)" stroke-width="3" filter="url(#glow)"/>
+                    <path d="M 359 359 A 191 191 0 0 1 550 241"
+                          fill="none" stroke="url(#goldGradient)" stroke-width="3" filter="url(#glow)"/>
+                    <path d="M 550 241 A 118 118 0 0 1 441 359"
+                          fill="none" stroke="url(#goldGradient)" stroke-width="3" filter="url(#glow)"/>
+                    <path d="M 441 359 A 73 73 0 0 1 514 314"
+                          fill="none" stroke="url(#goldGradient)" stroke-width="3" filter="url(#glow)"/>
+                    <path d="M 514 314 A 45 45 0 0 1 469 359"
+                          fill="none" stroke="url(#goldGradient)" stroke-width="3" filter="url(#glow)"/>
+                    <path d="M 469 359 A 28 28 0 0 1 497 342"
+                          fill="none" stroke="url(#goldGradient)" stroke-width="3" filter="url(#glow)"/>
+                    <path d="M 497 342 A 17 17 0 0 1 486 359"
+                          fill="none" stroke="url(#goldGradient)" stroke-width="3" filter="url(#glow)"/>
+
+                    <!-- Center point -->
+                    <circle cx="486" cy="359" r="4" fill="#d97706" filter="url(#glow)"/>
+
+                    <!-- Labels -->
+                    <text x="300" y="580" fill="#d97706" font-family="EB Garamond" font-size="20" text-anchor="middle">φ = 1.618...</text>
+                </svg>
+            </div>
+            <p class="caption">The golden spiral is formed by connecting the corners of consecutive Fibonacci squares. This spiral appears throughout nature—from nautilus shells to galaxy arms.</p>
+        </div>
+
+        <div class="illustrations-grid">
+            <!-- Fibonacci Sequence -->
+            <div class="illustration-card">
+                <h3 class="illustration-title">Fibonacci Sequence</h3>
+                <p class="illustration-subtitle">Nature's counting system</p>
+                <div class="svg-container">
+                    <svg viewBox="0 0 400 300" width="400" height="300">
+                        <defs>
+                            <linearGradient id="fibGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#d97706;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Number blocks -->
+                        <g transform="translate(20, 50)">
+                            <rect x="0" y="0" width="50" height="50" fill="none" stroke="#d97706" stroke-width="2" rx="4"/>
+                            <text x="25" y="32" fill="#e5e5e5" font-family="JetBrains Mono" font-size="20" text-anchor="middle">1</text>
+                        </g>
+                        <g transform="translate(75, 50)">
+                            <rect x="0" y="0" width="50" height="50" fill="none" stroke="#d97706" stroke-width="2" rx="4"/>
+                            <text x="25" y="32" fill="#e5e5e5" font-family="JetBrains Mono" font-size="20" text-anchor="middle">1</text>
+                        </g>
+                        <g transform="translate(130, 50)">
+                            <rect x="0" y="0" width="50" height="50" fill="none" stroke="#d97706" stroke-width="2" rx="4"/>
+                            <text x="25" y="32" fill="#e5e5e5" font-family="JetBrains Mono" font-size="20" text-anchor="middle">2</text>
+                        </g>
+                        <g transform="translate(185, 50)">
+                            <rect x="0" y="0" width="50" height="50" fill="none" stroke="#d97706" stroke-width="2" rx="4"/>
+                            <text x="25" y="32" fill="#e5e5e5" font-family="JetBrains Mono" font-size="20" text-anchor="middle">3</text>
+                        </g>
+                        <g transform="translate(240, 50)">
+                            <rect x="0" y="0" width="50" height="50" fill="none" stroke="#d97706" stroke-width="2" rx="4"/>
+                            <text x="25" y="32" fill="#e5e5e5" font-family="JetBrains Mono" font-size="20" text-anchor="middle">5</text>
+                        </g>
+                        <g transform="translate(295, 50)">
+                            <rect x="0" y="0" width="50" height="50" fill="none" stroke="#d97706" stroke-width="2" rx="4"/>
+                            <text x="25" y="32" fill="#e5e5e5" font-family="JetBrains Mono" font-size="20" text-anchor="middle">8</text>
+                        </g>
+
+                        <!-- Plus signs -->
+                        <text x="65" y="80" fill="#666" font-family="JetBrains Mono" font-size="24" text-anchor="middle">+</text>
+                        <text x="120" y="80" fill="#666" font-family="JetBrains Mono" font-size="24" text-anchor="middle">+</text>
+                        <text x="175" y="80" fill="#666" font-family="JetBrains Mono" font-size="24" text-anchor="middle">+</text>
+                        <text x="230" y="80" fill="#666" font-family="JetBrains Mono" font-size="24" text-anchor="middle">+</text>
+                        <text x="285" y="80" fill="#666" font-family="JetBrains Mono" font-size="24" text-anchor="middle">+</text>
+
+                        <!-- Ratio calculation -->
+                        <text x="200" y="150" fill="#d97706" font-family="EB Garamond" font-size="18" text-anchor="middle">Ratio approaches φ</text>
+                        <text x="200" y="180" fill="#999" font-family="JetBrains Mono" font-size="14" text-anchor="middle">3/2 = 1.50</text>
+                        <text x="200" y="200" fill="#999" font-family="JetBrains Mono" font-size="14" text-anchor="middle">5/3 = 1.67</text>
+                        <text x="200" y="220" fill="#999" font-family="JetBrains Mono" font-size="14" text-anchor="middle">8/5 = 1.60</text>
+                        <text x="200" y="250" fill="#d97706" font-family="JetBrains Mono" font-size="16" text-anchor="middle">→ 1.618...</text>
+
+                        <!-- Arrows -->
+                        <path d="M 80 110 Q 150 130, 180 140" fill="none" stroke="#d97706" stroke-width="1" stroke-dasharray="4"/>
+                        <path d="M 240 110 Q 210 130, 200 140" fill="none" stroke="#d97706" stroke-width="1" stroke-dasharray="4"/>
+                    </svg>
+                </div>
+                <p class="caption">Each number is the sum of the two preceding ones. The ratio between consecutive numbers approaches the golden ratio.</p>
+            </div>
+
+            <!-- Sacred Geometry: Flower of Life -->
+            <div class="illustration-card">
+                <h3 class="illustration-title">Flower of Life</h3>
+                <p class="illustration-subtitle">Sacred geometry pattern</p>
+                <div class="svg-container">
+                    <svg viewBox="0 0 400 400" width="350" height="350">
+                        <defs>
+                            <radialGradient id="flowerGradient">
+                                <stop offset="0%" style="stop-color:#d97706;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#d97706;stop-opacity:0.05" />
+                            </radialGradient>
+                        </defs>
+
+                        <!-- Center circle -->
+                        <circle cx="200" cy="200" r="50" fill="none" stroke="#d97706" stroke-width="1.5" opacity="0.8"/>
+
+                        <!-- Six surrounding circles -->
+                        <circle cx="200" cy="150" r="50" fill="none" stroke="#d97706" stroke-width="1.5" opacity="0.6"/>
+                        <circle cx="243" cy="175" r="50" fill="none" stroke="#d97706" stroke-width="1.5" opacity="0.6"/>
+                        <circle cx="243" cy="225" r="50" fill="none" stroke="#d97706" stroke-width="1.5" opacity="0.6"/>
+                        <circle cx="200" cy="250" r="50" fill="none" stroke="#d97706" stroke-width="1.5" opacity="0.6"/>
+                        <circle cx="157" cy="225" r="50" fill="none" stroke="#d97706" stroke-width="1.5" opacity="0.6"/>
+                        <circle cx="157" cy="175" r="50" fill="none" stroke="#d97706" stroke-width="1.5" opacity="0.6"/>
+
+                        <!-- Outer ring -->
+                        <circle cx="200" cy="100" r="50" fill="url(#flowerGradient)" stroke="#d97706" stroke-width="1" opacity="0.4"/>
+                        <circle cx="286" cy="150" r="50" fill="url(#flowerGradient)" stroke="#d97706" stroke-width="1" opacity="0.4"/>
+                        <circle cx="286" cy="250" r="50" fill="url(#flowerGradient)" stroke="#d97706" stroke-width="1" opacity="0.4"/>
+                        <circle cx="200" cy="300" r="50" fill="url(#flowerGradient)" stroke="#d97706" stroke-width="1" opacity="0.4"/>
+                        <circle cx="114" cy="250" r="50" fill="url(#flowerGradient)" stroke="#d97706" stroke-width="1" opacity="0.4"/>
+                        <circle cx="114" cy="150" r="50" fill="url(#flowerGradient)" stroke="#d97706" stroke-width="1" opacity="0.4"/>
+
+                        <!-- Center point -->
+                        <circle cx="200" cy="200" r="3" fill="#d97706"/>
+                    </svg>
+                </div>
+                <p class="caption">The Flower of Life is a sacred geometry pattern formed by overlapping circles. It appears in ancient temples across the world.</p>
+            </div>
+
+            <!-- Nautilus Shell -->
+            <div class="illustration-card">
+                <h3 class="illustration-title">Nautilus Shell</h3>
+                <p class="illustration-subtitle">Golden spiral in nature</p>
+                <div class="svg-container">
+                    <svg viewBox="0 0 400 350" width="350" height="300">
+                        <defs>
+                            <linearGradient id="shellGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#d97706;stop-opacity:0.9" />
+                                <stop offset="50%" style="stop-color:#f59e0b;stop-opacity:0.7" />
+                                <stop offset="100%" style="stop-color:#d97706;stop-opacity:0.5" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Shell chambers (logarithmic spiral approximation) -->
+                        <g transform="translate(200, 200)">
+                            <!-- Outer chamber -->
+                            <path d="M 0 -120
+                                     A 120 120 0 0 1 104 -60
+                                     A 90 90 0 0 1 52 -78"
+                                  fill="none" stroke="url(#shellGradient)" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Chamber 2 -->
+                            <path d="M 52 -78
+                                     A 78 78 0 0 1 116 -40
+                                     A 60 60 0 0 1 78 -52"
+                                  fill="none" stroke="url(#shellGradient)" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Chamber 3 -->
+                            <path d="M 78 -52
+                                     A 52 52 0 0 1 104 -26
+                                     A 40 40 0 0 1 78 -26"
+                                  fill="none" stroke="url(#shellGradient)" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Chamber 4 -->
+                            <path d="M 78 -26
+                                     A 26 26 0 0 1 91 -13
+                                     A 20 20 0 0 1 78 -13"
+                                  fill="none" stroke="url(#shellGradient)" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Inner chamber -->
+                            <path d="M 78 -13
+                                     A 13 13 0 0 1 85 -6
+                                     A 10 10 0 0 1 78 -6"
+                                  fill="none" stroke="url(#shellGradient)" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Center -->
+                            <circle cx="78" cy="-6" r="3" fill="#d97706"/>
+                        </g>
+
+                        <!-- Shell partitions -->
+                        <line x1="200" y1="80" x2="200" y2="194" stroke="#d97706" stroke-width="1" opacity="0.5"/>
+                        <line x1="252" y1="122" x2="210" y2="185" stroke="#d97706" stroke-width="1" opacity="0.5"/>
+                        <line x1="278" y1="160" x2="230" y2="175" stroke="#d97706" stroke-width="1" opacity="0.5"/>
+                        <line x1="291" y1="187" x2="250" y2="185" stroke="#d97706" stroke-width="1" opacity="0.5"/>
+                        <line x1="285" y1="206" x2="260" y2="195" stroke="#d97706" stroke-width="1" opacity="0.5"/>
+
+                        <!-- Label -->
+                        <text x="200" y="320" fill="#d97706" font-family="EB Garamond" font-size="14" text-anchor="middle">Nautilus pompilius</text>
+                    </svg>
+                </div>
+                <p class="caption">The chambered nautilus builds its shell in a perfect logarithmic spiral, maintaining the golden ratio as it grows.</p>
+            </div>
+
+            <!-- Galaxy Spiral -->
+            <div class="illustration-card">
+                <h3 class="illustration-title">Galaxy Arms</h3>
+                <p class="illustration-subtitle">Cosmic golden spiral</p>
+                <div class="svg-container">
+                    <svg viewBox="0 0 400 400" width="350" height="350">
+                        <defs>
+                            <radialGradient id="galaxyCenter">
+                                <stop offset="0%" style="stop-color:#fff;stop-opacity:1" />
+                                <stop offset="20%" style="stop-color:#d97706;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#d97706;stop-opacity:0" />
+                            </radialGradient>
+                            <filter id="glow2">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+
+                        <!-- Galaxy center -->
+                        <circle cx="200" cy="200" r="30" fill="url(#galaxyCenter)" filter="url(#glow2)"/>
+
+                        <!-- Spiral arm 1 -->
+                        <path d="M 200 200
+                                 Q 250 150, 300 180
+                                 Q 350 210, 340 260
+                                 Q 330 310, 280 330
+                                 Q 230 350, 180 340"
+                              fill="none" stroke="#d97706" stroke-width="8" stroke-linecap="round" opacity="0.4" filter="url(#glow2)"/>
+                        <path d="M 200 200
+                                 Q 250 150, 300 180
+                                 Q 350 210, 340 260
+                                 Q 330 310, 280 330
+                                 Q 230 350, 180 340"
+                              fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+
+                        <!-- Spiral arm 2 -->
+                        <path d="M 200 200
+                                 Q 150 250, 100 220
+                                 Q 50 190, 60 140
+                                 Q 70 90, 120 70
+                                 Q 170 50, 220 60"
+                              fill="none" stroke="#d97706" stroke-width="8" stroke-linecap="round" opacity="0.4" filter="url(#glow2)"/>
+                        <path d="M 200 200
+                                 Q 150 250, 100 220
+                                 Q 50 190, 60 140
+                                 Q 70 90, 120 70
+                                 Q 170 50, 220 60"
+                              fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+
+                        <!-- Stars scattered along arms -->
+                        <circle cx="280" cy="160" r="2" fill="#fff" opacity="0.9"/>
+                        <circle cx="320" cy="200" r="1.5" fill="#fff" opacity="0.7"/>
+                        <circle cx="310" cy="280" r="2" fill="#fff" opacity="0.8"/>
+                        <circle cx="250" cy="320" r="1.5" fill="#fff" opacity="0.6"/>
+                        <circle cx="120" cy="240" r="2" fill="#fff" opacity="0.9"/>
+                        <circle cx="80" cy="200" r="1.5" fill="#fff" opacity="0.7"/>
+                        <circle cx="90" cy="120" r="2" fill="#fff" opacity="0.8"/>
+                        <circle cx="150" cy="80" r="1.5" fill="#fff" opacity="0.6"/>
+
+                        <!-- Label -->
+                        <text x="200" y="380" fill="#d97706" font-family="EB Garamond" font-size="14" text-anchor="middle">Spiral Galaxy (e.g., Milky Way)</text>
+                    </svg>
+                </div>
+                <p class="caption">Spiral galaxies rotate with their arms following golden ratio proportions, from the smallest dwarf galaxies to grand design spirals.</p>
+            </div>
+
+            <!-- Fractal Tree -->
+            <div class="illustration-card">
+                <h3 class="illustration-title">Fractal Branching</h3>
+                <p class="illustration-subtitle">Self-similarity in nature</p>
+                <div class="svg-container">
+                    <svg viewBox="0 0 400 400" width="350" height="350">
+                        <!-- Tree trunk -->
+                        <line x1="200" y1="380" x2="200" y2="300" stroke="#d97706" stroke-width="4" stroke-linecap="round"/>
+
+                        <!-- Level 1 branches -->
+                        <line x1="200" y1="300" x2="160" y2="260" stroke="#d97706" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+                        <line x1="200" y1="300" x2="240" y2="260" stroke="#d97706" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+
+                        <!-- Level 2 branches (left side) -->
+                        <line x1="160" y1="260" x2="135" y2="230" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+                        <line x1="160" y1="260" x2="180" y2="230" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+
+                        <!-- Level 2 branches (right side) -->
+                        <line x1="240" y1="260" x2="220" y2="230" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+                        <line x1="240" y1="260" x2="265" y2="230" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+
+                        <!-- Level 3 branches -->
+                        <line x1="135" y1="230" x2="118" y2="210" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+                        <line x1="135" y1="230" x2="145" y2="210" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+                        <line x1="180" y1="230" x2="170" y2="210" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+                        <line x1="180" y1="230" x2="190" y2="210" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+                        <line x1="220" y1="230" x2="210" y2="210" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+                        <line x1="220" y1="230" x2="230" y2="210" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+                        <line x1="265" y1="230" x2="255" y2="210" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+                        <line x1="265" y1="230" x2="278" y2="210" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+                        <!-- Leaves (small circles) -->
+                        <circle cx="118" cy="210" r="4" fill="#f59e0b" opacity="0.6"/>
+                        <circle cx="145" cy="210" r="4" fill="#f59e0b" opacity="0.6"/>
+                        <circle cx="170" cy="210" r="4" fill="#f59e0b" opacity="0.6"/>
+                        <circle cx="190" cy="210" r="4" fill="#f59e0b" opacity="0.6"/>
+                        <circle cx="210" cy="210" r="4" fill="#f59e0b" opacity="0.6"/>
+                        <circle cx="230" cy="210" r="4" fill="#f59e0b" opacity="0.6"/>
+                        <circle cx="255" cy="210" r="4" fill="#f59e0b" opacity="0.6"/>
+                        <circle cx="278" cy="210" r="4" fill="#f59e0b" opacity="0.6"/>
+
+                        <!-- Phi label -->
+                        <text x="200" y="90" fill="#d97706" font-family="EB Garamond" font-size="16" text-anchor="middle">Branch angle ≈ 137.5°</text>
+                        <text x="200" y="110" fill="#999" font-family="JetBrains Mono" font-size="12" text-anchor="middle">(golden angle)</text>
+                    </svg>
+                </div>
+                <p class="caption">Trees branch at approximately 137.5° (the golden angle), maximizing sunlight exposure. This pattern repeats from trunk to smallest twig.</p>
+            </div>
+
+            <!-- Vitruvian Man inspired -->
+            <div class="illustration-card">
+                <h3 class="illustration-title">Human Proportions</h3>
+                <p class="illustration-subtitle">Golden ratio in the body</p>
+                <div class="svg-container">
+                    <svg viewBox="0 0 400 400" width="350" height="350">
+                        <!-- Circle -->
+                        <circle cx="200" cy="180" r="120" fill="none" stroke="#d97706" stroke-width="2" opacity="0.6"/>
+
+                        <!-- Square -->
+                        <rect x="110" y="120" width="180" height="180" fill="none" stroke="#d97706" stroke-width="2" opacity="0.4"/>
+
+                        <!-- Human figure (stylized) -->
+                        <g stroke="#e5e5e5" stroke-width="2" fill="none">
+                            <!-- Head -->
+                            <circle cx="200" cy="100" r="25" stroke-width="2"/>
+
+                            <!-- Torso -->
+                            <line x1="200" y1="125" x2="200" y2="220" stroke-width="3"/>
+
+                            <!-- Arms (spread) -->
+                            <line x1="200" y1="140" x2="120" y2="140" stroke-width="2"/>
+                            <line x1="200" y1="140" x2="280" y2="140" stroke-width="2"/>
+
+                            <!-- Legs -->
+                            <line x1="200" y1="220" x2="160" y2="340" stroke-width="2"/>
+                            <line x1="200" y1="220" x2="240" y2="340" stroke-width="2"/>
+                        </g>
+
+                        <!-- Golden ratio markers -->
+                        <line x1="80" y1="180" x2="320" y2="180" stroke="#d97706" stroke-width="1" stroke-dasharray="4" opacity="0.5"/>
+                        <text x="330" y="184" fill="#d97706" font-family="JetBrains Mono" font-size="10">navel</text>
+
+                        <line x1="80" y1="220" x2="320" y2="220" stroke="#d97706" stroke-width="1" stroke-dasharray="4" opacity="0.5"/>
+                        <text x="330" y="224" fill="#d97706" font-family="JetBrains Mono" font-size="10">floor</text>
+
+                        <!-- Phi label -->
+                        <text x="200" y="370" fill="#d97706" font-family="EB Garamond" font-size="14" text-anchor="middle">Height ÷ Navel Height ≈ φ</text>
+                    </svg>
+                </div>
+                <p class="caption">Da Vinci's Vitruvian Man demonstrated that the human body contains golden ratios—from finger bones to overall height proportions.</p>
+            </div>
+        </div>
+
+        <!-- Technical note -->
+        <div style="background: #111; border-radius: 12px; padding: 30px; border: 2px solid #1a1a1a; margin-top: 40px;">
+            <h3 style="font-family: 'EB Garamond', serif; font-size: 20px; color: #e5e5e5; margin-bottom: 15px; text-align: center;">Technical Specifications</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; font-size: 13px; color: #999;">
+                <div style="text-align: center; padding: 15px; background: #0a0a0a; border-radius: 8px;">
+                    <div style="color: #d97706; font-weight: 600; margin-bottom: 8px;">Format</div>
+                    <div style="font-family: 'JetBrains Mono', monospace;">SVG (Scalable Vector Graphics)</div>
+                </div>
+                <div style="text-align: center; padding: 15px; background: #0a0a0a; border-radius: 8px;">
+                    <div style="color: #d97706; font-weight: 600; margin-bottom: 8px;">Resolution</div>
+                    <div style="font-family: 'JetBrains Mono', monospace;">Infinite (vector-based)</div>
+                </div>
+                <div style="text-align: center; padding: 15px; background: #0a0a0a; border-radius: 8px;">
+                    <div style="color: #d97706; font-weight: 600; margin-bottom: 8px;">Print Ready</div>
+                    <div style="font-family: 'JetBrains Mono', monospace;">Yes, 300+ DPI equivalent</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

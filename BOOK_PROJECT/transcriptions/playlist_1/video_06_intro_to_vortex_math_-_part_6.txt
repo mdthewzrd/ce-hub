@@ -1,0 +1,181 @@
+================================================================================
+VIDEO TRANSCRIPT: Intro to Vortex Math - Part 6
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: Now I'll just give you quickly. You get repeating decimals when you do this, but
+
+[00:00:05] **Randy Powell**: there's a way to solve this and show them to be whole numbers. Okay? I if people are
+
+[00:00:12] **Randy Powell**: very interested in that, I'm not gonna take the time to do it right now. I can
+
+[00:00:17] **Randy Powell**: show that if people want to write comments on the video, I'll try to get the
+
+[00:00:22] **Randy Powell**: solution up. You can see I have my numbers and all my work written out here,
+
+[00:00:26] **Randy Powell**: which I'd be happy to go through, but it's a too long an explanation now. But
+
+[00:00:30] **Randy Powell**: something interesting happens. One divided by three, I get this number, point
+
+[00:00:35] **Randy Powell**: three, three, three. I get these repeating digit numbers. But let's try to find a
+
+[00:00:41] **Randy Powell**: whole number first. I know three divided by three is one. Okay? I know six
+
+[00:00:47] **Randy Powell**: divided by three is two, and I know nine divided by three is three. So I use
+
+[00:00:53] **Randy Powell**: that at first to set up my numbers. Now if the way that we do this here is if
+
+[00:01:00] **Randy Powell**: you notice here, for instance, five divided by three, I get this number one point
+
+[00:01:05] **Randy Powell**: six six six six six seven. And I'm saying that equals five. Well, why is that? Well,
+
+[00:01:11] **Randy Powell**: if I look up here at two divided by three, I have this number six six six six six
+
+[00:01:17] **Randy Powell**: seven, which equals a four. And four plus the one here will give me five. I can find
+
+[00:01:24] **Randy Powell**: this pattern same. This has to do with polar number pairs. These numbers that I'm showing.
+
+[00:01:30] **Randy Powell**: But again, it's a little bit complex for what I'm trying to explain here, and I don't want
+
+[00:01:34] **Randy Powell**: to get too bogged down in. But what happens when I multiply by three's, one divided by
+
+[00:01:40] **Randy Powell**: three gives me seven, two divided by three gives me four, three divided by three gives me
+
+[00:01:48] **Randy Powell**: one. Okay? Four divided by three gives me eight. Five divided by three comes back to five,
+
+[00:01:59] **Randy Powell**: six divided by three equals two. Seven divided by three equals nine, eight divided by three
+
+[00:02:07] **Randy Powell**: equals six, nine divided by three equals three. The same thing is going to happen when I
+
+[00:02:13] **Randy Powell**: divide by six by backwards. Now, don't be worried if you're losing me a little here. I'm about
+
+[00:02:18] **Randy Powell**: to explain this. One divided by six is eight, two divided by six is two, three divided by six is
+
+[00:02:28] **Randy Powell**: point five, which is five. Four divided by six is four, five divided by six is seven, six divided
+
+[00:02:37] **Randy Powell**: by six is one, seven divided by six is nine, eight divided by six is three, nine divided by six is
+
+[00:02:46] **Randy Powell**: three. So in my first group, divided by three, I have seven, four and one, eight, five and two,
+
+[00:02:52] **Randy Powell**: nine, six and three. Okay? In my second group, divided by my six, I have eight, two, five, four,
+
+[00:03:00] **Randy Powell**: seven, one, nine, three and six. All right, what does that mean? What am I trying to show there? It's
+
+[00:03:08] **Randy Powell**: it seems a little bit fuzzy. Now, I'm not the same clear sequence we started with in a lot of
+
+[00:03:13] **Randy Powell**: these. So again, I have these groups of numbers. One, four, seven, two, five and eight and then my
+
+[00:03:22] **Randy Powell**: three, nine and six, which are easy to see here as a group. They were linked together in groups of
+
+[00:03:27] **Randy Powell**: three. All right? This is another property that we get from this dividing process. All right? They're
+
+[00:03:35] **Randy Powell**: called family number groups. Let me say I want more time. The family number groups are one, four,
+
+[00:03:42] **Randy Powell**: seven, two, five and eight, nine, three and six. There are three different family number groups.
+
+[00:03:52] **Randy Powell**: Okay? How do we determine them? Well, let me give you a few ways to do it.
+
+[00:03:59] **Randy Powell**: Remember I said three and six here on my field. One plus three is four. Four plus three is seven.
+
+[00:04:08] **Randy Powell**: Seven plus three is ten, which comes back to one. Ten plus three is thirteen, which comes back to
+
+[00:04:14] **Randy Powell**: four. Thirteen plus three is sixteen. Sixteen plus three is nineteen, back to one. Okay? No
+
+[00:04:21] **Randy Powell**: matter how far I go if I keep adding threes, it's the same pattern. One, four, seven, one, four,
+
+[00:04:26] **Randy Powell**: seven, one, four, seven and notice these numbers are as far triangulated from each other as possible.
+
+[00:04:33] **Randy Powell**: That is very significant when we come to talking about geometry. And in this system,
+
+[00:04:40] **Randy Powell**: numbers are not modeling geometry. Rhythmic is not explaining geometry. It is geometry.
+
+[00:04:48] **Randy Powell**: Okay? And that's going to be a very simple process to understand. But first saying you notice
+
+[00:04:54] **Randy Powell**: one, four, seven, if I add by three, I always get those numbers in an unbreaking chain. How about
+
+[00:05:01] **Randy Powell**: if I go the other way? One plus six is seven. Now I'm using my six. Seven plus six is thirteen,
+
+[00:05:08] **Randy Powell**: which is four. Thirteen plus six is nineteen, which is one. Or I could say four plus six is ten,
+
+[00:05:14] **Randy Powell**: which is one. Ten plus six is sixteen, which is seven. Okay? Sixteen plus six is twenty two, which is four.
+
+[00:05:23] **Randy Powell**: Forward motion is what the three is. The three is represented by the shape of a triangle.
+
+[00:05:32] **Randy Powell**: Okay? Very easy to remember. A triangle is represented by the three, three sides. Adding by three,
+
+[00:05:40] **Randy Powell**: forward motion, triangulated motion, an arrow forward, which is what this is, an arrow, a vector,
+
+[00:05:47] **Randy Powell**: is forward motion. Six is backward motion. It's a backdraft. Okay? If I'm going backwards, I got six.
+
+[00:05:58] **Randy Powell**: Let's look at my other group. I say it was two, five, and eight. Two plus three is five. Five plus
+
+[00:06:06] **Randy Powell**: three is eight. Eight plus three is eleven, which is two. Eleven plus three is fourteen, which is five.
+
+[00:06:16] **Randy Powell**: Fourteen plus three is seventeen, which is eight. No matter how far I go, adding three is same. Two, five,
+
+[00:06:23] **Randy Powell**: eight. Two, five, eight. Two plus six is eight. Eight plus six is fourteen, which is five. Fourteen
+
+[00:06:32] **Randy Powell**: plus six is twenty, which is two. Twenty six, which is eight. On and on. Backwards six, forwards three.
+
+[00:06:39] **Randy Powell**: So if three is an arrow moving forwards or a triangle, six is the backdraft bouncing or giving
+
+[00:06:47] **Randy Powell**: equilibrium to that, which is called a hexagon. Six sided figure, a hexagon. Just like I said,
+
+[00:06:55] **Randy Powell**: ultimately, this underpinning geometry because I have a family number group oriented this way,
+
+[00:07:01] **Randy Powell**: I have one going this way. Always polar opposites are accounted for. Then three, nine, six is the same.
+
+[00:07:10] **Randy Powell**: If I go nine plus three is three, three plus three is six. Six plus three is nine. So on so
+
+[00:07:16] **Randy Powell**: forth, you can do backwards three plus six is nine. Nine plus six is six. Six plus six is twelve,
+
+[00:07:22] **Randy Powell**: which is three. They're related in the same way. All right? So this is how we start to look at things
+
+[00:07:29] **Randy Powell**: as polarized. All right? So you remember when I said these pairs going straight across? By the way,
+
+[00:07:37] **Randy Powell**: if I draw straight lines across this, I'm here to here, or here to here, okay? We're here by drawing
+
+[00:07:45] **Randy Powell**: across like this straight lines, you'll notice that everything is equal angular triangles. In other
+
+[00:07:53] **Randy Powell**: words, this isn't, I should say, this drawing is hand drawn. It's not exactly precise, but this
+
+[00:07:58] **Randy Powell**: is that they were lining up. They should make perfect equal angular triangles here. All of these
+
+[00:08:04] **Randy Powell**: are triangles. All right? Never connected at the base though. They're only connected at the vertex,
+
+[00:08:11] **Randy Powell**: or the apex at the point. So important, I can't emphasize how important that is in this math.
+
+[00:08:19] **Randy Powell**: Okay? Getting down these essential principles is how you do the advanced stuff. If you don't know
+
+[00:08:25] **Randy Powell**: what I'm talking about, you'll never get there. You can play with the tweroy all day. You're just
+
+[00:08:29] **Randy Powell**: kidding yourself. All right? So when my one is positive, my eight's going to be negative.
+
+[00:08:40] **Randy Powell**: And these family number groups are always positive or negative at the same time. All right? They're
+
+[00:08:46] **Randy Powell**: showing synchronization. All right? When we do electricity with this, we're looking for synchronized
+
+[00:08:54] **Randy Powell**: electricity. Everything in reality is synchronized and controlled by its center point.
+
+[00:09:01] **Randy Powell**: All right? So this is the source of synchronicity. So when my one is positive, my eight's negative.
+
+[00:09:08] **Randy Powell**: Then I know my seven is going to be positive. My two is negative. My four is positive, and my five
+
+[00:09:14] **Randy Powell**: is negative. So when my one, four, and seven are positive, my two, five, and eight are all negative.
+
+[00:09:20] **Randy Powell**: All right? Why is that significant? In other words, if I have an arrow going forward one way,
+
+[00:09:26] **Randy Powell**: I'm going to have a backdraft going back in the opposite direction. Just like when you watch water
+
+[00:09:32] **Randy Powell**: flowing down the streets, it forms a diamond. Okay? From a triangle going forward to get a backdraft.
+
+[00:09:39] **Randy Powell**: And when I said my three is a triangle, my six is a hexagon, the nine is a perfect diamond,
+
+[00:09:47] **Randy Powell**: which you see right here in this space.
+
+[00:09:50] **Randy Powell**: So when I said my three is a triangle, my six is a perfect diamond, my five is positive.

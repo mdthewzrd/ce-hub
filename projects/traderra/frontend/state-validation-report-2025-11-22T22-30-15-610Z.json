@@ -1,0 +1,276 @@
+{
+  "total": 4,
+  "passed": 0,
+  "failed": 4,
+  "passRate": 0,
+  "results": [
+    {
+      "id": "ytd_dollar_stats_direct",
+      "name": "YTD Dollar Statistics - Direct Navigation",
+      "startTime": 1763850529133,
+      "steps": [
+        {
+          "action": "navigate",
+          "startTime": 1763850529133,
+          "success": true,
+          "url": "http://localhost:6565/statistics",
+          "endTime": 1763850535381,
+          "stepDuration": 6248
+        },
+        {
+          "action": "sendCommand",
+          "startTime": 1763850535381,
+          "success": true,
+          "message": "switch to dollars and show year to date",
+          "endTime": 1763850535384,
+          "stepDuration": 3
+        },
+        {
+          "action": "wait",
+          "startTime": 1763850535384,
+          "success": true,
+          "duration": 3000,
+          "endTime": 1763850538386,
+          "stepDuration": 3002
+        },
+        {
+          "action": "validate",
+          "startTime": 1763850538386,
+          "success": false,
+          "error": "dateRange:ytd: page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"date-selector\"], .traderra-date-selector') to be visible\u001b[22m\n",
+          "validations": {
+            "displayMode:dollar": {
+              "success": false,
+              "error": "dollar mode not active"
+            },
+            "dateRange:ytd": {
+              "success": false,
+              "error": "page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"date-selector\"], .traderra-date-selector') to be visible\u001b[22m\n"
+            }
+          },
+          "endTime": 1763850543424,
+          "stepDuration": 5038
+        }
+      ],
+      "success": false,
+      "endTime": 1763850543424,
+      "duration": 14291,
+      "screenshot": "ytd_dollar_stats_direct-fail-1763850543424.png"
+    },
+    {
+      "id": "ytd_dollar_stats_via_api",
+      "name": "YTD Dollar Statistics - Via API Command",
+      "startTime": 1763850544481,
+      "steps": [
+        {
+          "action": "navigate",
+          "startTime": 1763850544481,
+          "success": true,
+          "url": "http://localhost:6565/",
+          "endTime": 1763850546014,
+          "stepDuration": 1533
+        },
+        {
+          "action": "sendCommand",
+          "startTime": 1763850546014,
+          "success": true,
+          "message": "go to the stats page in dollars and look at year to date",
+          "endTime": 1763850546017,
+          "stepDuration": 3
+        },
+        {
+          "action": "wait",
+          "startTime": 1763850546017,
+          "success": true,
+          "duration": 5000,
+          "endTime": 1763850551018,
+          "stepDuration": 5001
+        },
+        {
+          "action": "validate",
+          "startTime": 1763850551018,
+          "success": false,
+          "error": "dateRange:ytd: page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"date-selector\"], .traderra-date-selector') to be visible\u001b[22m\n",
+          "validations": {
+            "page:statistics": {
+              "success": false,
+              "error": "Wrong page: http://localhost:6565/"
+            },
+            "displayMode:dollar": {
+              "success": false,
+              "error": "dollar mode not active"
+            },
+            "dateRange:ytd": {
+              "success": false,
+              "error": "page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"date-selector\"], .traderra-date-selector') to be visible\u001b[22m\n"
+            }
+          },
+          "endTime": 1763850556043,
+          "stepDuration": 5025
+        }
+      ],
+      "success": false,
+      "endTime": 1763850556043,
+      "duration": 11562,
+      "screenshot": "ytd_dollar_stats_via_api-fail-1763850556043.png"
+    },
+    {
+      "id": "dashboard_7d_r_mode",
+      "name": "7 Day R-Mode Dashboard",
+      "startTime": 1763850557102,
+      "steps": [
+        {
+          "action": "navigate",
+          "startTime": 1763850557102,
+          "success": false,
+          "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:6565/dashboard\", waiting until \"networkidle\"\u001b[22m\n",
+          "endTime": 1763850587104,
+          "stepDuration": 30002
+        },
+        {
+          "action": "sendCommand",
+          "startTime": 1763850587104,
+          "success": true,
+          "message": "switch to R-mode and show 7 day",
+          "endTime": 1763850587106,
+          "stepDuration": 2
+        },
+        {
+          "action": "wait",
+          "startTime": 1763850587106,
+          "success": true,
+          "duration": 3000,
+          "endTime": 1763850590108,
+          "stepDuration": 3002
+        },
+        {
+          "action": "validate",
+          "startTime": 1763850590108,
+          "success": false,
+          "error": "dateRange:7d: page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"date-selector\"], .traderra-date-selector') to be visible\u001b[22m\n",
+          "validations": {
+            "displayMode:r": {
+              "success": false,
+              "error": "r mode not active"
+            },
+            "dateRange:7d": {
+              "success": false,
+              "error": "page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"date-selector\"], .traderra-date-selector') to be visible\u001b[22m\n"
+            }
+          },
+          "endTime": 1763850595143,
+          "stepDuration": 5035
+        }
+      ],
+      "success": false,
+      "endTime": 1763850595144,
+      "duration": 38042,
+      "screenshot": "dashboard_7d_r_mode-fail-1763850595144.png"
+    },
+    {
+      "id": "multi_sequence_test",
+      "name": "Multi-Command Sequence",
+      "startTime": 1763850596200,
+      "steps": [
+        {
+          "action": "navigate",
+          "startTime": 1763850596200,
+          "success": true,
+          "url": "http://localhost:6565/",
+          "endTime": 1763850597494,
+          "stepDuration": 1294
+        },
+        {
+          "action": "sendCommand",
+          "startTime": 1763850597494,
+          "success": true,
+          "message": "go to dashboard in dollar mode",
+          "endTime": 1763850597497,
+          "stepDuration": 3
+        },
+        {
+          "action": "wait",
+          "startTime": 1763850597497,
+          "success": true,
+          "duration": 3000,
+          "endTime": 1763850600497,
+          "stepDuration": 3000
+        },
+        {
+          "action": "sendCommand",
+          "startTime": 1763850600497,
+          "success": true,
+          "message": "show 30 day data",
+          "endTime": 1763850600498,
+          "stepDuration": 1
+        },
+        {
+          "action": "wait",
+          "startTime": 1763850600498,
+          "success": true,
+          "duration": 3000,
+          "endTime": 1763850603500,
+          "stepDuration": 3002
+        },
+        {
+          "action": "sendCommand",
+          "startTime": 1763850603500,
+          "success": true,
+          "message": "switch to statistics page",
+          "endTime": 1763850603501,
+          "stepDuration": 1
+        },
+        {
+          "action": "wait",
+          "startTime": 1763850603501,
+          "success": true,
+          "duration": 3000,
+          "endTime": 1763850606503,
+          "stepDuration": 3002
+        },
+        {
+          "action": "sendCommand",
+          "startTime": 1763850606503,
+          "success": true,
+          "message": "show year to date in R-mode",
+          "endTime": 1763850606504,
+          "stepDuration": 1
+        },
+        {
+          "action": "wait",
+          "startTime": 1763850606504,
+          "success": true,
+          "duration": 3000,
+          "endTime": 1763850609505,
+          "stepDuration": 3001
+        },
+        {
+          "action": "validate",
+          "startTime": 1763850609505,
+          "success": false,
+          "error": "dateRange:ytd: page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"date-selector\"], .traderra-date-selector') to be visible\u001b[22m\n",
+          "validations": {
+            "page:statistics": {
+              "success": false,
+              "error": "Wrong page: http://localhost:6565/"
+            },
+            "displayMode:r": {
+              "success": false,
+              "error": "r mode not active"
+            },
+            "dateRange:ytd": {
+              "success": false,
+              "error": "page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"date-selector\"], .traderra-date-selector') to be visible\u001b[22m\n"
+            }
+          },
+          "endTime": 1763850614537,
+          "stepDuration": 5032
+        }
+      ],
+      "success": false,
+      "endTime": 1763850614537,
+      "duration": 18337,
+      "screenshot": "multi_sequence_test-fail-1763850614537.png"
+    }
+  ]
+}

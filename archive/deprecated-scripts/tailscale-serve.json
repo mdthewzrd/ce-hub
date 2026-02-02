@@ -1,0 +1,20 @@
+{
+  "TCP": {
+    "443": {
+      "HTTPS": true
+    }
+  },
+  "Web": {
+    "https:443": {
+      "/": {
+        "Proxy": "http://127.0.0.1:8080"
+      },
+      "/mobile": {
+        "Proxy": "http://127.0.0.1:8081/mobile/"
+      },
+      "/mobile/": {
+        "Proxy": "http://127.0.0.1:8081/mobile/"
+      }
+    }
+  }
+}

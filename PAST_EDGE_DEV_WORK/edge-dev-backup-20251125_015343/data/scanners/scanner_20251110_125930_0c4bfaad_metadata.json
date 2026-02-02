@@ -1,0 +1,10 @@
+{
+  "scanner_id": "scanner_20251110_125930_0c4bfaad",
+  "scanner_name": "LC Frontside D3 Extended 1",
+  "user_id": "default_user",
+  "created_at": "2025-11-10T12:59:30.796115",
+  "parameters_count": 51,
+  "code_length": 44567,
+  "status": "ready",
+  "extraction_method": "multi_scanner_separation"
+}

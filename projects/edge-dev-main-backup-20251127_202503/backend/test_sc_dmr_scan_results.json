@@ -1,0 +1,33 @@
+{
+  "test_name": "sc_dmr_scan_test",
+  "scanner_file": "/Users/michaeldurante/Downloads/SC DMR SCAN copy.py",
+  "date_range": "2025-01-01 to 2025-11-01",
+  "execution_time": 63.538331031799316,
+  "success": false,
+  "result_count": 1,
+  "diagnostics": {
+    "processing_id": "scan_1762736144",
+    "function_detected": "fetch_all_stocks_for_date",
+    "pattern_type": "batch_processing",
+    "execution_model": "batch",
+    "ticker_count": 137,
+    "success_rate": 0.0,
+    "successful_count": 0,
+    "error_count": 1,
+    "sample_errors": [
+      {
+        "symbol": "BATCH_ERROR",
+        "date": "2025-01-01",
+        "error": "scan_symbol() missing 3 required positional arguments: 'symbol', 'start_date', and 'end_date'"
+      }
+    ]
+  },
+  "success_criteria": {
+    "Execution Success": false,
+    "Has Results": true,
+    "Execution Time < 5min": true,
+    "Function Detection": "fetch_all_stocks_for_date",
+    "Ticker Standardization": true
+  },
+  "timestamp": "2025-11-09T19:56:48.435748"
+}

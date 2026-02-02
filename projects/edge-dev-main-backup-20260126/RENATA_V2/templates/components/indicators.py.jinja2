@@ -1,0 +1,39 @@
+{#
+  Indicator Calculations Component
+
+  Reusable template for common trading indicator calculations
+  Usage: {% include 'components/indicators.py.jinja2' %}
+#}
+
+{# EMA Calculation #}
+{% macro ema(column, span) %}
+df['ema_{{ span }}'] = df['{{ column }}'].ewm(span={{ span }}).mean()
+{% endmacro %}
+
+{# Gap Calculation #}
+{% macro gap() %}
+df['gap'] = (df['open'] / df['close'].shift(1)) - 1
+{% endmacro %}
+
+{# Gap Amount Calculation #}
+{% macro gap_amount() %}
+df['gap_amount'] = df['open'] - df['close'].shift(1)
+{% endmacro %}
+
+{# Range Calculation #}
+{% macro range() %}
+df['range'] = df['high'] - df['low']
+{% endmacro %}
+
+{# Previous Close #}
+{% macro prev_close() %}
+df['prev_close'] = df['close'].shift(1)
+{% endmacro %}
+
+{# Consecutive Gap Days #}
+{% macro consecutive_gaps(gap_threshold, consecutive_days) %}
+df['gap_signal'] = (df['gap'] >= {{ gap_threshold }}).astype(int)
+df['consecutive_gaps'] = df['gap_signal'].groupby(
+    (df['gap_signal'] != df['gap_signal'].shift()).cumsum()
+).cumsum()
+{% endmacro %}

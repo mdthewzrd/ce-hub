@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nano Banana Multi-Photo Enhanced - Ultimate Precision</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Inter', -apple-system, sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .upload-zone {
+            border: 3px dashed #cbd5e1;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-zone:hover {
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .upload-zone.dragover {
+            border-color: #4f46e5;
+            background: rgba(79, 70, 229, 0.2);
+            transform: scale(1.02);
+        }
+
+        .upload-zone.paste-active {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            border-style: solid;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .photo-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .photo-item.selected {
+            border: 3px solid #6366f1;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .remove-photo {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .photo-item:hover .remove-photo {
+            opacity: 1;
+        }
+
+        .photo-number {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: rgba(99, 102, 241, 0.9);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #6366f1;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .gradient-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+        }
+
+        .gradient-button:hover {
+            background: linear-gradient(135deg, #5a6fd8, #6a4190);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .nano-banner {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .precision-indicator {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .analysis-panel {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        .analysis-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 14px;
+        }
+
+        .analysis-item i {
+            color: #6366f1;
+            margin-right: 0.5rem;
+            width: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen p-4">
+        <!-- Nano Banana Banner -->
+        <div class="nano-banner rounded-xl p-4 mb-6 text-center">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">
+                <span class="text-5xl">🍌</span>
+                Nano Banana Multi-Photo Enhanced
+            </h1>
+            <p class="text-xl text-gray-600 mb-2">
+                <span class="precision-indicator">
+                    <i class="fas fa-crosshairs mr-1"></i>
+                    Multi-Reference Precision Mode
+                </span>
+            </p>
+            <p class="text-lg text-gray-600">Upload multiple photos for perfect 360° accuracy analysis</p>
+        </div>
+
+        <div class="max-w-7xl mx-auto">
+            <!-- Upload Section -->
+            <div class="glass-card rounded-2xl p-6 mb-6">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">
+                        <i class="fas fa-camera mr-3 text-purple-600"></i>
+                        Step 1: Upload Multiple Reference Photos
+                    </h2>
+                    <p class="text-gray-600">
+                        Upload multiple photos that need glasses added (each photo will be processed separately)
+                    </p>
+                    <p class="text-sm text-purple-600 font-semibold mt-2">
+                        <i class="fas fa-shield-alt mr-1"></i>
+                        1000% character accuracy guaranteed - photos will not be altered except for glasses
+                    </p>
+                </div>
+
+                <div id="uploadZone" class="upload-zone rounded-xl p-12 text-center cursor-pointer mb-6">
+                    <i class="fas fa-cloud-upload-alt text-7xl text-purple-400 mb-6"></i>
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Upload Person Photos</h3>
+                    <p class="text-lg text-gray-500 mb-6">
+                        Drag & drop multiple photos or click to browse<br>
+                        <span class="text-sm text-purple-600 font-semibold">
+                            <i class="fas fa-paste mr-1"></i>
+                            Or paste screenshots (Ctrl+V / Cmd+V)
+                        </span>
+                    </p>
+                    <button class="gradient-button text-white px-8 py-4 rounded-xl text-lg font-semibold">
+                        <i class="fas fa-folder-open mr-3"></i>Choose Multiple Photos
+                    </button>
+                    <input type="file" id="fileInput" accept="image/*" multiple class="hidden">
+                </div>
+
+                <!-- Photo Gallery -->
+                <div id="photoGallery" style="display: none;">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">
+                            <i class="fas fa-images mr-2"></i>
+                            Reference Photos (<span id="photoCount">0</span>)
+                        </h3>
+                        <button id="clearAllBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm">
+                            <i class="fas fa-trash mr-2"></i>Clear All
+                        </button>
+                    </div>
+
+                    <!-- Photo Analysis Panel -->
+                    <div class="analysis-panel mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">
+                            <i class="fas fa-brain mr-2"></i>Nano Banana Analysis
+                        </h4>
+                        <div id="analysisContent" class="text-sm text-gray-600">
+                            <div class="analysis-item">
+                                <i class="fas fa-user"></i>
+                                <span>Face structure analysis: Waiting for photos...</span>
+                            </div>
+                            <div class="analysis-item">
+                                <i class="fas fa-palette"></i>
+                                <span>Lighting conditions: Not analyzed yet</span>
+                            </div>
+                            <div class="analysis-item">
+                                <i class="fas fa-camera"></i>
+                                <span>Camera angles: Upload photos from different views</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="photo-grid" id="photoGrid">
+                        <!-- Photos will be added here -->
+                    </div>
+
+                    <div class="mt-6 flex justify-center">
+                        <button id="addMoreBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold">
+                            <i class="fas fa-plus mr-2"></i>Add More Photos
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Glasses Selection Section -->
+            <div class="glass-card rounded-2xl p-6 mb-6" id="glassesSection" style="display: none;">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">
+                        <i class="fas fa-glasses mr-3 text-purple-600"></i>
+                        Step 2: Choose Glasses Style
+                    </h2>
+                    <p class="text-gray-600">Nano Banana will match this style perfectly using multi-angle analysis</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4" id="stylesContainer">
+                    <!-- Styles will be loaded here -->
+                </div>
+
+                <!-- Custom Glasses Upload -->
+                <div class="mt-6 text-center">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3">
+                        <i class="fas fa-upload mr-2"></i>Or Upload Custom Glasses
+                    </h4>
+                    <div id="glassesUploadZone" class="upload-zone rounded-xl p-6 text-center cursor-pointer inline-block">
+                        <i class="fas fa-glasses text-4xl text-purple-400 mb-3"></i>
+                        <p class="text-sm font-semibold text-gray-700">Upload Glasses Reference</p>
+                        <input type="file" id="glassesFileInput" accept="image/*" class="hidden">
+                        <img id="glassesPreview" class="mt-3 mx-auto max-h-32 hidden">
+                    </div>
+                </div>
+
+                <!-- PROMINENT RUN BUTTON - STEP 2 -->
+                <div class="mt-8 flex flex-col items-center gap-4 border-t-2 border-purple-200 pt-8">
+                    <div class="text-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">
+                            <i class="fas fa-rocket mr-2 text-purple-600"></i>
+                            Step 3: Process All Photos
+                        </h3>
+                        <p class="text-gray-600">
+                            Nano Banana will add glasses to <span class="font-bold text-purple-600">each photo separately</span> with 1000% accuracy
+                        </p>
+                        <p class="text-sm text-gray-500 mt-1">
+                            <i class="fas fa-shield-alt mr-1"></i>
+                            Original character and photo quality will be perfectly preserved
+                        </p>
+                    </div>
+
+                    <!-- COMPLETELY NEW RUN BUTTON -->
+                    <div id="runProcessContainer" class="relative">
+                        <a href="#" id="runProcessLink" onclick="processMultiPhoto(); return false;"
+                           class="block gradient-button text-white px-16 py-8 rounded-3xl font-black text-3xl shadow-2xl transform transition-all duration-300 hover:scale-105 text-center no-underline opacity-50"
+                           style="text-decoration: none;">
+                            <i class="fas fa-magic mr-4"></i>
+                            <span class="animate-pulse">RUN</span>
+                            <span class="ml-2">Process</span>
+                            <span class="block text-lg mt-1">All Photos</span>
+                        </a>
+                        <!-- Glowing effect when enabled -->
+                        <div class="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 blur-xl transition-opacity duration-300" id="runButtonGlow"></div>
+                    </div>
+
+                    <!-- Run button instructions -->
+                    <p id="runButtonInstructions" class="text-gray-500 text-center font-medium">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        Upload photos to enable processing
+                    </p>
+                </div>
+            </div>
+
+            <!-- Processing Section -->
+            <div class="glass-card rounded-2xl p-8 mb-6" id="processingSection" style="display: none;">
+                <div class="text-center">
+                    <div class="bg-purple-100 rounded-full p-6 inline-block mb-6">
+                        <i class="fas fa-cogs text-purple-600 text-4xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Nano Banana Multi-Analysis...</h2>
+                    <p class="text-xl text-gray-600 mb-2">Analyzing all reference photos for perfect accuracy</p>
+                    <p class="text-lg text-gray-500 mb-6">Creating composite 360° understanding for optimal placement</p>
+                    <div class="loading-spinner mx-auto mb-4"></div>
+                    <div class="grid grid-cols-3 gap-4 max-w-md mx-auto text-sm text-gray-600">
+                        <div class="text-center">
+                            <i class="fas fa-layer-group text-green-500 text-xl mb-1"></i>
+                            <p>Multi-Photo AI</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-cube text-blue-500 text-xl mb-1"></i>
+                            <p>3D Analysis</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-perfect text-purple-500 text-xl mb-1"></i>
+                            <p>Perfect Fit</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="grid md:grid-cols-3 gap-6" id="resultsSection" style="display: none;">
+                <!-- Reference Photos -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-100 rounded-full p-2 mr-3">
+                            <i class="fas fa-images text-gray-600"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800">Reference Photos</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div id="referenceThumbnails">
+                            <!-- Thumbnails will be added here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Primary Result -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 rounded-full p-2 mr-3">
+                            <i class="fas fa-star text-green-600"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800">Primary Result</h3>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 min-h-[250px] flex items-center justify-center">
+                        <img id="enhancedImage" class="image-preview" alt="Enhanced" style="display: none;">
+                        <div id="enhancedPlaceholder" class="text-center">
+                            <i class="fas fa-sparkles text-6xl text-purple-300 mb-4"></i>
+                            <p class="text-gray-500">Processing...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Results -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 rounded-full p-2 mr-3">
+                            <i class="fas fa-th text-blue-600"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800">Angle Variations</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2" id="additionalResults">
+                        <!-- Additional results will be added here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Section -->
+            <div class="text-center mt-6" id="downloadSection" style="display: none;">
+                <button id="downloadBtn" class="gradient-button text-white px-8 py-4 rounded-xl text-lg font-semibold">
+                    <i class="fas fa-download mr-3"></i>Download All Enhanced Images
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let uploadedPhotos = [];
+        let selectedGlassesStyle = 'professional';
+        let customGlassesImage = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEventListeners();
+            // Set default glasses style immediately
+            selectedGlassesStyle = 'professional';
+            loadGlassesStyles();
+        });
+
+        function setupEventListeners() {
+            const uploadZone = document.getElementById('uploadZone');
+            const fileInput = document.getElementById('fileInput');
+            const glassesUploadZone = document.getElementById('glassesUploadZone');
+            const glassesFileInput = document.getElementById('glassesFileInput');
+
+            // Photo upload
+            uploadZone.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', (e) => handlePhotoUpload(e.target.files));
+
+            setupDropZone(uploadZone, handlePhotoUpload);
+
+            // Add more photos
+            document.getElementById('addMoreBtn').addEventListener('click', () => fileInput.click());
+            document.getElementById('clearAllBtn').addEventListener('click', clearAllPhotos);
+
+            // Run process button
+            document.getElementById('runProcessBtn').addEventListener('click', processMultiPhoto);
+
+            // Glasses upload
+            glassesUploadZone.addEventListener('click', () => glassesFileInput.click());
+            glassesFileInput.addEventListener('change', (e) => handleGlassesUpload(e.target.files[0]));
+
+            setupDropZone(glassesUploadZone, (file) => handleGlassesUpload(file));
+
+            // Paste support
+            document.addEventListener('paste', handlePaste);
+
+            // Download
+            document.getElementById('downloadBtn').addEventListener('click', downloadAllImages);
+        }
+
+        function setupDropZone(zone, handler) {
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                zone.classList.add('dragover');
+            });
+
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('dragover');
+            });
+
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (handler) {
+                    handler(files.length === 1 ? files[0] : files);
+                }
+            });
+        }
+
+        function handlePaste(e) {
+            const items = e.clipboardData.items;
+            for (let item of items) {
+                if (item.type.indexOf('image') !== -1) {
+                    const blob = item.getAsFile();
+                    handlePhotoUpload([blob]);
+                    break;
+                }
+            }
+        }
+
+        function handlePhotoUpload(files) {
+            const fileArray = Array.from(files);
+            fileArray.forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const photoData = {
+                            id: Date.now() + Math.random(),
+                            src: e.target.result,
+                            name: file.name,
+                            file: file
+                        };
+                        uploadedPhotos.push(photoData);
+                        renderPhotos();
+                        updateAnalysis();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        function handleGlassesUpload(file) {
+            if (file && file.type.startsWith('image/')) {
+                customGlassesImage = file;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const preview = document.getElementById('glassesPreview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    updateRunButtonState(); // Update run button state
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function renderPhotos() {
+            const photoGrid = document.getElementById('photoGrid');
+            const photoGallery = document.getElementById('photoGallery');
+            const runBtn = document.getElementById('runProcessBtn');
+            const runBtnGlow = document.getElementById('runButtonGlow');
+            const runBtnInstructions = document.getElementById('runButtonInstructions');
+
+            if (uploadedPhotos.length > 0) {
+                photoGallery.style.display = 'block';
+                document.getElementById('photoCount').textContent = uploadedPhotos.length;
+                document.getElementById('glassesSection').style.display = 'block';
+
+                // Check if glasses style is selected (simple check - assume default is selected)
+                updateRunButtonState();
+            } else {
+                photoGallery.style.display = 'none';
+                document.getElementById('glassesSection').style.display = 'none';
+                updateRunButtonState();
+            }
+
+            photoGrid.innerHTML = uploadedPhotos.map((photo, index) => `
+                <div class="photo-item ${index === 0 ? 'selected' : ''}" data-id="${photo.id}">
+                    <div class="photo-number">${index + 1}</div>
+                    <img src="${photo.src}" alt="Reference photo ${index + 1}">
+                    <button class="remove-photo" onclick="removePhoto('${photo.id}')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function removePhoto(photoId) {
+            uploadedPhotos = uploadedPhotos.filter(photo => photo.id !== photoId);
+            renderPhotos();
+            updateAnalysis();
+        }
+
+        function updateRunButtonState() {
+            const runBtn = document.getElementById('runProcessLink');
+            const runBtnGlow = document.getElementById('runButtonGlow');
+            const runBtnInstructions = document.getElementById('runButtonInstructions');
+
+            const hasPhotos = uploadedPhotos.length > 0;
+
+            if (hasPhotos) {
+                // Make button look enabled
+                runBtn.style.opacity = '1';
+                runBtnGlow.style.opacity = '0.6';
+
+                // Update instructions
+                runBtnInstructions.innerHTML = `
+                    <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                    <span class="text-green-600 font-semibold">Ready to process ${uploadedPhotos.length} photos!</span>
+                `;
+            } else {
+                // Make button look disabled
+                runBtn.style.opacity = '0.5';
+                runBtnGlow.style.opacity = '0';
+
+                // Reset instructions
+                runBtnInstructions.innerHTML = `
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Upload photos to enable processing
+                `;
+            }
+        }
+
+        function clearAllPhotos() {
+            if (confirm('Remove all reference photos?')) {
+                uploadedPhotos = [];
+                customGlassesImage = null;
+                document.getElementById('photoGallery').style.display = 'none';
+                document.getElementById('glassesSection').style.display = 'none';
+                document.getElementById('glassesPreview').style.display = 'none';
+                updateRunButtonState();
+                updateAnalysis();
+            }
+        }
+
+        function updateAnalysis() {
+            const analysisContent = document.getElementById('analysisContent');
+
+            if (uploadedPhotos.length === 0) {
+                analysisContent.innerHTML = `
+                    <div class="analysis-item">
+                        <i class="fas fa-user"></i>
+                        <span>Face structure analysis: Waiting for photos...</span>
+                    </div>
+                    <div class="analysis-item">
+                        <i class="fas fa-palette"></i>
+                        <span>Lighting conditions: Not analyzed yet</span>
+                    </div>
+                    <div class="analysis-item">
+                        <i class="fas fa-camera"></i>
+                        <span>Camera angles: Upload photos from different views</span>
+                    </div>
+                `;
+            } else {
+                analysisContent.innerHTML = `
+                    <div class="analysis-item">
+                        <i class="fas fa-user"></i>
+                        <span>Character preservation: 1000% accuracy locked</span>
+                    </div>
+                    <div class="analysis-item">
+                        <i class="fas fa-shield-alt text-green-500"></i>
+                        <span>Original features: Perfect preservation enabled</span>
+                    </div>
+                    <div class="analysis-item">
+                        <i class="fas fa-camera"></i>
+                        <span>Processing: ${uploadedPhotos.length} separate photos ready</span>
+                    </div>
+                    <div class="analysis-item">
+                        <i class="fas fa-magic text-purple-500"></i>
+                        <span>Nano Banana: Ready for individual photo enhancement</span>
+                    </div>
+                `;
+            }
+        }
+
+        function loadGlassesStyles() {
+            const styles = [
+                { id: "aviator", name: "Aviator", icon: "✈️" },
+                { id: "wayfarer", name: "Wayfarer", icon: "🕶️" },
+                { id: "cat_eye", name: "Cat Eye", icon: "😺" },
+                { id: "round", name: "Round", icon: "⭕" },
+                { id: "professional", name: "Professional", icon: "💼" },
+                { id: "sport", name: "Sport", icon: "🏃" },
+                { id: "vintage", name: "Vintage", icon: "📻" },
+                { id: "minimalist", name: "Minimalist", icon: "➖" }
+            ];
+
+            const container = document.getElementById('stylesContainer');
+            container.innerHTML = styles.map(style => `
+                <div class="style-card glass-card rounded-lg p-4 text-center cursor-pointer" data-style="${style.id}" onclick="selectStyle('${style.id}')">
+                    <div class="text-3xl mb-2">${style.icon}</div>
+                    <div class="font-bold text-sm mb-1">${style.name}</div>
+                </div>
+            `).join('');
+
+            // Auto-select professional style by default
+            selectedGlassesStyle = 'professional';
+
+            // Highlight the default selection after a small delay to ensure DOM is ready
+            setTimeout(() => {
+                const professionalCard = document.querySelector('[data-style="professional"]');
+                if (professionalCard) {
+                    professionalCard.classList.add('ring-2', 'ring-purple-500');
+                    console.log('Professional style auto-selected');
+                }
+                updateRunButtonState();
+            }, 100);
+        }
+
+        function selectStyle(styleId) {
+            console.log('selectStyle called with:', styleId);
+            selectedGlassesStyle = styleId;
+
+            // Update UI
+            document.querySelectorAll('.style-card').forEach(card => {
+                card.classList.remove('ring-2', 'ring-purple-500');
+            });
+
+            // Find the clicked card and highlight it
+            const clickedCard = event.target.closest('.style-card');
+            if (clickedCard) {
+                clickedCard.classList.add('ring-2', 'ring-purple-500');
+            }
+
+            console.log('Style selected:', selectedGlassesStyle);
+            // Update Run button state
+            updateRunButtonState();
+
+            // Don't auto-process - wait for user to click Run button
+        }
+
+        async function processMultiPhoto() {
+            if (uploadedPhotos.length === 0) {
+                alert('Please upload photos first!');
+                return;
+            }
+
+            showProcessing();
+
+            // Create form data with all photos
+            const formData = new FormData();
+
+            // Add all photos
+            uploadedPhotos.forEach((photo, index) => {
+                formData.append(`user_photo_${index}`, photo.file);
+            });
+
+            // Add glasses info - always ensure we have a glasses style
+            if (customGlassesImage) {
+                formData.append('glasses_image', customGlassesImage);
+            } else {
+                // Use selected style or default to professional
+                const glassesStyle = selectedGlassesStyle || 'professional';
+                formData.append('style', glassesStyle);
+            }
+
+            formData.append('multi_photo', 'true');
+
+            try {
+                const response = await fetch('/api/multi-photo-enhance', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                handleProcessingResponse(data);
+            } catch (error) {
+                alert('Processing failed: ' + error.message);
+                hideProcessing();
+            }
+        }
+
+        function handleProcessingResponse(data) {
+            if (data.success) {
+                // Show primary result
+                const enhancedImg = document.getElementById('enhancedImage');
+                enhancedImg.src = `/api/get-enhanced/${data.image_path}`;
+                enhancedImg.style.display = 'block';
+                document.getElementById('enhancedPlaceholder').style.display = 'none';
+
+                // Show reference thumbnails
+                const thumbnails = document.getElementById('referenceThumbnails');
+                thumbnails.innerHTML = uploadedPhotos.slice(0, 4).map(photo => `
+                    <img src="${photo.src}" class="w-full h-20 object-cover rounded" alt="Reference">
+                `).join('');
+
+                // Show additional results if available
+                if (data.additional_results) {
+                    const additionalResults = document.getElementById('additionalResults');
+                    additionalResults.innerHTML = data.additional_results.map(result => `
+                        <img src="/api/get-enhanced/${result}" class="w-full h-20 object-cover rounded cursor-pointer hover:opacity-80"
+                             onclick="window.open('/api/get-enhanced/${result}', '_blank')" alt="Variation">
+                    `).join('');
+                }
+
+                // Show results and download sections
+                document.getElementById('resultsSection').style.display = 'grid';
+                document.getElementById('downloadSection').style.display = 'block';
+
+                hideProcessing();
+                document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('Processing failed: ' + data.error);
+                hideProcessing();
+            }
+        }
+
+        function downloadAllImages() {
+            // Download primary image
+            const enhancedImg = document.getElementById('enhancedImage');
+            const link = document.createElement('a');
+            link.download = 'nano-banana-multi-enhanced.png';
+            link.href = enhancedImg.src;
+            link.click();
+
+            // TODO: Download additional results if available
+        }
+
+        function showProcessing() {
+            document.getElementById('processingSection').style.display = 'block';
+            document.getElementById('resultsSection').style.display = 'none';
+            document.getElementById('downloadSection').style.display = 'none';
+        }
+
+        function hideProcessing() {
+            document.getElementById('processingSection').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

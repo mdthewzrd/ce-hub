@@ -1,0 +1,6 @@
+{
+  "code": "# Simple test scan\nresults = [{\"ticker\": \"AAPL\", \"date\": \"2024-10-30\", \"gap_pct\": 2.5}]\nprint(\"Test scan complete\")",
+  "start_date": "2024-10-01",
+  "end_date": "2024-10-31",
+  "tickers": ["AAPL", "MSFT", "GOOGL"]
+}

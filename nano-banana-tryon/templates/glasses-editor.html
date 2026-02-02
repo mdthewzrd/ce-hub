@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nano Banana Glasses Editor - AI Photo Enhancement</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .upload-zone {
+            border: 3px dashed #cbd5e1;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .upload-zone:hover {
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .upload-zone.dragover {
+            border-color: #4f46e5;
+            background: rgba(79, 70, 229, 0.2);
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #6366f1;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .style-button {
+            transition: all 0.3s ease;
+        }
+
+        .style-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .style-button.selected {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen p-4">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-white mb-2">
+                <i class="fas fa-glasses mr-3"></i>
+                🍌 Nano Banana Glasses Editor
+            </h1>
+            <p class="text-xl text-purple-100">AI-powered glasses placement with extreme accuracy</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+            <!-- Upload Section -->
+            <div class="glass-card rounded-2xl p-6 mb-6">
+                <h2 class="text-2xl font-semibold mb-4">
+                    <i class="fas fa-upload mr-2"></i>Step 1: Upload Your Photo
+                </h2>
+
+                <div id="uploadZone" class="upload-zone rounded-xl p-12 text-center cursor-pointer">
+                    <i class="fas fa-cloud-upload-alt text-6xl text-purple-400 mb-4"></i>
+                    <p class="text-lg text-gray-700 mb-2">Drag & drop your photo here</p>
+                    <p class="text-sm text-gray-500 mb-4">or click to browse</p>
+                    <button class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
+                        <i class="fas fa-folder-open mr-2"></i>Choose Photo
+                    </button>
+                    <input type="file" id="fileInput" accept="image/*" class="hidden">
+                </div>
+            </div>
+
+            <!-- Glasses Style Selection -->
+            <div class="glass-card rounded-2xl p-6 mb-6" id="styleSection" style="display: none;">
+                <h2 class="text-2xl font-semibold mb-4">
+                    <i class="fas fa-glasses mr-2"></i>Step 2: Choose Glasses Style
+                </h2>
+
+                <div id="stylesContainer" class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                    <!-- Styles will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Processing Section -->
+            <div class="glass-card rounded-2xl p-6 mb-6" id="processingSection" style="display: none;">
+                <h2 class="text-2xl font-semibold mb-4">
+                    <i class="fas fa-magic mr-2"></i>Step 3: Nano Banana Processing
+                </h2>
+
+                <div class="flex items-center justify-center p-8">
+                    <div class="text-center">
+                        <div class="loading-spinner mx-auto mb-4"></div>
+                        <p class="text-lg text-gray-700">Nano Banana is adding glasses with extreme precision...</p>
+                        <p class="text-sm text-gray-500 mt-2">This may take up to 30 seconds</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="grid md:grid-cols-2 gap-6" id="resultsSection" style="display: none;">
+                <!-- Original Image -->
+                <div class="glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-semibold mb-4">
+                        <i class="fas fa-image mr-2"></i>Original Photo
+                    </h3>
+                    <div class="bg-gray-100 rounded-lg p-4 min-h-[300px] flex items-center justify-center">
+                        <img id="originalImage" class="image-preview rounded-lg shadow-lg" alt="Original">
+                    </div>
+                </div>
+
+                <!-- Enhanced Image -->
+                <div class="glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-semibold mb-4">
+                        <i class="fas fa-star mr-2"></i>Nano Banana Enhanced
+                    </h3>
+                    <div class="bg-gray-100 rounded-lg p-4 min-h-[300px] flex items-center justify-center">
+                        <img id="enhancedImage" class="image-preview rounded-lg shadow-lg" alt="Enhanced" style="display: none;">
+                    </div>
+
+                    <!-- Download Button -->
+                    <div class="mt-4" id="downloadSection" style="display: none;">
+                        <button id="downloadBtn" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg hover:from-purple-700 hover:to-pink-700 transition">
+                            <i class="fas fa-download mr-2"></i>Download Enhanced Image
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="grid md:grid-cols-3 gap-4 mt-6">
+                <div class="glass-card rounded-xl p-4 text-center">
+                    <i class="fas fa-shield-alt text-3xl text-purple-600 mb-2"></i>
+                    <h4 class="font-semibold mb-1">100% Quality Preserved</h4>
+                    <p class="text-sm text-gray-600">Original image quality maintained</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-4 text-center">
+                    <i class="fas fa-magic text-3xl text-purple-600 mb-2"></i>
+                    <h4 class="font-semibold mb-1">AI Precision</h4>
+                    <p class="text-sm text-gray-600">Nano Banana accuracy</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-4 text-center">
+                    <i class="fas fa-bolt text-3xl text-purple-600 mb-2"></i>
+                    <h4 class="font-semibold mb-1">Instant Results</h4>
+                    <p class="text-sm text-gray-600">Professional quality in seconds</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="glass-card rounded-xl p-6 max-w-md mx-4">
+            <div class="text-center">
+                <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Oops!</h3>
+                <p id="errorMessage" class="text-gray-600 mb-4">Something went wrong</p>
+                <button onclick="closeErrorModal()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedStyle = 'modern sunglasses';
+        let uploadedFile = null;
+
+        // Load glasses styles
+        async function loadGlassesStyles() {
+            try {
+                const response = await fetch('/api/glasses-styles');
+                const data = await response.json();
+
+                const container = document.getElementById('stylesContainer');
+                container.innerHTML = '';
+
+                data.styles.forEach(style => {
+                    const button = document.createElement('button');
+                    button.className = 'style-button p-3 rounded-lg bg-white border border-gray-200 hover:border-purple-400';
+                    button.innerHTML = `
+                        <div class="text-center">
+                            <i class="fas fa-glasses text-2xl mb-2"></i>
+                            <div class="font-medium text-sm">${style.name}</div>
+                            <div class="text-xs text-gray-500">${style.description}</div>
+                        </div>
+                    `;
+                    button.onclick = () => selectStyle(style.id, button);
+                    container.appendChild(button);
+                });
+
+                // Select first style by default
+                const firstButton = container.querySelector('.style-button');
+                if (firstButton) {
+                    selectStyle(data.styles[0].id, firstButton);
+                }
+            } catch (error) {
+                console.error('Failed to load styles:', error);
+            }
+        }
+
+        function selectStyle(styleId, button) {
+            selectedStyle = styleId;
+
+            // Update UI
+            document.querySelectorAll('.style-button').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            button.classList.add('selected');
+        }
+
+        // File upload handling
+        const uploadZone = document.getElementById('uploadZone');
+        const fileInput = document.getElementById('fileInput');
+
+        uploadZone.addEventListener('click', () => fileInput.click());
+
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('dragover');
+        });
+
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFileSelect(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFileSelect(e.target.files[0]);
+            }
+        });
+
+        function handleFileSelect(file) {
+            if (!file.type.startsWith('image/')) {
+                showError('Please select an image file');
+                return;
+            }
+
+            uploadedFile = file;
+
+            // Show original image preview
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.getElementById('originalImage').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+
+            // Show style selection
+            document.getElementById('styleSection').style.display = 'block';
+            document.getElementById('resultsSection').style.display = 'block';
+
+            // Scroll to style selection
+            document.getElementById('styleSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add glasses processing
+        async function processGlasses() {
+            if (!uploadedFile) {
+                showError('Please upload an image first');
+                return;
+            }
+
+            // Show processing
+            document.getElementById('processingSection').style.display = 'block';
+            document.getElementById('enhancedImage').style.display = 'none';
+            document.getElementById('downloadSection').style.display = 'none';
+
+            const formData = new FormData();
+            formData.append('image', uploadedFile);
+            formData.append('style', selectedStyle);
+
+            try {
+                const response = await fetch('/api/add-glasses', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Load enhanced image
+                    const enhancedImg = document.getElementById('enhancedImage');
+                    enhancedImg.src = `/api/get-enhanced/${data.image_path}`;
+                    enhancedImg.style.display = 'block';
+
+                    // Show download button
+                    document.getElementById('downloadSection').style.display = 'block';
+
+                    // Setup download
+                    document.getElementById('downloadBtn').onclick = () => {
+                        window.open(enhancedImg.src, '_blank');
+                    };
+
+                    // Hide processing
+                    document.getElementById('processingSection').style.display = 'none';
+
+                    // Scroll to results
+                    document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    showError(data.error || 'Failed to process image');
+                }
+            } catch (error) {
+                showError('Failed to connect to server');
+            }
+        }
+
+        // Auto-process when style is selected
+        function selectStyle(styleId, button) {
+            selectedStyle = styleId;
+
+            // Update UI
+            document.querySelectorAll('.style-button').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            button.classList.add('selected');
+
+            // Auto-process if file is uploaded
+            if (uploadedFile) {
+                setTimeout(processGlasses, 500);
+            }
+        }
+
+        // Error handling
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('errorModal').style.display = 'flex';
+        }
+
+        function closeErrorModal() {
+            document.getElementById('errorModal').style.display = 'none';
+        }
+
+        // Initialize
+        loadGlassesStyles();
+    </script>
+</body>
+</html>

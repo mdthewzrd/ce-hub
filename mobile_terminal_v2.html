@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Claude Terminal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+        }
+        .header {
+            background: #1a1a1a;
+            padding: 8px 10px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .title {
+            font-size: 12px;
+            color: #666;
+        }
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #444;
+            border: 2px solid #222;
+        }
+        .status-indicator.online {
+            background: #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+        }
+        .status-indicator.offline {
+            background: #ff0000;
+            box-shadow: 0 0 10px #ff0000;
+        }
+        .status-text {
+            font-size: 10px;
+            color: #666;
+        }
+        .header-btn {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #888;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+        .header-btn:active {
+            background: #3a3a3a;
+        }
+        .reconnect-btn {
+            background: #ffa657;
+            border: 1px solid #ffa657;
+            color: #000;
+            font-weight: 600;
+        }
+        .terminal {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            line-height: 1.5;
+        }
+        .terminal div {
+            margin-bottom: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .prompt {
+            color: #0f0;
+        }
+        .user-input {
+            color: #fff;
+        }
+        .ai-response {
+            color: #ffa657;
+        }
+        .thinking {
+            color: #666;
+        }
+        .error {
+            color: #f85149;
+        }
+        .success {
+            color: #00ff00;
+        }
+        .input-line {
+            display: flex;
+            align-items: center;
+            background: #000;
+            padding: 10px 15px;
+            border-top: 1px solid #222;
+        }
+        .prompt-symbol {
+            color: #0f0;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        #terminal-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            outline: none;
+        }
+        #terminal-input:disabled {
+            opacity: 0.5;
+        }
+        .model-indicator {
+            position: fixed;
+            top: 40px;
+            right: 10px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 9px;
+            color: #666;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            max-height: 70vh;
+        }
+        .modal-header {
+            padding: 12px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-title {
+            color: #ffa657;
+            font-size: 14px;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .modal-body {
+            padding: 12px;
+            max-height: 350px;
+            overflow-y: auto;
+        }
+        .history-item {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            padding: 10px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .history-item:active {
+            border-color: #ffa657;
+        }
+        .history-title {
+            color: #fff;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        .history-meta {
+            color: #666;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <div class="status-indicator" id="status-indicator"></div>
+            <span class="status-text" id="status-text">Checking...</span>
+            <span class="title">GLM 4.6</span>
+        </div>
+        <button class="header-btn reconnect-btn" id="reconnect-btn" onclick="reconnect()" style="display: none;">Reconnect</button>
+        <button class="header-btn" onclick="showHistory()">History</button>
+    </div>
+
+    <div class="model-indicator">GLM 4.6</div>
+
+    <div class="terminal" id="terminal">
+        <div style="color: #666;">Claude Terminal Mobile v2</div>
+        <div style="color: #666;">Connecting to server...</div>
+        <div></div>
+    </div>
+
+    <div class="input-line">
+        <span class="prompt-symbol">></span>
+        <input type="text" id="terminal-input" disabled />
+    </div>
+
+    <div class="modal" id="history-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Chat History</span>
+                <button class="modal-close" onclick="closeHistory()">&times;</button>
+            </div>
+            <div class="modal-body" id="history-list">
+                <div style="text-align: center; color: #666;">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SERVER_URL = 'http://100.95.223.19:8115';
+        let currentSessionId = localStorage.getItem('claudeTerminalSession') || 'terminal-' + Date.now();
+        localStorage.setItem('claudeTerminalSession', currentSessionId);
+        let isOnline = false;
+        let statusCheckInterval = null;
+
+        const terminal = document.getElementById('terminal');
+        const input = document.getElementById('terminal-input');
+        const statusIndicator = document.getElementById('status-indicator');
+        const statusText = document.getElementById('status-text');
+        const reconnectBtn = document.getElementById('reconnect-btn');
+
+        // Check server status
+        async function checkStatus() {
+            try {
+                const response = await fetch(SERVER_URL + '/health', {
+                    method: 'GET',
+                    cache: 'no-cache'
+                });
+                if (response.ok) {
+                    setOnline(true);
+                    return true;
+                }
+            } catch (e) {
+                setOnline(false);
+                return false;
+            }
+            setOnline(false);
+            return false;
+        }
+
+        function setOnline(online) {
+            isOnline = online;
+            if (online) {
+                statusIndicator.classList.remove('offline');
+                statusIndicator.classList.add('online');
+                statusText.textContent = 'Connected';
+                reconnectBtn.style.display = 'none';
+                input.disabled = false;
+            } else {
+                statusIndicator.classList.remove('online');
+                statusIndicator.classList.add('offline');
+                statusText.textContent = 'Offline';
+                reconnectBtn.style.display = 'block';
+                input.disabled = true;
+            }
+        }
+
+        async function reconnect() {
+            terminal.innerHTML = '<div style="color: #666;">Reconnecting...</div>';
+            const connected = await checkStatus();
+            if (connected) {
+                terminal.innerHTML += '<div class="success">✓ Connected!</div>';
+                await loadLastChat();
+            } else {
+                terminal.innerHTML += '<div class="error">✗ Connection failed</div>';
+                terminal.innerHTML += '<div style="color: #666;">Make sure servers are running on your computer</div>';
+                terminal.innerHTML += '<div></div>';
+            }
+        }
+
+        async function loadLastChat() {
+            try {
+                const response = await fetch(SERVER_URL + '/list-conversations');
+                const data = await response.json();
+
+                if (data.success && data.conversations.length > 0) {
+                    await loadConversation(data.conversations[0].id);
+                } else {
+                    terminal.innerHTML = '<div style="color: #666;">Claude Terminal Mobile</div><div style="color: #666;">Type a message and press Enter</div><div></div>';
+                }
+            } catch (e) {
+                terminal.innerHTML = '<div style="color: #666;">Claude Terminal Mobile</div><div style="color: #666;">Type a message and press Enter</div><div></div>';
+            }
+            input.focus();
+        }
+
+        // Status check every 5 seconds
+        function startStatusMonitor() {
+            checkStatus();
+            statusCheckInterval = setInterval(checkStatus, 5000);
+        }
+
+        input.addEventListener('keypress', async (e) => {
+            if (e.key === 'Enter') {
+                const command = input.value.trim();
+                if (!command) return;
+
+                if (!isOnline) {
+                    terminal.innerHTML += `<div class="error">Error: Not connected to server</div>`;
+                    terminal.innerHTML += `<div></div>`;
+                    terminal.scrollTop = terminal.scrollHeight;
+                    return;
+                }
+
+                terminal.innerHTML += `<div><span class="prompt">></span> <span class="user-input">${command}</span></div>`;
+                input.value = '';
+                terminal.innerHTML += `<div class="thinking">...</div>`;
+                terminal.scrollTop = terminal.scrollHeight;
+
+                try {
+                    const response = await fetch(SERVER_URL + '/claude-chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            question: command,
+                            model: 'glm-4.6',
+                            provider: 'claude-code',
+                            session_id: currentSessionId
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    const thinking = terminal.querySelector('.thinking');
+                    if (thinking) thinking.remove();
+
+                    if (data.error) {
+                        terminal.innerHTML += `<div class="error">Error: ${data.output || data.message}</div>`;
+                    } else {
+                        terminal.innerHTML += `<div class="ai-response">${data.output}</div>`;
+                    }
+
+                    terminal.innerHTML += `<div></div>`;
+                    terminal.scrollTop = terminal.scrollHeight;
+
+                    autoSave();
+
+                } catch (error) {
+                    const thinking = terminal.querySelector('.thinking');
+                    if (thinking) thinking.remove();
+                    terminal.innerHTML += `<div class="error">Connection Error: ${error.message}</div>`;
+                    terminal.innerHTML += `<div></div>`;
+                    terminal.scrollTop = terminal.scrollHeight;
+                    setOnline(false);
+                }
+            }
+        });
+
+        async function autoSave() {
+            try {
+                await fetch(SERVER_URL + '/save-conversation', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        session_id: currentSessionId,
+                        conversation_id: currentSessionId,
+                        title: `Terminal Chat`,
+                        model: 'glm-4.6'
+                    })
+                });
+            } catch (e) {
+                // Silent
+            }
+        }
+
+        async function showHistory() {
+            if (!isOnline) {
+                alert('Server not connected. Click Reconnect first.');
+                return;
+            }
+            const modal = document.getElementById('history-modal');
+            const list = document.getElementById('history-list');
+            modal.classList.add('active');
+            list.innerHTML = '<div style="text-align: center; color: #666;">Loading...</div>';
+
+            try {
+                const response = await fetch(SERVER_URL + '/list-conversations');
+                const data = await response.json();
+
+                if (data.success && data.conversations.length > 0) {
+                    list.innerHTML = data.conversations.map(conv => `
+                        <div class="history-item" onclick="loadConversation('${conv.id}')">
+                            <div class="history-title">${conv.title}</div>
+                            <div class="history-meta">${conv.message_count} messages</div>
+                        </div>
+                    `).join('');
+                } else {
+                    list.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">No history</div>';
+                }
+            } catch (error) {
+                list.innerHTML = `<div style="text-align: center; color: #f85149;">Error loading history</div>`;
+            }
+        }
+
+        function closeHistory() {
+            document.getElementById('history-modal').classList.remove('active');
+        }
+
+        async function loadConversation(id) {
+            closeHistory();
+            try {
+                const response = await fetch(SERVER_URL + '/load-conversation?id=' + id);
+                const data = await response.json();
+
+                if (data.success) {
+                    currentSessionId = id;
+                    localStorage.setItem('claudeTerminalSession', id);
+                    terminal.innerHTML = '';
+                    data.conversation.messages.forEach(msg => {
+                        if (msg.question) {
+                            terminal.innerHTML += `<div><span class="prompt">></span> <span class="user-input">${msg.question}</span></div>`;
+                        }
+                        if (msg.response) {
+                            terminal.innerHTML += `<div class="ai-response">${msg.response}</div>`;
+                        }
+                    });
+                    terminal.innerHTML += `<div></div>`;
+                    terminal.scrollTop = terminal.scrollHeight;
+                }
+            } catch (error) {
+                alert('Error loading');
+            }
+        }
+
+        // Keep focus on input
+        document.addEventListener('click', () => {
+            if (!input.disabled) {
+                input.focus();
+            }
+        });
+
+        // Initialize
+        window.addEventListener('load', async () => {
+            startStatusMonitor();
+            await reconnect();
+        });
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            if (statusCheckInterval) {
+                clearInterval(statusCheckInterval);
+            }
+        });
+    </script>
+</body>
+</html>

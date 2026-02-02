@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Preparation - Harmonatica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a1;
+            --accent: #6366f1;
+            --border: #262626;
+            --success: #22c55e;
+            --warning: #f59e0b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding-top: 64px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar-brand .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-brand h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .navbar-brand p {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 48px;
+        }
+
+        .navbar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .navbar-nav a:hover { background: rgba(99, 102, 241, 0.1); color: white; }
+        .navbar-nav a.active { background: rgba(99, 102, 241, 0.2); color: var(--accent); }
+
+        .navbar-nav .badge {
+            background: var(--accent);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 4px;
+        }
+
+        .navbar-nav .badge-orange {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+        }
+
+        .keyword-badge {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            display: inline-block;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: auto;
+        }
+
+        .glass {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .content-card:hover {
+            border-color: var(--accent);
+        }
+
+        .status-ready { color: var(--success); }
+        .status-scheduled { color: var(--accent); }
+        .status-posted { color: var(--warning); }
+        .status-pending { color: var(--warning); }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: #818cf8; }
+        .btn-secondary { background: rgba(255, 255, 255, 0.1); color: white; }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.15); }
+
+        /* List View Styles */
+        .list-item {
+            display: grid;
+            grid-template-columns: 60px 2fr 1fr 1fr 150px;
+            gap: 16px;
+            align-items: center;
+            padding: 12px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .list-item:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+        .list-item-thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .list-item-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Video thumbnail styles for Grid View */
+        .video-thumbnail {
+            width: 100%;
+            aspect-ratio: 9/16;
+            border-radius: 8px;
+            background: var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+        .video-thumbnail video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-thumbnail .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .video-thumbnail:hover .play-overlay {
+            opacity: 1;
+        }
+        .video-thumbnail .play-overlay i {
+            font-size: 2rem;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        .video-thumbnail .fallback-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Icon View Styles */
+        .icon-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .icon-item:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+        .icon-item-thumbnail {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+            position: relative;
+        }
+        .icon-item-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        .icon-item-info {
+            font-size: 10px;
+            color: var(--text-secondary);
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Form elements */
+        .input, select, textarea {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+        }
+        .input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* Loading spinner */
+        .loading-spinner {
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Utility classes */
+        .hidden { display: none; }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .line-clamp-none {
+            display: block;
+            -webkit-line-clamp: unset;
+        }
+
+        /* Video controls styling */
+        video::-webkit-media-controls-panel {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .navbar-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .navbar-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="/main" class="navbar-brand">
+            <div class="logo">
+                <i class="fas fa-infinity text-white"></i>
+            </div>
+            <div>
+                <h1>Harmonatica</h1>
+                <p>Content Studio</p>
+            </div>
+        </a>
+
+        <div class="navbar-nav">
+            <a href="/main">
+                <i class="fas fa-th-large"></i>
+                Dashboard
+            </a>
+            <a href="/browse">
+                <i class="fas fa-search"></i>
+                Browse
+                <span style="background: linear-gradient(135deg, #8b5cf6, #6366f1);" class="badge">New</span>
+            </a>
+            <a href="/scrape">
+                <i class="fas fa-video"></i>
+                Scraper
+            </a>
+            <a href="/library">
+                <i class="fas fa-folder"></i>
+                Production
+            </a>
+            <a href="/brand-voice">
+                <i class="fas fa-microphone"></i>
+                Brand Voice
+            </a>
+            <a href="/offers">
+                <i class="fas fa-gift"></i>
+                Offers
+                <span class="badge badge-orange">New</span>
+            </a>
+            <a href="/settings">
+                <i class="fas fa-cog"></i>
+                Settings
+            </a>
+        </div>
+
+        <div class="navbar-right">
+            <button onclick="syncVideos()" class="navbar-btn navbar-btn-secondary">
+                <i class="fas fa-sync-alt mr-2"></i>Sync Videos
+            </button>
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                <span class="text-xs font-bold">M</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div style="margin-left: 0; padding: 24px;">
+        <!-- Page Header -->
+        <div class="glass rounded-xl p-6 mb-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold mb-2">Content Preparation</h1>
+                    <p class="text-gray-400">Turn scraped videos into ready-to-post content</p>
+                </div>
+                <div class="flex gap-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold gradient-text" id="statPending">0</div>
+                        <div class="text-xs text-gray-500">Pending</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold gradient-text" id="statPrepared">0</div>
+                        <div class="text-xs text-gray-500">Prepared</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Controls -->
+        <div class="glass rounded-xl p-4 mb-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span class="text-sm text-gray-400">View:</span>
+                    <div class="flex items-center gap-2">
+                        <button id="gridViewBtn" onclick="switchViewMode('grid')" class="p-2 rounded-lg transition-all text-gray-400 hover:text-white" title="Grid View">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button id="listViewBtn" onclick="switchViewMode('list')" class="p-2 rounded-lg transition-all text-gray-400 hover:text-white" title="List View">
+                            <i class="fas fa-list"></i>
+                        </button>
+                        <button id="iconViewBtn" onclick="switchViewMode('icon')" class="p-2 rounded-lg transition-all" style="background: rgba(99, 102, 241, 0.2);" title="Icon View">
+                            <i class="fas fa-th" style="color: #6366f1;"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-sm text-gray-400">Sort by:</span>
+                    <select id="sortSelect" onchange="sortContent()" class="px-4 py-2 rounded-lg" style="background: var(--bg-secondary); border: 1px solid var(--border); color: white;">
+                        <option value="scraped_at">Date Scraped</option>
+                        <option value="engagement_rate">Engagement Rate</option>
+                        <option value="original_likes">Likes</option>
+                        <option value="original_views">Views</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid View Container -->
+        <div id="sourceGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <!-- Grid view content will load here -->
+        </div>
+
+        <!-- List View Container -->
+        <div id="sourceList" class="hidden space-y-3 mb-6">
+            <!-- List view content will load here -->
+        </div>
+
+        <!-- Icon View Container -->
+        <div id="sourceIcon" class="hidden grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 mb-6">
+            <!-- Icon view content will load here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="glass rounded-xl p-12 text-center hidden">
+            <i class="fas fa-inbox text-6xl text-gray-600 mb-4"></i>
+            <h2 class="text-xl font-bold mb-2">No Pending Content</h2>
+            <p class="text-gray-400 mb-4">Sync your scraped videos to start preparing content</p>
+            <button onclick="syncVideos()" class="btn btn-primary">
+                <i class="fas fa-sync-alt mr-2"></i>Sync Videos
+            </button>
+        </div>
+    </div>
+
+    <!-- Preparation Modal -->
+    <div id="prepareModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="glass rounded-xl p-6 w-full max-w-3xl max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold">Prepare Content</h2>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <div id="prepareForm">
+                <input type="hidden" id="prepareSourceId">
+                <input type="hidden" id="prepareVideoPath">
+
+                <!-- Video Preview -->
+                <div class="mb-6">
+                    <label class="block text-sm text-gray-400 mb-3">
+                        <i class="fas fa-video mr-2"></i>Video Preview
+                    </label>
+                    <div class="glass rounded-xl overflow-hidden" style="border: 1px solid var(--border);">
+                        <!-- Video Player -->
+                        <div class="relative bg-black" style="aspect-ratio: 9/16; max-height: 400px;">
+                            <video id="videoPlayer" class="w-full h-full object-contain" controls preload="metadata">
+                                <source id="videoSource" src="" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <!-- Play Overlay -->
+                            <div id="playOverlay" onclick="toggleVideoPlay()" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 cursor-pointer hover:bg-opacity-30 transition-all">
+                                <div class="w-20 h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm flex items-center justify-center">
+                                    <i class="fas fa-play text-white text-3xl ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Info Bar -->
+                        <div class="p-4 border-t" style="border-color: var(--border);">
+                            <div class="flex items-start justify-between mb-3">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                                            <i class="fas fa-user text-white text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-white" id="prepareAccount">@account</div>
+                                            <div class="text-xs text-gray-500" id="prepareFilename">filename</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button onclick="openVideoInNewTab()" class="text-gray-400 hover:text-white transition-colors p-2" title="Open in new tab">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+
+                            <!-- Stats Row -->
+                            <div class="flex items-center gap-6 text-sm mb-3">
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-heart text-red-500"></i>
+                                    <span id="prepareLikes" class="text-white">0</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-eye text-blue-400"></i>
+                                    <span id="prepareViews" class="text-white">0</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-chart-line text-green-400"></i>
+                                    <span id="prepareEngagement" class="text-white">0%</span>
+                                    <span class="text-gray-500 text-xs">engagement</span>
+                                </div>
+                            </div>
+
+                            <!-- Original Caption -->
+                            <div class="bg-black bg-opacity-30 rounded-lg p-3">
+                                <div class="text-xs text-gray-500 mb-1">
+                                    <i class="fas fa-quote-left mr-1"></i>Original Caption
+                                </div>
+                                <p id="prepareOriginalCaption" class="text-sm text-gray-300 italic line-clamp-2">
+                                    No caption
+                                </p>
+                                <button onclick="toggleOriginalCaption()" class="text-xs text-purple-400 hover:text-purple-300 mt-2">
+                                    <span id="captionToggleText">Show more</span>
+                                    <i class="fas fa-chevron-down ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account & Offer Selection -->
+                <div class="mb-4">
+                    <label class="block text-sm text-gray-400 mb-2">Account</label>
+                    <select id="prepareAccount" class="w-full" onchange="loadAccountConfig()">
+                        <option value="">Select Account...</option>
+                    </select>
+                </div>
+
+                <!-- Offer Selection (for ManyChat CTA) -->
+                <div class="mb-4">
+                    <label class="block text-sm text-gray-400 mb-2">
+                        <i class="fas fa-gift mr-1"></i>Select Offer (for ManyChat CTA)
+                        <a href="/offers" target="_blank" class="text-indigo-400 hover:text-indigo-300 ml-2 text-xs">
+                            <i class="fas fa-external-link-alt"></i>Manage Offers
+                        </a>
+                    </label>
+                    <select id="prepareOffer" class="w-full">
+                        <option value="">-- No Offer / Custom CTA --</option>
+                    </select>
+                    <div id="selectedOfferInfo" class="hidden mt-2 p-3 rounded-lg" style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3);">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <div class="text-sm font-medium text-green-400" id="offerNameDisplay"></div>
+                                <div class="text-xs text-gray-400 mt-1">
+                                    <span class="keyword-badge px-2 py-0.5 rounded text-xs mr-2" id="offerKeywordDisplay"></span>
+                                    <span id="offerBenefitDisplay"></span>
+                                </div>
+                            </div>
+                            <button onclick="clearOffer()" class="text-gray-400 hover:text-white">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">
+                        <i class="fas fa-lightbulb text-yellow-500 mr-1"></i>
+                        AI will use this offer's context for better CTAs
+                    </p>
+                </div>
+
+                <!-- AI Caption Generation -->
+                <div class="mb-4 glass rounded-lg p-4" style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3);">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-robot text-purple-400"></i>
+                            <span class="font-bold">AI Caption Generator</span>
+                        </div>
+                        <button onclick="generateAICaption()" id="generateBtn" class="btn btn-primary text-sm">
+                            <i class="fas fa-magic mr-1"></i>Generate Caption
+                        </button>
+                    </div>
+
+                    <!-- Caption Style -->
+                    <div class="flex gap-2 mb-3">
+                        <button onclick="setCaptionStyle('long_form')" id="styleLong" class="flex-1 text-xs py-2 px-3 rounded transition-all" style="background: rgba(99, 102, 241, 0.3); border: 1px solid var(--accent);">
+                            <i class="fas fa-book-open mr-1"></i>Long-Form
+                        </button>
+                        <button onclick="setCaptionStyle('short_story')" id="styleShortStory" class="flex-1 text-xs py-2 px-3 rounded transition-all btn-secondary">
+                            <i class="fas fa-feather mr-1"></i>Story
+                        </button>
+                        <button onclick="setCaptionStyle('short_engagement')" id="styleEngage" class="flex-1 text-xs py-2 px-3 rounded transition-all btn-secondary">
+                            <i class="fas fa-bolt mr-1"></i>Engage
+                        </button>
+                    </div>
+
+                    <!-- Generation Status -->
+                    <div id="generationStatus" class="hidden text-sm text-gray-400 mb-3">
+                        <div class="flex items-center gap-2">
+                            <div class="loading-spinner" style="width: 16px; height: 16px; border-width: 2px;"></div>
+                            <span id="generationStatusText">Analyzing video & generating caption...</span>
+                        </div>
+                    </div>
+
+                    <!-- Quality Score -->
+                    <div id="qualityScore" class="hidden mb-3">
+                        <div class="flex items-center gap-4 text-sm">
+                            <div class="flex-1">
+                                <span class="text-gray-400">Quality:</span>
+                                <span id="qualityValue" class="ml-2 font-bold"></span>
+                            </div>
+                            <div class="flex-1">
+                                <span class="text-gray-400">Uniqueness:</span>
+                                <span id="uniquenessValue" class="ml-2 font-bold"></span>
+                            </div>
+                        </div>
+                        <div id="qualityWarnings" class="mt-2 text-xs text-yellow-500"></div>
+                    </div>
+                </div>
+
+                <!-- Caption -->
+                <div class="mb-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-sm text-gray-400">Caption</label>
+                        <button onclick="showVariations()" class="text-xs text-purple-400 hover:text-purple-300">
+                            <i class="fas fa-layer-group mr-1"></i>View Variations
+                        </button>
+                    </div>
+                    <textarea id="prepareCaption" rows="8" class="w-full" style="font-size: 13px; line-height: 1.6;" placeholder="AI will generate a long-form, watchtime-optimized caption here..."></textarea>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex justify-end gap-3 mb-6">
+                    <button onclick="addCTA()" class="btn btn-warning" id="addCTABtn" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-bullhorn mr-2"></i>Add CTA
+                    </button>
+                    <button onclick="saveGeneratedCaption()" class="btn btn-success" id="saveGeneratedCaptionBtn" style="background: linear-gradient(135deg, #10b981, #34d399);">
+                        <i class="fas fa-save mr-2"></i>Save to Library
+                    </button>
+                </div>
+
+                <!-- Sound -->
+                <div class="mb-6">
+                    <label class="block text-sm text-gray-400 mb-2">Trending Sound (Optional)</label>
+                    <div class="flex gap-4">
+                        <input type="text" id="prepareSoundName" class="flex-1" placeholder="Sound name">
+                        <input type="text" id="prepareSoundUrl" class="flex-1" placeholder="Sound URL">
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex justify-end gap-4">
+                    <button onclick="closeModal()" class="btn btn-secondary">Cancel</button>
+                    <button onclick="savePreparedContent()" class="btn btn-primary">
+                        <i class="fas fa-check mr-2"></i>Save to Library
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 glass rounded-lg p-4 hidden">
+        <div class="flex items-center gap-3">
+            <i id="toastIcon" class="fas fa-check-circle text-green-500"></i>
+            <span id="toastMessage">Success!</span>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = '';
+        let sourceContent = [];
+        let selectedSource = null;
+
+        // Load source content on page load
+        async function loadSourceContent() {
+            try {
+                const response = await fetch(`${API_BASE}/api/source?status=pending`);
+                const data = await response.json();
+
+                if (data.success) {
+                    sourceContent = data.items;
+                    renderSourceContent();
+                    updateStats();
+                }
+            } catch (error) {
+                console.error('Error loading source content:', error);
+            }
+        }
+
+        // Current view mode
+        let currentViewMode = 'icon';
+
+        // Sort content by selected criteria
+        function sortContent() {
+            const sortBy = document.getElementById('sortSelect').value;
+
+            sourceContent.sort((a, b) => {
+                switch (sortBy) {
+                    case 'engagement_rate':
+                        const aEngagement = (a.original_views || 0) > 0 ? (a.original_likes || 0) / (a.original_views || 1) : 0;
+                        const bEngagement = (b.original_views || 0) > 0 ? (b.original_likes || 0) / (b.original_views || 1) : 0;
+                        return bEngagement - aEngagement;
+                    case 'original_likes':
+                        return (b.original_likes || 0) - (a.original_likes || 0);
+                    case 'original_views':
+                        return (b.original_views || 0) - (a.original_views || 0);
+                    case 'scraped_at':
+                    default:
+                        return new Date(b.scraped_at || 0) - new Date(a.scraped_at || 0);
+                }
+            });
+
+            renderSourceContent();
+        }
+
+        // Switch between view modes (grid, list, icon)
+        function switchViewMode(mode) {
+            currentViewMode = mode;
+            const gridBtn = document.getElementById('gridViewBtn');
+            const listBtn = document.getElementById('listViewBtn');
+            const iconBtn = document.getElementById('iconViewBtn');
+
+            // Reset button styles
+            [gridBtn, listBtn, iconBtn].forEach(btn => {
+                btn.style.background = 'transparent';
+                btn.style.color = '#a1a1a1';
+            });
+
+            // Set active button
+            const activeBtn = mode === 'grid' ? gridBtn : mode === 'list' ? listBtn : iconBtn;
+            activeBtn.style.background = 'rgba(99, 102, 241, 0.2)';
+            activeBtn.style.color = '#6366f1';
+
+            // Re-render with new view mode
+            renderSourceContent();
+        }
+
+        // Render source content based on current view mode
+        function renderSourceContent() {
+            const grid = document.getElementById('sourceGrid');
+            const list = document.getElementById('sourceList');
+            const icon = document.getElementById('sourceIcon');
+            const emptyState = document.getElementById('emptyState');
+
+            if (sourceContent.length === 0) {
+                grid.classList.add('hidden');
+                list.classList.add('hidden');
+                icon.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            if (currentViewMode === 'grid') {
+                grid.classList.remove('hidden');
+                list.classList.add('hidden');
+                icon.classList.add('hidden');
+                renderSourceGrid(grid);
+            } else if (currentViewMode === 'list') {
+                grid.classList.add('hidden');
+                list.classList.remove('hidden');
+                icon.classList.add('hidden');
+                renderSourceList(list);
+            } else {
+                grid.classList.add('hidden');
+                list.classList.add('hidden');
+                icon.classList.remove('hidden');
+                renderSourceIcon(icon);
+            }
+        }
+
+        function renderSourceGrid(container) {
+            if (!container) container = document.getElementById('sourceGrid');
+            container.innerHTML = sourceContent.map(item => {
+                const engagementRate = (item.original_views || 0) > 0 ? ((item.original_likes || 0) / (item.original_views || 1) * 100).toFixed(1) : '0';
+                const coverColor = stringToColor(item.account || 'default');
+                const accountInitial = (item.account || '?').charAt(0).toUpperCase();
+                const videoFilename = item.video_filename || '';
+
+                return `
+                <div class="content-card" onclick="selectSource(${item.id})">
+                    <div class="video-thumbnail">
+                        ${videoFilename ? `
+                            <video src="/video/${encodeURIComponent(videoFilename)}" muted preload="metadata" loop></video>
+                            <div class="play-overlay" onclick="event.stopPropagation(); window.open('/video/${encodeURIComponent(videoFilename)}', '_blank')">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        ` : `
+                            <div class="fallback-icon" style="background: linear-gradient(135deg, ${coverColor}); border-radius: 8px;">
+                                <span class="text-white font-bold text-4xl">${accountInitial}</span>
+                            </div>
+                        `}
+                    </div>
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="text-sm font-medium truncate">${item.account || 'Unknown Account'}</div>
+                        <span class="status-pending text-xs">● Pending</span>
+                    </div>
+                    <p class="text-sm mb-3 line-clamp-2">${item.original_caption || 'No caption'}</p>
+                    <div class="flex items-center gap-4 text-xs text-gray-500">
+                        <span><i class="fas fa-heart mr-1"></i>${formatNumber(item.original_likes || 0)}</span>
+                        <span><i class="fas fa-eye mr-1"></i>${formatNumber(item.original_views || 0)}</span>
+                        <span>${engagementRate}%</span>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function renderSourceList(container) {
+            container.innerHTML = sourceContent.map(item => {
+                const engagementRate = (item.original_views || 0) > 0 ? ((item.original_likes || 0) / (item.original_views || 1) * 100).toFixed(1) : '0';
+                const coverColor = stringToColor(item.account || 'default');
+                const accountInitial = (item.account || '?').charAt(0).toUpperCase();
+
+                return `
+                <div class="list-item" onclick="selectSource(${item.id})">
+                    <div class="list-item-thumbnail" style="background: linear-gradient(135deg, ${coverColor});">
+                        <span class="text-white font-bold">${accountInitial}</span>
+                    </div>
+                    <div class="min-w-0">
+                        <p class="text-sm font-medium truncate">@${item.account || ''}</p>
+                        <p class="text-xs text-gray-500 truncate">${item.original_caption || 'No caption'}</p>
+                    </div>
+                    <div class="text-xs text-blue-400 font-medium">
+                        ${engagementRate}%
+                    </div>
+                    <div class="text-xs text-gray-400">
+                        ${formatNumber(item.original_likes || 0)} <i class="fas fa-heart text-pink-400"></i>
+                    </div>
+                    <div class="text-xs text-gray-400">
+                        ${formatNumber(item.original_views || 0)} <i class="fas fa-eye text-blue-400"></i>
+                    </div>
+                    <button onclick="event.stopPropagation(); selectSource(${item.id})" class="btn btn-secondary text-xs px-3 py-2">
+                        Prepare
+                    </button>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function renderSourceIcon(container) {
+            container.innerHTML = sourceContent.map((item, index) => {
+                const accountColor = stringToColor(item.account || 'default');
+                const accountInitial = (item.account || '?').charAt(0).toUpperCase();
+                const videoFilename = item.video_filename || '';
+
+                return `
+                <div class="icon-item-clickable" data-id="${item.id}" style="position: relative; padding: 8px; cursor: pointer; border-radius: 8px; transition: all 0.2s;">
+                    <div class="icon-item">
+                        <div class="icon-item-thumbnail" style="padding: 0; overflow: hidden; aspect-ratio: 9/16; border: 2px solid #f59e0b;">
+                            ${videoFilename ? `
+                                <video src="/video/${encodeURIComponent(videoFilename)}" muted preload="metadata" loop
+                                       style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; border-radius: 6px; pointer-events: none;"></video>
+                                <div class="play-overlay" style="opacity: 1; background: rgba(0,0,0,0.2); border-radius: 6px;">
+                                    <i class="fas fa-play text-white text-xs"></i>
+                                </div>
+                            ` : `
+                                <div style="background: linear-gradient(135deg, ${accountColor}); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 6px;">
+                                    <span class="text-white font-bold text-2xl">${accountInitial}</span>
+                                </div>
+                            `}
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            // Simple click handler - click the icon to open modal
+            container.onclick = function(e) {
+                const iconDiv = e.target.closest('.icon-item-clickable');
+                if (iconDiv) {
+                    const sourceId = parseInt(iconDiv.getAttribute('data-id'));
+                    console.log('Icon clicked, opening modal for ID:', sourceId);
+                    window.selectSource(sourceId);
+                }
+            };
+        }
+
+        // Generate consistent color from string
+        function stringToColor(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            const h = hash % 360;
+            return `hsl(${h}, 70%, 50%)`;
+        }
+
+        // Test function to open modal
+        window.testModal = function() {
+            console.log('testModal called');
+            console.log('sourceContent:', sourceContent);
+            if (sourceContent.length > 0) {
+                const firstItem = sourceContent[0];
+                console.log('Testing with first item:', firstItem);
+                window.selectSource(firstItem.id);
+            } else {
+                alert('No source content available!');
+            }
+        };
+
+        // Select source content - attach to window for global access
+        window.selectSource = function(sourceId) {
+            console.log('selectSource called with ID:', sourceId);
+            selectedSource = sourceContent.find(s => s.id === sourceId);
+            console.log('selectedSource:', selectedSource);
+            if (!selectedSource) {
+                console.error('Source not found for ID:', sourceId);
+                alert('Error: Source not found for ID ' + sourceId);
+                return;
+            }
+
+            // Store current source ID for AI generation
+            currentSourceId = sourceId;
+
+            document.getElementById('prepareSourceId').value = sourceId;
+            document.getElementById('prepareVideoPath').value = selectedSource.video_path;
+
+            // Update account and filename
+            document.getElementById('prepareAccount').textContent = '@' + (selectedSource.account || 'Unknown Account');
+            document.getElementById('prepareFilename').textContent = selectedSource.video_filename;
+
+            // Update stats
+            document.getElementById('prepareLikes').textContent = formatNumber(selectedSource.original_likes || 0);
+            document.getElementById('prepareViews').textContent = formatNumber(selectedSource.original_views || 0);
+            document.getElementById('prepareEngagement').textContent = ((selectedSource.engagement_rate || 0) * 100).toFixed(1) + '%';
+
+            // Update caption
+            const captionEl = document.getElementById('prepareOriginalCaption');
+            captionEl.textContent = selectedSource.original_caption || 'No caption';
+            captionEl.classList.remove('line-clamp-none');
+            captionEl.classList.add('line-clamp-2');
+            document.getElementById('captionToggleText').textContent = 'Show more';
+
+            // Load video
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoSource = document.getElementById('videoSource');
+            const playOverlay = document.getElementById('playOverlay');
+
+            // Convert file path to URL (use video_filename which works correctly with the video route)
+            const videoUrl = '/video/' + encodeURIComponent(selectedSource.video_filename);
+            videoSource.src = videoUrl;
+            videoPlayer.load();
+
+            // Reset overlay when video loads
+            videoPlayer.onplay = () => playOverlay.classList.add('hidden');
+            videoPlayer.onpause = () => playOverlay.classList.remove('hidden');
+            videoPlayer.onended = () => playOverlay.classList.remove('hidden');
+
+            document.getElementById('prepareCaption').value = selectedSource.original_caption || '';
+            document.getElementById('prepareHashtags').value = '';
+
+            const modal = document.getElementById('prepareModal');
+            console.log('Modal element:', modal);
+            console.log('Modal classes before:', modal.className);
+            modal.classList.remove('hidden');
+            console.log('Modal classes after:', modal.className);
+        }
+
+        // Format number with K/M suffixes
+        function formatNumber(num) {
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num.toString();
+        }
+
+        // Toggle video play/pause
+        function toggleVideoPlay() {
+            const videoPlayer = document.getElementById('videoPlayer');
+            const playOverlay = document.getElementById('playOverlay');
+
+            if (videoPlayer.paused) {
+                videoPlayer.play();
+                playOverlay.classList.add('hidden');
+            } else {
+                videoPlayer.pause();
+                playOverlay.classList.remove('hidden');
+            }
+        }
+
+        // Open video in new tab
+        function openVideoInNewTab() {
+            if (selectedSource && selectedSource.video_filename) {
+                const url = '/video/' + encodeURIComponent(selectedSource.video_filename);
+                window.open(url, '_blank');
+            }
+        }
+
+        // Toggle original caption expansion
+        function toggleOriginalCaption() {
+            const captionEl = document.getElementById('prepareOriginalCaption');
+            const toggleText = document.getElementById('captionToggleText');
+
+            if (captionEl.classList.contains('line-clamp-2')) {
+                captionEl.classList.remove('line-clamp-2');
+                captionEl.classList.add('line-clamp-none');
+                toggleText.textContent = 'Show less';
+            } else {
+                captionEl.classList.remove('line-clamp-none');
+                captionEl.classList.add('line-clamp-2');
+                toggleText.textContent = 'Show more';
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('prepareModal').classList.add('hidden');
+            selectedSource = null;
+        }
+
+        // Save prepared content
+        async function savePreparedContent() {
+            const sourceId = parseInt(document.getElementById('prepareSourceId').value);
+            let caption = document.getElementById('prepareCaption').value;
+            const hashtags = document.getElementById('prepareHashtags').value;
+            const soundName = document.getElementById('prepareSoundName').value;
+            const soundUrl = document.getElementById('prepareSoundUrl').value;
+
+            // Check if we need to select an account first
+            if (!selectedAccountId) {
+                showToast('Please select an account first', 'error');
+                document.getElementById('prepareAccount').focus();
+                return;
+            }
+
+            // Auto-generate AI caption if caption is empty or not generated yet
+            if (!caption || caption === selectedSource.original_caption) {
+                showToast('Generating AI caption...', 'info');
+
+                try {
+                    const genResponse = await fetch(`${API_BASE}/api/ai/generate-caption`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            source_id: currentSourceId,
+                            account_id: selectedAccountId,
+                            caption_style: currentCaptionStyle
+                        })
+                    });
+
+                    const genData = await genResponse.json();
+
+                    if (genData.success && genData.caption) {
+                        caption = genData.caption;
+                        document.getElementById('prepareCaption').value = caption;
+                        showToast('AI Caption generated! Saving to library...', 'success');
+                    } else {
+                        showToast('Failed to generate AI caption. Please try again or enter caption manually.', 'error');
+                        return;
+                    }
+                } catch (error) {
+                    console.error('Error generating AI caption:', error);
+                    showToast('Error generating AI caption. Please try again.', 'error');
+                    return;
+                }
+            }
+
+            if (!caption) {
+                showToast('Please enter a caption', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/api/prepare`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        source_id: sourceId,
+                        video_path: selectedSource.video_path,
+                        caption,
+                        hashtags,
+                        sound_name: soundName,
+                        sound_url: soundUrl
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showToast('Content saved to library successfully!', 'success');
+                    closeModal();
+                    loadSourceContent();
+                } else {
+                    showToast(data.error || 'Failed to prepare content', 'error');
+                }
+            } catch (error) {
+                showToast('Error preparing content', 'error');
+            }
+        }
+
+        // Sync scraped videos
+        async function syncVideos() {
+            try {
+                showToast('Syncing videos...', 'info');
+
+                const response = await fetch(`${API_BASE}/api/source/sync`, {
+                    method: 'POST'
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showToast(`Synced ${data.added_to_source} videos`, 'success');
+                    loadSourceContent();
+                } else {
+                    showToast('Failed to sync videos', 'error');
+                }
+            } catch (error) {
+                showToast('Error syncing videos', 'error');
+            }
+        }
+
+        // Update stats
+        async function updateStats() {
+            try {
+                const response = await fetch(`${API_BASE}/api/library`);
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('statPrepared').textContent = data.count;
+                }
+            } catch (error) {
+                console.error('Error updating stats:', error);
+            }
+
+            document.getElementById('statPending').textContent = sourceContent.length;
+            document.getElementById('pendingBadge').textContent = sourceContent.length;
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toastIcon');
+            const msg = document.getElementById('toastMessage');
+
+            msg.textContent = message;
+
+            if (type === 'success') {
+                icon.className = 'fas fa-check-circle text-green-500';
+            } else if (type === 'error') {
+                icon.className = 'fas fa-exclamation-circle text-red-500';
+            } else {
+                icon.className = 'fas fa-info-circle text-blue-500';
+            }
+
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // ========================================
+        // AI CAPTION GENERATION FUNCTIONS
+        // ========================================
+
+        let currentCaptionStyle = 'long_form';
+        let selectedAccountId = null;
+        let currentGeneratedCaptions = [];
+        let currentSourceId = null;
+
+        // Load accounts for dropdown
+        async function loadAccounts() {
+            try {
+                const response = await fetch(`${API_BASE}/api/accounts`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const select = document.getElementById('prepareAccount');
+                    select.innerHTML = '<option value="">Select Account...</option>';
+
+                    data.accounts.forEach(account => {
+                        if (account.active) {
+                            const option = document.createElement('option');
+                            option.value = account.id;
+                            option.textContent = account.username;
+                            select.appendChild(option);
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading accounts:', error);
+            }
+        }
+
+        // Load account configuration (ManyChat CTA)
+        async function loadAccountConfig() {
+            const accountId = document.getElementById('prepareAccount').value;
+            selectedAccountId = accountId ? parseInt(accountId) : null;
+
+            if (!selectedAccountId) {
+                document.getElementById('manychatInfo').classList.add('hidden');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/api/accounts/${selectedAccountId}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const account = data.account;
+                    document.getElementById('manychatKeyword').textContent =
+                        account.manychat_keyword || 'LINK';
+                    document.getElementById('manychatAutomation').textContent =
+                        account.manychat_automation_name || 'free resource';
+                    document.getElementById('manychatInfo').classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error loading account config:', error);
+            }
+        }
+
+        // Load available offers
+        let availableOffers = [];
+        let selectedOffer = null;
+
+        async function loadOffers() {
+            try {
+                const response = await fetch('/api/offers');
+                const data = await response.json();
+                if (data.success) {
+                    availableOffers = data.offers;
+                    populateOffersDropdown();
+                }
+            } catch (error) {
+                console.error('Error loading offers:', error);
+            }
+        }
+
+        function populateOffersDropdown() {
+            const select = document.getElementById('prepareOffer');
+            select.innerHTML = '<option value="">-- No Offer / Custom CTA --</option>';
+
+            availableOffers.forEach(offer => {
+                const option = document.createElement('option');
+                option.value = offer.id;
+                option.textContent = `${offer.name} (${offer.manychat_keyword})`;
+                select.appendChild(option);
+            });
+
+            // Add event listener for selection
+            select.removeEventListener('change', onOfferSelect);
+            select.addEventListener('change', onOfferSelect);
+        }
+
+        function onOfferSelect() {
+            const select = document.getElementById('prepareOffer');
+            const offerId = parseInt(select.value);
+            const infoDiv = document.getElementById('selectedOfferInfo');
+
+            if (offerId) {
+                selectedOffer = availableOffers.find(o => o.id === offerId);
+                if (selectedOffer) {
+                    document.getElementById('offerNameDisplay').textContent = selectedOffer.name;
+                    document.getElementById('offerKeywordDisplay').textContent = selectedOffer.manychat_keyword;
+                    document.getElementById('offerBenefitDisplay').textContent = selectedOffer.benefit_statement;
+                    infoDiv.classList.remove('hidden');
+                }
+            } else {
+                selectedOffer = null;
+                infoDiv.classList.add('hidden');
+            }
+        }
+
+        function clearOffer() {
+            document.getElementById('prepareOffer').value = '';
+            selectedOffer = null;
+            document.getElementById('selectedOfferInfo').classList.add('hidden');
+        }
+
+        // Set caption style
+        function setCaptionStyle(style) {
+            currentCaptionStyle = style;
+
+            // Update button active states
+            document.querySelectorAll('.style-button').forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-purple-500');
+            });
+
+            const activeBtn = document.querySelector(`[onclick="setCaptionStyle('${style}')"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('ring-2', 'ring-purple-500');
+            }
+        }
+
+        // Generate AI caption
+        async function generateAICaption() {
+            if (!currentSourceId) {
+                showToast('Please select a video first', 'error');
+                return;
+            }
+
+            if (!selectedAccountId) {
+                showToast('Please select an account first', 'error');
+                return;
+            }
+
+            // Show loading state
+            const statusDiv = document.getElementById('generationStatus');
+            statusDiv.classList.remove('hidden');
+            document.getElementById('generateBtn').disabled = true;
+            document.getElementById('generateBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+
+            try {
+                const requestBody = {
+                    source_id: currentSourceId,
+                    account_id: selectedAccountId,
+                    caption_style: currentCaptionStyle
+                };
+
+                // Add offer/ManyChat keyword if selected
+                if (selectedOffer) {
+                    requestBody.manychat_keyword = selectedOffer.manychat_keyword;
+                    requestBody.offer_id = selectedOffer.id;
+                }
+
+                const response = await fetch(`${API_BASE}/api/ai/generate-caption`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Display caption
+                    document.getElementById('prepareCaption').value = data.caption;
+
+                    // Store for variations
+                    currentGeneratedCaptions = data.variations || [data.caption];
+
+                    // Display quality scores
+                    if (data.quality_score !== undefined) {
+                        document.getElementById('qualityValue').textContent =
+                            Math.round(data.quality_score * 100) + '%';
+                    }
+                    if (data.uniqueness_score !== undefined) {
+                        document.getElementById('uniquenessValue').textContent =
+                            Math.round(data.uniqueness_score * 100) + '%';
+                    }
+
+                    // Display warnings
+                    const warningsDiv = document.getElementById('qualityWarnings');
+                    warningsDiv.innerHTML = '';
+                    if (data.warnings && data.warnings.length > 0) {
+                        data.warnings.forEach(warning => {
+                            const warn = document.createElement('div');
+                            warn.className = 'text-yellow-500 text-sm flex items-center gap-2';
+                            warn.innerHTML = `<i class="fas fa-exclamation-triangle"></i>${warning}`;
+                            warningsDiv.appendChild(warn);
+                        });
+                    }
+
+                    document.getElementById('qualityScore').classList.remove('hidden');
+                    showToast('Caption generated successfully!', 'success');
+                } else {
+                    showToast(data.error || 'Failed to generate caption', 'error');
+                }
+            } catch (error) {
+                console.error('Error generating caption:', error);
+                showToast('Error generating caption', 'error');
+            } finally {
+                // Hide loading state
+                statusDiv.classList.add('hidden');
+                document.getElementById('generateBtn').disabled = false;
+                document.getElementById('generateBtn').innerHTML = '<i class="fas fa-magic"></i> Generate Caption';
+            }
+        }
+
+        // Show caption variations
+        async function showVariations() {
+            if (!currentSourceId || !selectedAccountId) {
+                showToast('Please select a video and account first', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/api/ai/generate-variations`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        source_id: currentSourceId,
+                        account_id: selectedAccountId,
+                        caption_style: currentCaptionStyle,
+                        count: 3
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success && data.variations) {
+                    // Show modal with variations
+                    const modal = document.createElement('div');
+                    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                    modal.onclick = (e) => {
+                        if (e.target === modal) modal.remove();
+                    };
+
+                    modal.innerHTML = `
+                        <div class="bg-gray-800 rounded-lg p-6 max-w-4xl w-full max-h-[80vh] overflow-y-auto">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-xl font-bold text-white">Caption Variations</h3>
+                                <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-white">
+                                    <i class="fas fa-times text-xl"></i>
+                                </button>
+                            </div>
+                            <div class="space-y-4">
+                                ${data.variations.map((variation, index) => `
+                                    <div class="bg-gray-700 rounded-lg p-4 cursor-pointer hover:bg-gray-600 transition-colors"
+                                         onclick="selectVariation(${index}, this)">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <span class="text-purple-400 font-semibold">Option ${index + 1}</span>
+                                            <span class="text-sm text-gray-400">
+                                                Quality: ${Math.round(variation.quality_score * 100)}% |
+                                                Unique: ${Math.round(variation.uniqueness_score * 100)}%
+                                            </span>
+                                        </div>
+                                        <p class="text-gray-200 whitespace-pre-wrap">${variation.caption}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+
+                    document.body.appendChild(modal);
+
+                    // Store variations for selection
+                    window.currentVariations = data.variations;
+                }
+            } catch (error) {
+                console.error('Error loading variations:', error);
+                showToast('Error loading variations', 'error');
+            }
+        }
+
+        // Select a variation from the modal
+        function selectVariation(index, element) {
+            if (window.currentVariations && window.currentVariations[index]) {
+                document.getElementById('prepareCaption').value =
+                    window.currentVariations[index].caption;
+                element.closest('.fixed').remove();
+                showToast('Caption selected!', 'success');
+            }
+        }
+
+        // Add ManyChat CTA to caption
+        function addCTA() {
+            if (!selectedOffer) {
+                showToast('Please select an offer first', 'error');
+                return;
+            }
+
+            const captionTextarea = document.getElementById('prepareCaption');
+            const currentCaption = captionTextarea.value;
+
+            // Build CTA text
+            const ctaText = `\n\n💬 ${selectedOffer.benefit_statement}\nComment "${selectedOffer.manychat_keyword}" to get it!`;
+
+            // Append CTA to caption
+            captionTextarea.value = currentCaption + ctaText;
+
+            showToast('CTA added!', 'success');
+        }
+
+        // Save generated caption directly to library
+        async function saveGeneratedCaption() {
+            const caption = document.getElementById('prepareCaption').value;
+
+            if (!caption || caption.trim() === '') {
+                showToast('Please generate a caption first', 'error');
+                return;
+            }
+
+            if (!currentSourceId) {
+                showToast('No video selected. Please select a video first.', 'error');
+                return;
+            }
+
+            if (!selectedAccountId) {
+                showToast('Please select an account first', 'error');
+                return;
+            }
+
+            // Show loading state
+            const saveBtn = document.getElementById('saveGeneratedCaptionBtn');
+            const originalText = saveBtn.innerHTML;
+            saveBtn.disabled = true;
+            saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Saving...';
+
+            try {
+                // Build request body
+                const requestBody = {
+                    source_id: currentSourceId,
+                    account_id: selectedAccountId,
+                    caption: caption,
+                    hashtags: '',
+                    sound_name: '',
+                    sound_url: ''
+                };
+
+                // Add ManyChat keyword if offer is selected
+                if (selectedOffer) {
+                    requestBody.manychat_keyword = selectedOffer.manychat_keyword;
+                    requestBody.offer_id = selectedOffer.id;
+                }
+
+                const response = await fetch(`${API_BASE}/api/prepare`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    const offerText = selectedOffer ? ` with offer "${selectedOffer.name}"` : '';
+                    showToast(`Caption saved${offerText}!`, 'success');
+                    loadSourceContent(); // Refresh the source content list
+                } else {
+                    showToast(data.error || 'Failed to save caption', 'error');
+                }
+            } catch (error) {
+                console.error('Error saving caption:', error);
+                showToast('Error saving caption. Please try again.', 'error');
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.innerHTML = originalText;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSourceContent();
+            loadAccounts();
+            loadOffers(); // Load available offers
+            setCaptionStyle('long_form'); // Set default style
+            switchViewMode('icon'); // Set default view
+        });
+    </script>
+</body>
+</html>

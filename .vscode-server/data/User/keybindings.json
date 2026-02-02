@@ -1,0 +1,14 @@
+[
+  {
+    "key": "cmd+shift+p",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "cmd+,",
+    "command": "workbench.action.openSettings"
+  },
+  {
+    "key": "cmd+k cmd+t",
+    "command": "workbench.action.selectTheme"
+  }
+]

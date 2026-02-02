@@ -1,0 +1,43 @@
+{#
+  Smart Filters Component
+
+  Reusable template for smart filter application
+  Usage: {% include 'components/filters.py.jinja2' %}
+#}
+
+{# Price Filter #}
+{% macro price_filter(column='close', min_price=None, max_price=None) %}
+{% if min_price is not none %}
+df = df[df['{{ column }}'] >= {{ min_price }}]
+{% endif %}
+{% if max_price is not none %}
+df = df[df['{{ column }}'] <= {{ max_price }}]
+{% endif %}
+{% endmacro %}
+
+{# Volume Filter #}
+{% macro volume_filter(column='volume', min_volume=None, max_volume=None) %}
+{% if min_volume is not none %}
+df = df[df['{{ column }}'] >= {{ min_volume }}]
+{% endif %}
+{% if max_volume is not none %}
+df = df[df['{{ column }}'] <= {{ max_volume }}]
+{% endif %}
+{% endmacro %}
+
+{# Gap Filter #}
+{% macro gap_filter(min_gap_pct=None, max_gap_pct=None) %}
+{% if min_gap_pct is not none %}
+df = df[df['gap'] >= {{ min_gap_pct }}]
+{% endif %}
+{% if max_gap_pct is not none %}
+df = df[df['gap'] <= {{ max_gap_pct }}]
+{% endif %}
+{% endmacro %}
+
+{# Consecutive Days Filter #}
+{% macro consecutive_filter(min_consecutive=None) %}
+{% if min_consecutive is not none %}
+df = df[df['consecutive_gaps'] >= {{ min_consecutive }}]
+{% endif %}
+{% endmacro %}

@@ -1,0 +1,55 @@
+{
+  "validation_timestamp": "2025-11-25T22:57:07.976248",
+  "system_status": "BULLETPROOF",
+  "scanner_validations": [
+    {
+      "scanner_name": "backside_b_production",
+      "scanner_type": "backside_b",
+      "is_valid": true,
+      "parameter_checksum": "283b6b8112be172b",
+      "config_checksum": "d922a905f99b2545ba575bd4c09aeb2b57b8e147f1f4e90c4853b0d070367014",
+      "parameter_count": 14,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "scanner_name": "half_a_plus_production",
+      "scanner_type": "half_a_plus",
+      "is_valid": true,
+      "parameter_checksum": "e90c7a7e5163722f",
+      "config_checksum": "bede672e22f3f0a5bb743e53e4988e3b0f42c90155be16bc3b525c857e8f1a1b",
+      "parameter_count": 20,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "scanner_name": "lc_multiscanner_production",
+      "scanner_type": "lc_multiscanner",
+      "is_valid": true,
+      "parameter_checksum": "1413a8cab05d1137",
+      "config_checksum": "3ee2fd8392cbdf608843da82aad741670bf450101df285d50fc8c1426721d30b",
+      "parameter_count": 9,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "error_statistics": {
+    "total_errors": 1,
+    "by_severity": {
+      "critical": 1
+    },
+    "by_category": {
+      "calculation_error": 1
+    },
+    "by_scanner": {},
+    "recent_errors": [
+      {
+        "error_id": "ERR_20251125_225707_4394998688",
+        "timestamp": "2025-11-25T22:57:07.975164",
+        "severity": "critical",
+        "category": "calculation_error",
+        "message": "Division by zero"
+      }
+    ]
+  }
+}

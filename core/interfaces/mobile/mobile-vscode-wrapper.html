@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Mobile VS Code">
+    <title>📱 Mobile VS Code Wrapper</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', Arial, sans-serif;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Mobile Optimization Overlay */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Mobile Top Bar */
+        .mobile-topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(45, 45, 48, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid #444;
+            z-index: 10000;
+            pointer-events: auto;
+        }
+
+        .mobile-topbar h1 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #569cd6;
+        }
+
+        .mobile-controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .mobile-btn {
+            background: #3c3c3c;
+            color: #d4d4d4;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .mobile-btn:hover {
+            background: #4a4a4a;
+            transform: scale(1.05);
+        }
+
+        .mobile-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Bottom Navigation */
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-top: 1px solid #444;
+            z-index: 10000;
+            pointer-events: auto;
+        }
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            min-width: 60px;
+        }
+
+        .nav-btn.active {
+            color: #569cd6;
+            background: rgba(86, 156, 214, 0.1);
+        }
+
+        .nav-btn:hover {
+            color: #d4d4d4;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-icon {
+            font-size: 24px;
+        }
+
+        .nav-label {
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        /* VS Code Frame */
+        .vscode-frame {
+            width: 100%;
+            height: 100vh;
+            border: none;
+            margin-top: 60px;
+            margin-bottom: 80px;
+            height: calc(100vh - 140px);
+        }
+
+        /* Mobile Quick Actions Panel */
+        .quick-actions {
+            position: fixed;
+            top: 60px;
+            left: -300px;
+            width: 300px;
+            height: calc(100vh - 140px);
+            background: rgba(37, 37, 38, 0.95);
+            backdrop-filter: blur(10px);
+            transition: left 0.3s ease;
+            z-index: 10001;
+            pointer-events: auto;
+            overflow-y: auto;
+            border-right: 1px solid #444;
+        }
+
+        .quick-actions.open {
+            left: 0;
+        }
+
+        .quick-actions-header {
+            padding: 20px;
+            border-bottom: 1px solid #444;
+        }
+
+        .quick-actions-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .quick-action-group {
+            margin: 16px;
+        }
+
+        .quick-action-group h3 {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .quick-action {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #2d2d30;
+            border: 1px solid #444;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-action:hover {
+            background: #3c3c3c;
+            transform: translateX(4px);
+        }
+
+        .quick-action-icon {
+            font-size: 20px;
+        }
+
+        .quick-action-text {
+            flex: 1;
+        }
+
+        .quick-action-label {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .quick-action-desc {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 20000;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #3c3c3c;
+            border-top: 4px solid #569cd6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .loading-subtext {
+            font-size: 14px;
+            color: #888;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        /* Touch Gestures Overlay */
+        .gesture-overlay {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            bottom: 80px;
+            pointer-events: auto;
+            z-index: 5000;
+        }
+
+        /* Status Indicator */
+        .status-indicator {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            z-index: 10002;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-indicator.hidden {
+            display: none;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .mobile-topbar {
+                padding: 0 12px;
+                height: 50px;
+            }
+
+            .mobile-topbar h1 {
+                font-size: 16px;
+            }
+
+            .mobile-btn {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .vscode-frame {
+                margin-top: 50px;
+                height: calc(100vh - 130px);
+            }
+
+            .mobile-bottom-nav {
+                height: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">🚀 Launching Mobile VS Code</div>
+        <div class="loading-subtext">Optimizing interface for mobile development...</div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay">
+        <!-- Mobile Top Bar -->
+        <div class="mobile-topbar">
+            <h1>📱 Mobile VS Code</h1>
+            <div class="mobile-controls">
+                <button class="mobile-btn" onclick="toggleQuickActions()">
+                    ☰ <span>Menu</span>
+                </button>
+                <button class="mobile-btn" onclick="optimizeLayout()">
+                    🔧 <span>Optimize</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Status Indicator -->
+        <div class="status-indicator" id="statusIndicator">
+            <div class="status-dot"></div>
+            <span>Mobile Optimized</span>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="mobile-bottom-nav">
+            <button class="nav-btn" onclick="focusEditor()">
+                <div class="nav-icon">📝</div>
+                <div class="nav-label">Editor</div>
+            </button>
+            <button class="nav-btn" onclick="toggleExplorer()">
+                <div class="nav-icon">📁</div>
+                <div class="nav-label">Files</div>
+            </button>
+            <button class="nav-btn" onclick="toggleTerminal()">
+                <div class="nav-icon">💻</div>
+                <div class="nav-label">Terminal</div>
+            </button>
+            <button class="nav-btn" onclick="toggleSearch()">
+                <div class="nav-icon">🔍</div>
+                <div class="nav-label">Search</div>
+            </button>
+            <button class="nav-btn" onclick="openGitPanel()">
+                <div class="nav-icon">🔄</div>
+                <div class="nav-label">Git</div>
+            </button>
+        </div>
+
+        <!-- Quick Actions Panel -->
+        <div class="quick-actions" id="quickActions">
+            <div class="quick-actions-header">
+                <div class="quick-actions-title">🚀 Quick Actions</div>
+                <div style="color: #888; font-size: 12px;">Tap to execute VS Code commands</div>
+            </div>
+
+            <div class="quick-action-group">
+                <h3>File Operations</h3>
+                <div class="quick-action" onclick="executeCommand('workbench.action.files.newUntitledFile')">
+                    <div class="quick-action-icon">📄</div>
+                    <div class="quick-action-text">
+                        <div class="quick-action-label">New File</div>
+                        <div class="quick-action-desc">Create a new untitled file</div>
+                    </div>
+                </div>
+                <div class="quick-action" onclick="executeCommand('workbench.action.files.save')">
+                    <div class="quick-action-icon">💾</div>
+                    <div class="quick-action-text">
+                        <div class="quick-action-label">Save File</div>
+                        <div class="quick-action-desc">Save current file</div>
+                    </div>
+                </div>
+                <div class="quick-action" onclick="executeCommand('workbench.action.quickOpen')">
+                    <div class="quick-action-icon">⚡</div>
+                    <div class="quick-action-text">
+                        <div class="quick-action-label">Quick Open</div>
+                        <div class="quick-action-desc">Open file by name</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-action-group">
+                <h3>Navigation</h3>
+                <div class="quick-action" onclick="executeCommand('workbench.action.showCommands')">
+                    <div class="quick-action-icon">🎯</div>
+                    <div class="quick-action-text">
+                        <div class="quick-action-label">Command Palette</div>
+                        <div class="quick-action-desc">Show all commands</div>
+                    </div>
+                </div>
+                <div class="quick-action" onclick="executeCommand('workbench.action.gotoSymbol')">
+                    <div class="quick-action-icon">🧭</div>
+                    <div class="quick-action-text">
+                        <div class="quick-action-label">Go to Symbol</div>
+                        <div class="quick-action-desc">Navigate to function/class</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-action-group">
+                <h3>Layout</h3>
+                <div class="quick-action" onclick="toggleMobileMode()">
+                    <div class="quick-action-icon">📱</div>
+                    <div class="quick-action-text">
+                        <div class="quick-action-label">Mobile Mode</div>
+                        <div class="quick-action-desc">Toggle mobile optimizations</div>
+                    </div>
+                </div>
+                <div class="quick-action" onclick="executeCommand('workbench.action.toggleZenMode')">
+                    <div class="quick-action-icon">🧘</div>
+                    <div class="quick-action-text">
+                        <div class="quick-action-label">Zen Mode</div>
+                        <div class="quick-action-desc">Distraction-free editing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VS Code iframe -->
+    <iframe
+        id="vscodeFrame"
+        class="vscode-frame"
+        src=""
+        allow="clipboard-read; clipboard-write">
+    </iframe>
+
+    <!-- Gesture Overlay for Touch Events -->
+    <div class="gesture-overlay" id="gestureOverlay"></div>
+
+    <script>
+        // Configuration
+        const CONFIG = {
+            vscodeUrl: 'http://100.95.223.19:8080/',
+            password: 'ce-hub-dev',
+            autoApplyOptimizations: true,
+            enableGestures: true
+        };
+
+        let vscodeFrame;
+        let quickActionsOpen = false;
+        let mobileOptimizationsApplied = false;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMobileWrapper();
+        });
+
+        function initializeMobileWrapper() {
+            console.log('🚀 Initializing Mobile VS Code Wrapper...');
+
+            vscodeFrame = document.getElementById('vscodeFrame');
+
+            // Set up VS Code URL
+            vscodeFrame.src = CONFIG.vscodeUrl;
+
+            // Set up event listeners
+            setupEventListeners();
+
+            // Wait for VS Code to load
+            vscodeFrame.onload = function() {
+                console.log('✅ VS Code loaded!');
+                setTimeout(applyMobileOptimizations, 2000);
+                hideLoadingScreen();
+            };
+
+            // Set up gesture support
+            if (CONFIG.enableGestures) {
+                setupGestureHandling();
+            }
+        }
+
+        function setupEventListeners() {
+            // Hide loading screen after maximum wait time
+            setTimeout(hideLoadingScreen, 10000);
+
+            // Handle visibility change
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    checkVSCodeStatus();
+                }
+            });
+
+            // Handle orientation change
+            window.addEventListener('orientationchange', function() {
+                setTimeout(applyMobileOptimizations, 500);
+            });
+        }
+
+        function hideLoadingScreen() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }
+
+        function applyMobileOptimizations() {
+            if (mobileOptimizationsApplied) return;
+
+            console.log('📱 Applying mobile optimizations...');
+
+            try {
+                // Get VS Code window
+                const vscodeWindow = vscodeFrame.contentWindow;
+                const vscodeDoc = vscodeFrame.contentDocument;
+
+                if (!vscodeDoc || !vscodeWindow) {
+                    console.warn('⚠️ Cannot access VS Code frame (CORS)');
+                    return;
+                }
+
+                // Apply mobile CSS
+                const mobileStyles = document.createElement('style');
+                mobileStyles.id = 'mobile-vscode-optimizations';
+                mobileStyles.innerHTML = getMobileCSS();
+                vscodeDoc.head.appendChild(mobileStyles);
+
+                // Apply layout changes
+                applyMobileLayout(vscodeDoc);
+
+                mobileOptimizationsApplied = true;
+                updateStatusIndicator('Mobile optimizations applied!');
+
+            } catch (error) {
+                console.warn('⚠️ Cannot apply optimizations due to CORS:', error);
+                // Fall back to postMessage-based optimization
+                applyOptimizationsViaPostMessage();
+            }
+        }
+
+        function getMobileCSS() {
+            return `
+                /* Mobile Optimizations for VS Code Web */
+                .monaco-workbench {
+                    --mobile-font-size: 16px !important;
+                }
+
+                /* Force bottom layout */
+                .monaco-workbench .part.sidebar {
+                    order: 3 !important;
+                    width: 100% !important;
+                    max-height: 200px !important;
+                    min-height: 150px !important;
+                }
+
+                .monaco-workbench .part.panel {
+                    order: 4 !important;
+                    width: 100% !important;
+                    max-height: 300px !important;
+                }
+
+                /* Touch-friendly elements */
+                .monaco-list-row, .monaco-tree-row {
+                    min-height: 44px !important;
+                    font-size: 16px !important;
+                    padding: 8px 12px !important;
+                }
+
+                /* Hide minimap */
+                .monaco-editor .minimap {
+                    display: none !important;
+                }
+
+                /* Larger scrollbars */
+                .monaco-scrollable-element > .scrollbar {
+                    width: 20px !important;
+                    height: 20px !important;
+                }
+
+                /* Activity bar adjustments */
+                .monaco-workbench .part.activitybar {
+                    width: 60px !important;
+                }
+
+                .monaco-workbench .activitybar > .content > .monaco-action-bar .action-item {
+                    width: 60px !important;
+                    height: 60px !important;
+                }
+            `;
+        }
+
+        function applyMobileLayout(doc) {
+            // Force flexbox layout
+            const workbench = doc.querySelector('.monaco-workbench');
+            if (workbench) {
+                workbench.style.flexDirection = 'column';
+                workbench.style.display = 'flex';
+            }
+
+            // Enable touch scrolling
+            const scrollElements = doc.querySelectorAll('.monaco-scrollable-element');
+            scrollElements.forEach(el => {
+                el.style.webkitOverflowScrolling = 'touch';
+                el.style.overflowScrolling = 'touch';
+            });
+        }
+
+        function applyOptimizationsViaPostMessage() {
+            // For CORS-protected frames, we can inject via bookmarklet
+            const optimizationScript = `
+                javascript:(function(){
+                    ${getMobileOptimizationScript()}
+                })();
+            `;
+
+            console.log('📱 Use this bookmarklet to optimize VS Code:');
+            console.log(optimizationScript);
+        }
+
+        function getMobileOptimizationScript() {
+            return `
+                console.log('📱 Applying mobile optimizations...');
+                const style = document.createElement('style');
+                style.innerHTML = \`${getMobileCSS()}\`;
+                document.head.appendChild(style);
+
+                // Force layout refresh
+                setTimeout(() => {
+                    const workbench = document.querySelector('.monaco-workbench');
+                    if (workbench) {
+                        workbench.style.display = 'none';
+                        workbench.offsetHeight;
+                        workbench.style.display = 'flex';
+                        workbench.style.flexDirection = 'column';
+                    }
+                }, 500);
+
+                console.log('✅ Mobile optimizations applied!');
+            `;
+        }
+
+        // Quick Actions
+        function toggleQuickActions() {
+            const quickActions = document.getElementById('quickActions');
+            quickActionsOpen = !quickActionsOpen;
+            quickActions.classList.toggle('open');
+        }
+
+        function optimizeLayout() {
+            applyMobileOptimizations();
+            updateStatusIndicator('Layout re-optimized!');
+        }
+
+        // Navigation Functions
+        function focusEditor() {
+            executeCommand('workbench.action.focusActiveEditorGroup');
+            setActiveNav(0);
+        }
+
+        function toggleExplorer() {
+            executeCommand('workbench.view.explorer');
+            setActiveNav(1);
+        }
+
+        function toggleTerminal() {
+            executeCommand('workbench.action.terminal.toggleTerminal');
+            setActiveNav(2);
+        }
+
+        function toggleSearch() {
+            executeCommand('workbench.view.search');
+            setActiveNav(3);
+        }
+
+        function openGitPanel() {
+            executeCommand('workbench.view.scm');
+            setActiveNav(4);
+        }
+
+        function setActiveNav(index) {
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+        }
+
+        function executeCommand(command) {
+            try {
+                // Try direct command execution (won't work due to CORS)
+                const vscodeWindow = vscodeFrame.contentWindow;
+                if (vscodeWindow && vscodeWindow.vscode) {
+                    vscodeWindow.vscode.commands.executeCommand(command);
+                } else {
+                    console.log(`📋 Execute this in VS Code console: vscode.commands.executeCommand('${command}')`);
+                }
+            } catch (error) {
+                console.log(`📋 Execute this in VS Code console: vscode.commands.executeCommand('${command}')`);
+            }
+        }
+
+        function toggleMobileMode() {
+            mobileOptimizationsApplied = !mobileOptimizationsApplied;
+            if (mobileOptimizationsApplied) {
+                applyMobileOptimizations();
+                updateStatusIndicator('Mobile mode enabled!');
+            } else {
+                removeMobileOptimizations();
+                updateStatusIndicator('Mobile mode disabled!');
+            }
+        }
+
+        function removeMobileOptimizations() {
+            try {
+                const vscodeDoc = vscodeFrame.contentDocument;
+                const mobileStyles = vscodeDoc.getElementById('mobile-vscode-optimizations');
+                if (mobileStyles) {
+                    mobileStyles.remove();
+                }
+            } catch (error) {
+                console.log('Cannot remove optimizations due to CORS');
+            }
+        }
+
+        // Gesture Handling
+        function setupGestureHandling() {
+            const gestureOverlay = document.getElementById('gestureOverlay');
+            let startX, startY;
+
+            gestureOverlay.addEventListener('touchstart', function(e) {
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+            }, { passive: true });
+
+            gestureOverlay.addEventListener('touchend', function(e) {
+                const touch = e.changedTouches[0];
+                const endX = touch.clientX;
+                const endY = touch.clientY;
+
+                const deltaX = endX - startX;
+                const deltaY = endY - startY;
+
+                const threshold = 50;
+
+                if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > threshold) {
+                    if (deltaX > 0) {
+                        // Swipe right - open explorer
+                        toggleExplorer();
+                    } else {
+                        // Swipe left - close panels
+                        executeCommand('workbench.action.closePanel');
+                    }
+                } else if (Math.abs(deltaY) > threshold) {
+                    if (deltaY > 0) {
+                        // Swipe down - open terminal
+                        toggleTerminal();
+                    } else {
+                        // Swipe up - open command palette
+                        executeCommand('workbench.action.showCommands');
+                    }
+                }
+            }, { passive: true });
+        }
+
+        // Utilities
+        function updateStatusIndicator(message) {
+            const indicator = document.getElementById('statusIndicator');
+            indicator.querySelector('span').textContent = message;
+            indicator.classList.remove('hidden');
+            setTimeout(() => {
+                indicator.classList.add('hidden');
+            }, 3000);
+        }
+
+        function checkVSCodeStatus() {
+            console.log('🔄 Checking VS Code status...');
+            // Could implement health check here
+        }
+
+        // Debug helpers
+        window.mobileVSCode = {
+            applyOptimizations: applyMobileOptimizations,
+            removeOptimizations: removeMobileOptimizations,
+            executeCommand: executeCommand,
+            config: CONFIG
+        };
+
+        console.log('📱 Mobile VS Code Wrapper initialized!');
+        console.log('🛠️ Access debug functions via window.mobileVSCode');
+    </script>
+</body>
+</html>

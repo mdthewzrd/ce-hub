@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Scans Fix Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .scan-item {
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 4px solid #007bff;
+        }
+        .error {
+            color: #dc3545;
+            background: #f8d7da;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success {
+            color: #155724;
+            background: #d4edda;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Saved Scans Fix Verification</h1>
+
+    <div class="container">
+        <h2>Test localStorage Saved Scans</h2>
+        <p>This tests the localStorage functionality that should work in all browsers.</p>
+
+        <button onclick="createTestScan()">Create Test Scan</button>
+        <button onclick="loadLocalScans()">Load Local Scans</button>
+        <button onclick="clearLocalScans()">Clear Local Scans</button>
+
+        <div id="localResults"></div>
+    </div>
+
+    <div class="container">
+        <h2>Test Backend API</h2>
+        <p>This tests the backend API at localhost:8000</p>
+
+        <button onclick="testBackendAPI()">Test Backend</button>
+        <button onclick="loadBackendScans()">Load Backend Scans</button>
+
+        <div id="backendResults"></div>
+    </div>
+
+    <div class="container">
+        <h2>Hybrid Test</h2>
+        <p>Tests the hybrid approach that tries backend first, then localStorage</p>
+
+        <button onclick="testHybridApproach()">Test Hybrid Loading</button>
+
+        <div id="hybridResults"></div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'traderra_saved_scans';
+
+        function showResult(elementId, message, isError = false) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = message;
+        }
+
+        function createTestScan() {
+            try {
+                const existingStorage = localStorage.getItem(STORAGE_KEY);
+                const storage = existingStorage ? JSON.parse(existingStorage) : {
+                    version: '1.0',
+                    scans: [],
+                    settings: { maxSavedScans: 50, autoCleanupDays: 90 }
+                };
+
+                const testScan = {
+                    id: `test_${Date.now()}`,
+                    name: `Test Scan ${new Date().toLocaleString()}`,
+                    createdAt: new Date().toISOString(),
+                    scanParams: {
+                        start_date: '2024-01-01',
+                        end_date: '2024-12-11'
+                    },
+                    resultCount: Math.floor(Math.random() * 100) + 1,
+                    scanType: 'LC Scanner',
+                    description: 'Test scan created for debugging',
+                    results: [
+                        { ticker: 'SPY', price: 450, confidence: 85 },
+                        { ticker: 'AAPL', price: 190, confidence: 78 }
+                    ],
+                    isFavorite: false
+                };
+
+                storage.scans.push(testScan);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(storage));
+
+                showResult('localResults',
+                    `<div class="success">✅ Created test scan: ${testScan.name}</div>` +
+                    `<pre>${JSON.stringify(testScan, null, 2)}</pre>`, false);
+
+            } catch (error) {
+                showResult('localResults',
+                    `<div class="error">❌ Error creating test scan: ${error.message}</div>`, true);
+            }
+        }
+
+        function loadLocalScans() {
+            try {
+                const localScans = localStorage.getItem(STORAGE_KEY);
+                if (!localScans) {
+                    showResult('localResults', '<div class="error">No local scans found</div>', true);
+                    return;
+                }
+
+                const parsedData = JSON.parse(localScans);
+                const scans = parsedData.scans || [];
+
+                if (scans.length === 0) {
+                    showResult('localResults', '<div class="error">Local storage exists but no scans found</div>', true);
+                    return;
+                }
+
+                const scanList = scans.map(scan =>
+                    `<div class="scan-item">
+                        <strong>${scan.name}</strong><br>
+                        Created: ${new Date(scan.createdAt).toLocaleString()}<br>
+                        Results: ${scan.resultCount || 0}<br>
+                        Type: ${scan.scanType || 'Unknown'}
+                    </div>`
+                ).join('');
+
+                showResult('localResults',
+                    `<div class="success">✅ Found ${scans.length} local scans:</div>${scanList}`, false);
+
+            } catch (error) {
+                showResult('localResults',
+                    `<div class="error">❌ Error loading local scans: ${error.message}</div>`, true);
+            }
+        }
+
+        function clearLocalScans() {
+            try {
+                localStorage.removeItem(STORAGE_KEY);
+                showResult('localResults', '<div class="success">✅ Cleared all local scans</div>', false);
+            } catch (error) {
+                showResult('localResults',
+                    `<div class="error">❌ Error clearing local scans: ${error.message}</div>`, true);
+            }
+        }
+
+        async function testBackendAPI() {
+            try {
+                const response = await fetch('http://localhost:8000/api/scans/user/test_user_123');
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+
+                showResult('backendResults',
+                    `<div class="success">✅ Backend API is working!</div>` +
+                    `<pre>${JSON.stringify(data, null, 2)}</pre>`, false);
+
+            } catch (error) {
+                showResult('backendResults',
+                    `<div class="error">❌ Backend API error: ${error.message}</div>` +
+                    `<p>This is expected if the backend is not running. The localStorage fallback should still work.</p>`, true);
+            }
+        }
+
+        async function loadBackendScans() {
+            try {
+                const response = await fetch('http://localhost:8000/api/scans/user/test_user_123');
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (data.success && data.scans && data.scans.length > 0) {
+                    const scanList = data.scans.map(scan =>
+                        `<div class="scan-item">
+                            <strong>${scan.scan_name}</strong><br>
+                            Created: ${new Date(scan.timestamp).toLocaleString()}<br>
+                            Results: ${scan.results_count || 0}
+                        </div>`
+                    ).join('');
+
+                    showResult('backendResults',
+                        `<div class="success">✅ Found ${data.scans.length} backend scans:</div>${scanList}`, false);
+                } else {
+                    showResult('backendResults', '<div class="error">No backend scans found</div>', true);
+                }
+
+            } catch (error) {
+                showResult('backendResults',
+                    `<div class="error">❌ Error loading backend scans: ${error.message}</div>`, true);
+            }
+        }
+
+        async function testHybridApproach() {
+            try {
+                let scans = [];
+                let source = '';
+
+                // Try backend first (like the main page now does)
+                try {
+                    const response = await fetch('http://localhost:8000/api/scans/user/test_user_123');
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.success && data.scans && data.scans.length > 0) {
+                            scans = data.scans;
+                            source = 'Backend API';
+                        }
+                    }
+                } catch (backendError) {
+                    console.log('Backend not available, trying localStorage...');
+                }
+
+                // Fallback to localStorage
+                if (scans.length === 0) {
+                    const localScans = localStorage.getItem(STORAGE_KEY);
+                    if (localScans) {
+                        const parsedData = JSON.parse(localScans);
+                        if (parsedData.scans && parsedData.scans.length > 0) {
+                            // Convert to backend format
+                            scans = parsedData.scans.map((scan: any) => ({
+                                scan_id: scan.id,
+                                scan_name: scan.name,
+                                timestamp: scan.createdAt,
+                                results_count: scan.resultCount || 0,
+                                scan_data: scan
+                            }));
+                            source = 'localStorage (fallback)';
+                        }
+                    }
+                }
+
+                if (scans.length > 0) {
+                    showResult('hybridResults',
+                        `<div class="success">✅ Hybrid approach found ${scans.length} scans from ${source}:</div>` +
+                        `<pre>${JSON.stringify(scans, null, 2)}</pre>`, false);
+                } else {
+                    showResult('hybridResults',
+                        `<div class="error">❌ No scans found from any source</div>` +
+                        `<p>Try creating a test scan first.</p>`, true);
+                }
+
+            } catch (error) {
+                showResult('hybridResults',
+                    `<div class="error">❌ Hybrid approach error: ${error.message}</div>`, true);
+            }
+        }
+
+        // Auto-load local scans on page load
+        window.addEventListener('load', () => {
+            loadLocalScans();
+        });
+    </script>
+</body>
+</html>

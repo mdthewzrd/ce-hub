@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Saved Scans</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        .btn:hover {
+            background: #b91c1c;
+        }
+        .btn-secondary {
+            background: #6b7280;
+        }
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        pre {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        .status {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 Clear Saved Scans</h1>
+        <p>This tool will completely clear all saved scans from localStorage and verify the backend state.</p>
+
+        <div class="actions">
+            <button class="btn" onclick="clearAllScans()">Clear All Scans</button>
+            <button class="btn btn-secondary" onclick="checkCurrentState()">Check Current State</button>
+            <button class="btn btn-secondary" onclick="testBackend()">Test Backend</button>
+        </div>
+
+        <div id="status"></div>
+
+        <h3>Current localStorage State:</h3>
+        <pre id="localStorage-content">Loading...</pre>
+
+        <h3>Backend Scan Status:</h3>
+        <pre id="backend-status">Loading...</pre>
+    </div>
+
+    <script>
+        // Check current state on load
+        window.addEventListener('load', checkCurrentState);
+
+        async function checkCurrentState() {
+            updateStatus('Checking current state...', 'info');
+
+            // Check localStorage
+            try {
+                const savedScans = localStorage.getItem('traderra_saved_scans');
+                const localStorageContent = document.getElementById('localStorage-content');
+
+                if (savedScans) {
+                    const parsed = JSON.parse(savedScans);
+                    localStorageContent.textContent = JSON.stringify(parsed, null, 2);
+                    const scanCount = parsed.scans ? parsed.scans.length : 0;
+                    updateStatus(`Found ${scanCount} scans in localStorage`, scanCount > 0 ? 'error' : 'success');
+                } else {
+                    localStorageContent.textContent = 'No traderra_saved_scans found in localStorage';
+                    updateStatus('No scans found in localStorage', 'success');
+                }
+            } catch (error) {
+                document.getElementById('localStorage-content').textContent = `Error: ${error.message}`;
+                updateStatus(`Error reading localStorage: ${error.message}`, 'error');
+            }
+
+            // Check backend
+            await testBackend();
+        }
+
+        async function testBackend() {
+            const backendStatus = document.getElementById('backend-status');
+            backendStatus.textContent = 'Testing backend...';
+
+            try {
+                const response = await fetch('http://localhost:8000/api/scans/user/test_user_123');
+                const data = await response.json();
+
+                backendStatus.textContent = JSON.stringify(data, null, 2);
+
+                if (data.success && data.scans && data.scans.length > 0) {
+                    updateStatus(`Backend has ${data.scans.length} scans (these may reappear on page load)`, 'error');
+                } else {
+                    updateStatus('Backend has no scans (good!)', 'success');
+                }
+            } catch (error) {
+                backendStatus.textContent = `Error: ${error.message}`;
+                updateStatus('Backend connection failed', 'error');
+            }
+        }
+
+        async function clearAllScans() {
+            updateStatus('Clearing all saved scans...', 'info');
+
+            try {
+                // Clear all scan-related keys from localStorage
+                const keysToRemove = [];
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && (key.includes('scan') || key.includes('Scan'))) {
+                        keysToRemove.push(key);
+                    }
+                }
+
+                keysToRemove.forEach(key => {
+                    localStorage.removeItem(key);
+                });
+
+                // Specifically clear the main key
+                localStorage.removeItem('traderra_saved_scans');
+
+                updateStatus(`Cleared ${keysToRemove.length + 1} items from localStorage`, 'success');
+
+                // Refresh the view
+                setTimeout(checkCurrentState, 1000);
+            } catch (error) {
+                updateStatus(`Error clearing localStorage: ${error.message}`, 'error');
+            }
+        }
+
+        function updateStatus(message, type = 'info') {
+            const status = document.getElementById('status');
+            status.className = `status ${type}`;
+            status.textContent = message;
+        }
+    </script>
+</body>
+</html>

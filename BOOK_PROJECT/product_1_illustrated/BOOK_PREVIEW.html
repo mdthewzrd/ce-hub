@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden in Plain Sight - Book Preview</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&family=Space+Mono&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        .book-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 60px;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a237e 100%);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.1);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
+            color: #ffd700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            color: #7b1fa2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .drop-cap::first-letter {
+            font-family: 'Cinzel', serif;
+            font-size: 64px;
+            float: left;
+            line-height: 1;
+            margin-right: 12px;
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        .image-placeholder {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px dashed #ffd700;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .image-placeholder img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+        .image-caption {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            color: #7b1fa2;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .page-break {
+            page-break-before: always;
+            border-top: 2px solid #ffd700;
+            margin-top: 60px;
+            padding-top: 40px;
+        }
+
+        .chapter-number {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: #7b1fa2;
+            text-align: center;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-style: italic;
+            color: #ffd700;
+            text-align: center;
+            margin: 40px 0;
+            padding: 0 40px;
+            line-height: 1.6;
+        }
+
+        .diagram-box {
+            background: rgba(123, 31, 162, 0.1);
+            border: 2px solid #7b1fa2;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .number-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ffd700;
+            color: #0a0e27;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        .key-point {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid #ffd700;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .nav {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .nav a {
+            color: #ffd700;
+            text-decoration: none;
+            margin: 0 15px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="#page1">Page 1: Text Only</a> |
+        <a href="#page2">Page 2: With Diagram</a> |
+        <a href="#page3">Page 3: With Image</a>
+    </div>
+
+    <!-- PAGE 1: TEXT ONLY -->
+    <div id="page1" class="book-container">
+        <div class="chapter-number">CHAPTER ONE</div>
+        <h1>Pattern Recognition</h1>
+
+        <p class="drop-cap">Look around you. Right now. Wherever you are.</p>
+
+        <p>You don't need to go anywhere special. You don't need any special equipment. You just need to open your eyes and really <em>see</em>.</p>
+
+        <p>Because here's the thing that most people never notice: <strong>The world is built on patterns.</strong></p>
+
+        <p>Not random patterns. Not chaotic patterns. But <em>sacred</em> patterns. Mathematical patterns that repeat across all of nature, across all scales, from the smallest to the largest. From atoms to galaxies. From DNA to hurricanes. From flowers to galaxies.</p>
+
+        <div class="key-point">
+            "As above, so below." — Ancient Hermetic text
+        </div>
+
+        <p>These patterns aren't just aesthetic. They're not just "pretty to look at." They're <em>fundamental</em>. They're the code reality is written in.</p>
+
+        <p>And once you see them, you can't unsee them.</p>
+
+        <h3>The Hidden Pattern</h3>
+
+        <p>Most people go through life seeing these patterns everywhere but never recognizing them. They see a sunflower and think "nice flower." They see a hurricane and think "scary storm." They see a galaxy and think "pretty stars."</p>
+
+        <p>But what they're <em>not</em> seeing is the pattern that connects them all.</p>
+
+        <p>The spiral pattern in the sunflower seeds. The spiral pattern of the hurricane. The spiral pattern of the galaxy. <em>Same pattern.</em></p>
+
+        <p>Why?</p>
+
+        <p>That's what this book is about.</p>
+
+        <p class="quote">The universe is not random. It follows precise mathematical patterns. Patterns so elegant, so perfect, so beautiful that ancient civilizations considered them sacred.</p>
+
+        <h3>What You'll Discover</h3>
+
+        <p>In this book, you're going to discover:</p>
+
+        <p>1. The patterns that govern reality</p>
+        <p>2. The hidden code built into everything</p>
+        <p>3. Why ancient civilizations were obsessed with these patterns</p>
+        <p>4. How this knowledge was lost and is now being rediscovered</p>
+        <p>5. What this means for your life, your health, and your future</p>
+
+        <p>Sound extraordinary? Good. Because it <em>is</em> extraordinary.</p>
+
+        <p>And it's been hiding in plain sight the whole time.</p>
+    </div>
+
+    <!-- PAGE 2: WITH DIAGRAM -->
+    <div class="page-break"></div>
+    <div id="page2" class="book-container">
+        <h2>The Golden Ratio: The Universe's Favorite Number</h2>
+
+        <p>There's a number that appears everywhere in nature. A number so special, so prevalent, so <em>perfect</em> that mathematicians call it "phi" (φ) and artists call it "the Golden Ratio."</p>
+
+        <p>Its value: 1.6180339887...</p>
+
+        <p>This isn't just some random number. It's a ratio—a relationship between two quantities where the ratio of the larger to the smaller equals the ratio of the sum to the larger.</p>
+
+        <div class="diagram-box">
+            <h3 style="color: #ffd700; margin-top: 0;">THE GOLDEN RATIO</h3>
+            <div style="display: flex; align-items: center; justify-content: center; margin: 30px 0;">
+                <div style="width: 100px; height: 100px; background: #ffd700; display: flex; align-items: center; justify-content: center; color: #0a0e27; font-weight: bold; font-size: 18px;">1.618</div>
+                <div style="margin: 0 20px; font-size: 40px; color: #ffd700;">→</div>
+                <div style="width: 100px; height: 62px; background: #7b1fa2; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;">1</div>
+            </div>
+            <p style="font-family: 'Space Mono', monospace; font-size: 14px; color: #ffd700;">
+                Larger segment (φ) : Smaller segment (1) = φ : 1
+            </p>
+        </div>
+
+        <p>This ratio appears in:</p>
+
+        <div style="margin: 30px 0;">
+            <div class="number-circle">🌻</div>
+            <span style="vertical-align: middle; margin-left: 15px;">Sunflower seed spirals</span>
+        </div>
+
+        <div style="margin: 30px 0;">
+            <div class="number-circle">🐚</div>
+            <span style="vertical-align: middle; margin-left: 15px;">Nautilus shell chambers</span>
+        </div>
+
+        <div style="margin: 30px 0;">
+            <div class="number-circle">🌌</div>
+            <span style="vertical-align: middle; margin-left: 15px;">Spiral galaxy arms</span>
+        </div>
+
+        <div style="margin: 30px 0;">
+            <div class="number-circle">👤</div>
+            <span style="vertical-align: middle; margin-left: 15px;">Human body proportions</span>
+        </div>
+
+        <div class="key-point">
+            Why does the same pattern appear in flowers, shells, galaxies, and human bodies?<br><br>
+            <strong>Because reality is built on a unified code. A sacred geometry that governs how energy flows, how matter organizes, how life creates.</strong>
+        </div>
+
+        <p>This isn't coincidence. This isn't random selection. This is <em>design</em>.</p>
+
+        <p>And the implications are profound.</p>
+
+        <h3>The Fibonacci Sequence</h3>
+
+        <p>Closely related to phi is the Fibonacci sequence: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...</p>
+
+        <p>Each number is the sum of the two before it. Simple. Elegant. And the ratio between consecutive numbers approaches phi (1.618...) as the sequence grows.</p>
+
+        <div class="diagram-box">
+            <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; padding: 20px;">
+                <span style="font-family: 'Space Mono', monospace; font-size: 18px; color: #ffd700;">1</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 18px; color: #ffd700;">1</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 18px; color: #ffd700;">2</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 18px; color: #ffd700;">3</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 18px; color: #ffd700;">5</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 18px; color: #ffd700;">8</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 18px; color: #ffd700;">13</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 18px; color: #ffd700;">21</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 18px; color: #ffd700;">34</span>
+            </div>
+            <p style="font-family: 'Space Mono', monospace; font-size: 14px; color: #7b1fa2; margin-top: 20px;">
+                34 ÷ 21 = 1.619... (approaches φ = 1.618...)
+            </p>
+        </div>
+
+        <p>This sequence appears everywhere in nature because it's the most efficient way for things to grow. It's the code of creation itself.</p>
+    </div>
+
+    <!-- PAGE 3: WITH IMAGE -->
+    <div class="page-break"></div>
+    <div id="page3" class="book-container">
+        <h2>The Torus: Nature's Perfect Shape</h2>
+
+        <p>If there's one shape that appears more than any other in nature, it's the torus. A doughnut-shaped form that represents how energy naturally flows.</p>
+
+        <div class="image-placeholder">
+            <div style="width: 100%; max-width: 400px; height: 300px; background: linear-gradient(135deg, #1a237e 0%, #7b1fa2 50%, #ffd700 100%); border-radius: 50%; margin: 0 auto; position: relative; box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; background: #0a0e27; border-radius: 50%; border: 3px solid #ffd700;"></div>
+            </div>
+            <p class="image-caption">[FIGURE: The Torus - Energy's natural flowing pattern. Energy flows in through the top, spirals around the outside, and flows back up through the center, creating a continuous, self-renewing loop.]</p>
+        </div>
+
+        <p>The torus is found in:</p>
+
+        <p><strong>• Magnetic fields:</strong> From electrons to planets, magnetic fields take toroidal form</p>
+
+        <p><strong>• Your heart:</strong> Your heart's electromagnetic field extends 8-10 feet beyond your body in a toroidal pattern</p>
+
+        <p><strong>• Apples:</strong> Cut an apple in half horizontally and you'll see a pentagram inside a circle—a toroidal cross-section</p>
+
+        <p><strong>• Hurricanes:</strong> Viewed from above, hurricanes show toroidal flow patterns</p>
+
+        <div class="image-placeholder">
+            <div style="width: 100%; max-width: 500px; height: 250px; background: #1a237e; border-radius: 10px; margin: 0 auto; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: 100px; border: 4px solid #ffd700; border-radius: 50%;"></div>
+                <svg width="500" height="250" style="position: absolute; top: 0; left: 0;">
+                    <path d="M 250 20 Q 350 125, 250 230 Q 150 125, 250 20" stroke="#7b1fa2" stroke-width="2" fill="none" opacity="0.5"/>
+                    <path d="M 250 20 Q 350 125, 250 230 Q 150 125, 250 20" stroke="#ffd700" stroke-width="2" fill="none" transform="rotate(45, 250, 125)"/>
+                    <path d="M 250 20 Q 350 125, 250 230 Q 150 125, 250 20" stroke="#2e7d32" stroke-width="2" fill="none" transform="rotate(90, 250, 125)"/>
+                    <path d="M 250 20 Q 350 125, 250 230 Q 150 125, 250 20" stroke="#e65100" stroke-width="2" fill="none" transform="rotate(135, 250, 125)"/>
+                </svg>
+            </div>
+            <p class="image-caption">[FIGURE: Toroidal Energy Flow - Energy spirals around the outside and returns through the center, creating the pattern found throughout nature.]</p>
+        </div>
+
+        <h3>Why the Torus Matters</h3>
+
+        <p>The torus isn't just a shape. It's the way energy <em>naturally</em> flows. It's self-renewing. It's balanced. It's efficient.</p>
+
+        <div class="key-point">
+            All energy in the universe, from the smallest atom to the largest galaxy, flows in toroidal patterns. This is the physical shape of energy itself.
+        </div>
+
+        <p>And here's the profound insight: <strong>You have a toroidal field.</strong></p>
+
+        <p>Your heart creates a magnetic field that extends 8-10 feet beyond your body. This field has been measured by scientists. It carries emotional information. It affects the people around you.</p>
+
+        <p>You are literally a walking toroidal energy field.</p>
+
+        <p>You affect the world through your field. The world affects you through its field.</p>
+
+        <p>We're all connected through these fields.</p>
+
+        <p>This isn't metaphor. This isn't some mystical concept. This is <strong>measurable, scientific fact</strong>.</p>
+
+        <p class="quote">"The heart's magnetic field is 60 times greater in amplitude than the field of the brain."<br>— HeartMath Institute Research</p>
+
+        <p>In the next chapter, we'll dive deeper into the hidden pattern behind all of this. A pattern so elegant, so profound, that it was considered sacred by ancient civilizations...</p>
+    </div>
+
+    <div class="nav">
+        <a href="#page1">↑ Back to Top</a> | <span style="color: #7b1fa2;">Preview Complete</span>
+    </div>
+</body>
+</html>

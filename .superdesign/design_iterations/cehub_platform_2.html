@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CE-Hub Platform - Professional Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /*
+     * CE-Hub Professional Design System
+     * Based on: shadcn/ui, Vercel Geist, Linear Design
+     * 2025 Modern Dark Theme Standards
+     */
+
+    /* CSS Variables - Design Tokens */
+    :root {
+      /* Base Colors - Neutral Scale */
+      --background: 0 0% 100%;
+      --foreground: 0 0% 3.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 0 0% 3.9%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 0 0% 3.9%;
+      --primary: 0 0% 9%;
+      --primary-foreground: 0 0% 98%;
+      --secondary: 0 0% 96.1%;
+      --secondary-foreground: 0 0% 9%;
+      --muted: 0 0% 96.1%;
+      --muted-foreground: 0 0% 45.1%;
+      --accent: 0 0% 96.1%;
+      --accent-foreground: 0 0% 9%;
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 0 0% 98%;
+      --border: 0 0% 89.8%;
+      --input: 0 0% 89.8%;
+      --ring: 0 0% 3.9%;
+      --radius: 0.5rem;
+    }
+
+    /* Dark Mode - Professional Deep Black Theme */
+    .dark {
+      --background: 0 0% 3.9%;      /* #0a0a0a */
+      --foreground: 0 0% 98%;        /* #fafafa */
+      --card: 0 0% 3.9%;             /* #0a0a0a */
+      --card-foreground: 0 0% 98%;   /* #fafafa */
+      --popover: 0 0% 3.9%;          /* #0a0a0a */
+      --popover-foreground: 0 0% 98%; /* #fafafa */
+      --primary: 0 0% 98%;           /* #fafafa */
+      --primary-foreground: 0 0% 9%;  /* #171717 */
+      --secondary: 0 0% 14.9%;       /* #27272a */
+      --secondary-foreground: 0 0% 98%; /* #fafafa */
+      --muted: 0 0% 14.9%;           /* #27272a */
+      --muted-foreground: 0 0% 63.9%; /* #737373 */
+      --accent: 0 0% 14.9%;           /* #27272a */
+      --accent-foreground: 0 0% 98%;  /* #fafafa */
+      --destructive: 0 62.8% 30.6%;  /* #ef4444 */
+      --destructive-foreground: 0 0% 98%; /* #fafafa */
+      --border: 0 0% 14.9%;           /* #27272a */
+      --input: 0 0% 14.9%;            /* #27272a */
+      --ring: 0 0% 83.1%;             /* #d4d4d8 */
+
+      /* Elevations - Layered Shadows (Vercel style) */
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+      /* Custom Professional Colors */
+      --success: 142 76% 36%;          /* #22c55e */
+      --warning: 48 96% 53%;           /* #eab308 */
+      --info: 217 91% 60%;             /* #3b82f6 */
+      --purple: 271 81% 56%;            /* #a855f7 */
+      --glow-primary: 0 0% 100%;
+      --glow-success: 142 76% 36%;
+      --glow-warning: 48 96% 53%;
+    }
+
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: hsl(var(--background));
+      color: hsl(var(--foreground));
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+    }
+
+    /* Scrollbar - Professional Styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: hsl(var(--border));
+      border-radius: 5px;
+      border: 2px solid hsl(var(--background));
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: hsl(var(--muted-foreground));
+    }
+
+    /* Focus Ring - shadcn/ui style */
+    :focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
+    }
+
+    /* Typography Scale */
+    .text-xs { font-size: 0.75rem; line-height: 1rem; }
+    .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .text-base { font-size: 1rem; line-height: 1.5rem; }
+    .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+
+    .font-medium { font-weight: 500; }
+    .font-semibold { font-weight: 600; }
+    .font-bold { font-weight: 700; }
+
+    /* Utility Classes */
+    .bg-background { background-color: hsl(var(--background)); }
+    .bg-card { background-color: hsl(var(--card)); }
+    .bg-muted { background-color: hsl(var(--muted)); }
+    .bg-muted/50 { background-color: hsl(var(--muted) / 0.5); }
+
+    .border-border { border-color: hsl(var(--border)); }
+    .border-border/50 { border-color: hsl(var(--border) / 0.5); }
+
+    .text-foreground { color: hsl(var(--foreground)); }
+    .text-muted-foreground { color: hsl(var(--muted-foreground)); }
+
+    /* Shadows */
+    .shadow-sm { box-shadow: var(--shadow-sm); }
+    .shadow { box-shadow: var(--shadow); }
+    .shadow-md { box-shadow: var(--shadow-md); }
+    .shadow-lg { box-shadow: var(--shadow-lg); }
+    .shadow-xl { box-shadow: var(--shadow-xl); }
+
+    /* Professional Card Component */
+    .card {
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+    }
+
+    .card-hover:hover {
+      border-color: hsl(var(--muted-foreground) / 0.5);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    /* Button Component - shadcn/ui inspired */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: calc(var(--radius) - 2px);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+
+    .btn:focus-visible {
+      box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
+    }
+
+    .btn-primary {
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      box-shadow: 0 2px 4px 0 rgb(0 0 0 / 0.1);
+    }
+
+    .btn-secondary {
+      background: hsl(var(--secondary));
+      color: hsl(var(--secondary-foreground));
+      border: 1px solid hsl(var(--border));
+    }
+
+    .btn-secondary:hover {
+      background: hsl(var(--muted));
+      border-color: hsl(var(--muted-foreground));
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: hsl(var(--foreground));
+    }
+
+    .btn-ghost:hover {
+      background: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+    }
+
+    /* Badge Component - Professional Style */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.625rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+    }
+
+    .badge-plan {
+      background: hsla(var(--info), 0.15);
+      color: hsl(var(--info));
+      border: 1px solid hsla(var(--info), 0.3);
+    }
+
+    .badge-research {
+      background: hsla(var(--warning), 0.15);
+      color: hsl(var(--warning));
+      border: 1px solid hsla(var(--warning), 0.3);
+    }
+
+    .badge-produce {
+      background: hsla(var(--success), 0.15);
+      color: hsl(var(--success));
+      border: 1px solid hsla(var(--success), 0.3);
+    }
+
+    .badge-ingest {
+      background: hsla(var(--purple), 0.15);
+      color: hsl(var(--purple));
+      border: 1px solid hsla(var(--purple), 0.3);
+    }
+
+    /* Status Indicator - Glowing Effect */
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.8125rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .status-dot::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .status-active {
+      background: hsl(var(--success));
+    }
+    .status-active::after {
+      background: hsl(var(--success));
+    }
+
+    .status-paused {
+      background: hsl(var(--warning));
+    }
+    .status-paused::after {
+      background: hsl(var(--warning));
+    }
+
+    .status-offline {
+      background: hsl(var(--muted-foreground));
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
+
+    /* Progress Bar - Modern Style */
+    .progress {
+      height: 3px;
+      background: hsl(var(--secondary));
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: hsl(var(--primary));
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-bar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+      );
+      animation: shimmer 2s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Checkbox - Professional Style */
+    .checkbox {
+      width: 16px;
+      height: 16px;
+      border: 1px solid hsl(var(--border));
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: hsl(var(--background));
+    }
+
+    .checkbox:hover {
+      border-color: hsl(var(--muted-foreground));
+    }
+
+    .checkbox.checked {
+      background: hsl(var(--primary));
+      border-color: hsl(var(--primary));
+    }
+
+    /* Input Field - Professional Style */
+    .input {
+      width: 100%;
+      padding: 0.625rem 0.75rem;
+      font-size: 0.875rem;
+      background: hsl(var(--background));
+      border: 1px solid hsl(var(--border));
+      border-radius: calc(var(--radius) - 2px);
+      color: hsl(var(--foreground));
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .input:focus {
+      border-color: hsl(var(--ring));
+      box-shadow: 0 0 0 3px hsla(var(--ring), 0.1);
+    }
+
+    .input::placeholder {
+      color: hsl(var(--muted-foreground));
+    }
+
+    /* Terminal - Monospace Font */
+    .terminal {
+      background: hsl(var(--background));
+      border: 1px solid hsl(var(--border));
+      border-radius: calc(var(--radius) - 2px);
+      padding: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125rem;
+      line-height: 1.7;
+    }
+
+    .terminal-prompt {
+      color: hsl(var(--success));
+    }
+
+    /* Chat Message - Modern Style */
+    .chat-bubble {
+      max-width: 85%;
+      padding: 0.75rem 1rem;
+      border-radius: 1rem;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .chat-bubble.user {
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+    }
+
+    .chat-bubble.assistant {
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+    }
+
+    /* Code Inline */
+    .code {
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      padding: 0.125rem 0.375rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125em;
+    }
+
+    /* Mini Map - Enhanced */
+    .mini-map {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.5rem 0.625rem;
+      background: hsl(var(--secondary));
+      border-radius: calc(var(--radius) - 2px);
+      font-size: 0.75rem;
+      border: 1px solid hsl(var(--border));
+    }
+
+    .map-node {
+      padding: 0.375rem 0.625rem;
+      border-radius: 6px;
+      background: hsl(var(--background));
+      border: 1px solid hsl(var(--border));
+      color: hsl(var(--muted-foreground));
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .map-node.active {
+      background: hsl(var(--warning));
+      border-color: hsl(var(--warning));
+      color: hsl(var(--background));
+      box-shadow: 0 0 12px hsla(var(--warning), 0.4);
+    }
+
+    .map-node.completed {
+      background: hsl(var(--success));
+      border-color: hsl(var(--success));
+      color: hsl(var(--background));
+    }
+
+    /* Task Log Entry */
+    .task-log {
+      border: 1px solid hsl(var(--border));
+      border-radius: calc(var(--radius) - 2px);
+      padding: 0.75rem;
+      background: hsl(var(--card));
+      transition: all 0.2s ease;
+    }
+
+    .task-log:hover {
+      border-color: hsl(var(--muted-foreground) / 0.5);
+    }
+
+    /* Navigation Link */
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: calc(var(--radius) - 2px);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: hsl(var(--muted-foreground));
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .nav-link:hover {
+      background: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+    }
+
+    .nav-link.active {
+      background: hsl(var(--accent));
+      color: hsl(var(--foreground));
+    }
+
+    /* Project Item */
+    .project-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.625rem 0.75rem;
+      border-radius: calc(var(--radius) - 2px);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+    }
+
+    .project-item:hover {
+      background: hsl(var(--accent));
+      border-color: hsl(var(--border));
+    }
+
+    .project-item.active {
+      background: hsl(var(--accent));
+      border-color: hsl(var(--border));
+    }
+
+    /* Sidebar Section */
+    .sidebar-section {
+      padding: 1rem;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+
+    .sidebar-title {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.075em;
+      text-transform: uppercase;
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 0.75rem;
+    }
+
+    /* Agent Activity */
+    .agent-activity {
+      padding: 0.75rem;
+      border-radius: calc(var(--radius) - 2px);
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      margin-bottom: 0.5rem;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: hsl(var(--border));
+      margin: 1rem 0;
+    }
+
+    /* Loading Spinner */
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid hsl(var(--border));
+      border-top-color: hsl(var(--foreground));
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Stats Card - Enhanced */
+    .stats-card {
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        transparent 0%,
+        hsla(var(--foreground), 0.02) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .stats-card:hover {
+      border-color: hsl(var(--muted-foreground) / 0.5);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stats-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Subtle Glow Effect */
+    .glow {
+      box-shadow: 0 0 20px hsla(var(--glow-primary), 0.1);
+    }
+
+    .glow-success {
+      box-shadow: 0 0 20px hsla(var(--glow-success), 0.2);
+    }
+
+    .glow-warning {
+      box-shadow: 0 0 20px hsla(var(--glow-warning), 0.2);
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <nav style="height: 56px; border-bottom: 1px solid hsl(var(--border)); display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: hsl(var(--background)); backdrop-filter: blur(8px);">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div style="width: 32px; height: 32px; background: hsl(var(--foreground)); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--background))" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <span style="font-size: 1rem; font-weight: 600; letter-spacing: -0.02em;">CE-Hub</span>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 0.25rem;">
+      <a href="#" class="nav-link active">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        Dashboard
+      </a>
+      <a href="#" class="nav-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+        </svg>
+        Map
+      </a>
+      <a href="#" class="nav-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polygon points="10 8 16 12 10 16 10 8"></polygon>
+        </svg>
+        Working
+      </a>
+      <a href="#" class="nav-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+        Settings
+      </a>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <button class="btn btn-secondary" style="padding: 0.5rem 0.875rem; font-size: 0.8125rem;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline;">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 16v-4"></path>
+          <path d="M12 8h.01"></path>
+        </svg>
+        Guardian
+      </button>
+      <div style="width: 32px; height: 32px; border-radius: 8px; background: hsl(var(--secondary)); border: 1px solid hsl(var(--border)); display: flex; align-items: center; justify-content: center; font-size: 0.8125rem; font-weight: 600;">
+        MD
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div style="display: flex; margin-top: 56px; min-height: calc(100vh - 56px);">
+    <!-- Left Sidebar -->
+    <aside style="width: 260px; border-right: 1px solid hsl(var(--border)); position: fixed; top: 56px; left: 0; bottom: 0; overflow-y: auto; background: hsl(var(--background));">
+      <!-- Projects Section -->
+      <div class="sidebar-section">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <div class="sidebar-title">Projects</div>
+          <button class="btn btn-ghost" style="padding: 0.25rem; width: 28px; height: 28px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="project-item active">
+          <div class="status-dot status-active"></div>
+          <div style="flex: 1;">
+            <div style="font-size: 0.875rem; font-weight: 500;">CE-Hub Platform</div>
+            <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground)); margin-top: 0.125rem;">[RESEARCH] • 3 tasks left</div>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="status-dot status-paused"></div>
+          <div style="flex: 1;">
+            <div style="font-size: 0.875rem; font-weight: 500;">Trading Scanner AI</div>
+            <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground)); margin-top: 0.125rem;">[PLAN] • Starting phase</div>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="status-dot status-active"></div>
+          <div style="flex: 1;">
+            <div style="font-size: 0.875rem; font-weight: 500;">Mobile Bridge CLI</div>
+            <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground)); margin-top: 0.125rem;">[PRODUCE] • 1 task left</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tasks Section -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">Current Tasks</div>
+
+        <div style="display: flex; flex-direction: column; gap: 0.25rem;">
+          <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.5rem 0.75rem; border-radius: calc(var(--radius) - 2px);">
+            <div class="checkbox checked">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--background)) stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size: 0.875rem; color: hsl(var(--muted-foreground));">Explore AG-UI patterns</div>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.5rem 0.75rem; border-radius: calc(var(--radius) - 2px);">
+            <div class="checkbox checked">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--background))" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size: 0.875rem; color: hsl(var(--muted-foreground));">Analyze React Flow</div>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.5rem 0.75rem; border-radius: calc(var(--radius) - 2px); background: hsl(var(--accent)); border: 1px solid hsl(var(--border));">
+            <div class="checkbox" style="border-color: hsl(var(--warning));">
+              <div class="spinner" style="width: 10px; height: 10px; border-width: 1.5px;"></div>
+            </div>
+            <div>
+              <div style="font-size: 0.875rem; font-weight: 500;">Synthesize findings</div>
+              <div style="font-size: 0.75rem; color: hsl(var(--warning)); margin-top: 0.125rem;">In progress...</div>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.5rem 0.75rem; border-radius: calc(var(--radius) - 2px);">
+            <div class="checkbox"></div>
+            <div>
+              <div style="font-size: 0.875rem;">Document workflow</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini Map Section -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">Workflow Progress</div>
+        <div class="mini-map">
+          <div class="map-node completed">PLAN</div>
+          <div style="color: hsl(var(--muted-foreground));">→</div>
+          <div class="map-node active">RESEARCH</div>
+          <div style="color: hsl(var(--muted-foreground));">→</div>
+          <div class="map-node">PRODUCE</div>
+          <div style="color: hsl(var(--muted-foreground));">→</div>
+          <div class="map-node">INGEST</div>
+        </div>
+        <div style="margin-top: 1rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">Phase Progress</span>
+            <span style="font-size: 0.75rem; font-weight: 500;">50%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width: 50%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Section -->
+      <div class="sidebar-section" style="border-bottom: none;">
+        <div class="sidebar-title">Quick Actions</div>
+        <button class="btn btn-secondary" style="width: 100%; font-size: 0.8125rem; padding: 0.5rem 0.75rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline;">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          View Full Map
+        </button>
+      </div>
+    </aside>
+
+    <!-- Center Content Area -->
+    <main style="flex: 1; margin-left: 260px; margin-right: 340px; padding: 1.5rem;">
+      <div style="max-width: 920px;">
+        <!-- Page Header -->
+        <div style="margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <span class="badge badge-research">RESEARCH</span>
+            <span style="font-size: 0.8125rem; color: hsl(var(--muted-foreground));">Started 2 hours ago</span>
+          </div>
+          <h1 style="font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem;">CE-Hub Platform Development</h1>
+          <p style="font-size: 0.9375rem; color: hsl(var(--muted-foreground)); line-height: 1.6; max-width: 600px;">
+            Build a unified ecosystem for designing, developing, and deploying intelligent agents using Context Engineering and Archon as the foundation.
+          </p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem;">
+          <div class="stats-card">
+            <div style="font-size: 0.75rem; font-weight: 500; color: hsl(var(--muted-foreground)); margin-bottom: 0.375rem; letter-spacing: 0.025em; text-transform: uppercase;">Active Tasks</div>
+            <div style="font-size: 1.875rem; font-weight: 700; letter-spacing: -0.02em;">3</div>
+          </div>
+          <div class="stats-card">
+            <div style="font-size: 0.75rem; font-weight: 500; color: hsl(var(--muted-foreground)); margin-bottom: 0.375rem; letter-spacing: 0.025em; text-transform: uppercase;">Completed</div>
+            <div style="font-size: 1.875rem; font-weight: 700; letter-spacing: -0.02em;">2</div>
+          </div>
+          <div class="stats-card">
+            <div style="font-size: 0.75rem; font-weight: 500; color: hsl(var(--muted-foreground)); margin-bottom: 0.375rem; letter-spacing: 0.025em; text-transform: uppercase;">This Session</div>
+            <div style="font-size: 1.875rem; font-weight: 700; letter-spacing: -0.02em;">1h 23m</div>
+          </div>
+          <div class="stats-card">
+            <div style="font-size: 0.75rem; font-weight: 500; color: hsl(var(--muted-foreground)); margin-bottom: 0.375rem; letter-spacing: 0.025em; text-transform: uppercase;">Phase Progress</div>
+            <div style="font-size: 1.875rem; font-weight: 700; letter-spacing: -0.02em;">50%</div>
+          </div>
+        </div>
+
+        <!-- Current Task Panel -->
+        <div class="card card-hover" style="padding: 1.5rem; margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <div class="spinner" style="border-color: hsl(var(--warning)); border-top-color: hsl(var(--warning));"></div>
+              <h2 style="font-size: 1rem; font-weight: 600;">Current Task</h2>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-secondary" style="font-size: 0.8125rem; padding: 0.375rem 0.75rem;">Need Help</button>
+              <button class="btn btn-primary" style="font-size: 0.8125rem; padding: 0.375rem 0.75rem;">Mark Complete</button>
+            </div>
+          </div>
+          <div style="margin-bottom: 1.25rem;">
+            <h3 style="font-size: 0.9375rem; font-weight: 600; margin-bottom: 0.5rem;">Synthesize findings into UX recommendations</h3>
+            <p style="font-size: 0.875rem; color: hsl(var(--muted-foreground)); line-height: 1.6;">
+              Combine the AG-UI integration patterns and React Flow visualization research to create actionable UX recommendations for the CE-Hub platform. Focus on context-first navigation and dynamic tool building.
+            </p>
+          </div>
+          <div>
+            <div style="font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.75rem;">Acceptance Criteria</div>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem;">
+                <div class="checkbox checked" style="width: 14px; height: 14px;">
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--background))" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span style="color: hsl(var(--muted-foreground));">Identified 4 key AG-UI patterns</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem;">
+                <div class="checkbox checked" style="width: 14px; height: 14px;">
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--background))" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span style="color: hsl(var(--muted-foreground));">Analyzed React Flow integration points</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem;">
+                <div class="checkbox" style="width: 14px; height: 14px;"></div>
+                <span>Create UX recommendation document</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem;">
+                <div class="checkbox" style="width: 14px; height: 14px;"></div>
+                <span>Specify guardian agent behaviors</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminals Section -->
+        <div class="card" style="padding: 1.5rem; margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+            <h2 style="font-size: 0.9375rem; font-weight: 600;">Terminal</h2>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">+ New</button>
+              <button class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">Split</button>
+            </div>
+          </div>
+          <div class="terminal">
+            <div style="margin-bottom: 0.25rem;"><span class="terminal-prompt">$</span> npm run dev</div>
+            <div style="color: hsl(var(--success)); margin-bottom: 0.25rem;">✓ Ready! Available at http://localhost:6565</div>
+            <div style="margin-bottom: 0.25rem;"></div>
+            <div><span class="terminal-prompt">$</span> <span style="animation: blink 1s step-end infinite;">▊</span></div>
+          </div>
+        </div>
+
+        <!-- Task Logs -->
+        <div class="card" style="padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+            <h2 style="font-size: 0.9375rem; font-weight: 600;">Task Execution Logs</h2>
+            <select style="background: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: 4px; padding: 0.375rem 0.625rem; font-size: 0.75rem; color: hsl(var(--foreground)); outline: none; cursor: pointer;">
+              <option>All Tasks</option>
+              <option>Completed</option>
+              <option>Running</option>
+            </select>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <!-- Completed Task -->
+            <div class="task-log">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.375rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--success))" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span style="font-size: 0.875rem; font-weight: 500;">EXPLORE_AGUI_PATTERNS</span>
+                <span style="font-size: 0.75rem; color: hsl(var(--muted-foreground)); margin-left: auto;">2:34pm</span>
+              </div>
+              <div style="font-size: 0.8125rem; color: hsl(var(--muted-foreground)); margin-bottom: 0.25rem;">
+                Agent: Researcher • Duration: 12m 33s
+              </div>
+              <div style="font-size: 0.8125rem; color: hsl(var(--muted-foreground));">
+                Identified 4 key UX patterns from AG-UI route
+              </div>
+            </div>
+
+            <!-- Completed Task -->
+            <div class="task-log">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.375rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--success))" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span style="font-size: 0.875rem; font-weight: 500;">ANALYZE_REACT_FLOW</span>
+                <span style="font-size: 0.75rem; color: hsl(var(--muted-foreground)); margin-left: auto;">2:47pm</span>
+              </div>
+              <div style="font-size: 0.8125rem; color: hsl(var(--muted-foreground)); margin-bottom: 0.25rem;">
+                Agent: Researcher • Duration: 8m 12s
+              </div>
+              <div style="font-size: 0.8125rem; color: hsl(var(--muted-foreground));">
+                Mapped React Flow integration points for visualization
+              </div>
+            </div>
+
+            <!-- Running Task -->
+            <div class="task-log" style="border-color: hsla(var(--warning), 0.3); background: hsla(var(--warning), 0.05);">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.375rem;">
+                <div class="spinner" style="width: 14px; height: 14px; border-color: hsl(var(--warning)); border-top-color: hsl(var(--warning));"></div>
+                <span style="font-size: 0.875rem; font-weight: 600; color: hsl(var(--warning));">SYNTHESIZE_FINDINGS</span>
+                <span style="font-size: 0.75rem; color: hsl(var(--muted-foreground)); margin-left: auto;">Running...</span>
+              </div>
+              <div style="font-size: 0.8125rem; color: hsl(var(--muted-foreground)); margin-bottom: 0.25rem;">
+                Agent: Researcher • Duration: 3m 22s
+              </div>
+              <div style="font-size: 0.8125rem;">
+                <div style="margin-bottom: 0.375rem;">Progress: Analyzed 2 of 4 pattern categories</div>
+                <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">
+                  <div style="display: flex; align-items: center; gap: 0.375rem; margin-bottom: 0.125rem;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--success))" stroke-width="2.5">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Pattern 1: Context-first navigation</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 0.375rem; margin-bottom: 0.125rem;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--success))" stroke-width="2.5">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Pattern 2: Dynamic tool building</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 0.375rem; color: hsl(var(--warning));">
+                    <div class="spinner" style="width: 10px; height: 10px; border-width: 1.5px;"></div>
+                    <span>Pattern 3: Agent coordination (working...)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Right Sidebar (CopilotKit Chat) -->
+    <aside style="width: 340px; border-left: 1px solid hsl(var(--border)); position: fixed; top: 56px; right: 0; bottom: 0; background: hsl(var(--background)); display: flex; flex-direction: column;">
+      <!-- Chat Header -->
+      <div style="padding: 1rem; border-bottom: 1px solid hsl(var(--border));">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 0.625rem;">
+            <div style="width: 28px; height: 28px; background: linear-gradient(135deg, hsl(var(--warning)), hsl(var(--info))); border-radius: 7px; display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              </svg>
+            </div>
+            <span style="font-size: 0.9375rem; font-weight: 600;">Guardian Agent</span>
+          </div>
+          <button class="btn btn-ghost" style="padding: 0.375rem; width: 28px; height: 28px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="1"></circle>
+              <circle cx="19" cy="12" r="1"></circle>
+              <circle cx="5" cy="12" r="1"></circle>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Agent Activity -->
+      <div style="padding: 0.75rem 1rem; border-bottom: 1px solid hsl(var(--border)); max-height: 150px; overflow-y: auto;">
+        <div class="agent-activity">
+          <div style="font-size: 0.8125rem; font-weight: 500; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.375rem;">
+            <div class="status-dot status-active" style="width: 6px; height: 6px;"></div>
+            Guardian Agent
+          </div>
+          <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">Evaluating action... No guardrail needed</div>
+        </div>
+        <div class="agent-activity">
+          <div style="font-size: 0.8125rem; font-weight: 500; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.375rem;">
+            <div class="status-dot status-active" style="width: 6px; height: 6px;"></div>
+            Builder Agent
+          </div>
+          <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">Creating component... Added dependency</div>
+        </div>
+      </div>
+
+      <!-- Chat Messages -->
+      <div style="flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column;">
+        <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, hsl(var(--purple)), hsl(var(--info))); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            </svg>
+          </div>
+          <div class="chat-bubble assistant">
+            I'm your Guardian Agent. I help keep you on track during your CE-Hub workflows. What would you like to work on today?
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem;">
+          <div class="chat-bubble user">
+            I'm stuck on this task - where do I find AG-UI patterns?
+          </div>
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: hsl(var(--secondary)); border: 1px solid hsl(var(--border)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.75rem; font-weight: 600;">
+            You
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, hsl(var(--purple)), hsl(var(--info))); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            </svg>
+          </div>
+          <div class="chat-bubble assistant">
+            <div style="margin-bottom: 0.5rem;">Great question! Based on your current RESEARCH phase:</div>
+            <div style="margin-bottom: 0.5rem;">1. The AG-UI implementation is at:</div>
+            <span class="code">projects/traderra/.../agui/route.ts</span>
+            <div style="margin-top: 0.5rem;">2. Focus on these patterns:</div>
+            <div style="display: flex; align-items: center; gap: 0.375rem; margin-top: 0.25rem;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--success))" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Context-first navigation</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.375rem;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--success))" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Dynamic tool building</span>
+            </div>
+            <div style="margin-top: 0.5rem; padding: 0.5rem; background: hsla(var(--warning), 0.1); border-radius: 6px; border-left: 2px solid hsl(var(--warning)); font-size: 0.8125rem;">
+              <span style="color: hsl(var(--warning));">💡 Pro tip: Don't get lost in implementation details yet! Just identify the patterns.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Input -->
+      <div style="padding: 1rem; border-top: 1px solid hsl(var(--border));">
+        <div style="display: flex; gap: 0.5rem;">
+          <input type="text" class="input" placeholder="Ask anything...">
+          <button class="btn btn-primary" style="padding: 0.625rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+        <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground)); margin-top: 0.5rem;">
+          Press Enter to send • Shift+Enter for new line
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <style>
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</body>
+</html>

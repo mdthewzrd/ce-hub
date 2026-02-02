@@ -1,0 +1,9 @@
+{
+  "agent_name": "Multi-Pattern Scan Generator",
+  "agent_type": "creator",
+  "version": "1.0.0",
+  "model": "claude-3-5-sonnet-20241022",
+  "max_tools": 9,
+  "rag_enabled": true,
+  "vector_db": "neo4j"
+}

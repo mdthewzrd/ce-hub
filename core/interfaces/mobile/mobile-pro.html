@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>CE-Hub Pro Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117;
+            color: #f0f6fc;
+            height: 100vh;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        .header {
+            background: #161b22;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+
+        .model-selector {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #f0f6fc;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .container {
+            height: calc(100vh - 60px - 70px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tabs {
+            background: #161b22;
+            display: flex;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 16px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            color: #8b949e;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            color: #58a6ff;
+            border-bottom-color: #58a6ff;
+            background: #0d1117;
+        }
+
+        .content {
+            flex: 1;
+            overflow: auto;
+            background: #0d1117;
+        }
+
+        .view {
+            display: none;
+            height: 100%;
+            padding: 20px;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        /* File Explorer */
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #f0f6fc;
+            text-decoration: none;
+        }
+
+        .file-item:hover {
+            background: #21262d;
+        }
+
+        .file-item:active {
+            transform: scale(0.98);
+            background: #30363d;
+        }
+
+        .file-icon {
+            margin-right: 16px;
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .file-path {
+            font-size: 12px;
+            color: #8b949e;
+        }
+
+        /* Editor */
+        .editor-header {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .editor-tab {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #f0f6fc;
+            cursor: pointer;
+        }
+
+        .editor-tab.active {
+            background: #58a6ff;
+            color: #ffffff;
+        }
+
+        .editor {
+            width: 100%;
+            height: calc(100% - 60px);
+            background: #0d1117;
+            border: none;
+            color: #f0f6fc;
+            font-family: 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 20px;
+            resize: none;
+            outline: none;
+        }
+
+        /* Terminal */
+        .terminal-header {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .terminal-btn {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #f0f6fc;
+            padding: 8px 12px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .terminal-btn:active {
+            background: #30363d;
+        }
+
+        .terminal-output {
+            background: #0c0c0c;
+            color: #00ff41;
+            font-family: 'SF Mono', Monaco, Consolas, monospace;
+            font-size: 14px;
+            padding: 16px;
+            height: calc(100% - 120px);
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .terminal-input-container {
+            background: #0c0c0c;
+            border-top: 1px solid #30363d;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .terminal-prompt {
+            color: #00ff41;
+            margin-right: 8px;
+            font-family: 'SF Mono', Monaco, Consolas, monospace;
+            font-size: 14px;
+        }
+
+        .terminal-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #00ff41;
+            font-family: 'SF Mono', Monaco, Consolas, monospace;
+            font-size: 14px;
+        }
+
+        /* Model Manager */
+        .model-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .model-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .model-card:active {
+            background: #21262d;
+            transform: scale(0.98);
+        }
+
+        .model-card.active {
+            border-color: #58a6ff;
+            background: #0d419d1a;
+        }
+
+        .model-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #58a6ff;
+        }
+
+        .model-desc {
+            font-size: 14px;
+            color: #8b949e;
+            margin-bottom: 12px;
+        }
+
+        .model-status {
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .model-status.active {
+            background: #238636;
+            color: #ffffff;
+        }
+
+        .model-status.inactive {
+            background: #30363d;
+            color: #8b949e;
+        }
+
+        .launch-btn {
+            background: #238636;
+            border: none;
+            border-radius: 6px;
+            color: #ffffff;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .launch-btn:active {
+            background: #2ea043;
+        }
+
+        .nav {
+            background: #161b22;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-top: 1px solid #30363d;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            background: transparent;
+            border: none;
+            color: #8b949e;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 8px;
+            min-width: 60px;
+        }
+
+        .nav-item.active {
+            color: #58a6ff;
+            background: #0d419d1a;
+        }
+
+        .nav-item:active {
+            transform: scale(0.95);
+        }
+
+        .nav-icon {
+            font-size: 20px;
+        }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            color: #8b949e;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #30363d;
+            border-top: 2px solid #58a6ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 12px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .toast {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #238636;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            z-index: 1000;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .quick-commands {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-cmd {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 12px;
+            color: #f0f6fc;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .quick-cmd:active {
+            background: #30363d;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">🚀 CE-Hub Pro</div>
+        <select class="model-selector" id="currentModel">
+            <option value="sonnet">Sonnet 3.5</option>
+            <option value="haiku">Haiku 3.5</option>
+            <option value="opus">Opus 3.0</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab active" onclick="showView('files', this)">📁 Files</button>
+            <button class="tab" onclick="showView('editor', this)">📝 Editor</button>
+            <button class="tab" onclick="showView('terminal', this)">💻 Terminal</button>
+            <button class="tab" onclick="showView('models', this)">🤖 Models</button>
+        </div>
+
+        <div class="content">
+            <!-- Files View -->
+            <div id="files" class="view active">
+                <div class="loading" id="files-loading">
+                    <div class="spinner"></div>
+                    Loading CE-Hub files...
+                </div>
+                <div class="file-list" id="file-list" style="display: none;"></div>
+            </div>
+
+            <!-- Editor View -->
+            <div id="editor" class="view">
+                <div class="editor-header">
+                    <div class="editor-tab active" id="editor-tab">📄 Select a file</div>
+                    <button class="terminal-btn" onclick="saveCurrentFile()">💾 Save</button>
+                </div>
+                <textarea class="editor" id="code-editor" placeholder="Select a file from the Files tab to edit..."></textarea>
+            </div>
+
+            <!-- Terminal View -->
+            <div id="terminal" class="view">
+                <div class="terminal-header">
+                    <button class="terminal-btn" onclick="clearTerminal()">Clear</button>
+                    <button class="terminal-btn" onclick="executeCommand('ls -la')">ls -la</button>
+                    <button class="terminal-btn" onclick="executeCommand('git status')">git status</button>
+                    <button class="terminal-btn" onclick="launchClaudeWithModel()">🚀 Claude</button>
+                </div>
+                <div class="quick-commands">
+                    <button class="quick-cmd" onclick="executeCommand('npm start')">npm start</button>
+                    <button class="quick-cmd" onclick="executeCommand('npm test')">npm test</button>
+                    <button class="quick-cmd" onclick="executeCommand('git pull')">git pull</button>
+                    <button class="quick-cmd" onclick="executeCommand('code .')">code .</button>
+                </div>
+                <div class="terminal-output" id="terminal-output">
+                    <div style="color: #58a6ff;">CE-Hub Pro Terminal v2.0</div>
+                    <div style="color: #8b949e;">Working directory: /Users/michaeldurante/ai dev/ce-hub</div>
+                    <div style="color: #8b949e;">Ready for commands...</div>
+                    <div>$</div>
+                </div>
+                <div class="terminal-input-container">
+                    <span class="terminal-prompt">$</span>
+                    <input type="text" class="terminal-input" id="terminal-input" placeholder="Enter command..." onkeypress="handleTerminalInput(event)">
+                </div>
+            </div>
+
+            <!-- Models View -->
+            <div id="models" class="view">
+                <div class="model-grid">
+                    <div class="model-card active" data-model="sonnet">
+                        <div class="model-name">Claude 3.5 Sonnet</div>
+                        <div class="model-desc">Most capable model for complex reasoning and coding tasks</div>
+                        <div class="model-status active">ACTIVE</div>
+                    </div>
+                    <div class="model-card" data-model="haiku">
+                        <div class="model-name">Claude 3.5 Haiku</div>
+                        <div class="model-desc">Fast and efficient for quick tasks and responses</div>
+                        <div class="model-status inactive">Available</div>
+                    </div>
+                    <div class="model-card" data-model="opus">
+                        <div class="model-name">Claude 3 Opus</div>
+                        <div class="model-desc">Most powerful model for complex analysis and creativity</div>
+                        <div class="model-status inactive">Available</div>
+                    </div>
+                </div>
+                <button class="launch-btn" onclick="launchClaudeWithModel()">🚀 Launch Claude with Selected Model</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentFile = null;
+        let currentModel = 'sonnet';
+        let files = [];
+
+        // Load real CE-Hub files
+        async function loadRealFiles() {
+            const loading = document.getElementById('files-loading');
+            const fileList = document.getElementById('file-list');
+
+            try {
+                // Call real API to get files
+                const response = await fetch('/api/files');
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+                const realFiles = data.files || [];
+
+                files = realFiles;
+
+                fileList.innerHTML = realFiles.map(file => `
+                    <div class="file-item" onclick="openFile('${file.name}', '${file.path}', '${file.type}')">
+                        <div class="file-icon">${file.icon}</div>
+                        <div class="file-info">
+                            <div class="file-name">${file.name}</div>
+                            <div class="file-path">${file.path} • ${file.size}</div>
+                        </div>
+                    </div>
+                `).join('');
+
+                loading.style.display = 'none';
+                fileList.style.display = 'block';
+
+            } catch (error) {
+                loading.innerHTML = '<div style="color: #f85149;">Failed to load files</div>';
+            }
+        }
+
+        async function openFile(filename, path, type) {
+            if (type === 'folder') {
+                showToast(`📁 Opening ${filename} folder...`);
+                // Load folder contents
+                try {
+                    const response = await fetch(`/api/file/${encodeURIComponent(path)}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.items) {
+                            // Update file list with folder contents
+                            const fileList = document.getElementById('file-list');
+                            fileList.innerHTML = data.items.map(item => `
+                                <div class="file-item" onclick="openFile('${item.name}', '${item.path}', '${item.type}')">
+                                    <div class="file-icon">${item.icon}</div>
+                                    <div class="file-info">
+                                        <div class="file-name">${item.name}</div>
+                                        <div class="file-path">${item.path} • ${item.size}</div>
+                                    </div>
+                                </div>
+                            `).join('');
+                            showToast(`📁 Loaded ${data.items.length} items from ${filename}`);
+                        }
+                    }
+                } catch (error) {
+                    showToast(`❌ Failed to load folder: ${error.message}`);
+                }
+                return;
+            }
+
+            currentFile = { name: filename, path: path };
+
+            // Update editor tab
+            document.getElementById('editor-tab').textContent = `📄 ${filename}`;
+
+            // Load real file content from API
+            try {
+                const response = await fetch(`/api/file/${encodeURIComponent(path)}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    const editor = document.getElementById('code-editor');
+
+                    if (data.content) {
+                        editor.value = data.content;
+                        showToast(`📝 Loaded ${filename} (${data.size} bytes)`);
+                    } else if (data.error) {
+                        editor.value = `// ${filename}
+// Error: ${data.error}
+// File path: ${path}
+//
+// This file cannot be displayed in the editor.`;
+                        showToast(`⚠️ ${data.error}`);
+                    }
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                const editor = document.getElementById('code-editor');
+                editor.value = `// Error loading ${filename}
+// ${error.message}
+//
+// Failed to load file content from: ${path}`;
+                showToast(`❌ Failed to load ${filename}`);
+            }
+
+            showView('editor');
+        }
+
+        async function saveCurrentFile() {
+            if (currentFile) {
+                try {
+                    const editor = document.getElementById('code-editor');
+                    const content = editor.value;
+
+                    const response = await fetch('/api/save', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            path: currentFile.path,
+                            content: content
+                        })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        showToast(`💾 ${data.message}`);
+                    } else {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                } catch (error) {
+                    showToast(`❌ Save failed: ${error.message}`);
+                }
+            } else {
+                showToast('⚠️ No file open');
+            }
+        }
+
+        async function launchClaudeWithModel() {
+            const model = document.getElementById('currentModel').value;
+
+            try {
+                const response = await fetch('/api/claude', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: model
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    showToast(data.message);
+
+                    // Add to terminal
+                    const output = document.getElementById('terminal-output');
+                    output.innerHTML += `<div>$ ${data.command}</div>`;
+                    output.innerHTML += `<div style="color: #f0f6fc;">${data.message}</div><div>$</div>`;
+                    output.scrollTop = output.scrollHeight;
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                showToast(`❌ Failed to launch Claude: ${error.message}`);
+            }
+        }
+
+        async function executeCommand(cmd) {
+            const output = document.getElementById('terminal-output');
+            const input = document.getElementById('terminal-input');
+
+            if (cmd) {
+                // Add command to terminal
+                output.innerHTML += `<div>$ ${cmd}</div>`;
+
+                try {
+                    const response = await fetch('/api/execute', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            command: cmd
+                        })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        const color = data.error ? '#f85149' : '#f0f6fc';
+                        output.innerHTML += `<div style="color: ${color};">${data.output}</div><div>$</div>`;
+                    } else {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                } catch (error) {
+                    output.innerHTML += `<div style="color: #f85149;">Error: ${error.message}</div><div>$</div>`;
+                }
+
+                output.scrollTop = output.scrollHeight;
+                if (input) input.value = '';
+            }
+        }
+
+        function handleTerminalInput(event) {
+            if (event.key === 'Enter') {
+                const input = event.target;
+                executeCommand(input.value.trim());
+            }
+        }
+
+        function clearTerminal() {
+            executeCommand('clear');
+        }
+
+        function showView(viewName, tabElement) {
+            // Update tabs
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            if (tabElement) tabElement.classList.add('active');
+
+            // Update views
+            document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
+            document.getElementById(viewName).classList.add('active');
+
+            // Load content based on view
+            if (viewName === 'files' && files.length === 0) {
+                loadRealFiles();
+            }
+
+            // Haptic feedback
+            if (navigator.vibrate) navigator.vibrate(30);
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Model selection
+        document.getElementById('currentModel').addEventListener('change', function() {
+            currentModel = this.value;
+
+            // Update model cards
+            document.querySelectorAll('.model-card').forEach(card => {
+                card.classList.remove('active');
+                const status = card.querySelector('.model-status');
+                status.textContent = 'Available';
+                status.className = 'model-status inactive';
+            });
+
+            const activeCard = document.querySelector(`[data-model="${currentModel}"]`);
+            if (activeCard) {
+                activeCard.classList.add('active');
+                const status = activeCard.querySelector('.model-status');
+                status.textContent = 'ACTIVE';
+                status.className = 'model-status active';
+            }
+
+            showToast(`🤖 Selected ${this.options[this.selectedIndex].text}`);
+        });
+
+        // Model card selection
+        document.querySelectorAll('.model-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const model = this.dataset.model;
+                document.getElementById('currentModel').value = model;
+                document.getElementById('currentModel').dispatchEvent(new Event('change'));
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadRealFiles();
+            showToast('🚀 CE-Hub Pro loaded!');
+
+            // Prevent zoom on double tap
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+        });
+
+        console.log('🚀 CE-Hub Pro Mobile - Production Ready');
+    </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+{
+    "instaloader": {
+        "node_type": "Post",
+        "version": "4.15"
+    },
+    "node": {
+        "__typename": "GraphVideo",
+        "accessibility_caption": null,
+        "clips_music_attribution_info": {
+            "artist_name": "Taylor Sol",
+            "audio_id": "405267611716934",
+            "should_mute_audio": false,
+            "should_mute_audio_reason": "",
+            "song_name": "Lions Gate (432hz)",
+            "uses_original_audio": false
+        },
+        "coauthor_producers": [],
+        "comments_disabled": false,
+        "dash_info": {
+            "is_dash_eligible": false,
+            "number_of_qualities": 0,
+            "video_dash_manifest": null
+        },
+        "dimensions": {
+            "height": 1924,
+            "width": 1080
+        },
+        "display_url": "https://scontent-lga3-3.cdninstagram.com/v/t51.2885-15/561470568_18306955066219568_6718641813102732186_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2QGEKzIYHcSsVSD8LN0iZzo0OoPZGbjXRvZaEtuEHv_1vz99Kqo5JdhiUaB8MlSwvVQ&_nc_ohc=Lxi6jwrRr3oQ7kNvwFhbwNV&_nc_gid=FQ7xEVHCtgMD0llgi0sp8A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfoJSXsT5x67DTKwJZwzpClIErtKseaCneiW03ftlALi9A&oe=695DDEA4&_nc_sid=8b3546",
+        "edge_liked_by": {
+            "count": 380
+        },
+        "edge_media_preview_like": {
+            "count": -1
+        },
+        "edge_media_to_caption": {
+            "edges": [
+                {
+                    "node": {
+                        "text": "After months of creating, organizing, and curating mystical content \u2026 Open Pineal Gland Patreon is now live! \ud80c\udc80\n\nJourney into a realm of spiritual essays, esoteric studies, PDF books, symbolism, and reflections on consciousness. \n\nThis is where I\u2019ll share what doesn\u2019t always fit here, longer, deeper and more personal insights. \n\nThank you for the love and energy you\u2019ve shared along the way. Here\u2019s to exploring deeper together. \n\nPatreon.com/openpinealgland \u2728"
+                    }
+                }
+            ]
+        },
+        "edge_media_to_comment": {
+            "count": 6
+        },
+        "edge_media_to_tagged_user": {
+            "edges": []
+        },
+        "fact_check_information": null,
+        "fact_check_overall_rating": null,
+        "felix_profile_grid_crop": null,
+        "gating_info": null,
+        "has_audio": false,
+        "has_upcoming_event": false,
+        "id": "3738278216524699537",
+        "is_video": true,
+        "like_and_view_counts_disabled": true,
+        "location": null,
+        "media_overlay_info": null,
+        "media_preview": "ABgq5mpBExTzONoOOvOfpUdbYsozaY3Dz/vgZ7Y+76ZI59c4FAGJRRRQBbt3gjKtIGbByQMYPp17Zxn8RWqL2MqJSh2KQpAxyfvcjpg45GMe1ZUVk8q71K4Oep54q8LWTyvI+XO7Od3Hb29xQH9fiU7mSCQs8YZSxyAcYHr0PTr+lFMks3iXexXAOODzRQBVp27jFJS0ANopaKAP/9k=",
+        "nft_asset_info": null,
+        "owner": {
+            "ai_agent_owner_username": null,
+            "ai_agent_type": null,
+            "bio_links": [
+                {
+                    "link_type": "external",
+                    "lynx_url": "https://l.instagram.com/?u=http%3A%2F%2Fpatreon.com%2Fopenpinealgland&e=AT1m_HJtNg54Ppyxc5y1C3Szo4fGeXk98ploqNBVNbgkOKQd1XIJhPNzP6zvdCO4TLVGOfXpY1opyZtme64pj1C2BlSKONjo",
+                    "title": "Patreon",
+                    "url": "http://patreon.com/openpinealgland"
+                }
+            ],
+            "biography": "Align with the Divine \ud80c\udc80\nEsoteric articles, meditations & PDF books \ud83d\udc47\ud83d\udcda",
+            "biography_with_entities": {
+                "entities": [],
+                "raw_text": "Align with the Divine \ud80c\udc80\nEsoteric articles, meditations & PDF books \ud83d\udc47\ud83d\udcda"
+            },
+            "blocked_by_viewer": false,
+            "business_address_json": null,
+            "business_category_name": null,
+            "business_contact_method": "UNKNOWN",
+            "business_email": null,
+            "business_phone_number": null,
+            "category_enum": null,
+            "category_name": null,
+            "country_block": false,
+            "edge_follow": {
+                "count": 95
+            },
+            "edge_followed_by": {
+                "count": 345087
+            },
+            "edge_mutual_followed_by": {
+                "count": 0,
+                "edges": []
+            },
+            "edge_related_profiles": {
+                "edges": []
+            },
+            "eimu_id": "120607449326000",
+            "external_url": "http://patreon.com/openpinealgland",
+            "external_url_linkshimmed": "https://l.instagram.com/?u=http%3A%2F%2Fpatreon.com%2Fopenpinealgland&e=AT0ShJdFQ1AhKtW5ih0a4DvHfK0kf8nzHCFUwDfnk84h6qHtWHpQkGro_wWEn3MP0J0uSXH3LZZT95NxDjtComUofdy2kT0U",
+            "fb_profile_biolink": null,
+            "fbid": "17841406587020695",
+            "followed_by_viewer": false,
+            "follows_viewer": false,
+            "full_name": "Spiritual Wisdom \ud83d\udd3a",
+            "group_metadata": null,
+            "guardian_id": null,
+            "has_ar_effects": false,
+            "has_blocked_viewer": false,
+            "has_channel": false,
+            "has_clips": true,
+            "has_guides": false,
+            "has_onboarded_to_text_post_app": true,
+            "has_requested_viewer": false,
+            "hide_like_and_view_counts": false,
+            "highlight_reel_count": 2,
+            "id": "6565563567",
+            "is_business_account": false,
+            "is_embeds_disabled": false,
+            "is_guardian_of_viewer": false,
+            "is_joined_recently": false,
+            "is_private": false,
+            "is_professional_account": true,
+            "is_regulated_c18": false,
+            "is_supervised_by_viewer": false,
+            "is_supervised_user": false,
+            "is_supervision_enabled": false,
+            "is_verified": true,
+            "is_verified_by_mv4b": false,
+            "overall_category_name": null,
+            "pinned_channels_list_count": 0,
+            "profile_pic_url": "https://scontent-lga3-2.cdninstagram.com/v/t51.2885-19/324416991_174192015252857_2680918615802850025_n.jpg?stp=dst-jpg_e0_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDI0LmMyIn0&_nc_ht=scontent-lga3-2.cdninstagram.com&_nc_cat=105&_nc_oc=Q6cZ2QGEKzIYHcSsVSD8LN0iZzo0OoPZGbjXRvZaEtuEHv_1vz99Kqo5JdhiUaB8MlSwvVQ&_nc_ohc=J_bxDbmOmAQQ7kNvwHKWQHT&_nc_gid=FQ7xEVHCtgMD0llgi0sp8A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfoxUL2aNgpv5uOZPk2ugFz5Bi4m-o5R_Wk1a6oyqccD0A&oe=695DDAF7&_nc_sid=8b3546",
+            "profile_pic_url_hd": "https://scontent-lga3-2.cdninstagram.com/v/t51.2885-19/324416991_174192015252857_2680918615802850025_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDI0LmMyIn0&_nc_ht=scontent-lga3-2.cdninstagram.com&_nc_cat=105&_nc_oc=Q6cZ2QGEKzIYHcSsVSD8LN0iZzo0OoPZGbjXRvZaEtuEHv_1vz99Kqo5JdhiUaB8MlSwvVQ&_nc_ohc=J_bxDbmOmAQQ7kNvwHKWQHT&_nc_gid=FQ7xEVHCtgMD0llgi0sp8A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Afr0tc4jfLlQLlUURluIKvTGKUzS7v54QeZLdcupejrtjw&oe=695DDAF7&_nc_sid=8b3546",
+            "pronouns": [],
+            "remove_message_entrypoint": false,
+            "requested_by_viewer": false,
+            "restricted_by_viewer": null,
+            "should_show_category": true,
+            "should_show_public_contacts": true,
+            "show_account_transparency_details": true,
+            "show_text_post_app_badge": true,
+            "transparency_label": null,
+            "transparency_product": null,
+            "username": "openpinealgland"
+        },
+        "pinned_for_users": [
+            {
+                "id": "6565563567",
+                "is_verified": true,
+                "profile_pic_url": "https://scontent-lga3-2.cdninstagram.com/v/t51.2885-19/324416991_174192015252857_2680918615802850025_n.jpg?stp=dst-jpg_e0_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDI0LmMyIn0&_nc_ht=scontent-lga3-2.cdninstagram.com&_nc_cat=105&_nc_oc=Q6cZ2QGEKzIYHcSsVSD8LN0iZzo0OoPZGbjXRvZaEtuEHv_1vz99Kqo5JdhiUaB8MlSwvVQ&_nc_ohc=J_bxDbmOmAQQ7kNvwHKWQHT&_nc_gid=FQ7xEVHCtgMD0llgi0sp8A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfoxUL2aNgpv5uOZPk2ugFz5Bi4m-o5R_Wk1a6oyqccD0A&oe=695DDAF7&_nc_sid=8b3546",
+                "username": "openpinealgland"
+            }
+        ],
+        "product_type": "clips",
+        "profile_grid_thumbnail_fitting_style": "UNSET",
+        "sharing_friction_info": {
+            "bloks_app_url": null,
+            "should_have_sharing_friction": false
+        },
+        "shortcode": "DPhCDtPiReR",
+        "taken_at_timestamp": 1759857755,
+        "tall_profile_grid_crop": null,
+        "thumbnail_resources": [
+            {
+                "config_height": 150,
+                "config_width": 150,
+                "src": "https://scontent-lga3-3.cdninstagram.com/v/t51.2885-15/561470568_18306955066219568_6718641813102732186_n.jpg?stp=c0.363.928.928a_dst-jpg_e15_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi45Mjh4MTY1NC5zZHIuZjgyNzg3LmRlZmF1bHRfY292ZXJfZnJhbWUuYzIifQ&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2QGEKzIYHcSsVSD8LN0iZzo0OoPZGbjXRvZaEtuEHv_1vz99Kqo5JdhiUaB8MlSwvVQ&_nc_ohc=Lxi6jwrRr3oQ7kNvwFhbwNV&_nc_gid=FQ7xEVHCtgMD0llgi0sp8A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfroyYcHqbbmp7MDFgZMcNmNWVyQkJYy079AVRoZB-NiqA&oe=695DDEA4&_nc_sid=8b3546"
+            },
+            {
+                "config_height": 240,
+                "config_width": 240,
+                "src": "https://scontent-lga3-3.cdninstagram.com/v/t51.2885-15/561470568_18306955066219568_6718641813102732186_n.jpg?stp=c0.363.928.928a_dst-jpg_e15_s240x240_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi45Mjh4MTY1NC5zZHIuZjgyNzg3LmRlZmF1bHRfY292ZXJfZnJhbWUuYzIifQ&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2QGEKzIYHcSsVSD8LN0iZzo0OoPZGbjXRvZaEtuEHv_1vz99Kqo5JdhiUaB8MlSwvVQ&_nc_ohc=Lxi6jwrRr3oQ7kNvwFhbwNV&_nc_gid=FQ7xEVHCtgMD0llgi0sp8A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfrazZs4OGSbi9XxZBEGww85Ox6BAoy_GKbxg16EQ1lpSg&oe=695DDEA4&_nc_sid=8b3546"
+            },
+            {
+                "config_height": 320,
+                "config_width": 320,
+                "src": "https://scontent-lga3-3.cdninstagram.com/v/t51.2885-15/561470568_18306955066219568_6718641813102732186_n.jpg?stp=c0.363.928.928a_dst-jpg_e15_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi45Mjh4MTY1NC5zZHIuZjgyNzg3LmRlZmF1bHRfY292ZXJfZnJhbWUuYzIifQ&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2QGEKzIYHcSsVSD8LN0iZzo0OoPZGbjXRvZaEtuEHv_1vz99Kqo5JdhiUaB8MlSwvVQ&_nc_ohc=Lxi6jwrRr3oQ7kNvwFhbwNV&_nc_gid=FQ7xEVHCtgMD0llgi0sp8A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfrFUldCSLC4rBRnzDa7_fT_BDqliI5rW3OMmxWMkorcuQ&oe=695DDEA4&_nc_sid=8b3546"
+            },
+            {
+                "config_height": 480,
+                "config_width": 480,
+                "src": "https://scontent-lga3-3.cdninstagram.com/v/t51.2885-15/561470568_18306955066219568_6718641813102732186_n.jpg?stp=c0.363.928.928a_dst-jpg_e15_s480x480_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi45Mjh4MTY1NC5zZHIuZjgyNzg3LmRlZmF1bHRfY292ZXJfZnJhbWUuYzIifQ&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2QGEKzIYHcSsVSD8LN0iZzo0OoPZGbjXRvZaEtuEHv_1vz99Kqo5JdhiUaB8MlSwvVQ&_nc_ohc=Lxi6jwrRr3oQ7kNvwFhbwNV&_nc_gid=FQ7xEVHCtgMD0llgi0sp8A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfoKen_R_r1J9l4GxG3nlbFvJP3AuQ0unhbv8nvN-ZPw2g&oe=695DDEA4&_nc_sid=8b3546"
+            },
+            {
+                "config_height": 640,
+                "config_width": 640,
+                "src": "https://scontent-lga3-3.cdninstagram.com/v/t51.2885-15/561470568_18306955066219568_6718641813102732186_n.jpg?stp=c0.363.928.928a_dst-jpg_e15_s640x640_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi45Mjh4MTY1NC5zZHIuZjgyNzg3LmRlZmF1bHRfY292ZXJfZnJhbWUuYzIifQ&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2QGEKzIYHcSsVSD8LN0iZzo0OoPZGbjXRvZaEtuEHv_1vz99Kqo5JdhiUaB8MlSwvVQ&_nc_ohc=Lxi6jwrRr3oQ7kNvwFhbwNV&_nc_gid=FQ7xEVHCtgMD0llgi0sp8A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Afqy9cqerDqdliACRPyKe12pXh31t7RT1hWkhwYhwaeRwQ&oe=695DDEA4&_nc_sid=8b3546"
+            }
+        ],
+        "thumbnail_src": "https://scontent-lga3-3.cdninstagram.com/v/t51.2885-15/561470568_18306955066219568_6718641813102732186_n.jpg?stp=c0.363.928.928a_dst-jpg_e15_s640x640_tt6&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2QGEKzIYHcSsVSD8LN0iZzo0OoPZGbjXRvZaEtuEHv_1vz99Kqo5JdhiUaB8MlSwvVQ&_nc_ohc=Lxi6jwrRr3oQ7kNvwFhbwNV&_nc_gid=FQ7xEVHCtgMD0llgi0sp8A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Afqy9cqerDqdliACRPyKe12pXh31t7RT1hWkhwYhwaeRwQ&oe=695DDEA4&_nc_sid=8b3546",
+        "thumbnail_tall_src": "https://scontent-lga3-3.cdninstagram.com/v/t51.2885-15/561470568_18306955066219568_6718641813102732186_n.jpg?stp=dst-jpg_e15_p640x640_tt6&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2QGEKzIYHcSsVSD8LN0iZzo0OoPZGbjXRvZaEtuEHv_1vz99Kqo5JdhiUaB8MlSwvVQ&_nc_ohc=Lxi6jwrRr3oQ7kNvwFhbwNV&_nc_gid=FQ7xEVHCtgMD0llgi0sp8A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfpfWLN45H_f9ET066tc4V_Q3Hl1VnMHM4Yl5RMC3V6zTA&oe=695DDEA4&_nc_sid=8b3546",
+        "tracking_token": "eyJ2ZXJzaW9uIjo1LCJwYXlsb2FkIjp7ImlzX2FuYWx5dGljc190cmFja2VkIjp0cnVlLCJ1dWlkIjoiNDNmNzVmMzkzNzQ5NGNlNThhMmQ0NGI5YzE5Zjg5OGYzNzM4Mjc4MjE2NTI0Njk5NTM3In0sInNpZ25hdHVyZSI6IiJ9",
+        "video_url": "https://scontent-lga3-3.cdninstagram.com/o1/v/t2/f2/m86/AQPY4QvFu1Hr3iIN3AJpvuH4fDpyakWevnxgZ0fSaAUcSWMxMVl2ze6l8oHq9jY3SUqmHugalbpumGdnasbf1CAz0g3sEZmfdQZbmxg.mp4?_nc_cat=108&_nc_sid=5e9851&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_ohc=c1hvhRZxOXcQ7kNvwEgQEZx&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzE4LmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MjU0Mjk3MDQ1MjczNDQwNywiYXNzZXRfYWdlX2RheXMiOjg3LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NTIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=FQ7xEVHCtgMD0llgi0sp8A&_nc_zt=28&vs=bb51e844aeb59b45&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9FOTQ3NjFFQ0I4REQzOTU3MTMyMDdGNkQ4QzE1M0E4Nl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYOnBhc3N0aHJvdWdoX2V2ZXJzdG9yZS9HQlloYVNHRjEzdVFDc3NKQUladU5jeGNkZ0JaYnFfRUFBQUYVAgLIARIAKAAYABsCiAd1c2Vfb2lsATEScHJvZ3Jlc3NpdmVfcmVjaXBlATEVAAAmjseTqK60hAkVAigCQzMsF0BKd2yLQ5WBGBJkYXNoX2Jhc2VsaW5lXzFfdjERAHX-B2XmnQEA&oh=00_AfpP4s9Ecl0gRcw8aup9GIJtEkqVmDjyUpxAulTnPm_wDw&oe=695A0EB5",
+        "video_view_count": 3975,
+        "viewer_can_reshare": true
+    }
+}

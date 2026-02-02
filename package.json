@@ -1,0 +1,39 @@
+{
+  "name": "ce-hub-pro",
+  "version": "3.0.0",
+  "description": "Context Engineering Hub - Mobile Edition with Claude Integration",
+  "main": "claude-server.js",
+  "scripts": {
+    "start": "node claude-server.js",
+    "dev": "nodemon claude-server.js",
+    "serve": "python3 -c \"import http.server; import socketserver; PORT = 8105; Handler = http.server.SimpleHTTPRequestHandler; socketserver.TCPServer(('0.0.0.0', PORT), Handler).serve_forever()\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "claude",
+    "anthropic",
+    "mobile",
+    "terminal",
+    "api",
+    "server"
+  ],
+  "author": "CE-Hub Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.3.1",
+    "express": "^4.22.1",
+    "form-data": "^4.0.5",
+    "node-fetch": "^2.7.0",
+    "playwright": "^1.57.0",
+    "puppeteer": "^24.31.0",
+    "puppeteer-core": "^24.31.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

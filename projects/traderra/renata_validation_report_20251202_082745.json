@@ -1,0 +1,83 @@
+{
+  "timestamp": "2025-12-02T08:27:42.682095",
+  "tests": {
+    "service_health": {
+      "backend": {
+        "status": "healthy",
+        "response_code": 200,
+        "response_time": 0.064771
+      },
+      "archon": {
+        "status": "healthy",
+        "response_code": 200,
+        "response_time": 0.00882
+      },
+      "frontend": {
+        "status": "healthy",
+        "response_code": 200,
+        "response_time": 1.976707
+      }
+    },
+    "archon_integration": {
+      "knowledge_search": {
+        "status": "working",
+        "response_time": 0.006009,
+        "results_count": 1,
+        "success": true
+      },
+      "code_search": {
+        "status": "working",
+        "response_time": 0.006476,
+        "results_count": 2,
+        "success": true
+      }
+    },
+    "backend_ai_endpoints": {
+      "ai_status": {
+        "status": "working",
+        "connected": true,
+        "archon_healthy": true,
+        "project_id": "7816e33d-2c75-41ab-b232-c40e3ffc2c19"
+      },
+      "chat_endpoint": {
+        "status": "failed",
+        "response_code": 404
+      }
+    },
+    "ai_chat_functionality": {
+      "general_trading": {
+        "status": "failed",
+        "response_code": 404
+      },
+      "trading_psychology": {
+        "status": "failed",
+        "response_code": 404
+      }
+    },
+    "ai_modes": {
+      "analyst": {
+        "status": "failed",
+        "response_code": 404
+      },
+      "coach": {
+        "status": "failed",
+        "response_code": 404
+      },
+      "mentor": {
+        "status": "failed",
+        "response_code": 404
+      }
+    },
+    "frontend_integration": {
+      "frontend_backend_connection": {
+        "status": "working",
+        "response_code": 200,
+        "cors_headers": true
+      }
+    }
+  },
+  "overall_status": "failing",
+  "success_rate": 30.76923076923077,
+  "total_tests": 13,
+  "passed_tests": 4
+}

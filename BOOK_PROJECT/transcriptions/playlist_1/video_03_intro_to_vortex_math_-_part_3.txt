@@ -1,0 +1,267 @@
+================================================================================
+VIDEO TRANSCRIPT: Intro to Vortex Math - Part 3
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: How about if I come over here on the other side of my nine?
+
+[00:00:05] **Randy Powell**: Well, you can notice something pretty simple right away with my initial symbol.
+
+[00:00:11] **Randy Powell**: These numbers that are all lined up straight across, we can notice they all equal back to
+
+[00:00:16] **Randy Powell**: nine.
+
+[00:00:17] **Randy Powell**: So 8 plus 1 is 9, 7 and 2 is 9, 6 and 3 is 9, 4, 5 and 4 is 9.
+
+[00:00:29] **Randy Powell**: So 9 is always forming the center line that separates and polarizes the numbers.
+
+[00:00:36] **Randy Powell**: And so it's actually turning these numbers into mirror images or right and left.
+
+[00:00:43] **Randy Powell**: It's giving a polarity to everything.
+
+[00:00:49] **Randy Powell**: So when I start to show these multiplication tables, you might say, what do you mean by
+
+[00:00:54] **Randy Powell**: mirrors because the one and the eight, they don't look like mirrors.
+
+[00:01:00] **Randy Powell**: But we know we have something called spin symmetry or mirror imaging in physics.
+
+[00:01:07] **Randy Powell**: You could say if I have a positive particle going one way, then there should be a negative
+
+[00:01:13] **Randy Powell**: particle.
+
+[00:01:15] **Randy Powell**: There should be mirror imaging between things directionally or just like between right
+
+[00:01:21] **Randy Powell**: and left, your hands are mirror images.
+
+[00:01:24] **Randy Powell**: And we don't really have 10 fingers, you have 0.5, which is half of a hole, it's 100%.
+
+[00:01:32] **Randy Powell**: So when I have one going up in increments of 1, when my eight what happens is I'm going
+
+[00:01:37] **Randy Powell**: down in increments of 1.
+
+[00:01:40] **Randy Powell**: So you can see immediately that I have polarity.
+
+[00:01:42] **Randy Powell**: When one is positive, going up, eight is negative, going down.
+
+[00:01:48] **Randy Powell**: So 8 times 2 is 16, 6 and 1 is 7.
+
+[00:01:55] **Randy Powell**: 8 times 3 is 24, 2 plus 4 is 6.
+
+[00:01:59] **Randy Powell**: 8 times 3 is 32, 3 plus 2 is 5.
+
+[00:02:04] **Randy Powell**: 8 times 4 is 40.
+
+[00:02:09] **Randy Powell**: Wait a minute.
+
+[00:02:10] **Randy Powell**: I said 8 times 1, 8 times 2, 8 times 3, 8 times 4 is 32.
+
+[00:02:15] **Randy Powell**: 8 times 5 is 40, just 4.
+
+[00:02:19] **Randy Powell**: 8 times 6 is 48, which equals 12, which comes back to 3.
+
+[00:02:24] **Randy Powell**: 8 times, where am I?
+
+[00:02:27] **Randy Powell**: 8 times 7 is 56, 5 plus 6 is 11 and 1 plus 1 is 2.
+
+[00:02:33] **Randy Powell**: And 8 times 8 is 64, which comes back to 1.
+
+[00:02:40] **Randy Powell**: 8 times 9 is 72, which comes back to 9.
+
+[00:02:46] **Randy Powell**: So in other words, my 8 in single digits is going 8, 7, 6, 5, 4, 3, 2, 1, 9.
+
+[00:02:55] **Randy Powell**: It's a mirror image of this and that when my 1 is positive, going up and 1, my 8 is
+
+[00:03:01] **Randy Powell**: negative, going down and 1.
+
+[00:03:04] **Randy Powell**: If my 8 was positive, going in this direction, which would still, I mean incrementally, be
+
+[00:03:11] **Randy Powell**: down and 1's, my 1 would be negative, going in the opposite direction.
+
+[00:03:16] **Randy Powell**: So any one of these numbers that equals the 9 separated from each other, if they equal
+
+[00:03:21] **Randy Powell**: 9, they have different polarity.
+
+[00:03:24] **Randy Powell**: Why is positive and why is going to be negative?
+
+[00:03:28] **Randy Powell**: We're modeling here, I should say, what we're looking for is mathematical perfection.
+
+[00:03:34] **Randy Powell**: There can be no space, there's no gaps, nothing emitted, nothing left out.
+
+[00:03:40] **Randy Powell**: So let's take a further look into that perfection.
+
+[00:03:43] **Randy Powell**: Let's go to 2.
+
+[00:03:45] **Randy Powell**: Okay, 2 times 2 is 4, 2 times 3 is 6, 2 times 4 is 8, 2 times 5 is 10, we're coming
+
+[00:03:55] **Randy Powell**: back to 1 here, 1 plus 0 is 1, 12, which is 3, 14, 4 plus 1 is 5, 16, 6 plus 1 is 7, 18,
+
+[00:04:09] **Randy Powell**: 8, 1 is 9.
+
+[00:04:11] **Randy Powell**: I could go to 20, but I'm back here, 22, I'm back to 4, 24, back to 6.
+
+[00:04:18] **Randy Powell**: So no matter how far I go, it's going to repeat the same pattern, 24, 6, 8, 1, 3, 5,
+
+[00:04:24] **Randy Powell**: 7, 9.
+
+[00:04:25] **Randy Powell**: Well, let's look over here.
+
+[00:04:27] **Randy Powell**: Now we know if my 2 is positive, going up and 2, my 7 is going to have to be negative,
+
+[00:04:33] **Randy Powell**: going down and 2.
+
+[00:04:34] **Randy Powell**: Well, 7 times 2 is 14, 4 and 1 is 5, 7 times 3 is 21, 2 plus 1 is 3, 28, 2 and 8 is 10,
+
+[00:04:46] **Randy Powell**: and 0 is 1.
+
+[00:04:48] **Randy Powell**: I'm going to be 8, then we've got 35, which is 8, 42, 6, 49, which comes back to 4, okay,
+
+[00:05:03] **Randy Powell**: and then 56, again, 2 and 63, which just comes back to 9.
+
+[00:05:11] **Randy Powell**: So while my 2 is going up, 24, 6, 8, 1, 3, 5, 7, 9, always up, increments of 2, my 7
+
+[00:05:20] **Randy Powell**: is going down increments of 2, 7, 5, 3, 1, 8, 6, 4, 2, 9.
+
+[00:05:29] **Randy Powell**: Always beginning and ending with my 9.
+
+[00:05:32] **Randy Powell**: It is the beginning and the end of everything.
+
+[00:05:35] **Randy Powell**: It always forms the impetus and the conclusion of every sequence.
+
+[00:05:44] **Randy Powell**: Notice any distance I go out, I've still got numbers of equal 9, I have 8 and 1, 7 and
+
+[00:05:51] **Randy Powell**: 2, 6 and 3, 5 and 4.
+
+[00:05:55] **Randy Powell**: Same thing, 7 and 2, 5 and 4, 6 and 3, 1 and 8.
+
+[00:06:00] **Randy Powell**: No matter how far I go, they always equal 9.
+
+[00:06:04] **Randy Powell**: Let me skip the 3 and 6 for a moment.
+
+[00:06:05] **Randy Powell**: Let's just do our 4 and 5.
+
+[00:06:07] **Randy Powell**: We have 4, 8, 12, 21 and 3, 16 to 7, 20, 24, 28, 32, 36, okay.
+
+[00:06:24] **Randy Powell**: I'll reducing back to this pattern.
+
+[00:06:26] **Randy Powell**: 4, 8, 3, 7, 2, 6, 1, 5, 9.
+
+[00:06:34] **Randy Powell**: So what my 4 is positive, moving up and increments of 4, my 5 is going to be negative, moving down
+
+[00:06:40] **Randy Powell**: and increments of 4.
+
+[00:06:41] **Randy Powell**: If my 4 is negative, my 5 is going to be positive.
+
+[00:06:45] **Randy Powell**: Okay, 5, 10, 15, 20, 25, 30, 35, 40, 45.
+
+[00:07:01] **Randy Powell**: So these are mirror images.
+
+[00:07:03] **Randy Powell**: They are showing, if you look at this one this way, if I was to hold that up to a mirror,
+
+[00:07:08] **Randy Powell**: what you would see is this one going this way.
+
+[00:07:13] **Randy Powell**: So that's what I mean when I say mirror imaging, if there is any confusion because this isn't
+
+[00:07:18] **Randy Powell**: a 7 here and a 7.
+
+[00:07:20] **Randy Powell**: Some people have said that when you look at mirror imaging.
+
+[00:07:22] **Randy Powell**: But in other words, if I hold up this sequence in a mirror, what I'm going to see is this,
+
+[00:07:29] **Randy Powell**: with the exception of the 9 being on the other side.
+
+[00:07:34] **Randy Powell**: So how about my 3 and 6?
+
+[00:07:36] **Randy Powell**: What about those?
+
+[00:07:37] **Randy Powell**: Let's look at the multiplication tables.
+
+[00:07:39] **Randy Powell**: Let's start with 3.
+
+[00:07:41] **Randy Powell**: 3 times 2 is 6.
+
+[00:07:42] **Randy Powell**: You know that, that's the same as doubling.
+
+[00:07:45] **Randy Powell**: 3 times 3 is 9.
+
+[00:07:48] **Randy Powell**: 12, which comes back to 3.
+
+[00:07:51] **Randy Powell**: 15, back to 6.
+
+[00:07:53] **Randy Powell**: 18, back to 9.
+
+[00:07:56] **Randy Powell**: 21.
+
+[00:07:58] **Randy Powell**: 24.
+
+[00:07:59] **Randy Powell**: 27.
+
+[00:08:00] **Randy Powell**: 30.
+
+[00:08:01] **Randy Powell**: 33.
+
+[00:08:02] **Randy Powell**: 36.
+
+[00:08:03] **Randy Powell**: Doesn't matter.
+
+[00:08:04] **Randy Powell**: It's going to make the same pattern.
+
+[00:08:06] **Randy Powell**: 369, 369, 369.
+
+[00:08:11] **Randy Powell**: This is going to do the same thing reverse.
+
+[00:08:13] **Randy Powell**: 6 times 2 is 12, which is 3.
+
+[00:08:17] **Randy Powell**: 18, 24, 30.
+
+[00:08:23] **Randy Powell**: 36, 42, 48, 54.
+
+[00:08:31] **Randy Powell**: 639, 639, 639.
+
+[00:08:35] **Randy Powell**: So these are all the multiplication tables.
+
+[00:08:37] **Randy Powell**: No matter how far you go out, this pattern will repeat.
+
+[00:08:41] **Randy Powell**: In any multiplication series known to man, what about the 9?
+
+[00:08:45] **Randy Powell**: I don't have that one going in multiples.
+
+[00:08:47] **Randy Powell**: Well, how come?
+
+[00:08:49] **Randy Powell**: Because no matter what you multiply 9 by, it always equals back to 9.
+
+[00:08:54] **Randy Powell**: 9 times 2 is 18.
+
+[00:08:57] **Randy Powell**: 27, 2 and 7 is 9.
+
+[00:09:00] **Randy Powell**: 36, 9, 45, 9, 54, 63, 72, 81, 90, 99.
+
+[00:09:08] **Randy Powell**: 108.
+
+[00:09:12] **Randy Powell**: You can go on forever.
+
+[00:09:13] **Randy Powell**: They always reduce back to the number 9.
+
+[00:09:16] **Randy Powell**: It is the never changing and eternal number 9.
+
+[00:09:21] **Randy Powell**: And it's creating all the multiplication series.
+
+[00:09:25] **Randy Powell**: I say it's number changing in some senses that's not exactly true.
+
+[00:09:31] **Randy Powell**: In terms of multiplication, the number 9 never changes.
+
+[00:09:34] **Randy Powell**: But you remember, I said, we're going to do all the functions of math here.
+
+[00:09:39] **Randy Powell**: And we know that there is another way.
+
+[00:09:43] **Randy Powell**: And the number 9 can change and everybody knows.
+
+[00:09:47] **Randy Powell**: But it hasn't been discussed much in this mathematics.
+
+[00:09:51] **Randy Powell**: So we did multiplying.
+
+[00:09:53] **Randy Powell**: We can see that pretty clearly.

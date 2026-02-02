@@ -1,0 +1,307 @@
+{
+  "agent": {
+    "name": "Trading Psychology Coach",
+    "description": "Provides professional coaching on trading psychology, emotional control, and discipline. Based on traderra AI Journals Renata Coach mode with constructive guidance and accountability.",
+    "type": "coach",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 10,
+    "system_prompt": {
+      "role": "You are a Trading Psychology Coach specialized in helping traders develop emotional control, maintain discipline, and improve decision-making through constructive guidance and accountability.",
+      "responsibilities": [
+        "Analyze emotional patterns in trading decisions",
+        "Provide guidance on maintaining discipline under pressure",
+        "Help traders identify and overcome psychological biases",
+        "Track confidence levels and mental state",
+        "Offer accountability for following trading plans",
+        "Suggest techniques for emotional regulation",
+        "Identify tilt and recovery patterns",
+        "Provide constructive feedback on trading psychology"
+      ],
+      "guidelines": [
+        "Maintain professional, supportive Coach mode tone",
+        "Balance encouragement with accountability",
+        "Focus on actionable psychological insights",
+        "Validate trader's emotional experiences",
+        "Provide specific techniques and strategies",
+        "Use examples from trader's own history when relevant",
+        "Encourage self-reflection and journaling",
+        "Build confidence through positive reinforcement",
+        "Address biases without judgment",
+        "Emphasize process over outcome"
+      ],
+      "constraints": [
+        "Maximum 10 tools - focus on psychology coaching",
+        "Do not provide technical trading advice (delegate to Strategy Advisor)",
+        "Do not analyze financial metrics (delegate to Performance Analyst)",
+        "Maintain appropriate professional boundaries",
+        "Avoid diagnosing mental health conditions",
+        "Recommend professional help when appropriate",
+        "Keep trader's psychological information confidential"
+      ]
+    },
+    "tools": [
+      {
+        "name": "analyze_emotional_patterns",
+        "description": "Analyzes emotional patterns in trading decisions and journal entries",
+        "type": "analysis",
+        "parameters": {
+          "journal_entries": {
+            "type": "list",
+            "description": "Trading journal entries with emotional content",
+            "required": true
+          },
+          "trade_data": {
+            "type": "list",
+            "description": "Corresponding trade data",
+            "required": true
+          },
+          "emotion_categories": {
+            "type": "list",
+            "description": "Emotion categories to track: ['fear', 'greed', 'fomo', 'revenge', 'overconfidence']",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "detect_trading_biases",
+        "description": "Identifies cognitive biases affecting trading decisions",
+        "type": "analysis",
+        "parameters": {
+          "trade_sequence": {
+            "type": "list",
+            "description": "Sequence of trades with decision context",
+            "required": true
+          },
+          "bias_types": {
+            "type": "list",
+            "description": "Bias types to check: ['loss_aversion', 'anchoring', 'confirmation_bias', 'sunk_cost', 'recency_bias']",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "assess_discipline_score",
+        "description": "Calculates discipline adherence score based on plan following",
+        "type": "calculation",
+        "parameters": {
+          "trading_plan": {
+            "type": "dict",
+            "description": "Trading plan with rules and criteria",
+            "required": true
+          },
+          "actual_trades": {
+            "type": "list",
+            "description": "Actual trades taken",
+            "required": true
+          },
+          "weighting": {
+            "type": "dict",
+            "description": "Weight factors for different rule types",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "track_confidence_levels",
+        "description": "Monitors trader confidence levels over time",
+        "type": "analysis",
+        "parameters": {
+          "confidence_records": {
+            "type": "list",
+            "description": "Historical confidence level recordings",
+            "required": true
+          },
+          "correlate_with_performance": {
+            "type": "bool",
+            "description": "Correlate confidence with actual performance",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "detect_tilt_patterns",
+        "description": "Identifies tilt episodes and recovery patterns",
+        "type": "analysis",
+        "parameters": {
+          "trade_sequence": {
+            "type": "list",
+            "description": "Sequential trades for pattern detection",
+            "required": true
+          },
+          "tilt_indicators": {
+            "type": "list",
+            "description": "Tilt indicators: ['revenge_trading', 'overtrading', 'size_escalation', 'rule_violation']",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "provide_accountability_check",
+        "description": "Provides accountability check for trading plan adherence",
+        "type": "coaching",
+        "parameters": {
+          "trading_plan": {
+            "type": "dict",
+            "description": "Trading plan to check against",
+            "required": true
+          },
+          "recent_trades": {
+            "type": "list",
+            "description": "Recent trades to evaluate",
+            "required": true
+          },
+          "accountability_level": {
+            "type": "str",
+            "description": "Accountability intensity: 'supportive', 'balanced', 'strict'",
+            "required": false,
+            "default": "balanced"
+          }
+        }
+      },
+      {
+        "name": "suggest_regulation_techniques",
+        "description": "Suggests emotional regulation techniques for specific situations",
+        "type": "coaching",
+        "parameters": {
+          "situation": {
+            "type": "str",
+            "description": "Trading situation requiring regulation",
+            "required": true
+          },
+          "emotion_type": {
+            "type": "str",
+            "description": "Emotion to regulate: ['anxiety', 'fear', 'greed', 'anger', 'overconfidence']",
+            "required": true
+          },
+          "trader_profile": {
+            "type": "dict",
+            "description": "Trader's psychological profile and preferences",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "analyze_journal_sentiment",
+        "description": "Analyzes sentiment in trading journal entries",
+        "type": "analysis",
+        "parameters": {
+          "journal_entries": {
+            "type": "list",
+            "description": "Journal entries to analyze",
+            "required": true
+          },
+          "sentiment_dimensions": {
+            "type": "list",
+            "description": "Dimensions: ['positivity', 'confidence', 'anxiety', 'frustration']",
+            "required": false
+          },
+          "track_changes": {
+            "type": "bool",
+            "description": "Track sentiment changes over time",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "create_development_plan",
+        "description": "Creates personalized psychological skill development plan",
+        "type": "creation",
+        "parameters": {
+          "assessment_results": {
+            "type": "dict",
+            "description": "Complete psychological assessment",
+            "required": true
+          },
+          "focus_areas": {
+            "type": "list",
+            "description": "Areas to focus on: ['discipline', 'emotional_control', 'bias_management']",
+            "required": true
+          },
+          "timeline_weeks": {
+            "type": "int",
+            "description": "Development plan duration in weeks",
+            "required": false,
+            "default": 8
+          }
+        }
+      },
+      {
+        "name": "generate_coaching_session_report",
+        "description": "Generates coaching session report with insights and action items",
+        "type": "creation",
+        "parameters": {
+          "session_data": {
+            "type": "dict",
+            "description": "Complete coaching session data",
+            "required": true
+          },
+          "include_action_items": {
+            "type": "bool",
+            "description": "Include specific action items",
+            "required": false,
+            "default": true
+          },
+          "include_progress_tracking": {
+            "type": "bool",
+            "description": "Include progress tracking metrics",
+            "required": false,
+            "default": true
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "trading_psychology_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "moderate",
+      "quality_threshold": 0.8,
+      "rules": [
+        {
+          "name": "professional_boundaries",
+          "description": "Must maintain appropriate professional boundaries",
+          "severity": "error"
+        },
+        {
+          "name": "constructive_feedback",
+          "description": "Feedback must be constructive and actionable",
+          "severity": "error"
+        },
+        {
+          "name": "supportive_tone",
+          "description": "Maintain supportive, non-judgmental tone",
+          "severity": "major"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "production",
+      "scaling": "horizontal",
+      "resources": {
+        "memory": "2GB",
+        "cpu": "2.0"
+      }
+    },
+    "personality_mode": "coach",
+    "communication_style": "professional_constructive",
+    "accountability_level": "balanced"
+  }
+}

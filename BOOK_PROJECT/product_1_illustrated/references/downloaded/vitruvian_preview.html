@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitruvian Man - Sacred Tech Edition</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #0a0e27;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        svg {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .instructions {
+            color: #ffd700;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(26, 35, 126, 0.5);
+            border-radius: 8px;
+            max-width: 800px;
+        }
+        .instructions h2 {
+            color: #ffd700;
+            margin-top: 0;
+        }
+        .instructions p {
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .instructions code {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #ffd700;
+        }
+        .download-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            border: none;
+            border-radius: 6px;
+            color: #0a0e27;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1400" width="1200" height="1200" id="vitruvianSVG">
+          <defs>
+            <radialGradient id="spaceGradient" cx="50%" cy="50%" r="70%">
+              <stop offset="0%" style="stop-color:#1a237e;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#0a0e27;stop-opacity:1" />
+            </radialGradient>
+
+            <filter id="violetGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="4" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#ffed4e;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#ffd700;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+
+          <rect width="1400" height="1400" fill="url(#spaceGradient)" />
+
+          <g transform="translate(700, 680)">
+            <rect x="-380" y="-380" width="760" height="760"
+                  fill="none"
+                  stroke="url(#goldGradient)"
+                  stroke-width="2"
+                  opacity="0.9" />
+
+            <circle cx="0" cy="0" r="380"
+                    fill="none"
+                    stroke="url(#goldGradient)"
+                    stroke-width="2"
+                    opacity="0.9" />
+          </g>
+
+          <g transform="translate(700, 680)" stroke="url(#goldGradient)" stroke-width="2.5" fill="none">
+            <circle cx="0" cy="-320" r="45" />
+            <line x1="0" y1="-275" x2="0" y2="-260" />
+            <path d="M-30,-260 Q-35,-200 -40,-150 L-25,0 L25,0 L40,-150 Q35,-200 30,-260 Z" />
+            <line x1="-380" y1="-220" x2="-40" y2="-220" stroke-width="2" />
+            <line x1="40" y1="-220" x2="380" y2="-220" stroke-width="2" />
+            <circle cx="-380" cy="-220" r="15" />
+            <circle cx="380" cy="-220" r="15" />
+            <path d="M-25,0 Q0,15 25,0" />
+            <line x1="-20" y1="10" x2="-60" y2="360" stroke-width="2" />
+            <line x1="20" y1="10" x2="60" y2="360" stroke-width="2" />
+            <ellipse cx="-60" cy="365" rx="25" ry="10" />
+            <ellipse cx="60" cy="365" rx="25" ry="10" />
+          </g>
+
+          <g transform="translate(700, 680)" stroke="url(#goldGradient)" stroke-width="1.5" fill="none" opacity="0.7">
+            <circle cx="0" cy="-320" r="45" />
+            <line x1="0" y1="-275" x2="0" y2="-260" />
+            <path d="M-30,-260 Q-32,-200 -35,-150 L-22,0 L22,0 L35,-150 Q32,-200 30,-260 Z" />
+            <line x1="-30" y1="-260" x2="-140" cy="-380" stroke-width="1.5" />
+            <line x1="30" y1="-260" x2="140" cy="-380" stroke-width="1.5" />
+            <circle cx="-140" cy="-380" r="12" />
+            <circle cx="140" cy="-380" r="12" />
+            <path d="M-22,0 Q0,12 22,0" />
+            <line x1="-18" y1="10" x2="-200" y2="280" stroke-width="1.5" />
+            <line x1="18" y1="10" x2="200" y2="280" stroke-width="1.5" />
+            <ellipse cx="-200" cy="285" rx="22" ry="9" />
+            <ellipse cx="200" cy="285" rx="22" ry="9" />
+          </g>
+
+          <circle cx="700" cy="680" r="8" fill="#7b1fa2" filter="url(#violetGlow)" />
+          <circle cx="700" cy="680" r="4" fill="#ffd700" />
+
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&amp;family=Inter:wght@400;600&amp;display=swap');
+            .title { font-family: 'Cinzel', serif; font-size: 48px; font-weight: 700; }
+            .label { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 400; }
+            .accent { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; }
+            .attribution { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; font-style: italic; }
+          </style>
+
+          <text x="700" y="100" text-anchor="middle" class="title" fill="#ffd700">VITRUVIAN MAN</text>
+
+          <line x1="1080" y1="680" x2="1150" y2="680" stroke="#ffffff" stroke-width="1" opacity="0.6" />
+          <text x="1160" y="685" class="label" fill="#ffffff">Circle = Spiritual perfection</text>
+
+          <line x1="320" y1="680" x2="250" y2="680" stroke="#ffffff" stroke-width="1" opacity="0.6" />
+          <text x="240" y="685" class="label" fill="#ffffff" text-anchor="end">Square = Earthly manifestation</text>
+
+          <line x1="700" y1="680" x2="700" y2="1200" stroke="#7b1fa2" stroke-width="1.5" opacity="0.8" />
+          <text x="700" y="1220" text-anchor="middle" class="accent" fill="#7b1fa2">Navel = Center of both worlds</text>
+
+          <text x="700" y="1350" text-anchor="middle" class="attribution" fill="#9e9e9e">Leonardo da Vinci, c. 1490 • Sacred Tech Edition</text>
+
+          <g stroke="#ffd700" stroke-width="1" fill="none" opacity="0.4">
+            <path d="M50,150 L50,50 L150,50" />
+            <path d="M1350,150 L1350,50 L1250,50" />
+            <path d="M50,1250 L50,1350 L150,1350" />
+            <path d="M1350,1250 L1350,1350 L1250,1350" />
+          </g>
+
+          <g stroke="#7b1fa2" stroke-width="0.5" fill="none" opacity="0.3">
+            <circle cx="700" cy="680" r="190" stroke-dasharray="5,5" />
+            <circle cx="700" cy="680" r="95" stroke-dasharray="3,3" />
+          </g>
+        </svg>
+
+        <button class="download-btn" onclick="downloadPNG()">Download as High-Res PNG</button>
+
+        <div class="instructions">
+            <h2>How to Save as High-Resolution PNG</h2>
+            <p><strong>Method 1: Click the button above</strong> - Downloads a 2800x2800 PNG (2x scale for print quality)</p>
+            <p><strong>Method 2: Browser screenshot</strong></p>
+            <ol style="text-align: left; color: #ffffff;">
+                <li>Open this HTML file in Chrome or Firefox</li>
+                <li>Right-click on the image</li>
+                <li>Select <code>"Take Screenshot"</code> or use developer tools (F12)</li>
+                <li>In DevTools, select the SVG element and capture as PNG</li>
+            </ol>
+            <p><strong>Method 3: Online converter</strong></p>
+            <p>Upload the <code>.svg</code> file to:</p>
+            <ul style="text-align: left; color: #ffffff;">
+                <li><a href="https://cloudconvert.com/svg-to-png" style="color: #ffd700;">cloudconvert.com/svg-to-png</a></li>
+                <li><a href="https://convertio.co/svg-png/" style="color: #ffd700;">convertio.co/svg-png</a></li>
+            </ul>
+            <p>Set resolution to 2800x2800px or higher for print quality.</p>
+        </div>
+    </div>
+
+    <script>
+        function downloadPNG() {
+            const svg = document.getElementById('vitruvianSVG');
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+
+            // 2x scale for print quality (2800x2800)
+            const scale = 2;
+            canvas.width = 1400 * scale;
+            canvas.height = 1400 * scale;
+
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                const pngFile = canvas.toDataURL('image/png');
+                const downloadLink = document.createElement('a');
+                downloadLink.href = pngFile;
+                downloadLink.download = 'vitruvian_man_sacred_tech_2800px.png';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            };
+
+            img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+        }
+    </script>
+</body>
+</html>

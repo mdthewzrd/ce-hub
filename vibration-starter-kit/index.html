@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Universal Pattern | Research Guide from Harmonatica</title>
+    <meta name="description" content="A comprehensive examination of the mathematical patterns that structure reality. From Vortex Mathematics to sacred geometry, explore the fundamental framework of existence.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Dark Mode Color Palette - Easy on the Eyes */
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --bg-card: #1c2128;
+
+            /* Muted text for reduced eye strain */
+            --text-primary: #e6edf3;
+            --text-secondary: #adbac7;
+            --text-tertiary: #8b949e;
+            --text-muted: #6e7681;
+
+            /* Accent Colors - softer, less harsh */
+            --teal-primary: #3fb9b8;
+            --teal-soft: #2dd4bf;
+            --purple-accent: #a78bfa;
+            --purple-soft: #c4b5fd;
+            --amber-accent: #fbbf24;
+            --amber-soft: #fde68a;
+
+            /* Borders */
+            --border-subtle: rgba(240, 246, 252, 0.08);
+            --border-medium: rgba(240, 246, 252, 0.12);
+            --border-strong: rgba(240, 246, 252, 0.16);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        /* Professional Typography Scale */
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.3; }
+        h4 { font-size: 1.25rem; line-height: 1.4; }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: 7rem 1rem;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .container-narrow {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Professional Cards - Dark Mode */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            border-color: var(--border-medium);
+        }
+
+        /* Hero Section - Dark Mode */
+        .hero {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center top, rgba(63, 185, 184, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            line-height: 1.8;
+        }
+
+        /* Accent Text - Softer colors for dark mode */
+        .text-accent {
+            color: var(--teal-soft);
+        }
+
+        .text-amber {
+            color: var(--amber-soft);
+        }
+
+        .text-purple {
+            color: var(--purple-soft);
+        }
+
+        /* Buttons - Dark Mode */
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--teal-primary);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--teal-soft);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(63, 185, 184, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--teal-soft);
+            border: 2px solid var(--teal-primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(63, 185, 184, 0.15);
+            color: var(--teal-soft);
+            border-color: var(--teal-soft);
+        }
+
+        /* Section Dividers - Dark Mode */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-medium), transparent);
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        /* Technical Diagram Styling - Dark Mode */
+        .diagram-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .diagram-caption {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* Vortex Math Diagram - Technical Schematic Style - Dark Mode */
+        .vortex-diagram {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .vortex-circle {
+            fill: none;
+            stroke: var(--border-medium);
+            stroke-width: 2;
+        }
+
+        .vortex-doubling {
+            fill: none;
+            stroke: var(--teal-primary);
+            stroke-width: 2.5;
+            stroke-dasharray: 8, 4;
+        }
+
+        .vortex-tripling {
+            fill: none;
+            stroke: var(--amber-accent);
+            stroke-width: 2;
+            stroke-dasharray: 4, 4;
+        }
+
+        .vortex-number-bg {
+            fill: var(--bg-tertiary);
+        }
+
+        .vortex-number-text {
+            fill: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .vortex-center-bg {
+            fill: var(--amber-accent);
+        }
+
+        .vortex-center-text {
+            fill: var(--bg-primary);
+            font-family: 'Crimson Pro', serif;
+            font-weight: 700;
+            font-size: 32px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        /* Image Styling - Dark Mode */
+        .scientific-image {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .image-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .image-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            border-color: var(--border-medium);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .image-card-content {
+            padding: 1.5rem;
+        }
+
+        .image-card-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .image-card-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Form Styling - Dark Mode */
+        .email-input {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-medium);
+            color: var(--text-primary);
+            padding: 0.875rem 1.25rem;
+            border-radius: 6px;
+            width: 100%;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--teal-primary);
+        }
+
+        .email-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Footer - Dark Mode */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
+            padding: 3rem 1rem;
+        }
+
+        footer a {
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: var(--teal-soft);
+        }
+
+        /* Utility Classes - Dark Mode */
+        .bg-alt {
+            background: var(--bg-secondary);
+        }
+
+        .text-muted {
+            color: var(--text-tertiary);
+        }
+
+        .border-subtle {
+            border-color: var(--border-subtle);
+        }
+
+        /* Grid for tools */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .tool-card:hover {
+            border-color: var(--border-medium);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Calculator Grid */
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .calc-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: center;
+            font-family: 'Inter', monospace;
+        }
+
+        /* Smooth animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .image-card-description {
+            font-size: 0.9375rem;
+            color: var(--text-tertiary);
+            line-height: 1.6;
+        }
+
+        /* Calculator Grid */
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .calculator-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .calculator-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .calc-expression {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .calc-result {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--teal-primary);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--surface-light-gray);
+            border-left: 4px solid var(--teal-primary);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-box.amber {
+            border-left-color: var(--amber-accent);
+        }
+
+        .info-box-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--navy-900);
+            margin-bottom: 1rem;
+        }
+
+        /* Quote Styling */
+        .quote {
+            background: var(--surface-light-gray);
+            border-left: 4px solid var(--navy-700);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .quote-text {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--navy-900);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .quote-author {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            color: var(--teal-primary);
+            font-weight: 500;
+        }
+
+        /* Practice List */
+        .practice-list {
+            list-style: none;
+            counter-reset: practice-counter;
+        }
+
+        .practice-item {
+            position: relative;
+            padding-left: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .practice-item::before {
+            counter-increment: practice-counter;
+            content: counter(practice-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--teal-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Crimson Pro', serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .practice-title {
+            font-weight: 600;
+            color: var(--navy-900);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tool-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--surface-light-gray);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--teal-primary);
+        }
+
+        .tool-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--navy-900);
+            margin-bottom: 0.75rem;
+        }
+
+        .tool-description {
+            font-size: 0.9375rem;
+            color: var(--text-tertiary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .tool-specs {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            background: var(--surface-light-gray);
+            padding: 0.75rem;
+            border-radius: 4px;
+        }
+
+        .tool-specs dt {
+            font-weight: 600;
+            color: var(--navy-900);
+        }
+
+        .tool-specs dd {
+            margin-left: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-specs dd:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Form Styling */
+        .email-form {
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .form-group {
+                flex-direction: row;
+            }
+        }
+
+        .form-input {
+            flex: 1;
+            padding: 0.875rem 1.25rem;
+            font-size: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--teal-primary);
+        }
+
+        .form-note {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy-900);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        footer h3 {
+            color: white;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9375rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--teal-light);
+        }
+
+        .copyright {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--teal-light);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fibonacci Sequence Display */
+        .fibonacci-sequence {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 2rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .fibonacci-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .fibonacci-number:nth-child(odd) {
+            color: var(--navy-900);
+        }
+
+        .fibonacci-number:nth-child(even) {
+            color: var(--teal-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 4rem 0;
+            }
+
+            .calculator-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                <span>You commented "Harmony"</span>
+            </div>
+
+            <h1 class="fade-in">The Universal Pattern</h1>
+
+            <p class="fade-in text-accent" style="font-size: 1.25rem; margin-bottom: 1.5rem; max-width: 700px;">
+                Mathematics as the Language of Creation
+            </p>
+
+            <p class="fade-in" style="margin-bottom: 2rem; max-width: 700px;">
+                <strong>You're about to discover the hidden mathematical framework that structures all of reality.</strong> This isn't philosophy—these are patterns you can verify yourself with any calculator, observe in nature, and apply to your own life.
+            </p>
+
+            <div class="card" style="margin-bottom: 2rem; padding: 1.5rem;">
+                <p style="margin-bottom: 0; font-size: 1rem;">
+                    <strong class="text-amber">In this guide, you'll learn:</strong><br>
+                    ✓ How numbers create geometry (you can prove this mathematically)<br>
+                    ✓ Why Tesla said 3, 6, and 9 were the key to the universe<br>
+                    ✓ The Golden Ratio in everything from sunflowers to your DNA<br>
+                    ✓ How specific frequencies can promote healing at the cellular level<br>
+                    ✓ Practical tools you can actually use to tap into these principles
+                </p>
+            </div>
+
+            <a href="#introduction" class="btn btn-primary fade-in">
+                Show Me The Pattern ↓
+            </a>
+
+            <p style="font-size: 0.875rem; margin-top: 1.5rem; opacity: 0.7;">
+                Takes 5 minutes to read • Completely free • No email required
+            </p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="introduction">
+        <div class="container-narrow">
+            <div class="fade-in">
+                <span style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber-accent);">Part 1 — The Awakening</span>
+                <h2 style="margin-top: 1rem; margin-bottom: 2rem;">Reality is Designed. Not Random.</h2>
+
+                <p style="font-size: 1.125rem;">
+                    Advanced civilizations throughout history understood something we've forgotten: <strong class="text-accent">reality has a mathematical blueprint</strong>. The ancient Egyptians encoded the Flower of Life into the Temple of Osiris at Abydos over 3,500 years ago. Vedic scholars in India preserved sacred geometry texts that predate recorded history. Greek philosophers like Pythagoras taught mathematics as the foundation of natural philosophy—not just for counting, but for understanding the structure of reality itself.
+                </p>
+
+                <p style="font-size: 1.125rem;">
+                    During the scientific revolution, this holistic understanding was partially lost as reductionist methods focused on isolated mechanisms rather than unified patterns. But something remarkable has happened in the past century: <strong class="text-amber">multiple scientific disciplines have independently rediscovered the same fundamental patterns</strong>.
+                </p>
+
+                <p style="font-size: 1.125rem;">
+                    Quantum physics demonstrates that matter and energy are interchangeable and that consciousness affects physical reality. Number theory reveals mathematical patterns that mirror natural processes. Geometry shows these same patterns manifest across all scales—from atoms to galaxies. Medicine discovers that specific frequencies can initiate healing at the cellular level.
+                </p>
+
+                <div class="info-box" style="background: var(--bg-secondary); border-left-color: var(--amber-accent);">
+                    <p style="margin-bottom: 0; font-size: 1rem;">
+                        <strong class="text-amber">The Key Insight:</strong> These aren't separate discoveries. They're <strong class="text-accent">converging perspectives on a single unified pattern</strong> that structures reality itself. The evidence spans multiple independent fields of inquiry—and you can verify it for yourself.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Vortex Mathematics Section -->
+    <section>
+        <div class="container">
+            <div class="fade-in">
+                <span style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber-accent);">Part 2</span>
+                <h2 style="margin-top: 1rem; margin-bottom: 2rem;">Vortex Mathematics</h2>
+
+                <div class="card" style="margin-bottom: 3rem;">
+                    <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                        In the 1980s, researcher Marko Rodin discovered a novel way to arrange numbers 1 through 9 in a circular pattern. This arrangement, later developed by Randy Powell, reveals hidden mathematical circuits that demonstrate how numbers possess qualities and relationships beyond their quantitative value.
+                    </p>
+                    <p style="font-size: 1.125rem;">
+                        The system demonstrates two primary circuits: the <strong>doubling circuit</strong> (1→2→4→8→7→5→1) and the <strong>tripling circuit</strong> (centered on 3, 6, and 9). These circuits represent fundamental patterns of expansion and manifestation in nature.
+                    </p>
+                </div>
+
+                <div class="diagram-container" style="text-align: center;">
+                    <img src="flower-of-life.svg" alt="Flower of Life - Sacred Geometry" style="width: 100%; max-width: 500px; height: auto; margin-bottom: 2rem;">
+                    <p class="diagram-caption">Figure 1: Flower of Life — The geometric blueprint from which all reality emerges. Found in ancient temples across multiple civilizations.</p>
+                </div>
+
+                <div class="card" style="margin-bottom: 3rem; background: var(--bg-secondary);">
+                    <h3 style="font-family: 'Crimson Pro', serif; font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">The Number Map: A Portrait of Reality</h3>
+                    <p style="font-size: 1rem; margin-bottom: 1rem;">
+                        When numbers 1-9 are arranged in a circle, hidden patterns emerge. The <strong class="text-accent">doubling circuit</strong> (1→2→4→8→7→5→1) represents the fundamental pattern of expansion in nature—visible in cell division, electromagnetic waves, and crystal formation. The <strong class="text-amber">tripling circuit</strong> (3→6→9) that so fascinated Tesla represents the creative principle itself.
+                    </p>
+                    <img src="metatrons-cube-study.webp" alt="Metatron's Cube geometric structure" style="width: 100%; max-width: 400px; height: auto; margin: 1.5rem auto; display: block; border-radius: 6px;">
+                    <p class="diagram-caption">Figure 2: Metatron's Cube — Contains all five Platonic solids, representing the geometric foundation of physical reality.</p>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">Mathematical Verification</div>
+                    <p style="margin-bottom: 1.5rem;">The doubling circuit represents a closed mathematical system that governs how energy expands and manifests. You can verify this pattern directly using any calculator through the division by seven sequence.</p>
+
+                    <div class="calculator-grid">
+                        <div class="calculator-item">
+                            <div class="calc-expression">1 ÷ 7 =</div>
+                            <div class="calc-result">0.142857...</div>
+                        </div>
+                        <div class="calculator-item">
+                            <div class="calc-expression">2 ÷ 7 =</div>
+                            <div class="calc-result">0.285714...</div>
+                        </div>
+                        <div class="calculator-item">
+                            <div class="calc-expression">3 ÷ 7 =</div>
+                            <div class="calc-result">0.428571...</div>
+                        </div>
+                        <div class="calculator-item">
+                            <div class="calc-expression">4 ÷ 7 =</div>
+                            <div class="calc-result">0.571428...</div>
+                        </div>
+                        <div class="calculator-item">
+                            <div class="calc-expression">5 ÷ 7 =</div>
+                            <div class="calc-result">0.714285...</div>
+                        </div>
+                        <div class="calculator-item">
+                            <div class="calc-expression">6 ÷ 7 =</div>
+                            <div class="calc-result">0.857142...</div>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 1.125rem;">
+                        The sequence <strong>1-4-2-8-5-7</strong> repeats infinitely, demonstrating that mathematical patterns possess inherent stability and predictability that transcends scale. This same ordering principle structures the behavior of energy throughout the universe.
+                    </p>
+                </div>
+
+                <div class="quote">
+                    <p class="quote-text">"If you only knew the magnificence of the 3, 6, and 9, you would have a key to the universe."</p>
+                    <p class="quote-author">— Nikola Tesla</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Sacred Geometry Section -->
+    <section>
+        <div class="container">
+            <div class="fade-in">
+                <span style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber-accent);">Part 3</span>
+                <h2 style="margin-top: 1rem; margin-bottom: 2rem;">Sacred Geometry in Nature</h2>
+
+                <div class="card" style="margin-bottom: 3rem;">
+                    <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                        The Fibonacci sequence (1, 1, 2, 3, 5, 8, 13, 21, 34, 55...) generates the Golden Ratio (approximately 1.618), which appears throughout nature with remarkable consistency. This mathematical relationship structures everything from seed arrangements in sunflowers to the spiral arms of galaxies.
+                    </p>
+                    <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                        When you examine a sunflower seed head and count the spirals in each direction, you will consistently find consecutive Fibonacci numbers—typically 34 and 55, though larger specimens display 55 and 89 or even 89 and 144. This same pattern structures pine cone scales (8 and 13), pineapple fruit segments, and the chambered nautilus shell.
+                    </p>
+                    <p style="font-size: 1.125rem;">
+                        The universality of this pattern reflects <strong>optimal space-filling efficiency</strong>. Natural processes evolve toward maximum packing density and structural stability. The Fibonacci spiral accomplishes both simultaneously, which is why evolutionary processes consistently converge upon this geometry across diverse species and scales.
+                    </p>
+                </div>
+
+                <div class="fibonacci-sequence">
+                    <span class="fibonacci-number">1</span>
+                    <span class="fibonacci-number">1</span>
+                    <span class="fibonacci-number">2</span>
+                    <span class="fibonacci-number">3</span>
+                    <span class="fibonacci-number">5</span>
+                    <span class="fibonacci-number">8</span>
+                    <span class="fibonacci-number">13</span>
+                    <span class="fibonacci-number">21</span>
+                    <span class="fibonacci-number">34</span>
+                    <span class="fibonacci-number">55</span>
+                    <span class="fibonacci-number">89</span>
+                    <span class="fibonacci-number">144</span>
+                </div>
+                <p style="text-align: center; font-size: 0.875rem; color: var(--text-tertiary); margin-top: -1rem; margin-bottom: 2rem;">Each term equals the sum of the two preceding terms</p>
+
+                <div style="margin: 3rem 0;">
+                    <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                        As the Fibonacci sequence progresses, the ratio between consecutive numbers converges on the Golden Ratio: <strong>Φ (phi) = 1.6180339887...</strong> This irrational number possesses unique mathematical properties: Φ + 1 = Φ², and 1/Φ = Φ - 1.
+                    </p>
+                    <p style="font-size: 1.125rem;">
+                        Historically, architects and artists have intuitively employed Golden Ratio proportions because humans possess an innate sensitivity to this relationship. The Parthenon in Greece, the Great Pyramid of Giza, and classical Renaissance paintings all incorporate Phi-based compositional elements. This suggests that the Golden Ratio represents a fundamental perceptual and structural principle in nature.
+                    </p>
+                </div>
+
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="pinecone-fibonacci.jpg" alt="Fibonacci spiral patterns in pinecone">
+                        <div class="image-card-content">
+                            <div class="image-card-title">Pinecone Spirals</div>
+                            <div class="image-card-description">Pinecone scales follow Fibonacci pairs—typically 8 and 13. Each scale represents a node in the spiral arrangement that maximizes seed packing efficiency.</div>
+                        </div>
+                    </div>
+
+                    <div class="image-card">
+                        <img src="nautilus-spiral.gif" alt="Golden ratio spiral in nautilus shell">
+                        <div class="image-card-content">
+                            <div class="image-card-title">Chambered Nautilus</div>
+                            <div class="image-card-description">Each chamber is approximately Phi times larger than the preceding one, creating a logarithmic spiral that maintains consistent proportions throughout the organism's growth.</div>
+                        </div>
+                    </div>
+
+                    <div class="image-card">
+                        <img src="golden-ratio-spiral.jpg" alt="Mathematical golden ratio spiral">
+                        <div class="image-card-content">
+                            <div class="image-card-title">Mathematical Model</div>
+                            <div class="image-card-description">The Golden Ratio spiral demonstrates how the same mathematical principle structures phenomena from the microscopic scale to galaxies spanning 100,000 light-years.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Unified Field Section -->
+    <section>
+        <div class="container-narrow">
+            <div class="fade-in">
+                <span style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber-accent);">Part 4</span>
+                <h2 style="margin-top: 1rem; margin-bottom: 2rem;">The Unified Field</h2>
+
+                <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                    Quantum physics has established that physical matter consists primarily of empty space organized by electromagnetic fields. At the subatomic level, electrons do not exist as discrete particles but as probability waves that exhibit both particle-like and wave-like properties depending on how they are observed.
+                </p>
+
+                <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                    Beyond quantum mechanics lies a broader principle: <strong>coherent energy systems self-organize into geometric patterns</strong>. This is visible in the formation of snowflakes, the crystallization of minerals, the structure of lightning bolts, and the morphology of living organisms.
+                </p>
+
+                <p style="font-size: 1.125rem; margin-bottom: 2rem;">
+                    The torus (a donut-shaped geometric form) represents the fundamental shape of coherent energy flow. Energy moves along the surface of the torus in spiraling patterns, continuously recirculating without loss or gain. This form appears consistently throughout nature: in the Earth's magnetic field, in the electromagnetic field generated by the human heart, in the structure of tornadoes and hurricanes, and in the probability clouds surrounding atomic nuclei.
+                </p>
+
+                <div style="text-align: center; margin: 3rem 0;">
+                    <img src="metatrons-cube-study.webp" alt="Metatron's Cube geometric structure" class="scientific-image" style="max-width: 600px;">
+                    <p class="diagram-caption">Figure 2: Metatron's Cube represents the geometric structure of space and the fundamental patterns of energy flow</p>
+                </div>
+
+                <div class="info-box amber">
+                    <div class="info-box-title">The Principle of Coherence</div>
+                    <p style="font-size: 1.125rem; margin-bottom: 1rem;">
+                        If reality consists of energy organized by mathematical patterns, then <strong>coherence becomes the fundamental organizing principle of existence</strong>. Coherence refers to the quality of being logically or aesthetically consistent—of multiple components operating in harmony as an integrated whole.
+                    </p>
+                    <p style="font-size: 1.125rem;">
+                        In physics, coherent systems (like laser light) possess remarkable properties that incoherent systems lack. Living systems maintain coherence through continuous energy exchange. Disease represents a breakdown of this coherence. Healing represents its restoration. This principle applies across all scales: from cellular communication to social organization to planetary ecology.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Vibration & Healing Section -->
+    <section>
+        <div class="container">
+            <div class="fade-in">
+                <span style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber-accent);">Part 5</span>
+                <h2 style="margin-top: 1rem; margin-bottom: 2rem;">Bioelectromagnetism & Healing</h2>
+
+                <div class="card" style="margin-bottom: 3rem;">
+                    <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                        Energy medicine operates on a fundamental principle: <strong>disease is dissonance; health is resonance</strong>. Every cell in your body vibrates at specific frequencies. When these vibrations are coherent and harmonious, health results. When they become incoherent or disharmonious, dysfunction manifests.
+                    </p>
+                    <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                        Sound healing utilizes <strong>entrainment</strong>, a phenomenon first identified by Dutch scientist Christian Huygens in the 17th century. When two oscillating systems operate in proximity, they tend to synchronize. This principle explains why pendulum clocks eventually swing together and why therapeutic frequencies can entrain cellular function toward healthier states.
+                    </p>
+                    <p style="font-size: 1.125rem;">
+                        Phototherapy (light therapy) works because <strong>specific wavelengths trigger precise cellular responses</strong>. Red light (630-700 nanometers) stimulates mitochondrial ATP production and collagen synthesis, reducing inflammation and accelerating wound healing. Near-infrared (700-1000 nanometers) penetrates deeper tissues, modulating pain signaling and enhancing cellular energy metabolism.
+                    </p>
+                </div>
+
+                <div class="info-box" style="margin-bottom: 3rem;">
+                    <div class="info-box-title">Heart Coherence Research</div>
+                    <p style="font-size: 1.125rem; margin-bottom: 1rem;">
+                        Research from the HeartMath Institute has demonstrated that the heart generates an electromagnetic field measurable up to several feet from the body. This field is <strong>approximately 60 times stronger in amplitude</strong> than the electrical field produced by the brain.
+                    </p>
+                    <p style="font-size: 1.125rem;">
+                        When individuals practice heart coherence techniques (focused breathing combined with positive emotional states), their cardiac rhythm patterns become more ordered. This coherence transfers to the electromagnetic field and can be detected by nearby individuals, suggesting a mechanism for non-local bio-communication.
+                    </p>
+                </div>
+
+                <h3 style="margin-bottom: 1.5rem;">Therapeutic Modalities</h3>
+
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                            </svg>
+                        </div>
+                        <div class="tool-title">Sound Healing</div>
+                        <div class="tool-description">Therapeutic use of sound frequencies to promote physical and emotional healing through entrainment.</div>
+                        <dl class="tool-specs">
+                            <dt>Key Frequencies</dt>
+                            <dd>• Solfeggio frequencies (396-852 Hz)</dd>
+                            <dd>• 432 Hz (Pythagorean tuning)</dd>
+                            <dd>• 528 Hz (DNA repair frequency)</dd>
+                            <dt>Applications</dt>
+                            <dd>• Stress reduction</dd>
+                            <dd>• Pain management</dd>
+                            <dd>• Sleep improvement</dd>
+                        </dl>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"/>
+                                <line x1="12" y1="1" x2="12" y2="3"/>
+                                <line x1="12" y1="21" x2="12" y2="23"/>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                                <line x1="1" y1="12" x2="3" y2="12"/>
+                                <line x1="21" y1="12" x2="23" y2="12"/>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                            </svg>
+                        </div>
+                        <div class="tool-title">Phototherapy</div>
+                        <div class="tool-description">Light therapy using specific wavelengths to trigger cellular responses and promote healing.</div>
+                        <dl class="tool-specs">
+                            <dt>Wavelengths</dt>
+                            <dd>• Red light: 630-700nm (collagen)</dd>
+                            <dd>• Near-infrared: 700-1000nm (ATP)</dd>
+                            <dd>• Blue light: 400-500nm (antimicrobial)</dd>
+                            <dt>Benefits</dt>
+                            <dd>• Wound healing acceleration</dd>
+                            <dd>• Inflammation reduction</dd>
+                            <dd>• Circadian rhythm regulation</dd>
+                        </dl>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                            </svg>
+                        </div>
+                        <div class="tool-title">Structured Water</div>
+                        <div class="tool-description">Water that has been reorganized into coherent molecular structures through vortexing and exposure to natural energies.</div>
+                        <dl class="tool-specs">
+                            <dt>Methods</dt>
+                            <dd>• Vortexing devices</dd>
+                            <dd>• Miron glass storage</dd>
+                            <dd>• Sunlight exposure</dd>
+                            <dt>Research</dt>
+                            <dd>• Dr. Gerald Pollack's EZ water</dd>
+                            <dd>• Crystallization patterns</dd>
+                            <dd>• Bioavailability enhancement</dd>
+                        </dl>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </div>
+                        <div class="tool-title">Heart Coherence</div>
+                        <div class="tool-description">Biofeedback techniques to regulate heart rate variability and create coherent electromagnetic fields.</div>
+                        <dl class="tool-specs">
+                            <dt>Practice</dt>
+                            <dd>• 5-count breathing rhythm</dd>
+                            <dd>• Heart-focused attention</dd>
+                            <dd>• Positive emotional states</dd>
+                            <dt>Effects</dt>
+                            <dd>• HRV optimization</dd>
+                            <dd>• Stress hormone reduction</dd>
+                            <dd>• Field coherence expansion</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Practical Applications Section -->
+    <section>
+        <div class="container">
+            <div class="fade-in">
+                <span style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber-accent);">Part 6</span>
+                <h2 style="margin-top: 1rem; margin-bottom: 2rem;">Practical Applications & Tools</h2>
+
+                <div class="card" style="margin-bottom: 3rem;">
+                    <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                        Understanding the universal pattern has practical applications. Below are specific tools and devices that implement these principles for healing, personal development, and environmental enhancement.
+                    </p>
+                    <p style="font-size: 1.125rem;">
+                        These tools represent the intersection of ancient wisdom and modern technology. Each utilizes the fundamental principles of sacred geometry, vortex mathematics, or bioelectromagnetism to create coherent energy fields and support optimal functioning.
+                    </p>
+                </div>
+
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <div class="tool-title">Miron Glass Containers</div>
+                        <div class="tool-description">
+                            Violet glass containers that protect contents from visible light degradation while permitting beneficial UV and infrared penetration. Preserves water structure and bioactive compounds.
+                        </div>
+                        <dl class="tool-specs">
+                            <dt>Technology</dt>
+                            <dd>• Proprietary violet glass formulation</dd>
+                            <dd>• Blocks visible light spectrum</dd>
+                            <dd>• Permits UV-A and infrared transmission</dd>
+                            <dt>Applications</dt>
+                            <dd>• Water storage and structuring</dd>
+                            <dd>• Herbal preparation preservation</dd>
+                            <dd>• Essential oil storage</dd>
+                            <dt>Research</dt>
+                            <dd>• Demonstrated preservation efficacy</dd>
+                            <dd>• Maintains bioactive compound integrity</dd>
+                            <dd>• Extends shelf life significantly</dd>
+                        </dl>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <div class="tool-title">PEMF Therapy Devices</div>
+                        <div class="tool-description">
+                            Pulsed Electromagnetic Field therapy devices that deliver therapeutic frequencies to support cellular regeneration, reduce inflammation, and enhance recovery.
+                        </div>
+                        <dl class="tool-specs">
+                            <dt>Technology</dt>
+                            <dd>• Low-frequency electromagnetic pulses</dd>
+                            <dd>• Range: 1-100 Hz typically</dd>
+                            <dd>• Portable and full-body systems available</dd>
+                            <dt>Applications</dt>
+                            <dd>• Bone healing acceleration</dd>
+                            <dd>• Pain management</dd>
+                            <dd>• Sleep quality improvement</dd>
+                            <dt>Research</dt>
+                            <dd>• FDA-cleared for specific conditions</dd>
+                            <dd>• NASA research for tissue regeneration</dd>
+                            <dd>• Numerous clinical studies</dd>
+                        </dl>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div class="tool-title">Rodin Coils</div>
+                        <div class="tool-description">
+                            Toroidal wire coils based on Vortex Mathematics principles that create coherent electromagnetic fields. Used in energy work, consciousness research, and experimental healing applications.
+                        </div>
+                        <dl class="tool-specs">
+                            <dt>Technology</dt>
+                            <dd>• Toroidal geometry winding</dd>
+                            <dd>• Based on 3-6-9 mathematical principles</dd>
+                            <dd>• Creates scalar wave fields</dd>
+                            <dt>Applications</dt>
+                            <dd>• Energy field enhancement</dd>
+                            <dd>• Meditation support</dd>
+                            <dd>• Water structuring experiments</dd>
+                            <dt>Research</dt>
+                            <dd>• Randy Powell's work</dd>
+                            <dd>• Jamie Buturff's applications</dd>
+                            <dd>• Ongoing experimental studies</dd>
+                        </dl>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                                <path d="M12 12l9 9"/>
+                            </svg>
+                        </div>
+                        <div class="tool-title">MAYU Water Vortexer</div>
+                        <div class="tool-description">
+                            Portable device that creates a controlled vortex motion in water, mimicking natural water flow patterns to restructure molecular organization and enhance bioavailability.
+                        </div>
+                        <dl class="tool-specs">
+                            <dt>Technology</dt>
+                            <dd>• Motorized vortex generation</dd>
+                            <dd>• Crystal-infused vortex chamber</dd>
+                            <dd>• Sustainable materials (glass/ceramic)</dd>
+                            <dt>Applications</dt>
+                            <dd>• Daily water structuring</dd>
+                            <dd>• Improved hydration</dd>
+                            <dd>• Enhanced nutrient absorption</dd>
+                            <dt>Research</dt>
+                            <dd>• Based on Viktor Schauberger's work</dd>
+                            <dd>• Water structure studies</dd>
+                            <dd>• User-reported benefits</dd>
+                        </dl>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            </svg>
+                        </div>
+                        <div class="tool-title">Tuning Fork Therapy</div>
+                        <div class="tool-description">
+                            Precision-tuned metal forks that generate specific therapeutic frequencies when struck. Applied to acupressure points and energy centers for vibrational healing.
+                        </div>
+                        <dl class="tool-specs">
+                            <dt>Technology</dt>
+                            <dd>• Medical-grade aluminum/alloy</dd>
+                            <dd>• Precise frequency calibration</dd>
+                            <dd>• Weighted and unweighted options</dd>
+                            <dt>Common Frequencies</dt>
+                            <dd>• 128 Hz (orthopedic)</dd>
+                            <dd>• 256 Hz (physical body)</dd>
+                            <dd>• 432 Hz & 528 Hz (healing)</dd>
+                            <dt>Applications</dt>
+                            <dd>• Pain reduction</dd>
+                            <dd>• Relaxation induction</dd>
+                            <dd>• Energy balancing</dd>
+                        </dl>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                        </div>
+                        <div class="tool-title">Pyramid Energy Structures</div>
+                        <div class="tool-description">
+                            Geometric structures based on sacred geometry proportions that create coherent energy fields. Used for meditation, food/water preservation, and environmental enhancement.
+                        </div>
+                        <dl class="tool-specs">
+                            <dt>Technology</dt>
+                            <dd>• Golden Ratio proportions</dd>
+                            <dd>• Copper, crystal, or orgone construction</dd>
+                            <dd>• Range from desktop to room-sized</dd>
+                            <dt>Applications</dt>
+                            <dd>• Meditation space enhancement</dd>
+                            <dd>• Food and water energizing</dd>
+                            <dd>• Sleep quality improvement</dd>
+                            <dt>Research</dt>
+                            <dd>• Dr. Vladimir Kovtoun's work</dd>
+                            <dd>• Russian pyramid research</dd>
+                            <dd>• Ongoing experimental studies</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">Implementation Guidance</div>
+                    <p style="font-size: 1.125rem; margin-bottom: 1rem;">
+                        When working with these tools, begin with one modality and observe effects before incorporating additional systems. Quality matters more than quantity—invest in well-constructed devices from reputable manufacturers.
+                    </p>
+                    <p style="font-size: 1.125rem;">
+                        Remember that these tools support but do not replace foundational health practices: proper hydration, nutrition, sleep, movement, and stress management. Use them as complementary approaches within a holistic wellness framework.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Daily Practice Section -->
+    <section>
+        <div class="container-narrow">
+            <div class="fade-in">
+                <span style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber-accent);">Part 7</span>
+                <h2 style="margin-top: 1rem; margin-bottom: 2rem;">Daily Coherence Practice</h2>
+
+                <div class="card" style="margin-bottom: 3rem;">
+                    <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                        Understanding the universal pattern transforms perception and practice. More importantly, it provides a framework for actively cultivating coherence in your own physiology and environment.
+                    </p>
+                    <p style="font-size: 1.125rem;">
+                        The following practices require 5-10 minutes total per day. Consistency produces superior results compared to infrequent intensive sessions. Your body completely regenerates its cells approximately every seven years—daily practices gradually rebuild your physiology with increased organization and efficiency.
+                    </p>
+                </div>
+
+                <h3 style="margin-bottom: 2rem;">Recommended Daily Protocol (5-10 minutes)</h3>
+
+                <ul class="practice-list">
+                    <li class="practice-item">
+                        <div class="practice-title">Morning Hydration and Intention</div>
+                        <p style="font-size: 1rem;">
+                            Consume a glass of water immediately upon waking while consciously focusing on positive intention. If using structured water devices, prepare water the night before. Morning hydration supports cellular function after overnight dehydration, and research suggests water structure responds to conscious attention.
+                        </p>
+                    </li>
+
+                    <li class="practice-item">
+                        <div class="practice-title">Heart Coherence Breaks</div>
+                        <p style="font-size: 1rem;">
+                            When experiencing stress during the day, pause and practice heart-focused breathing. Inhale for 5 counts, exhale for 5 counts while focusing attention in the heart region. Generate a genuine feeling of appreciation or gratitude. This practice activates the parasympathetic nervous system and creates measurable cardiac coherence.
+                        </p>
+                    </li>
+
+                    <li class="practice-item">
+                        <div class="practice-title">Evening Gratitude Practice</div>
+                        <p style="font-size: 1rem;">
+                            Before sleep, identify three specific experiences from the day for which you feel genuine gratitude. Gratitude shifts cardiac rhythm patterns toward coherence and improves sleep quality through autonomic nervous system regulation. Consider journaling these reflections to reinforce the practice.
+                        </p>
+                    </li>
+
+                    <li class="practice-item">
+                        <div class="practice-title">Frequency Exposure During Sleep</div>
+                        <p style="font-size: 1rem;">
+                            Play music tuned to 432 Hz (Pythagorean tuning) or 528 Hz while falling asleep. These frequencies correspond to mathematical relationships that appear throughout nature and may support regenerative processes during sleep cycles. Set a timer if you prefer silence during deeper sleep phases.
+                        </p>
+                    </li>
+                </ul>
+
+                <div class="quote" style="margin-top: 3rem;">
+                    <p class="quote-text" style="font-size: 1.25rem;">"The body heals with play, the mind heals with laughter, and the spirit heals with joy."</p>
+                    <p class="quote-author">— Proverb from Traditional Chinese Medicine</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Conclusion & CTA Section -->
+    <section style="background: var(--surface-light-gray);">
+        <div class="container-narrow">
+            <div class="fade-in">
+                <span style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber-accent);">Conclusion</span>
+                <h2 style="margin-top: 1rem; margin-bottom: 2rem;">Continue Your Exploration</h2>
+
+                <div class="card" style="margin-bottom: 3rem;">
+                    <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                        What you just read is the foundation. There's much more to explore—deeper mathematics, additional geometries, specific healing protocols, and practical tools for implementing these principles in daily life.
+                    </p>
+                    <p style="font-size: 1.125rem; margin-bottom: 2rem;">
+                        The complete guide expands on each topic with detailed protocols, research references, product recommendations, and community support. Receive it free by email.
+                    </p>
+
+                    <div style="background: var(--navy-900); padding: 2rem; border-radius: 8px; color: white;">
+                        <h3 style="color: white; margin-bottom: 1rem;">Complete Guide Contents:</h3>
+                        <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                            <li style="padding: 0.5rem 0; display: flex; gap: 0.75rem; align-items: start;">
+                                <svg style="width: 20px; height: 20px; flex-shrink: 0; color: var(--teal-light);" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Deeper Vortex Math: The tripling circuit, 3-6-9 axis, ABHA Torus explained</span>
+                            </li>
+                            <li style="padding: 0.5rem 0; display: flex; gap: 0.75rem; align-items: start;">
+                                <svg style="width: 20px; height: 20px; flex-shrink: 0; color: var(--teal-light);" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Advanced Sacred Geometry: Flower of Life, Metatron's Cube, Merkaba</span>
+                            </li>
+                            <li style="padding: 0.5rem 0; display: flex; gap: 0.75rem; align-items: start;">
+                                <svg style="width: 20px; height: 20px; flex-shrink: 0; color: var(--teal-light);" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Plasmoids & Ball Lightning: Observable proof of the unified field</span>
+                            </li>
+                            <li style="padding: 0.5rem 0; display: flex; gap: 0.75rem; align-items: start;">
+                                <svg style="width: 20px; height: 20px; flex-shrink: 0; color: var(--teal-light);" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Specific Healing Protocols: Targeted frequencies for specific conditions</span>
+                            </li>
+                            <li style="padding: 0.5rem 0; display: flex; gap: 0.75rem; align-items: start;">
+                                <svg style="width: 20px; height: 20px; flex-shrink: 0; color: var(--teal-light);" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Complete Routines: Detailed morning & evening practice protocols</span>
+                            </li>
+                            <li style="padding: 0.5rem 0; display: flex; gap: 0.75rem; align-items: start;">
+                                <svg style="width: 20px; height: 20px; flex-shrink: 0; color: var(--teal-light);" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Resource Guide: Videos, tools, products, and research sources</span>
+                            </li>
+                        </ul>
+
+                        <form id="emailForm" class="email-form">
+                            <div style="margin-bottom: 1rem; text-align: center;">
+                                <label for="emailInput" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Enter your email to receive the complete guide</label>
+                                <div class="form-group">
+                                    <input
+                                        type="email"
+                                        id="emailInput"
+                                        placeholder="your@email.com"
+                                        required
+                                        class="form-input"
+                                        style="background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); color: white;"
+                                    >
+                                    <button type="submit" class="btn" style="background: var(--teal-light); color: var(--navy-900);">
+                                        Send Me The Guide →
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="form-note" style="color: rgba(255, 255, 255, 0.7);">Free • No spam • Unsubscribe anytime</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>Harmonatica</h3>
+            <p>Exploring the hidden patterns of the universe</p>
+
+            <div class="social-links">
+                <a href="https://instagram.com/harmonatica" aria-label="Instagram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="copyright">
+                <p>© 2026 Harmonatica. All rights reserved.</p>
+                <p style="margin-top: 0.5rem;">This information is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Email form submission
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+
+            // TODO: Integrate with email service (MailerLite, ConvertKit, etc.)
+            alert('Thank you! Check your email for the complete guide to The Universal Pattern.');
+            this.reset();
+        });
+
+        // Scroll-based animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

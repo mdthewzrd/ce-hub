@@ -1,0 +1,128 @@
+{
+  "test_summary": {
+    "engine_success_rate": 75.0,
+    "functional_success_rate": 75.0,
+    "total_scanners": 4,
+    "engine_successes": 3,
+    "functional_successes": 3,
+    "total_time": 3465.539389848709,
+    "achievement": "Excellent",
+    "improvement_vs_v1": 50.0
+  },
+  "individual_results": {
+    "scan2.0_copy": {
+      "success": false,
+      "functional_success": false,
+      "result_count": 74,
+      "execution_time": 1.795443058013916,
+      "type": "Standard (ticker-based)",
+      "expected": "Improved but may have minor issues",
+      "diagnostics": {
+        "processing_id": "scan_1762737682",
+        "function_detected": "scan_ticker",
+        "pattern_type": "ticker_based",
+        "execution_model": "standard",
+        "ticker_count": 80,
+        "success_rate": 0.0,
+        "successful_count": 0,
+        "error_count": 74,
+        "sample_errors": [
+          {
+            "symbol": "MSFT",
+            "date": "2025-01-01",
+            "error": "Enhanced wrapper error: 'g'"
+          },
+          {
+            "symbol": "NVDA",
+            "date": "2025-01-01",
+            "error": "Enhanced wrapper error: 'g'"
+          },
+          {
+            "symbol": "GOOGL",
+            "date": "2025-01-01",
+            "error": "Enhanced wrapper error: 'g'"
+          }
+        ]
+      }
+    },
+    "sc_dmr_scan": {
+      "success": true,
+      "functional_success": true,
+      "result_count": 0,
+      "execution_time": 359.8269281387329,
+      "type": "Optimal (batch processing)",
+      "expected": "Should work perfectly",
+      "diagnostics": {
+        "processing_id": "scan_1762737684",
+        "architecture_grade": "A+ - Optimal",
+        "processing_mode": "pass_through",
+        "reason": "\ud83c\udf1f OPTIMAL BATCH SCANNER: Full market API + batch processing",
+        "function_detected": "main (async)",
+        "pattern_type": "optimal_async_main",
+        "execution_model": "optimal",
+        "ticker_count": "Full Market Coverage",
+        "success_rate": 1.0,
+        "successful_count": 0,
+        "error_count": 0,
+        "sample_errors": []
+      }
+    },
+    "lc_ext_frontside": {
+      "success": true,
+      "functional_success": true,
+      "result_count": 0,
+      "execution_time": 300.01872515678406,
+      "type": "Optimal (async main)",
+      "expected": "Should work perfectly",
+      "diagnostics": {
+        "processing_id": "scan_1762738043",
+        "architecture_grade": "A+ - Optimal",
+        "processing_mode": "pass_through",
+        "reason": "\ud83c\udf1f OPTIMAL ASYNC SCANNER: Full market API + async main + advanced analysis",
+        "function_detected": "main (async)",
+        "pattern_type": "optimal_async_main",
+        "execution_model": "optimal",
+        "ticker_count": "Full Market Coverage",
+        "success_rate": 1.0,
+        "successful_count": 0,
+        "error_count": 0,
+        "sample_errors": []
+      }
+    },
+    "lc_d2_scan": {
+      "success": true,
+      "functional_success": true,
+      "result_count": 0,
+      "execution_time": 2803.892650127411,
+      "type": "Optimal (async main + complex)",
+      "expected": "Should work perfectly",
+      "diagnostics": {
+        "processing_id": "scan_1762738343",
+        "architecture_grade": "A+ - Optimal",
+        "processing_mode": "pass_through",
+        "reason": "\ud83c\udf1f OPTIMAL ASYNC SCANNER: Full market API + async main + advanced analysis",
+        "function_detected": "main (async)",
+        "pattern_type": "optimal_async_main",
+        "execution_model": "optimal",
+        "ticker_count": "Full Market Coverage",
+        "success_rate": 1.0,
+        "successful_count": 0,
+        "error_count": 0,
+        "sample_errors": []
+      }
+    }
+  },
+  "category_analysis": {
+    "optimal_scanners": {
+      "count": 3,
+      "successes": 3,
+      "success_rate": 100.0
+    },
+    "standard_scanners": {
+      "count": 1,
+      "successes": 0,
+      "success_rate": 0.0
+    }
+  },
+  "timestamp": "2025-11-09T21:19:07.830241"
+}

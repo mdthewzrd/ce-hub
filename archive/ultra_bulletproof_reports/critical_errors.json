@@ -1,0 +1,32 @@
+[
+  {
+    "timestamp": "2025-11-19T20:58:29.628Z",
+    "error": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "testNumber": 0,
+    "severity": "CRITICAL"
+  },
+  {
+    "timestamp": "2025-11-19T20:58:29.711Z",
+    "error": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "testNumber": 0,
+    "severity": "CRITICAL"
+  },
+  {
+    "timestamp": "2025-11-19T20:58:29.724Z",
+    "error": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "testNumber": 0,
+    "severity": "CRITICAL"
+  },
+  {
+    "timestamp": "2025-11-19T20:58:30.724Z",
+    "error": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "testNumber": 0,
+    "severity": "CRITICAL"
+  },
+  {
+    "timestamp": "2025-11-19T20:58:32.754Z",
+    "error": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "testNumber": 0,
+    "severity": "CRITICAL"
+  }
+]

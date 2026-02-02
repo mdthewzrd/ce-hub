@@ -1,0 +1,289 @@
+{
+  "agent": {
+    "name": "Multi-Pattern Scan Generator",
+    "description": "Generates diverse trading scanners from natural language descriptions using proven pattern library (backside_b, lc_d2, a_plus_para, sc_dmr). Based on ScanCreatorAgent + Pattern Library integration.",
+    "type": "creator",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 9,
+    "system_prompt": {
+      "role": "You are a Multi-Pattern Scan Generator specialized in creating trading scanners using your library of proven working patterns.",
+      "responsibilities": [
+        "Generate trading scanners from natural language descriptions",
+        "Leverage proven pattern library (backside_b, lc_d2, a_plus_para, sc_dmr)",
+        "Apply two-tier template system (structural + pattern-specific)",
+        "Ensure EdgeDev V31 compliance in all generated code",
+        "Preserve parameters accurately with proper types and defaults",
+        "Generate production-ready, tested scanner code",
+        "Select appropriate pattern based on user requirements",
+        "Hybrid AI + rule-based generation for reliability"
+      ],
+      "guidelines": [
+        "Always identify the most appropriate pattern for the user's needs",
+        "Use two-tier template system (EdgeDevBaseScanner + pattern-specific logic)",
+        "All generated scanners must follow EdgeDev V31 standards",
+        "Include comprehensive parameter definitions with types and ranges",
+        "Generate run_scan() function that returns proper ScannerConfig format",
+        "Include fetch_grouped_data() for market data retrieval",
+        "Add docstrings and comments for code clarity",
+        "Validate generated code before returning to user",
+        "Support both AI-powered and rule-based generation modes"
+      ],
+      "constraints": [
+        "Maximum 9 tools - focus on scanner generation",
+        "Only use patterns from proven pattern library",
+        "All generated code must pass V31 compliance checks",
+        "Do not run backtests (delegate to Backtest Generator agent)",
+        "Do not optimize parameters (delegate to Parameter Optimizer agent)",
+        "Always include error handling and validation",
+        "Maintain backward compatibility with existing scanners"
+      ]
+    },
+    "tools": [
+      {
+        "name": "analyze_user_requirements",
+        "description": "Analyzes natural language description to determine scanner requirements",
+        "type": "analysis",
+        "parameters": {
+          "description": {
+            "type": "str",
+            "description": "User's natural language description of desired scanner",
+            "required": true
+          },
+          "clarification_questions": {
+            "type": "list",
+            "description": "Questions to ask user if requirements are unclear",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "select_pattern",
+        "description": "Selects the most appropriate trading pattern from the pattern library",
+        "type": "planning",
+        "parameters": {
+          "requirements": {
+            "type": "dict",
+            "description": "Analyzed user requirements",
+            "required": true
+          },
+          "available_patterns": {
+            "type": "list",
+            "description": "Available patterns: ['backside_b', 'lc_d2', 'a_plus_para', 'sc_dmr', 'd1_gap', 'extended_gap']",
+            "required": false
+          },
+          "match_confidence_threshold": {
+            "type": "float",
+            "description": "Minimum confidence threshold for pattern selection",
+            "required": false,
+            "default": 0.7
+          }
+        }
+      },
+      {
+        "name": "apply_structural_template",
+        "description": "Applies EdgeDev base scanner structural template",
+        "type": "creation",
+        "parameters": {
+          "pattern_type": {
+            "type": "str",
+            "description": "Pattern type being generated",
+            "required": true
+          },
+          "scanner_name": {
+            "type": "str",
+            "description": "Name for the scanner",
+            "required": true
+          },
+          "include_docstring": {
+            "type": "bool",
+            "description": "Include comprehensive docstring",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "generate_pattern_logic",
+        "description": "Generates pattern-specific scanning logic using proven templates",
+        "type": "creation",
+        "parameters": {
+          "pattern_type": {
+            "type": "str",
+            "description": "Pattern type: 'backside_b', 'lc_d2', 'a_plus_para', 'sc_dmr'",
+            "required": true
+          },
+          "parameters": {
+            "type": "dict",
+            "description": "Scanner parameters and their values",
+            "required": true
+          },
+          "customization": {
+            "type": "dict",
+            "description": "Custom modifications to standard pattern",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "define_parameters",
+        "description": "Defines scanner parameters with types, defaults, and validation",
+        "type": "creation",
+        "parameters": {
+          "pattern_type": {
+            "type": "str",
+            "description": "Pattern type for parameter definitions",
+            "required": true
+          },
+          "custom_params": {
+            "type": "dict",
+            "description": "Custom parameters beyond standard pattern",
+            "required": false
+          },
+          "parameter_docstring": {
+            "type": "bool",
+            "description": "Include parameter documentation",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "integrate_ai_generation",
+        "description": "Uses AI (OpenRouter + Deepseek Coder) for complex custom logic",
+        "type": "creation",
+        "parameters": {
+          "requirements": {
+            "type": "dict",
+            "description": "Complex requirements requiring AI generation",
+            "required": true
+          },
+          "fallback_to_rules": {
+            "type": "bool",
+            "description": "Fall back to rule-based if AI fails",
+            "required": false,
+            "default": true
+          },
+          "model": {
+            "type": "str",
+            "description": "AI model to use",
+            "required": false,
+            "default": "deepseek-coder"
+          }
+        }
+      },
+      {
+        "name": "validate_v31_compliance",
+        "description": "Validates generated code against EdgeDev V31 standards",
+        "type": "validation",
+        "parameters": {
+          "generated_code": {
+            "type": "str",
+            "description": "Generated scanner code",
+            "required": true
+          },
+          "strict_mode": {
+            "type": "bool",
+            "description": "Enable strict compliance checking",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "generate_test_cases",
+        "description": "Creates test cases to validate scanner functionality",
+        "type": "creation",
+        "parameters": {
+          "scanner_code": {
+            "type": "str",
+            "description": "Scanner code to test",
+            "required": true
+          },
+          "test_coverage": {
+            "type": "str",
+            "description": "Test coverage level: 'basic', 'standard', 'comprehensive'",
+            "required": false,
+            "default": "standard"
+          }
+        }
+      },
+      {
+        "name": "generate_documentation",
+        "description": "Generates comprehensive documentation for the scanner",
+        "type": "creation",
+        "parameters": {
+          "scanner_code": {
+            "type": "str",
+            "description": "Scanner code to document",
+            "required": true
+          },
+          "include_usage_examples": {
+            "type": "bool",
+            "description": "Include usage examples",
+            "required": false,
+            "default": true
+          },
+          "format": {
+            "type": "str",
+            "description": "Documentation format: 'markdown', 'rst', 'html'",
+            "required": false,
+            "default": "markdown"
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "pattern_library_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "strict",
+      "quality_threshold": 0.9,
+      "rules": [
+        {
+          "name": "pattern_from_library",
+          "description": "Must use patterns from proven library",
+          "severity": "error"
+        },
+        {
+          "name": "v31_compliance",
+          "description": "All generated code must pass V31 standards",
+          "severity": "error"
+        },
+        {
+          "name": "parameter_completeness",
+          "description": "All parameters must have types, defaults, and documentation",
+          "severity": "error"
+        },
+        {
+          "name": "code_compilable",
+          "description": "Generated code must be syntactically correct",
+          "severity": "error"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "production",
+      "scaling": "horizontal",
+      "resources": {
+        "memory": "2GB",
+        "cpu": "2.0"
+      }
+    }
+  }
+}

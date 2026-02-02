@@ -1,0 +1,286 @@
+{
+  "agent": {
+    "name": "Intelligent Parameter Optimizer",
+    "description": "AI-powered parameter optimization using historical performance analysis, constraint validation, and simulation. Based on ParameterOptimizerAgent with performance tracking.",
+    "type": "optimization",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 7,
+    "system_prompt": {
+      "role": "You are an Intelligent Parameter Optimizer specialized in finding optimal trading scanner parameters through AI-assisted analysis and historical performance validation.",
+      "responsibilities": [
+        "Design optimization strategies for scanner parameters",
+        "Execute optimization using multiple algorithms (grid, random, Bayesian)",
+        "Validate parameters against historical performance data",
+        "Ensure all constraints are respected during optimization",
+        "Analyze parameter sensitivity and robustness",
+        "Prevent overfitting through out-of-sample validation",
+        "Track performance metrics throughout optimization process",
+        "Generate actionable optimization reports"
+      ],
+      "guidelines": [
+        "Always validate constraints before running optimization",
+        "Use train/test split to prevent overfitting",
+        "Start with coarse grid search, then fine-tune with advanced methods",
+        "Monitor multiple objectives (returns, drawdown, Sharpe, win rate)",
+        "Test parameter stability across different time periods",
+        "Prefer simpler parameter sets when performance is similar",
+        "Include realistic transaction costs in validation",
+        "Stop optimization if performance degrades (early stopping)",
+        "Document optimization process and decisions"
+      ],
+      "constraints": [
+        "Maximum 7 tools - focus on optimization capabilities",
+        "Do not create scanners (use existing Scan Creator agent output)",
+        "Do not run full backtests (delegate to Backtest Generator agent)",
+        "Always validate on out-of-sample data",
+        "Respect all parameter constraints during optimization",
+        "Limit optimization iterations to prevent overfitting",
+        "Ensure computational efficiency (avoid excessive iterations)"
+      ]
+    },
+    "tools": [
+      {
+        "name": "design_optimization_strategy",
+        "description": "Designs the optimization approach based on scanner characteristics",
+        "type": "planning",
+        "parameters": {
+          "scanner_config": {
+            "type": "dict",
+            "description": "Scanner configuration to optimize",
+            "required": true
+          },
+          "optimization_goals": {
+            "type": "list",
+            "description": "Goals: ['maximize_sharpe', 'maximize_win_rate', 'minimize_drawdown']",
+            "required": true
+          },
+          "constraints": {
+            "type": "dict",
+            "description": "Parameter constraints (min, max, type)",
+            "required": true
+          },
+          "algorithm": {
+            "type": "str",
+            "description": "Optimization algorithm: 'grid', 'random', 'bayesian', 'genetic'",
+            "required": false,
+            "default": "bayesian"
+          }
+        }
+      },
+      {
+        "name": "execute_optimization",
+        "description": "Runs the optimization process using specified algorithm",
+        "type": "calculation",
+        "parameters": {
+          "scanner_config": {
+            "type": "dict",
+            "description": "Base scanner configuration",
+            "required": true
+          },
+          "parameter_space": {
+            "type": "dict",
+            "description": "Parameters to optimize with ranges",
+            "required": true
+          },
+          "strategy": {
+            "type": "dict",
+            "description": "Optimization strategy configuration",
+            "required": true
+          },
+          "max_iterations": {
+            "type": "int",
+            "description": "Maximum optimization iterations",
+            "required": false,
+            "default": 100
+          },
+          "early_stopping": {
+            "type": "bool",
+            "description": "Enable early stopping if performance degrades",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "validate_constraints",
+        "description": "Validates that parameters satisfy all constraints",
+        "type": "validation",
+        "parameters": {
+          "parameters": {
+            "type": "dict",
+            "description": "Parameter set to validate",
+            "required": true
+          },
+          "constraints": {
+            "type": "dict",
+            "description": "Constraint definitions",
+            "required": true
+          },
+          "strict_mode": {
+            "type": "bool",
+            "description": "Enable strict constraint checking",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "simulate_performance",
+        "description": "Simulates scanner performance with given parameters on historical data",
+        "type": "calculation",
+        "parameters": {
+          "scanner_config": {
+            "type": "dict",
+            "description": "Scanner configuration with parameters",
+            "required": true
+          },
+          "historical_data": {
+            "type": "dict",
+            "description": "Historical market data for simulation",
+            "required": true
+          },
+          "date_range": {
+            "type": "dict",
+            "description": "Date range for simulation",
+            "required": true
+          },
+          "include_transaction_costs": {
+            "type": "bool",
+            "description": "Include realistic transaction costs",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "validate_out_of_sample",
+        "description": "Validates optimized parameters on out-of-sample data",
+        "type": "validation",
+        "parameters": {
+          "optimized_params": {
+            "type": "dict",
+            "description": "Optimized parameter set",
+            "required": true
+          },
+          "validation_data": {
+            "type": "dict",
+            "description": "Out-of-sample validation data",
+            "required": true
+          },
+          "performance_threshold": {
+            "type": "float",
+            "description": "Minimum acceptable performance on validation data",
+            "required": false,
+            "default": 0.8
+          }
+        }
+      },
+      {
+        "name": "analyze_sensitivity",
+        "description": "Analyzes how sensitive performance is to parameter changes",
+        "type": "analysis",
+        "parameters": {
+          "base_params": {
+            "type": "dict",
+            "description": "Base optimized parameter set",
+            "required": true
+          },
+          "sensitivity_ranges": {
+            "type": "dict",
+            "description": "Ranges to test for each parameter",
+            "required": true
+          },
+          "metric": {
+            "type": "str",
+            "description": "Performance metric to analyze",
+            "required": false,
+            "default": "sharpe_ratio"
+          }
+        }
+      },
+      {
+        "name": "generate_optimization_report",
+        "description": "Creates comprehensive optimization report with recommendations",
+        "type": "creation",
+        "parameters": {
+          "optimization_results": {
+            "type": "dict",
+            "description": "Complete optimization results",
+            "required": true
+          },
+          "include_validation": {
+            "type": "bool",
+            "description": "Include out-of-sample validation results",
+            "required": false,
+            "default": true
+          },
+          "include_sensitivity": {
+            "type": "bool",
+            "description": "Include parameter sensitivity analysis",
+            "required": false,
+            "default": true
+          },
+          "recommendation_level": {
+            "type": "str",
+            "description": "Detail level: 'brief', 'standard', 'detailed'",
+            "required": false,
+            "default": "detailed"
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "optimization_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "strict",
+      "quality_threshold": 0.85,
+      "rules": [
+        {
+          "name": "constraint_satisfaction",
+          "description": "All parameters must satisfy constraints",
+          "severity": "error"
+        },
+        {
+          "name": "out_of_sample_validation",
+          "description": "Must validate on out-of-sample data",
+          "severity": "error"
+        },
+        {
+          "name": "overfitting_check",
+          "description": "Check for overfitting (train vs test gap)",
+          "severity": "error"
+        },
+        {
+          "name": "parameter_stability",
+          "description": "Parameters should be stable across time periods",
+          "severity": "warning"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "production",
+      "scaling": "horizontal",
+      "resources": {
+        "memory": "2GB",
+        "cpu": "2.0"
+      }
+    }
+  }
+}

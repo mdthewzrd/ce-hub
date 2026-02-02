@@ -1,0 +1,2395 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CE-Hub Platform - Enhanced Depth Design</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;510;590;600;680;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- React & React Flow for Workflow Map -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/reactflow@11.10.1/dist/umd/index.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/reactflow@11.10.1/dist/style.css">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        /* ========================================================================
+           ENHANCED DEPTH SYSTEM - Linear & Vercel Inspired
+           ======================================================================== */
+
+        :root {
+            /* =================================================================
+               BACKGROUND ELEVATION SYSTEM - 7 Levels (Linear-inspired)
+               Creates visual hierarchy through depth
+               ================================================================= */
+            --bg-level-0: #08090a;      /* Deepest - main canvas */
+            --bg-level-1: #0f1011;      /* Slightly elevated */
+            --bg-level-2: #141516;      /* Cards, panels */
+            --bg-level-3: #191a1b;      /* Hover states */
+            --bg-level-4: #1c1c1f;      /* Secondary surfaces */
+            --bg-level-5: #232326;      /* Tertiary surfaces */
+            --bg-level-6: #28282c;      /* Highest elevation */
+
+            /* Semantic Backgrounds */
+            --bg-primary: #08090a;
+            --bg-secondary: #1c1c1f;
+            --bg-tertiary: #232326;
+            --bg-elevated: #28282c;
+            --bg-overlay: rgba(0, 0, 0, 0.9);
+
+            /* =================================================================
+               TEXT HIERARCHY - 5 Levels with proper contrast
+               ================================================================= */
+            --text-primary: #f7f8f8;      /* Main text - nearly white */
+            --text-secondary: #d0d6e0;    /* Headings, emphasis */
+            --text-tertiary: #8a8f98;     /* Secondary text */
+            --text-quaternary: #62666d;   /* Disabled, subtle */
+            --text-muted: #4a4f55;        /* Faint text */
+
+            /* =================================================================
+               BORDER SYSTEM - Semi-transparent for depth
+               Key insight: Use white overlays at 5-8% opacity
+               ================================================================= */
+            --border-level-1: rgba(255, 255, 255, 0.05);   /* Subtlest - hairline */
+            --border-level-2: rgba(255, 255, 255, 0.08);   /* Standard borders */
+            --border-level-3: rgba(255, 255, 255, 0.12);   /* Medium borders */
+            --border-level-4: rgba(255, 255, 255, 0.15);   /* Strong borders */
+
+            /* Solid borders for defined elements */
+            --border-primary: #23252a;
+            --border-secondary: #34343a;
+            --border-tertiary: #3e3e44;
+
+            /* =================================================================
+               SHADOW SYSTEM - Layered for ambient + direct light
+               Always use at least 2 layers for realistic depth
+               ================================================================= */
+            --shadow-tiny:
+                0px 0px 0px transparent,
+                0px 0px 0px transparent;
+
+            --shadow-low:
+                0px 2px 4px rgba(0, 0, 0, 0.1),
+                0px 0px 0px rgba(255, 255, 255, 0.05);
+
+            --shadow-medium:
+                0px 4px 24px rgba(0, 0, 0, 0.2),
+                0px 0px 0px 1px rgba(255, 255, 255, 0.05);
+
+            --shadow-high:
+                0px 7px 32px rgba(0, 0, 0, 0.35),
+                0px 0px 0px 1px rgba(255, 255, 255, 0.08);
+
+            --shadow-elevated:
+                0px 12px 48px rgba(0, 0, 0, 0.4),
+                0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+
+            /* =================================================================
+               ACCENT COLORS - Minimal and purposeful
+               ================================================================= */
+            --accent-primary: #7170ff;
+            --accent-hover: #828fff;
+            --accent-success: #4cb782;
+            --accent-warning: #f2c94c;
+            --accent-error: #eb5757;
+            --accent-info: #4ea7fc;
+
+            /* Status indicators */
+            --status-active: #4cb782;
+            --status-paused: #f2c94c;
+            --status-pending: #62666d;
+
+            /* =================================================================
+               TYPOGRAPHY - Inter Variable with precise weights
+               ================================================================= */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'SF Mono', 'Menlo', monospace;
+
+            /* Font Weights - Variable font precision */
+            --font-light: 300;
+            --font-normal: 400;
+            --font-medium: 510;
+            --font-semibold: 590;
+            --font-bold: 680;
+
+            /* Letter Spacing - Negative for headings (Linear pattern) */
+            --tracking-tight: -0.022em;
+            --tracking-normal: -0.011em;
+            --tracking-wide: 0;
+
+            /* =================================================================
+               BORDER RADIUS - Subtle, not pill-shaped
+               ================================================================= */
+            --radius-sm: 4px;
+            --radius-md: 6px;
+            --radius-lg: 8px;
+            --radius-xl: 12px;
+            --radius-2xl: 16px;
+
+            /* =================================================================
+               SPACING - Consistent rhythm
+               ================================================================= */
+            --space-xs: 0.25rem;   /* 4px */
+            --space-sm: 0.5rem;    /* 8px */
+            --space-md: 0.75rem;   /* 12px */
+            --space-lg: 1rem;      /* 16px */
+            --space-xl: 1.5rem;    /* 24px */
+            --space-2xl: 2rem;     /* 32px */
+
+            /* =================================================================
+               ANIMATIONS - Quick, natural transitions
+               ================================================================= */
+            --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+            --duration-fast: 0.1s;
+            --duration-normal: 0.15s;
+            --duration-slow: 0.25s;
+        }
+
+        /* ========================================================================
+           BASE STYLES - Override everything for consistency
+           ======================================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-level-0) !important;
+            color: var(--text-primary) !important;
+            line-height: 1.6;
+            letter-spacing: var(--tracking-normal);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========================================================================
+           COMPONENT DEPTH CLASSES
+           Apply proper elevation hierarchy
+           ======================================================================== */
+
+        /* Level 0 - Deepest (main canvas) */
+        .depth-0 {
+            background-color: var(--bg-level-0);
+        }
+
+        /* Level 1 - Slightly elevated */
+        .depth-1 {
+            background-color: var(--bg-level-1);
+            border: 1px solid var(--border-level-1);
+        }
+
+        /* Level 2 - Cards and panels */
+        .depth-2 {
+            background-color: var(--bg-level-2);
+            border: 1px solid var(--border-level-1);
+            box-shadow: var(--shadow-tiny);
+        }
+
+        /* Level 3 - Hover states, elevated cards */
+        .depth-3 {
+            background-color: var(--bg-level-3);
+            border: 1px solid var(--border-level-2);
+            box-shadow: var(--shadow-low);
+        }
+
+        /* Level 4 - Secondary surfaces */
+        .depth-4 {
+            background-color: var(--bg-level-4);
+            border: 1px solid var(--border-level-2);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Level 5 - Tertiary surfaces */
+        .depth-5 {
+            background-color: var(--bg-level-5);
+            border: 1px solid var(--border-level-3);
+            box-shadow: var(--shadow-high);
+        }
+
+        /* Level 6 - Highest elevation (modals, popovers) */
+        .depth-6 {
+            background-color: var(--bg-level-6);
+            border: 1px solid var(--border-level-4);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        /* Hover state transitions */
+        .depth-2:hover,
+        .depth-3:hover {
+            background-color: var(--bg-level-3);
+            border-color: var(--border-level-2);
+            box-shadow: var(--shadow-medium);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        /* ========================================================================
+           TYPOGRAPHY STYLES
+           ======================================================================== */
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: var(--font-semibold);
+            letter-spacing: var(--tracking-tight) !important;
+            color: var(--text-primary) !important;
+        }
+
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.5rem; }
+        h3 { font-size: 1.25rem; }
+        h4 { font-size: 1.125rem; }
+        h5 { font-size: 1rem; }
+        h6 { font-size: 0.875rem; }
+
+        .text-primary { color: var(--text-primary) !important; }
+        .text-secondary { color: var(--text-secondary) !important; }
+        .text-tertiary { color: var(--text-tertiary) !important; }
+        .text-muted { color: var(--text-muted) !important; }
+
+        .font-medium { font-weight: var(--font-medium) !important; }
+        .font-semibold { font-weight: var(--font-semibold) !important; }
+        .font-bold { font-weight: var(--font-bold) !important; }
+
+        /* ========================================================================
+           SPECIALIZED BORDER TREATMENTS
+           ======================================================================== */
+
+        .hairline-border {
+            border: 0.5px solid var(--border-level-1);
+        }
+
+        .subtle-border {
+            border: 1px solid var(--border-level-1);
+        }
+
+        .standard-border {
+            border: 1px solid var(--border-level-2);
+        }
+
+        /* Dividers and separators */
+        .divider-h {
+            height: 1px;
+            background: var(--border-level-1);
+        }
+
+        .divider-v {
+            width: 1px;
+            background: var(--border-level-1);
+        }
+
+        /* ========================================================================
+           BUTTON STYLES WITH DEPTH
+           ======================================================================== */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-lg);
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            font-weight: var(--font-medium);
+            letter-spacing: var(--tracking-normal);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-level-1);
+            background-color: var(--bg-level-2);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all var(--duration-fast) var(--ease-out);
+            box-shadow: var(--shadow-tiny);
+        }
+
+        .btn:hover {
+            background-color: var(--bg-level-3);
+            border-color: var(--border-level-2);
+            box-shadow: var(--shadow-low);
+        }
+
+        .btn:active {
+            background-color: var(--bg-level-4);
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        /* ========================================================================
+           SCROLLBAR STYLING
+           ======================================================================== */
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ========================================================================
+           FOCUS STATES
+           ======================================================================== */
+
+        :focus-visible {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+
+        /* ========================================================================
+           UTILITY CLASSES
+           ======================================================================== */
+
+        .glass-effect {
+            background: rgba(8, 9, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-level-2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-active { background-color: var(--status-active); }
+        .status-paused { background-color: var(--status-paused); }
+        .status-pending { background-color: var(--status-pending); }
+
+        /* Progress bar with depth */
+        .progress-bar {
+            height: 4px;
+            background-color: var(--bg-level-5);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--accent-primary);
+            transition: width var(--duration-slow) var(--ease-out);
+        }
+
+        /* Badge styling */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            background-color: var(--bg-level-3);
+            color: var(--text-tertiary);
+        }
+
+        /* File explorer hover states */
+        .hover\:bg-level-2:hover {
+            background-color: var(--bg-level-2);
+        }
+
+        /* Folder arrow transition */
+        .folder-arrow {
+            transition: transform 150ms ease-out;
+        }
+
+        /* ========================================================================
+           LAYOUT SPECIFIC STYLES
+           ======================================================================== */
+
+        .sidebar-section {
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--border-level-1);
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: var(--space-sm) var(--space-md);
+            margin-bottom: var(--space-xs);
+            border-radius: var(--radius-md);
+            color: var(--text-tertiary);
+            transition: all var(--duration-fast) var(--ease-out);
+        }
+
+        .nav-item:hover {
+            background-color: var(--bg-level-2);
+            color: var(--text-secondary);
+        }
+
+        .nav-item.active {
+            background-color: var(--bg-level-3);
+            color: var(--text-primary);
+            border: 1px solid var(--border-level-1);
+        }
+
+        /* Task card with depth */
+        .task-card {
+            background-color: var(--bg-level-2);
+            border: 1px solid var(--border-level-1);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-md);
+            box-shadow: var(--shadow-tiny);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .task-card:hover {
+            background-color: var(--bg-level-3);
+            border-color: var(--border-level-2);
+            box-shadow: var(--shadow-low);
+        }
+
+        /* Chat message bubbles */
+        .chat-message {
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-md);
+            max-width: 85%;
+        }
+
+        .chat-message.user {
+            background-color: var(--bg-level-3);
+            border: 1px solid var(--border-level-2);
+            margin-left: auto;
+        }
+
+        .chat-message.ai {
+            background-color: var(--bg-level-2);
+            border: 1px solid var(--border-level-1);
+        }
+
+        /* Terminal styling */
+        .terminal {
+            background-color: var(--bg-level-1);
+            border: 1px solid var(--border-level-1);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        /* Mini map visualization */
+        .mini-map {
+            background-color: var(--bg-level-2);
+            border: 1px solid var(--border-level-1);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            overflow: hidden;
+        }
+
+        .workflow-node {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--space-xs) var(--space-sm);
+            background-color: var(--bg-level-3);
+            border: 1px solid var(--border-level-1);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+        }
+
+        .workflow-node.active {
+            background-color: var(--bg-level-4);
+            border-color: var(--border-level-2);
+            color: var(--text-secondary);
+        }
+
+        .workflow-node.completed {
+            background-color: var(--bg-level-5);
+            border-color: var(--accent-success);
+            color: var(--accent-success);
+        }
+
+        /* Animated pulse for active state */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* ========================================================================
+           REACT FLOW WORKFLOW STYLES
+           ======================================================================== */
+        #reactflow-workflow-container {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--bg-level-1);
+            border: 1px solid var(--border-level-1);
+        }
+
+        .react-flow-workflow-stats {
+            display: flex;
+            gap: 16px;
+            padding: 12px 16px;
+            background-color: var(--bg-level-2);
+            border-top: 1px solid var(--border-level-1);
+            font-size: 12px;
+        }
+
+        .react-flow-workflow-stats div {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-tertiary);
+        }
+
+        .react-flow-workflow-stats .value {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* React Flow Custom Node Styles */
+        .workflow-phase-node {
+            padding: 12px;
+            border-radius: 8px;
+            background: var(--bg-level-2);
+            border: 1px solid var(--border-primary);
+            min-width: 220px;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .workflow-phase-node.completed {
+            border-color: var(--accent-success);
+            background: linear-gradient(135deg, rgba(76, 183, 130, 0.1) 0%, var(--bg-level-2) 100%);
+        }
+
+        .workflow-phase-node.active {
+            border-color: var(--accent-primary);
+            border-width: 2px;
+            box-shadow: 0 0 20px rgba(113, 112, 255, 0.2);
+            background: linear-gradient(135deg, rgba(113, 112, 255, 0.1) 0%, var(--bg-level-2) 100%);
+        }
+
+        .workflow-phase-node.pending {
+            border-style: dashed;
+            border-color: var(--border-secondary);
+            opacity: 0.7;
+        }
+
+        .workflow-phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .workflow-phase-badge {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--bg-level-3);
+            color: var(--text-tertiary);
+        }
+
+        .workflow-phase-node.completed .workflow-phase-badge {
+            background: rgba(76, 183, 130, 0.2);
+            color: var(--accent-success);
+        }
+
+        .workflow-phase-node.active .workflow-phase-badge {
+            background: rgba(113, 112, 255, 0.2);
+            color: var(--accent-primary);
+        }
+
+        .workflow-task-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 0;
+            color: var(--text-tertiary);
+            font-size: 11px;
+        }
+
+        .workflow-task-item.done {
+            color: var(--accent-success);
+        }
+
+        .workflow-task-item.active {
+            color: var(--accent-primary);
+        }
+
+        .workflow-you-are-here {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(113, 112, 255, 0.2);
+            color: var(--accent-primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .workflow-you-are-here .pulse-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            animation: workflow-pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes workflow-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .workflow-edge-active .react-flow__edge-path {
+            stroke: var(--accent-primary);
+            stroke-dasharray: 5 5;
+            animation: workflow-dash 1s linear infinite;
+        }
+
+        .workflow-edge-completed .react-flow__edge-path {
+            stroke: var(--accent-success);
+        }
+
+        @keyframes workflow-dash {
+            to { stroke-dashoffset: -10; }
+        }
+
+        .react-flow__minimap {
+            background-color: var(--bg-level-1) !important;
+            border: 1px solid var(--border-level-1) !important;
+        }
+
+        .react-flow__controls {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .react-flow__controls-button {
+            background-color: var(--bg-level-2) !important;
+            border-color: var(--border-level-2) !important;
+            fill: var(--text-tertiary) !important;
+        }
+
+        .react-flow__controls-button:hover {
+            background-color: var(--bg-level-3) !important;
+            border-color: var(--border-level-3) !important;
+        }
+
+        .react-flow__background {
+            background-color: var(--bg-level-1) !important;
+        }
+    </style>
+</head>
+<body class="overflow-hidden">
+    <!-- Top Navigation -->
+    <header class="glass-effect fixed top-0 left-0 right-0 z-50 h-14 flex items-center px-4">
+        <div class="flex items-center justify-between w-full">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg depth-2 flex items-center justify-center">
+                    <i data-lucide="box" class="w-5 h-5 text-primary"></i>
+                </div>
+                <span class="font-semibold text-lg tracking-tight">CE-Hub</span>
+            </div>
+
+            <!-- Main Navigation -->
+            <nav class="flex items-center space-x-1">
+                <button class="nav-item active">
+                    <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i>
+                    Dashboard
+                </button>
+                <button class="nav-item">
+                    <i data-lucide="map" class="w-4 h-4 mr-2"></i>
+                    Map
+                </button>
+                <button class="nav-item">
+                    <i data-lucide="play-circle" class="w-4 h-4 mr-2"></i>
+                    Working
+                </button>
+                <button class="nav-item">
+                    <i data-lucide="settings" class="w-4 h-4 mr-2"></i>
+                    Settings
+                </button>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="flex items-center space-x-3">
+                <button class="btn">
+                    <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                    New Project
+                </button>
+                <div class="w-8 h-8 rounded-full depth-2 flex items-center justify-center">
+                    <span class="text-sm font-medium">M</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="flex h-screen pt-14">
+        <!-- Left Sidebar - DEEPEST -->
+        <aside class="w-60 depth-0 flex flex-col" style="background-color: var(--bg-level-0);">
+            <!-- Projects Section -->
+            <div class="sidebar-section">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-medium text-secondary">Projects</h3>
+                    <button class="text-tertiary hover:text-secondary transition-colors">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Project List -->
+                <div class="space-y-1">
+                    <div class="rounded-lg p-3 cursor-pointer hover:scale-[1.02] transition-all" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                        <div class="flex items-center justify-between mb-1">
+                            <div class="flex items-center space-x-2">
+                                <div class="status-dot status-active"></div>
+                                <span class="text-sm font-medium">CE-Hub Platform</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2 ml-4">
+                            <span class="badge text-xs">RESEARCH</span>
+                            <span class="text-xs text-tertiary">3 tasks left</span>
+                        </div>
+                    </div>
+
+                    <div class="rounded-lg p-3 cursor-pointer hover:scale-[1.02] transition-all" style="background-color: var(--bg-level-1); border: 1px solid transparent;">
+                        <div class="flex items-center justify-between mb-1">
+                            <div class="flex items-center space-x-2">
+                                <div class="status-dot status-paused"></div>
+                                <span class="text-sm font-medium text-secondary">Trading Scanner</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2 ml-4">
+                            <span class="badge text-xs">PLAN</span>
+                            <span class="text-xs text-muted">Starting phase</span>
+                        </div>
+                    </div>
+
+                    <div class="rounded-lg p-3 cursor-pointer hover:scale-[1.02] transition-all" style="background-color: var(--bg-level-1); border: 1px solid transparent;">
+                        <div class="flex items-center justify-between mb-1">
+                            <div class="flex items-center space-x-2">
+                                <div class="status-dot status-active"></div>
+                                <span class="text-sm font-medium text-secondary">Mobile Bridge</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2 ml-4">
+                            <span class="badge text-xs">PRODUCE</span>
+                            <span class="text-xs text-tertiary">1 task left</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tasks Section -->
+            <div class="sidebar-section flex-1">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-medium text-secondary">Current Tasks</h3>
+                    <span class="text-xs text-tertiary">2 of 4</span>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="flex items-start space-x-2 text-sm">
+                        <i data-lucide="check-circle" class="w-4 h-4 text-success mt-0.5"></i>
+                        <span class="text-tertiary line-through">Explore AG-UI patterns</span>
+                    </div>
+                    <div class="flex items-start space-x-2 text-sm">
+                        <i data-lucide="check-circle" class="w-4 h-4 text-success mt-0.5"></i>
+                        <span class="text-tertiary line-through">Analyze React Flow</span>
+                    </div>
+                    <div class="flex items-start space-x-2 text-sm">
+                        <i data-lucide="circle" class="w-4 h-4 text-accent-primary mt-0.5 pulse"></i>
+                        <span class="text-secondary">Synthesize findings</span>
+                    </div>
+                    <div class="flex items-start space-x-2 text-sm">
+                        <i data-lucide="circle" class="w-4 h-4 text-muted mt-0.5"></i>
+                        <span class="text-tertiary">Document workflow</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File Explorer Section -->
+            <div class="sidebar-section flex-1 overflow-y-auto">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-medium text-secondary">File Explorer</h3>
+                    <div class="flex items-center space-x-1">
+                        <button class="p-1 rounded text-tertiary hover:text-secondary transition-colors" title="Collapse All">
+                            <i data-lucide="minus" class="w-3 h-3"></i>
+                        </button>
+                        <button class="p-1 rounded text-tertiary hover:text-secondary transition-colors" title="Expand All">
+                            <i data-lucide="plus" class="w-3 h-3"></i>
+                        </button>
+                        <button class="p-1 rounded text-tertiary hover:text-secondary transition-colors" title="New File">
+                            <i data-lucide="file-plus" class="w-3 h-3"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- File Tree -->
+                <div class="space-y-0.5 text-sm">
+                    <!-- Root folder -->
+                    <div class="file-tree-item">
+                        <div class="flex items-center space-x-2 px-2 py-1.5 rounded cursor-pointer hover:bg-level-2 transition-colors" onclick="toggleFolder(this)">
+                            <i data-lucide="chevron-right" class="w-3 h-3 transition-transform folder-arrow"></i>
+                            <i data-lucide="folder" class="w-4 h-4 text-accent-primary"></i>
+                            <span class="text-tertiary">ce-hub-platform</span>
+                        </div>
+                        <div class="folder-content hidden ml-4">
+                            <!-- src folder -->
+                            <div class="file-tree-item">
+                                <div class="flex items-center space-x-2 px-2 py-1.5 rounded cursor-pointer hover:bg-level-2 transition-colors" onclick="toggleFolder(this)">
+                                    <i data-lucide="chevron-right" class="w-3 h-3 transition-transform folder-arrow"></i>
+                                    <i data-lucide="folder" class="w-4 h-4 text-accent-primary"></i>
+                                    <span class="text-tertiary">src</span>
+                                </div>
+                                <div class="folder-content hidden ml-4">
+                                    <!-- app folder -->
+                                    <div class="file-tree-item">
+                                        <div class="flex items-center space-x-2 px-2 py-1.5 rounded cursor-pointer hover:bg-level-2 transition-colors" onclick="toggleFolder(this)">
+                                            <i data-lucide="chevron-right" class="w-3 h-3 transition-transform folder-arrow"></i>
+                                            <i data-lucide="folder" class="w-4 h-4 text-accent-warning"></i>
+                                            <span class="text-tertiary">app</span>
+                                        </div>
+                                        <div class="folder-content hidden ml-4">
+                                            <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                                <span class="w-3"></span>
+                                                <i data-lucide="layout" class="w-4 h-4 text-blue-400"></i>
+                                                <span class="text-tertiary">layout.tsx</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                                <span class="w-3"></span>
+                                                <i data-lucide="file" class="w-4 h-4 text-tertiary"></i>
+                                                <span class="text-tertiary">page.tsx</span>
+                                            </div>
+                                            <div class="file-tree-item">
+                                                <div class="flex items-center space-x-2 px-2 py-1.5 rounded cursor-pointer hover:bg-level-2 transition-colors" onclick="toggleFolder(this)">
+                                                    <i data-lucide="chevron-right" class="w-3 h-3 transition-transform folder-arrow"></i>
+                                                    <i data-lucide="folder" class="w-4 h-4 text-accent-warning"></i>
+                                                    <span class="text-tertiary">api</span>
+                                                </div>
+                                                <div class="folder-content hidden ml-4">
+                                                    <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                                        <span class="w-3"></span>
+                                                        <i data-lucide="globe" class="w-4 h-4 text-green-400"></i>
+                                                        <span class="text-tertiary">copilotkit</span>
+                                                    </div>
+                                                    <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                                        <span class="w-3"></span>
+                                                        <i data-lucide="file-code" class="w-4 h-4 text-purple-400"></i>
+                                                        <span class="text-tertiary">systematic</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="file-tree-item">
+                                                <div class="flex items-center space-x-2 px-2 py-1.5 rounded cursor-pointer hover:bg-level-2 transition-colors" onclick="toggleFolder(this)">
+                                                    <i data-lucide="chevron-right" class="w-3 h-3 transition-transform folder-arrow"></i>
+                                                    <i data-lucide="folder" class="w-4 h-4 text-accent-warning"></i>
+                                                    <span class="text-tertiary">components</span>
+                                                </div>
+                                                <div class="folder-content hidden ml-4">
+                                                    <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                                        <span class="w-3"></span>
+                                                        <i data-lucide="bot" class="w-4 h-4 text-accent-primary"></i>
+                                                        <span class="text-tertiary">GuardianAgent.tsx</span>
+                                                    </div>
+                                                    <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                                        <span class="w-3"></span>
+                                                        <i data-lucide="workflow" class="w-4 h-4 text-accent-info"></i>
+                                                        <span class="text-tertiary">WorkflowCanvas.tsx</span>
+                                                    </div>
+                                                    <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                                        <span class="w-3"></span>
+                                                        <i data-lucide="message-square" class="w-4 h-4 text-accent-success"></i>
+                                                        <span class="text-tertiary">AgentChat.tsx</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- lib folder -->
+                                    <div class="file-tree-item">
+                                        <div class="flex items-center space-x-2 px-2 py-1.5 rounded cursor-pointer hover:bg-level-2 transition-colors" onclick="toggleFolder(this)">
+                                            <i data-lucide="chevron-right" class="w-3 h-3 transition-transform folder-arrow"></i>
+                                            <i data-lucide="folder" class="w-4 h-4 text-accent-primary"></i>
+                                            <span class="text-tertiary">lib</span>
+                                        </div>
+                                        <div class="folder-content hidden ml-4">
+                                            <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                                <span class="w-3"></span>
+                                                <i data-lucide="file-json" class="w-4 h-4 text-yellow-400"></i>
+                                                <span class="text-tertiary">store.ts</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                                <span class="w-3"></span>
+                                                <i data-lucide="file-code" class="w-4 h-4 text-purple-400"></i>
+                                                <span class="text-tertiary">utils.ts</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- styles folder -->
+                                    <div class="file-tree-item">
+                                        <div class="flex items-center space-x-2 px-2 py-1.5 rounded cursor-pointer hover:bg-level-2 transition-colors" onclick="toggleFolder(this)">
+                                            <i data-lucide="chevron-right" class="w-3 h-3 transition-transform folder-arrow"></i>
+                                            <i data-lucide="folder" class="w-4 h-4 text-pink-400"></i>
+                                            <span class="text-tertiary">styles</span>
+                                        </div>
+                                        <div class="folder-content hidden ml-4">
+                                            <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                                <span class="w-3"></span>
+                                                <i data-lucide="file" class="w-4 h-4 text-blue-400"></i>
+                                                <span class="text-tertiary">globals.css</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Root files in src -->
+                                    <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                        <span class="w-3"></span>
+                                        <i data-lucide="file-json" class="w-4 h-4 text-green-400"></i>
+                                        <span class="text-tertiary">package.json</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- public folder -->
+                            <div class="file-tree-item">
+                                <div class="flex items-center space-x-2 px-2 py-1.5 rounded cursor-pointer hover:bg-level-2 transition-colors" onclick="toggleFolder(this)">
+                                    <i data-lucide="chevron-right" class="w-3 h-3 transition-transform folder-arrow"></i>
+                                    <i data-lucide="folder" class="w-4 h-4 text-tertiary"></i>
+                                    <span class="text-tertiary">public</span>
+                                </div>
+                                <div class="folder-content hidden ml-4">
+                                    <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                        <span class="w-3"></span>
+                                        <i data-lucide="image" class="w-4 h-4 text-purple-400"></i>
+                                        <span class="text-tertiary">favicon.ico</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Root config files -->
+                            <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                <span class="w-3"></span>
+                                <i data-lucide="file-check" class="w-4 h-4 text-green-400"></i>
+                                <span class="text-tertiary">package.json</span>
+                            </div>
+                            <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                <span class="w-3"></span>
+                                <i data-lucide="file-text" class="w-4 h-4 text-blue-400"></i>
+                                <span class="text-tertiary">README.md</span>
+                            </div>
+                            <div class="flex items-center space-x-2 px-2 py-1 rounded cursor-pointer hover:bg-level-2 transition-colors">
+                                <span class="w-3"></span>
+                                <i data-lucide="settings" class="w-4 h-4 text-tertiary"></i>
+                                <span class="text-tertiary">tsconfig.json</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Mini Map -->
+            <div class="sidebar-section">
+                <h3 class="text-sm font-medium text-secondary mb-3">Workflow Map</h3>
+                <div class="mini-map">
+                    <div class="flex items-center space-x-2 text-xs">
+                        <span class="workflow-node completed">PLAN</span>
+                        <i data-lucide="arrow-right" class="w-3 h-3 text-muted"></i>
+                        <span class="workflow-node completed">RESEARCH</span>
+                        <i data-lucide="arrow-right" class="w-3 h-3 text-muted"></i>
+                        <span class="workflow-node active pulse">PRODUCE</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center Content Area - SLIGHTLY ELEVATED -->
+        <main class="flex-1 overflow-auto" style="background-color: var(--bg-level-1);">
+            <div class="p-6 max-w-7xl mx-auto">
+                <!-- Page Header -->
+                <div class="mb-6">
+                    <h1 class="text-2xl font-semibold mb-2">Working Space</h1>
+                    <p class="project-title text-tertiary">CE-Hub Platform Development</p>
+                </div>
+
+                <!-- Project Tabs - DEPTH HIERARCHY -->
+                <div class="rounded-t-xl mb-4" style="background-color: var(--bg-level-2); border-bottom: 1px solid var(--border-level-2);">
+                    <div class="flex items-center space-x-1 px-2">
+                        <button onclick="switchProject(this, 'ce-hub')" class="project-tab px-4 py-3 text-sm font-medium border-b-2" style="border-color: var(--accent-primary); color: var(--text-primary);">
+                            CE-Hub Platform
+                        </button>
+                        <button onclick="switchProject(this, 'trading-scanner')" class="project-tab px-4 py-3 text-sm font-medium hover:text-secondary transition-colors" style="color: var(--text-tertiary);">
+                            Trading Scanner
+                        </button>
+                        <button onclick="switchProject(this, 'mobile-bridge')" class="project-tab px-4 py-3 text-sm font-medium hover:text-secondary transition-colors" style="color: var(--text-tertiary);">
+                            Mobile Bridge
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Content Tabs (VS Code-style) -->
+                <div class="rounded-xl overflow-hidden mb-4" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                    <!-- Primary Navigation Tabs -->
+                    <div class="flex items-center" style="background-color: var(--bg-level-1); border-bottom: 1px solid var(--border-level-1);">
+                        <div class="flex items-center space-x-0">
+                            <button onclick="switchContentTab(this, 'file-preview')" class="content-tab px-4 py-2 text-sm font-medium border-b-2 transition-all flex items-center space-x-2" style="border-color: var(--accent-primary); color: var(--text-primary); background-color: var(--bg-level-2);">
+                                <i data-lucide="file-code" class="w-4 h-4"></i>
+                                <span>File Preview</span>
+                            </button>
+                            <button onclick="switchContentTab(this, 'dashboard')" class="content-tab px-4 py-2 text-sm font-medium border-b-2 transition-all flex items-center space-x-2 hover:transition-all" style="border-color: transparent; color: var(--text-tertiary);">
+                                <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                                <span>Dashboard</span>
+                            </button>
+                            <button onclick="switchContentTab(this, 'workflow-map')" class="content-tab px-4 py-2 text-sm font-medium border-b-2 transition-all flex items-center space-x-2 hover:transition-all" style="border-color: transparent; color: var(--text-tertiary);">
+                                <i data-lucide="map" class="w-4 h-4"></i>
+                                <span>Workflow Map</span>
+                            </button>
+                            <button onclick="switchContentTab(this, 'agent-health')" class="content-tab px-4 py-2 text-sm font-medium border-b-2 transition-all flex items-center space-x-2 hover:transition-all" style="border-color: transparent; color: var(--text-tertiary);">
+                                <i data-lucide="bot" class="w-4 h-4"></i>
+                                <span>Agent Health</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tab Content Area -->
+                    <div class="p-4" style="background-color: var(--bg-level-1);">
+                        <!-- FILE PREVIEW TAB CONTENT -->
+                        <div id="file-preview" class="tab-content">
+                        <div class="flex gap-4">
+                            <!-- File Preview Section (Left 2/3) -->
+                            <div class="flex-1 rounded-lg overflow-hidden" style="border: 1px solid var(--border-level-1);">
+                                <!-- File Sub-Tabs -->
+                                <div class="flex items-center" style="background-color: var(--bg-level-2); border-bottom: 1px solid var(--border-level-1);">
+                                    <div class="flex items-center space-x-1 px-2 flex-1 overflow-x-auto">
+                                        <div class="flex items-center space-x-2 px-3 py-1.5 rounded-t text-xs cursor-pointer group" style="background-color: var(--bg-level-3); border-top: 2px solid var(--accent-primary);">
+                                            <i data-lucide="type" class="w-3.5 h-3.5" style="color: var(--accent-info);"></i>
+                                            <span class="text-xs font-medium" style="color: var(--text-secondary);">WorkflowCanvas.tsx</span>
+                                            <span class="px-1.5 py-0.5 rounded text-xs" style="background-color: var(--accent-error); color: white;">●</span>
+                                            <button class="opacity-0 group-hover:opacity-100 hover:transition-all">
+                                                <i data-lucide="x" class="w-3 h-3" style="color: var(--text-tertiary);"></i>
+                                            </button>
+                                        </div>
+                                        <div class="flex items-center space-x-2 px-3 py-1.5 rounded-t text-xs cursor-pointer group hover:transition-all" style="background-color: transparent;">
+                                            <i data-lucide="bot" class="w-3.5 h-3.5" style="color: var(--accent-primary);"></i>
+                                            <span class="text-xs" style="color: var(--text-tertiary);">GuardianAgent.tsx</span>
+                                            <button class="opacity-0 group-hover:opacity-100 hover:transition-all">
+                                                <i data-lucide="x" class="w-3 h-3" style="color: var(--text-tertiary);"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2 px-3 py-1">
+                                        <button class="p-1.5 rounded hover:transition-all" title="AI Refactor">
+                                            <i data-lucide="sparkles" class="w-3.5 h-3.5" style="color: var(--accent-primary);"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Code Preview -->
+                                <div class="p-4 font-mono text-sm overflow-x-auto" style="background-color: var(--bg-level-0); line-height: 1.6;">
+                                    <div class="flex">
+                                        <div class="pr-4 text-right select-none" style="color: var(--text-muted); min-width: 40px;">
+                                            <div>40</div>
+                                            <div>41</div>
+                                            <div>42</div>
+                                            <div>43</div>
+                                            <div>44</div>
+                                            <div style="background-color: rgba(113, 112, 255, 0.1);">45</div>
+                                            <div>46</div>
+                                            <div>47</div>
+                                            <div>48</div>
+                                            <div>49</div>
+                                            <div>50</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div><span style="color: var(--text-muted);">import</span> { Agent } <span style="color: var(--text-muted);">from</span> <span style="color: var(--accent-success);">'@copilotkit/react-core'</span>;</div>
+                                            <div><span style="color: var(--text-muted);">import</span> { useWorkflowStore } <span style="color: var(--text-muted);">from</span> <span style="color: var(--accent-success);">'@/stores/workflow'</span>;</div>
+                                            <div></div>
+                                            <div><span style="color: var(--accent-primary);">export function</span> <span style="color: var(--accent-warning);">WorkflowCanvas</span>() {</div>
+                                            <div>  <span style="color: var(--accent-primary);">const</span> { currentPhase, nodes } = <span style="color: var(--accent-warning);">useWorkflowStore</span>();</div>
+                                            <div>  </div>
+                                            <div>  <span style="color: var(--accent-primary);">return</span> (</div>
+                                            <div style="background-color: rgba(113, 112, 255, 0.1);">    &lt;<span style="color: var(--accent-error);">div</span> <span style="color: var(--accent-warning);">className</span>=<span style="color: var(--accent-success);">"workflow-container"</span>&gt;</div>
+                                            <div>      &lt;<span style="color: var(--accent-error);">ReactFlow</span></div>
+                                            <div>        nodes={nodes}</div>
+                                            <div>        <span style="color: var(--accent-warning);">currentPhase</span>={currentPhase}</div>
+                                            <div>      /&gt;</div>
+                                            <div>    &lt;/<span style="color: var(--accent-error);">div</span>&gt;</div>
+                                            <div>  );</div>
+                                            <div>}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Side Info Panel (1/3) -->
+                            <div class="w-64 space-y-3">
+                                <!-- Quick Stats Mini -->
+                                <div class="rounded-lg p-3" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-xs font-medium" style="color: var(--text-secondary);">Quick Stats</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div class="text-center p-2 rounded" style="background-color: var(--bg-level-3);">
+                                            <div class="text-lg font-semibold" style="color: var(--text-primary);">3</div>
+                                            <div class="text-xs" style="color: var(--text-tertiary);">Active</div>
+                                        </div>
+                                        <div class="text-center p-2 rounded" style="background-color: var(--bg-level-3);">
+                                            <div class="text-lg font-semibold" style="color: var(--accent-success);">7</div>
+                                            <div class="text-xs" style="color: var(--text-tertiary);">Done</div>
+                                        </div>
+                                        <div class="text-center p-2 rounded" style="background-color: var(--bg-level-3);">
+                                            <div class="text-lg font-semibold" style="color: var(--accent-warning);">68%</div>
+                                            <div class="text-xs" style="color: var(--text-tertiary);">Sprint</div>
+                                        </div>
+                                        <div class="text-center p-2 rounded" style="background-color: var(--bg-level-3);">
+                                            <div class="text-lg font-semibold" style="color: var(--accent-info);">4</div>
+                                            <div class="text-xs" style="color: var(--text-tertiary);">Agents</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Recent Activity Mini -->
+                                <div class="rounded-lg p-3" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-xs font-medium" style="color: var(--text-secondary);">Recent Activity</span>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-2 text-xs">
+                                            <div class="w-6 h-6 rounded-full flex items-center justify-center" style="background-color: rgba(113, 112, 255, 0.1);">
+                                                <i data-lucide="bot" class="w-3 h-3" style="color: var(--accent-primary);"></i>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div style="color: var(--text-secondary);">Guardian evaluated</div>
+                                                <div style="color: var(--text-muted);">2m ago</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center space-x-2 text-xs">
+                                            <div class="w-6 h-6 rounded-full flex items-center justify-center" style="background-color: rgba(76, 183, 130, 0.1);">
+                                                <i data-lucide="code" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div style="color: var(--text-secondary);">Builder created</div>
+                                                <div style="color: var(--text-muted);">5m ago</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center space-x-2 text-xs">
+                                            <div class="w-6 h-6 rounded-full flex items-center justify-center" style="background-color: rgba(78, 167, 252, 0.1);">
+                                                <i data-lucide="file-text" class="w-3 h-3" style="color: var(--accent-info);"></i>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div style="color: var(--text-secondary);">Docs updated</div>
+                                                <div style="color: var(--text-muted);">12m ago</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <!-- End of file-preview -->
+
+                        <!-- DASHBOARD TAB CONTENT -->
+                        <div id="dashboard" class="tab-content" style="display: none;">
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <!-- Quick Stats Cards -->
+                                <div class="rounded-lg p-4" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span class="text-xs font-medium" style="color: var(--text-tertiary);">Total Tasks</span>
+                                        <i data-lucide="list-todo" class="w-4 h-4" style="color: var(--text-muted);"></i>
+                                    </div>
+                                    <div class="text-3xl font-bold mb-1" style="color: var(--text-primary);">24</div>
+                                    <div class="flex items-center space-x-2 text-xs">
+                                        <span style="color: var(--accent-success);">↑ 12%</span>
+                                        <span style="color: var(--text-muted);">vs last week</span>
+                                    </div>
+                                </div>
+                                <div class="rounded-lg p-4" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span class="text-xs font-medium" style="color: var(--text-tertiary);">Completed</span>
+                                        <i data-lucide="check-circle-2" class="w-4 h-4" style="color: var(--accent-success);"></i>
+                                    </div>
+                                    <div class="text-3xl font-bold mb-1" style="color: var(--accent-success);">18</div>
+                                    <div class="flex items-center space-x-2 text-xs">
+                                        <span style="color: var(--accent-success);">75% rate</span>
+                                        <span style="color: var(--text-muted);">on track</span>
+                                    </div>
+                                </div>
+                                <div class="rounded-lg p-4" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span class="text-xs font-medium" style="color: var(--text-tertiary);">Active Agents</span>
+                                        <i data-lucide="bot" class="w-4 h-4" style="color: var(--accent-primary);"></i>
+                                    </div>
+                                    <div class="text-3xl font-bold mb-1" style="color: var(--text-primary);">3</div>
+                                    <div class="flex items-center space-x-2 text-xs">
+                                        <span class="w-2 h-2 rounded-full" style="background-color: var(--accent-success);"></span>
+                                        <span style="color: var(--text-muted);">all healthy</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sprint Progress & Activity -->
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div class="rounded-lg p-4" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h4 class="text-sm font-medium" style="color: var(--text-secondary);">Sprint 3 Progress</h4>
+                                        <span class="text-xs px-2 py-1 rounded" style="background-color: var(--bg-level-3); color: var(--text-tertiary);">Day 5 of 7</span>
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="flex justify-between text-xs mb-2">
+                                            <span style="color: var(--text-tertiary);">Overall Completion</span>
+                                            <span class="font-medium" style="color: var(--text-secondary);">75%</span>
+                                        </div>
+                                        <div class="h-3 rounded-full overflow-hidden" style="background-color: var(--bg-level-3);">
+                                            <div class="h-full rounded-full transition-all duration-500" style="width: 75%; background: linear-gradient(90deg, var(--accent-success), var(--accent-primary));"></div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center justify-between text-xs">
+                                            <span style="color: var(--text-tertiary);">PLAN</span>
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-24 h-1.5 rounded-full overflow-hidden" style="background-color: var(--bg-level-3);">
+                                                    <div class="h-full rounded-full" style="width: 100%; background-color: var(--accent-success);"></div>
+                                                </div>
+                                                <span style="color: var(--accent-success);">100%</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between text-xs">
+                                            <span style="color: var(--text-tertiary);">RESEARCH</span>
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-24 h-1.5 rounded-full overflow-hidden" style="background-color: var(--bg-level-3);">
+                                                    <div class="h-full rounded-full" style="width: 100%; background-color: var(--accent-success);"></div>
+                                                </div>
+                                                <span style="color: var(--accent-success);">100%</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between text-xs">
+                                            <span style="color: var(--text-tertiary);">PRODUCE</span>
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-24 h-1.5 rounded-full overflow-hidden" style="background-color: var(--bg-level-3);">
+                                                    <div class="h-full rounded-full animate-pulse" style="width: 37%; background-color: var(--accent-primary);"></div>
+                                                </div>
+                                                <span style="color: var(--accent-primary);">37%</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between text-xs">
+                                            <span style="color: var(--text-tertiary);">INGEST</span>
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-24 h-1.5 rounded-full overflow-hidden" style="background-color: var(--bg-level-3);">
+                                                    <div class="h-full rounded-full" style="width: 0%; background-color: var(--text-muted);"></div>
+                                                </div>
+                                                <span style="color: var(--text-muted);">0%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rounded-lg p-4" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h4 class="text-sm font-medium" style="color: var(--text-secondary);">Recent Activity</h4>
+                                        <button class="text-xs" style="color: var(--accent-primary);">View All</button>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: rgba(113, 112, 255, 0.1);">
+                                                <i data-lucide="code" class="w-4 h-4" style="color: var(--accent-primary);"></i>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <div class="text-xs font-medium" style="color: var(--text-secondary);">Builder Agent completed "Create Nodes"</div>
+                                                <div class="text-xs mt-0.5" style="color: var(--text-muted);">2 minutes ago</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: rgba(76, 183, 130, 0.1);">
+                                                <i data-lucide="check" class="w-4 h-4" style="color: var(--accent-success);"></i>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <div class="text-xs font-medium" style="color: var(--text-secondary);">RESEARCH phase completed</div>
+                                                <div class="text-xs mt-0.5" style="color: var(--text-muted);">15 minutes ago</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: rgba(235, 87, 87, 0.1);">
+                                                <i data-lucide="alert-triangle" class="w-4 h-4" style="color: var(--accent-error);"></i>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <div class="text-xs font-medium" style="color: var(--text-secondary);">Guardian warning: Detour detected</div>
+                                                <div class="text-xs mt-0.5" style="color: var(--text-muted);">1 hour ago</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Task Breakdown -->
+                            <div class="rounded-lg p-4" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-sm font-medium" style="color: var(--text-secondary);">Task Breakdown by Priority</h4>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="text-xs px-2 py-1 rounded" style="background-color: var(--accent-primary); color: white;">All</button>
+                                        <button class="text-xs px-2 py-1 rounded" style="background-color: var(--bg-level-3); color: var(--text-tertiary);">High</button>
+                                        <button class="text-xs px-2 py-1 rounded" style="background-color: var(--bg-level-3); color: var(--text-tertiary);">Medium</button>
+                                        <button class="text-xs px-2 py-1 rounded" style="background-color: var(--bg-level-3); color: var(--text-tertiary);">Low</button>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between p-3 rounded" style="background-color: var(--bg-level-3);">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="w-2 h-2 rounded-full" style="background-color: var(--accent-error);"></span>
+                                            <span class="text-xs font-medium" style="color: var(--text-secondary);">Build Guardian Agent UI</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xs px-2 py-0.5 rounded" style="background-color: rgba(113, 112, 255, 0.2); color: var(--accent-primary);">In Progress</span>
+                                            <span class="text-xs" style="color: var(--text-muted);">PRODUCE</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 rounded" style="background-color: var(--bg-level-3);">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="w-2 h-2 rounded-full" style="background-color: var(--accent-error);"></span>
+                                            <span class="text-xs font-medium" style="color: var(--text-secondary);">Implement Agent Coordination</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xs px-2 py-0.5 rounded" style="background-color: var(--bg-level-4); color: var(--text-muted);">Pending</span>
+                                            <span class="text-xs" style="color: var(--text-muted);">PRODUCE</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 rounded" style="background-color: var(--bg-level-3);">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="w-2 h-2 rounded-full" style="background-color: var(--accent-warning);"></span>
+                                            <span class="text-xs font-medium" style="color: var(--text-secondary);">Add State Transitions</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xs px-2 py-0.5 rounded" style="background-color: var(--bg-level-4); color: var(--text-muted);">Pending</span>
+                                            <span class="text-xs" style="color: var(--text-muted);">PRODUCE</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 rounded" style="background-color: var(--bg-level-3);">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="w-2 h-2 rounded-full" style="background-color: var(--accent-info);"></span>
+                                            <span class="text-xs font-medium" style="color: var(--text-secondary);">Write Component Tests</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xs px-2 py-0.5 rounded" style="background-color: var(--bg-level-4); color: var(--text-muted);">Pending</span>
+                                            <span class="text-xs" style="color: var(--text-muted);">PRODUCE</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WORKFLOW MAP TAB CONTENT -->
+                        <div id="workflow-map" class="tab-content" style="display: none;">
+                            <div class="rounded-lg" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                <!-- Minimal Header Bar -->
+                                <div class="flex items-center justify-between px-4 py-2" style="border-bottom: 1px solid var(--border-level-1);">
+                                    <span class="text-xs font-medium" style="color: var(--text-tertiary);">PRODUCE • 55%</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button id="overview-btn" onclick="toggleWorkflowView('overview')" class="px-3 py-1 rounded text-xs flex items-center space-x-1 transition-all" style="background-color: var(--bg-level-4); color: var(--text-primary);">
+                                            <i data-lucide="layout-grid" class="w-3 h-3"></i>
+                                            <span>Overview</span>
+                                        </button>
+                                        <button id="detail-btn" onclick="toggleWorkflowView('detail')" class="px-3 py-1 rounded text-xs flex items-center space-x-1 transition-all" style="color: var(--text-tertiary);">
+                                            <i data-lucide="list" class="w-3 h-3"></i>
+                                            <span>Detail</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- OVERVIEW MODE - Professional Workflow Diagram -->
+                                <div id="overview-mode" class="workflow-view">
+                                    <div style="min-height: 450px; padding: 16px;">
+                                        <!-- Workflow Canvas -->
+                                        <div class="relative" style="background: var(--bg-level-2); border-radius: 8px; border: 1px solid var(--border-primary);">
+                                            <!-- SVG Connection Lines -->
+                                            <svg class="absolute inset-0 w-full h-full" style="pointer-events: none;">
+                                                <defs>
+                                                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                                        <polygon points="0 0, 10 3, 0 6" fill="var(--border-level-3)" />
+                                                    </marker>
+                                                    <marker id="arrowhead-active" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                                        <polygon points="0 0, 10 3, 0 6" fill="var(--accent-primary)" />
+                                                    </marker>
+                                                </defs>
+
+                                                <!-- Phase connection lines -->
+                                                <line x1="180" y1="80" x2="220" y2="80" stroke="var(--accent-success)" stroke-width="2" marker-end="url(#arrowhead-active)" />
+                                                <line x1="380" y1="80" x2="420" y2="80" stroke="var(--accent-success)" stroke-width="2" marker-end="url(#arrowhead-active)" />
+                                                <line x1="580" y1="80" x2="620" y2="80" stroke="var(--border-level-3)" stroke-width="2" stroke-dasharray="4" marker-end="url(#arrowhead)" />
+
+                                                <!-- Task connection lines under phases -->
+                                                <!-- PLAN tasks -->
+                                                <line x1="60" y1="130" x2="60" y2="155" stroke="var(--border-level-3)" stroke-width="1" />
+                                                <line x1="120" y1="130" x2="120" y2="155" stroke="var(--border-level-3)" stroke-width="1" />
+                                                <line x1="180" y1="130" x2="180" y2="155" stroke="var(--border-level-3)" stroke-width="1" />
+                                                <line x1="240" y1="130" x2="240" y2="155" stroke="var(--border-level-3)" stroke-width="1" />
+
+                                                <!-- RESEARCH tasks -->
+                                                <line x1="260" y1="130" x2="260" y2="155" stroke="var(--border-level-3)" stroke-width="1" />
+                                                <line x1="320" y1="130" x2="320" y2="155" stroke="var(--border-level-3)" stroke-width="1" />
+                                                <line x1="380" y1="130" x2="380" y2="155" stroke="var(--border-level-3)" stroke-width="1" />
+                                                <line x1="440" y1="130" x2="440" y2="155" stroke="var(--border-level-3)" stroke-width="1" />
+
+                                                <!-- PRODUCE tasks -->
+                                                <line x1="460" y1="130" x2="460" y2="155" stroke="var(--border-level-3)" stroke-width="1" />
+                                                <line x1="520" y1="130" x2="520" y2="155" stroke="var(--border-level-3)" stroke-width="1" />
+                                                <line x1="580" y1="130" x2="580" y2="155" stroke="var(--border-level-3)" stroke-width="1" />
+                                                <line x1="640" y1="130" x2="640" y2="155" stroke="var(--border-level-3)" stroke-width="1" />
+                                            </svg>
+
+                                            <!-- Workflow Nodes Container -->
+                                            <div class="relative p-4">
+
+                                                <!-- ========== PLAN PHASE ========== -->
+                                                <div class="absolute" style="left: 20px; top: 20px;">
+                                                    <div class="p-3 rounded-lg" style="background: var(--bg-level-3); border: 1px solid var(--accent-success); width: 240px;">
+                                                        <div class="flex items-center justify-between mb-2">
+                                                            <div class="flex items-center space-x-2">
+                                                                <i data-lucide="check-circle" class="w-4 h-4" style="color: var(--accent-success);"></i>
+                                                                <span class="text-sm font-semibold" style="color: var(--text-secondary);">PLAN</span>
+                                                            </div>
+                                                            <span class="text-xs px-2 py-0.5 rounded" style="background: rgba(76, 183, 130, 0.2); color: var(--accent-success);">Complete</span>
+                                                        </div>
+                                                        <div class="space-y-1">
+                                                            <div class="flex items-center space-x-2 text-xs p-1.5 rounded" style="background: var(--bg-level-2);">
+                                                                <i data-lucide="check" class="w-3 h-3 flex-shrink-0" style="color: var(--accent-success);"></i>
+                                                                <span style="color: var(--text-tertiary);">Define scope</span>
+                                                            </div>
+                                                            <div class="flex items-center space-x-2 text-xs p-1.5 rounded" style="background: var(--bg-level-2);">
+                                                                <i data-lucide="check" class="w-3 h-3 flex-shrink-0" style="color: var(--accent-success);"></i>
+                                                                <span style="color: var(--text-tertiary);">Set goals</span>
+                                                            </div>
+                                                            <div class="flex items-center space-x-2 text-xs p-1.5 rounded" style="background: var(--bg-level-2);">
+                                                                <i data-lucide="check" class="w-3 h-3 flex-shrink-0" style="color: var(--accent-success);"></i>
+                                                                <span style="color: var(--text-tertiary);">Create plan</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ========== RESEARCH PHASE ========== -->
+                                                <div class="absolute" style="left: 290px; top: 20px;">
+                                                    <div class="p-3 rounded-lg" style="background: var(--bg-level-3); border: 1px solid var(--accent-success); width: 240px;">
+                                                        <div class="flex items-center justify-between mb-2">
+                                                            <div class="flex items-center space-x-2">
+                                                                <i data-lucide="check-circle" class="w-4 h-4" style="color: var(--accent-success);"></i>
+                                                                <span class="text-sm font-semibold" style="color: var(--text-secondary);">RESEARCH</span>
+                                                            </div>
+                                                            <span class="text-xs px-2 py-0.5 rounded" style="background: rgba(76, 183, 130, 0.2); color: var(--accent-success);">Complete</span>
+                                                        </div>
+                                                        <div class="space-y-1">
+                                                            <div class="flex items-center space-x-2 text-xs p-1.5 rounded" style="background: var(--bg-level-2);">
+                                                                <i data-lucide="check" class="w-3 h-3 flex-shrink-0" style="color: var(--accent-success);"></i>
+                                                                <span style="color: var(--text-tertiary);">AG-UI patterns</span>
+                                                            </div>
+                                                            <div class="flex items-center space-x-2 text-xs p-1.5 rounded" style="background: var(--bg-level-2);">
+                                                                <i data-lucide="check" class="w-3 h-3 flex-shrink-0" style="color: var(--accent-success);"></i>
+                                                                <span style="color: var(--text-tertiary);">React Flow</span>
+                                                            </div>
+                                                            <div class="flex items-center space-x-2 text-xs p-1.5 rounded" style="background: var(--bg-level-2);">
+                                                                <i data-lucide="check" class="w-3 h-3 flex-shrink-0" style="color: var(--accent-success);"></i>
+                                                                <span style="color: var(--text-tertiary);">CopilotKit</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ========== PRODUCE PHASE (ACTIVE) ========== -->
+                                                <div class="absolute" style="left: 560px; top: 20px;">
+                                                    <div class="p-3 rounded-lg relative" style="background: var(--bg-level-3); border: 2px solid var(--accent-primary); width: 240px; box-shadow: 0 0 30px rgba(113, 112, 255, 0.15);">
+                                                        <!-- Active indicator glow -->
+                                                        <div class="absolute -inset-0.5 rounded-lg opacity-20" style="background: var(--accent-primary); filter: blur(8px);"></div>
+
+                                                        <div class="relative">
+                                                            <div class="flex items-center justify-between mb-2">
+                                                                <div class="flex items-center space-x-2">
+                                                                    <i data-lucide="circle-dot" class="w-4 h-4" style="color: var(--accent-primary);"></i>
+                                                                    <span class="text-sm font-semibold" style="color: var(--text-primary);">PRODUCE</span>
+                                                                </div>
+                                                                <span class="text-xs px-2 py-0.5 rounded" style="background: rgba(113, 112, 255, 0.2); color: var(--accent-primary);">In Progress</span>
+                                                            </div>
+                                                            <div class="space-y-1">
+                                                                <div class="flex items-center space-x-2 text-xs p-1.5 rounded" style="background: var(--bg-level-2);">
+                                                                    <i data-lucide="check" class="w-3 h-3 flex-shrink-0" style="color: var(--accent-success);"></i>
+                                                                    <span style="color: var(--text-tertiary);">State transitions</span>
+                                                                </div>
+                                                                <div class="flex items-center space-x-2 text-xs p-1.5 rounded relative" style="background: rgba(113, 112, 255, 0.1); border: 1px solid rgba(113, 112, 255, 0.3);">
+                                                                    <div class="w-2 h-2 rounded-full animate-pulse mr-1" style="background: var(--accent-primary);"></div>
+                                                                    <span style="color: var(--text-secondary);">Guardian UI</span>
+                                                                    <span class="ml-auto text-xs" style="color: var(--accent-primary);">→</span>
+                                                                </div>
+                                                                <div class="flex items-center space-x-2 text-xs p-1.5 rounded opacity-50">
+                                                                    <div class="w-3 h-3 rounded border border-dashed flex-shrink-0" style="border-color: var(--border-level-3);"></div>
+                                                                    <span style="color: var(--text-muted);">Phase gates</span>
+                                                                </div>
+                                                                <div class="flex items-center space-x-2 text-xs p-1.5 rounded opacity-50">
+                                                                    <div class="w-3 h-3 rounded border border-dashed flex-shrink-0" style="border-color: var(--border-level-3);"></div>
+                                                                    <span style="color: var(--text-muted);">+4 more</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ========== INGEST PHASE (PENDING) ========== -->
+                                                <div class="absolute" style="left: 830px; top: 20px;">
+                                                    <div class="p-3 rounded-lg opacity-40" style="background: var(--bg-level-3); border: 1px dashed var(--border-level-3); width: 180px;">
+                                                        <div class="flex items-center justify-between mb-2">
+                                                            <div class="flex items-center space-x-2">
+                                                                <i data-lucide="lock" class="w-4 h-4" style="color: var(--text-muted);"></i>
+                                                                <span class="text-sm font-semibold" style="color: var(--text-muted);">INGEST</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-xs" style="color: var(--text-muted);">Locked - Complete PRODUCE first</div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ========== YOU ARE HERE INDICATOR ========== -->
+                                                <div class="absolute" style="left: 680px; top: -15px;">
+                                                    <div class="flex items-center space-x-2 px-3 py-1 rounded-full" style="background: var(--accent-primary); box-shadow: 0 0 20px rgba(113, 112, 255, 0.4);">
+                                                        <div class="w-2 h-2 rounded-full bg-white animate-pulse"></div>
+                                                        <span class="text-xs font-semibold" style="color: white;">YOU ARE HERE</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ========== PROGRESS FOOTER ========== -->
+                                                <div class="absolute" style="left: 20px; bottom: 20px; right: 20px;">
+                                                    <div class="p-4 rounded-lg" style="background: var(--bg-level-1); border: 1px solid var(--border-primary);">
+                                                        <div class="flex items-center justify-between">
+                                                            <div class="flex items-center space-x-8">
+                                                                <div>
+                                                                    <div class="text-xs mb-1" style="color: var(--text-tertiary);">Overall Progress</div>
+                                                                    <div class="text-xl font-bold" style="color: var(--text-primary);">55%</div>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="text-xs mb-1" style="color: var(--text-tertiary);">Tasks</div>
+                                                                    <div class="text-xl font-bold" style="color: var(--text-primary);">15<span style="color: var(--text-muted);">/27</span></div>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="text-xs mb-1" style="color: var(--text-tertiary);">Current Task</div>
+                                                                    <div class="text-sm font-medium" style="color: var(--accent-primary);">Building Guardian UI</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex items-center space-x-2">
+                                                                <div class="w-32 h-2 rounded-full" style="background: var(--bg-level-3);">
+                                                                    <div class="h-full rounded-full" style="width: 55%; background: linear-gradient(90deg, var(--accent-success) 0%, var(--accent-primary) 100%);"></div>
+                                                                </div>
+                                                                <span class="text-xs" style="color: var(--text-tertiary);">12 remaining</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Quick Navigation -->
+                                        <div class="mt-4 flex items-center justify-between">
+                                            <div class="flex items-center space-x-2 text-xs" style="color: var(--text-tertiary);">
+                                                <i data-lucide="mouse-pointer-click" class="w-3 h-3"></i>
+                                                <span>Click tasks in Detail view to manage</span>
+                                            </div>
+                                            <div class="flex items-center space-x-3">
+                                                <div class="flex items-center space-x-1 text-xs">
+                                                    <div class="w-3 h-3 rounded" style="background: var(--accent-success);"></div>
+                                                    <span style="color: var(--text-tertiary);">Done</span>
+                                                </div>
+                                                <div class="flex items-center space-x-1 text-xs">
+                                                    <div class="w-3 h-3 rounded" style="background: var(--accent-primary);"></div>
+                                                    <span style="color: var(--text-tertiary);">Active</span>
+                                                </div>
+                                                <div class="flex items-center space-x-1 text-xs">
+                                                    <div class="w-3 h-3 rounded border border-dashed" style="border-color: var(--border-level-3);"></div>
+                                                    <span style="color: var(--text-tertiary);">Pending</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- DETAIL MODE - Current View -->
+                                <div id="detail-mode" class="workflow-view" style="display: none;">
+                                    <!-- Phase Flow -->
+                                <div class="space-y-4">
+                                    <!-- PLAN Phase - COMPLETED -->
+                                    <div class="rounded-lg p-4" style="background-color: var(--bg-level-3); border: 2px solid var(--accent-success);">
+                                        <div class="flex items-start justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: rgba(76, 183, 130, 0.2);">
+                                                    <i data-lucide="check" class="w-4 h-4" style="color: var(--accent-success);"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium" style="color: var(--text-secondary);">PLAN</div>
+                                                    <div class="text-xs" style="color: var(--text-muted);">Completed in 2 days</div>
+                                                </div>
+                                            </div>
+                                            <span class="px-2 py-1 rounded text-xs" style="background-color: rgba(76, 183, 130, 0.2); color: var(--accent-success);">Done</span>
+                                        </div>
+                                        <div class="grid grid-cols-4 gap-2 ml-11">
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="check-circle" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                                    <span style="color: var(--text-secondary);">Define Scope</span>
+                                                </div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="check-circle" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                                    <span style="color: var(--text-secondary);">Set Goals</span>
+                                                </div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="check-circle" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                                    <span style="color: var(--text-secondary);">Create PRD</span>
+                                                </div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="check-circle" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                                    <span style="color: var(--text-secondary);">Team Setup</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Arrow -->
+                                    <div class="flex justify-center">
+                                        <i data-lucide="chevron-down" class="w-5 h-5" style="color: var(--accent-success);"></i>
+                                    </div>
+
+                                    <!-- RESEARCH Phase - COMPLETED -->
+                                    <div class="rounded-lg p-4" style="background-color: var(--bg-level-3); border: 2px solid var(--accent-success);">
+                                        <div class="flex items-start justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: rgba(76, 183, 130, 0.2);">
+                                                    <i data-lucide="search" class="w-4 h-4" style="color: var(--accent-success);"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium" style="color: var(--text-secondary);">RESEARCH</div>
+                                                    <div class="text-xs" style="color: var(--text-muted);">Completed in 3 days • 4 artifacts created</div>
+                                                </div>
+                                            </div>
+                                            <span class="px-2 py-1 rounded text-xs" style="background-color: rgba(76, 183, 130, 0.2); color: var(--accent-success);">Done</span>
+                                        </div>
+                                        <div class="grid grid-cols-4 gap-2 ml-11">
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="check-circle" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                                    <span style="color: var(--text-secondary);">Explore AG-UI</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">12m 33s</div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="check-circle" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                                    <span style="color: var(--text-secondary);">Analyze Flow</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">8m 12s</div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="check-circle" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                                    <span style="color: var(--text-secondary);">Synthesize</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">3m 22s</div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="check-circle" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                                    <span style="color: var(--text-secondary);">Document</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">15m 45s</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Arrow -->
+                                    <div class="flex justify-center">
+                                        <i data-lucide="chevron-down" class="w-5 h-5" style="color: var(--accent-primary);"></i>
+                                    </div>
+
+                                    <!-- PRODUCE Phase - IN PROGRESS -->
+                                    <div class="rounded-lg p-4" style="background-color: var(--bg-level-3); border: 2px solid var(--accent-primary); box-shadow: 0 0 20px rgba(113, 112, 255, 0.1);">
+                                        <div class="flex items-start justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-8 h-8 rounded-full flex items-center justify-center animate-pulse" style="background-color: rgba(113, 112, 255, 0.2);">
+                                                    <i data-lucide="code-2" class="w-4 h-4" style="color: var(--accent-primary);"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium" style="color: var(--text-secondary);">PRODUCE</div>
+                                                    <div class="text-xs" style="color: var(--accent-primary);">← You are here • 3 of 8 tasks complete</div>
+                                                </div>
+                                            </div>
+                                            <span class="px-2 py-1 rounded text-xs flex items-center space-x-1" style="background-color: rgba(113, 112, 255, 0.2); color: var(--accent-primary);">
+                                                <span class="w-1.5 h-1.5 rounded-full animate-ping" style="background-color: var(--accent-primary);"></span>
+                                                Active
+                                            </span>
+                                        </div>
+                                        <div class="grid grid-cols-4 gap-2 ml-11">
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="check-circle" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                                    <span style="color: var(--text-secondary);">Setup Project</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">5m 12s</div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="check-circle" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                                    <span style="color: var(--text-secondary);">Build Canvas</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">25m 33s</div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="check-circle" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                                    <span style="color: var(--text-secondary);">Create Nodes</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">18m 45s</div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2); border: 1px solid var(--accent-primary);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="loader" class="w-3 h-3 animate-spin" style="color: var(--accent-primary);"></i>
+                                                    <span style="color: var(--text-secondary);">Guardian UI</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--accent-primary);">In progress...</div>
+                                                <div class="h-1 rounded-full mt-2 overflow-hidden" style="background-color: var(--bg-level-3);">
+                                                    <div class="h-full rounded-full animate-pulse" style="width: 60%; background-color: var(--accent-primary);"></div>
+                                                </div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2); opacity: 0.5;">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="circle" class="w-3 h-3" style="color: var(--text-muted);"></i>
+                                                    <span style="color: var(--text-tertiary);">Agent Logic</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">Pending</div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2); opacity: 0.5;">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="circle" class="w-3 h-3" style="color: var(--text-muted);"></i>
+                                                    <span style="color: var(--text-tertiary);">State Transitions</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">Pending</div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2); opacity: 0.5;">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="circle" class="w-3 h-3" style="color: var(--text-muted);"></i>
+                                                    <span style="color: var(--text-tertiary);">Integration</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">Pending</div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2); opacity: 0.5;">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="circle" class="w-3 h-3" style="color: var(--text-muted);"></i>
+                                                    <span style="color: var(--text-tertiary);">Testing</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">Pending</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Arrow -->
+                                    <div class="flex justify-center">
+                                        <i data-lucide="chevron-down" class="w-5 h-5" style="color: var(--text-muted);"></i>
+                                    </div>
+
+                                    <!-- INGEST Phase - PENDING -->
+                                    <div class="rounded-lg p-4" style="background-color: var(--bg-level-3); border: 1px solid var(--border-level-2); opacity: 0.6;">
+                                        <div class="flex items-start justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: var(--bg-level-4);">
+                                                    <i data-lucide="database" class="w-4 h-4" style="color: var(--text-muted);"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-medium" style="color: var(--text-tertiary);">INGEST</div>
+                                                    <div class="text-xs" style="color: var(--text-muted);">Blocked by PRODUCE completion</div>
+                                                </div>
+                                            </div>
+                                            <span class="px-2 py-1 rounded text-xs" style="background-color: var(--bg-level-4); color: var(--text-muted);">Locked</span>
+                                        </div>
+                                        <div class="grid grid-cols-4 gap-2 ml-11">
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="lock" class="w-3 h-3" style="color: var(--text-muted);"></i>
+                                                    <span style="color: var(--text-tertiary);">Validate Artifacts</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">~2h est.</div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="lock" class="w-3 h-3" style="color: var(--text-muted);"></i>
+                                                    <span style="color: var(--text-tertiary);">Tag Metadata</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">~1h est.</div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="lock" class="w-3 h-3" style="color: var(--text-muted);"></i>
+                                                    <span style="color: var(--text-tertiary);">Upload to Archon</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">~30m est.</div>
+                                            </div>
+                                            <div class="p-2 rounded text-xs" style="background-color: var(--bg-level-2);">
+                                                <div class="flex items-center space-x-1 mb-1">
+                                                    <i data-lucide="lock" class="w-3 h-3" style="color: var(--text-muted);"></i>
+                                                    <span style="color: var(--text-tertiary);">Verify Ingestion</span>
+                                                </div>
+                                                <div class="text-xs mt-1" style="color: var(--text-muted);">~15m est.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Progress Summary -->
+                                <div class="mt-6 p-4 rounded-lg" style="background-color: var(--bg-level-4); border: 1px solid var(--border-level-1);">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span class="text-xs font-medium" style="color: var(--text-secondary);">Overall Progress</span>
+                                        <span class="text-xs" style="color: var(--text-tertiary);">15 of 27 tasks</span>
+                                    </div>
+                                    <div class="h-2 rounded-full overflow-hidden" style="background-color: var(--bg-level-5);">
+                                        <div class="h-full rounded-full flex items-center justify-end pr-2" style="width: 55%; background: linear-gradient(90deg, var(--accent-success), var(--accent-primary));">
+                                            <span class="text-xs font-medium" style="color: white;">55%</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-2 text-xs" style="color: var(--text-tertiary);">
+                                        <span>ETA: 2-3 days</span>
+                                        <span>Started 5 days ago</span>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AGENT HEALTH TAB CONTENT -->
+                        <div id="agent-health" class="tab-content" style="display: none;">
+                            <div class="grid grid-cols-1 gap-4">
+                                <!-- Guardian Agent Card -->
+                                <div class="rounded-lg overflow-hidden" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                    <div class="p-4 border-b" style="border-color: var(--border-level-1);">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background-color: rgba(113, 112, 255, 0.15);">
+                                                    <i data-lucide="shield" class="w-5 h-5" style="color: var(--accent-primary);"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-semibold" style="color: var(--text-secondary);">Guardian Agent</div>
+                                                    <div class="text-xs" style="color: var(--text-muted);">Workflow Orchestrator</div>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="w-2 h-2 rounded-full animate-pulse" style="background-color: var(--accent-success);"></span>
+                                                <span class="text-xs px-2 py-1 rounded" style="background-color: rgba(76, 183, 130, 0.15); color: var(--accent-success);">Active</span>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-4 gap-4 p-4">
+                                            <div>
+                                                <div class="text-xs mb-1" style="color: var(--text-tertiary);">Uptime</div>
+                                                <div class="text-sm font-medium" style="color: var(--text-secondary);">2h 34m</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-xs mb-1" style="color: var(--text-tertiary);">Evaluations</div>
+                                                <div class="text-sm font-medium" style="color: var(--text-secondary);">47</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-xs mb-1" style="color: var(--text-tertiary);">Warnings</div>
+                                                <div class="text-sm font-medium" style="color: var(--accent-warning);">3</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-xs mb-1" style="color: var(--text-tertiary);">Success Rate</div>
+                                                <div class="text-sm font-medium" style="color: var(--accent-success);">94%</div>
+                                            </div>
+                                        </div>
+                                        <div class="px-4 pb-4">
+                                            <div class="text-xs mb-2" style="color: var(--text-tertiary);">Recent Activity</div>
+                                            <div class="space-y-2">
+                                                <div class="flex items-center justify-between text-xs p-2 rounded" style="background-color: var(--bg-level-3);">
+                                                    <span>Evaluated "Build Guardian UI" action</span>
+                                                    <span style="color: var(--accent-success);">Allowed</span>
+                                                </div>
+                                                <div class="flex items-center justify-between text-xs p-2 rounded" style="background-color: var(--bg-level-3);">
+                                                    <span>Warning: User attempted detour</span>
+                                                    <span style="color: var(--accent-warning);">Warned</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Builder Agent Card -->
+                                <div class="rounded-lg overflow-hidden" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                    <div class="p-4 border-b" style="border-color: var(--border-level-1);">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background-color: rgba(76, 183, 130, 0.15);">
+                                                    <i data-lucide="hammer" class="w-5 h-5" style="color: var(--accent-success);"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-semibold" style="color: var(--text-secondary);">Builder Agent</div>
+                                                    <div class="text-xs" style="color: var(--text-muted);">Component Architect</div>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="w-2 h-2 rounded-full animate-pulse" style="background-color: var(--accent-success);"></span>
+                                                <span class="text-xs px-2 py-1 rounded" style="background-color: rgba(76, 183, 130, 0.15); color: var(--accent-success);">Active</span>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-4 gap-4 p-4">
+                                            <div>
+                                                <div class="text-xs mb-1" style="color: var(--text-tertiary);">Uptime</div>
+                                                <div class="text-sm font-medium" style="color: var(--text-secondary);">1h 12m</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-xs mb-1" style="color: var(--text-tertiary);">Components Built</div>
+                                                <div class="text-sm font-medium" style="color: var(--text-secondary);">12</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-xs mb-1" style="color: var(--text-tertiary);">In Progress</div>
+                                                <div class="text-sm font-medium" style="color: var(--accent-primary);">2</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-xs mb-1" style="color: var(--text-tertiary);">Success Rate</div>
+                                                <div class="text-sm font-medium" style="color: var(--accent-success);">98%</div>
+                                            </div>
+                                        </div>
+                                        <div class="px-4 pb-4">
+                                            <div class="text-xs mb-2" style="color: var(--text-tertiary);">Current Tasks</div>
+                                            <div class="space-y-2">
+                                                <div class="p-2 rounded" style="background-color: var(--bg-level-3);">
+                                                    <div class="flex items-center justify-between mb-1">
+                                                        <span class="text-xs" style="color: var(--text-secondary);">Build Guardian UI</span>
+                                                        <div class="w-16 h-1 rounded-full overflow-hidden" style="background-color: var(--bg-level-4);">
+                                                            <div class="h-full rounded-full animate-pulse" style="width: 60%; background-color: var(--accent-primary);"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-xs" style="color: var(--text-muted);">Started 12m ago</div>
+                                                </div>
+                                                <div class="p-2 rounded" style="background-color: var(--bg-level-3);">
+                                                    <div class="flex items-center justify-between mb-1">
+                                                        <span class="text-xs" style="color: var(--text-secondary);">Create Agent Nodes</span>
+                                                        <div class="w-16 h-1 rounded-full overflow-hidden" style="background-color: var(--bg-level-4);">
+                                                            <div class="h-full rounded-full" style="width: 100%; background-color: var(--accent-success);"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-xs" style="color: var(--text-muted);">Completed 5m ago</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documenter Agent Card -->
+                                <div class="rounded-lg overflow-hidden" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                    <div class="p-4 border-b" style="border-color: var(--border-level-1);">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background-color: rgba(78, 167, 252, 0.15);">
+                                                    <i data-lucide="file-text" class="w-5 h-5" style="color: var(--accent-info);"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-sm font-semibold" style="color: var(--text-secondary);">Documenter Agent</div>
+                                                    <div class="text-xs" style="color: var(--text-muted);">Knowledge Curator</div>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="w-2 h-2 rounded-full" style="background-color: var(--accent-warning);"></span>
+                                                <span class="text-xs px-2 py-1 rounded" style="background-color: rgba(234, 166, 35, 0.15); color: var(--accent-warning);">Idle</span>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-4 gap-4 p-4">
+                                            <div>
+                                                <div class="text-xs mb-1" style="color: var(--text-tertiary);">Uptime</div>
+                                                <div class="text-sm font-medium" style="color: var(--text-secondary);">45m</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-xs mb-1" style="color: var(--text-tertiary);">Docs Created</div>
+                                                <div class="text-sm font-medium" style="color: var(--text-secondary);">8</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-xs mb-1" style="color: var(--text-tertiary);">Artifacts</div>
+                                                <div class="text-sm font-medium" style="color: var(--text-secondary);">5</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-xs mb-1" style="color: var(--text-tertiary);">Success Rate</div>
+                                                <div class="text-sm font-medium" style="color: var(--accent-success);">100%</div>
+                                            </div>
+                                        </div>
+                                        <div class="px-4 pb-4">
+                                            <div class="text-xs mb-2" style="color: var(--text-tertiary);">Last Completed</div>
+                                            <div class="p-2 rounded" style="background-color: var(--bg-level-3);">
+                                                <div class="flex items-center justify-between mb-1">
+                                                    <span class="text-xs" style="color: var(--text-secondary);">UX Pattern Analysis</span>
+                                                    <i data-lucide="check-circle" class="w-3 h-3" style="color: var(--accent-success);"></i>
+                                                </div>
+                                                <div class="text-xs" style="color: var(--text-muted);">Completed 15m ago • Waiting for next task</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Agent System Metrics -->
+                                <div class="rounded-lg p-4" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                                    <h4 class="text-sm font-medium mb-4" style="color: var(--text-secondary);">System Performance</h4>
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="text-center">
+                                            <div class="text-2xl font-bold mb-1" style="color: var(--accent-success);">98.5%</div>
+                                            <div class="text-xs" style="color: var(--text-tertiary);">Overall Health</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="text-2xl font-bold mb-1" style="color: var(--text-primary);">4.2s</div>
+                                            <div class="text-xs" style="color: var(--text-tertiary);">Avg Response Time</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="text-2xl font-bold mb-1" style="color: var(--text-primary);">162</div>
+                                            <div class="text-xs" style="color: var(--text-tertiary);">Total Operations</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Split View: Task Execution (Left) + Terminal (Right 2/3) -->
+                <div class="grid grid-cols-3 gap-4">
+                    <!-- Task Execution Panel - LEFT 1/3 -->
+                    <div class="rounded-xl overflow-hidden" style="background-color: var(--bg-level-2); border: 1px solid var(--border-level-1);">
+                        <div class="flex items-center justify-between px-3 py-2" style="border-bottom: 1px solid var(--border-level-1);">
+                            <h4 class="font-medium text-xs" style="color: var(--text-secondary);">Task Execution</h4>
+                            <button class="p-1 rounded hover:transition-all">
+                                <i data-lucide="filter" class="w-3 h-3" style="color: var(--text-tertiary);"></i>
+                            </button>
+                        </div>
+                        <div class="p-3 space-y-2 max-h-80 overflow-y-auto">
+                            <div class="flex items-start space-x-2 p-2 rounded" style="background-color: var(--bg-level-3);">
+                                <i data-lucide="check-circle" class="w-3 h-3 mt-0.5 flex-shrink-0" style="color: var(--accent-success);"></i>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-xs font-medium" style="color: var(--text-secondary);">EXPLORE_AGUI_PATTERNS</div>
+                                    <div class="text-xs mt-0.5" style="color: var(--text-muted);">12m 33s</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2 p-2 rounded" style="background-color: var(--bg-level-3);">
+                                <i data-lucide="check-circle" class="w-3 h-3 mt-0.5 flex-shrink-0" style="color: var(--accent-success);"></i>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-xs font-medium" style="color: var(--text-secondary);">ANALYZE_REACT_FLOW</div>
+                                    <div class="text-xs mt-0.5" style="color: var(--text-muted);">8m 12s</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2 p-2 rounded" style="background-color: var(--bg-level-3);">
+                                <i data-lucide="loader-2" class="w-3 h-3 mt-0.5 flex-shrink-0 animate-spin" style="color: var(--accent-primary);"></i>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-xs font-medium" style="color: var(--text-secondary);">SYNTHESIZE_FINDINGS</div>
+                                    <div class="text-xs mt-0.5" style="color: var(--text-muted);">3m 22s</div>
+                                    <div class="progress-bar w-full mt-1.5" style="height: 2px;">
+                                        <div class="progress-fill" style="width: 50%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2 p-2 rounded opacity-60">
+                                <i data-lucide="circle" class="w-3 h-3 mt-0.5 flex-shrink-0" style="color: var(--text-muted);"></i>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-xs font-medium" style="color: var(--text-tertiary);">DOCUMENT_WORKFLOW</div>
+                                    <div class="text-xs mt-0.5" style="color: var(--text-muted);">Pending</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VS Code-style Terminal Panel - RIGHT 2/3 -->
+                    <div class="col-span-2 rounded-xl overflow-hidden" style="background-color: var(--bg-level-1); border: 1px solid var(--border-level-2); box-shadow: var(--shadow-low);">
+                        <!-- Terminal Tabs -->
+                        <div class="flex items-center" style="background-color: var(--bg-level-2); border-bottom: 1px solid var(--border-level-1);">
+                            <div class="flex items-center space-x-1 px-2 flex-1">
+                                <!-- Terminal Tab 1 - Active -->
+                                <div class="flex items-center space-x-2 px-3 py-1.5 rounded-t text-xs cursor-pointer" style="background-color: var(--bg-level-1); border: 1px solid transparent; border-bottom-color: var(--bg-level-1);">
+                                    <i data-lucide="terminal" class="w-3 h-3" style="color: var(--text-tertiary);"></i>
+                                    <span style="color: var(--text-secondary);">ce-hub: bash</span>
+                                    <button class="ml-2 opacity-0 hover:opacity-100 transition-opacity">
+                                        <i data-lucide="x" class="w-3 h-3" style="color: var(--text-tertiary);"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Terminal Tab 2 -->
+                                <div class="flex items-center space-x-2 px-3 py-1.5 rounded-t text-xs cursor-pointer hover:transition-all" style="background-color: transparent; border: 1px solid transparent;">
+                                    <i data-lucide="terminal" class="w-3 h-3" style="color: var(--text-muted);"></i>
+                                    <span style="color: var(--text-tertiary);">tests: bash</span>
+                                    <button class="ml-2 opacity-0 hover:opacity-100 transition-opacity">
+                                        <i data-lucide="x" class="w-3 h-3" style="color: var(--text-tertiary);"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Terminal Tab 3 -->
+                                <div class="flex items-center space-x-2 px-3 py-1.5 rounded-t text-xs cursor-pointer hover:transition-all" style="background-color: transparent; border: 1px solid transparent;">
+                                    <i data-lucide="terminal" class="w-3 h-3" style="color: var(--text-muted);"></i>
+                                    <span style="color: var(--text-tertiary);">server: node</span>
+                                    <button class="ml-2 opacity-0 hover:opacity-100 transition-opacity">
+                                        <i data-lucide="x" class="w-3 h-3" style="color: var(--text-tertiary);"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Terminal Actions -->
+                            <div class="flex items-center space-x-1 px-2 py-1">
+                                <button class="p-1.5 rounded hover:transition-all" title="New Terminal">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5" style="color: var(--text-tertiary);"></i>
+                                </button>
+                                <button class="p-1.5 rounded hover:transition-all" title="Split Terminal">
+                                    <i data-lucide="columns" class="w-3.5 h-3.5" style="color: var(--text-tertiary);"></i>
+                                </button>
+                                <button class="p-1.5 rounded hover:transition-all" title="Kill Terminal">
+                                    <i data-lucide="trash-2" class="w-3.5 h-3.5" style="color: var(--text-tertiary);"></i>
+                                </button>
+                                <div class="w-px h-4 mx-1" style="background-color: var(--border-level-2);"></div>
+                                <button class="p-1.5 rounded hover:transition-all" title="Clear">
+                                    <i data-lucide="eraser" class="w-3.5 h-3.5" style="color: var(--text-tertiary);"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Terminal Content -->
+                        <div class="p-4 font-mono text-sm" style="background-color: var(--bg-level-0); min-height: 320px; line-height: 1.5;">
+                            <div class="flex items-center space-x-2">
+                                <span style="color: var(--accent-success);">➜</span>
+                                <span style="color: var(--text-tertiary);">~/ai-dev/ce-hub</span>
+                                <span style="color: var(--text-muted);">git:(</span><span style="color: var(--accent-error);">main</span><span style="color: var(--text-muted);">)</span>
+                                <span class="ml-2" style="color: var(--text-secondary);">npm run dev</span>
+                            </div>
+
+                            <div class="mt-2" style="color: var(--text-tertiary);">
+                                <div>> ce-hub@1.0.0 dev</div>
+                                <div>> next dev</div>
+                            </div>
+
+                            <div class="mt-3" style="color: var(--text-muted);">
+                                <div>  ▲ Next.js 15.0.3</div>
+                                <div>  - Local:        http://localhost:3000</div>
+                                <div>  - Network:      http://192.168.1.5:3000</div>
+                                <div class="mt-2" style="color: var(--accent-success);"> ✓ Ready in 2.3s</div>
+                            </div>
+
+                            <div class="mt-3 flex items-center space-x-2">
+                                <span style="color: var(--accent-success);">➜</span>
+                                <span style="color: var(--text-tertiary);">~/ai-dev/ce-hub</span>
+                                <span style="color: var(--text-muted);">git:(</span><span style="color: var(--accent-error);">main</span><span style="color: var(--text-muted);">)</span>
+                                <span class="animate-pulse" style="color: var(--text-secondary);">_</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar - MOST ELEVATED -->
+        <aside class="w-80 flex flex-col" style="background-color: var(--bg-level-2); border-left: 1px solid var(--border-level-2);">
+            <div class="sidebar-section">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="bot" class="w-5 h-5 text-accent-primary"></i>
+                    <h3 class="font-semibold">Guardian Agent</h3>
+                </div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-4">
+                <!-- User Message - ELEVATED -->
+                <div class="rounded-xl p-3 ml-auto" style="background-color: var(--bg-level-4); border: 1px solid var(--border-level-2); max-width: 85%;">
+                    <p class="text-sm" style="color: var(--text-primary);">I'm stuck on this task - where do I find AG-UI patterns?</p>
+                    <div class="text-xs text-tertiary mt-2 text-right">2:34pm</div>
+                </div>
+
+                <!-- AI Response - SUBTLY ELEVATED -->
+                <div class="rounded-xl p-3" style="background-color: var(--bg-level-3); border: 1px solid var(--border-level-1); max-width: 85%;">
+                    <p class="text-sm mb-2" style="color: var(--text-secondary);">Great question! Based on your current RESEARCH phase:</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start space-x-2">
+                            <span class="text-accent-primary">1.</span>
+                            <span>The AG-UI implementation is at:</span>
+                        </div>
+                        <div class="ml-6 p-2 rounded font-mono text-xs" style="background-color: var(--bg-level-0); color: var(--text-tertiary);">
+                            projects/traderra/frontend/src/app/api/agui/route.ts
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <span class="text-accent-primary">2.</span>
+                            <span>Focus on these patterns:</span>
+                        </div>
+                        <div class="ml-6 space-y-1 text-xs text-tertiary">
+                            <div>✓ Context-first navigation (lines 45-89)</div>
+                            <div>✓ Dynamic tool building (lines 201-276)</div>
+                        </div>
+                    </div>
+                    <div class="mt-3 flex items-center space-x-2">
+                        <button class="btn text-xs py-1 px-2">
+                            <i data-lucide="file-text" class="w-3 h-3 mr-1"></i>
+                            View File
+                        </button>
+                    </div>
+                    <div class="text-xs text-tertiary mt-2 text-right">2:34pm</div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-4" style="border-top: 1px solid var(--border-level-2);">
+                <div class="rounded-lg p-3" style="background-color: var(--bg-level-4); border: 1px solid var(--border-level-2);">
+                    <input
+                        type="text"
+                        placeholder="Ask Guardian Agent..."
+                        class="w-full bg-transparent text-sm placeholder-tertiary focus:outline-none"
+                        style="color: var(--text-primary);"
+                    >
+                    <div class="flex items-center justify-between mt-2">
+                        <button class="text-tertiary hover:text-secondary transition-colors">
+                            <i data-lucide="paperclip" class="w-4 h-4"></i>
+                        </button>
+                        <button class="btn-primary text-sm py-1 px-3">
+                            <i data-lucide="send" class="w-3 h-3 mr-1"></i>
+                            Send
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+
+        // Tab switching functions
+        function switchContentTab(button, tabId) {
+            // Remove active state from all tabs
+            const allTabs = button.parentElement.querySelectorAll('.content-tab');
+            allTabs.forEach(tab => {
+                tab.style.borderColor = 'transparent';
+                tab.style.color = 'var(--text-tertiary)';
+                tab.style.backgroundColor = 'transparent';
+            });
+
+            // Add active state to clicked tab
+            button.style.borderColor = 'var(--accent-primary)';
+            button.style.color = 'var(--text-primary)';
+            button.style.backgroundColor = 'var(--bg-level-2)';
+
+            // Hide all tab content
+            const allContent = document.querySelectorAll('.tab-content');
+            allContent.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            // Show selected tab content
+            const selectedContent = document.getElementById(tabId);
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+            }
+
+            // Re-initialize icons for newly shown content
+            lucide.createIcons();
+        }
+
+        function switchProject(button, projectId) {
+            // Remove active state from all project tabs
+            const allTabs = button.parentElement.querySelectorAll('.project-tab');
+            allTabs.forEach(tab => {
+                tab.style.borderColor = 'transparent';
+                tab.style.color = 'var(--text-tertiary)';
+            });
+
+            // Add active state to clicked tab
+            button.style.borderColor = 'var(--accent-primary)';
+            button.style.color = 'var(--text-primary)';
+
+            // Here you could load project-specific content
+            // For now, we'll just update the project title
+            const projectTitle = document.querySelector('.project-title');
+            if (projectTitle) {
+                const titles = {
+                    'ce-hub': 'CE-Hub Platform Development',
+                    'trading-scanner': 'Trading Scanner AI',
+                    'mobile-bridge': 'Mobile Bridge CLI'
+                };
+                projectTitle.textContent = titles[projectId] || 'Project';
+            }
+        }
+
+        function toggleFolder(element) {
+            const folderItem = element.parentElement;
+            const folderContent = folderItem.querySelector('.folder-content');
+            const folderArrow = element.querySelector('.folder-arrow');
+
+            if (folderContent) {
+                const isHidden = folderContent.classList.contains('hidden');
+
+                if (isHidden) {
+                    folderContent.classList.remove('hidden');
+                    if (folderArrow) {
+                        folderArrow.style.transform = 'rotate(90deg)';
+                    }
+                } else {
+                    folderContent.classList.add('hidden');
+                    if (folderArrow) {
+                        folderArrow.style.transform = 'rotate(0deg)';
+                    }
+                }
+            }
+        }
+
+        function toggleWorkflowView(mode) {
+            const overviewBtn = document.getElementById('overview-btn');
+            const detailBtn = document.getElementById('detail-btn');
+            const overviewMode = document.getElementById('overview-mode');
+            const detailMode = document.getElementById('detail-mode');
+
+            if (mode === 'overview') {
+                // Show overview
+                overviewMode.style.display = 'block';
+                detailMode.style.display = 'none';
+
+                // Update button styles
+                overviewBtn.style.backgroundColor = 'var(--bg-level-4)';
+                overviewBtn.style.color = 'var(--text-primary)';
+                detailBtn.style.backgroundColor = 'transparent';
+                detailBtn.style.color = 'var(--text-tertiary)';
+            } else {
+                // Show detail
+                overviewMode.style.display = 'none';
+                detailMode.style.display = 'block';
+
+                // Update button styles
+                overviewBtn.style.backgroundColor = 'transparent';
+                overviewBtn.style.color = 'var(--text-tertiary)';
+                detailBtn.style.backgroundColor = 'var(--bg-level-4)';
+                detailBtn.style.color = 'var(--text-primary)';
+            }
+
+            // Re-initialize icons for newly shown content
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>

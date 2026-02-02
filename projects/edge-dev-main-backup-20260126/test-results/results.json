@@ -1,0 +1,309 @@
+{
+  "config": {
+    "configFile": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/playwright.config.js",
+    "rootDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/setup/global-setup.js",
+    "globalTeardown": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/setup/global-teardown.js",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "platform": "Edge.dev Trading Platform",
+      "version": "1.0.0",
+      "environment": "test",
+      "timestamp": "2025-12-19T19:48:59.976Z"
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "test-results/html-report",
+          "open": "on-failure"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/junit.xml"
+        }
+      ],
+      [
+        "line",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-19T19:48:59.976Z"
+        },
+        "id": "chromium-desktop",
+        "name": "chromium-desktop",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-19T19:48:59.976Z"
+        },
+        "id": "firefox-desktop",
+        "name": "firefox-desktop",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-19T19:48:59.976Z"
+        },
+        "id": "webkit-desktop",
+        "name": "webkit-desktop",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-19T19:48:59.976Z"
+        },
+        "id": "mobile-chrome",
+        "name": "mobile-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-19T19:48:59.976Z"
+        },
+        "id": "mobile-safari",
+        "name": "mobile-safari",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-19T19:48:59.976Z"
+        },
+        "id": "tablet-chrome",
+        "name": "tablet-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-19T19:48:59.976Z"
+        },
+        "id": "high-dpi-chrome",
+        "name": "high-dpi-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-19T19:48:59.976Z"
+        },
+        "id": "ultrawide-chrome",
+        "name": "ultrawide-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-19T19:48:59.976Z"
+        },
+        "id": "performance-chrome",
+        "name": "performance-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "platform": "Edge.dev Trading Platform",
+          "version": "1.0.0",
+          "environment": "test",
+          "timestamp": "2025-12-19T19:48:59.976Z"
+        },
+        "id": "visual-chrome",
+        "name": "visual-chrome",
+        "testDir": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "**/*.test.js",
+          "**/*.test.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 6,
+    "webServer": {
+      "command": "npm run dev -- -p 5656",
+      "port": 5656,
+      "reuseExistingServer": true,
+      "timeout": 120000,
+      "env": {
+        "NODE_ENV": "test"
+      }
+    }
+  },
+  "suites": [],
+  "errors": [
+    {
+      "message": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:5656/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:5656/\", waiting until \"networkidle\"\u001b[22m\n",
+      "stack": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:5656/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:5656/\", waiting until \"networkidle\"\u001b[22m\n\n    at validateApplicationHealth (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/setup/global-setup.js:141:16)\n    at globalSetup (/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/setup/global-setup.js:36:5)",
+      "location": {
+        "file": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/tests/setup/global-setup.js",
+        "column": 16,
+        "line": 141
+      },
+      "snippet": "\u001b[90m   at \u001b[39msetup/global-setup.js:141\n\n  139 |\n  140 |     console.log(`  📡 Checking application at ${baseURL}...`);\n> 141 |     await page.goto(baseURL, { waitUntil: 'networkidle' });\n      |                ^\n  142 |\n  143 |     // Verify the page loads correctly\n  144 |     const title = await page.title();"
+    }
+  ],
+  "stats": {
+    "startTime": "2025-12-19T19:48:59.979Z",
+    "duration": 2687.901,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

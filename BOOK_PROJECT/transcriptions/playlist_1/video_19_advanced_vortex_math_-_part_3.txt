@@ -1,0 +1,243 @@
+================================================================================
+VIDEO TRANSCRIPT: Advanced Vortex Math - Part 3
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: The regular doubling circuits, but coming from the interaction of the regular doubling circuits in the gap space, you get a nested vorticesy circuit.
+
+[00:00:08] **Randy Powell**: There's two of these circuits operating at a given instant.
+
+[00:00:13] **Randy Powell**: And whereas it's been thought that the spires were really multiples of one.
+
+[00:00:18] **Randy Powell**: In other words, I'd go multiples of one or eight. So I'd have eight.
+
+[00:00:22] **Randy Powell**: Here's a positive. I'd have seven, six, five, four, three, two.
+
+[00:00:32] **Randy Powell**: As I follow my spire around, I'll show you with the spiral on it.
+
+[00:00:40] **Randy Powell**: In other words, here's my positive eight. I go to the next positive. It's seven.
+
+[00:00:46] **Randy Powell**: If I go to the next positive, it's six. If I go to the next positive, it's five.
+
+[00:00:51] **Randy Powell**: If I look at the negatives, I've got eight, seven, six, five.
+
+[00:00:58] **Randy Powell**: So it was thought that the spires were really just showing multiples of one and eight.
+
+[00:01:03] **Randy Powell**: What I found is that they're doing something completely... Well, they are showing multiples of one and eight.
+
+[00:01:08] **Randy Powell**: But what I found is actually, I think, a more significant relationship.
+
+[00:01:12] **Randy Powell**: And that is between each family number group that I have in each given color.
+
+[00:01:19] **Randy Powell**: So I've got reds, I've got greens, I've got blues.
+
+[00:01:23] **Randy Powell**: They're creating a doubling circuit that's wrapping all the way around.
+
+[00:01:28] **Randy Powell**: So in other words, if I started with my nine here, if I go follow the spire to my next red one, it's going to be six.
+
+[00:01:35] **Randy Powell**: Now I know the next red one I connect with is going to be a six, too, which it is.
+
+[00:01:42] **Randy Powell**: Six. Now I know the next one I reach is going to be nine.
+
+[00:01:46] **Randy Powell**: Nine. Okay, next one's going to be three. Three.
+
+[00:01:51] **Randy Powell**: Okay, next one's going to be six. She won't see it here, but it would align exactly with the six.
+
+[00:01:56] **Randy Powell**: And it's going to end up wrapping around and crossing over in multiple spires that are really doubling circuits,
+
+[00:02:03] **Randy Powell**: traveling all the way over the surface. I'll show you another example.
+
+[00:02:07] **Randy Powell**: Here I'll start with an eight. We know our doubling circuits, one, two, four, eight, seven, five.
+
+[00:02:12] **Randy Powell**: So here I'm starting with an eight just so it's easier to count. Okay, eight.
+
+[00:02:16] **Randy Powell**: Go to my next blue following the spire. Seven.
+
+[00:02:20] **Randy Powell**: Next blue. Five.
+
+[00:02:23] **Randy Powell**: Okay, next blue. One.
+
+[00:02:26] **Randy Powell**: Next blue. Two.
+
+[00:02:28] **Randy Powell**: So in other words, there's another doubling circuit going all the way over.
+
+[00:02:31] **Randy Powell**: These are interlaced doubling circuits that have a sequence.
+
+[00:02:36] **Randy Powell**: They're firing in a trinary sequence and they're creating a doubling circuit spiraling over the doubling circuits.
+
+[00:02:44] **Randy Powell**: I can not only show this pattern in the nested vortices, but I can also show it on the surface skin of the torus itself.
+
+[00:02:51] **Randy Powell**: Let me show you by doing it myself so you know I'm not just fudging it.
+
+[00:02:56] **Randy Powell**: Okay, so I'm going to make the same pattern that I had here. Notice here,
+
+[00:03:03] **Randy Powell**: notice here that these are mirrors of each other that they show up the same and always have the same numbers and quadrature.
+
+[00:03:13] **Randy Powell**: So I have a five, a five, a five, a five, a one, a one, a one, a one.
+
+[00:03:19] **Randy Powell**: So these number sequences, the doubling sequences that are overlaid over top of each other are all spiraling into the center.
+
+[00:03:26] **Randy Powell**: This is how you create an electrical venturi. It comes from multiple circuits allowing these nested vortices to sequence.
+
+[00:03:34] **Randy Powell**: If you just have one wrap going all the way around, you're just going to have one long sequence of vortices.
+
+[00:03:40] **Randy Powell**: The numbers will never align and you'll never have a sequence.
+
+[00:03:43] **Randy Powell**: Let me show you.
+
+[00:03:45] **Randy Powell**: I'll start here with a nine. We're going to call this one a positive nine.
+
+[00:03:52] **Randy Powell**: Now I'm just going to follow the pathway of my spire which you, anybody, you know, you just have to do the work yourself to find it.
+
+[00:04:02] **Randy Powell**: But you can put this work to the test.
+
+[00:04:05] **Randy Powell**: So I'm going to follow to where my next three, nine, six family number group.
+
+[00:04:10] **Randy Powell**: Now I'm going to have to go over three. One, two, three.
+
+[00:04:15] **Randy Powell**: So that was a nine. Now I know this is going to be a six.
+
+[00:04:20] **Randy Powell**: Okay, and it's going to be a negative six. Okay, because I'm creating a doubling circuit.
+
+[00:04:25] **Randy Powell**: So with my three nine, six number group, the pattern is three nine, three nine, six, six, nine, three.
+
+[00:04:32] **Randy Powell**: Three nine, six, six, nine, three. So I got nine, six, one, two.
+
+[00:04:37] **Randy Powell**: This is going to be a six as well. Right it upside down. This one's going to be a positive six.
+
+[00:04:43] **Randy Powell**: So I'm going positive, negative, positive. Okay, so nine, six, six.
+
+[00:04:50] **Randy Powell**: This is going to be a nine. Now it's going to be a negative nine.
+
+[00:04:55] **Randy Powell**: And I'm going to go three, positive three. Okay, then here I'm going to be off the page.
+
+[00:05:04] **Randy Powell**: All right, so you can see anyway along one spire, I've made a doubling circuit.
+
+[00:05:10] **Randy Powell**: Now does it connect? Well, let's see.
+
+[00:05:13] **Randy Powell**: We know that from either judging by our multiples of five along the circuit,
+
+[00:05:18] **Randy Powell**: which I'm just saying anytime you see multiples of five or multiples of one or multiples of any number,
+
+[00:05:23] **Randy Powell**: all it's really showing you is interlace doubling circuits.
+
+[00:05:28] **Randy Powell**: So I know if my nine, I know if I've got a positive nine here, I'm going to have a positive nine here.
+
+[00:05:35] **Randy Powell**: I can know that by counting the nested vortices. For instance, I have a positive nine here.
+
+[00:05:41] **Randy Powell**: I know if I go over, let's see, if I go over one, I'm going to go one, two, three.
+
+[00:05:50] **Randy Powell**: That's going to align. No, I'm sorry, I should go one, two, three.
+
+[00:05:55] **Randy Powell**: One, two, three. Yes, that's aligning over my next positive vortice.
+
+[00:06:04] **Randy Powell**: So I can count by going one, two, three. I know it's going to be aligned over the next one here.
+
+[00:06:09] **Randy Powell**: Go one, two, three, it's going to be aligned. So I can count the nested vortices and know exactly what number is going to come out on the other side.
+
+[00:06:16] **Randy Powell**: As long as I know how many increments are on my horizontal and vertical.
+
+[00:06:21] **Randy Powell**: Again, we're working with 36 and 18 here. I'll talk you through how all the sequences go.
+
+[00:06:27] **Randy Powell**: So I know there's a positive nine here. Let's continue with my doubling circuit.
+
+[00:06:31] **Randy Powell**: So I know if I go one, two, this is going to be a negative six.
+
+[00:06:36] **Randy Powell**: Okay? One, two, positive six.
+
+[00:06:43] **Randy Powell**: One, two, negative, I'm sorry, where am I?
+
+[00:06:48] **Randy Powell**: Nine, six, six, negative nine.
+
+[00:06:52] **Randy Powell**: Nine, one, two.
+
+[00:06:55] **Randy Powell**: And then this is going to be three positive.
+
+[00:06:59] **Randy Powell**: Okay? And then that's going to keep going around.
+
+[00:07:02] **Randy Powell**: So again, I know if I go 108 degrees, it's going to be the same number.
+
+[00:07:07] **Randy Powell**: This is what you're actually seeing when you look at these spires as in the winding of the coil.
+
+[00:07:14] **Randy Powell**: So I can do it from here. Nine, one, two, negative six.
+
+[00:07:19] **Randy Powell**: Notice it's not breaking my pattern. One, two, positive six.
+
+[00:07:26] **Randy Powell**: Still not breaking my pattern. One, two, negative nine, which is not breaking my pattern.
+
+[00:07:35] **Randy Powell**: One, two, positive three.
+
+[00:07:40] **Randy Powell**: Now I can see if there's this interlaced doubling circuit.
+
+[00:07:45] **Randy Powell**: Let's try another one and then I'm just going to fill these in because this will take a long time if we do it one by one.
+
+[00:07:52] **Randy Powell**: So I've got my positive nine here.
+
+[00:07:55] **Randy Powell**: So I know now this is going to be my positive eight.
+
+[00:07:59] **Randy Powell**: How do I know that? Well, I know I'm going to have multiples of one this way, or multiples of eight.
+
+[00:08:05] **Randy Powell**: I also can tell again by checking the horizontal equator line.
+
+[00:08:09] **Randy Powell**: If I have a nine here, I should counter it. There should be an eight directly lined up vertically with this eight.
+
+[00:08:15] **Randy Powell**: And there should be an eight necessarily on the underside of this mirroring this one.
+
+[00:08:21] **Randy Powell**: And it's going to be on this circuit right here as it comes through under here. It's going to mirror that eight.
+
+[00:08:27] **Randy Powell**: Okay, so let's try it with eight. So I got positive eight.
+
+[00:08:31] **Randy Powell**: I know I'm going to have a see one, two.
+
+[00:08:34] **Randy Powell**: This is going to be negative.
+
+[00:08:39] **Randy Powell**: Let's see. Seven.
+
+[00:08:42] **Randy Powell**: Yeah.
+
+[00:08:43] **Randy Powell**: And then I'm going to go one, two positive five.
+
+[00:08:49] **Randy Powell**: Okay. One, two, three.
+
+[00:08:53] **Randy Powell**: Negative one.
+
+[00:08:57] **Randy Powell**: One, two, and positive two.
+
+[00:09:02] **Randy Powell**: Okay. So I ended up here on the two.
+
+[00:09:04] **Randy Powell**: Let's try to fill this in. Now I got two.
+
+[00:09:07] **Randy Powell**: I'm going to go four.
+
+[00:09:09] **Randy Powell**: No, I'm sorry. This should be a one.
+
+[00:09:12] **Randy Powell**: Two, one, five, seven, eight, four.
+
+[00:09:20] **Randy Powell**: Notice here I still got six, seven, six, five.
+
+[00:09:23] **Randy Powell**: I'm multiples of one. I'm breaking.
+
+[00:09:25] **Randy Powell**: I know this is going to be a four now.
+
+[00:09:27] **Randy Powell**: I've got six, five, four, three.
+
+[00:09:29] **Randy Powell**: So I can go ahead and fill these in.
+
+[00:09:31] **Randy Powell**: And I still got my doubling circuit.
+
+[00:09:33] **Randy Powell**: So let me show you how they were.
+
+[00:09:35] **Randy Powell**: Let me just fill it in. Five, six, seven, eight, nine.
+
+[00:09:40] **Randy Powell**: See, that was already there. And it never break there.
+
+[00:09:43] **Randy Powell**: I know this is going to be nine, six, six, nine, three.
+
+[00:09:50] **Randy Powell**: Let's see, nine, one.
+
+[00:09:52] **Randy Powell**: This is going to be a negative two, four, eight, seven, five.

@@ -1,0 +1,211 @@
+================================================================================
+VIDEO TRANSCRIPT: Advanced Vortex Math - Part 2
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: is said that it's one winding that comes all the way around many times until it
+
+[00:00:06] **Randy Powell**: meets back to where it started. So if I started right here the idea would be in
+
+[00:00:11] **Randy Powell**: the current teaching, it's not what I'm teaching, then the current teaching would
+
+[00:00:15] **Randy Powell**: be that the winding went in here, that you would skip, that it would come out here
+
+[00:00:20] **Randy Powell**: next. Okay? Then it would come here, then here, then here, then here, then here,
+
+[00:00:33] **Randy Powell**: then here, and then eventually it comes back around, so I may have this counter,
+
+[00:00:40] **Randy Powell**: but it comes back around. Basically you're skipping between each one, one, two,
+
+[00:00:45] **Randy Powell**: three, four, and this is where your next one is. Okay, those are your familiar
+
+[00:00:49] **Randy Powell**: with the illustrations of the winding of the coil will know that's how it's
+
+[00:00:53] **Randy Powell**: status being wound. I'm now stating that that is false, that that is not the path
+
+[00:00:58] **Randy Powell**: of the doubling circuits, no matter what number group torus you use. Okay? So now
+
+[00:01:05] **Randy Powell**: I'm going to explain to you what's the true path of the doubling circuits and
+
+[00:01:09] **Randy Powell**: what is actually being modeled by the winding of the coil. Let me show you it and
+
+[00:01:15] **Randy Powell**: just another way before I do that. Here you see another board, this is the
+
+[00:01:21] **Randy Powell**: standard winding for the rodent coil. Okay? So I'll be following my one from here,
+
+[00:01:28] **Randy Powell**: I go to here, to here, notice my third one, I'm at a right angle from the first
+
+[00:01:34] **Randy Powell**: one, and I'm going to go here, here, here, again I'm at a right angle from that last
+
+[00:01:39] **Randy Powell**: one, one, two, three, right angle from the last one, one, two, three, I'm sorry,
+
+[00:01:46] **Randy Powell**: I should be going one, two, three, now I'm back where I started. Okay? The two, the
+
+[00:01:51] **Randy Powell**: other winding is going to work the same way just in a mirror image. Okay? So it's
+
+[00:01:57] **Randy Powell**: going in a star shape all the way back around before it meets where it began. I'm
+
+[00:02:01] **Randy Powell**: stating that that is not the pathway of the doubling circuits on the quantized
+
+[00:02:07] **Randy Powell**: numerical torus. What this is actually modeling are spires which are completely
+
+[00:02:15] **Randy Powell**: different phenomena and which cannot be accurately modeled by this winding of
+
+[00:02:21] **Randy Powell**: the coil. Okay? So let me go on to the next thing which is what is the accurate
+
+[00:02:27] **Randy Powell**: model. Now again I'm just going to use as an example a 36 by
+
+[00:02:37] **Randy Powell**: 18 torus. Okay? A 36 by 18 torus, I'm going to say now, and then when I finish
+
+[00:02:47] **Randy Powell**: explaining the 36 by 18 I'm going to just tell you the numbers on any given
+
+[00:02:52] **Randy Powell**: torus so you can't just say that a 36 by 18 is not a valotaurus. I'm saying that
+
+[00:02:57] **Randy Powell**: it is a valotaurus and that I can give you other examples. So instead of saying
+
+[00:03:05] **Randy Powell**: that the winding is going in here and then coming back around here and then
+
+[00:03:09] **Randy Powell**: winding many times what I found is that they're actually on a 36 by 18 coil.
+
+[00:03:15] **Randy Powell**: There are actually six different nested-vorticity pathways which means 12
+
+[00:03:23] **Randy Powell**: circuits. So whereas the other coil I was showing is two circuits I'm saying
+
+[00:03:28] **Randy Powell**: it's really 12 circuits and it's the interrelation of these circuits that
+
+[00:03:33] **Randy Powell**: makes the spires sequence. Okay? Which will make the coil far more efficient.
+
+[00:03:40] **Randy Powell**: So here the pathway I'm showing is actually the doubling circuits coming in
+
+[00:03:44] **Randy Powell**: this way and they're coming back out here directly across, back in and it
+
+[00:03:50] **Randy Powell**: back around so that this is an unbroken loop. Again not breaking the initial
+
+[00:03:55] **Randy Powell**: principle of my symbol the doubling circuits never break. Okay? So it's an
+
+[00:04:01] **Randy Powell**: unbroken loop. Here's one directly opposed to it. So all in all I'm going to
+
+[00:04:07] **Randy Powell**: have six groups. Okay? Two groups each representing three. I'm sorry am I saying
+
+[00:04:16] **Randy Powell**: that right? 12 groups is what I should say. No I should say six groups is the
+
+[00:04:22] **Randy Powell**: right. I'm sorry forgive me. I'm thinking of many different number of
+
+[00:04:26] **Randy Powell**: toruses. So six groups on this torus. And I'm going to show that in a much
+
+[00:04:31] **Randy Powell**: better illustration and show you exactly how to calculate it. So it's perfect.
+
+[00:04:35] **Randy Powell**: I'm also opening this up because I want people to critique the work trying
+
+[00:04:39] **Randy Powell**: to approach it and attack it from every angle and see if you can prove whether
+
+[00:04:44] **Randy Powell**: or not I'm right or wrong. I know I've already done the work on paper. Okay? So
+
+[00:04:50] **Randy Powell**: when you do that sequence in that way what you get is this. Now you can see each
+
+[00:05:02] **Randy Powell**: of these is nine tiles that I've squared off. That represents one nested
+
+[00:05:07] **Randy Powell**: board of C. That's one board of C pathway over the surface of the torus. Okay? So
+
+[00:05:13] **Randy Powell**: if you don't know what a nested board of C is you're going to be pretty lost in
+
+[00:05:16] **Randy Powell**: everything else I'm saying. So you should learn what a nested board is. Here I'm
+
+[00:05:22] **Randy Powell**: showing an image though I don't have the polarities written in. I'm going to show
+
+[00:05:26] **Randy Powell**: another one where I do of the nested board of C sequences. This was an
+
+[00:05:32] **Randy Powell**: originally a sequence that Marco determined though it could not be explained by
+
+[00:05:37] **Randy Powell**: the winding pattern that is being used for the coils because there would not be
+
+[00:05:44] **Randy Powell**: able to be unbroken circuits. These circuits would have to change from a red
+
+[00:05:47] **Randy Powell**: one to a green one to a blue one each time they went through if the winding
+
+[00:05:53] **Randy Powell**: pattern was what it's been said to be. If the winding pattern is like I have it you
+
+[00:05:58] **Randy Powell**: have unbroken sequences where all the vortices connect in a line and I actually
+
+[00:06:03] **Randy Powell**: found what the spires are. Let me show you what a spire is so you're not confused
+
+[00:06:07] **Randy Powell**: what I mean. Here's one image of spires. These are spirals going over the surface of
+
+[00:06:14] **Randy Powell**: the doubling circuits. So as the doubling circuits are going through and around
+
+[00:06:17] **Randy Powell**: you can see the model I'm using for the doubling circuits forming really an
+
+[00:06:23] **Randy Powell**: actual image of the Yin Yang just like that. Over top of those spirals are
+
+[00:06:30] **Randy Powell**: other spirals. These are the spirals from what we're calling spires that you
+
+[00:06:37] **Randy Powell**: see in sequences such as the Fibonacci and the logarithmic spiral. So what
+
+[00:06:44] **Randy Powell**: is the circuit sequence? How do you give nested vortices numbers and why is
+
+[00:06:50] **Randy Powell**: that significant for the rodent coil? Because if you're winding the coil around
+
+[00:06:57] **Randy Powell**: in a star shape like that you're actually cutting across the doubling circuits
+
+[00:07:03] **Randy Powell**: you're not allowing these nested vortices to invert and make their own
+
+[00:07:07] **Randy Powell**: pathways. Alright so this is how it works. I found that what the spires actually
+
+[00:07:17] **Randy Powell**: are. Let me see if I got my markers I do. The spires are actually doubling
+
+[00:07:24] **Randy Powell**: circuits going over the surface of the tommorowide and that have to do with the
+
+[00:07:31] **Randy Powell**: activation of each different family number group. So what I'm saying here's
+
+[00:07:39] **Randy Powell**: first your regular torus. Regular one eight northern view of a one eight
+
+[00:07:47] **Randy Powell**: torus. That's just what the numbers filled in. Now if I circle the nested
+
+[00:07:54] **Randy Powell**: vortices I know the regular numbers aren't filled in here but now I'm going to
+
+[00:08:00] **Randy Powell**: give a number to each vortice. Well how do I do that? First of all I'll point
+
+[00:08:06] **Randy Powell**: out to you if you're studying this notice. If you go to the equator of your
+
+[00:08:11] **Randy Powell**: torus and you line up the multiples of four or five with any of these
+
+[00:08:17] **Randy Powell**: vortices in other words if you take a four that say right here it will be lined
+
+[00:08:24] **Randy Powell**: up with the vortice on that on that vertical axis. There'll be a four here
+
+[00:08:30] **Randy Powell**: and there'll be a four on the other side mirroring it. So that all your vortices
+
+[00:08:35] **Randy Powell**: in other words when I have this one I've got a nine here there's going to be a
+
+[00:08:38] **Randy Powell**: nine on this adjacent circuit on the inside perfectly mirroring this nine. All
+
+[00:08:44] **Randy Powell**: the ways they wrap around all the vortices are perfectly mirroring each other.
+
+[00:08:50] **Randy Powell**: So if I line up say I've got a nine on this vertical axis if I was to go over
+
+[00:08:57] **Randy Powell**: one space I know there should be a four lining up with this one and if I go all
+
+[00:09:02] **Randy Powell**: the way down let's see this should be actually no it should be five. If I go over
+
+[00:09:11] **Randy Powell**: one it should be a five lining up and that's what I have. If I go over one more
+
+[00:09:16] **Randy Powell**: it should be a one lining up because this is going to be my multiples of five five
+
+[00:09:20] **Randy Powell**: ten here's my one. Next one over should line up with a six which it does right
+
+[00:09:27] **Randy Powell**: here. Okay so I'm actually showing staggered multiples of five which form
+
+[00:09:33] **Randy Powell**: doubling circuits all the way around. Okay so there's a doubling circuit coming
+
+[00:09:39] **Randy Powell**: in here coming out and in here back around like this and there's two of them
+
+[00:09:44] **Randy Powell**: opposing each other which are of the same family number groups. So in this
+
+[00:09:48] **Randy Powell**: 36 by 18 Taurus two of these circuits what I'm calling a nested vortices
+
+[00:09:57] **Randy Powell**: circuit so they're not.

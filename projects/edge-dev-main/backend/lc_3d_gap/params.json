@@ -1,0 +1,139 @@
+{
+  "scanner_name": "LC3DGapScanner",
+  "scanner_type": "lc_3d_gap",
+  "formatted_class_name": "UltraFastRenataLC3DGapScanner",
+  "description": "LC 3D Gap scanner with multi-day EMA distance averaging and swing high breakout detection",
+  "parameters": {
+    "day_14_avg_ema10_min": {
+      "value": 0.25,
+      "type": "float",
+      "description": "Day -14 Avg EMA 10 >= 0.25x ATR",
+      "category": "multi_day_ema"
+    },
+    "day_14_avg_ema30_min": {
+      "value": 0.5,
+      "type": "float",
+      "description": "Day -14 Avg EMA 30 >= 0.5x ATR",
+      "category": "multi_day_ema"
+    },
+    "day_7_avg_ema10_min": {
+      "value": 0.25,
+      "type": "float",
+      "description": "Day -7 Avg EMA 10 >= 0.25x ATR",
+      "category": "multi_day_ema"
+    },
+    "day_7_avg_ema30_min": {
+      "value": 0.75,
+      "type": "float",
+      "description": "Day -7 Avg EMA 30 >= 0.75x ATR",
+      "category": "multi_day_ema"
+    },
+    "day_3_avg_ema10_min": {
+      "value": 0.5,
+      "type": "float",
+      "description": "Day -3 Avg EMA 10 >= 0.5x ATR",
+      "category": "multi_day_ema"
+    },
+    "day_3_avg_ema30_min": {
+      "value": 1.0,
+      "type": "float",
+      "description": "Day -3 Avg EMA 30 >= 1.0x ATR",
+      "category": "multi_day_ema"
+    },
+    "day_2_ema10_distance_min": {
+      "value": 1.0,
+      "type": "float",
+      "description": "Day -2 EMA 10 Distance >= 1.0x ATR",
+      "category": "ema_positioning"
+    },
+    "day_2_ema30_distance_min": {
+      "value": 2.0,
+      "type": "float",
+      "description": "Day -2 EMA 30 Distance >= 2.0x ATR",
+      "category": "ema_positioning"
+    },
+    "day_1_ema10_distance_min": {
+      "value": 1.5,
+      "type": "float",
+      "description": "Day -1 EMA 10 Distance >= 1.5x ATR",
+      "category": "ema_positioning"
+    },
+    "day_1_ema30_distance_min": {
+      "value": 3.0,
+      "type": "float",
+      "description": "Day -1 EMA 30 Distance >= 3.0x ATR",
+      "category": "ema_positioning"
+    },
+    "day_1_vol_min": {
+      "value": 7000000,
+      "type": "int",
+      "description": "Day -1 Volume >= 7M shares",
+      "category": "liquidity_filter"
+    },
+    "day_1_close_min": {
+      "value": 20.0,
+      "type": "float",
+      "description": "Day -1 Close >= $20",
+      "category": "large_cap_filter"
+    },
+    "day_1_high_vs_swing_high_min": {
+      "value": 1.0,
+      "type": "float",
+      "description": "Day -1 High >= 1x ATR above Swing High (-5 to -65)",
+      "category": "swing_high_breakout"
+    },
+    "day_0_gap_min": {
+      "value": 0.5,
+      "type": "float",
+      "description": "Day 0 Gap >= 0.5x ATR",
+      "category": "gap"
+    },
+    "day_0_open_minus_d1_high_min": {
+      "value": 0.1,
+      "type": "float",
+      "description": "Day 0 Open - Day -1 High >= 0.1x ATR",
+      "category": "gap"
+    }
+  },
+  "date_ranges": {
+    "d0_start": "2024-01-01",
+    "d0_end": "2025-12-26",
+    "scan_start": "calculated_as_d0_start_minus_830_days",
+    "scan_end": "2025-12-26",
+    "description": "D0 is signal output range (2024-2025), scan_start is historical data for swing high calculations (65+ days needed)"
+  },
+  "threading": {
+    "stage1_workers": "min(128, cpu_cores * 8)",
+    "stage2_workers": "min(96, cpu_cores * 6)",
+    "batch_size": 200
+  },
+  "api": {
+    "base_url": "https://api.polygon.io",
+    "snapshot_endpoint": "/v2/snapshot/locale/us/markets/stocks/tickers",
+    "api_key": "Fm7brz4s23eSocDErnL68cE7wspz2K1I"
+  },
+  "ticker_source": {
+    "type": "default_list",
+    "description": "Uses hardcoded list of ~190 tickers from original code (large caps, tech stocks, ETFs, etc.)",
+    "note": "Can be overridden by passing custom symbols list to execute_stage1_ultra_fast()"
+  },
+  "smart_filters": {
+    "description": "LC 3D Gap specific 2-parameter smart filtering (Stage 1)",
+    "note": "Only price and volume are available in Polygon snapshot API. All other parameters require historical data in Stage 2.",
+    "filters": [
+      "day_1_close_min: Day -1 Close >= $20 (large cap filter)",
+      "day_1_vol_min: Day -1 Volume >= 7M (liquidity filter)"
+    ]
+  },
+  "notes": {
+    "pattern_type": "LC 3D Gap - Large Cap 3-Day EMA Gap pattern",
+    "rarity": "Very rare - complex 15-parameter pattern with multi-day EMA averaging",
+    "key_indicators": "Multi-day EMA distance averaging (14d, 7d, 3d), swing high breakout, Day 0 gap confirmation",
+    "atr_period": "14-day ATR",
+    "swing_high_range": "Day -5 to -65 (60-day swing high detection)",
+    "price_filter": "$20+ minimum (large cap filter)",
+    "volume_check": "Day -1 volume >= 7M shares",
+    "date_range": "2024-2025 (focused 2-year range)",
+    "unique_feature": "Progressive EMA distance requirements over 14, 7, and 3-day lookback periods"
+  }
+}

@@ -1,0 +1,3 @@
+claude --model claude-sonnet-4-20250514 --dangerously-skip-permissions
+
+claude --model glm-4.6 --dangerously-skip-permissions

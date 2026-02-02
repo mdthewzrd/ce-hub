@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Harmonatica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1a1a1a;
+            --border: #262626;
+            --accent: #7c3aed;
+            --accent-hover: #6d28d9;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --success: #22c55e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding-top: 64px;
+        }
+
+        /* Top Navbar - matching index.html */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .navbar-brand h1 {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .navbar-brand p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 48px;
+            flex: 1;
+        }
+
+        .navbar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .navbar-nav a:hover {
+            background: var(--bg-tertiary);
+            color: white;
+        }
+
+        .navbar-nav a.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .badge {
+            background: var(--accent);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: auto;
+        }
+
+        .navbar-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+        }
+
+        .navbar-btn-secondary {
+            background: var(--border);
+        }
+
+        .navbar-btn-secondary:hover {
+            background: #333;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .neon-border {
+            border: 1px solid rgba(102, 126, 234, 0.5);
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+
+        select, input, textarea {
+            background: rgba(0, 0, 0, 0.3) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+        }
+
+        select:focus, input:focus, textarea:focus {
+            outline: none;
+            border-color: rgba(102, 126, 234, 0.8) !important;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .keyword-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .keyword-LINK { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.5); }
+        .keyword-GROWTH { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.5); }
+        .keyword-CONTENT { background: rgba(168, 85, 247, 0.2); color: #a78bfa; border: 1px solid rgba(168, 85, 247, 0.5); }
+        .keyword-OFFER { background: rgba(249, 115, 22, 0.2); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.5); }
+        .keyword-DM { background: rgba(236, 72, 153, 0.2); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.5); }
+        .keyword-STORY { background: rgba(20, 184, 166, 0.2); color: #2dd4bf; border: 1px solid rgba(20, 184, 166, 0.5); }
+        .keyword-CUSTOM { background: rgba(251, 191, 36, 0.2); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.5); }
+
+        .save-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Top Navbar - matching index.html -->
+    <nav class="navbar">
+        <a href="/main" class="navbar-brand">
+            <div class="logo">
+                <i class="fas fa-infinity text-white"></i>
+            </div>
+            <div>
+                <h1>Harmonatica</h1>
+                <p>Content Studio</p>
+            </div>
+        </a>
+
+        <div class="navbar-nav">
+            <a href="/main">
+                <i class="fas fa-th-large"></i>
+                Dashboard
+            </a>
+            <a href="/browse">
+                <i class="fas fa-search"></i>
+                Browse
+                <span style="background: linear-gradient(135deg, #8b5cf6, #6366f1);" class="badge">New</span>
+            </a>
+            <a href="/scrape">
+                <i class="fas fa-video"></i>
+                Scraper
+            </a>
+            <a href="/library">
+                <i class="fas fa-folder"></i>
+                Production
+            </a>
+            <a href="/brand-voice">
+                <i class="fas fa-microphone"></i>
+                Brand Voice
+            </a>
+            <a href="/settings" class="active">
+                <i class="fas fa-cog"></i>
+                Settings
+            </a>
+        </div>
+
+        <div class="navbar-right">
+            <a href="/brand-voice" class="navbar-btn navbar-btn-secondary">
+                <i class="fas fa-wand-magic-sparkles mr-2"></i>Brand Voice
+            </a>
+            <a href="/main" class="navbar-btn navbar-btn-secondary">
+                <i class="fas fa-sync-alt"></i>
+            </a>
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                <span class="text-xs font-bold">M</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold">My Posting Accounts</h1>
+            <p class="text-gray-400 mt-2">Configure ManyChat settings for the Instagram accounts you post to</p>
+        </div>
+
+        <!-- Instructions -->
+        <div class="glass rounded-xl p-6 mb-8 neon-border">
+            <h2 class="text-lg font-semibold mb-3" style="color: #a78bfa;">
+                <i class="fas fa-info-circle mr-2"></i>Understanding the Setup
+            </h2>
+            <div class="grid md:grid-cols-3 gap-4 text-sm text-gray-300">
+                <div class="glass rounded-lg p-4">
+                    <h3 class="font-semibold text-white mb-2"><i class="fas fa-download mr-2 text-blue-400"></i>Source Accounts</h3>
+                    <p class="text-gray-400">These are accounts you scrape content FROM for inspiration and research. NOT configured here.</p>
+                </div>
+                <div class="glass rounded-lg p-4">
+                    <h3 class="font-semibold text-white mb-2"><i class="fas fa-paper-plane mr-2 text-green-400"></i>Your Posting Accounts</h3>
+                    <p class="text-gray-400">These are YOUR Instagram accounts where you post content. Configure ManyChat for these here.</p>
+                </div>
+                <div class="glass rounded-lg p-4">
+                    <h3 class="font-semibold text-white mb-2"><i class="fas fa-robot mr-2 text-purple-400"></i>ManyChat Connection</h3>
+                    <p class="text-gray-400">When you post, the selected keyword tells followers what to comment to trigger your automation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI API Settings -->
+        <div class="glass rounded-xl p-6 mb-6 neon-border">
+            <h3 class="text-lg font-semibold mb-4">
+                <i class="fas fa-key mr-2" style="color: #fbbf24;"></i>AI Caption Settings
+            </h3>
+            <p class="text-sm text-gray-400 mb-4">Configure your OpenRouter API key and model for AI caption generation.</p>
+
+            <form id="apiSettingsForm" onsubmit="saveApiSettings(event)" class="space-y-4">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-300 mb-2">OpenRouter API Key</label>
+                        <input type="password" id="apiKey" required
+                               class="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50"
+                               placeholder="sk-or-v1-...">
+                        <p class="text-xs text-gray-500 mt-1">Get your key at <a href="https://openrouter.ai/keys" target="_blank" class="text-purple-400 hover:underline">openrouter.ai/keys</a></p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-300 mb-2">AI Model</label>
+                        <select id="aiModel" class="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white">
+                            <option value="google/gemini-2.0-flash-exp:free">Gemini 2.0 Flash (Free)</option>
+                            <option value="google/gemini-2.0-flash-thinking-exp:free">Gemini 2.0 Flash Thinking (Free)</option>
+                            <option value="meta-llama/llama-3.1-8b-instruct:free">Llama 3.1 8B (Free)</option>
+                            <option value="meta-llama/llama-3.3-70b-instruct:free" selected>Llama 3.3 70B (Free) - Recommended</option>
+                        </select>
+                        <p class="text-xs text-gray-500 mt-1">"free" models have rate limits; paid models need a paid API key</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button type="submit" class="px-6 py-3 rounded-lg font-medium bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white">
+                        <i class="fas fa-save mr-2"></i>Save Settings
+                    </button>
+                    <button type="button" onclick="testApiConnection()" class="px-6 py-3 rounded-lg font-medium bg-gray-700 hover:bg-gray-600 text-white">
+                        <i class="fas fa-plug mr-2"></i>Test Connection
+                    </button>
+                </div>
+                <div id="apiTestResult" class="text-sm mt-3 hidden"></div>
+            </form>
+        </div>
+
+        <!-- Add Account Form -->
+        <div class="glass rounded-xl p-6 mb-6 neon-border">
+            <h3 class="text-lg font-semibold mb-4">
+                <i class="fas fa-plus-circle mr-2" style="color: #a78bfa;"></i>Add Your Posting Account
+            </h3>
+            <form id="addAccountForm" onsubmit="addAccount(event)" class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-2">Your Instagram Username</label>
+                    <input type="text" id="newAccountUsername" required
+                           class="w-full px-4 py-3 rounded-lg"
+                           placeholder="@youraccount">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-2">ManyChat Keyword</label>
+                    <div class="flex gap-2">
+                        <select id="newAccountKeyword" class="flex-1 px-4 py-3 rounded-lg" onchange="toggleCustomKeyword(this.value, 'new')">
+                            <option value="LINK">LINK - Default for link in bio</option>
+                            <option value="GROWTH">GROWTH - For growth resources</option>
+                            <option value="CONTENT">CONTENT - For content upgrades</option>
+                            <option value="OFFER">OFFER - For special offers</option>
+                            <option value="DM">DM - For DM automation</option>
+                            <option value="STORY">STORY - For story replies</option>
+                            <optgroup label="Your Custom Keywords" id="newAccountCustomGroup">
+                                <!-- Custom keywords will be loaded here -->
+                            </optgroup>
+                            <option value="ADD_NEW">+ Add New Keyword</option>
+                        </select>
+                        <input type="text" id="newAccountCustomKeyword"
+                               class="flex-1 px-4 py-3 rounded-lg hidden"
+                               placeholder="Type new keyword...">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-2">CTA Type</label>
+                    <select id="newAccountCta" class="w-full px-4 py-3 rounded-lg">
+                        <option value="LINK">Link</option>
+                        <option value="COMMENT">Comment Keyword</option>
+                        <option value="DM">DM Us</option>
+                        <option value="STORY">Reply to Story</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-2">Automation Name</label>
+                    <input type="text" id="newAccountAutomation"
+                           class="w-full px-4 py-3 rounded-lg"
+                           placeholder="e.g., Free PDF, Course Access">
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-semibold text-gray-300 mb-2">Brand Voice (Optional)</label>
+                    <textarea id="newAccountBrandVoice" rows="2"
+                              class="w-full px-4 py-3 rounded-lg"
+                              placeholder="Describe the tone for this account's captions (e.g., friendly, professional, witty)..."></textarea>
+                </div>
+
+                <div class="md:col-span-2">
+                    <button type="submit" class="save-btn px-6 py-3 rounded-lg font-semibold">
+                        <i class="fas fa-plus mr-2"></i>Add Account
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Your Accounts List -->
+        <div class="mb-4">
+            <h2 class="text-xl font-bold mb-4">Your Configured Accounts</h2>
+        </div>
+        <div id="accountsList" class="grid md:grid-cols-2 gap-4">
+            <div class="text-center py-12 col-span-2">
+                <i class="fas fa-spinner fa-spin text-4xl text-purple-400 mb-4"></i>
+                <p class="text-gray-400">Loading your accounts...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Account Modal -->
+    <div id="editModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass rounded-2xl p-6 w-full max-w-md neon-border">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold" id="modalTitle">Edit Account</h2>
+                <button onclick="closeEditModal()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <form id="editAccountForm" onsubmit="saveEditedAccount(event)">
+                <div class="mb-4">
+                    <label class="block text-sm font-semibold text-gray-300 mb-2">Instagram Username</label>
+                    <input type="text" id="editUsername" required
+                           class="w-full px-4 py-3 rounded-lg"
+                           placeholder="@username">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-semibold text-gray-300 mb-2">ManyChat Keyword</label>
+                    <div class="flex gap-2">
+                        <select id="editKeyword" class="flex-1 px-4 py-3 rounded-lg" onchange="toggleCustomKeyword(this.value, 'edit')">
+                            <option value="LINK">LINK - Default for link in bio</option>
+                            <option value="GROWTH">GROWTH - For growth resources</option>
+                            <option value="CONTENT">CONTENT - For content upgrades</option>
+                            <option value="OFFER">OFFER - For special offers</option>
+                            <option value="DM">DM - For DM automation</option>
+                            <option value="STORY">STORY - For story replies</option>
+                            <optgroup label="Your Custom Keywords" id="editCustomGroup">
+                                <!-- Custom keywords will be loaded here -->
+                            </optgroup>
+                            <option value="ADD_NEW">+ Add New Keyword</option>
+                        </select>
+                        <input type="text" id="editCustomKeyword"
+                               class="flex-1 px-4 py-3 rounded-lg hidden"
+                               placeholder="Type new keyword...">
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-semibold text-gray-300 mb-2">CTA Type</label>
+                    <select id="editCta" class="w-full px-4 py-3 rounded-lg">
+                        <option value="LINK">Link</option>
+                        <option value="COMMENT">Comment Keyword</option>
+                        <option value="DM">DM Us</option>
+                        <option value="STORY">Reply to Story</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-semibold text-gray-300 mb-2">Automation Name</label>
+                    <input type="text" id="editAutomation"
+                           class="w-full px-4 py-3 rounded-lg"
+                           placeholder="e.g., Free PDF, Course Access">
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-gray-300 mb-2">Brand Voice (Optional)</label>
+                    <textarea id="editBrandVoice" rows="3"
+                              class="w-full px-4 py-3 rounded-lg"
+                              placeholder="Describe the tone for this account's captions..."></textarea>
+                </div>
+
+                <div class="flex gap-3">
+                    <button type="button" onclick="closeEditModal()" class="flex-1 py-3 px-4 rounded-lg bg-gray-700 hover:bg-gray-600 font-semibold">
+                        Cancel
+                    </button>
+                    <button type="submit" class="flex-1 py-3 px-4 rounded-lg save-btn font-semibold">
+                        <i class="fas fa-save mr-2"></i>Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-4 right-4 bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white text-sm z-50 hidden">
+        <i class="fas fa-check-circle mr-2 text-green-400"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <script>
+        let accounts = [];
+        let customManyChatKeywords = [];
+
+        // Load accounts on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCustomKeywords();
+            loadAccounts();
+            loadApiSettings();
+        });
+
+        function loadApiSettings() {
+            // Load current API key (masked) and model
+            fetch('/api/settings/api-key')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success && data.api_key) {
+                        // Mask the key for security (show first 8 and last 4)
+                        const key = data.api_key;
+                        if (key.length > 12) {
+                            const masked = key.substring(0, 8) + '...' + key.substring(key.length - 4);
+                            document.getElementById('apiKey').value = key; // Store full key for save
+                            document.getElementById('apiKey').placeholder = masked;
+                        }
+
+                        if (data.model) {
+                            document.getElementById('aiModel').value = data.model;
+                        }
+                    }
+                })
+                .catch(err => console.error('Failed to load API settings:', err));
+        }
+
+        function loadCustomKeywords() {
+            const stored = localStorage.getItem('customManyChatKeywords');
+            customManyChatKeywords = stored ? JSON.parse(stored) : [];
+        }
+
+        function saveCustomKeyword(keyword) {
+            keyword = keyword.trim().toUpperCase();
+            if (keyword && !customManyChatKeywords.includes(keyword)) {
+                customManyChatKeywords.push(keyword);
+                localStorage.setItem('customManyChatKeywords', JSON.stringify(customManyChatKeywords));
+                populateAllCustomKeywordGroups();
+                return true;
+            }
+            return false;
+        }
+
+        function populateCustomKeywordGroup(groupId) {
+            const optgroup = document.getElementById(groupId);
+            if (!optgroup) return;
+
+            optgroup.innerHTML = '';
+            customManyChatKeywords.forEach(keyword => {
+                const option = document.createElement('option');
+                option.value = keyword;
+                option.textContent = keyword;
+                optgroup.appendChild(option);
+            });
+        }
+
+        function populateAllCustomKeywordGroups() {
+            populateCustomKeywordGroup('newAccountCustomGroup');
+            populateCustomKeywordGroup('editCustomGroup');
+        }
+
+        function toggleCustomKeyword(value, prefix) {
+            const customInput = document.getElementById(`${prefix}AccountCustomKeyword`) || document.getElementById(`${prefix}CustomKeyword`);
+            const select = document.getElementById(`${prefix}AccountKeyword`) || document.getElementById(`${prefix}Keyword`);
+
+            if (value === 'ADD_NEW') {
+                customInput.classList.remove('hidden');
+                customInput.placeholder = 'Type new keyword and press Enter...';
+                customInput.focus();
+
+                customInput.onkeydown = (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const newKeyword = customInput.value.trim().toUpperCase();
+                        if (newKeyword) {
+                            if (saveCustomKeyword(newKeyword)) {
+                                populateAllCustomKeywordGroups();
+                                select.value = newKeyword;
+                                customInput.classList.add('hidden');
+                                customInput.value = '';
+                                customInput.onkeydown = null;
+                                showToast(`Keyword "${newKeyword}" added!`);
+                            } else {
+                                showToast('Keyword already exists');
+                            }
+                        }
+                    } else if (e.key === 'Escape') {
+                        select.value = 'LINK';
+                        customInput.classList.add('hidden');
+                        customInput.value = '';
+                        customInput.onkeydown = null;
+                    }
+                };
+            } else {
+                customInput.classList.add('hidden');
+                customInput.value = '';
+                customInput.onkeydown = null;
+            }
+        }
+
+        async function loadAccounts() {
+            // Populate custom keyword groups on first load
+            populateAllCustomKeywordGroups();
+
+            try {
+                const response = await fetch('/api/accounts/settings');
+                const data = await response.json();
+
+                if (data.success) {
+                    accounts = data.accounts || [];
+                    renderAccounts();
+                }
+            } catch (error) {
+                console.error('Error loading accounts:', error);
+                showError('Failed to load accounts');
+            }
+        }
+
+        function renderAccounts() {
+            const container = document.getElementById('accountsList');
+
+            if (accounts.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 col-span-2">
+                        <i class="fas fa-user-plus text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">No posting accounts configured yet.</p>
+                        <p class="text-sm text-gray-500 mt-2">Add your Instagram accounts above to configure ManyChat settings.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = accounts.map(account => {
+                const presetKeywords = ['LINK', 'GROWTH', 'CONTENT', 'OFFER', 'DM', 'STORY'];
+                const keyword = account.manychat_keyword || 'Not set';
+                const keywordClass = presetKeywords.includes(keyword) ? `keyword-${keyword}` : 'keyword-CUSTOM';
+
+                return `
+                    <div class="glass rounded-xl p-6 hover:bg-white/10 transition-all">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center font-bold text-lg">
+                                    ${account.username.charAt(0).toUpperCase()}
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold">${account.username}</h3>
+                                    <p class="text-xs text-gray-400">Your posting account</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="editAccount('${account.username}')" class="text-indigo-400 hover:text-indigo-300 p-2" title="Edit account">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button onclick="deleteAccount('${account.username}')" class="text-red-400 hover:text-red-300 p-2" title="Delete account">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-400">ManyChat Keyword:</span>
+                                <span class="keyword-badge ${keywordClass}">
+                                    ${keyword}
+                                </span>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-400">CTA Type:</span>
+                                <span class="text-sm text-white">${account.manychat_cta || 'LINK'}</span>
+                            </div>
+
+                            ${account.automation_name ? `
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-400">Automation:</span>
+                                    <span class="text-sm text-white">
+                                        <i class="fas fa-robot mr-1"></i>${account.automation_name}
+                                    </span>
+                                </div>
+                            ` : ''}
+
+                            ${account.brand_voice ? `
+                                <div class="pt-3 border-t border-white/10">
+                                    <p class="text-xs text-gray-400 italic">"${account.brand_voice}"</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function addAccount(event) {
+            event.preventDefault();
+
+            let keyword = document.getElementById('newAccountKeyword').value;
+            if (!keyword || keyword === 'ADD_NEW') {
+                showError('Please select a ManyChat keyword');
+                return;
+            }
+
+            const data = {
+                username: document.getElementById('newAccountUsername').value.replace('@', ''),
+                manychat_keyword: keyword,
+                manychat_cta: document.getElementById('newAccountCta').value,
+                manychat_automation_name: document.getElementById('newAccountAutomation').value,
+                brand_voice: document.getElementById('newAccountBrandVoice').value
+            };
+
+            try {
+                const response = await fetch('/api/accounts/settings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('Account added successfully!');
+                    document.getElementById('addAccountForm').reset();
+                    document.getElementById('newAccountCustomKeyword').classList.add('hidden');
+                    loadAccounts();
+                } else {
+                    showError(result.error || 'Failed to add account');
+                }
+            } catch (error) {
+                console.error('Error adding account:', error);
+                showError('Failed to add account');
+            }
+        }
+
+        function editAccount(username) {
+            const account = accounts.find(a => a.username === username);
+            if (!account) return;
+
+            document.getElementById('modalTitle').textContent = `Edit ${username}`;
+            document.getElementById('editUsername').value = account.username;
+
+            // Handle keyword - check if it's a preset or custom
+            const presetKeywords = ['LINK', 'GROWTH', 'CONTENT', 'OFFER', 'DM', 'STORY'];
+            const keyword = account.manychat_keyword || 'LINK';
+
+            if (presetKeywords.includes(keyword)) {
+                document.getElementById('editKeyword').value = keyword;
+            } else {
+                // It's a custom keyword - populate group if needed and select it
+                populateAllCustomKeywordGroups();
+                setTimeout(() => {
+                    document.getElementById('editKeyword').value = keyword;
+                }, 0);
+            }
+
+            document.getElementById('editCta').value = account.manychat_cta || 'LINK';
+            document.getElementById('editAutomation').value = account.automation_name || '';
+            document.getElementById('editBrandVoice').value = account.brand_voice || '';
+
+            document.getElementById('editModal').classList.remove('hidden');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.add('hidden');
+        }
+
+        async function saveEditedAccount(event) {
+            event.preventDefault();
+
+            let keyword = document.getElementById('editKeyword').value;
+            if (!keyword || keyword === 'ADD_NEW') {
+                showError('Please select a ManyChat keyword');
+                return;
+            }
+
+            const data = {
+                username: document.getElementById('editUsername').value.replace('@', ''),
+                manychat_keyword: keyword,
+                manychat_cta: document.getElementById('editCta').value,
+                manychat_automation_name: document.getElementById('editAutomation').value,
+                brand_voice: document.getElementById('editBrandVoice').value
+            };
+
+            try {
+                const response = await fetch('/api/accounts/settings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('Account updated successfully!');
+                    closeEditModal();
+                    loadAccounts();
+                } else {
+                    showError(result.error || 'Failed to update account');
+                }
+            } catch (error) {
+                console.error('Error updating account:', error);
+                showError('Failed to update account');
+            }
+        }
+
+        async function deleteAccount(username) {
+            if (!confirm(`Delete ${username}? This won't affect your actual Instagram account.`)) return;
+
+            try {
+                const response = await fetch(`/api/accounts/settings?username=${encodeURIComponent(username)}`, {
+                    method: 'DELETE'
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('Account deleted');
+                    loadAccounts();
+                } else {
+                    showError(result.error || 'Failed to delete');
+                }
+            } catch (error) {
+                console.error('Error deleting account:', error);
+                showError('Failed to delete account');
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 3000);
+        }
+
+        function showError(message) {
+            const toast = document.getElementById('toast');
+            toast.innerHTML = `<i class="fas fa-exclamation-circle mr-2 text-red-400"></i>${message}`;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 5000);
+        }
+
+        // API Settings Functions
+        async function saveApiSettings(event) {
+            event.preventDefault();
+            const apiKey = document.getElementById('apiKey').value;
+            const aiModel = document.getElementById('aiModel').value;
+
+            if (!apiKey) {
+                showError('API key is required');
+                return;
+            }
+
+            const resultDiv = document.getElementById('apiTestResult');
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Saving...';
+
+            try {
+                const response = await fetch('/api/settings/api-key', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ api_key: apiKey, model: aiModel })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    resultDiv.innerHTML = '<i class="fas fa-check-circle mr-2 text-green-400"></i>Settings saved! <span class="text-gray-400">(Restart required for changes to take effect)</span>';
+                    resultDiv.className = 'text-sm mt-3 text-green-400';
+                    setTimeout(() => resultDiv.classList.add('hidden'), 5000);
+                } else {
+                    resultDiv.innerHTML = `<i class="fas fa-exclamation-circle mr-2 text-red-400"></i>${result.error}`;
+                    resultDiv.className = 'text-sm mt-3 text-red-400';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<i class="fas fa-exclamation-circle mr-2 text-red-400"></i>Failed to save: ${error.message}`;
+                resultDiv.className = 'text-sm mt-3 text-red-400';
+            }
+        }
+
+        async function testApiConnection() {
+            const apiKey = document.getElementById('apiKey').value;
+            const aiModel = document.getElementById('aiModel').value;
+
+            if (!apiKey) {
+                showError('Please enter an API key first');
+                return;
+            }
+
+            const resultDiv = document.getElementById('apiTestResult');
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Testing connection...';
+
+            try {
+                const response = await fetch('/api/settings/test-api', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ api_key: apiKey, model: aiModel })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    resultDiv.innerHTML = `<i class="fas fa-check-circle mr-2 text-green-400"></i>Connected! Model: ${result.model}`;
+                    resultDiv.className = 'text-sm mt-3 text-green-400';
+                } else {
+                    resultDiv.innerHTML = `<i class="fas fa-exclamation-circle mr-2 text-red-400"></i>${result.error}`;
+                    resultDiv.className = 'text-sm mt-3 text-red-400';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<i class="fas fa-exclamation-circle mr-2 text-red-400"></i>Connection failed: ${error.message}`;
+                resultDiv.className = 'text-sm mt-3 text-red-400';
+            }
+        }
+    </script>
+</body>
+</html>

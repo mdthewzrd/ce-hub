@@ -1,0 +1,283 @@
+============================================================
+SC DMR Scanner - ALL TICKERS
+============================================================
+Scanning period: 2024-01-01 to 2025-10-24
+This will scan EVERY available ticker from Polygon
+============================================================
+
+Calculating trading dates...
+✓ Found 456 trading days
+
+Fetching ALL stocks for 456 trading days...
+Using 5 parallel workers for optimal performance...
+Date range: 2024-01-02 to 2025-10-24
+Progress: 10/456 days | Success: 10 | Failed: 0
+Progress: 20/456 days | Success: 20 | Failed: 0
+Progress: 30/456 days | Success: 30 | Failed: 0
+Progress: 40/456 days | Success: 40 | Failed: 0
+Progress: 50/456 days | Success: 50 | Failed: 0
+Progress: 60/456 days | Success: 60 | Failed: 0
+Progress: 70/456 days | Success: 70 | Failed: 0
+Progress: 80/456 days | Success: 80 | Failed: 0
+Progress: 90/456 days | Success: 90 | Failed: 0
+Progress: 100/456 days | Success: 100 | Failed: 0
+Progress: 110/456 days | Success: 110 | Failed: 0
+Progress: 120/456 days | Success: 120 | Failed: 0
+Progress: 130/456 days | Success: 130 | Failed: 0
+Progress: 140/456 days | Success: 140 | Failed: 0
+Progress: 150/456 days | Success: 150 | Failed: 0
+Progress: 160/456 days | Success: 160 | Failed: 0
+Progress: 170/456 days | Success: 170 | Failed: 0
+Progress: 180/456 days | Success: 180 | Failed: 0
+Progress: 190/456 days | Success: 190 | Failed: 0
+Progress: 200/456 days | Success: 200 | Failed: 0
+Progress: 210/456 days | Success: 210 | Failed: 0
+Progress: 220/456 days | Success: 220 | Failed: 0
+Progress: 230/456 days | Success: 230 | Failed: 0
+Progress: 240/456 days | Success: 240 | Failed: 0
+Progress: 250/456 days | Success: 250 | Failed: 0
+Progress: 260/456 days | Success: 260 | Failed: 0
+Progress: 270/456 days | Success: 270 | Failed: 0
+Progress: 280/456 days | Success: 280 | Failed: 0
+Progress: 290/456 days | Success: 290 | Failed: 0
+Progress: 300/456 days | Success: 300 | Failed: 0
+Progress: 310/456 days | Success: 310 | Failed: 0
+Progress: 320/456 days | Success: 320 | Failed: 0
+Progress: 330/456 days | Success: 330 | Failed: 0
+Progress: 340/456 days | Success: 340 | Failed: 0
+Progress: 350/456 days | Success: 350 | Failed: 0
+Progress: 360/456 days | Success: 360 | Failed: 0
+Progress: 370/456 days | Success: 370 | Failed: 0
+Progress: 380/456 days | Success: 380 | Failed: 0
+Progress: 390/456 days | Success: 390 | Failed: 0
+Progress: 400/456 days | Success: 400 | Failed: 0
+Progress: 410/456 days | Success: 410 | Failed: 0
+Progress: 420/456 days | Success: 420 | Failed: 0
+Progress: 430/456 days | Success: 430 | Failed: 0
+Progress: 440/456 days | Success: 440 | Failed: 0
+Progress: 450/456 days | Success: 450 | Failed: 0
+
+✓ Fetch complete: 456/456 days processed
+  Success: 456 days | Failed: 0 days
+
+Combining data from all trading days...
+✓ Total rows: 4,941,286
+✓ Unique tickers: 14,444
+✓ Date range: 2024-01-02 to 2025-10-24
+
+============================================================
+Data Preparation Phase
+============================================================
+Calculating previous close values...
+Calculating gaps...
+Estimating pre-market highs...
+
+✓ Data preparation complete!
+  Total rows: 4,941,286
+  Date range: 2024-01-02 to 2025-10-24
+  Tickers: 14444
+============================================================
+
+============================================================
+Feature Engineering Phase
+============================================================
+Calculating technical indicators...
+  → Previous highs (10 periods)
+  → Previous lows & opens
+  → Ranges & gaps
+  → Close ranges
+  → Volume metrics
+  → Next day values
+
+------------------------------------------------------------
+Computing valid trigger highs...
+✓ Valid trigger highs calculated
+
+------------------------------------------------------------
+Calculating setup patterns...
+  → D2 PM Setup variants
+  → D2 PMH Break variants
+  → D2 Extreme patterns
+  → D3 patterns
+  → D4 patterns
+✓ All setup patterns calculated
+============================================================
+
+============================================================
+Filtering Setups
+============================================================
+Date range: 2024-01-01 to 2025-10-24
+Applying setup filters...
+
+============================================================
+Scan Results Summary
+============================================================
+
+Total setups found: 130
+  • D2 PMH Break:           28
+  • D2 No PMH Break:        0
+  • D3:                     8
+  • D3 Alt:                 24
+
+Unique tickers with setups: 110
+Date range of setups: 2024-01-30 to 2025-10-23
+
+Top 10 tickers by setup frequency:
+  FFIE: 5 setups
+  QUBT: 3 setups
+  RVSN: 2 setups
+  OPEN: 2 setups
+  WOLF: 2 setups
+  NUKK: 2 setups
+  LAES: 2 setups
+  GXAI: 2 setups
+  QMCO: 2 setups
+  PDYN: 2 setups
+
+============================================================
+FULL RESULTS LIST - ALL SETUPS
+============================================================
+
+Date       | Ticker
+------------------------------------------------------------
+      date ticker
+2024-01-30   RVSN
+2024-02-01   MINM
+2024-02-26   OCEA
+2024-02-27   STRC
+2024-03-05   OCEA
+2024-03-06   AISP
+2024-03-18   VERI
+2024-03-28   CZOO
+2024-04-01    NXL
+2024-04-05   CADL
+2024-04-11   CNXA
+2024-04-17   WISA
+2024-04-23   AGBA
+2024-04-25   AIRE
+2024-05-14    AMC
+2024-05-14    GME
+2024-05-15   FFIE
+2024-05-16   FFIE
+2024-05-17   FFIE
+2024-06-13   LGVN
+2024-06-14   LGVN
+2024-06-18   MBIO
+2024-06-24    NXL
+2024-06-27   FFIE
+2024-07-09   ZAPP
+2024-07-22   SERV
+2024-07-30   SERV
+2024-08-19   GOVX
+2024-08-22    GDC
+2024-08-23    GDC
+2024-08-29    BOF
+2024-09-17   GEVO
+2024-09-30   UXIN
+2024-10-02   EONR
+2024-10-15   DRUG
+2024-10-17   VSME
+2024-11-05   SPPL
+2024-11-11   DXYZ
+2024-11-12    MFH
+2024-11-13   BTCT
+2024-11-14   QUBT
+2024-11-21   SPAI
+2024-11-25   RCAT
+2024-11-25   PDYN
+2024-11-25   QMCO
+2024-11-25   QUBT
+2024-11-26   QMCO
+2024-11-26   ZENA
+2024-12-02   UMAC
+2024-12-09   GXAI
+2024-12-10   GXAI
+2024-12-12   LAES
+2024-12-16   WKEY
+2024-12-17   SIDU
+2024-12-17   OPTX
+2024-12-17   TNXP
+2024-12-18     RR
+2024-12-18   QUBT
+2024-12-18   NUKK
+2024-12-19   NUKK
+2024-12-19   VRAR
+2024-12-24   LAES
+2024-12-27   PDYN
+2024-12-27    SES
+2024-12-27   ABAT
+2024-12-30   INTZ
+2024-12-30   RVSN
+2024-12-31   FFIE
+2024-12-31   OPTT
+2025-01-03   NITO
+2025-01-06   CRNC
+2025-01-06   KITT
+2025-01-27   NVNI
+2025-02-06   QNTM
+2025-02-11   DOMH
+2025-02-12   AIFF
+2025-03-03   TRNR
+2025-03-06     GV
+2025-03-07   PSTV
+2025-03-12   DWTX
+2025-03-13   CRVO
+2025-03-21    IBO
+2025-04-01   ICCT
+2025-04-07   UVIX
+2025-04-07   SOXS
+2025-04-07    VXX
+2025-04-16   SBEV
+2025-04-17   AREC
+2025-04-25   OMEX
+2025-04-25    CEP
+2025-05-01   NVNI
+2025-05-02   KIDZ
+2025-05-08   ASST
+2025-05-09   ZKIN
+2025-05-19   SYTA
+2025-05-28   LVWR
+2025-05-30   SBET
+2025-06-02   BMGL
+2025-06-04   MCTR
+2025-06-09    KNW
+2025-06-10   KLTO
+2025-06-25   NKTR
+2025-06-25   SRFM
+2025-07-01   BMNR
+2025-07-03   LIXT
+2025-07-08   WOLF
+2025-07-09   PROK
+2025-07-11   ABVE
+2025-07-17   OPEN
+2025-07-17   BTCS
+2025-07-21   OPEN
+2025-07-25   HCTI
+2025-07-28   MCVT
+2025-08-13   ATNF
+2025-08-21   THAR
+2025-09-10   PTNM
+2025-09-16    OPI
+2025-09-23   SLNH
+2025-09-30   WOLF
+2025-10-07   SPRB
+2025-10-09   SCWO
+2025-10-13    GWH
+2025-10-14    STI
+2025-10-14   AQMS
+2025-10-14   NVTS
+2025-10-14   UAMY
+2025-10-15   FLNC
+2025-10-22   RANI
+2025-10-22   BYND
+2025-10-23   IBIO
+============================================================
+
+------------------------------------------------------------
+Exporting results...
+------------------------------------------------------------
+✓ Exported: All D2 and D3.csv
+
+============================================================
+✓ Scan Complete!
+============================================================

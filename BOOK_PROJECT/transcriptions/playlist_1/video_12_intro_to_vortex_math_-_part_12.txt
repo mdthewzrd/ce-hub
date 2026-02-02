@@ -1,0 +1,189 @@
+================================================================================
+VIDEO TRANSCRIPT: Intro to Vortex Math - Part 12
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: What I discovered is this model is accounting for spiders, but it is not truly
+
+[00:00:15] **Randy Powell**: wound according to the nature of a quantized three-dimensional
+
+[00:00:20] **Randy Powell**: torus. So if we have a torus in 3D where we have all of our
+
+[00:00:26] **Randy Powell**: accesses going we have unbroken multiplication series no matter how no
+
+[00:00:33] **Randy Powell**: matter what group of nine we're using we could be using a sheet of nine by nine
+
+[00:00:38] **Randy Powell**: I'm going to show this graphically we could be using 18 by 18 27 by 27 36 by
+
+[00:00:46] **Randy Powell**: 36 any group of nine I am saying which was not known until now that you can make
+
+[00:00:53] **Randy Powell**: a torus based on any group of nine and I have the algorithm for how it works but
+
+[00:01:03] **Randy Powell**: what I found is that it's not all one circuit though these spiders do work to
+
+[00:01:09] **Randy Powell**: interconnect the various circuits and they do polarize the fields these
+
+[00:01:15] **Randy Powell**: relationships of the parallel lines of the triangulation and also even mostly
+
+[00:01:21] **Randy Powell**: importantly here if you can see again I'll follow it the diamond those
+
+[00:01:26] **Randy Powell**: overlapping of the hexagons the diamonds you can see the pentagon in here all
+
+[00:01:33] **Randy Powell**: those overlapping geometries are high significant within the torus but they are
+
+[00:01:38] **Randy Powell**: not showing the path of these doubling circuits in a truth 3D so I figured
+
+[00:01:45] **Randy Powell**: out how to calculate them perfectly in a 3D and what I found is it's not just
+
+[00:01:52] **Randy Powell**: two conductors even on the smallest possible torus you can make which is a
+
+[00:01:57] **Randy Powell**: nine by nine it is a minimum of six conductors why does that why is that so
+
+[00:02:07] **Randy Powell**: and what am I talking about so I'm saying when this mathematical figure print
+
+[00:02:13] **Randy Powell**: used to be shown the idea was that or if you look at a torus let me show you an
+
+[00:02:19] **Randy Powell**: example
+
+[00:02:29] **Randy Powell**: this may be a little confusing to look at but if you can follow me on the colors
+
+[00:02:34] **Randy Powell**: here I'll show you how the idea was because this was actually an illustration that
+
+[00:02:39] **Randy Powell**: I did to show how it doesn't work let's this is the way that the coil was
+
+[00:02:46] **Randy Powell**: said to be wound and this is not an accurate perfect torus it's just one I had
+
+[00:02:51] **Randy Powell**: to fill in I saw we're having a wire coming in here it would skip for one two
+
+[00:02:59] **Randy Powell**: three four it would come out here see that's my next pink this one was pink
+
+[00:03:03] **Randy Powell**: coming in here on pink one two three four is my next pink then I'm going to switch
+
+[00:03:10] **Randy Powell**: to yellow will come around yellow yellow then I would switch to I believe green green
+
+[00:03:19] **Randy Powell**: green and it's going to go orange orange orange and then I'm back to pink and it
+
+[00:03:26] **Randy Powell**: cycles again saying that this was all one interconnected circuit but I found
+
+[00:03:31] **Randy Powell**: that it's not it's actually multiple circuits and it depends on how many groups
+
+[00:03:36] **Randy Powell**: of nine you have so if I was just to account for nine on my horizontal axis nine
+
+[00:03:44] **Randy Powell**: numbers on my vertical axis which means I can connect them in a circle which is
+
+[00:03:48] **Randy Powell**: the principle I have to maintain I have to have a perfect circle on my axis that
+
+[00:03:54] **Randy Powell**: is one of my multiplication series and I also has to intersect perfectly with a
+
+[00:03:59] **Randy Powell**: horizontal axis that's accounting for the right opposing multiplication series
+
+[00:04:07] **Randy Powell**: for that axis in this case it's my 1 and 8 to my 4 and 5 my 2 and 7's are my Z axis
+
+[00:04:13] **Randy Powell**: as I make more layers of the skin that will switch this could be 2 and 7 and 1
+
+[00:04:20] **Randy Powell**: and 8 okay we're actually be 8 and 1 but I won't go into that yet so if you're
+
+[00:04:30] **Randy Powell**: looking at on our flat piece of paper you would say oh well all these green are
+
+[00:04:33] **Randy Powell**: just one circuit but they're not even on a 9 by 9 so I have 9 on my horizontal
+
+[00:04:40] **Randy Powell**: 9 on my vertical 9 on my horizontal and I will have also the negative numbers
+
+[00:04:47] **Randy Powell**: filling in between which I believe is a total of 162 numbers for a 9 by 9 I'm
+
+[00:04:53] **Randy Powell**: gonna show you what that look like let me just pull that out so this would be an
+
+[00:05:03] **Randy Powell**: example and I'm gonna explain to you what this is this is very small I know but
+
+[00:05:06] **Randy Powell**: this would be a 9 by 9 tors all right it's composed of three what I call
+
+[00:05:16] **Randy Powell**: nested vortices circuits what is a nested vortices circuit we know these
+
+[00:05:21] **Randy Powell**: vortices over the surface are nested vortices they are like kickers for the
+
+[00:05:28] **Randy Powell**: electricity they impart more atheron energy electricity accelerates there are
+
+[00:05:35] **Randy Powell**: more axes for the electricity to compress and decompress off of or for any
+
+[00:05:41] **Randy Powell**: motion to work off of now these nested vortices have to function with each
+
+[00:05:48] **Randy Powell**: other in a sequence which is over the surface of this whole thing which is
+
+[00:05:54] **Randy Powell**: which is probably the most significant and complex aspect of vortex based
+
+[00:05:59] **Randy Powell**: mathematics I believe it's also the secret to the periodic table which I'm
+
+[00:06:04] **Randy Powell**: beginning to model all right so I'm saying that with a 9 by 9 tors it's a
+
+[00:06:13] **Randy Powell**: minimum of three nested vortices circuits so in other words if it takes a
+
+[00:06:20] **Randy Powell**: whole group of these represented nested vortices circuits so this these three
+
+[00:06:25] **Randy Powell**: right here would be one nested vortices circuit and this would be two then
+
+[00:06:30] **Randy Powell**: three okay for a 9 by 9 tors there's three different nested vortices circuits
+
+[00:06:37] **Randy Powell**: and make a total of 18 vortices this is the most simple that you can do there
+
+[00:06:44] **Randy Powell**: in three groups of six so there's six of these and you can assign a number to each
+
+[00:06:51] **Randy Powell**: of those vortices so you can see these smaller diamonds in here are where I was
+
+[00:06:57] **Randy Powell**: putting my initial numbers even though they're not written in here these bigger
+
+[00:07:01] **Randy Powell**: numbers now that are written on are a number that goes for each nested vortices
+
+[00:07:05] **Randy Powell**: but these sequences cannot occur if you only have two conductors it's
+
+[00:07:11] **Randy Powell**: impossible and it doesn't doesn't correlate with this tors it's the one of the
+
+[00:07:18] **Randy Powell**: other has to be correct this tors is showing that instead of the winding going
+
+[00:07:23] **Randy Powell**: round and round and round as I showed in my other video and you can see this on
+
+[00:07:26] **Randy Powell**: the advanced video that this one's coming in here it's coming out over here
+
+[00:07:32] **Randy Powell**: and connecting back to itself so these are multiple circuits each one of these
+
+[00:07:36] **Randy Powell**: colors represents four different conductors four different wires which means in
+
+[00:07:42] **Randy Powell**: this mile I have 12 wires
+
+[00:07:46] **Randy Powell**: those various circuits create the phenomena which is being talked about here
+
+[00:07:59] **Randy Powell**: called spires when you're growing in this path or here like this every time you
+
+[00:08:16] **Randy Powell**: cross back at a right angle that's a spire so you're getting these polarized
+
+[00:08:24] **Randy Powell**: fields and you're getting these parallel lines which we also saw in our initial
+
+[00:08:28] **Randy Powell**: symbol we wanted to have those parallel lines we wanted to have the triangulation
+
+[00:08:32] **Randy Powell**: we wanted to have the essentially the hexagonal shape this being a 24 sided
+
+[00:08:38] **Randy Powell**: polygon in the center if you this is just a 24 sided you know based on hexagon
+
+[00:08:48] **Randy Powell**: so you have all your different geometries accounted for so so this would seem
+
+[00:08:54] **Randy Powell**: to be correct but what's actually happening these spires are what we're
+
+[00:09:00] **Randy Powell**: talking about when we talk about these spirals over top here's my initial
+
+[00:09:04] **Randy Powell**: doubling circuits going in over top of that I have these spirals like this red
+
+[00:09:10] **Randy Powell**: one you see coming all the way over and when you look at those spirals it's kind
+
+[00:09:13] **Randy Powell**: of interesting because they look and they follow the metric of the spirals we
+
+[00:09:19] **Randy Powell**: see in nature and shells and the Fibonacci generally in vortex motion so you
+
+[00:09:26] **Randy Powell**: can tell right away that there's something highly significant I actually found
+
+[00:09:30] **Randy Powell**: the secret of the of the spires and how they work they increase in a certain
+
+[00:09:35] **Randy Powell**: amount depending on how many circuits how many conductors you're using

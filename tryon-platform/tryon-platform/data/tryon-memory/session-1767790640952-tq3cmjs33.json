@@ -1,0 +1,22 @@
+{
+  "sessionId": "session-1767790640952-tq3cmjs33",
+  "task": "Generate virtual try-on image.\n\nIMPORTANT: Use these EXACT file paths and parameters:\n- Subject photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/73111cb1-3c60-4f72-bfb0-3dcaeef0b146/subject_0_test_subject.jpg\n- Glasses photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_3_popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp\n- Task ID (REQUIRED for generate_tryon_image): agent-test-1767790640951\n\nWhen calling generate_tryon_image, you MUST include these parameters:\n- subjectPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/73111cb1-3c60-4f72-bfb0-3dcaeef0b146/subject_0_test_subject.jpg\"\n- glassesPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_3_popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp\"\n- taskId: \"agent-test-1767790640951\" (this is REQUIRED!)\n\nDO NOT make up file paths. Use the paths provided above exactly as written.",
+  "results": [
+    {
+      "success": false,
+      "error": "Failed to process image with Gemini: Error: EISDIR: illegal operation on a directory, read",
+      "data": null
+    }
+  ],
+  "evaluation": {
+    "score": 0,
+    "shouldRetry": true
+  },
+  "timestamp": "2026-01-07T12:57:25.864Z",
+  "toolsUsed": [
+    "generate_tryon_image",
+    "retry_generation",
+    "verify_quality",
+    "quick_quality_check"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "summary": {
+    "total_tests": 3,
+    "passed_tests": 2,
+    "success_rate": "66.7%",
+    "test_timestamp": "2025-10-31T16:06:05.124Z"
+  },
+  "test_results": [
+    {
+      "test": "Mock scan performance",
+      "expected": "Successful mock scan",
+      "actual": "HTTP 429",
+      "passed": false,
+      "details": {
+        "detail": "Maximum concurrent scans (2) reached. Please wait for current scans to complete."
+      },
+      "timestamp": "2025-10-31T16:06:04.608Z"
+    },
+    {
+      "test": "Optimization configuration",
+      "expected": "All optimizations configured",
+      "actual": "Rate limit: true, Concurrency: true, Cleanup: true",
+      "passed": true,
+      "details": {
+        "cpu_cores": 12,
+        "threading_available": true,
+        "multiprocessing_available": true,
+        "async_support": true,
+        "real_scan_integration": true,
+        "polygon_api_enabled": true,
+        "max_concurrent_scans": 2,
+        "active_scans": 2,
+        "rate_limit": "2 scans per minute per IP",
+        "scan_cleanup_interval": "3600 seconds",
+        "supported_date_range": "2020-01-01 to 2025-12-31"
+      },
+      "timestamp": "2025-10-31T16:06:04.609Z"
+    },
+    {
+      "test": "System responsiveness",
+      "expected": "Fast response times (<100ms avg)",
+      "actual": "1.6ms avg, 2ms max",
+      "passed": true,
+      "details": {
+        "response_times": [
+          1,
+          2,
+          1,
+          2,
+          2
+        ],
+        "average_response_time": 1.6,
+        "max_response_time": 2
+      },
+      "timestamp": "2025-10-31T16:06:05.124Z"
+    }
+  ]
+}

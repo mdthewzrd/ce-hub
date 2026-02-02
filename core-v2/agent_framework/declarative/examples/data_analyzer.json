@@ -1,0 +1,210 @@
+{
+  "agent": {
+    "name": "Data Analyzer",
+    "description": "Specialized agent for analyzing datasets, generating insights, and creating visualizations",
+    "type": "analysis",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 7,
+    "system_prompt": {
+      "role": "You are a data analysis specialist who helps users understand their datasets through statistical analysis and visualization.",
+      "responsibilities": [
+        "Perform statistical analysis on datasets",
+        "Identify patterns, trends, and anomalies",
+        "Generate appropriate visualizations for data",
+        "Provide clear, actionable insights",
+        "Suggest additional analyses that might be valuable"
+      ],
+      "guidelines": [
+        "Always start by understanding the data structure and context",
+        "Explain statistical findings in plain language",
+        "Recommend visualizations that best represent the data",
+        "Highlight both expected findings and surprising discoveries",
+        "Suggest follow-up analyses based on initial findings"
+      ],
+      "constraints": [
+        "Do not make claims about statistical significance without proper tests",
+        "Always state assumptions made during analysis",
+        "Do not infer causation from correlation without additional context",
+        "Limit technical jargon unless user indicates they want it"
+      ]
+    },
+    "tools": [
+      {
+        "name": "analyze_distribution",
+        "description": "Analyzes the distribution of a numerical variable (mean, median, std dev, quartiles)",
+        "type": "analysis",
+        "parameters": {
+          "data": {
+            "type": "list",
+            "description": "List of numerical values to analyze",
+            "required": true
+          },
+          "variable_name": {
+            "type": "str",
+            "description": "Name of the variable being analyzed",
+            "required": true
+          }
+        }
+      },
+      {
+        "name": "detect_outliers",
+        "description": "Identifies outliers using IQR method or z-score",
+        "type": "analysis",
+        "parameters": {
+          "data": {
+            "type": "list",
+            "description": "List of numerical values",
+            "required": true
+          },
+          "method": {
+            "type": "str",
+            "description": "Method to use: 'iqr' or 'zscore'",
+            "required": false,
+            "default": "iqr"
+          },
+          "threshold": {
+            "type": "float",
+            "description": "Threshold for outlier detection (e.g., 1.5 for IQR, 3 for z-score)",
+            "required": false,
+            "default": 1.5
+          }
+        }
+      },
+      {
+        "name": "find_correlations",
+        "description": "Calculates correlation coefficients between numerical variables",
+        "type": "calculation",
+        "parameters": {
+          "data_frame": {
+            "type": "dict",
+            "description": "Dictionary with variable names as keys and numerical lists as values",
+            "required": true
+          },
+          "method": {
+            "type": "str",
+            "description": "Correlation method: 'pearson' or 'spearman'",
+            "required": false,
+            "default": "pearson"
+          }
+        }
+      },
+      {
+        "name": "generate_summary_statistics",
+        "description": "Creates a comprehensive summary statistics table",
+        "type": "calculation",
+        "parameters": {
+          "data": {
+            "type": "dict",
+            "description": "Dictionary with variable names as keys and numerical lists as values",
+            "required": true
+          }
+        }
+      },
+      {
+        "name": "recommend_visualization",
+        "description": "Suggests the best visualization type based on data characteristics",
+        "type": "analysis",
+        "parameters": {
+          "data_type": {
+            "type": "str",
+            "description": "Type of data: 'numerical', 'categorical', 'timeseries', 'geographical'",
+            "required": true
+          },
+          "analysis_goal": {
+            "type": "str",
+            "description": "Goal: 'distribution', 'comparison', 'relationship', 'trend', 'composition'",
+            "required": true
+          },
+          "cardinality": {
+            "type": "int",
+            "description": "Number of unique values (for categorical data)",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "perform_hypothesis_test",
+        "description": "Performs statistical hypothesis testing (t-test, chi-square, etc.)",
+        "type": "calculation",
+        "parameters": {
+          "test_type": {
+            "type": "str",
+            "description": "Type of test: 'ttest_one_sample', 'ttest_two_sample', 'chi_square', 'anova'",
+            "required": true
+          },
+          "data": {
+            "type": "dict",
+            "description": "Test data (format depends on test_type)",
+            "required": true
+          },
+          "alpha": {
+            "type": "float",
+            "description": "Significance level",
+            "required": false,
+            "default": 0.05
+          }
+        }
+      },
+      {
+        "name": "create_insight_report",
+        "description": "Generates a comprehensive report with key findings and recommendations",
+        "type": "analysis",
+        "parameters": {
+          "analyses": {
+            "type": "list",
+            "description": "List of analysis results to include in report",
+            "required": true
+          },
+          "focus_areas": {
+            "type": "list",
+            "description": "Specific areas to focus on in the report",
+            "required": false
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "data_analysis_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "moderate",
+      "quality_threshold": 0.8,
+      "rules": [
+        {
+          "name": "statistical_validity_check",
+          "description": "Verify statistical methods are appropriate for the data",
+          "severity": "error"
+        },
+        {
+          "name": "insight_clarity_check",
+          "description": "Ensure insights are clearly explained and actionable",
+          "severity": "warning"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "development",
+      "scaling": "horizontal",
+      "resources": {
+        "memory": "1GB",
+        "cpu": "1.0"
+      }
+    }
+  }
+}

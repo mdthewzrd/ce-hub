@@ -1,0 +1,36 @@
+[
+  {
+    "scanner_name": "half_a+",
+    "scanner_label": "Half A+ Scanner",
+    "scanner_type": "a_plus",
+    "scan_id": "scan_20251102_204900_86b50d31",
+    "total_results": 0,
+    "unique_tickers": 0,
+    "tickers": [],
+    "sample_results": [],
+    "parameters": {
+      "atr_mult": 4,
+      "vol_mult": 2,
+      "slope3d_min": 10,
+      "slope5d_min": 20,
+      "slope15d_min": 40,
+      "high_ema9_mult": 4,
+      "high_ema20_mult": 5,
+      "pct7d_low_div_atr_min": 0.5,
+      "pct14d_low_div_atr_min": 1.5,
+      "gap_div_atr_min": 0.5,
+      "open_over_ema9_min": 1.25,
+      "atr_pct_change_min": 5,
+      "prev_close_min": 15.0,
+      "prev_gain_pct_min": 0.25,
+      "pct2d_div_atr_min": 2,
+      "pct3d_div_atr_min": 3,
+      "slope50d_min": 60,
+      "apiKey": "API_KEY",
+      "api_key": "Fm7brz4s23eSocDErnL68cE7wspz2K1I",
+      "base_url": "https://api.polygon.io",
+      "rolling_window_7": 7,
+      "rolling_window_14": 14
+    }
+  }
+]

@@ -1,0 +1,1295 @@
+{
+  "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+  "chunk_count": 65,
+  "chunks": [
+    {
+      "content": "# EdgeDev Backtesting & Optimization Gold Standard\n**Complete Framework for Strategy Validation**\n\n**Version**: 1.0\n**Date**: 2026-01-29\n**Status**: COMPLETE - Ready for Implementation\n\n---\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard"
+      ],
+      "metadata": {
+        "level": 1,
+        "heading": "EdgeDev Backtesting & Optimization Gold Standard"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "optimization"
+      ]
+    },
+    {
+      "content": "## Table of Contents\n\n1. [Overview](#overview)\n2. [Backtest Types](#backtest-types)\n3. [Parameter Optimization](#parameter-optimization)\n4. [Walk-Forward Testing](#walk-forward-testing)\n5. [Forward Testing & Paper Trading](#forward-testing--paper-trading)\n6. [Overfitting Prevention](#overfitting-prevention)\n7. [Out-of-Sample Testing](#out-of-sample-testing)\n8. [Regime Analysis](#regime-analysis)\n9. [Monte Carlo Simulation](#monte-carlo-simulation)\n10. [Performance Metrics](#performance-metrics)\n11. [Validation Workflow](#validation-workflow)\n\n---\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Table of Contents",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Table of Contents"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Table of Contents"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "indicator",
+        "optimization"
+      ]
+    },
+    {
+      "content": "## Overview\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Overview",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Overview"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Overview"
+      },
+      "tags": []
+    },
+    {
+      "content": "### The Validation Pyramid\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                    VALIDATION PYRAMID                                   \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502                                                                         \u2502\n\u2502                    \u25b2\u25b2\u25b2                                                   \u2502\n\u2502                   \u25b2 PRODUCTION                                         \u2502\n\u2502                  \u25b2 Forward Testing (Paper Trading)                     \u2502\n\u2502                 \u25b2                                                      \u2502\n\u2502                \u25b2 Walk-Forward Testing                                   \u2502\n\u2502               \u25bc                                                        \u2502\n\u2502              \u25bc Out-of-Sample Testing                                    \u2502\n\u2502             \u25bc                                                           \u2502\n\u2502            \u25bc In-Sample Backtesting                                     \u2502\n\u2502           \u25bc                                                             \u2502\n\u2502          \u25bc\u25bc\u25bc                                                           \u2502\n\u2502                                                                         \u2502\n\u2502  Each level validates the strategy is robust before moving up.         \u2502\n\u2502                                                                         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Overview::The Validation Pyramid",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Overview",
+        "The Validation Pyramid"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "The Validation Pyramid"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "pyramiding"
+      ]
+    },
+    {
+      "content": "### Core Principles\n\n1. **No Single Metric**: Never rely on one metric (e.g., just win rate or total return)\n2. **Out-of-Sample Validation**: Always test on unseen data\n3. **Regime Awareness**: Understand performance in different market conditions\n4. **Overfitting Detection**: Watch for too many parameters, curve fitting\n5. **Realistic Assumptions**: Slippage, commissions, partial fills\n\n---\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Overview::Core Principles",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Overview",
+        "Core Principles"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Core Principles"
+      },
+      "tags": [
+        "indicator",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Backtest Types\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Backtest Types",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Backtest Types"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Backtest Types"
+      },
+      "tags": [
+        "backtest"
+      ]
+    },
+    {
+      "content": "### Type 1: Simple P&L Simulation (Quick Validation)\n\n**Purpose**: Fast validation of setup quality\n**Execution Time**: 1-5 seconds\n**Data Required**: Daily OHLCV only\n\n**When to Use**:\n- Initial pattern validation\n- Quick parameter checks\n- A+ example verification",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Backtest Types::Type 1: Simple P&L Simulation (Quick Validation)::chunk0",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Backtest Types",
+        "Type 1: Simple P&L Simulation (Quick Validation)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Type 1: Simple P&L Simulation (Quick Validation)"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "pattern",
+        "code",
+        "risk",
+        "execution"
+      ]
+    },
+    {
+      "content": "Fast validation of setup quality\n**Execution Time**: 1-5 seconds\n**Data Required**: Daily OHLCV only\n\n**When to Use**:\n- Initial pattern validation\n- Quick parameter checks\n- A+ example verification\n\n\n\n[...previous chunk overlap...]\n\n**Code Structure**:\n```python\nclass SimpleBacktest:\n    \"\"\"Fast daily-bar backtest for initial validation\"\"\"\n\n    def __init__(self, config):\n        self.risk_per_trade_r = 1.0  # 1R risk\n        self.commission_per_share = 0.005\n        self.start_capital = 100000\n\n    def run_backtest(self, scan_results):\n        \"\"\"\n        Simple P&L calculation using daily bars only.\n\n        Entry: Close on signal day (D0)\n        Exit: Next day open (D+1)\n        \"\"\"\n        trades = []\n\n        for signal in scan_results:\n            entry_price = signal['close']  # Enter at D0 close\n            exit_price = signal['next_open']  # Exit at D+1 open\n\n            # Calculate P&L\n            if signal['direction'] == 'SHORT':\n                pnl = (entry_price - exit_price) / entry_price\n            else:\n                pnl = (exit_price - entry_price) / entry_price\n\n            r_multiple = pnl / self.risk_per_trade_r\n\n            trades.append({\n                'ticker': signal['ticker'],\n                'date': signal['date'],\n                'entry': entry_price,\n                'exit': exit_price,\n                'pnl_pct': pnl * 100,\n                'r_multiple': r_multiple\n            })\n\n        return self._calculate_metrics(trades)\n\n    def _calculate_metrics(self, trades):\n        \"\"\"Calculate standard backtest metrics\"\"\"\n        df = pd.DataFrame(trades)\n\n        winners = df[df['r_multiple'] > 0]\n        losers = df[df['r_multiple'] <= 0]\n\n        return {\n            'total_trades': len(df),\n            'win_rate': len(winners) / len(df) if df else 0,\n            'avg_win': winners['r_multiple'].mean() if len(winners) > 0 else 0,\n            'avg_loss': losers['r_multiple'].mean() if len(losers) > 0 else 0,\n            'total_r': df['r_multiple'].sum(),\n            'expectancy': df['r_multiple'].mean(),\n            'max_drawdown_r': self._calculate_max_dd(df['r_multiple']),\n        }\n```",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Backtest Types::Type 1: Simple P&L Simulation (Quick Validation)::chunk1",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Backtest Types",
+        "Type 1: Simple P&L Simulation (Quick Validation)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Type 1: Simple P&L Simulation (Quick Validation)"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "pattern",
+        "code",
+        "risk",
+        "execution"
+      ]
+    },
+    {
+      "content": "s) > 0 else 0,\n            'total_r': df['r_multiple'].sum(),\n            'expectancy': df['r_multiple'].mean(),\n            'max_drawdown_r': self._calculate_max_dd(df['r_multiple']),\n        }\n```\n\n\n\n[...previous chunk overlap...]\n\n**Limitations**:\n- No intraday exit logic\n- No stops/targets\n- Unrealistic execution (close/open)\n- **NOT for production decisions**\n\n---",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Backtest Types::Type 1: Simple P&L Simulation (Quick Validation)::chunk2",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Backtest Types",
+        "Type 1: Simple P&L Simulation (Quick Validation)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Type 1: Simple P&L Simulation (Quick Validation)"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "pattern",
+        "code",
+        "risk",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Type 2: Enhanced Intraday Backtest (Production Quality)\n\n**Purpose**: Realistic simulation with intraday exits\n**Execution Time**: 30-120 seconds (depends on API calls)\n**Data Required**: Daily OHLCV + Intraday minute bars\n\n**When to Use**:\n- Production validation\n- Parameter optimization\n- Strategy comparison",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Backtest Types::Type 2: Enhanced Intraday Backtest (Production Quality)::chunk0",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Backtest Types",
+        "Type 2: Enhanced Intraday Backtest (Production Quality)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Type 2: Enhanced Intraday Backtest (Production Quality)"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "code",
+        "optimization",
+        "risk",
+        "position",
+        "execution"
+      ]
+    },
+    {
+      "content": "Execution Time**: 30-120 seconds (depends on API calls)\n**Data Required**: Daily OHLCV + Intraday minute bars\n\n**When to Use**:\n- Production validation\n- Parameter optimization\n- Strategy comparison\n\n\n\n[...previous chunk overlap...]\n\n**Code Structure**:\n```python\nclass EnhancedBacktest:\n    \"\"\"Production backtest with realistic intraday execution\"\"\"\n\n    def __init__(self, config):\n        self.api_key = config['polygon_api_key']\n        self.risk_per_trade_dollars = 1000\n        self.commission_per_share = 0.005\n\n        # Exit strategy parameters\n        self.profit_target_atr = 2.0\n        self.stop_loss_atr = 0.8\n        self.trailing_stop_atr = 0.5\n        self.time_exit_minutes = 240\n        self.volume_exit_threshold = 0.3\n\n    def run_backtest(self, scan_results):\n        \"\"\"\n        Realistic backtest using intraday data.\n\n        For each signal:\n        1. Fetch intraday minute bars\n        2. Calculate entry price (first 30 min logic)\n        3. Simulate exits (stop, target, trailing, time, volume)\n        4. Calculate realistic P&L with commissions\n        \"\"\"\n        all_trades = []\n\n        for signal in scan_results:\n            # Fetch intraday data\n            intraday_data = self._fetch_intraday(\n                signal['ticker'],\n                signal['date']\n            )\n\n            if not intraday_data:\n                continue\n\n            # Simulate trade\n            trade_result = self._simulate_trade(\n                signal=signal,\n                intraday_data=intraday_data\n            )\n\n            if trade_result:\n                all_trades.append(trade_result)\n\n        return self._calculate_comprehensive_metrics(all_trades)\n\n    def _simulate_trade(self, signal, intraday_data):\n        \"\"\"Simulate single trade with realistic exits\"\"\"\n        # Entry logic (first 30 minutes)\n        entry = self._calculate_entry(signal, intraday_data)\n\n        # Position sizing\n        atr = signal['atr']\n        risk_amount = atr * self.stop_loss_atr\n        shares = int(self.risk_per_trade_dollars / risk_amount)\n\n        # Calculate exit levels\n        profit_target = entry['price'] + (atr * self.profit_target_atr)\n        stop_loss = entry['price'] - (atr * self.stop_loss_atr)\n        trailing_stop = entry['price'] - (atr * self.trailing_stop_atr)\n\n        # Simulate through the day\n        highest_price = entry['price']\n\n        for bar in intraday_data[entry['bar_index']+1:]:\n            # Update trailing stop\n            if bar['high'] > highest_price:\n                highest_price = bar['high']\n                trailing_stop = highest_price - (atr * self.trailing_stop_atr)\n\n            # Check exits (in priority order)\n            if bar['low'] <= stop_loss:\n                exit_price = stop_loss\n                exit_reason = 'Stop Loss'\n                break\n            elif bar['high'] >= profit_target:\n                exit_price = profit_target\n                exit_reason = 'Profit Target'\n                break\n            elif bar['low'] <= trailing_stop:\n                exit_price = trailing_stop\n                exit_reason = 'Trailing Stop'\n                break\n            elif self._time_exit_triggered(entry, bar):\n                exit_price = bar['close']\n                exit_reason = 'Time Exit'\n                break\n            elif self._volume_exit_triggered(entry, bar):\n                exit_price = bar['close']\n                exit_reason = 'Volume Exit'\n                break\n        else:\n            # EOD exit\n            exit_price = intraday_data[-1]['close']\n            exit_reason = 'End of Day'\n\n        # Calculate P&L\n        gross_pnl = (exit_price - entry['price']) * shares\n        commission = shares * self.commission_per_share * 2  # Round trip\n        net_pnl = gross_pnl - commission\n\n        r_multiple = net_pnl / self.risk_per_trade_dollars\n\n        return {\n            'ticker': signal['ticker'],\n            'date': signal['date'],\n            'entry_price': entry['price'],\n            'entry_time': entry['time'],\n            'exit_price': exit_price,\n            'exit_time': bar['datetime'],\n            'exit_reason': exit_reason,\n            'shares': shares,\n            'gross_pnl': gross_pnl,\n            'commission': commission,\n            'net_pnl': net_pnl,\n            'r_multiple': r_multiple,\n            'holding_minutes': (bar['datetime'] - entry['time']).total_seconds() / 60,\n            'highest_price': highest_price,\n            'atr': atr\n        }\n```",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Backtest Types::Type 2: Enhanced Intraday Backtest (Production Quality)::chunk1",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Backtest Types",
+        "Type 2: Enhanced Intraday Backtest (Production Quality)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Type 2: Enhanced Intraday Backtest (Production Quality)"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "code",
+        "optimization",
+        "risk",
+        "position",
+        "execution"
+      ]
+    },
+    {
+      "content": "'r_multiple': r_multiple,\n            'holding_minutes': (bar['datetime'] - entry['time']).total_seconds() / 60,\n            'highest_price': highest_price,\n            'atr': atr\n        }\n```\n\n\n\n[...previous chunk overlap...]\n\n**Key Features**:\n- Realistic entry logic (first 30 min)\n- Multiple exit strategies\n- Position sizing based on volatility\n- Commission calculations\n- Partial fills (optional)\n- Slippage modeling (optional)\n\n---",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Backtest Types::Type 2: Enhanced Intraday Backtest (Production Quality)::chunk2",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Backtest Types",
+        "Type 2: Enhanced Intraday Backtest (Production Quality)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Type 2: Enhanced Intraday Backtest (Production Quality)"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "code",
+        "optimization",
+        "risk",
+        "position",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Parameter Optimization\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Parameter Optimization",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Parameter Optimization"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Parameter Optimization"
+      },
+      "tags": [
+        "optimization"
+      ]
+    },
+    {
+      "content": "### Goal\n\nFind parameters that maximize edge while minimizing overfitting.\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Parameter Optimization::Goal",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Parameter Optimization",
+        "Goal"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Goal"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Optimization Methods\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Parameter Optimization::Optimization Methods",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Parameter Optimization",
+        "Optimization Methods"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Optimization Methods"
+      },
+      "tags": [
+        "optimization"
+      ]
+    },
+    {
+      "content": "#### Method 1: Grid Search (Exhaustive)\n\n**Best for**: Small parameter spaces (2-4 parameters)",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Parameter Optimization::Optimization Methods::Method 1: Grid Search (Exhaustive)::chunk0",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Parameter Optimization",
+        "Optimization Methods",
+        "Method 1: Grid Search (Exhaustive)"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Method 1: Grid Search (Exhaustive)"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "indicator",
+        "code",
+        "optimization"
+      ]
+    },
+    {
+      "content": "#### Method 1: Grid Search (Exhaustive)\n\n**Best for**: Small parameter spaces (2-4 parameters)\n\n```python\nclass GridSearchOptimizer:\n    \"\"\"Exhaustive grid search over parameter space\"\"\"\n\n    def __init__(self, scanner, backtest):\n        self.scanner = scanner\n        self.backtest = backtest\n\n    def optimize(self, param_grid, train_start, train_end, validation_start, validation_end):\n        \"\"\"\n        Grid search over all parameter combinations.\n\n        param_grid example:\n        {\n            'min_gap': [0.02, 0.025, 0.03, 0.035, 0.04],\n            'max_hold_range': [0.0025, 0.003, 0.0035, 0.004],\n            'min_volume_ratio': [1.5, 2.0, 2.5]\n        }\n        \"\"\"\n        # Generate all combinations\n        import itertools\n        param_names = list(param_grid.keys())\n        param_values = list(param_grid.values())\n        all_combinations = list(itertools.product(*param_values))\n\n        results = []\n\n        for i, combination in enumerate(all_combinations):\n            # Create param dict\n            params = dict(zip(param_names, combination))\n\n            print(f\"Testing {i+1}/{len(all_combinations)}: {params}\")\n\n            # Update scanner params\n            self.scanner.params.update(params)\n\n            # Run scan on training data\n            train_signals = self.scanner.run_scan(train_start, train_end)\n\n            if len(train_signals) < 10:\n                # Too few signals, skip\n                continue\n\n            # Run backtest\n            train_results = self.backtest.run_backtest(train_signals)\n\n            # Run validation\n            val_signals = self.scanner.run_scan(validation_start, validation_end)\n            val_results = self.backtest.run_backtest(val_signals)\n\n            results.append({\n                'params': params,\n                'train_metrics': train_results,\n                'val_metrics': val_results,\n                'overfit_score': self._calculate_overfit_score(train_results, val_results)\n            })\n\n        # Sort by validation performance\n        results.sort(key=lambda x: x['val_metrics']['expectancy'], reverse=True)\n\n        return results\n```",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Parameter Optimization::Optimization Methods::Method 1: Grid Search (Exhaustive)::chunk1",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Parameter Optimization",
+        "Optimization Methods",
+        "Method 1: Grid Search (Exhaustive)"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Method 1: Grid Search (Exhaustive)"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "indicator",
+        "code",
+        "optimization"
+      ]
+    },
+    {
+      "content": "#### Method 2: Random Search (Efficient)\n\n**Best for**: Larger parameter spaces (5+ parameters)\n\n```python\nclass RandomSearchOptimizer:\n    \"\"\"Random search over parameter space\"\"\"\n\n    def optimize(self, param_bounds, n_iterations=50, train_start, train_end):\n        \"\"\"\n        Randomly sample parameter space.\n\n        param_bounds example:\n        {\n            'min_gap': (0.02, 0.05),  # (min, max)\n            'max_hold_range': (0.002, 0.005),\n            'min_volume_ratio': (1.0, 3.0)\n        }\n        \"\"\"\n        results = []\n\n        for i in range(n_iterations):\n            # Random sample\n            params = {\n                k: np.random.uniform(v[0], v[1])\n                for k, v in param_bounds.items()\n            }\n\n            # Test parameters\n            # ... (same as grid search)\n\n            results.append({\n                'params': params,\n                'metrics': metrics\n            })\n\n        return sorted(results, key=lambda x: x['metrics']['expectancy'], reverse=True)\n```\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Parameter Optimization::Optimization Methods::Method 2: Random Search (Efficient)",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Parameter Optimization",
+        "Optimization Methods",
+        "Method 2: Random Search (Efficient)"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Method 2: Random Search (Efficient)"
+      },
+      "tags": [
+        "indicator",
+        "code",
+        "optimization"
+      ]
+    },
+    {
+      "content": "#### Method 3: Bayesian Optimization (Smart)\n\n**Best for**: Expensive-to-evaluate functions\n\n```python\nclass BayesianOptimizer:\n    \"\"\"Bayesian optimization using Gaussian Process\"\"\"\n\n    def optimize(self, param_bounds, n_iterations=30):\n        \"\"\"\n        Use previous results to guide next parameter choice.\n        More efficient than random/grid search.\n        \"\"\"\n        # Requires scikit-optimize or similar library\n        from skopt import gp_minimize\n\n        # Define objective function\n        def objective(params_list):\n            params = dict(zip(param_bounds.keys(), params_list))\n\n            # Run backtest\n            metrics = self._test_params(params)\n\n            # Minimize negative expectancy\n            return -metrics['expectancy']\n\n        # Run optimization\n        result = gp_minimize(\n            objective,\n            dimensions=[list(v) for v in param_bounds.values()],\n            n_calls=n_iterations,\n            random_state=42\n        )\n\n        return {\n            'best_params': dict(zip(param_bounds.keys(), result.x)),\n            'best_expectancy': -result.fun\n        }\n```\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Parameter Optimization::Optimization Methods::Method 3: Bayesian Optimization (Smart)",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Parameter Optimization",
+        "Optimization Methods",
+        "Method 3: Bayesian Optimization (Smart)"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Method 3: Bayesian Optimization (Smart)"
+      },
+      "tags": [
+        "backtest",
+        "indicator",
+        "code",
+        "optimization"
+      ]
+    },
+    {
+      "content": "### Optimization Best Practices\n\n1. **Train/Validation Split**:\n   - Train: 70% of data (for optimization)\n   - Validation: 30% of data (for selection)\n\n2. **Parameter Ranges**:\n   - Use realistic ranges based on A+ examples\n   - Don't search too wide (waste of time)\n   - Don't search too narrow (miss optimal)\n\n3. **Minimum Signals**:\n   - Require at least 30-50 signals in training\n   - Too few = unreliable statistics\n\n4. **Multiple Metrics**:\n   - Optimize for expectancy (primary)\n   - Consider win rate, max DD, Sharpe (secondary)\n\n5. **Overfitting Detection**:\n   - Compare train vs validation performance\n   - Large gap = overfitting\n\n---\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Parameter Optimization::Optimization Best Practices",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Parameter Optimization",
+        "Optimization Best Practices"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Optimization Best Practices"
+      },
+      "tags": [
+        "indicator",
+        "optimization"
+      ]
+    },
+    {
+      "content": "## Walk-Forward Testing\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Walk-Forward Testing",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Walk-Forward Testing"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Walk-Forward Testing"
+      },
+      "tags": [
+        "backtest"
+      ]
+    },
+    {
+      "content": "### What Is Walk-Forward?\n\nRolling window validation that simulates real-time trading:\n- Train on period 1\n- Test on period 2\n- Roll forward and repeat\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Walk-Forward Testing::What Is Walk-Forward?",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Walk-Forward Testing",
+        "What Is Walk-Forward?"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What Is Walk-Forward?"
+      },
+      "tags": [
+        "strategy"
+      ]
+    },
+    {
+      "content": "### Why Walk-Forward?\n\n- **Realistic**: Simulates actual trading process\n- **Adaptive**: Parameters adapt over time\n- **Robust**: Tests stability across periods\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Walk-Forward Testing::Why Walk-Forward?",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Walk-Forward Testing",
+        "Why Walk-Forward?"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Why Walk-Forward?"
+      },
+      "tags": [
+        "strategy"
+      ]
+    },
+    {
+      "content": "### Walk-Forward Implementation",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Walk-Forward Testing::Walk-Forward Implementation::chunk0",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Walk-Forward Testing",
+        "Walk-Forward Implementation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Walk-Forward Implementation"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "code",
+        "optimization"
+      ]
+    },
+    {
+      "content": "### Walk-Forward Implementation\n\n```python\nclass WalkForwardValidator:\n    \"\"\"Rolling window validation for strategy robustness\"\"\"\n\n    def __init__(self, scanner, backtest, optimizer):\n        self.scanner = scanner\n        self.backtest = backtest\n        self.optimizer = optimizer\n\n    def run_walk_forward(\n        self,\n        full_start,\n        full_end,\n        train_period_months=12,\n        test_period_months=3,\n        step_months=3\n    ):\n        \"\"\"\n        Walk-forward validation.\n\n        Example:\n        - Train: Jan 2022 - Dec 2022 (12 months)\n        - Test: Jan 2023 - Mar 2023 (3 months)\n        - Step forward 3 months\n        - Repeat\n\n        This simulates:\n        1. Optimize on past 12 months\n        2. Trade next 3 months with those params\n        3. Re-optimize on most recent 12 months\n        4. Trade next 3 months\n        \"\"\"\n        results = []\n\n        current_date = pd.to_datetime(full_start)\n\n        while True:\n            # Define train period\n            train_start = current_date\n            train_end = current_date + pd.DateOffset(months=train_period_months)\n\n            # Define test period\n            test_start = train_end\n            test_end = test_start + pd.DateOffset(months=test_period_months)\n\n            # Check if we've gone past full_end\n            if test_end > pd.to_datetime(full_end):\n                break\n\n            print(f\"\\n{'='*60}\")\n            print(f\"Train: {train_start.date()} to {train_end.date()}\")\n            print(f\"Test:  {test_start.date()} to {test_end.date()}\")\n            print(f\"{'='*60}\\n\")\n\n            # Optimize on training period\n            print(\"Optimizing parameters...\")\n            best_params = self.optimizer.optimize(\n                train_start=train_start.strftime('%Y-%m-%d'),\n                train_end=train_end.strftime('%Y-%m-%d'),\n                validation_start=test_start.strftime('%Y-%m-%d'),\n                validation_end=test_end.strftime('%Y-%m-%d')\n            )[0]['params']\n\n            print(f\"Best params: {best_params}\")\n\n            # Apply to test period\n            self.scanner.params.update(best_params)\n            test_signals = self.scanner.run_scan(\n                test_start.strftime('%Y-%m-%d'),\n                test_end.strftime('%Y-%m-%d')\n            )\n\n            # Backtest test period\n            test_results = self.backtest.run_backtest(test_signals)\n\n            results.append({\n                'train_start': train_start,\n                'train_end': train_end,\n                'test_start': test_start,\n                'test_end': test_end,\n                'params': best_params,\n                'test_signals': len(test_signals),\n                'test_metrics': test_results\n            })\n\n            # Step forward\n            current_date = current_date + pd.DateOffset(months=step_months)\n\n        # Analyze walk-forward results\n        return self._analyze_walk_forward(results)\n\n    def _analyze_walk_forward(self, results):\n        \"\"\"Analyze walk-forward performance\"\"\"\n\n        # Aggregate metrics\n        total_trades = sum(r['test_signals'] for r in results)\n        avg_expectancy = np.mean([r['test_metrics']['expectancy'] for r in results])\n        expectancy_std = np.std([r['test_metrics']['expectancy'] for r in results])\n\n        # Consistency check\n        profitable_periods = sum(\n            1 for r in results\n            if r['test_metrics']['expectancy'] > 0\n        )\n        consistency_pct = profitable_periods / len(results) * 100\n\n        # Parameter stability\n        param_stability = self._check_param_stability(results)\n\n        return {\n            'total_periods': len(results),\n            'total_trades': total_trades,\n            'avg_trades_per_period': total_trades / len(results),\n            'avg_expectancy': avg_expectancy,\n            'expectancy_std': expectancy_std,\n            'expectancy_std_pct': (expectancy_std / abs(avg_expectancy) * 100) if avg_expectancy != 0 else float('inf'),\n            'profitable_periods': profitable_periods,\n            'consistency_pct': consistency_pct,\n            'param_stability': param_stability,\n            'period_results': results\n        }\n```",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Walk-Forward Testing::Walk-Forward Implementation::chunk1",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Walk-Forward Testing",
+        "Walk-Forward Implementation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Walk-Forward Implementation"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "code",
+        "optimization"
+      ]
+    },
+    {
+      "content": "### Walk-Forward Success Criteria\n\n| Metric | Good | Warning | Bad |\n|--------|------|---------|-----|\n| **Consistency** | >70% periods profitable | 50-70% | <50% |\n| **Expectancy Std** | <50% of mean | 50-100% | >100% |\n| **Parameter Stability** | Stable across periods | Some drift | Highly variable |\n| **Signals/Period** | 20-100 | 10-20 or 100-200 | <10 or >200 |\n\n---\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Walk-Forward Testing::Walk-Forward Success Criteria",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Walk-Forward Testing",
+        "Walk-Forward Success Criteria"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Walk-Forward Success Criteria"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "## Forward Testing & Paper Trading\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Forward Testing & Paper Trading",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Forward Testing & Paper Trading"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Forward Testing & Paper Trading"
+      },
+      "tags": [
+        "backtest",
+        "strategy"
+      ]
+    },
+    {
+      "content": "### What Is Forward Testing?\n\nTesting the final strategy on NEW data (after all optimization is done).\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Forward Testing & Paper Trading::What Is Forward Testing?",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Forward Testing & Paper Trading",
+        "What Is Forward Testing?"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What Is Forward Testing?"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "optimization"
+      ]
+    },
+    {
+      "content": "### Forward Testing Workflow",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Forward Testing & Paper Trading::Forward Testing Workflow::chunk0",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Forward Testing & Paper Trading",
+        "Forward Testing Workflow"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Forward Testing Workflow"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "code",
+        "optimization"
+      ]
+    },
+    {
+      "content": "### Forward Testing Workflow\n\n```python\nclass ForwardTester:\n    \"\"\"Paper trading on new, unseen data\"\"\"\n\n    def __init__(self, scanner, backtest, final_params):\n        self.scanner = scanner\n        self.backtest = backtest\n        self.final_params = final_params\n\n    def run_forward_test(self, start_date, min_trades=30):\n        \"\"\"\n        Run on new data starting from start_date.\n\n        CRITICAL: This data must NOT have been used in:\n        - Scanner development\n        - Parameter optimization\n        - Walk-forward testing\n\n        It must be truly new, forward data.\n        \"\"\"\n        # Apply final parameters\n        self.scanner.params.update(self.final_params)\n\n        # Run scan on forward period\n        signals = self.scanner.run_scan(start_date, datetime.now().strftime('%Y-%m-%d'))\n\n        if len(signals) < min_trades:\n            print(f\"\u26a0\ufe0f  Warning: Only {len(signals)} signals in forward test\")\n            print(f\"Recommend waiting for at least {min_trades} signals\")\n\n        # Run backtest\n        results = self.backtest.run_backtest(signals)\n\n        # Compare to in-sample expectations\n        comparison = self._compare_to_in_sample(results)\n\n        return {\n            'forward_results': results,\n            'comparison_to_expected': comparison,\n            'passed': comparison['is_acceptable'],\n            'recommendation': self._generate_recommendation(comparison)\n        }\n\n    def _compare_to_in_sample(self, forward_results):\n        \"\"\"Compare forward results to in-sample expectations\"\"\"\n\n        # These would be stored from optimization/walk-forward\n        expected_expectancy = 0.15  # Example\n        expected_win_rate = 0.60    # Example\n\n        # Calculate acceptable ranges (\u00b120%)\n        expectancy_range = (expected_expectancy * 0.8, expected_expectancy * 1.2)\n        win_rate_range = (expected_win_rate * 0.8, expected_win_rate * 1.2)\n\n        forward_expectancy = forward_results['expectancy']\n        forward_win_rate = forward_results['win_rate']\n\n        # Check if within range\n        expectancy_ok = expectancy_range[0] <= forward_expectancy <= expectancy_range[1]\n        win_rate_ok = win_rate_range[0] <= forward_win_rate <= win_rate_range[1]\n\n        return {\n            'expected_expectancy': expected_expectancy,\n            'forward_expectancy': forward_expectancy,\n            'expectancy_diff_pct': ((forward_expectancy - expected_expectancy) / expected_expectancy * 100),\n            'expectancy_ok': expectancy_ok,\n            'expected_win_rate': expected_win_rate,\n            'forward_win_rate': forward_win_rate,\n            'win_rate_diff_pct': ((forward_win_rate - expected_win_rate) / expected_win_rate * 100),\n            'win_rate_ok': win_rate_ok,\n            'is_acceptable': expectancy_ok and win_rate_ok\n        }\n```",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Forward Testing & Paper Trading::Forward Testing Workflow::chunk1",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Forward Testing & Paper Trading",
+        "Forward Testing Workflow"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Forward Testing Workflow"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "strategy",
+        "indicator",
+        "code",
+        "optimization"
+      ]
+    },
+    {
+      "content": "### Forward Testing Success Criteria\n\n1. **Performance within 20% of expected** (expectancy, win rate)\n2. **At least 30 trades** (statistical significance)\n3. **No regime change detected** (market structure similar)\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Forward Testing & Paper Trading::Forward Testing Success Criteria",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Forward Testing & Paper Trading",
+        "Forward Testing Success Criteria"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Forward Testing Success Criteria"
+      },
+      "tags": [
+        "backtest"
+      ]
+    },
+    {
+      "content": "### Paper Trading (Live Simulation)\n\nBefore real money, do paper trading:\n\n```python\nclass PaperTrader:\n    \"\"\"Simulated live trading without real money\"\"\"\n\n    def __init__(self, scanner, final_params, execution_platform):\n        self.scanner = scanner\n        self.final_params = final_params\n        self.execution = execution_platform  # Simulated execution\n        self.positions = {}\n\n    def run_paper_trading(self, duration_days=30):\n        \"\"\"\n        Run paper trading for specified duration.\n\n        This is the final test before real money.\n        Simulates:\n        - Daily signal generation\n        - Order placement (simulated)\n        - Position management\n        - P&L tracking\n        \"\"\"\n        start_date = datetime.now()\n        end_date = start_date + timedelta(days=duration_days)\n\n        while datetime.now() < end_date:\n            # Run daily scan\n            signals = self.scanner.run_scan(\n                datetime.now().strftime('%Y-%m-%d'),\n                datetime.now().strftime('%Y-%m-%d')\n            )\n\n            # Execute signals (simulated)\n            for signal in signals:\n                self._execute_signal(signal)\n\n            # Manage existing positions\n            self._manage_positions()\n\n            # Wait until next trading day\n            self._wait_until_next_trading_day()\n\n        # Calculate paper trading results\n        return self._calculate_paper_results()\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Forward Testing & Paper Trading::Paper Trading (Live Simulation)",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Forward Testing & Paper Trading",
+        "Paper Trading (Live Simulation)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Paper Trading (Live Simulation)"
+      },
+      "tags": [
+        "scanner",
+        "strategy",
+        "indicator",
+        "code",
+        "position",
+        "execution"
+      ]
+    },
+    {
+      "content": "## Overfitting Prevention\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Overfitting Prevention",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Overfitting Prevention"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Overfitting Prevention"
+      },
+      "tags": []
+    },
+    {
+      "content": "### What Is Overfitting?\n\nWhen a strategy performs well on historical data but fails in live trading because it's too closely fitted to past data patterns.\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Overfitting Prevention::What Is Overfitting?",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Overfitting Prevention",
+        "What Is Overfitting?"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What Is Overfitting?"
+      },
+      "tags": [
+        "strategy",
+        "pattern"
+      ]
+    },
+    {
+      "content": "### Overfitting Detection Methods\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Overfitting Prevention::Overfitting Detection Methods",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Overfitting Prevention",
+        "Overfitting Detection Methods"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Overfitting Detection Methods"
+      },
+      "tags": []
+    },
+    {
+      "content": "#### Method 1: Train/Validation Gap\n\n```python\ndef detect_overfitting_gap(train_metrics, val_metrics):\n    \"\"\"Check if validation performance is much worse than training\"\"\"\n\n    train_expectancy = train_metrics['expectancy']\n    val_expectancy = val_metrics['expectancy']\n\n    # Calculate gap\n    gap_pct = ((train_expectancy - val_expectancy) / train_expectancy) * 100\n\n    if gap_pct > 50:\n        return {\n            'overfit_detected': True,\n            'severity': 'HIGH',\n            'gap_pct': gap_pct,\n            'message': f'Validation expectancy {gap_pct:.1f}% worse than training'\n        }\n    elif gap_pct > 25:\n        return {\n            'overfit_detected': True,\n            'severity': 'MEDIUM',\n            'gap_pct': gap_pct,\n            'message': f'Validation expectancy {gap_pct:.1f}% worse than training'\n        }\n    else:\n        return {\n            'overfit_detected': False,\n            'severity': 'NONE',\n            'gap_pct': gap_pct\n        }\n```\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Overfitting Prevention::Overfitting Detection Methods::Method 1: Train/Validation Gap",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Overfitting Prevention",
+        "Overfitting Detection Methods",
+        "Method 1: Train/Validation Gap"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Method 1: Train/Validation Gap"
+      },
+      "tags": [
+        "indicator",
+        "code"
+      ]
+    },
+    {
+      "content": "#### Method 2: Parameter Count vs Signal Count\n\n```python\ndef detect_overfitting_params(n_params, n_signals):\n    \"\"\"Check if too many parameters for too few signals\"\"\"\n\n    # Rule of thumb: At least 10 signals per parameter\n    min_signals = n_params * 10\n\n    if n_signals < min_signals:\n        return {\n            'overfit_detected': True,\n            'reason': f'Too few signals ({n_signals}) for {n_params} parameters',\n            'recommendation': f'Need at least {min_signals} signals'\n        }\n    else:\n        return {\n            'overfit_detected': False\n        }\n```\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Overfitting Prevention::Overfitting Detection Methods::Method 2: Parameter Count vs Signal Count",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Overfitting Prevention",
+        "Overfitting Detection Methods",
+        "Method 2: Parameter Count vs Signal Count"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Method 2: Parameter Count vs Signal Count"
+      },
+      "tags": [
+        "indicator",
+        "code"
+      ]
+    },
+    {
+      "content": "#### Method 3: Holdout Test\n\n```python\ndef detect_overfitting_holdout(scanner, backtest, params):\n    \"\"\"Test on completely unseen holdout period\"\"\"\n\n    # Train on 2019-2022\n    train_results = backtest.run_backtest(\n        scanner.run_scan('2019-01-01', '2022-12-31', params)\n    )\n\n    # Holdout: 2023-2024 (completely unseen)\n    holdout_results = backtest.run_backtest(\n        scanner.run_scan('2023-01-01', '2024-12-31', params)\n    )\n\n    # Compare\n    train_expectancy = train_results['expectancy']\n    holdout_expectancy = holdout_results['expectancy']\n    degradation = ((train_expectancy - holdout_expectancy) / train_expectancy) * 100\n\n    if degradation > 40:\n        return {\n            'overfit_detected': True,\n            'degradation_pct': degradation,\n            'message': f'Expectancy degraded by {degradation:.1f}% on holdout'\n        }\n    else:\n        return {\n            'overfit_detected': False\n        }\n```\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Overfitting Prevention::Overfitting Detection Methods::Method 3: Holdout Test",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Overfitting Prevention",
+        "Overfitting Detection Methods",
+        "Method 3: Holdout Test"
+      ],
+      "metadata": {
+        "level": 4,
+        "heading": "Method 3: Holdout Test"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "code"
+      ]
+    },
+    {
+      "content": "### Overfitting Prevention Rules\n\n1. **Limit Parameters**: Start with 3-5 parameters maximum\n2. **Minimum Signals**: 50+ signals in training, 30+ in validation\n3. **Train/Validation Split**: Always use separate datasets\n4. **Walk-Forward**: Test across multiple time periods\n5. **Simpler is Better**: Prefer simple models over complex ones\n\n---\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Overfitting Prevention::Overfitting Prevention Rules",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Overfitting Prevention",
+        "Overfitting Prevention Rules"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Overfitting Prevention Rules"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "## Out-of-Sample Testing\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Out-of-Sample Testing",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Out-of-Sample Testing"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Out-of-Sample Testing"
+      },
+      "tags": [
+        "backtest"
+      ]
+    },
+    {
+      "content": "### Data Split Strategy\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                    DATA SPLIT STRATEGY                                  \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502                                                                         \u2502\n\u2502  Total Data: 2019-2024 (6 years)                                        \u2502\n\u2502                                                                         \u2502\n\u2502  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510                 \u2502\n\u2502  \u2502   TRAINING     \u2502   VALIDATION   \u2502   FORWARD TEST  \u2502                 \u2502\n\u2502  \u2502   (In-Sample)  \u2502   (Out-Sample) \u2502   (Out-Sample)  \u2502                 \u2502\n\u2502  \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524                 \u2502\n\u2502  \u2502 2019-2021 (3y) \u2502 2022 (1 year)  \u2502 2023-2024 (2y)  \u2502                 \u2502\n\u2502  \u2502   60%          \u2502     20%        \u2502      20%        \u2502                 \u2502\n\u2502  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518                 \u2502\n\u2502                                                                         \u2502\n\u2502  Training:   Optimize parameters                                        \u2502\n\u2502  Validation: Select best parameters (unseen during training)            \u2502\n\u2502  Forward:    Final test (unseen during training AND validation)        \u2502\n\u2502                                                                         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Out-of-Sample Testing::Data Split Strategy",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Out-of-Sample Testing",
+        "Data Split Strategy"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Data Split Strategy"
+      },
+      "tags": [
+        "strategy",
+        "optimization"
+      ]
+    },
+    {
+      "content": "### Out-of-Sample Implementation",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Out-of-Sample Testing::Out-of-Sample Implementation::chunk0",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "example",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Out-of-Sample Testing",
+        "Out-of-Sample Implementation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Out-of-Sample Implementation"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "indicator",
+        "code",
+        "optimization"
+      ]
+    },
+    {
+      "content": "### Out-of-Sample Implementation\n\n```python\nclass OutOfSampleValidator:\n    \"\"\"Proper train/validation/forward split\"\"\"\n\n    def __init__(self, scanner, backtest, full_start, full_end):\n        self.scanner = scanner\n        self.backtest = backtest\n\n        # Calculate splits\n        total_days = (pd.to_datetime(full_end) - pd.to_datetime(full_start)).days\n        train_days = int(total_days * 0.6)\n        val_days = int(total_days * 0.2)\n\n        self.train_start = full_start\n        self.train_end = (pd.to_datetime(full_start) + timedelta(days=train_days)).strftime('%Y-%m-%d')\n        self.val_start = self.train_end\n        self.val_end = (pd.to_datetime(self.val_start) + timedelta(days=val_days)).strftime('%Y-%m-%d')\n        self.forward_start = self.val_end\n        self.forward_end = full_end\n\n    def run_validation(self, param_grid):\n        \"\"\"Full out-of-sample validation\"\"\"\n\n        print(f\"Training period:   {self.train_start} to {self.train_end}\")\n        print(f\"Validation period: {self.val_start} to {self.val_end}\")\n        print(f\"Forward period:   {self.forward_start} to {self.forward_end}\")\n\n        # Phase 1: Optimize on training data\n        print(\"\\n=== PHASE 1: OPTIMIZATION (Training) ===\")\n        optimizer = GridSearchOptimizer(self.scanner, self.backtest)\n        optimization_results = optimizer.optimize(\n            param_grid,\n            self.train_start, self.train_end,\n            self.val_start, self.val_end\n        )\n\n        # Phase 2: Select best params on validation\n        print(\"\\n=== PHASE 2: SELECTION (Validation) ===\")\n        best_params = optimization_results[0]['params']\n        val_metrics = optimization_results[0]['val_metrics']\n\n        print(f\"Best params: {best_params}\")\n        print(f\"Validation expectancy: {val_metrics['expectancy']:.3f}\")\n\n        # Phase 3: Forward test\n        print(\"\\n=== PHASE 3: FORWARD TEST (Out-of-Sample) ===\")\n        self.scanner.params.update(best_params)\n        forward_signals = self.scanner.run_scan(self.forward_start, self.forward_end)\n        forward_results = self.backtest.run_backtest(forward_signals)\n\n        print(f\"Forward expectancy: {forward_results['expectancy']:.3f}\")\n\n        # Compare\n        train_expectancy = optimization_results[0]['train_metrics']['expectancy']\n        val_expectancy = val_metrics['expectancy']\n        forward_expectancy = forward_results['expectancy']\n\n        # Check degradation\n        train_to_val = ((train_expectancy - val_expectancy) / train_expectancy) * 100\n        val_to_forward = ((val_expectancy - forward_expectancy) / val_expectancy) * 100\n\n        return {\n            'best_params': best_params,\n            'train_expectancy': train_expectancy,\n            'val_expectancy': val_expectancy,\n            'forward_expectancy': forward_expectancy,\n            'train_to_val_degradation': train_to_val,\n            'val_to_forward_degradation': val_to_forward,\n            'passed': abs(val_to_forward) < 30,  # Less than 30% degradation\n            'recommendation': self._generate_recommendation(val_to_forward)\n        }\n```",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Out-of-Sample Testing::Out-of-Sample Implementation::chunk1",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Out-of-Sample Testing",
+        "Out-of-Sample Implementation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Out-of-Sample Implementation"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "indicator",
+        "code",
+        "optimization"
+      ]
+    },
+    {
+      "content": "d_degradation': val_to_forward,\n            'passed': abs(val_to_forward) < 30,  # Less than 30% degradation\n            'recommendation': self._generate_recommendation(val_to_forward)\n        }\n```\n\n\n\n[...previous chunk overlap...]\n\n---",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Out-of-Sample Testing::Out-of-Sample Implementation::chunk2",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Out-of-Sample Testing",
+        "Out-of-Sample Implementation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Out-of-Sample Implementation"
+      },
+      "tags": [
+        "scanner",
+        "backtest",
+        "indicator",
+        "code",
+        "optimization"
+      ]
+    },
+    {
+      "content": "## Regime Analysis\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Regime Analysis",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Regime Analysis"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Regime Analysis"
+      },
+      "tags": []
+    },
+    {
+      "content": "### What Are Market Regimes?\n\nDistinct market conditions that affect strategy performance:\n- **Bull**: Rising markets (SPY +10%+ over 3 months)\n- **Bear**: Falling markets (SPY -10%+ over 3 months)\n- **Choppy**: Range-bound (SPY \u00b15% over 3 months)\n- **High Volatility**: VIX > 25\n- **Low Volatility**: VIX < 15\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Regime Analysis::What Are Market Regimes?",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Regime Analysis",
+        "What Are Market Regimes?"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What Are Market Regimes?"
+      },
+      "tags": [
+        "strategy"
+      ]
+    },
+    {
+      "content": "### Regime Detection\n\n```python\nclass RegimeDetector:\n    \"\"\"Detect market regime for given date\"\"\"\n\n    def __init__(self, market_data):\n        \"\"\"\n        market_data: DataFrame with SPY and VIX data\n        \"\"\"\n        self.market_data = market_data\n\n    def get_regime(self, date):\n        \"\"\"Determine market regime on given date\"\"\"\n\n        # Get SPY performance over last 3 months\n        spy_3mo_change = self._get_spy_change(date, months=3)\n\n        # Get VIX level\n        vix = self._get_vix(date)\n\n        # Classify regime\n        if spy_3mo_change > 0.10:\n            trend = 'BULL'\n        elif spy_3mo_change < -0.10:\n            trend = 'BEAR'\n        else:\n            trend = 'CHOPPY'\n\n        if vix > 25:\n            volatility = 'HIGH_VOL'\n        elif vix < 15:\n            volatility = 'LOW_VOL'\n        else:\n            volatility = 'NORMAL_VOL'\n\n        return f\"{trend}_{volatility}\"\n\n    def analyze_strategy_by_regime(self, trades):\n        \"\"\"Analyze strategy performance across regimes\"\"\"\n\n        trades_df = pd.DataFrame(trades)\n\n        # Add regime to each trade\n        trades_df['regime'] = trades_df['date'].apply(self.get_regime)\n\n        # Group by regime\n        regime_stats = trades_df.groupby('regime').agg({\n            'r_multiple': ['count', 'mean', 'sum'],\n            'ticker': 'count'\n        }).round(3)\n\n        return regime_stats\n```\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Regime Analysis::Regime Detection",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Regime Analysis",
+        "Regime Detection"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Regime Detection"
+      },
+      "tags": [
+        "strategy",
+        "code"
+      ]
+    },
+    {
+      "content": "### Regime-Based Strategy Adjustment\n\n```python\nclass RegimeAwareStrategy:\n    \"\"\"Adjust strategy based on market regime\"\"\"\n\n    def __init__(self, base_params):\n        self.base_params = base_params\n\n        # Regime-specific adjustments\n        self.regime_adjustments = {\n            'BULL_NORMAL_VOL': {\n                'position_sizing_multiplier': 0.8,  # Reduce size in bull markets\n                'expectancy_reduction': 0.2         # Expect lower expectancy\n            },\n            'BEAR_NORMAL_VOL': {\n                'position_sizing_multiplier': 1.2,  # Increase size in bear markets\n                'expectancy_reduction': 0           # Normal expectancy\n            },\n            'BEAR_HIGH_VOL': {\n                'position_sizing_multiplier': 1.5,  # Max size in bear+high vol\n                'expectancy_reduction': -0.1        # Expect higher expectancy\n            },\n            'CHOPPY_NORMAL_VOL': {\n                'position_sizing_multiplier': 0.5,  # Reduce size in choppy\n                'expectancy_reduction': 0.3         # Expect much lower expectancy\n            }\n        }\n\n    def get_params_for_regime(self, current_regime):\n        \"\"\"Get parameters adjusted for current regime\"\"\"\n\n        if current_regime in self.regime_adjustments:\n            adjustment = self.regime_adjustments[current_regime]\n            return {\n                **self.base_params,\n                'position_sizing': self.base_params['position_sizing'] * adjustment['position_sizing_multiplier']\n            }\n        else:\n            return self.base_params\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Regime Analysis::Regime-Based Strategy Adjustment",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Regime Analysis",
+        "Regime-Based Strategy Adjustment"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Regime-Based Strategy Adjustment"
+      },
+      "tags": [
+        "strategy",
+        "code",
+        "position"
+      ]
+    },
+    {
+      "content": "## Monte Carlo Simulation\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Monte Carlo Simulation",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Monte Carlo Simulation"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Monte Carlo Simulation"
+      },
+      "tags": []
+    },
+    {
+      "content": "### What Is Monte Carlo?\n\nRandomly resampling trades to test strategy robustness and estimate confidence intervals.\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Monte Carlo Simulation::What Is Monte Carlo?",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Monte Carlo Simulation",
+        "What Is Monte Carlo?"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "What Is Monte Carlo?"
+      },
+      "tags": [
+        "strategy"
+      ]
+    },
+    {
+      "content": "### Monte Carlo Implementation\n\n```python\nclass MonteCarloSimulator:\n    \"\"\"Monte Carlo simulation for strategy validation\"\"\"\n\n    def __init__(self, backtest_results, n_simulations=1000):\n        self.results = backtest_results\n        self.n_simulations = n_simulations\n        self.trades = backtest_results['trades']\n\n    def run_simulation(self):\n        \"\"\"Run Monte Carlo simulation\"\"\"\n\n        simulation_results = []\n\n        for i in range(self.n_simulations):\n            # Resample trades with replacement\n            resampled = self.trades.sample(n=len(self.trades), replace=True)\n\n            # Calculate cumulative equity curve\n            equity = resampled['r_multiple'].cumsum()\n\n            simulation_results.append({\n                'final_equity_r': equity.iloc[-1],\n                'max_drawdown_r': self._calculate_max_dd(equity),\n                'sharpe_ratio': self._calculate_sharpe(equity)\n            })\n\n        # Analyze simulation results\n        df_sim = pd.DataFrame(simulation_results)\n\n        return {\n            'mean_final_equity': df_sim['final_equity_r'].mean(),\n            'std_final_equity': df_sim['final_equity_r'].std(),\n            'percentile_5': df_sim['final_equity_r'].quantile(0.05),\n            'percentile_95': df_sim['final_equity_r'].quantile(0.95),\n            'mean_max_dd': df_sim['max_drawdown_r'].mean(),\n            'worst_case_dd': df_sim['max_drawdown_r'].min(),\n            'probability_profit': (df_sim['final_equity_r'] > 0).sum() / self.n_simulations\n        }\n\n    def _calculate_max_dd(self, equity_curve):\n        \"\"\"Calculate max drawdown from equity curve\"\"\"\n        cummax = equity_curve.cummax()\n        drawdown = equity_curve - cummax\n        return drawdown.min()\n```\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Monte Carlo Simulation::Monte Carlo Implementation",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Monte Carlo Simulation",
+        "Monte Carlo Implementation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Monte Carlo Implementation"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "code"
+      ]
+    },
+    {
+      "content": "### Monte Carlo Interpretation\n\n| Metric | Good | Acceptable | Bad |\n|--------|------|------------|-----|\n| **Probability of Profit** | >95% | 90-95% | <90% |\n| **5th Percentile** | >0 | -5R to 0 | <-5R |\n| **Worst Case DD** | <20R | 20-30R | >30R |\n\n---\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Monte Carlo Simulation::Monte Carlo Interpretation",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Monte Carlo Simulation",
+        "Monte Carlo Interpretation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Monte Carlo Interpretation"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "## Performance Metrics\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Performance Metrics",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Performance Metrics"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Performance Metrics"
+      },
+      "tags": [
+        "indicator"
+      ]
+    },
+    {
+      "content": "### Required Metrics (Minimum)\n\n```python\nREQUIRED_METRICS = {\n    # Trade count\n    'total_trades': 'Total number of trades',\n    'avg_trades_per_month': 'Frequency of signals',\n\n    # Win/Loss stats\n    'win_rate': 'Percentage of winning trades',\n    'avg_win_r': 'Average win in R-multiples',\n    'avg_loss_r': 'Average loss in R-multiples',\n    'win_loss_ratio': 'Avg win / Avg loss (absolute)',\n\n    # Profitability\n    'total_return_r': 'Total profit in R-multiples',\n    'expectancy': 'Average R per trade',\n    'profit_factor': 'Sum wins / Sum losses (absolute)',\n\n    # Risk\n    'max_drawdown_r': 'Maximum peak-to-trough decline',\n    'max_consecutive_losses': 'Worst losing streak',\n\n    # Efficiency\n    'avg_holding_time': 'Average trade duration',\n    'sharpe_ratio': 'Return / Volatility ratio',\n}\n```\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Performance Metrics::Required Metrics (Minimum)",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Performance Metrics",
+        "Required Metrics (Minimum)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Required Metrics (Minimum)"
+      },
+      "tags": [
+        "indicator",
+        "code",
+        "risk"
+      ]
+    },
+    {
+      "content": "### Advanced Metrics (Optional)\n\n```python\nADVANCED_METRICS = {\n    # Statistics\n    'kelly_criterion': 'Optimal position sizing %',\n    'sortino_ratio': 'Return / Downside volatility',\n    'calmar_ratio': 'Return / Max drawdown',\n\n    # Stability\n    'monthly_win_rate': 'Win rate consistency by month',\n    'expectancy_std': 'Std dev of expectancy',\n    'regime_performance': 'Performance by market regime',\n\n    # Reliability\n    'monte_carlo_p5': '5th percentile equity (worst case)',\n    'monte_carlo_p95': '95th percentile equity (best case)',\n    'probability_of_profit': '% simulations profitable',\n}\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Performance Metrics::Advanced Metrics (Optional)",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Performance Metrics",
+        "Advanced Metrics (Optional)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Advanced Metrics (Optional)"
+      },
+      "tags": [
+        "indicator",
+        "code",
+        "position"
+      ]
+    },
+    {
+      "content": "## Validation Workflow\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Validation Workflow",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Validation Workflow"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Validation Workflow"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Complete Workflow (End-to-End)",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Validation Workflow::Complete Workflow (End-to-End)::chunk0",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Validation Workflow",
+        "Complete Workflow (End-to-End)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Complete Workflow (End-to-End)"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "indicator",
+        "pattern",
+        "optimization",
+        "risk",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Complete Workflow (End-to-End)\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                    VALIDATION WORKFLOW                                 \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502                                                                         \u2502\n\u2502  PHASE 1: INITIAL VALIDATION (Quick Check)                             \u2502\n\u2502  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500                             \u2502\n\u2502  \u2022 Run simple backtest on recent 6 months                              \u2502\n\u2502  \u2022 Check: 20+ signals, expectancy > 0                                  \u2502\n\u2502  \u2022 If fail: Pattern doesn't work, stop                                 \u2502\n\u2502  \u2022 If pass: Continue to Phase 2                                        \u2502\n\u2502                                                                         \u2502\n\u2502  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2502\n\u2502                                                                         \u2502\n\u2502  PHASE 2: PARAMETER OPTIMIZATION (Train/Val Split)                    \u2502\n\u2502  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500                     \u2502\n\u2502  \u2022 Split data: 60% train, 20% validation, 20% forward                 \u2502\n\u2502  \u2022 Grid search on training data                                        \u2502\n\u2502  \u2022 Select best params on validation data                               \u2502\n\u2502  \u2022 Check: Train/val gap < 25%                                          \u2502\n\u2502  \u2022 If fail: Overfitting detected, simplify params                     \u2502\n\u2502  \u2022 If pass: Continue to Phase 3                                        \u2502\n\u2502                                                                         \u2502\n\u2502  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2502\n\u2502                                                                         \u2502\n\u2502  PHASE 3: WALK-FORWARD TESTING (Stability Check)                       \u2502\n\u2502  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500                     \u2502\n\u2502  \u2022 12-month train, 3-month test, roll forward                          \u2502\n\u2502  \u2022 Check: >70% periods profitable, expectancy std < 50%                \u2502\n\u2502  \u2022 If fail: Strategy not stable, revise pattern                        \u2502\n\u2502  \u2022 If pass: Continue to Phase 4                                        \u2502\n\u2502                                                                         \u2502\n\u2502  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2502\n\u2502                                                                         \u2502\n\u2502  PHASE 4: FORWARD TESTING (Final Check)                                \u2502\n\u2502  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500                             \u2502\n\u2502  \u2022 Test on completely new data (forward period)                        \u2502\n\u2502  \u2022 Check: Performance within 20% of expected                           \u2502\n\u2502  \u2022 If fail: Regime change or overfitting                              \u2502\n\u2502  \u2022 If pass: Ready for paper trading                                    \u2502\n\u2502                                                                         \u2502\n\u2502  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2502\n\u2502                                                                         \u2502\n\u2502  PHASE 5: PAPER TRADING (Live Simulation)                              \u2502\n\u2502  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500                         \u2502\n\u2502  \u2022 Run for 30 days with real-time signals                              \u2502\n\u2502  \u2022 Check: Performance matches expectations                              \u2502\n\u2502  \u2022 If fail: Execution issue or regime change                           \u2502\n\u2502  \u2022 If pass: Ready for live trading (optional)                          \u2502\n\u2502                                                                         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Validation Workflow::Complete Workflow (End-to-End)::chunk1",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Validation Workflow",
+        "Complete Workflow (End-to-End)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Complete Workflow (End-to-End)"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "indicator",
+        "pattern",
+        "optimization",
+        "risk",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Decision Tree\n\n```\n                    Simple Backtest\n                           \u2502\n                  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n                  \u2502 Expectancy > 0? \u2502\n                  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                    NO            YES\n                    \u2502             \u2502\n              STOP              Optimize\n                                 \u2502\n                    \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n                    \u2502 Train/Val Gap < 25%?    \u2502\n                    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                      NO            YES\n                      \u2502             \u2502\n                 Simplify      Walk-Forward\n                                 \u2502\n                    \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n                    \u2502 >70% Periods Profitable?\u2502\n                    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                      NO            YES\n                      \u2502             \u2502\n                 Revise      Forward Test\n                                 \u2502\n                    \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n                    \u2502 Within 20% Expected?    \u2502\n                    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                      NO            YES\n                      \u2502             \u2502\n                  Investigate   Paper Trading\n                                   \u2502\n                          \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n                          \u2502 30 Days Pass?   \u2502\n                          \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                            NO        YES\n                            \u2502         \u2502\n                        Debug    Live Trading\n```\n\n---\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Validation Workflow::Decision Tree",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "code",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Validation Workflow",
+        "Decision Tree"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Decision Tree"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "optimization",
+        "risk"
+      ]
+    },
+    {
+      "content": "## Summary: Gold Standard Checklist\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Summary: Gold Standard Checklist",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Summary: Gold Standard Checklist"
+      ],
+      "metadata": {
+        "level": 2,
+        "heading": "Summary: Gold Standard Checklist"
+      },
+      "tags": []
+    },
+    {
+      "content": "### Scanner Development\n- [ ] Uses V31 architecture (5-stage pipeline)\n- [ ] Market calendar integration\n- [ ] Per-ticker operations\n- [ ] Historical/D0 separation\n- [ ] Smart filtering\n- [ ] Parallel processing\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Summary: Gold Standard Checklist::Scanner Development",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Summary: Gold Standard Checklist",
+        "Scanner Development"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Scanner Development"
+      },
+      "tags": [
+        "scanner",
+        "v31"
+      ]
+    },
+    {
+      "content": "### Backtesting\n- [ ] Simple backtest for quick validation\n- [ ] Enhanced backtest with intraday data\n- [ ] Realistic execution assumptions\n- [ ] Position sizing based on volatility\n- [ ] Commission calculations\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Summary: Gold Standard Checklist::Backtesting",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Summary: Gold Standard Checklist",
+        "Backtesting"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Backtesting"
+      },
+      "tags": [
+        "backtest",
+        "strategy",
+        "position",
+        "execution"
+      ]
+    },
+    {
+      "content": "### Optimization\n- [ ] Train/validation/forward split\n- [ ] Grid/random search for parameters\n- [ ] Overfitting detection\n- [ ] Minimum 50 signals in training\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Summary: Gold Standard Checklist::Optimization",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Summary: Gold Standard Checklist",
+        "Optimization"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Optimization"
+      },
+      "tags": [
+        "indicator",
+        "optimization"
+      ]
+    },
+    {
+      "content": "### Validation\n- [ ] Walk-forward testing (>70% periods profitable)\n- [ ] Forward test (within 20% of expected)\n- [ ] Monte Carlo simulation (>95% prob of profit)\n- [ ] Regime analysis (performance by market type)\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Summary: Gold Standard Checklist::Validation",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Summary: Gold Standard Checklist",
+        "Validation"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Validation"
+      },
+      "tags": [
+        "backtest"
+      ]
+    },
+    {
+      "content": "### Metrics (Minimum)\n- [ ] Total trades, win rate, expectancy\n- [ ] Max drawdown, profit factor\n- [ ] Avg win/loss, win/loss ratio\n- [ ] Sharpe ratio\n\n---\n\n**Document Status**: COMPLETE\n**Version**: 1.0\n**Last Updated**: 2026-01-29\n",
+      "chunk_id": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md::EdgeDev Backtesting & Optimization Gold Standard::Summary: Gold Standard Checklist::Metrics (Minimum)",
+      "source_file": "EDGEDEV_BACKTEST_OPTIMIZATION_GOLD_STANDARD.md",
+      "chunk_type": "section",
+      "heading_path": [
+        "EdgeDev Backtesting & Optimization Gold Standard",
+        "Summary: Gold Standard Checklist",
+        "Metrics (Minimum)"
+      ],
+      "metadata": {
+        "level": 3,
+        "heading": "Metrics (Minimum)"
+      },
+      "tags": [
+        "indicator",
+        "risk"
+      ]
+    }
+  ]
+}

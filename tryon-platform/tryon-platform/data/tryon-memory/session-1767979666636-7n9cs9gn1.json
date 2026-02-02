@@ -1,0 +1,99 @@
+{
+  "sessionId": "session-1767979666636-7n9cs9gn1",
+  "task": "Generate virtual try-on image.\n\nIMPORTANT: Use these EXACT file paths and parameters:\n- Subject photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/09aa2b38-9f19-4220-849f-d7a83f0ad602/subject_0_SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg\n- Glasses photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_main.jpg\n- Task ID (REQUIRED for generate_tryon_image): db7583a2-a144-4d5e-986b-3fe7b03e4f50\n\nWhen calling generate_tryon_image, you MUST include these parameters:\n- subjectPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/09aa2b38-9f19-4220-849f-d7a83f0ad602/subject_0_SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg\"\n- glassesPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_main.jpg\"\n- taskId: \"db7583a2-a144-4d5e-986b-3fe7b03e4f50\" (this is REQUIRED!)\n\nDO NOT make up file paths. Use the paths provided above exactly as written.",
+  "results": [
+    {
+      "success": true,
+      "data": {
+        "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/09aa2b38-9f19-4220-849f-d7a83f0ad602/subject_0_SnapInsta.to_501888221_17959239644943917_3491794573655015200_n_result_db7583a2-a144-4d5e-986b-3fe7b03e4f50.jpg",
+        "report": {
+          "taskId": "db7583a2-a144-4d5e-986b-3fe7b03e4f50",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Hybrid Canvas + AI (realistic blending)",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "db7583a2-a144-4d5e-986b-3fe7b03e4f50",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767979668931,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Hybrid Canvas + AI (realistic blending)"
+        },
+        "generationMethod": "Hybrid Canvas + AI (realistic blending)"
+      }
+    }
+  ],
+  "evaluation": {
+    "score": 85,
+    "finalResult": {
+      "success": true,
+      "data": {
+        "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/09aa2b38-9f19-4220-849f-d7a83f0ad602/subject_0_SnapInsta.to_501888221_17959239644943917_3491794573655015200_n_result_db7583a2-a144-4d5e-986b-3fe7b03e4f50.jpg",
+        "report": {
+          "taskId": "db7583a2-a144-4d5e-986b-3fe7b03e4f50",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Hybrid Canvas + AI (realistic blending)",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "db7583a2-a144-4d5e-986b-3fe7b03e4f50",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767979668931,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Hybrid Canvas + AI (realistic blending)"
+        },
+        "generationMethod": "Hybrid Canvas + AI (realistic blending)"
+      }
+    },
+    "shouldRetry": false
+  },
+  "timestamp": "2026-01-09T17:28:45.971Z",
+  "toolsUsed": [
+    "generate_tryon_image",
+    "retry_generation",
+    "verify_quality",
+    "quick_quality_check"
+  ]
+}

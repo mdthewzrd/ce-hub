@@ -1,0 +1,29 @@
+{
+  "tradingDays": [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+  ],
+  "marketHours": {
+    "premarket": {
+      "start": "04:00",
+      "end": "09:30"
+    },
+    "regular": {
+      "start": "09:30",
+      "end": "16:00"
+    },
+    "afterhours": {
+      "start": "16:00",
+      "end": "20:00"
+    }
+  },
+  "timezone": "America/New_York",
+  "holidays": [
+    "2024-12-25",
+    "2024-01-01",
+    "2024-07-04"
+  ]
+}

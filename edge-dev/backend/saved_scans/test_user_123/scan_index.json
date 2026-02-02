@@ -1,0 +1,12 @@
+{
+  "user_id": "test_user_123",
+  "scans": [
+    {
+      "scan_id": "test-historical-scan",
+      "scan_name": "Test Historical Scan - Real Data",
+      "scanner_type": "Custom Scanner",
+      "timestamp": "2025-12-08T22:55:00.000Z",
+      "results_count": 3
+    }
+  ]
+}

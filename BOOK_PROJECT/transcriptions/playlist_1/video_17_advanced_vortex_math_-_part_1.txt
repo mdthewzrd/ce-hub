@@ -1,0 +1,227 @@
+================================================================================
+VIDEO TRANSCRIPT: Advanced Vortex Math - Part 1
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: Okay, welcome everybody. My name is Randy Powell. This is going to be a bit of an
+
+[00:00:07] **Randy Powell**: advanced class and vortex based mathematics. For those of you who are familiar
+
+[00:00:12] **Randy Powell**: with Marco Rodin's work, if you're not familiar you should go and look up
+
+[00:00:16] **Randy Powell**: Marco's videos, study a little bit on his work. I'm also going to be having
+
+[00:00:22] **Randy Powell**: classes going up online that will start from much simpler and explain in much
+
+[00:00:27] **Randy Powell**: more detail how the math works. This is really intended to be for Marco, for more
+
+[00:00:35] **Randy Powell**: advanced students, people who are studying in the math. I've made a discovery that
+
+[00:00:42] **Randy Powell**: I believe completely revolutionizes and changes vortex based mathematics will
+
+[00:00:48] **Randy Powell**: change the designs of technologies based on vortex based mathematics and I'm
+
+[00:00:55] **Randy Powell**: actually claiming to have taken this math to a completely different level which
+
+[00:01:03] **Randy Powell**: reveals what a true whole number fractal is and how to determine exactly its
+
+[00:01:10] **Randy Powell**: composition. So I'm just going to start from the beginning. You can see I have my
+
+[00:01:15] **Randy Powell**: symbol here. Those of you who are familiar with the work have seen this symbol.
+
+[00:01:18] **Randy Powell**: It's called the symbol of enlightenment. This is the petroglyph for the
+
+[00:01:24] **Randy Powell**: equation for the most great name of God from the Baha'i faith. Abha. I'm just
+
+[00:01:30] **Randy Powell**: going to do a quick super fast run through how it works and those of you who
+
+[00:01:35] **Randy Powell**: aren't familiar go check out the other videos as well. So we start with nine at
+
+[00:01:41] **Randy Powell**: the top. We have a circle. One, two, three, four, five, six, seven, eight, nine. The
+
+[00:01:45] **Randy Powell**: nine of course never changes. No matter what you multiply nine by it always
+
+[00:01:49] **Randy Powell**: reduces back to equal to number nine. All numbers as we do functions on this
+
+[00:01:54] **Randy Powell**: we're going to reduce back to single digits. Why? Because we're looking at the
+
+[00:01:58] **Randy Powell**: underlying pattern. Okay. So let's look at the first pattern we have. We know
+
+[00:02:03] **Randy Powell**: it's doubling. If I follow this pathway one double is two two double four four
+
+[00:02:09] **Randy Powell**: double is eight eight double to sixteen but six and one is seven. Sixteen
+
+[00:02:13] **Randy Powell**: double thirty two thirty three plus two is five. Thirty two double is sixty four
+
+[00:02:18] **Randy Powell**: which comes back to ten one. One twenty eight which equals back to two. Two fifty
+
+[00:02:23] **Randy Powell**: six five twelve. You can go on and on forever it will always keep doubling. Most of
+
+[00:02:28] **Randy Powell**: you are familiar with that. You can half the other way. Half a one is point five.
+
+[00:02:32] **Randy Powell**: Half a point five is point two five two and five is seven. Half a point two five is
+
+[00:02:38] **Randy Powell**: point one two five which is eight. Point oh six two five which is four. On and
+
+[00:02:42] **Randy Powell**: on you can half forever. So we have both doubling and halfing. This is actually
+
+[00:02:47] **Randy Powell**: the way we're going to learn to measure things in the physical world. They
+
+[00:02:52] **Randy Powell**: always come in these groups of six. Okay. Really based on three but we're
+
+[00:02:59] **Randy Powell**: not going to that. Then we have our nine three and six. We're familiar with this
+
+[00:03:02] **Randy Powell**: three double to six. Six double to twelve which is three. Twelve double to twenty
+
+[00:03:07] **Randy Powell**: four which is back to six. Twenty four double is forty eight. Back to three. They
+
+[00:03:11] **Randy Powell**: are oscillating. The nine never changes. The forms and axes which polarizes all
+
+[00:03:16] **Randy Powell**: these numbers. Okay. You can look this up on Marco's video. Other thing we want to
+
+[00:03:22] **Randy Powell**: I'm just what I'm doing here just to explain is accounting for everything that
+
+[00:03:27] **Randy Powell**: has to be present on a true torus. Okay. So when we start modeling the
+
+[00:03:32] **Randy Powell**: torus with this I'm giving you all the principles. So the first thing is we have
+
+[00:03:38] **Randy Powell**: to have unbroken multiplication tables. Okay. We have to have doubling. We have
+
+[00:03:44] **Randy Powell**: to have the halfing. Okay. We have to have the three nine and six gap space in
+
+[00:03:50] **Randy Powell**: between. Next thing we have to have is family number groups. Okay. Those are
+
+[00:03:55] **Randy Powell**: explaining the videos too. They're separated by thirds. One plus three is four.
+
+[00:04:00] **Randy Powell**: Four plus three is seven. Seven plus three is ten which is back to one. Ten plus
+
+[00:04:04] **Randy Powell**: three is thirteen which is four. Thirteen plus three is sixteen which is seven.
+
+[00:04:09] **Randy Powell**: No matter how you do it always three moving forwards. When you go backwards one
+
+[00:04:14] **Randy Powell**: plus six seven seven plus six is thirteen which is four thirteen plus six is
+
+[00:04:21] **Randy Powell**: nineteen which is back to one six going backwards. Three is representing
+
+[00:04:26] **Randy Powell**: forward motion, six backward motion. So we're going to see this on all levels of
+
+[00:04:32] **Randy Powell**: the torus. Same thing for two five and eight going three four six going backwards.
+
+[00:04:38] **Randy Powell**: Okay. And our third group three nine six also separated and third like that. So
+
+[00:04:45] **Randy Powell**: you have to have these principles going on. Doubling and halfing, lining up of
+
+[00:04:51] **Randy Powell**: these pairs, your family number groups, all of those are going to be
+
+[00:04:56] **Randy Powell**: existent in the symbol. And all doubling circuits must begin and end at the same
+
+[00:05:02] **Randy Powell**: place. Okay. We have to be able to produce these circuits so they line up in
+
+[00:05:08] **Randy Powell**: order to create a shear along the torus. So those of you who've been working on
+
+[00:05:13] **Randy Powell**: that familiar with that. Just an example of a shear it's made out of reciprocals
+
+[00:05:18] **Randy Powell**: on this symbol. So I could use one as a control because this simple is just
+
+[00:05:23] **Randy Powell**: using one as my control. One times one is one. If I move in one on each line two
+
+[00:05:31] **Randy Powell**: times five is ten is one. Four times seven is twenty eight which is ten which is
+
+[00:05:37] **Randy Powell**: one. Eight times eight sixty four which comes back to one. Okay. I can really use
+
+[00:05:42] **Randy Powell**: any number as a control on that and do the same thing but that's one example of
+
+[00:05:46] **Randy Powell**: what I'm going to show on the actual torus as a shear. So again if you've been
+
+[00:05:50] **Randy Powell**: working on this you should be pretty familiar with that. So I just wanted to
+
+[00:05:54] **Randy Powell**: review that really fast which I did and now I'm going to move to my next piece.
+
+[00:05:59] **Randy Powell**: So after you've seen and become familiar with those symbols you know that they
+
+[00:06:06] **Randy Powell**: turn in something else which is this. Okay. It's called a torus. This is just one
+
+[00:06:12] **Randy Powell**: example. It's a hand done approximation of what this should be but nevertheless I
+
+[00:06:22] **Randy Powell**: get the numbers filled in. So how did I make this? I'm using my multiplication
+
+[00:06:27] **Randy Powell**: tables. Okay. So we know multiples of one I'm going to be going up one two three
+
+[00:06:33] **Randy Powell**: four. Okay. It's very difficult to see here but if you look at your own
+
+[00:06:38] **Randy Powell**: torus you know I've got multiples of eight going in the opposite direction in
+
+[00:06:41] **Randy Powell**: towards the center. Here I've got multiples of four going around like this. Four
+
+[00:06:46] **Randy Powell**: eight twelve which is three sixteen which is seven twenty. Okay. Multiple is a
+
+[00:06:52] **Randy Powell**: five going the other way. So multiples of one and eight are my vertical axis on
+
+[00:06:56] **Randy Powell**: this particular toroid. Multiple is a four and five are my horizontal axis. They
+
+[00:07:02] **Randy Powell**: make unbroken rings. We can use any multiple of nine but the example I'm using now
+
+[00:07:07] **Randy Powell**: is based on thirty six on a horizontal and eighteen on the vertical. Okay. And I'll
+
+[00:07:13] **Randy Powell**: explain that further as to how that makes pattern. All right. But we just want to
+
+[00:07:18] **Randy Powell**: know that and then I have my twos and sevens coming through as my z-axis which is
+
+[00:07:24] **Randy Powell**: invisible. Though it can be observed on the skin of the torus by how it's
+
+[00:07:28] **Randy Powell**: displacing other numbers but I won't go into that. What I want to explain is how
+
+[00:07:35] **Randy Powell**: these numbers what has yet to have been understood to my knowledge is how these
+
+[00:07:42] **Randy Powell**: numbers create what are called nested vortices which occur over the surface of
+
+[00:07:48] **Randy Powell**: the torus. There are explained to be just like dimples on a golf ball. They're
+
+[00:07:53] **Randy Powell**: exposed to increase the acceleration of the electricity as it moves through the
+
+[00:07:59] **Randy Powell**: coil and they're also creating another phenomena spiraling over the surface of
+
+[00:08:04] **Randy Powell**: the coil which is called spires. That's been one of the biggest subjects which
+
+[00:08:10] **Randy Powell**: has not been understood within vortex based mathematics. So my goal is to
+
+[00:08:14] **Randy Powell**: explain it to you right now. What is a spire? How do they actually sequence? Okay.
+
+[00:08:20] **Randy Powell**: So that's the standard toy. I'll show you just another example so you can see
+
+[00:08:27] **Randy Powell**: if you didn't catch it there. These look like squares. Of course there should be
+
+[00:08:31] **Randy Powell**: diamonds. Really it should be angled more like this but you can see here my
+
+[00:08:35] **Randy Powell**: multiples of one one two three four five six and then I've got multiples of eight
+
+[00:08:41] **Randy Powell**: here eight sixteen which is seven a twenty four which is six thirty two which is
+
+[00:08:49] **Randy Powell**: five. So they're running in opposite directions. I have my multiples of five five
+
+[00:08:54] **Randy Powell**: ten which is one fifteen which is six twenty. Okay multiples of four going in the
+
+[00:09:00] **Randy Powell**: other way and then my twos and sevens are penetrating through the skin coming
+
+[00:09:05] **Randy Powell**: out this way. Okay. Alright so that makes my basic tourist skin which forms into a
+
+[00:09:12] **Randy Powell**: tourist. Now big question has been how do we know what's a true tourist? How many
+
+[00:09:17] **Randy Powell**: numbers do we need? Do we have can we use nine by nine? Can we use eighteen by
+
+[00:09:23] **Randy Powell**: eighteen? Can we use any number twenty seven? Is it gonna be? Is there some
+
+[00:09:27] **Randy Powell**: number that's a true tourist? Okay no one has ever determined that until now. Okay
+
+[00:09:34] **Randy Powell**: the standard approach to teaching the tourists is more like this. See I don't have
+
+[00:09:50] **Randy Powell**: the model for that. So the standard way of showing the winding of the
+
+[00:09:54] **Randy Powell**: coil is it's said or the winding of the doubling circuits along the
+
+[00:09:58] **Randy Powell**: 2nd tours.

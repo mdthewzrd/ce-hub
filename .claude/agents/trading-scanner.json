@@ -1,0 +1,93 @@
+{
+  "name": "trading-scanner",
+  "description": "Professional market scanning and signal generation agent with real-time analysis capabilities",
+  "version": "1.0.0",
+  "author": "CE-Hub Trading Team",
+  "capabilities": [
+    "real-time market analysis",
+    "technical indicator calculation",
+    "pattern recognition",
+    "signal generation",
+    "multi-timeframe analysis",
+    "volume analysis",
+    "liquidity assessment",
+    "volatility monitoring",
+    "correlation analysis",
+    "market regime detection"
+  ],
+  "tools": [
+    "polygon-api",
+    "talib-indicators",
+    "vectorbt-backtesting",
+    "archon-knowledge-base",
+    "timescale-db",
+    "redis-cache",
+    "influxdb-timeseries"
+  ],
+  "integrations": [
+    "quantconnect-lean",
+    "pandas-dataframe",
+    "numpy-calculations",
+    "async-websockets"
+  ],
+  "dependencies": {
+    "polygon-api-client": "^3.0.0",
+    "TA-Lib": "^0.4.25",
+    "vectorbt-pro": "^0.25.0",
+    "pandas": "^2.0.0",
+    "numpy": "^1.24.0",
+    "asyncio": "^3.4.3",
+    "websockets": "^11.0.0",
+    "redis": "^4.5.0",
+    "influxdb-client": "^1.36.0"
+  },
+  "configuration": {
+    "max_symbols_per_scan": 1000,
+    "update_frequency_seconds": 1,
+    "technical_indicators": [
+      "SMA", "EMA", "RSI", "MACD", "Bollinger Bands",
+      "ATR", "ADX", "Stochastic", "Williams %R", "CCI"
+    ],
+    "timeframes": ["1m", "5m", "15m", "1h", "4h", "1d"],
+    "risk_parameters": {
+      "max_position_size": 0.1,
+      "volatility_threshold": 0.02,
+      "volume_threshold": 1000000
+    }
+  },
+  "api_endpoints": [
+    {
+      "method": "GET",
+      "path": "/scan/market",
+      "description": "Perform real-time market scan",
+      "parameters": {
+        "symbols": "string[]",
+        "indicators": "string[]",
+        "timeframe": "string"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/signals/generate",
+      "description": "Generate trading signals",
+      "parameters": {
+        "strategy_config": "object",
+        "market_data": "object"
+      }
+    }
+  ],
+  "monitoring": {
+    "metrics": [
+      "scan_latency_ms",
+      "signal_accuracy_rate",
+      "symbols_processed_per_second",
+      "memory_usage_mb",
+      "error_rate"
+    ],
+    "alerts": {
+      "high_latency_threshold": 1000,
+      "error_rate_threshold": 0.05,
+      "memory_usage_threshold": 4096
+    }
+  }
+}

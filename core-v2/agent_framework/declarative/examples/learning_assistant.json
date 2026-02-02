@@ -1,0 +1,344 @@
+{
+  "agent": {
+    "name": "Learning-Powered Assistant",
+    "description": "Context-aware AI assistant that learns from user interactions, trading patterns, and feedback to provide personalized assistance. Based on Enhanced Renata Agent with learning engine and Archon integration.",
+    "type": "assistant",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 10,
+    "system_prompt": {
+      "role": "You are a Learning-Powered Assistant specialized in providing personalized trading assistance by learning from user interactions, preferences, and feedback.",
+      "responsibilities": [
+        "Provide contextual assistance for trading scanner development",
+        "Learn user preferences and trading style from interactions",
+        "Remember successful patterns and configurations for each user",
+        "Adapt responses based on user feedback and corrections",
+        "Maintain context across conversations for continuity",
+        "Suggest optimizations based on user's historical performance",
+        "Provide personalized recommendations using Archon knowledge integration",
+        "Continuously improve through user feedback loops"
+      ],
+      "guidelines": [
+        "Always remember user preferences from past interactions",
+        "Adapt communication style to user's preferences",
+        "Leverage Archon knowledge graph for comprehensive responses",
+        "Learn from both positive and negative feedback",
+        "Suggest patterns that worked well for similar users",
+        "Provide context-aware explanations and recommendations",
+        "Maintain conversation history for continuity",
+        "Proactively offer personalized insights",
+        "Respect user's trading style and risk preferences",
+        "Explain reasoning clearly and transparently"
+      ],
+      "constraints": [
+        "Maximum 10 tools - focus on learning and assistance",
+        "Do not execute trades (only provide recommendations)",
+        "Do not modify production systems without explicit approval",
+        "Always maintain user privacy and data security",
+        "Learn from feedback but respect user corrections",
+        "Provide transparent reasoning for all suggestions",
+        "Handle sensitive information appropriately"
+      ]
+    },
+    "tools": [
+      {
+        "name": "provide_contextual_assistance",
+        "description": "Provides assistance based on current context and user history",
+        "type": "assistance",
+        "parameters": {
+          "query": {
+            "type": "str",
+            "description": "User's question or request",
+            "required": true
+          },
+          "context": {
+            "type": "dict",
+            "description": "Current context (task, code, market conditions)",
+            "required": false
+          },
+          "personalize": {
+            "type": "bool",
+            "description": "Personalize response based on user history",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "learn_user_preference",
+        "description": "Learns and stores user preferences from interactions",
+        "type": "learning",
+        "parameters": {
+          "preference_type": {
+            "type": "str",
+            "description": "Type of preference: 'pattern', 'risk_level', 'communication_style', 'trading_style'",
+            "required": true
+          },
+          "preference_value": {
+            "type": "any",
+            "description": "Preference value to store",
+            "required": true
+          },
+          "confidence": {
+            "type": "float",
+            "description": "Confidence level in this preference (0-1)",
+            "required": false,
+            "default": 0.8
+          }
+        }
+      },
+      {
+        "name": "retrieve_user_history",
+        "description": "Retrieves user's interaction history and preferences",
+        "type": "retrieval",
+        "parameters": {
+          "user_id": {
+            "type": "str",
+            "description": "User identifier",
+            "required": true
+          },
+          "history_type": {
+            "type": "str",
+            "description": "Type of history: 'all', 'recent', 'successful_patterns', 'preferences'",
+            "required": false,
+            "default": "recent"
+          },
+          "limit": {
+            "type": "int",
+            "description": "Maximum number of history items to retrieve",
+            "required": false,
+            "default": 10
+          }
+        }
+      },
+      {
+        "name": "provide_personalized_recommendations",
+        "description": "Provides personalized recommendations based on user's trading style",
+        "type": "assistance",
+        "parameters": {
+          "task": {
+            "type": "str",
+            "description": "Current task or goal",
+            "required": true
+          },
+          "user_profile": {
+            "type": "dict",
+            "description": "User's trading profile and preferences",
+            "required": true
+          },
+          "recommendation_type": {
+            "type": "str",
+            "description": "Type: 'pattern', 'parameters', 'optimization', 'risk_management'",
+            "required": false,
+            "default": "pattern"
+          }
+        }
+      },
+      {
+        "name": "incorporate_feedback",
+        "description": "Learns from user feedback to improve future recommendations",
+        "type": "learning",
+        "parameters": {
+          "feedback_type": {
+            "type": "str",
+            "description": "Type: 'positive', 'negative', 'correction', 'suggestion'",
+            "required": true
+          },
+          "feedback_content": {
+            "type": "str",
+            "description": "Feedback content",
+            "required": true
+          },
+          "context": {
+            "type": "dict",
+            "description": "Context in which feedback was given",
+            "required": true
+          },
+          "adjust_learning": {
+            "type": "bool",
+            "description": "Adjust learning model based on feedback",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "query_archon_knowledge",
+        "description": "Queries Archon knowledge graph for comprehensive information",
+        "type": "retrieval",
+        "parameters": {
+          "query": {
+            "type": "str",
+            "description": "Knowledge query",
+            "required": true
+          },
+          "knowledge_domains": {
+            "type": "list",
+            "description": "Domains to search: ['patterns', 'optimizations', 'best_practices']",
+            "required": false
+          },
+          "include_user_context": {
+            "type": "bool",
+            "description": "Include user-specific context in query",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "maintain_conversation_context",
+        "description": "Maintains and updates conversation context for continuity",
+        "type": "context_management",
+        "parameters": {
+          "conversation_state": {
+            "type": "dict",
+            "description": "Current conversation state",
+            "required": true
+          },
+          "new_information": {
+            "type": "dict",
+            "description": "New information to incorporate",
+            "required": true
+          },
+          "summarize": {
+            "type": "bool",
+            "description": "Generate summary of conversation",
+            "required": false,
+            "default": false
+          }
+        }
+      },
+      {
+        "name": "suggest_similar_successful_patterns",
+        "description": "Suggests patterns that worked well for similar users/tasks",
+        "type": "assistance",
+        "parameters": {
+          "current_task": {
+            "type": "dict",
+            "description": "Current task description",
+            "required": true
+          },
+          "similarity_threshold": {
+            "type": "float",
+            "description": "Minimum similarity threshold",
+            "required": false,
+            "default": 0.7
+          },
+          "max_suggestions": {
+            "type": "int",
+            "description": "Maximum number of suggestions",
+            "required": false,
+            "default": 5
+          }
+        }
+      },
+      {
+        "name": "provide_progressive_explanations",
+        "description": "Provides explanations tailored to user's expertise level",
+        "type": "assistance",
+        "parameters": {
+          "topic": {
+            "type": "str",
+            "description": "Topic to explain",
+            "required": true
+          },
+          "user_expertise_level": {
+            "type": "str",
+            "description": "User's expertise: 'beginner', 'intermediate', 'advanced'",
+            "required": false,
+            "default": "intermediate"
+          },
+          "detail_level": {
+            "type": "str",
+            "description": "Detail level: 'overview', 'standard', 'comprehensive'",
+            "required": false,
+            "default": "standard"
+          }
+        }
+      },
+      {
+        "name": "generate_learning_report",
+        "description": "Generates report on what has been learned and improvements",
+        "type": "creation",
+        "parameters": {
+          "user_id": {
+            "type": "str",
+            "description": "User identifier",
+            "required": true
+          },
+          "time_period": {
+            "type": "dict",
+            "description": "Time period for report",
+            "required": false
+          },
+          "include_metrics": {
+            "type": "bool",
+            "description": "Include learning metrics",
+            "required": false,
+            "default": true
+          },
+          "include_recommendations": {
+            "type": "bool",
+            "description": "Include improvement recommendations",
+            "required": false,
+            "default": true
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "user_learning_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "moderate",
+      "quality_threshold": 0.8,
+      "rules": [
+        {
+          "name": "user_privacy",
+          "description": "Must maintain user privacy and data security",
+          "severity": "error"
+        },
+        {
+          "name": "feedback_incorporation",
+          "description": "Must incorporate user feedback appropriately",
+          "severity": "error"
+        },
+        {
+          "name": "context_relevance",
+          "description": "Responses must be relevant to user context",
+          "severity": "major"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "production",
+      "scaling": "horizontal",
+      "resources": {
+        "memory": "2GB",
+        "cpu": "2.0"
+      }
+    },
+    "learning_config": {
+      "feedback_weight": 0.7,
+      "archon_integration": true,
+      "conversation_memory_limit": 100,
+      "personalization_strength": 0.8,
+      "continuous_learning": true
+    }
+  }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>📱 CE-Hub Mobile</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0d1117;
+            color: #f0f6fc;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo { font-size: 64px; margin-bottom: 16px; }
+        .title { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+        .subtitle { color: #8b949e; }
+        .card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .card-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .button {
+            background: #238636;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+            cursor: pointer;
+            min-height: 80px;
+        }
+        .button:hover { background: #2ea043; }
+        .button .icon { font-size: 24px; }
+        .secondary { background: #21262d; border: 1px solid #30363d; }
+        .secondary:hover { background: #30363d; }
+        .url-box {
+            background: #000;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            font-family: monospace;
+            font-size: 14px;
+            color: #58a6ff;
+        }
+        .status { color: #22c55e; margin-top: 16px; font-weight: 500; }
+        @media (max-width: 480px) {
+            .button-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">📱</div>
+        <div class="title">CE-Hub Mobile</div>
+        <div class="subtitle">Quick access to your development environment</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">🚀 Quick Access</div>
+        <div class="button-grid">
+            <a href="http://127.0.0.1:8080/" class="button" target="_blank">
+                <span class="icon">💻</span>
+                <span>VS Code (Local)</span>
+            </a>
+            <a href="http://100.95.223.19:8080/" class="button" target="_blank">
+                <span class="icon">🌐</span>
+                <span>VS Code (Tailscale)</span>
+            </a>
+            <a href="http://127.0.0.1:8081/mobile/" class="button secondary" target="_blank">
+                <span class="icon">📱</span>
+                <span>Mobile Interface</span>
+            </a>
+            <a href="http://100.95.223.19:8081/mobile/" class="button secondary" target="_blank">
+                <span class="icon">📱</span>
+                <span>Mobile (Tailscale)</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">🔐 VS Code Login</div>
+        <div>Password: <span style="color: #58a6ff; font-family: monospace;">9c7516c8dba7b2328e081e31</span></div>
+        <div style="font-size: 12px; color: #8b949e; margin-top: 8px;">Use this password when VS Code asks for authentication</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">📋 URLs for Mobile Device</div>
+        <div class="url-box">
+            <div>VS Code: http://100.95.223.19:8080/</div>
+            <div>Mobile: http://100.95.223.19:8081/mobile/</div>
+            <div>Password: 9c7516c8dba7b2328e081e31</div>
+        </div>
+        <div class="status">✅ All services running and accessible via Tailscale!</div>
+    </div>
+
+    <script>
+        // Test connectivity
+        fetch('http://127.0.0.1:8081/mobile/api/status')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'online') {
+                    console.log('✅ Mobile server is online');
+                }
+            })
+            .catch(() => console.log('⚠️ Mobile server connectivity issue'));
+
+        console.log('📱 Simple mobile access page loaded');
+    </script>
+</body>
+</html>

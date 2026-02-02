@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Options Showcase - Hidden in Plain Sight</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- OPTION 1: Classical Roman -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- OPTION 2: Timeless Serif -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- OPTION 3: Modern Elegant -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- OPTION 4: Ancient Wisdom -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- OPTION 5: Sophisticated Minimal -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Geist+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- OPTION 6: Dark Academia -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #d97706;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .font-option {
+            background: #111;
+            border: 2px solid #1a1a1a;
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .font-option:hover {
+            border-color: #d97706;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(217, 119, 6, 0.2);
+        }
+
+        .option-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .option-title {
+            font-size: 24px;
+            color: #d97706;
+            font-weight: 600;
+        }
+
+        .option-number {
+            background: #d97706;
+            color: #0a0a0a;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .font-preview {
+            margin-bottom: 30px;
+        }
+
+        .preview-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .preview-text {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #0a0a0a;
+            border-radius: 12px;
+            border: 1px solid #1a1a1a;
+        }
+
+        .size-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .size-row {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .size-label {
+            font-size: 11px;
+            color: #666;
+            min-width: 60px;
+            text-transform: uppercase;
+        }
+
+        .shape-demos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .shape-test {
+            text-align: center;
+        }
+
+        .circle-shape {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+            margin: 0 auto 10px;
+            background: #d97706;
+            color: #0a0a0a;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 30px;
+            background: #d97706;
+            color: #0a0a0a;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+            padding: 15px;
+            background: #0a0a0a;
+            border-radius: 8px;
+            border-left: 3px solid #d97706;
+        }
+
+        .vote-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .vote-btn {
+            background: #d97706;
+            color: #0a0a0a;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 0 5px;
+        }
+
+        .vote-btn:hover {
+            background: #f59e0b;
+            transform: scale(1.05);
+        }
+
+        .comparison-section {
+            background: #111;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 2px solid #1a1a1a;
+        }
+
+        .comparison-title {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #e5e5e5;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .comparison-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: #0a0a0a;
+            border-radius: 12px;
+            border: 2px solid #1a1a1a;
+        }
+
+        .comparison-item.best-choice {
+            border-color: #d97706;
+        }
+
+        .comparison-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        /* Option-specific styles applied to previews */
+        .opt1-heading { font-family: 'Cinzel', serif; }
+        .opt1-body { font-family: 'Inter', sans-serif; }
+        .opt1-tech { font-family: 'Space Mono', monospace; }
+
+        .opt2-heading { font-family: 'Crimson Pro', serif; }
+        .opt2-body { font-family: 'Crimson Text', serif; }
+        .opt2-tech { font-family: 'IBM Plex Mono', monospace; }
+
+        .opt3-heading { font-family: 'Playfair Display', serif; }
+        .opt3-body { font-family: 'Source Sans Pro', sans-serif; }
+        .opt3-tech { font-family: 'Fira Code', monospace; }
+
+        .opt4-heading { font-family: 'Cormorant Garamond', serif; }
+        .opt4-body { font-family: 'Lato', sans-serif; }
+        .opt4-tech { font-family: 'Roboto Mono', monospace; }
+
+        .opt5-heading { font-family: 'Libre Baskerville', serif; }
+        .opt5-body { font-family: 'Inter', sans-serif; }
+        .opt5-tech { font-family: 'Geist Mono', monospace; }
+
+        .opt6-heading { font-family: 'EB Garamond', serif; }
+        .opt6-body { font-family: 'Jost', sans-serif; }
+        .opt6-tech { font-family: 'JetBrains Mono', monospace; }
+
+        @media (max-width: 1200px) {
+            .option-grid {
+                grid-template-columns: 1fr;
+            }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .shape-demos {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✅ Selected: Dark Academia</h1>
+        <p class="subtitle">Font Pairing for "Hidden in Plain Sight" - Option 6</p>
+
+        <div class="option-grid">
+            <!-- OPTION 1: Classical Roman -->
+            <div class="font-option">
+                <div class="option-header">
+                    <span class="option-title opt1-heading">Classical Roman</span>
+                    <span class="option-number">1</span>
+                </div>
+                <div class="font-preview">
+                    <div class="preview-label">Chapter Title (48px)</div>
+                    <div class="preview-text">
+                        <span class="opt1-heading" style="font-size: 48px; font-weight: 600;">Chapter 1</span>
+                    </div>
+                    <div class="preview-label">Section Header (28px)</div>
+                    <div class="preview-text">
+                        <span class="opt1-heading" style="font-size: 28px;">Pattern Recognition</span>
+                    </div>
+                    <div class="preview-label">Body Text (16px)</div>
+                    <div class="preview-text">
+                        <span class="opt1-body" style="font-size: 16px;">Once you see the patterns, you can't unsee them. They appear everywhere in nature, from the smallest flower to the largest galaxy.</span>
+                    </div>
+                    <div class="preview-label">Technical Labels (12px)</div>
+                    <div class="preview-text">
+                        <span class="opt1-tech" style="font-size: 12px; color: #d97706;">φ = 1.6180339887</span>
+                    </div>
+                    <div class="shape-demos">
+                        <div class="shape-test">
+                            <div class="circle-shape">
+                                <span class="opt1-heading" style="font-size: 16px;">PATTERN</span>
+                            </div>
+                        </div>
+                        <div class="shape-test">
+                            <span class="badge opt1-body" style="font-size: 12px;">Priority 1</span>
+                        </div>
+                        <div class="shape-test">
+                            <span class="badge opt1-tech" style="font-size: 10px;">PHI_RATIO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <strong>Vibe:</strong> Classic, timeless, Roman empire feel. Cinzel captures the weight of ancient civilization while Inter keeps body text modern and readable.
+                </div>
+                <div class="vote-section">
+                    <button class="vote-btn" onclick="alert('You voted for Option 1: Classical Roman')">Vote #1</button>
+                </div>
+            </div>
+
+            <!-- OPTION 2: Timeless Serif -->
+            <div class="font-option">
+                <div class="option-header">
+                    <span class="option-title opt2-heading">Timeless Serif</span>
+                    <span class="option-number">2</span>
+                </div>
+                <div class="font-preview">
+                    <div class="preview-label">Chapter Title (48px)</div>
+                    <div class="preview-text">
+                        <span class="opt2-heading" style="font-size: 48px; font-weight: 600;">Chapter 1</span>
+                    </div>
+                    <div class="preview-label">Section Header (28px)</div>
+                    <div class="preview-text">
+                        <span class="opt2-heading" style="font-size: 28px;">Pattern Recognition</span>
+                    </div>
+                    <div class="preview-label">Body Text (16px)</div>
+                    <div class="preview-text">
+                        <span class="opt2-body" style="font-size: 16px;">Once you see the patterns, you can't unsee them. They appear everywhere in nature, from the smallest flower to the largest galaxy.</span>
+                    </div>
+                    <div class="preview-label">Technical Labels (12px)</div>
+                    <div class="preview-text">
+                        <span class="opt2-tech" style="font-size: 12px; color: #d97706;">φ = 1.6180339887</span>
+                    </div>
+                    <div class="shape-demos">
+                        <div class="shape-test">
+                            <div class="circle-shape">
+                                <span class="opt2-heading" style="font-size: 16px;">PATTERN</span>
+                            </div>
+                        </div>
+                        <div class="shape-test">
+                            <span class="badge opt2-body" style="font-size: 12px;">Priority 1</span>
+                        </div>
+                        <div class="shape-test">
+                            <span class="badge opt2-tech" style="font-size: 10px;">PHI_RATIO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <strong>Vibe:</strong> Warm, literary, bookish. Crimson Pro gives an elegant published-book feel, perfect for long-form reading.
+                </div>
+                <div class="vote-section">
+                    <button class="vote-btn" onclick="alert('You voted for Option 2: Timeless Serif')">Vote #2</button>
+                </div>
+            </div>
+
+            <!-- OPTION 3: Modern Elegant -->
+            <div class="font-option">
+                <div class="option-header">
+                    <span class="option-title opt3-heading">Modern Elegant</span>
+                    <span class="option-number">3</span>
+                </div>
+                <div class="font-preview">
+                    <div class="preview-label">Chapter Title (48px)</div>
+                    <div class="preview-text">
+                        <span class="opt3-heading" style="font-size: 48px; font-weight: 600;">Chapter 1</span>
+                    </div>
+                    <div class="preview-label">Section Header (28px)</div>
+                    <div class="preview-text">
+                        <span class="opt3-heading" style="font-size: 28px;">Pattern Recognition</span>
+                    </div>
+                    <div class="preview-label">Body Text (16px)</div>
+                    <div class="preview-text">
+                        <span class="opt3-body" style="font-size: 16px;">Once you see the patterns, you can't unsee them. They appear everywhere in nature, from the smallest flower to the largest galaxy.</span>
+                    </div>
+                    <div class="preview-label">Technical Labels (12px)</div>
+                    <div class="preview-text">
+                        <span class="opt3-tech" style="font-size: 12px; color: #d97706;">φ = 1.6180339887</span>
+                    </div>
+                    <div class="shape-demos">
+                        <div class="shape-test">
+                            <div class="circle-shape">
+                                <span class="opt3-heading" style="font-size: 16px;">PATTERN</span>
+                            </div>
+                        </div>
+                        <div class="shape-test">
+                            <span class="badge opt3-body" style="font-size: 12px;">Priority 1</span>
+                        </div>
+                        <div class="shape-test">
+                            <span class="badge opt3-tech" style="font-size: 10px;">PHI_RATIO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <strong>Vibe:</strong> Fashion magazine sophistication. Playfair Display is glamorous while Source Sans Pro keeps it clean and modern.
+                </div>
+                <div class="vote-section">
+                    <button class="vote-btn" onclick="alert('You voted for Option 3: Modern Elegant')">Vote #3</button>
+                </div>
+            </div>
+
+            <!-- OPTION 4: Ancient Wisdom -->
+            <div class="font-option">
+                <div class="option-header">
+                    <span class="option-title opt4-heading">Ancient Wisdom</span>
+                    <span class="option-number">4</span>
+                </div>
+                <div class="font-preview">
+                    <div class="preview-label">Chapter Title (48px)</div>
+                    <div class="preview-text">
+                        <span class="opt4-heading" style="font-size: 48px; font-weight: 600;">Chapter 1</span>
+                    </div>
+                    <div class="preview-label">Section Header (28px)</div>
+                    <div class="preview-text">
+                        <span class="opt4-heading" style="font-size: 28px;">Pattern Recognition</span>
+                    </div>
+                    <div class="preview-label">Body Text (16px)</div>
+                    <div class="preview-text">
+                        <span class="opt4-body" style="font-size: 16px;">Once you see the patterns, you can't unsee them. They appear everywhere in nature, from the smallest flower to the largest galaxy.</span>
+                    </div>
+                    <div class="preview-label">Technical Labels (12px)</div>
+                    <div class="preview-text">
+                        <span class="opt4-tech" style="font-size: 12px; color: #d97706;">φ = 1.6180339887</span>
+                    </div>
+                    <div class="shape-demos">
+                        <div class="shape-test">
+                            <div class="circle-shape">
+                                <span class="opt4-heading" style="font-size: 16px;">PATTERN</span>
+                            </div>
+                        </div>
+                        <div class="shape-test">
+                            <span class="badge opt4-body" style="font-size: 12px;">Priority 1</span>
+                        </div>
+                        <div class="shape-test">
+                            <span class="badge opt4-tech" style="font-size: 10px;">PHI_RATIO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <strong>Vibe:</strong> Mystical, magical, ancient texts. Cormorant Garamond feels like it belongs in a medieval monastery or mystical scroll.
+                </div>
+                <div class="vote-section">
+                    <button class="vote-btn" onclick="alert('You voted for Option 4: Ancient Wisdom')">Vote #4</button>
+                </div>
+            </div>
+
+            <!-- OPTION 5: Sophisticated Minimal -->
+            <div class="font-option">
+                <div class="option-header">
+                    <span class="option-title opt5-heading">Sophisticated Minimal</span>
+                    <span class="option-number">5</span>
+                </div>
+                <div class="font-preview">
+                    <div class="preview-label">Chapter Title (48px)</div>
+                    <div class="preview-text">
+                        <span class="opt5-heading" style="font-size: 48px; font-weight: 700;">CHAPTER 1</span>
+                    </div>
+                    <div class="preview-label">Section Header (28px)</div>
+                    <div class="preview-text">
+                        <span class="opt5-heading" style="font-size: 28px;">Pattern Recognition</span>
+                    </div>
+                    <div class="preview-label">Body Text (16px)</div>
+                    <div class="preview-text">
+                        <span class="opt5-body" style="font-size: 16px;">Once you see the patterns, you can't unsee them. They appear everywhere in nature, from the smallest flower to the largest galaxy.</span>
+                    </div>
+                    <div class="preview-label">Technical Labels (12px)</div>
+                    <div class="preview-text">
+                        <span class="opt5-tech" style="font-size: 12px; color: #d97706;">φ = 1.6180339887</span>
+                    </div>
+                    <div class="shape-demos">
+                        <div class="shape-test">
+                            <div class="circle-shape">
+                                <span class="opt5-heading" style="font-size: 14px; font-weight: 700;">PATTERN</span>
+                            </div>
+                        </div>
+                        <div class="shape-test">
+                            <span class="badge opt5-body" style="font-size: 12px;">Priority 1</span>
+                        </div>
+                        <div class="shape-test">
+                            <span class="badge opt5-tech" style="font-size: 10px;">PHI_RATIO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <strong>Vibe:</strong> Clean, tech-forward, minimalist. Libre Baskerville has heritage but Geist Mono is cutting-edge code font.
+                </div>
+                <div class="vote-section">
+                    <button class="vote-btn" onclick="alert('You voted for Option 5: Sophisticated Minimal')">Vote #5</button>
+                </div>
+            </div>
+
+            <!-- OPTION 6: Dark Academia -->
+            <div class="font-option">
+                <div class="option-header">
+                    <span class="option-title opt6-heading">Dark Academia</span>
+                    <span class="option-number">6</span>
+                </div>
+                <div class="font-preview">
+                    <div class="preview-label">Chapter Title (48px)</div>
+                    <div class="preview-text">
+                        <span class="opt6-heading" style="font-size: 48px; font-weight: 600;">Chapter 1</span>
+                    </div>
+                    <div class="preview-label">Section Header (28px)</div>
+                    <div class="preview-text">
+                        <span class="opt6-heading" style="font-size: 28px;">Pattern Recognition</span>
+                    </div>
+                    <div class="preview-label">Body Text (16px)</div>
+                    <div class="preview-text">
+                        <span class="opt6-body" style="font-size: 16px;">Once you see the patterns, you can't unsee them. They appear everywhere in nature, from the smallest flower to the largest galaxy.</span>
+                    </div>
+                    <div class="preview-label">Technical Labels (12px)</div>
+                    <div class="preview-text">
+                        <span class="opt6-tech" style="font-size: 12px; color: #d97706;">φ = 1.6180339887</span>
+                    </div>
+                    <div class="shape-demos">
+                        <div class="shape-test">
+                            <div class="circle-shape">
+                                <span class="opt6-heading" style="font-size: 16px;">PATTERN</span>
+                            </div>
+                        </div>
+                        <div class="shape-test">
+                            <span class="badge opt6-body" style="font-size: 12px;">Priority 1</span>
+                        </div>
+                        <div class="shape-test">
+                            <span class="badge opt6-tech" style="font-size: 10px;">PHI_RATIO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <strong>Vibe:</strong> Scholarly, academic, old university. EB Garamond has that classic textbook feel, Jost adds modern clarity.
+                </div>
+                <div class="vote-section">
+                    <button class="vote-btn" onclick="alert('You voted for Option 6: Dark Academia')">Vote #6</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPARISON SECTION -->
+        <div class="comparison-section">
+            <h2 class="comparison-title opt6-heading">Shape Fitting: Dark Academia vs Minimal</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: #666;">Comparing selected Dark Academia (Option 6) with Minimal (Option 5) in small circles</p>
+            <div class="comparison-grid">
+                <div class="comparison-item best-choice">
+                    <div class="comparison-label" style="color: #d97706;">✅ SELECTED: Option 6 - Dark Academia</div>
+                    <div class="circle-shape" style="width: 100px; height: 100px;">
+                        <span class="opt6-heading" style="font-size: 14px;">GROWTH</span>
+                    </div>
+                    <div class="circle-shape" style="width: 100px; height: 100px;">
+                        <span class="opt6-heading" style="font-size: 16px;">FLOW</span>
+                    </div>
+                    <div class="circle-shape" style="width: 100px; height: 100px;">
+                        <span class="opt6-heading" style="font-size: 12px;">ENERGY</span>
+                    </div>
+                    <p style="font-size: 11px; color: #666; margin-top: 10px;">Scholarly, elegant, perfect fit</p>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-label">Option 5 - Minimal (Reference)</div>
+                    <div class="circle-shape" style="width: 100px; height: 100px;">
+                        <span class="opt5-heading" style="font-size: 12px; font-weight: 700;">GROWTH</span>
+                    </div>
+                    <div class="circle-shape" style="width: 100px; height: 100px;">
+                        <span class="opt5-heading" style="font-size: 14px; font-weight: 700;">FLOW</span>
+                    </div>
+                    <div class="circle-shape" style="width: 100px; height: 100px;">
+                        <span class="opt5-heading" style="font-size: 11px; font-weight: 700;">ENERGY</span>
+                    </div>
+                    <p style="font-size: 11px; color: #666; margin-top: 10px;">Bold, compact, needs more space</p>
+                </div>
+                <div class="comparison-item" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px;">
+                    <div class="comparison-label" style="color: #d97706; margin-bottom: 20px;">WINNER: Dark Academia</div>
+                    <div class="circle-shape" style="width: 120px; height: 120px; margin: 0 auto;">
+                        <span class="opt6-heading" style="font-size: 18px; font-weight: 600;">PATTERN</span>
+                    </div>
+                    <p style="font-size: 12px; color: #e5e5e5; margin-top: 15px; text-align: center;">EB Garamond creates<br/>the most elegant<br/>shape fit</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRADERRA BRAND COLORS -->
+        <div style="background: #111; border-radius: 16px; padding: 40px; border: 2px solid #d97706;">
+            <h2 style="text-align: center; font-size: 32px; margin-bottom: 30px; color: #e5e5e5;">Your Traderra Brand Palette</h2>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                <div>
+                    <div style="width: 100%; height: 120px; background: #0a0a0a; border-radius: 12px; margin-bottom: 15px; border: 2px solid #1a1a1a;"></div>
+                    <div style="font-size: 14px; color: #d97706; font-weight: 600;">DARK DEEP GRAY</div>
+                    <div style="font-size: 12px; color: #666;">#0a0a0a</div>
+                    <div style="font-size: 11px; color: #666; margin-top: 5px;">Main background</div>
+                </div>
+                <div>
+                    <div style="width: 100%; height: 120px; background: #e5e5e5; border-radius: 12px; margin-bottom: 15px;"></div>
+                    <div style="font-size: 14px; color: #d97706; font-weight: 600;">OFF WHITE</div>
+                    <div style="font-size: 12px; color: #666;">#e5e5e5</div>
+                    <div style="font-size: 11px; color: #666; margin-top: 5px;">Primary text</div>
+                </div>
+                <div>
+                    <div style="width: 100%; height: 120px; background: #d97706; border-radius: 12px; margin-bottom: 15px;"></div>
+                    <div style="font-size: 14px; color: #d97706; font-weight: 600;">TRADERRA GOLD</div>
+                    <div style="font-size: 12px; color: #666;">#d97706</div>
+                    <div style="font-size: 11px; color: #666; margin-top: 5px;">Accent / Emphasis</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">These are your exact brand colors from Traderra. All illustrations will use this palette.</p>
+        </div>
+
+        <!-- FINAL CTA -->
+        <div style="text-align: center; margin-top: 60px; padding: 40px; background: linear-gradient(135deg, rgba(217,119,6,0.15) 0%, rgba(217,119,6,0.08) 100%); border-radius: 16px; border: 3px solid #d97706;">
+            <p style="font-size: 14px; color: #d97706; font-weight: 600; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px;">Final Selection</p>
+            <h2 style="font-size: 36px; font-weight: 600; color: #e5e5e5; margin-bottom: 15px; font-family: 'EB Garamond', serif;">Dark Academia</h2>
+            <p style="font-size: 18px; color: #666; margin-bottom: 25px; font-family: 'Jost', sans-serif;">EB Garamond + Jost + JetBrains Mono</p>
+
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px;">
+                <div style="text-align: center; padding: 20px; background: #0a0a0a; border-radius: 12px; border: 2px solid #1a1a1a; min-width: 180px;">
+                    <div style="font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Headings</div>
+                    <div style="font-size: 20px; color: #e5e5e5; font-family: 'EB Garamond', serif; font-weight: 600;">EB Garamond</div>
+                </div>
+                <div style="text-align: center; padding: 20px; background: #0a0a0a; border-radius: 12px; border: 2px solid #1a1a1a; min-width: 180px;">
+                    <div style="font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Body Text</div>
+                    <div style="font-size: 20px; color: #e5e5e5; font-family: 'Jost', sans-serif; font-weight: 400;">Jost</div>
+                </div>
+                <div style="text-align: center; padding: 20px; background: #0a0a0a; border-radius: 12px; border: 2px solid #1a1a1a; min-width: 180px;">
+                    <div style="font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Technical</div>
+                    <div style="font-size: 20px; color: #e5e5e5; font-family: 'JetBrains Mono', monospace;">JetBrains Mono</div>
+                </div>
+            </div>
+
+            <div style="background: #d97706; color: #0a0a0a; padding: 15px 30px; border-radius: 8px; display: inline-block; font-weight: 600;">
+                ✨ Perfect for "Hidden in Plain Sight"
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "taskId": "db6935af-4cf4-422c-ab60-63005fb26d97",
+  "version": {
+    "app": "1.0",
+    "promptPack": "v1.0",
+    "model": "Gemini 2.0 Flash Exp",
+    "providerApi": "1.0.0"
+  },
+  "inputs": {
+    "subject": {
+      "assetId": "db6935af-4cf4-422c-ab60-63005fb26d97",
+      "w": 1024,
+      "h": 768
+    },
+    "glasses": [
+      "glasses_0"
+    ]
+  },
+  "generation": {
+    "guidance": 0.7,
+    "refStrength": 0.8,
+    "lightingWeight": 0.5,
+    "reflectionWeight": 0.3,
+    "colorMatchWeight": 0.5,
+    "seed": 1767788753374,
+    "passes": 1
+  },
+  "quality": {
+    "ssim": 0.991,
+    "faceDist": 0.23,
+    "fit": "pass"
+  },
+  "notes": "Glasses successfully added using Gemini 2.0 Flash Exp"
+}

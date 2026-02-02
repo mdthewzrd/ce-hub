@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Cache & Fix Renata</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            color: #a0aec0;
+            margin-bottom: 30px;
+        }
+        .status {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 13px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .success { color: #48bb78; }
+        .error { color: #f56565; }
+        button {
+            width: 100%;
+            padding: 18px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px 0;
+        }
+        .btn-clear {
+            background: linear-gradient(135deg, #f56565 0%, #c53030 100%);
+            color: white;
+        }
+        .btn-clear:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(245, 101, 101, 0.3);
+        }
+        .btn-go {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+        }
+        .btn-go:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(72, 187, 120, 0.3);
+        }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 Cache Clear & Fix</h1>
+        <p class="subtitle">Fix Renata thinking text issue</p>
+
+        <div id="step1">
+            <button class="btn-clear" onclick="clearAll()">🔥 Clear All Cache & Reset</button>
+            <div class="status" id="status"></div>
+        </div>
+
+        <div id="step2" class="hidden">
+            <button class="btn-go" onclick="goToScan()">✅ Done - Go to Scan Page</button>
+        </div>
+    </div>
+
+    <script>
+        async function clearAll() {
+            const status = document.getElementById('status');
+            let results = [];
+
+            // Clear localStorage
+            const lsKeys = Object.keys(localStorage);
+            lsKeys.forEach(key => {
+                localStorage.removeItem(key);
+            });
+            results.push(`✅ Cleared ${lsKeys.length} localStorage items`);
+
+            // Clear sessionStorage
+            sessionStorage.clear();
+            results.push('✅ Cleared sessionStorage');
+
+            // Clear caches
+            if ('caches' in window) {
+                const cacheNames = await caches.keys();
+                await Promise.all(cacheNames.map(name => caches.delete(name)));
+                results.push(`✅ Cleared ${cacheNames.length} browser caches`);
+            }
+
+            // Clear service workers
+            if ('serviceWorker' in navigator) {
+                const registrations = await navigator.serviceWorker.getRegistrations();
+                await Promise.all(registrations.map(reg => reg.unregister()));
+                results.push(`✅ Unregistered ${registrations.length} service workers`);
+            }
+
+            status.innerHTML = `<span class="success">${results.join('<br>')}</span>`;
+            document.getElementById('step2').classList.remove('hidden');
+        }
+
+        function goToScan() {
+            // Force reload with cache busting
+            const url = 'http://localhost:5665/scan?_nocache=' + Date.now();
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

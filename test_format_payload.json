@@ -1,0 +1,4 @@
+{
+  "code": "# daily_para_backside_lite_scan.py\n# Daily-only \"A+ para, backside\" scan — lite mold.\n# Trigger: D-1 (or D-2) fits; trade day (D0) must gap & open > D-1 high.\n# D-1 must take out D-2 high and close above D-2 close.\n# Adds absolute D-1 volume floor: d1_volume_min.\n\nimport pandas as pd, numpy as np, requests\nfrom datetime import datetime\nfrom concurrent.futures import ThreadPoolExecutor, as_completed\n\n# ───────── config ─────────\nsession  = requests.Session()\nAPI_KEY  = \"Fm7brz4s23eSocDErnL68cE7wspz2K1I\"\nBASE_URL = \"https://api.polygon.io\"\nMAX_WORKERS = 6",
+  "scannerName": "backside_para_b_scanner"
+}

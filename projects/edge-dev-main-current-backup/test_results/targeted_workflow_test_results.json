@@ -1,0 +1,145 @@
+{
+  "test_run": "2025-12-01T19:49:34.948976",
+  "interface_explored": true,
+  "file_uploaded": false,
+  "code_formatted": false,
+  "parameters_set": true,
+  "scanner_executed": true,
+  "results_captured": true,
+  "screenshots_taken": [
+    {
+      "filename": "01_edge_dev_home_20251201_194942.png",
+      "description": "Edge.dev Home Page",
+      "timestamp": "2025-12-01T19:49:42.912295"
+    },
+    {
+      "filename": "02_upload_area_found_20251201_194943.png",
+      "description": "Found Upload Area",
+      "timestamp": "2025-12-01T19:49:44.035126"
+    },
+    {
+      "filename": "06_parameters_set_20251201_194948.png",
+      "description": "Scan Parameters Set",
+      "timestamp": "2025-12-01T19:49:48.242947"
+    },
+    {
+      "filename": "07_execution_started_20251201_195128.png",
+      "description": "Scanner Execution Started: button:has-text(\"Run Scan\")",
+      "timestamp": "2025-12-01T19:51:28.618605"
+    },
+    {
+      "filename": "08_execution_results_20251201_195228.png",
+      "description": "Scanner Execution Results",
+      "timestamp": "2025-12-01T19:52:28.841245"
+    }
+  ],
+  "execution_results": [],
+  "validation_results": {
+    "matched": 0,
+    "missing": [
+      {
+        "ticker": "SOXL",
+        "date": "2025-10-02",
+        "trigger": "D-1"
+      },
+      {
+        "ticker": "INTC",
+        "date": "2025-08-15",
+        "trigger": "D-1"
+      },
+      {
+        "ticker": "XOM",
+        "date": "2025-06-13",
+        "trigger": "D-1"
+      },
+      {
+        "ticker": "AMD",
+        "date": "2025-05-14",
+        "trigger": "D-1"
+      },
+      {
+        "ticker": "SMCI",
+        "date": "2025-02-19",
+        "trigger": "D-1"
+      },
+      {
+        "ticker": "SMCI",
+        "date": "2025-02-18",
+        "trigger": "D-1"
+      },
+      {
+        "ticker": "BABA",
+        "date": "2025-01-29",
+        "trigger": "D-1"
+      },
+      {
+        "ticker": "BABA",
+        "date": "2025-01-27",
+        "trigger": "D-1"
+      }
+    ],
+    "unexpected": [],
+    "total_expected": 8,
+    "total_found": 0,
+    "success_rate": 0
+  },
+  "errors": [
+    "File upload failed: Page.evaluate: SyntaxError: Illegal return statement\n    at eval (<anonymous>)\n    at UtilityScript.evaluate (<anonymous>:291:30)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+  ],
+  "workflow_steps": [
+    {
+      "step": "Server Check",
+      "success": true,
+      "details": "Server accessible at http://localhost:5656",
+      "timestamp": "2025-12-01T19:49:37.170469"
+    },
+    {
+      "step": "Navigation",
+      "success": true,
+      "details": "Successfully navigated to Edge.dev platform",
+      "timestamp": "2025-12-01T19:49:42.912314"
+    },
+    {
+      "step": "Interface Exploration",
+      "success": true,
+      "details": "Found upload area element",
+      "timestamp": "2025-12-01T19:49:44.035153"
+    },
+    {
+      "step": "File Upload",
+      "success": false,
+      "details": "File upload failed: Page.evaluate: SyntaxError: Illegal return statement\n    at eval (<anonymous>)\n    at UtilityScript.evaluate (<anonymous>:291:30)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+      "timestamp": "2025-12-01T19:49:44.046417"
+    },
+    {
+      "step": "Code Input",
+      "success": false,
+      "details": "Could not find textarea or code editor",
+      "timestamp": "2025-12-01T19:49:44.051182"
+    },
+    {
+      "step": "Code Formatting",
+      "success": false,
+      "details": "No format buttons found",
+      "timestamp": "2025-12-01T19:49:44.079094"
+    },
+    {
+      "step": "Parameter Setup",
+      "success": true,
+      "details": "Date range and parameters set",
+      "timestamp": "2025-12-01T19:49:48.242974"
+    },
+    {
+      "step": "Scanner Execution",
+      "success": true,
+      "details": "Started scanner execution: button:has-text(\"Run Scan\")",
+      "timestamp": "2025-12-01T19:51:28.623168"
+    },
+    {
+      "step": "Results Extraction",
+      "success": true,
+      "details": "Successfully extracted results",
+      "timestamp": "2025-12-01T19:52:28.857975"
+    }
+  ]
+}

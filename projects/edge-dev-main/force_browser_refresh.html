@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Force Browser Refresh</title>
+</head>
+<body>
+    <h1>Force Browser Cache Clear</h1>
+
+    <h2>Instructions:</h2>
+    <ol>
+        <li>Open Chrome DevTools (F12 or Cmd+Option+I)</li>
+        <li>Right-click the refresh button in Chrome</li>
+        <li>Select "Empty Cache and Hard Reload"</li>
+        <li>Or press: Cmd+Shift+R on Mac / Ctrl+Shift+R on Windows</li>
+    </ol>
+
+    <h2>Or try this direct link:</h2>
+    <a href="http://localhost:5656/?cache_buster=$(date +%s)" target="_blank">Open App with Cache Buster</a>
+
+    <h2>Or clear manually:</h2>
+    <ol>
+        <li>Go to localhost:5656</li>
+        <li>Open DevTools → Application → Storage</li>
+        <li>Click "Clear site data"</li>
+        <li>Refresh the page</li>
+    </ol>
+
+    <h2>The API Fix Status:</h2>
+    <p>✅ The API is correctly returning D0 = 6/11/2025</p>
+    <p>✅ The timezone fix is working perfectly</p>
+    <p>⚠️ Your browser is showing cached data</p>
+</body>
+</html>

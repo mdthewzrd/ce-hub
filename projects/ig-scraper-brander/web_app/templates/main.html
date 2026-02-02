@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonatica - Content Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a1;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --border: #262626;
+            --success: #22c55e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding-top: 64px;
+        }
+
+        /* Top Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items-center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar-brand .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-brand h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .navbar-brand p {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 48px;
+        }
+
+        .navbar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .navbar-nav a:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: white;
+        }
+
+        .navbar-nav a.active {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent);
+        }
+
+        .navbar-nav .badge {
+            background: var(--accent);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        .navbar-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .navbar-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .navbar-btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .navbar-btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .navbar-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .navbar-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .glass {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow:
+                0 4px 6px -1px rgba(0, 0, 0, 0.3),
+                0 2px 4px -2px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-deep {
+            background: linear-gradient(145deg, rgba(20, 20, 20, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+            backdrop-filter: blur(40px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow:
+                0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                0 12px 24px -8px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .module-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            padding: 24px;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            padding: 1px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .module-card:hover::before {
+            opacity: 1;
+        }
+
+        .module-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow:
+                0 30px 60px -12px rgba(99, 102, 241, 0.3),
+                0 20px 40px -8px rgba(99, 102, 241, 0.2),
+                0 0 0 1px rgba(99, 102, 241, 0.1);
+        }
+
+        .stat-card {
+            position: relative;
+            overflow: hidden;
+            padding: 28px;
+            border-radius: 16px;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #8b5cf6);
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.5);
+        }
+
+        .queue-item {
+            border-left: 2px solid transparent;
+            transition: all 0.2s;
+            padding: 16px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .queue-item:hover {
+            border-left-color: var(--accent);
+            background: rgba(99, 102, 241, 0.08);
+            transform: translateX(4px);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: var(--accent-hover); }
+        .btn-secondary { background: var(--border); color: white; }
+        .btn-secondary:hover { background: #333; }
+
+        .queue-item {
+            border-left: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .queue-item:hover {
+            border-left-color: var(--accent);
+            background: rgba(99, 102, 241, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="navbar">
+        <a href="/main" class="navbar-brand">
+            <div class="logo">
+                <i class="fas fa-infinity text-white"></i>
+            </div>
+            <div>
+                <h1>Harmonatica</h1>
+                <p>Content Studio</p>
+            </div>
+        </a>
+
+        <div class="navbar-nav">
+            <a href="/main" class="active">
+                <i class="fas fa-th-large"></i>
+                Dashboard
+            </a>
+            <a href="/browse">
+                <i class="fas fa-search"></i>
+                Browse
+                <span class="badge" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);">New</span>
+            </a>
+            <a href="/scrape">
+                <i class="fas fa-video"></i>
+                Scraper
+                <span class="badge" id="scraperBadge">62</span>
+            </a>
+            <a href="/prepare">
+                <i class="fas fa-magic"></i>
+                Prepare
+                <span class="badge" id="prepareBadge">0</span>
+            </a>
+            <a href="/schedule">
+                <i class="fas fa-calendar"></i>
+                Schedule
+            </a>
+            <a href="/library">
+                <i class="fas fa-folder"></i>
+                Library
+            </a>
+            <a href="/delivery">
+                <i class="fas fa-paper-plane"></i>
+                Delivery
+                <span class="badge" id="deliveryBadge">0</span>
+            </a>
+            <a href="/analytics">
+                <i class="fas fa-chart-line"></i>
+                Analytics
+            </a>
+            <a href="/offers">
+                <i class="fas fa-gift"></i>
+                Offers
+                <span class="badge badge-orange">New</span>
+            </a>
+            <a href="/settings">
+                <i class="fas fa-cog"></i>
+                Settings
+            </a>
+        </div>
+
+        <div class="navbar-right">
+            <button class="navbar-btn navbar-btn-secondary">
+                <i class="fas fa-sync-alt mr-2"></i>Sync
+            </button>
+            <button class="navbar-btn navbar-btn-primary">
+                <i class="fas fa-plus mr-2"></i>Quick Post
+            </button>
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                <span class="text-xs font-bold">M</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content" style="margin-left: 0; padding: 32px;">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h1 class="text-3xl font-bold mb-1">Welcome back</h1>
+                <p class="text-gray-500">Here's what's happening with your content</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="btn btn-secondary">
+                    <i class="fas fa-sync-alt mr-2"></i>Sync All
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus mr-2"></i>Quick Post
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            <div class="stat-card glass rounded-xl">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-600/20 flex items-center justify-center">
+                        <i class="fas fa-video text-indigo-400 text-xl"></i>
+                    </div>
+                    <span class="text-xs text-green-400 px-2 py-1 rounded-full bg-green-600/20"><i class="fas fa-arrow-up mr-1"></i>12%</span>
+                </div>
+                <div class="text-4xl font-bold mb-2">62</div>
+                <div class="text-sm text-gray-400 font-medium">Total Videos</div>
+            </div>
+
+            <div class="stat-card glass rounded-xl">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-14 h-14 rounded-xl bg-purple-600/20 flex items-center justify-center">
+                        <i class="fas fa-clock text-purple-400 text-xl"></i>
+                    </div>
+                    <span class="text-xs text-green-400 px-2 py-1 rounded-full bg-green-600/20"><i class="fas fa-arrow-up mr-1"></i>8%</span>
+                </div>
+                <div class="text-4xl font-bold mb-2">24</div>
+                <div class="text-sm text-gray-400 font-medium">Scheduled</div>
+            </div>
+
+            <div class="stat-card glass rounded-xl">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-14 h-14 rounded-xl bg-pink-600/20 flex items-center justify-center">
+                        <i class="fab fa-instagram text-pink-400 text-xl"></i>
+                    </div>
+                    <span class="text-xs text-green-400 px-2 py-1 rounded-full bg-green-600/20"><i class="fas fa-arrow-up mr-1"></i>23%</span>
+                </div>
+                <div class="text-4xl font-bold mb-2">156</div>
+                <div class="text-sm text-gray-400 font-medium">Posts This Month</div>
+            </div>
+
+            <div class="stat-card glass rounded-xl">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-14 h-14 rounded-xl bg-green-600/20 flex items-center justify-center">
+                        <i class="fas fa-heart text-green-400 text-xl"></i>
+                    </div>
+                    <span class="text-xs text-green-400 px-2 py-1 rounded-full bg-green-600/20"><i class="fas fa-arrow-up mr-1"></i>18%</span>
+                </div>
+                <div class="text-4xl font-bold mb-2">12.4K</div>
+                <div class="text-sm text-gray-400 font-medium">Engagement Rate</div>
+            </div>
+        </div>
+
+        <!-- Module Cards -->
+        <div class="mb-10">
+            <h2 class="text-2xl font-bold mb-6">Quick Actions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="module-card glass rounded-xl p-6" onclick="window.location.href='/scrape'">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                            <i class="fas fa-download text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Scraper</h3>
+                            <p class="text-xs text-gray-500">Import from IG</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400">Download and manage content from Instagram accounts</p>
+                    <div class="mt-4 flex items-center justify-between">
+                        <span class="text-xs text-gray-500">62 videos</span>
+                        <span class="text-xs text-indigo-400">Open →</span>
+                    </div>
+                </div>
+
+                <div class="module-card glass rounded-xl p-6">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                            <i class="fas fa-calendar-alt text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Scheduler</h3>
+                            <p class="text-xs text-gray-500">Plan content</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400">Schedule posts for optimal times across accounts</p>
+                    <div class="mt-4 flex items-center justify-between">
+                        <span class="text-xs text-gray-500">24 queued</span>
+                        <span class="text-xs text-green-400">Open →</span>
+                    </div>
+                </div>
+
+                <div class="module-card glass rounded-xl p-6">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center">
+                            <i class="fab fa-instagram text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Auto Poster</h3>
+                            <p class="text-xs text-gray-500">Auto publish</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400">Automatically post scheduled content to Instagram</p>
+                    <div class="mt-4 flex items-center justify-between">
+                        <span class="text-xs text-gray-500"><span class="w-2 h-2 rounded-full bg-yellow-500 inline-block mr-1"></span>Idle</span>
+                        <span class="text-xs text-pink-400">Open →</span>
+                    </div>
+                </div>
+
+                <div class="module-card glass rounded-xl p-6">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                            <i class="fas fa-database text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Content DB</h3>
+                            <p class="text-xs text-gray-500">Library</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400">Browse and manage your content library</p>
+                    <div class="mt-4 flex items-center justify-between">
+                        <span class="text-xs text-gray-500">156 items</span>
+                        <span class="text-xs text-cyan-400">Open →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity & Queue -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Upcoming Queue -->
+            <div class="glass rounded-xl p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-lg font-bold">Upcoming Posts</h2>
+                    <a href="#" class="text-sm text-indigo-400 hover:text-indigo-300">View all →</a>
+                </div>
+                <div class="space-y-3">
+                    <div class="queue-item p-4 rounded-lg bg-white/5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-lg bg-black/50 flex items-center justify-center">
+                                <i class="fas fa-play text-gray-500"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium text-sm">motivation_monday_3.mp4</p>
+                                <p class="text-xs text-gray-500">@harmonatica</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-medium text-green-400">Today</p>
+                                <p class="text-xs text-gray-500">6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="queue-item p-4 rounded-lg bg-white/5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-lg bg-black/50 flex items-center justify-center">
+                                <i class="fas fa-play text-gray-500"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium text-sm">vibes_tuesday_2.mp4</p>
+                                <p class="text-xs text-gray-500">@harmonatica</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-medium">Tomorrow</p>
+                                <p class="text-xs text-gray-500">9:00 AM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="queue-item p-4 rounded-lg bg-white/5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-lg bg-black/50 flex items-center justify-center">
+                                <i class="fas fa-play text-gray-500"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium text-sm">wednesday_flow_1.mp4</p>
+                                <p class="text-xs text-gray-500">@harmonatica</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-medium">Wed</p>
+                                <p class="text-xs text-gray-500">12:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="glass rounded-xl p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-lg font-bold">Recent Activity</h2>
+                    <a href="#" class="text-sm text-indigo-400 hover:text-indigo-300">View all →</a>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-green-600/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-check text-green-400"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm"><span class="font-medium">Posted</span> motivation_sunday_final.mp4</p>
+                            <p class="text-xs text-gray-500">@harmonatica • 2 hours ago</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-indigo-600/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-download text-indigo-400"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm"><span class="font-medium">Scraped</span> 12 videos from @nuatlantis</p>
+                            <p class="text-xs text-gray-500">5 hours ago</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-600/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-calendar text-purple-400"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm"><span class="font-medium">Scheduled</span> 5 posts for this week</p>
+                            <p class="text-xs text-gray-500">Yesterday</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-pink-600/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-heart text-pink-400"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm"><span class="font-medium">Milestone:</span> 10K followers reached!</p>
+                            <p class="text-xs text-gray-500">2 days ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Status -->
+        <div class="mt-6 glass rounded-xl p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-bold">System Status</h2>
+                <span class="text-xs text-green-400"><i class="fas fa-circle text-xs mr-1"></i>All Systems Operational</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    <span class="text-sm">Scraper Service</span>
+                    <span class="ml-auto text-xs text-green-400">Active</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    <span class="text-sm">Scheduler</span>
+                    <span class="ml-auto text-xs text-green-400">Running</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5">
+                    <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                    <span class="text-sm">Auto Poster</span>
+                    <span class="ml-auto text-xs text-yellow-400">Standby</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    <span class="text-sm">Database</span>
+                    <span class="ml-auto text-xs text-green-400">Synced</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple page interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Harmonatica Content Studio loaded');
+        });
+    </script>
+</body>
+</html>

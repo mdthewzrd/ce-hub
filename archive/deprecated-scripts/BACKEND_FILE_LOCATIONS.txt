@@ -1,0 +1,212 @@
+================================================================================
+BACKEND CHART API FILES - COMPLETE FILE PATHS & LOCATIONS
+================================================================================
+
+PRIMARY FILE (WHERE THE BUG IS)
+================================================================================
+
+/Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/main.py
+
+Key functions:
+  Line 1950   - get_chart_data() - Main API endpoint
+  Line 1811   - get_trading_date_range() - ROOT CAUSE #1
+  Line 1821   - end_date = target_date + timedelta(days=5) - PROBLEM LINE #1
+  Line 1827   - fetch_polygon_data() - Polygon API wrapper
+  Line 1862   - if timeframe != 'day': - ROOT CAUSE #2 (filters skip daily)
+  Line 2020   - validate_chart_data_for_trading_days() call
+
+
+SECONDARY FILE (MARKET CALENDAR FILTERING)
+================================================================================
+
+/Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/market_calendar.py
+
+Key functions:
+  Line 137    - validate_chart_data_for_trading_days() - Filters weekends/holidays
+  Line 65     - is_trading_day() - Checks if trading day
+  Line 40     - is_market_holiday() - Checks if market holiday
+
+
+DOCUMENTATION FILES (ANALYSIS RESULTS)
+================================================================================
+
+Location: /Users/michaeldurante/ai\ dev/ce-hub/
+
+1. CHART_API_ANALYSIS_INDEX.md
+   └─ Navigation guide for all documentation
+   └─ Start here if overwhelmed
+
+2. CHART_API_FINDINGS_SUMMARY.txt
+   └─ Executive summary (5 min read)
+   └─ Best for: Quick understanding of issue
+
+3. CHART_DATA_ENDPOINT_ANALYSIS.md
+   └─ Technical deep-dive (20 min read)
+   └─ Best for: Complete understanding of root cause
+
+4. CHART_API_QUICK_REFERENCE.md
+   └─ API reference (5 min read)
+   └─ Best for: API usage and testing
+
+5. CHART_API_FIX_IMPLEMENTATION.md
+   └─ Implementation guide (15 min read)
+   └─ Best for: How to fix the bug
+
+
+EXACT PROBLEM LOCATIONS
+================================================================================
+
+PROBLEM #1: +5 Day Buffer for Daily Charts
+  File:     /Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/main.py
+  Function: get_trading_date_range()
+  Line:     1821
+  Code:     end_date = target_date + timedelta(days=5)
+  Fix:      end_date = target_date
+
+PROBLEM #2: Daily Charts Skip Filtering
+  File:     /Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/main.py
+  Function: fetch_polygon_data()
+  Line:     1862
+  Code:     if timeframe != 'day':
+  Fix:      if timeframe in ['5min', 'hour', 'day']:
+
+
+RELATED API ENDPOINTS
+================================================================================
+
+Main endpoint:
+  Route:   /api/chart/{ticker}
+  File:    /Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/main.py
+  Line:    1950
+  Method:  GET
+  Params:  ticker, timeframe (default=5min), lc_date (required), day_offset (default=0)
+
+
+FUNCTION CALL CHAIN
+================================================================================
+
+1. get_chart_data() [Line 1950]
+   ├─ Parses lc_date parameter [Lines 1967-1969]
+   ├─ Determines days_back by timeframe [Lines 1979-1984]
+   └─ Calls fetch_polygon_data() [Line 1989]
+
+2. fetch_polygon_data() [Line 1827]
+   ├─ Calls get_trading_date_range() [Line 1829]
+   ├─ Builds Polygon API URL [Lines 1850-1851]
+   ├─ Fetches data from Polygon [Lines 1857-1859]
+   └─ Filters to target date (only for intraday) [Lines 1862-1880]
+
+3. Back in get_chart_data()
+   ├─ Converts to chart format [Lines 2015-2017]
+   ├─ Calls validate_chart_data_for_trading_days() [Line 2020]
+   │   from market_calendar.py
+   └─ Returns ChartResponse [Lines 2023-2029]
+
+
+IMPORTS & DEPENDENCIES
+================================================================================
+
+From main.py (relevant for chart API):
+  Line 8:    from datetime import datetime, date, timedelta
+  Line 14:   from fastapi import FastAPI, HTTPException
+  Line 39:   import httpx (or requests fallback)
+  Line 1799: from market_calendar import validate_chart_data_for_trading_days
+
+
+TESTING ENDPOINTS
+================================================================================
+
+Test daily chart (BROKEN - ends after LC date):
+  curl "http://localhost:8000/api/chart/AAPL?timeframe=day&lc_date=2025-02-18&day_offset=0"
+
+Test 5min chart (WORKING - ends on LC date):
+  curl "http://localhost:8000/api/chart/AAPL?timeframe=5min&lc_date=2025-02-18&day_offset=0"
+
+Test hour chart (WORKING - ends on LC date):
+  curl "http://localhost:8000/api/chart/AAPL?timeframe=hour&lc_date=2025-02-18&day_offset=0"
+
+
+QUICK COMMAND TO VIEW PROBLEM CODE
+================================================================================
+
+View Problem #1 (line 1821):
+  sed -n '1811,1826p' "/Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/main.py"
+
+View Problem #2 (line 1862):
+  sed -n '1860,1880p' "/Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/main.py"
+
+View entire get_trading_date_range():
+  sed -n '1811,1826p' "/Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/main.py"
+
+View entire fetch_polygon_data():
+  sed -n '1827,1887p' "/Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/main.py"
+
+View get_chart_data():
+  sed -n '1950,2030p' "/Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/main.py"
+
+
+BACKUP & RESTORE
+================================================================================
+
+Backup before making changes:
+  cp "/Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/main.py" \
+     "/Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/main.py.backup"
+
+Restore from backup:
+  cp "/Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/main.py.backup" \
+     "/Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/main.py"
+
+
+ALL RELATED FILES IN THE EDGE-DEV BACKEND
+================================================================================
+
+Primary files:
+  /Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/main.py
+  /Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/market_calendar.py
+
+Related scanner files (not involved in chart API):
+  /Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/core/scanner.py
+  /Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/core/intelligent_parameter_extractor.py
+  /Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/uploaded_scanner_bypass.py
+
+API-related files:
+  /Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/ai_agent_endpoint.py
+
+Configuration:
+  /Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/venv/ (virtual environment)
+  /Users/michaeldurante/ai\ dev/ce-hub/edge-dev/backend/__pycache__/ (compiled Python files)
+
+
+DEBUGGING TIPS
+================================================================================
+
+To see the problem in action:
+1. Start the backend: python main.py (from the backend directory)
+2. Make the three test requests above
+3. Compare the last date in chartData.x for each
+
+To add debugging:
+1. Add logging in get_trading_date_range() to see calculated dates
+2. Add logging in fetch_polygon_data() to see what Polygon returns
+3. Add logging in get_chart_data() to see final chart data
+
+To validate the fix:
+1. Make the changes to lines 1821 and 1862
+2. Restart the backend
+3. Run the three test requests again
+4. Verify all three now end on 2025-02-18
+
+
+RELATED DOCUMENTATION
+================================================================================
+
+Frontend related:
+  /Users/michaeldurante/ai\ dev/ce-hub/traderra/frontend/src/app/journal/page.tsx
+
+Other analysis documents in ce-hub root:
+  CHART_QUICK_REFERENCE.md
+  EDGE_DEV_CHART_DATA_FLOW_ANALYSIS.md
+  EDGE_DEV_CHART_DATE_VALIDATION_FIX.md
+  EDGE_DEV_CHART_FILE_REFERENCE.md
+
+================================================================================

@@ -1,0 +1,30 @@
+{
+  "prometheus": {
+    "enabled": true,
+    "port": 9090,
+    "metrics_path": "/metrics",
+    "collect_default": true,
+    "collect_response_size": true,
+    "collect_request_size": true,
+    "collect_response_time": true
+  },
+  "health_checks": {
+    "enabled": true,
+    "interval": 30,
+    "endpoints": [
+      "/health",
+      "/api/health",
+      "/metrics"
+    ]
+  },
+  "alerting": {
+    "enabled": true,
+    "webhook_url": "https://hooks.slack.com/webhook",
+    "thresholds": {
+      "cpu_usage": 80,
+      "memory_usage": 85,
+      "response_time": 5000,
+      "error_rate": 5
+    }
+  }
+}

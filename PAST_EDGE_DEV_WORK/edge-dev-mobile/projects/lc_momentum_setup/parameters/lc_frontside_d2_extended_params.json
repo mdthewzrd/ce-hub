@@ -1,0 +1,14 @@
+{
+  "threshold_556_10000000_0": 15000000.0,
+  "threshold_557_500000000_0": 750000000.0,
+  "threshold_558_5_0": 7.5,
+  "threshold_543_1_0": 1.2,
+  "threshold_543_5_0": 4.0,
+  "threshold_543_2_5": 3.0,
+  "threshold_543_0_15": 0.2,
+  "threshold_543_15_0": 12.0,
+  "d2_pattern_h_h1": true,
+  "d2_pattern_highest_high_5_dist": true,
+  "d2_pattern_dist_l_9ema_atr": true,
+  "d2_pattern_dol_v_cum5": true
+}

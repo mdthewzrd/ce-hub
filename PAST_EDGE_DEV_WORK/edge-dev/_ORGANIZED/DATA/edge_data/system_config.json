@@ -1,0 +1,48 @@
+{
+  "api_key": "Fm7brz4s23eSocDErnL68cE7wspz2K1I",
+  "max_workers": 12,
+  "default_date_range": {
+    "start": "2024-01-01",
+    "end": "2025-11-01"
+  },
+  "scanner_templates": {
+    "backside_b": {
+      "enabled": true,
+      "default_symbols": [
+        "TSLA",
+        "NVDA",
+        "AMD",
+        "AAPL",
+        "MSFT"
+      ],
+      "description": "Conservative institutional-grade scanner"
+    },
+    "half_a_plus": {
+      "enabled": true,
+      "default_symbols": [
+        "TSLA",
+        "NVDA",
+        "AMD",
+        "AAPL",
+        "MSFT"
+      ],
+      "description": "Original Half A+ scanner with exact parameters"
+    },
+    "lc_multiscanner": {
+      "enabled": true,
+      "default_symbols": [
+        "XPEV",
+        "LI",
+        "BILI",
+        "AI",
+        "PLTR"
+      ],
+      "description": "Small-cap growth focused scanner"
+    }
+  },
+  "user_preferences": {
+    "auto_validate_parameters": true,
+    "generate_integrity_reports": true,
+    "backup_configurations": true
+  }
+}

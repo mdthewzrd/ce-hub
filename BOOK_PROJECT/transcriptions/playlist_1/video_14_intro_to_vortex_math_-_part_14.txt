@@ -1,0 +1,183 @@
+================================================================================
+VIDEO TRANSCRIPT: Intro to Vortex Math - Part 14
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: The next is going to be 27 by 27, which is going to be 9.
+
+[00:00:05] **Randy Powell**: The next is going to be 36 by 36, which is going to be 16 of those squares.
+
+[00:00:10] **Randy Powell**: So if you're familiar with the inverse square law, I'm doing the inverse square law, which is 1, 4, 9.
+
+[00:00:17] **Randy Powell**: I'm sorry, I said 16. Yeah, that's right, 16. It's going to be 16.
+
+[00:00:22] **Randy Powell**: So depending on your grouping, how many of these you have to make a torus, you get more and more spires.
+
+[00:00:28] **Randy Powell**: And you get more and more conductors and more nastivoreses circuits with different amounts of vortices.
+
+[00:00:35] **Randy Powell**: So they have to be constructed perfectly and phased perfectly to get the right effects.
+
+[00:00:45] **Randy Powell**: Otherwise, you're cutting across the circuits in a bad way and the motion doesn't occur correctly.
+
+[00:00:51] **Randy Powell**: It's not centered on its axis like it should. The magnetic fields will be much weaker.
+
+[00:00:58] **Randy Powell**: Alright, so here are everything's one spire in a 9 by 9.
+
+[00:01:02] **Randy Powell**: Now here I have 18 by 18. You can see it's four times the size of this one.
+
+[00:01:08] **Randy Powell**: Alright? So if I put one of these, it'd be 1, 2, 3, 4.
+
+[00:01:14] **Randy Powell**: And now I have two spires. One is my reds here.
+
+[00:01:18] **Randy Powell**: So if I connected these n to n, what it would really look like,
+
+[00:01:23] **Randy Powell**: those diagonal motion of the red tiles this way, it would look like this.
+
+[00:01:30] **Randy Powell**: You would be seeing this spiral over the surface of the torus. That's what I'm showing you.
+
+[00:01:35] **Randy Powell**: My regular doubling circuits on this model are here. They're going from red to green to red to green.
+
+[00:01:42] **Randy Powell**: So they're doing the positive negative positive like that, red to green, red to green.
+
+[00:01:47] **Randy Powell**: Those are my regular circuits, but my spires are going across.
+
+[00:01:51] **Randy Powell**: Now once I do 18 by 18, I'm going to have six nested water see circuits.
+
+[00:01:57] **Randy Powell**: And I'm going to have 12 conductors, and I'm going to have two spires.
+
+[00:02:05] **Randy Powell**: Alright, so I'm going to have the red ones and the green ones.
+
+[00:02:09] **Randy Powell**: And it's very interesting how these spires polarize. It's very significant.
+
+[00:02:14] **Randy Powell**: It's what's trying to be achieved in the standard rodent coil,
+
+[00:02:19] **Randy Powell**: but I believe that because of the additional complexity of this,
+
+[00:02:24] **Randy Powell**: which is far beyond what's being done, and that it really changes how you have to do it to create the field.
+
+[00:02:31] **Randy Powell**: Ultimately, what these coils are aren't even electrical coils.
+
+[00:02:35] **Randy Powell**: They're field generator coils. What we're looking for is the secret of magnetism.
+
+[00:02:41] **Randy Powell**: So here again, is a 27 by 27 now.
+
+[00:02:45] **Randy Powell**: So all that means I got 27 on my vertical 27 on my horizontal.
+
+[00:02:51] **Randy Powell**: Now with the 27 by 27, remember I have three nested water see circuits here, six here.
+
+[00:02:58] **Randy Powell**: I'm going to have nine nested water see circuits here, which means I have 18 different wires, 18 conductors, polarize.
+
+[00:03:08] **Randy Powell**: I also have now three spires.
+
+[00:03:12] **Randy Powell**: I went one, two, three. You can see it just the out of colors.
+
+[00:03:17] **Randy Powell**: Went from red to red to green to red to green and orange.
+
+[00:03:21] **Randy Powell**: And now I have three spires going over the top of the circuits.
+
+[00:03:26] **Randy Powell**: So you can start to see how this is a clear algorithm.
+
+[00:03:29] **Randy Powell**: It's just complete true whole number fractal.
+
+[00:03:33] **Randy Powell**: Interesting, though, while my spires change, just like I was showing you here, or on this map is the same thing.
+
+[00:03:42] **Randy Powell**: My nested water see sequence numbers never have to change.
+
+[00:03:47] **Randy Powell**: It's just that the more you add of these groups of nine, the more spires you get.
+
+[00:03:52] **Randy Powell**: But the sequence orders never changes. So when you're modeling, this is really the secrets of modeling the atom, doing the periodic table.
+
+[00:04:01] **Randy Powell**: So I guess I'm giving it away.
+
+[00:04:04] **Randy Powell**: Let me look at this one. Here is a 36 by 36.
+
+[00:04:09] **Randy Powell**: All right, you've got now I have, I'm going to have 12 nested vortices.
+
+[00:04:18] **Randy Powell**: Notice if I do family number groups too.
+
+[00:04:21] **Randy Powell**: So if I'm doing family number groups and I say,
+
+[00:04:26] **Randy Powell**: this is one, for instance, because I have one spire, one group of nine by nine.
+
+[00:04:31] **Randy Powell**: Now when I'm basing it on, anyway, that's, it's too complex for me to say in words what I'm trying to say, which is the relationship of the way that these numbers multiply together.
+
+[00:04:45] **Randy Powell**: Some are in multiples of three, some are in multiples of six, some are in multiples of nine, some are in multiples of one.
+
+[00:04:53] **Randy Powell**: So when you want to model progression, it's all based on this. This is the way to do it.
+
+[00:04:58] **Randy Powell**: So back to what I was saying, a 36 by 36.
+
+[00:05:04] **Randy Powell**: I have now got 12 nested vortices circuits.
+
+[00:05:09] **Randy Powell**: I've got 24 wire conductors. If you're using wire 24 pathways is what I would prefer to say.
+
+[00:05:18] **Randy Powell**: I don't think that this kind of coil can be built in a standard way. It's going to require a better construction.
+
+[00:05:27] **Randy Powell**: So I have that many and now I've got four spires.
+
+[00:05:32] **Randy Powell**: But I've just been showing you the spires. I could also show you the patterns of how the spires are polarized.
+
+[00:05:38] **Randy Powell**: And I won't explain this, but here's now my nine by nine.
+
+[00:05:42] **Randy Powell**: And I've got two colors representing my positive and negative aspects.
+
+[00:05:47] **Randy Powell**: And again, these are interlaced when you put numbers to them, interlaced doubling circuits.
+
+[00:05:53] **Randy Powell**: I'm giving you all your numbers over top of the numbers. That makes sense.
+
+[00:05:58] **Randy Powell**: So here's a positive negative for nine by nine.
+
+[00:06:01] **Randy Powell**: Here's 18 by 18.
+
+[00:06:04] **Randy Powell**: Just follow the pattern. 27 by 27.
+
+[00:06:08] **Randy Powell**: Just getting more complex. 36 by 36.
+
+[00:06:14] **Randy Powell**: It just goes on and on. I have the pattern to scale it from micro to micro to infinity.
+
+[00:06:22] **Randy Powell**: I can show you here. This is in base 50. This is a 49 by 49. You can do the same thing.
+
+[00:06:30] **Randy Powell**: The algorithm always holds up.
+
+[00:06:35] **Randy Powell**: So this is in order for you to maintain the principles of your symbol,
+
+[00:06:40] **Randy Powell**: to have your unbroken multiplication series and circle,
+
+[00:06:45] **Randy Powell**: modeling truly 3D to have your doubling circuits.
+
+[00:06:49] **Randy Powell**: This is the only way you can do it. You have to have a minimum of three nested board of C circuits.
+
+[00:06:55] **Randy Powell**: Now allows these boardies to sequence.
+
+[00:06:58] **Randy Powell**: When they do, you can get this effect.
+
+[00:07:02] **Randy Powell**: This is the electrical venturi.
+
+[00:07:06] **Randy Powell**: As the doubling circuits are winding in this yin-yang pattern, which I showed my other video,
+
+[00:07:13] **Randy Powell**: you get these spires going over and notice they're always in quadrature.
+
+[00:07:17] **Randy Powell**: All my threes are here in quadrature. My sixes are here in quadrature.
+
+[00:07:22] **Randy Powell**: My fours are here. So as the number of groups in the boardies are sequencing,
+
+[00:07:27] **Randy Powell**: you actually are still maintaining this pattern of the spires,
+
+[00:07:34] **Randy Powell**: but they're along this arc of the logarithmic spiral.
+
+[00:07:40] **Randy Powell**: So it's a much more complex sequence. I do have it.
+
+[00:07:44] **Randy Powell**: I have the understanding of the sequence to make perfect mirror imaging
+
+[00:07:49] **Randy Powell**: and to be able to construct any coil and any multiple of this
+
+[00:07:53] **Randy Powell**: and to connect it with every single geometry.
+
+[00:07:56] **Randy Powell**: That's basically what I found. You can do every single geometry simultaneously
+
+[00:08:02] **Randy Powell**: by modeling these emanations and they're over interlacing spirals.

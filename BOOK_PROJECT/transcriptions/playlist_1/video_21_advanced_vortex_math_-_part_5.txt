@@ -1,0 +1,155 @@
+================================================================================
+VIDEO TRANSCRIPT: Advanced Vortex Math - Part 5
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: improve and wrong. The other claim I'm making is that either my work is correct, the quantized
+
+[00:00:13] **Randy Powell**: numerical torus is correct, and the technology needs to be reconfigured, rewound design, or
+
+[00:00:23] **Randy Powell**: we have to redefine what we're talking about with vortex based mathematics because if
+
+[00:00:28] **Randy Powell**: my winding pattern is incorrect, it means the doubling circuits aren't circuits at all, and
+
+[00:00:34] **Randy Powell**: that we're modeling as circuits are really spires, which are going over the surface of the
+
+[00:00:40] **Randy Powell**: doubling circuits. Two different things. I believe that modeling your circuits by spires
+
+[00:00:46] **Randy Powell**: doesn't allow the nested vortices to occur, or to occur at their maximum potential.
+
+[00:00:52] **Randy Powell**: Okay? Alright, here are, and you can write these down. I don't have time to write them all
+
+[00:00:58] **Randy Powell**: down and post them right now, but I'll read them slowly so that you can follow me. Okay, so when
+
+[00:01:05] **Randy Powell**: I give the numbers here, if I say 9 by 9 or 18 by 18, I'm starting with even groups. So in other
+
+[00:01:12] **Randy Powell**: words, it's either going to be 9 by 9, 18 by 18, 27 by 27, 36 by 36. Okay, this one I said was 36 by 18,
+
+[00:01:20] **Randy Powell**: but I'll show you that in a minute. So first with even groups. On a 9 by 9 tourist, I'm saying
+
+[00:01:28] **Randy Powell**: you'll have three, what I call, and I'm defying now, is a nested vortices circuit. That's one of
+
+[00:01:35] **Randy Powell**: these nested vortices family number groups. It curves in here, comes out directly across and
+
+[00:01:41] **Randy Powell**: back in the other side in a perfect mirror. Okay? It's also, by the way, mirroring the number
+
+[00:01:47] **Randy Powell**: group, which is three behind it directly at 90 degrees across, or forming helical curved mirrors.
+
+[00:01:56] **Randy Powell**: Okay? So on a 9 by 9, you're going to have three nested vortices circuits. This is the minimum
+
+[00:02:02] **Randy Powell**: that you can have in the system. So it's never one interconnected circuit. So you have three nested
+
+[00:02:11] **Randy Powell**: vortices circuits, which means you have six doubling circuits. That is consists of 18 vortices. So it's
+
+[00:02:20] **Randy Powell**: three groups of six vortices. On an 18 by 18 tourist, we have six nested vortices circuits. Okay? Which gives me 12 regular
+
+[00:02:34] **Randy Powell**: doubling circuits. 72 vortices, six groups of 12 vortices each. On a 27 by 27 tourist, we have 9 nested
+
+[00:02:48] **Randy Powell**: vortices circuits. So notice as I go up, it's just going three, six, nine. Okay? I have 18 doubling
+
+[00:02:56] **Randy Powell**: circuits. 162 vortices, and they're in nine groups of 18 vortices each. On a 36 by 36 tourist,
+
+[00:03:08] **Randy Powell**: I have 12 nested vortices circuits. I went three, six, nine, 12. I have 288 vortices. 24 circuits,
+
+[00:03:17] **Randy Powell**: they're in 12 groups of 24. So notice these are going up and clear multiples. You can write them down
+
+[00:03:24] **Randy Powell**: and look at it. There are multiples of three, multiples of six. They're going to be multiples of 12. Okay? 45 by 45. I have 15 nested
+
+[00:03:35] **Randy Powell**: vortices circuits. 454 vortices. There's 30 doubling circuits. The vortices are in 15 groups of 30. 54 by 54. 18 nested
+
+[00:03:49] **Randy Powell**: vortices circuits. That makes 36 doubling circuits. 648 vortices, 18 groups of 36. 63 by 63. 21 nested
+
+[00:04:03] **Randy Powell**: vortices circuits, 882 vortices. 42 doubling circuits, and they're in 21 groups of 42 vortices. I
+
+[00:04:12] **Randy Powell**: have this going all the way up to 108. I can keep going. I'm not going to read them all. You can
+
+[00:04:18] **Randy Powell**: do the work on your own and find out that you're just going to find the same thing that I found.
+
+[00:04:23] **Randy Powell**: Let's try with a different ratio. Instead of doing even numbers, 9 by 9, 18 by 18, now we're going
+
+[00:04:30] **Randy Powell**: to do a ratio of half. So I'm going to have half on the vertical as I do on the horizontal, or you
+
+[00:04:36] **Randy Powell**: really could do it the other way, the vortices still add up the same. But we'll say half on the
+
+[00:04:42] **Randy Powell**: vertical as the horizontal. So I'm going to start with 9 on my vertical and 18 on my horizontal.
+
+[00:04:49] **Randy Powell**: For that torus, I have three nested vortices circuits. 36 vortices, they're in three groups of 12,
+
+[00:04:57] **Randy Powell**: and they have six doubling circuits. For an 18 by 36, that's what this torus was based on. I have
+
+[00:05:04] **Randy Powell**: six nested vortices circuits, just like I showed you. 144 vortices, 12 doubling circuits,
+
+[00:05:12] **Randy Powell**: they're in six groups of 24. In a 27 by 54, I have nine nested vortices circuits, 324 vortices,
+
+[00:05:24] **Randy Powell**: 18 doubling circuits. They're in nine groups of 36. For a 36 by 72 torus, I have 12 nested vortices
+
+[00:05:34] **Randy Powell**: circuits. 576 vortices, 24 doubling circuits, they're in 12 groups of 48. Again, I've taken this
+
+[00:05:42] **Randy Powell**: all the way up, 63 by 126. The formula never breaks. Just to satisfy you, I'm going to do a couple more,
+
+[00:05:50] **Randy Powell**: and then we'll see where this goes. I did a ratio of one third just to test it as well. So now I'm
+
+[00:05:58] **Randy Powell**: talking about nine by 27, 18 by 54, 27 by 81. Okay, I hope you can follow me. So nine by 27, I have
+
+[00:06:08] **Randy Powell**: three nested vortices circuits, six doubling circuits, 81 torus. I have nine nested vortices circuits,
+
+[00:06:16] **Randy Powell**: 486 vortices. They're in nine groups of 54, and that's 18 doubling circuits. So again, I've taken
+
+[00:06:25] **Randy Powell**: this up higher and higher. As far as the other base system, I'm sure that no one is really up to speed
+
+[00:06:33] **Randy Powell**: too much on that. The circuits still work basically the way they add up. If I do a 25 by 25,
+
+[00:06:45] **Randy Powell**: I have 54 toruses. They're in five groups of 10. That's because here I'm working with a different
+
+[00:06:53] **Randy Powell**: base system where I'm working with groups of five instead of groups of three. All right, so these
+
+[00:06:59] **Randy Powell**: are five groups of 10. If I do a 50 by 50, I've got 200 vortices and they're in 10 groups of 20.
+
+[00:07:07] **Randy Powell**: Still based on multiples of five. Okay, this whole system is based on multiples of five. It's
+
+[00:07:12] **Randy Powell**: a five squared. 75 by 75. I've got 450 vortices. I'm sorry, 15 groups of 30, 100 by 100.
+
+[00:07:23] **Randy Powell**: There are 800 vortices. They're in 20 groups of 40. Scale it as far as you want. You're going to find
+
+[00:07:28] **Randy Powell**: the same result. So with all that said, it's very difficult to explain in such a rapid explanation.
+
+[00:07:38] **Randy Powell**: My goal is to have this work dissected. I'm claiming a huge claim, which is that all of the current
+
+[00:07:46] **Randy Powell**: applications and tests are fatally flawed because of this. And if that is not the case,
+
+[00:07:53] **Randy Powell**: then the whole mathematical system has a huge challenge in front of it, which is that it needs
+
+[00:08:00] **Randy Powell**: to be completely redefined. So I'm saying it's got to be one or the other. I'm putting myself out
+
+[00:08:06] **Randy Powell**: there to make that claim. And I'm claiming that now I have discovered a whole new realm in vortex
+
+[00:08:15] **Randy Powell**: based mathematics and 3D fractals. And this is just the beginning of what I'm working on.
+
+[00:08:22] **Randy Powell**: So with that, I'll leave it there. I appreciate your time and patience and listening.
+
+[00:08:29] **Randy Powell**: Please write me into, let me know questions that you have. Do the work out on a sheet of paper,
+
+[00:08:36] **Randy Powell**: try it on your different toruses. I'm saying I have perfect mirrors in every possible angle you
+
+[00:08:44] **Randy Powell**: can attack it from. I have absolute perfection on the torus. I have perfection of nested vorticesy
+
+[00:08:50] **Randy Powell**: sequence. I have perfection of my doubling circuits. I have perfection of the multiplication tables.
+
+[00:08:57] **Randy Powell**: Okay. I have abided by every single principle that's in the original symbol without breaking one.
+
+[00:09:03] **Randy Powell**: And I'm claiming that if there are not multiple circuits, then there is no nested vorticesy
+
+[00:09:10] **Randy Powell**: sequencing. And in that case, this whole thing needs to be trashed. I don't believe that. I believe
+
+[00:09:18] **Randy Powell**: it's true and valid. That's why I believe it's important to understand this multiple circuits.
+
+[00:09:24] **Randy Powell**: If you want to make this thing fly, this is how you steer it. This is how you control it.
+
+[00:09:29] **Randy Powell**: By controlling these nested vortices, I'm now saying I have secret to it. So I humbly submit that
+
+[00:09:38] **Randy Powell**: to a peer review and I hope you guys have enjoyed what you've seen. Thank you.

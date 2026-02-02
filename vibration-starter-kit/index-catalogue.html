@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibration Healing Quick-Start Kit</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href=".superdesign/design_iterations/catalogue_theme.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header__logo">Vibration Healing Kit</div>
+        <div class="header__actions">
+            <a href="#cheatsheet" class="header__cta">📥 Cheat Sheet</a>
+            <a href="#book" class="header__cta">📘 Book</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- VIDEOS SECTION -->
+        <section class="videos-section">
+            <div class="section-header">
+                <h2 class="section-title">Healing Videos</h2>
+                <p class="section-subtitle">Quick-start video guides for vibrational healing</p>
+            </div>
+
+            <div class="videos-grid">
+                <!-- Video 1: 432Hz -->
+                <div class="video-card" onclick="openVideo('432hz')">
+                    <div class="video-card__thumbnail">
+                        <div class="video-card__thumbnail-icon">▶</div>
+                        <div class="video-card__duration">8:00</div>
+                        <div class="video-card__category">Frequency</div>
+                    </div>
+                    <div class="video-card__content">
+                        <h3 class="video-card__title">432Hz Deep Healing Meditation</h3>
+                        <button class="video-card__button">▶ Watch Now</button>
+                    </div>
+                </div>
+
+                <!-- Video 2: Solfeggio -->
+                <div class="video-card" onclick="openVideo('solfeggio')">
+                    <div class="video-card__thumbnail">
+                        <div class="video-card__thumbnail-icon">▶</div>
+                        <div class="video-card__duration">12:00</div>
+                        <div class="video-card__category">Frequencies</div>
+                    </div>
+                    <div class="video-card__content">
+                        <h3 class="video-card__title">Solfeggio Frequencies Complete Set</h3>
+                        <button class="video-card__button">▶ Watch Now</button>
+                    </div>
+                </div>
+
+                <!-- Video 3: Sound Healing -->
+                <div class="video-card" onclick="openVideo('sound-healing')">
+                    <div class="video-card__thumbnail">
+                        <div class="video-card__thumbnail-icon">▶</div>
+                        <div class="video-card__duration">10:00</div>
+                        <div class="video-card__category">Therapy</div>
+                    </div>
+                    <div class="video-card__content">
+                        <h3 class="video-card__title">Sound Healing Session Guide</h3>
+                        <button class="video-card__button">▶ Watch Now</button>
+                    </div>
+                </div>
+
+                <!-- Video 4: Tuning Forks -->
+                <div class="video-card" onclick="openVideo('tuning-forks')">
+                    <div class="video-card__thumbnail">
+                        <div class="video-card__thumbnail-icon">▶</div>
+                        <div class="video-card__duration">9:00</div>
+                        <div class="video-card__category">Tools</div>
+                    </div>
+                    <div class="video-card__content">
+                        <h3 class="video-card__title">Tuning Fork Therapy Tutorial</h3>
+                        <button class="video-card__button">▶ Watch Now</button>
+                    </div>
+                </div>
+
+                <!-- Video 5: Biofield -->
+                <div class="video-card" onclick="openVideo('biofield')">
+                    <div class="video-card__thumbnail">
+                        <div class="video-card__thumbnail-icon">▶</div>
+                        <div class="video-card__duration">8:00</div>
+                        <div class="video-card__category">Energy</div>
+                    </div>
+                    <div class="video-card__content">
+                        <h3 class="video-card__title">Biofield Tuning Demonstration</h3>
+                        <button class="video-card__button">▶ Watch Now</button>
+                    </div>
+                </div>
+
+                <!-- Video 6: Water Memory -->
+                <div class="video-card" onclick="openVideo('water-memory')">
+                    <div class="video-card__thumbnail">
+                        <div class="video-card__thumbnail-icon">▶</div>
+                        <div class="video-card__duration">7:00</div>
+                        <div class="video-card__category">Science</div>
+                    </div>
+                    <div class="video-card__content">
+                        <h3 class="video-card__title">Water Memory & Vibration Science</h3>
+                        <button class="video-card__button">▶ Watch Now</button>
+                    </div>
+                </div>
+
+                <!-- Video 7: Heart Coherence -->
+                <div class="video-card" onclick="openVideo('heart-coherence')">
+                    <div class="video-card__thumbnail">
+                        <div class="video-card__thumbnail-icon">▶</div>
+                        <div class="video-card__duration">11:00</div>
+                        <div class="video-card__category">Practice</div>
+                    </div>
+                    <div class="video-card__content">
+                        <h3 class="video-card__title">Heart Coherence Meditation</h3>
+                        <button class="video-card__button">▶ Watch Now</button>
+                    </div>
+                </div>
+
+                <!-- Video 8: Bonus -->
+                <div class="video-card" onclick="openVideo('bonus')">
+                    <div class="video-card__thumbnail">
+                        <div class="video-card__thumbnail-icon">🎁</div>
+                        <div class="video-card__duration">15:00</div>
+                        <div class="video-card__category">Bonus</div>
+                    </div>
+                    <div class="video-card__content">
+                        <h3 class="video-card__title">Bonus: Advanced Vibration Techniques</h3>
+                        <button class="video-card__button">▶ Watch Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS SECTION -->
+        <section class="products-section">
+            <div class="section-header">
+                <h2 class="section-title">Recommended Products</h2>
+                <p class="section-subtitle">Essential tools for your vibrational healing practice</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Product 1: MAYU -->
+                <div class="product-card" onclick="openProduct('mayu')">
+                    <div class="product-card__icon">💧</div>
+                    <h3 class="product-card__name">MAYU Water Swirl</h3>
+                    <p class="product-card__description">Structures water through vortex motion</p>
+                    <div class="product-card__price">$149</div>
+                    <a href="#" class="product-card__button">Shop →</a>
+                </div>
+
+                <!-- Product 2: BON CHARGE -->
+                <div class="product-card" onclick="openProduct('bon-charge')">
+                    <div class="product-card__icon">💡</div>
+                    <h3 class="product-card__name">BON CHARGE Light</h3>
+                    <p class="product-card__description">Red light therapy device</p>
+                    <div class="product-card__price">$399</div>
+                    <a href="#" class="product-card__button">Shop →</a>
+                </div>
+
+                <!-- Product 3: Mito Red -->
+                <div class="product-card" onclick="openProduct('mito-red')">
+                    <div class="product-card__icon">🔴</div>
+                    <h3 class="product-card__name">Mito Red Light</h3>
+                    <p class="product-card__description">Professional red light panel</p>
+                    <div class="product-card__price">$549</div>
+                    <a href="#" class="product-card__button">Shop →</a>
+                </div>
+
+                <!-- Product 4: Joovv -->
+                <div class="product-card" onclick="openProduct('joovv')">
+                    <div class="product-card__icon">⚡</div>
+                    <h3 class="product-card__name">Joovv Red Light</h3>
+                    <p class="product-card__description">Premium red light therapy system</p>
+                    <div class="product-card__price">$1,195</div>
+                    <a href="#" class="product-card__button">Shop →</a>
+                </div>
+
+                <!-- Product 5: 528Hz Tuning Fork -->
+                <div class="product-card" onclick="openProduct('tuning-fork-528')">
+                    <div class="product-card__icon">🔔</div>
+                    <h3 class="product-card__name">528Hz Tuning Fork</h3>
+                    <p class="product-card__description">Love frequency tuning fork</p>
+                    <div class="product-card__price">$45</div>
+                    <a href="#" class="product-card__button">Shop →</a>
+                </div>
+
+                <!-- Product 6: Miron Glass -->
+                <div class="product-card" onclick="openProduct('miron-glass')">
+                    <div class="product-card__icon">🫗</div>
+                    <h3 class="product-card__name">Miron Glass Bottle</h3>
+                    <p class="product-card__description">Violet glass for water storage</p>
+                    <div class="product-card__price">$35</div>
+                    <a href="#" class="product-card__button">Shop →</a>
+                </div>
+
+                <!-- Product 7: Singing Bowls -->
+                <div class="product-card" onclick="openProduct('singing-bowls')">
+                    <div class="product-card__icon">🎵</div>
+                    <h3 class="product-card__name">Singing Bowl Set</h3>
+                    <p class="product-card__description">Crystal singing bowl collection</p>
+                    <div class="product-card__price">$89</div>
+                    <a href="#" class="product-card__button">Shop →</a>
+                </div>
+
+                <!-- Product 8: PEMF Device -->
+                <div class="product-card" onclick="openProduct('pemf')">
+                    <div class="product-card__icon">🧲</div>
+                    <h3 class="product-card__name">PEMF Device</h3>
+                    <p class="product-card__description">Pulsed electromagnetic field therapy</p>
+                    <div class="product-card__price">$699</div>
+                    <a href="#" class="product-card__button">Shop →</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p class="footer__text">
+            All links are affiliate links •
+            <a href="#disclosure" class="footer__link">Affiliate Disclosure</a> •
+            © 2025 Harmonatica
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Video links (replace with actual YouTube URLs)
+        const videoLinks = {
+            '432hz': 'https://www.youtube.com/watch?v=YOUR_432HZ_VIDEO',
+            'solfeggio': 'https://www.youtube.com/watch?v=YOUR_SOLFEGGIO_VIDEO',
+            'sound-healing': 'https://www.youtube.com/watch?v=YOUR_SOUND_HEALING_VIDEO',
+            'tuning-forks': 'https://www.youtube.com/watch?v=YOUR_TUNING_FORKS_VIDEO',
+            'biofield': 'https://www.youtube.com/watch?v=YOUR_BIOFIELD_VIDEO',
+            'water-memory': 'https://www.youtube.com/watch?v=YOUR_WATER_MEMORY_VIDEO',
+            'heart-coherence': 'https://www.youtube.com/watch?v=YOUR_HEART_COHERENCE_VIDEO',
+            'bonus': 'https://www.youtube.com/watch?v=YOUR_BONUS_VIDEO'
+        };
+
+        // Product affiliate links (replace with actual affiliate URLs)
+        const productLinks = {
+            'mayu': 'https://amzn.to/YOUR_MAYU_AFFILIATE_LINK',
+            'bon-charge': 'https://amzn.to/YOUR_BON_CHARGE_AFFILIATE_LINK',
+            'mito-red': 'https://amzn.to/YOUR_MITO_RED_AFFILIATE_LINK',
+            'joovv': 'https://amzn.to/YOUR_JOOVV_AFFILIATE_LINK',
+            'tuning-fork-528': 'https://amzn.to/YOUR_TUNING_FORK_AFFILIATE_LINK',
+            'miron-glass': 'https://amzn.to/YOUR_MIRON_GLASS_AFFILIATE_LINK',
+            'singing-bowls': 'https://amzn.to/YOUR_SINGING_BOWLS_AFFILIATE_LINK',
+            'pemf': 'https://amzn.to/YOUR_PEMF_AFFILIATE_LINK'
+        };
+
+        // Open video in new tab
+        function openVideo(videoId) {
+            const url = videoLinks[videoId];
+            if (url) {
+                window.open(url, '_blank');
+            } else {
+                alert('Video coming soon! Replace this with your actual YouTube URL.');
+            }
+        }
+
+        // Open product link in new tab
+        function openProduct(productId) {
+            const url = productLinks[productId];
+            if (url) {
+                window.open(url, '_blank');
+            } else {
+                alert('Product link coming soon! Replace this with your actual affiliate URL.');
+            }
+        }
+
+        // Prevent default on all product card clicks and use JavaScript instead
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // If clicked directly on card (not on the button link)
+                if (!e.target.classList.contains('product-card__button')) {
+                    const productId = this.getAttribute('onclick').match(/openProduct\('([^']+)'\)/)?.[1];
+                    if (productId) {
+                        e.preventDefault();
+                        openProduct(productId);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

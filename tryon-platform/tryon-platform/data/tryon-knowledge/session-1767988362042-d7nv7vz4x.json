@@ -1,0 +1,233 @@
+{
+  "id": "session-1767988362042-d7nv7vz4x",
+  "text": "Task: Generate virtual try-on image.\n\nIMPORTANT: Use these EXACT file paths and parameters:\n- Subject photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/342db001-4a24-4965-b4fe-1afa9a6090e5/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg\n- Glasses photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_2_51MW03oVN+L._AC_UY1000_.jpg\n- Task ID (REQUIRED for generate_tryon_image): e7f13bef-27aa-438b-98b3-6ca7bb3a7860\n\nWhen calling generate_tryon_image, you MUST include these parameters:\n- subjectPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/342db001-4a24-4965-b4fe-1afa9a6090e5/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg\"\n- glassesPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_2_51MW03oVN+L._AC_UY1000_.jpg\"\n- taskId: \"e7f13bef-27aa-438b-98b3-6ca7bb3a7860\" (this is REQUIRED!)\n\nDO NOT make up file paths. Use the paths provided above exactly as written.\nResult: 85/100",
+  "metadata": {
+    "task": "Generate virtual try-on image.\n\nIMPORTANT: Use these EXACT file paths and parameters:\n- Subject photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/342db001-4a24-4965-b4fe-1afa9a6090e5/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg\n- Glasses photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_2_51MW03oVN+L._AC_UY1000_.jpg\n- Task ID (REQUIRED for generate_tryon_image): e7f13bef-27aa-438b-98b3-6ca7bb3a7860\n\nWhen calling generate_tryon_image, you MUST include these parameters:\n- subjectPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/342db001-4a24-4965-b4fe-1afa9a6090e5/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg\"\n- glassesPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_2_51MW03oVN+L._AC_UY1000_.jpg\"\n- taskId: \"e7f13bef-27aa-438b-98b3-6ca7bb3a7860\" (this is REQUIRED!)\n\nDO NOT make up file paths. Use the paths provided above exactly as written.",
+    "results": [
+      {
+        "success": true,
+        "data": {
+          "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/342db001-4a24-4965-b4fe-1afa9a6090e5/subject_0_fcbef6b69f6ae56a0f187a03a85aef87_result_e7f13bef-27aa-438b-98b3-6ca7bb3a7860.jpg",
+          "report": {
+            "taskId": "e7f13bef-27aa-438b-98b3-6ca7bb3a7860",
+            "version": {
+              "app": "1.0",
+              "promptPack": "v1.0",
+              "model": "Canvas-first (preserves original 100%)",
+              "providerApi": "1.0.0"
+            },
+            "inputs": {
+              "subject": {
+                "assetId": "e7f13bef-27aa-438b-98b3-6ca7bb3a7860",
+                "w": 736,
+                "h": 1308
+              },
+              "glasses": [
+                "glasses_0"
+              ]
+            },
+            "generation": {
+              "guidance": 0.7,
+              "refStrength": 0.8,
+              "lightingWeight": 0.5,
+              "reflectionWeight": 0.3,
+              "colorMatchWeight": 0.5,
+              "seed": 1767988365138,
+              "passes": 1
+            },
+            "quality": {
+              "ssim": 0.995,
+              "faceDist": 0,
+              "fit": "pass"
+            },
+            "notes": "Glasses added using Canvas-first (preserves original 100%) - original photo preserved 100%"
+          },
+          "generationMethod": "Canvas-first (preserves original 100%)"
+        }
+      }
+    ],
+    "evaluation": {
+      "score": 85,
+      "finalResult": {
+        "success": true,
+        "data": {
+          "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/342db001-4a24-4965-b4fe-1afa9a6090e5/subject_0_fcbef6b69f6ae56a0f187a03a85aef87_result_e7f13bef-27aa-438b-98b3-6ca7bb3a7860.jpg",
+          "report": {
+            "taskId": "e7f13bef-27aa-438b-98b3-6ca7bb3a7860",
+            "version": {
+              "app": "1.0",
+              "promptPack": "v1.0",
+              "model": "Canvas-first (preserves original 100%)",
+              "providerApi": "1.0.0"
+            },
+            "inputs": {
+              "subject": {
+                "assetId": "e7f13bef-27aa-438b-98b3-6ca7bb3a7860",
+                "w": 736,
+                "h": 1308
+              },
+              "glasses": [
+                "glasses_0"
+              ]
+            },
+            "generation": {
+              "guidance": 0.7,
+              "refStrength": 0.8,
+              "lightingWeight": 0.5,
+              "reflectionWeight": 0.3,
+              "colorMatchWeight": 0.5,
+              "seed": 1767988365138,
+              "passes": 1
+            },
+            "quality": {
+              "ssim": 0.995,
+              "faceDist": 0,
+              "fit": "pass"
+            },
+            "notes": "Glasses added using Canvas-first (preserves original 100%) - original photo preserved 100%"
+          },
+          "generationMethod": "Canvas-first (preserves original 100%)"
+        }
+      },
+      "shouldRetry": false
+    },
+    "sessionId": "session-1767988362042-d7nv7vz4x",
+    "timestamp": "2026-01-09T19:52:58.658Z",
+    "toolsUsed": [
+      "generate_tryon_image",
+      "retry_generation",
+      "verify_quality",
+      "quick_quality_check"
+    ]
+  },
+  "embedding": [
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.07017543859649122,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.07017543859649122,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.07017543859649122,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.07017543859649122,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.07017543859649122,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0
+  ]
+}

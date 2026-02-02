@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>CE-Hub Pro Mobile v3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117;
+            color: #f0f6fc;
+            height: 100vh;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        .header {
+            background: #161b22;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+
+        .launch-claude-btn {
+            background: #238636;
+            border: none;
+            border-radius: 6px;
+            color: #ffffff;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .launch-claude-btn:active {
+            background: #2ea043;
+            transform: scale(0.95);
+        }
+
+        .container {
+            height: calc(100vh - 60px - 70px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tabs {
+            background: #161b22;
+            display: flex;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 16px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            color: #8b949e;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            color: #58a6ff;
+            border-bottom-color: #58a6ff;
+            background: #0d1117;
+        }
+
+        .content {
+            flex: 1;
+            overflow: auto;
+            background: #0d1117;
+        }
+
+        .view {
+            display: none;
+            height: 100%;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        /* Terminal View */
+        .terminal-view {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .terminal-toolbar {
+            background: #161b22;
+            padding: 12px 20px;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .terminal-btn {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #f0f6fc;
+            padding: 8px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .terminal-btn:hover {
+            background: #30363d;
+        }
+
+        .terminal-btn.launch-claude {
+            background: #238636;
+            border-color: #238636;
+            color: white;
+        }
+
+        .terminal-btn.launch-claude:active {
+            background: #2ea043;
+        }
+
+        .quick-commands {
+            display: flex;
+            gap: 8px;
+            padding: 12px 20px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            overflow-x: auto;
+        }
+
+        .quick-cmd {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #f0f6fc;
+            padding: 6px 12px;
+            font-size: 11px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+
+        .quick-cmd:hover {
+            background: #30363d;
+        }
+
+        .terminal-output {
+            background: #0c0c0c;
+            color: #00ff41;
+            font-family: 'SF Mono', Monaco, Consolas, monospace;
+            font-size: 14px;
+            padding: 16px;
+            height: calc(100vh - 280px);
+            overflow-y: auto;
+            white-space: pre-wrap;
+            margin-bottom: 60px;
+        }
+
+        .terminal-input-container {
+            position: fixed;
+            bottom: 70px;
+            left: 0;
+            right: 0;
+            background: #0c0c0c;
+            border-top: 1px solid #30363d;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-prompt {
+            color: #00ff41;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-weight: bold;
+        }
+
+        .terminal-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #00ff41;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 14px;
+            outline: none;
+        }
+
+        /* Model Selector Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 20px 20px 16px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f0f6fc;
+            margin-bottom: 8px;
+        }
+
+        .modal-subtitle {
+            font-size: 14px;
+            color: #8b949e;
+        }
+
+        .modal-content {
+            padding: 20px;
+        }
+
+        .model-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .model-card {
+            background: #21262d;
+            border: 2px solid #30363d;
+            border-radius: 8px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .model-card:hover {
+            border-color: #58a6ff;
+            background: #30363d;
+        }
+
+        .model-card.selected {
+            border-color: #238636;
+            background: #1b4332;
+        }
+
+        .model-provider {
+            font-size: 10px;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .model-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #f0f6fc;
+            margin-bottom: 6px;
+        }
+
+        .model-desc {
+            font-size: 13px;
+            color: #8b949e;
+            line-height: 1.4;
+        }
+
+        .modal-footer {
+            padding: 16px 20px 20px;
+            border-top: 1px solid #30363d;
+            display: flex;
+            gap: 12px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-btn.cancel {
+            background: #21262d;
+            color: #f0f6fc;
+            border: 1px solid #30363d;
+        }
+
+        .modal-btn.launch {
+            background: #238636;
+            color: white;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        /* File Browser Styles */
+        .file-tree {
+            padding: 16px;
+        }
+
+        .tree-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 6px;
+            margin-bottom: 2px;
+            transition: background 0.2s;
+        }
+
+        .tree-item:hover {
+            background: #21262d;
+        }
+
+        .tree-icon {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .tree-label {
+            flex: 1;
+            font-size: 14px;
+            color: #f0f6fc;
+        }
+
+        .tree-size {
+            font-size: 12px;
+            color: #8b949e;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: #161b22;
+            border-top: 1px solid #30363d;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 12px;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-item.active {
+            color: #58a6ff;
+            background: #0d1117;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .terminal-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .terminal-buttons {
+                justify-content: center;
+            }
+
+            .quick-commands {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="title">CE-Hub Pro v3</div>
+        <button class="launch-claude-btn" onclick="showModelSelector()">
+            🚀 Claude
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="showView('terminal', this)">Terminal</button>
+            <button class="tab" onclick="showView('files', this)">Files</button>
+            <button class="tab" onclick="showView('docs', this)">Docs</button>
+            <button class="tab" onclick="showView('agents', this)">Agents</button>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Terminal View -->
+            <div class="view active" id="terminal">
+                <div class="terminal-view">
+                    <div class="terminal-toolbar">
+                        <div class="terminal-buttons">
+                            <button class="terminal-btn" onclick="clearTerminal()">Clear</button>
+                            <button class="terminal-btn launch-claude" onclick="showModelSelector()">🚀 Claude</button>
+                            <button class="terminal-btn" onclick="executeCommand('git status')">Git Status</button>
+                            <button class="terminal-btn" onclick="executeCommand('ls -la')">List Files</button>
+                        </div>
+                    </div>
+                    <div class="quick-commands">
+                        <button class="quick-cmd" onclick="executeCommand('npm start')">npm start</button>
+                        <button class="quick-cmd" onclick="executeCommand('npm test')">npm test</button>
+                        <button class="quick-cmd" onclick="executeCommand('git pull')">git pull</button>
+                        <button class="quick-cmd" onclick="executeCommand('code .')">code .</button>
+                    </div>
+                    <div class="terminal-output" id="terminal-output">
+                        <div style="color: #58a6ff;">CE-Hub Pro Terminal v3.0</div>
+                        <div style="color: #8b949e;">Working directory: /Users/michaeldurante/ai dev/ce-hub</div>
+                        <div style="color: #8b949e;">Ready for commands...</div>
+                        <div style="color: #56d364;">🎉 No more dollar sign prompts!</div>
+                        <div>></div>
+                    </div>
+                    <div class="terminal-input-container">
+                        <span class="terminal-prompt">></span>
+                        <input type="text" class="terminal-input" id="terminal-input" placeholder="Enter command..." onkeypress="handleTerminalInput(event)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Files View -->
+            <div class="view" id="files">
+                <div class="file-tree" id="file-tree">
+                    <div style="color: #8b949e; text-align: center; padding: 40px;">
+                        Loading CE-Hub files...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Docs View -->
+            <div class="view" id="docs">
+                <div style="padding: 20px;">
+                    <div style="color: #8b949e; text-align: center; padding: 40px;">
+                        CE-Hub Documentation
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agents View -->
+            <div class="view" id="agents">
+                <div style="padding: 20px;">
+                    <div style="color: #8b949e; text-align: center; padding: 40px;">
+                        Agent Orchestration
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model Selector Modal -->
+    <div class="modal-overlay" id="modelSelector">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">Select Claude Model</div>
+                <div class="modal-subtitle">Choose the best model for your task</div>
+            </div>
+            <div class="modal-content">
+                <div class="model-grid">
+                    <div class="model-card" data-model="sonnet-4" data-provider="claude">
+                        <div class="model-provider">ANTHROPIC</div>
+                        <div class="model-name">Claude 4 Sonnet</div>
+                        <div class="model-desc">Latest generation model with superior reasoning and coding</div>
+                    </div>
+                    <div class="model-card" data-model="sonnet-4.5" data-provider="claude">
+                        <div class="model-provider">ANTHROPIC</div>
+                        <div class="model-name">Claude 4.5 Sonnet</div>
+                        <div class="model-desc">Next-generation reasoning with enhanced code capabilities</div>
+                    </div>
+                    <div class="model-card" data-model="haiku" data-provider="claude">
+                        <div class="model-provider">ANTHROPIC</div>
+                        <div class="model-name">Claude 3.5 Haiku</div>
+                        <div class="model-desc">Fast and efficient for quick tasks and responses</div>
+                    </div>
+                    <div class="model-card" data-model="opus" data-provider="claude">
+                        <div class="model-provider">ANTHROPIC</div>
+                        <div class="model-name">Claude 3 Opus</div>
+                        <div class="model-desc">Most powerful model for complex analysis and creativity</div>
+                    </div>
+                    <div class="model-card" data-model="glm-4-plus" data-provider="glm">
+                        <div class="model-provider">ZHIPU AI</div>
+                        <div class="model-name">GLM-4 Plus</div>
+                        <div class="model-desc">Advanced Chinese/English model with strong reasoning</div>
+                    </div>
+                    <div class="model-card" data-model="glm-4.5" data-provider="glm">
+                        <div class="model-provider">ZHIPU AI</div>
+                        <div class="model-name">GLM-4.5</div>
+                        <div class="model-desc">Latest GLM model with improved performance</div>
+                    </div>
+                    <div class="model-card" data-model="glm-4.6" data-provider="glm">
+                        <div class="model-provider">ZHIPU AI</div>
+                        <div class="model-name">GLM-4.6</div>
+                        <div class="model-desc">Newest GLM model with enhanced capabilities</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn cancel" onclick="hideModelSelector()">Cancel</button>
+                <button class="modal-btn launch" onclick="launchSelectedModel()">Launch Claude</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <div class="nav-icon">💻</div>
+            <div>Terminal</div>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">📁</div>
+            <div>Files</div>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">📚</div>
+            <div>Docs</div>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">🤖</div>
+            <div>Agents</div>
+        </a>
+    </div>
+
+    <script>
+        let selectedModel = null;
+        let expandedFolders = new Set();
+
+        // Model Selector Functions
+        function showModelSelector() {
+            document.getElementById('modelSelector').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideModelSelector() {
+            document.getElementById('modelSelector').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function launchSelectedModel() {
+            if (selectedModel) {
+                const model = selectedModel.dataset.model;
+                const provider = selectedModel.dataset.provider;
+
+                hideModelSelector();
+
+                // Launch Claude with selected model
+                launchClaude(model, provider);
+            }
+        }
+
+        function launchClaude(model, provider) {
+            const command = `claude --dangerously-skip-permissions --model ${model}`;
+            displayCommandInTerminal(command);
+
+            // Instead of terminal execution, use our clean Claude API
+            startClaudeChat(model, provider);
+        }
+
+        function startClaudeChat(model, provider) {
+            const output = document.getElementById('terminal-output');
+            output.innerHTML += `<div style="color: #56d364;">🚀 Starting ${model} chat session...</div>`;
+            output.innerHTML += `<div style="color: #58a6ff;">💬 Type your questions and press Enter</div>`;
+            output.innerHTML += `<div style="color: #f79c42;">💡 No dollar sign prompts - just clean messaging!</div>`;
+            output.innerHTML += `<div>></div>`;
+            output.scrollTop = output.scrollHeight;
+
+            // Update terminal to Claude mode
+            document.getElementById('terminal-input').placeholder = 'Ask Claude anything...';
+        }
+
+        // Terminal Functions
+        function displayCommandInTerminal(cmd) {
+            const output = document.getElementById('terminal-output');
+            if (cmd) {
+                output.innerHTML += `<div>> ${cmd}</div>`;
+                output.innerHTML += `<div style="color: #58a6ff;">💡 Command ready to run - press Enter to start Claude session</div>`;
+                output.innerHTML += `<div>></div>`;
+                output.scrollTop = output.scrollHeight;
+
+                // Pre-fill the input with the command
+                const input = document.getElementById('terminal-input');
+                if (input) {
+                    input.value = cmd;
+                    input.focus();
+                }
+            }
+        }
+
+        async function executeCommand(cmd) {
+            const output = document.getElementById('terminal-output');
+            const input = document.getElementById('terminal-input');
+
+            if (cmd) {
+                output.innerHTML += `<div>> ${cmd}</div>`;
+
+                // Check if this is a Claude command or regular command
+                if (cmd.includes('claude')) {
+                    // Handle as Claude chat
+                    output.innerHTML += `<div style="color: #56d364;">🚀 Launching Claude...</div>`;
+                    output.innerHTML += `<div style="color: #58a6ff;">💬 Ready for your questions!</div>`;
+                    output.innerHTML += `<div>></div>`;
+                    input.placeholder = 'Ask Claude anything...';
+                } else if (cmd.startsWith('ask:') || cmd.startsWith('claude:')) {
+                    // Direct Claude question
+                    const question = cmd.replace(/^(ask:|claude:)\s*/, '');
+                    await askClaude(question);
+                } else {
+                    // Regular command execution
+                    try {
+                        const response = await fetch('/api/execute', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ command: cmd })
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            const color = data.error ? '#f85149' : '#f0f6fc';
+                            output.innerHTML += `<div style="color: ${color};">${data.output}</div><div>></div>`;
+                        } else {
+                            throw new Error(`HTTP ${response.status}`);
+                        }
+                    } catch (error) {
+                        output.innerHTML += `<div style="color: #f85149;">Error: ${error.message}</div><div>></div>`;
+                    }
+                }
+
+                output.scrollTop = output.scrollHeight;
+                input.value = '';
+            }
+        }
+
+        async function askClaude(question) {
+            const output = document.getElementById('terminal-output');
+
+            output.innerHTML += `<div style="color: #58a6ff;">🤖 Claude: </div>`;
+            output.innerHTML += `<div style="color: #f79c42;">Thinking...</div>`;
+            output.scrollTop = output.scrollHeight;
+
+            try {
+                const response = await fetch('http://100.95.223.19:8106/claude', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: question })
+                });
+
+                const data = await response.json();
+
+                // Remove the "Thinking..." line
+                const lines = output.innerHTML.split('\n');
+                lines.pop(); // Remove last "Thinking..." line
+                output.innerHTML = lines.join('\n');
+
+                if (data.error) {
+                    output.innerHTML += `<div style="color: #f85149;">❌ ${data.output}</div>`;
+                } else {
+                    output.innerHTML += `<div style="color: #56d364;">${data.output}</div>`;
+                }
+                output.innerHTML += `<div>></div>`;
+                output.scrollTop = output.scrollHeight;
+
+            } catch (error) {
+                output.innerHTML += `<div style="color: #f85149;">Connection error: ${error.message}</div><div>></div>`;
+                output.scrollTop = output.scrollHeight;
+            }
+        }
+
+        function handleTerminalInput(event) {
+            if (event.key === 'Enter') {
+                const input = event.target;
+                const command = input.value.trim();
+
+                if (command) {
+                    // Check if it's a question (not a system command)
+                    if (!command.match(/^(ls|cd|git|npm|python|node|clear)/)) {
+                        // Treat as Claude question
+                        const output = document.getElementById('terminal-output');
+                        output.innerHTML += `<div style="color: #8b949e;">> ${command}</div>`;
+                        askClaude(command);
+                    } else {
+                        executeCommand(command);
+                    }
+                }
+                input.value = '';
+            }
+        }
+
+        function clearTerminal() {
+            document.getElementById('terminal-output').innerHTML = `
+                <div style="color: #58a6ff;">CE-Hub Pro Terminal v3.0</div>
+                <div style="color: #8b949e;">Working directory: /Users/michaeldurante/ai dev/ce-hub</div>
+                <div style="color: #8b949e;">Terminal cleared</div>
+                <div style="color: #56d364;">🎉 No more dollar sign prompts!</div>
+                <div>></div>
+            `;
+        }
+
+        // View Management
+        function showView(viewName, tabElement) {
+            // Update tabs
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            tabElement.classList.add('active');
+
+            // Update views
+            document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
+            document.getElementById(viewName).classList.add('active');
+
+            // Load view-specific content
+            if (viewName === 'files') {
+                loadFiles();
+            }
+        }
+
+        // Model Selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const modelCards = document.querySelectorAll('.model-card');
+            modelCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove previous selection
+                    modelCards.forEach(c => c.classList.remove('selected'));
+
+                    // Select this card
+                    this.classList.add('selected');
+                    selectedModel = this;
+                });
+            });
+
+            // Pre-select Claude 4 Sonnet
+            const defaultModel = document.querySelector('[data-model="sonnet-4"]');
+            if (defaultModel) {
+                defaultModel.click();
+            }
+
+            // Load files on startup
+            loadFiles();
+        });
+
+        // File Browser Functions
+        async function loadFiles() {
+            const tree = document.getElementById('file-tree');
+
+            try {
+                const response = await fetch('/api/files');
+                if (!response.ok) throw new Error('Failed to load files');
+
+                const files = await response.json();
+                tree.innerHTML = '';
+
+                if (!files || files.length === 0) {
+                    tree.innerHTML = '<div style="color: #8b949e; text-align: center; padding: 40px;">No files found</div>';
+                    return;
+                }
+
+                files.forEach(file => {
+                    const item = createTreeItem(file, 0);
+                    tree.appendChild(item);
+                });
+            } catch (error) {
+                tree.innerHTML = '<div style="color: #f85149; text-align: center; padding: 40px;">Error loading files</div>';
+            }
+        }
+
+        function createTreeItem(file, depth) {
+            const item = document.createElement('div');
+            item.className = `tree-item ${file.type}`;
+
+            const indent = depth * 16;
+            item.style.paddingLeft = `${16 + indent}px`;
+
+            if (file.type === 'folder') {
+                item.innerHTML = `
+                    <div class="tree-icon folder">📁</div>
+                    <div class="tree-label">${file.name}</div>
+                    <div class="tree-size">${file.size}</div>
+                `;
+            } else {
+                const icon = getFileIcon(file.name);
+                item.innerHTML = `
+                    <div class="tree-icon file">${icon}</div>
+                    <div class="tree-label">${file.name}</div>
+                    <div class="tree-size">${file.size}</div>
+                `;
+            }
+
+            return item;
+        }
+
+        function getFileIcon(filename) {
+            const ext = filename.split('.').pop().toLowerCase();
+            const icons = {
+                'js': '📄', 'ts': '📘', 'py': '🐍', 'html': '🌐',
+                'css': '🎨', 'json': '📋', 'md': '📝', 'txt': '📄',
+                'png': '🖼️', 'jpg': '🖼️', 'gif': '🖼️', 'svg': '🎨',
+                'pdf': '📕', 'zip': '📦', 'sh': '⚡'
+            };
+            return icons[ext] || '📄';
+        }
+
+        // Auto-focus terminal input
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('terminal-input').focus();
+        });
+    </script>
+</body>
+</html>

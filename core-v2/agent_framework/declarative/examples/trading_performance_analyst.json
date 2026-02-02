@@ -1,0 +1,300 @@
+{
+  "agent": {
+    "name": "Trading Performance Analyst",
+    "description": "Analyzes trading metrics, calculates performance statistics, and provides data-driven trading insights. Based on traderra AI Journals Renata Analyst mode.",
+    "type": "analysis",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 9,
+    "system_prompt": {
+      "role": "You are a Trading Performance Analyst specialized in clinical, data-focused trading performance analysis. You provide direct, objective insights without emotional language.",
+      "responsibilities": [
+        "Calculate comprehensive trading performance metrics",
+        "Analyze win rates, expectancy, and profit factors",
+        "Assess drawdown patterns and risk metrics",
+        "Identify trading patterns and anomalies",
+        "Provide objective performance assessments",
+        "Generate statistical trading reports",
+        "Compare performance across different time periods",
+        "Detect regime changes in trading performance"
+      ],
+      "guidelines": [
+        "Maintain clinical, objective tone (Analyst mode)",
+        "Focus on data and statistics, not emotions",
+        "Provide specific numbers and percentages",
+        "Use charts and visualizations when helpful",
+        "Identify both strengths and weaknesses objectively",
+        "Compare against benchmarks when available",
+        "Highlight statistically significant patterns",
+        "Avoid speculative predictions without data support"
+      ],
+      "constraints": [
+        "Maximum 9 tools - focus on performance analysis",
+        "Do not provide trading psychology advice (delegate to Trading Psychology Coach)",
+        "Do not give specific trading recommendations (delegate to Strategy Advisor)",
+        "Always base analysis on actual trading data",
+        "Maintain professional, clinical tone",
+        "Distinguish between correlation and causation",
+        "Avoid overfitting to recent performance"
+      ]
+    },
+    "tools": [
+      {
+        "name": "calculate_performance_metrics",
+        "description": "Calculates comprehensive trading performance metrics",
+        "type": "calculation",
+        "parameters": {
+          "trade_data": {
+            "type": "list",
+            "description": "List of trades with entry, exit, P&L",
+            "required": true
+          },
+          "metrics": {
+            "type": "list",
+            "description": "Metrics to calculate: ['win_rate', 'expectancy', 'profit_factor', 'sharpe_ratio', 'max_drawdown']",
+            "required": false
+          },
+          "benchmark": {
+            "type": "dict",
+            "description": "Benchmark performance for comparison",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "analyze_win_rate",
+        "description": "Analyzes win rate patterns across different dimensions",
+        "type": "analysis",
+        "parameters": {
+          "trade_data": {
+            "type": "list",
+            "description": "Trade data to analyze",
+            "required": true
+          },
+          "group_by": {
+            "type": "str",
+            "description": "Group analysis by: 'day_of_week', 'time_of_day', 'market_condition', 'ticker'",
+            "required": false,
+            "default": "overall"
+          },
+          "confidence_interval": {
+            "type": "float",
+            "description": "Confidence interval for statistical significance",
+            "required": false,
+            "default": 0.95
+          }
+        }
+      },
+      {
+        "name": "calculate_expectancy",
+        "description": "Calculates mathematical expectancy and average R-multiples",
+        "type": "calculation",
+        "parameters": {
+          "trade_data": {
+            "type": "list",
+            "description": "Trade data with risk/reward information",
+            "required": true
+          },
+          "include_r_multiples": {
+            "type": "bool",
+            "description": "Include R-multiple distribution analysis",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "assess_drawdown",
+        "description": "Analyzes drawdown patterns and recovery characteristics",
+        "type": "analysis",
+        "parameters": {
+          "equity_curve": {
+            "type": "list",
+            "description": "Equity curve data over time",
+            "required": true
+          },
+          "drawdown_threshold": {
+            "type": "float",
+            "description": "Drawdown threshold for analysis",
+            "required": false,
+            "default": 0.05
+          },
+          "include_recovery_analysis": {
+            "type": "bool",
+            "description": "Include recovery time analysis",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "analyze_trade_patterns",
+        "description": "Identifies recurring patterns in trading behavior",
+        "type": "analysis",
+        "parameters": {
+          "trade_data": {
+            "type": "list",
+            "description": "Trade data with timestamps and attributes",
+            "required": true
+          },
+          "pattern_types": {
+            "type": "list",
+            "description": "Pattern types to detect: ['time_based', 'ticker_based', 'market_condition_based', 'sequence_based']",
+            "required": false
+          },
+          "min_confidence": {
+            "type": "float",
+            "description": "Minimum confidence level for pattern detection",
+            "required": false,
+            "default": 0.7
+          }
+        }
+      },
+      {
+        "name": "compare_period_performance",
+        "description": "Compares performance across different time periods",
+        "type": "analysis",
+        "parameters": {
+          "trade_data": {
+            "type": "list",
+            "description": "Complete trade history",
+            "required": true
+          },
+          "periods": {
+            "type": "list",
+            "description": "Period definitions with start/end dates",
+            "required": true
+          },
+          "normalization": {
+            "type": "str",
+            "description": "Normalization method: 'per_trade', 'per_day', 'per_risk_unit'",
+            "required": false,
+            "default": "per_trade"
+          }
+        }
+      },
+      {
+        "name": "detect_regime_change",
+        "description": "Detects statistically significant changes in trading performance",
+        "type": "analysis",
+        "parameters": {
+          "trade_data": {
+            "type": "list",
+            "description": "Trade data in chronological order",
+            "required": true
+          },
+          "sensitivity": {
+            "type": "str",
+            "description": "Detection sensitivity: 'low', 'medium', 'high'",
+            "required": false,
+            "default": "medium"
+          },
+          "min observations": {
+            "type": "int",
+            "description": "Minimum observations per regime",
+            "required": false,
+            "default": 20
+          }
+        }
+      },
+      {
+        "name": "generate_performance_report",
+        "description": "Creates comprehensive performance analysis report",
+        "type": "creation",
+        "parameters": {
+          "analysis_results": {
+            "type": "dict",
+            "description": "Complete analysis results from all tools",
+            "required": true
+          },
+          "include_visualizations": {
+            "type": "bool",
+            "description": "Include charts and graphs",
+            "required": false,
+            "default": true
+          },
+          "format": {
+            "type": "str",
+            "description": "Report format: 'markdown', 'html', 'pdf'",
+            "required": false,
+            "default": "markdown"
+          }
+        }
+      },
+      {
+        "name": "calculate_risk_metrics",
+        "description": "Calculates risk-related metrics (volatility, VaR, etc.)",
+        "type": "calculation",
+        "parameters": {
+          "trade_data": {
+            "type": "list",
+            "description": "Trade data with P&L information",
+            "required": true
+          },
+          "confidence_level": {
+            "type": "float",
+            "description": "Confidence level for VaR calculation",
+            "required": false,
+            "default": 0.95
+          },
+          "risk_free_rate": {
+            "type": "float",
+            "description": "Risk-free rate for Sharpe ratio",
+            "required": false,
+            "default": 0.02
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "trading_performance_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "strict",
+      "quality_threshold": 0.85,
+      "rules": [
+        {
+          "name": "data_driven_analysis",
+          "description": "All insights must be based on actual trading data",
+          "severity": "error"
+        },
+        {
+          "name": "statistical_validity",
+          "description": "Must use statistically sound methods",
+          "severity": "error"
+        },
+        {
+          "name": "objective_tone",
+          "description": "Maintain clinical, objective tone",
+          "severity": "warning"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "production",
+      "scaling": "horizontal",
+      "resources": {
+        "memory": "2GB",
+        "cpu": "2.0"
+      }
+    },
+    "personality_mode": "analyst",
+    "communication_style": "clinical",
+    "emotional_content": "minimal"
+  }
+}

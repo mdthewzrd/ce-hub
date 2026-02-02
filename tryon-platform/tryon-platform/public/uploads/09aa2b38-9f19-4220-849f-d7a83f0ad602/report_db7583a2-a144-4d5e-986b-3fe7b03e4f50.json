@@ -1,0 +1,34 @@
+{
+  "taskId": "db7583a2-a144-4d5e-986b-3fe7b03e4f50",
+  "version": {
+    "app": "1.0",
+    "promptPack": "v1.0",
+    "model": "Hybrid Canvas + AI (realistic blending)",
+    "providerApi": "1.0.0"
+  },
+  "inputs": {
+    "subject": {
+      "assetId": "db7583a2-a144-4d5e-986b-3fe7b03e4f50",
+      "w": 1024,
+      "h": 768
+    },
+    "glasses": [
+      "glasses_0"
+    ]
+  },
+  "generation": {
+    "guidance": 0.7,
+    "refStrength": 0.8,
+    "lightingWeight": 0.5,
+    "reflectionWeight": 0.3,
+    "colorMatchWeight": 0.5,
+    "seed": 1767979668931,
+    "passes": 1
+  },
+  "quality": {
+    "ssim": 0.991,
+    "faceDist": 0.23,
+    "fit": "pass"
+  },
+  "notes": "Glasses successfully added using Hybrid Canvas + AI (realistic blending)"
+}

@@ -1,0 +1,51 @@
+{
+  "original_plan_validation": {
+    "plan_exists": true,
+    "checks_passed": 6,
+    "total_checks": 6,
+    "compliance_percentage": 100.0,
+    "detailed_checks": {
+      "production_trading_ecosystem": true,
+      "pydantic_framework": true,
+      "visual_validation_overhaul": true,
+      "multi_agent_coordinator": true,
+      "ninety_percent_accuracy": true,
+      "enterprise_grade": true
+    }
+  },
+  "frontend_validation": {
+    "status": "FAILED",
+    "error": "/Users/michaeldurante/ai dev/ce-hub/projects/edge-dev-main/frontend_puppeteer_validation.js:112\n);\n^\n\nSyntaxError: Unexpected token ')'\n    at wrapSafe (node:internal/modules/cjs/loader:1691:18)\n    at Module._compile (node:internal/modules/cjs/loader:1734:20)\n    at Object..js (node:internal/modules/cjs/loader:1892:10)\n    at Module.load (node:internal/modules/cjs/loader:1480:32)\n    at Module._load (node:internal/modules/cjs/loader:1299:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:328:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47\n\nNode.js v25.2.1\n",
+    "puppeteer_available": true
+  },
+  "production_universe_validation": {
+    "service_file_exists": true,
+    "checks_passed": 5,
+    "total_checks": 5,
+    "compliance_percentage": 100.0,
+    "detailed_checks": {
+      "production_comment": true,
+      "large_symbol_count": true,
+      "comprehensive_coverage": true,
+      "api_integration": true,
+      "generation_date": true
+    }
+  },
+  "system_health_check": {
+    "checks_passed": 6,
+    "total_checks": 6,
+    "health_percentage": 100.0,
+    "detailed_checks": {
+      "node_modules_exists": true,
+      "package_json_exists": true,
+      "backend_folder_exists": true,
+      "src_folder_exists": true,
+      "python_working": true,
+      "node_working": true
+    }
+  },
+  "overall_status": "\u2705 EXCELLENT",
+  "overall_score": 87.5,
+  "duration": "0:00:01.443188",
+  "completed_at": "2025-12-01 22:42:39"
+}

@@ -1,0 +1,140 @@
+<testsuites id="" name="" tests="16" failures="1" skipped="0" errors="0" time="52.687771">
+<testsuite name="comprehensive-quality-validation.spec.ts" timestamp="2025-11-18T15:40:46.711Z" hostname="chromium-desktop" tests="16" failures="1" skipped="0" time="170.893" errors="0">
+<testcase name="Edge-dev Comprehensive Quality Validation › Development Server Validation › should load site successfully within 10 seconds" classname="comprehensive-quality-validation.spec.ts" time="6.286">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › Development Server Validation › should have no critical JavaScript errors in console" classname="comprehensive-quality-validation.spec.ts" time="12.266">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › Development Server Validation › should have proper CSS compilation without errors" classname="comprehensive-quality-validation.spec.ts" time="12.204">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › UI/UX Validation › should display Traderra professional dark theme" classname="comprehensive-quality-validation.spec.ts" time="12.251">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › UI/UX Validation › should have essential UI components visible" classname="comprehensive-quality-validation.spec.ts" time="12.308">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › UI/UX Validation › should have working navigation" classname="comprehensive-quality-validation.spec.ts" time="25.42">
+<failure message="comprehensive-quality-validation.spec.ts:91:9 should have working navigation" type="FAILURE">
+<![CDATA[  [chromium-desktop] › comprehensive-quality-validation.spec.ts:91:9 › Edge-dev Comprehensive Quality Validation › UI/UX Validation › should have working navigation 
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+       97 |       const linkCount = await navLinks.count();
+       98 |
+    >  99 |       expect(linkCount).toBeGreaterThan(0);
+          |                         ^
+      100 |
+      101 |       // Test clicking first navigation element
+      102 |       if (linkCount > 0) {
+        at /Users/michaeldurante/ai dev/ce-hub/edge-dev/tests/comprehensive-quality-validation.spec.ts:99:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+       97 |       const linkCount = await navLinks.count();
+       98 |
+    >  99 |       expect(linkCount).toBeGreaterThan(0);
+          |                         ^
+      100 |
+      101 |       // Test clicking first navigation element
+      102 |       if (linkCount > 0) {
+        at /Users/michaeldurante/ai dev/ce-hub/edge-dev/tests/comprehensive-quality-validation.spec.ts:99:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop/test-failed-1.png]]
+
+[[ATTACHMENT|comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop/video.webm]]
+
+[[ATTACHMENT|comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop/error-context.md]]
+
+[[ATTACHMENT|comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop/trace.zip]]
+
+[[ATTACHMENT|comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop-retry1/test-failed-1.png]]
+
+[[ATTACHMENT|comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop-retry1/video.webm]]
+
+[[ATTACHMENT|comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop-retry1/error-context.md]]
+
+[[ATTACHMENT|comprehensive-quality-vali-90d98-uld-have-working-navigation-chromium-desktop-retry1/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › UI/UX Validation › should display scanning/backtesting UI elements" classname="comprehensive-quality-validation.spec.ts" time="10.946">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › Technical Verification › should load Tailwind CSS utilities" classname="comprehensive-quality-validation.spec.ts" time="10.071">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › Technical Verification › should have custom CSS properties working" classname="comprehensive-quality-validation.spec.ts" time="10.047">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › Technical Verification › should be responsive on mobile devices" classname="comprehensive-quality-validation.spec.ts" time="10.31">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › Core Functionality › should handle Renata AI chat interface if present" classname="comprehensive-quality-validation.spec.ts" time="9.926">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › Core Functionality › should handle dashboard toggle functionality" classname="comprehensive-quality-validation.spec.ts" time="9.895">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › Core Functionality › should load without network errors" classname="comprehensive-quality-validation.spec.ts" time="7.973">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › Performance Quality Gates › should meet performance benchmarks" classname="comprehensive-quality-validation.spec.ts" time="11.419">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|comprehensive-quality-vali-e06fd-meet-performance-benchmarks-chromium-desktop/test-failed-1.png]]
+
+[[ATTACHMENT|comprehensive-quality-vali-e06fd-meet-performance-benchmarks-chromium-desktop/video.webm]]
+
+[[ATTACHMENT|comprehensive-quality-vali-e06fd-meet-performance-benchmarks-chromium-desktop/error-context.md]]
+
+[[ATTACHMENT|comprehensive-quality-vali-e06fd-meet-performance-benchmarks-chromium-desktop/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › Security Validation › should not expose sensitive information in console" classname="comprehensive-quality-validation.spec.ts" time="7.893">
+</testcase>
+<testcase name="Edge-dev Comprehensive Quality Validation › Security Validation › should use HTTPS headers when available" classname="comprehensive-quality-validation.spec.ts" time="1.678">
+<system-out>
+<![CDATA[Security headers present: [33mfalse[39m
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

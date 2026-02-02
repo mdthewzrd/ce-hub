@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CE-Hub API Test</title>
+</head>
+<body>
+    <h1>CE-Hub Mobile API Test</h1>
+    <div id="status">Testing API connection...</div>
+    <div id="results"></div>
+
+    <script>
+    async function testAPI() {
+        const statusDiv = document.getElementById('status');
+        const resultsDiv = document.getElementById('results');
+
+        try {
+            statusDiv.innerHTML = 'Connecting to API...';
+
+            const url = 'http://100.95.223.19:8107/files-api?path=';
+            console.log('Fetching:', url);
+
+            const response = await fetch(url);
+            console.log('Response status:', response.status);
+            console.log('Response headers:', response.headers);
+
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log('API Response:', data);
+
+            if (!data.success) {
+                throw new Error(data.error || 'API request failed');
+            }
+
+            statusDiv.innerHTML = '✅ API Connected Successfully!';
+            statusDiv.style.color = 'green';
+
+            resultsDiv.innerHTML = `
+                <h2>Results:</h2>
+                <p><strong>Path:</strong> ${data.path}</p>
+                <p><strong>Type:</strong> ${data.type}</p>
+                <p><strong>Total Items:</strong> ${data.items ? data.items.length : 0}</p>
+
+                <h3>First 10 Items:</h3>
+                <ul>
+                    ${data.items.slice(0, 10).map(item =>
+                        `<li>${item.type === 'directory' ? '📁' : '📄'} ${item.name}</li>`
+                    ).join('')}
+                </ul>
+            `;
+
+        } catch (error) {
+            console.error('API Error:', error);
+            statusDiv.innerHTML = `❌ API Error: ${error.message}`;
+            statusDiv.style.color = 'red';
+            resultsDiv.innerHTML = `<p><strong>Error Details:</strong> ${error.stack}</p>`;
+        }
+    }
+
+    // Test immediately
+    testAPI();
+    </script>
+</body>
+</html>

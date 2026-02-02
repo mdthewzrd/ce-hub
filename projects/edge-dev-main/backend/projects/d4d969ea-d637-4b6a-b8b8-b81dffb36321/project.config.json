@@ -1,0 +1,29 @@
+{
+  "project_id": "d4d969ea-d637-4b6a-b8b8-b81dffb36321",
+  "name": "Half A Scan Project",
+  "description": "Auto-generated project for half_A_scan scanners",
+  "scanners": [
+    {
+      "scanner_id": "scanner_1768815223752",
+      "scanner_name": "half_A_scan",
+      "scanner_file": "scanners/half_A_scan.py",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 0
+    }
+  ],
+  "aggregation_method": "union",
+  "created_at": "2026-01-19T04:33:43.756948",
+  "updated_at": "2026-01-19T04:33:43.799418",
+  "version": 1,
+  "tags": [
+    "scanner",
+    "auto-generated",
+    "half-a-scan"
+  ],
+  "created_by": "renata-ai-upload",
+  "last_executed": null,
+  "execution_count": 0,
+  "function_name": "half_A_scan",
+  "has_code": true
+}

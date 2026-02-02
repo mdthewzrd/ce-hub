@@ -1,0 +1,32 @@
+{
+  "scan_id": "2d7cf136-23c4-44a1-b73a-8278c80c5c9c",
+  "scan_name": "Test LC Scan",
+  "scanner_type": "lc",
+  "timestamp": "2025-10-31T18:34:52.739139",
+  "user_id": "test_user_123",
+  "results_count": 3,
+  "metadata": {
+    "date_range": "90 days",
+    "total_symbols": 1000
+  },
+  "results": [
+    {
+      "ticker": "AAPL",
+      "date": "2025-10-31",
+      "scanner_type": "lc",
+      "score": 85.5
+    },
+    {
+      "ticker": "MSFT",
+      "date": "2025-10-31",
+      "scanner_type": "lc",
+      "score": 92.1
+    },
+    {
+      "ticker": "GOOGL",
+      "date": "2025-10-31",
+      "scanner_type": "lc",
+      "score": 78.3
+    }
+  ]
+}

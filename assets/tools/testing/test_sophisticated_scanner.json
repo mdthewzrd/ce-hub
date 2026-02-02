@@ -1,0 +1,3 @@
+{
+  "code": "async def main():\n    print(\"LC D2 sophisticated scanner test\")\n    import asyncio\n    df_lc = [{\"ticker\": \"TEST\", \"score\": 85.5}]\n    await asyncio.sleep(1)\n    return df_lc\n\nif __name__ == \"__main__\":\n    import asyncio\n    asyncio.run(main())"
+}

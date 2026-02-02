@@ -1,0 +1,2631 @@
+================================================================================
+VIDEO TRANSCRIPT: Vortex Mathematics - Randy Powell
+================================================================================
+
+Playlist: Vortex Based Mathematics (General)
+Video Number: 2
+URL: https://www.youtube.com/watch?v=UQ5I5mLeAaU
+Total Transcript Entries: 1346
+
+================================================================================
+
+
+[00:00:00] **Speaker**: [Music]
+
+[00:00:13] **Speaker**: [Laughter]
+
+[00:00:20] **Speaker**: our next speaker has dedicated himself
+
+[00:00:24] **Speaker**: for the last six or seven years working
+
+[00:00:26] **Speaker**: with Vortex based mathematics
+
+[00:00:30] **Speaker**: up we're happy to introduce to you Mr
+Randy 
+[00:00:36] **Speaker**: Powell thank
+
+[00:00:39] **Speaker**: you I appreciate everybody coming
+
+[00:00:43] **Speaker**: out um I hope I don't ruin it for you
+
+[00:00:46] **Speaker**: guys that you know you probably were
+
+[00:00:48] **Speaker**: thinking after the last talk that doing
+
+[00:00:50] **Speaker**: Vortex math makes you goodlooking but uh
+
+[00:00:54] **Speaker**: doesn't always work out that way so
+
+[00:00:57] **Speaker**: sorry um
+
+[00:01:00] **Speaker**: okay so I like to always begin uh before
+
+[00:01:04] **Speaker**: I say anything about myself or what I do
+
+[00:01:07] **Speaker**: and what I've done by giving recognition
+
+[00:01:11] **Speaker**: to uh my teacher Marco Rhoden who uh
+
+[00:01:15] **Speaker**: without whom I definitely wouldn't be
+
+[00:01:17] **Speaker**: here and probably half the people here
+
+[00:01:20] **Speaker**: wouldn't wouldn't be here in in one way
+
+[00:01:22] **Speaker**: or another uh without his tremendous
+
+[00:01:25] **Speaker**: sacrifice and all the hard work he did
+
+[00:01:28] **Speaker**: he discovered the equation that I'm
+
+[00:01:30] **Speaker**: going to talk
+
+[00:01:31] **Speaker**: about uh gosh nearly 40 about 40 years
+
+[00:01:35] **Speaker**: ago so you can imagine uh it's been a a
+
+[00:01:38] **Speaker**: real long road for him I've been in this
+
+[00:01:40] **Speaker**: probably seven years and uh and I'm
+
+[00:01:43] **Speaker**: pretty beat down by it too but uh I'm uh
+
+[00:01:47] **Speaker**: I'm very thankful and and appreciative
+
+[00:01:50] **Speaker**: for him and for all his work and and you
+
+[00:01:52] **Speaker**: know a lot of people recognize what I've
+
+[00:01:55] **Speaker**: done and recognize me but uh but the
+
+[00:01:59] **Speaker**: truth is I really owe it to him and and
+
+[00:02:02] **Speaker**: uh and everything that he's done and a
+
+[00:02:04] **Speaker**: lot of other people too this our project
+
+[00:02:06] **Speaker**: is a very Community project uh people
+
+[00:02:10] **Speaker**: like uh my good friend Tyler Thurman
+
+[00:02:12] **Speaker**: who's done so much video work uh BJ
+
+[00:02:15] **Speaker**: white who did this great animation you
+
+[00:02:18] **Speaker**: know uh people doing applications like
+
+[00:02:20] **Speaker**: Daniel and Erica and Russ Greece who's
+
+[00:02:23] **Speaker**: here and and a whole lot of other people
+
+[00:02:25] **Speaker**: who who aren't here so it goes Way
+
+[00:02:28] **Speaker**: Beyond me and anything that I've done I
+
+[00:02:31] **Speaker**: am glad to just play a role and be a
+
+[00:02:33] **Speaker**: part of it so that out of the way now
+
+[00:02:36] **Speaker**: I'm going to talk about what it is that
+
+[00:02:38] **Speaker**: we do and what we've done um and what we
+
+[00:02:41] **Speaker**: hope to keep evolving and continue
+
+[00:02:44] **Speaker**: with so uh this is an animation uh to
+
+[00:02:49] **Speaker**: demonstrate property of of an equation
+
+[00:02:52] **Speaker**: that was developed by
+
+[00:02:54] **Speaker**: Marco um when he he discovered and he
+
+[00:02:56] **Speaker**: was about 16 or 17 I believe he's 58
+
+[00:03:00] **Speaker**: now um so
+
+[00:03:04] **Speaker**: he
+
+[00:03:05] **Speaker**: decrypted this is a little obscure so I
+
+[00:03:08] **Speaker**: hope you don't mind but I I like to to
+
+[00:03:10] **Speaker**: go to the Obscure too as well as the
+
+[00:03:12] **Speaker**: concrete because they're all
+
+[00:03:14] **Speaker**: interrelated he decrypted What's called
+
+[00:03:16] **Speaker**: the most great name of God and the bahay
+
+[00:03:19] **Speaker**: faith which he is a member of and I
+
+[00:03:23] **Speaker**: actually intersected with his work
+
+[00:03:24] **Speaker**: because of my interest in linguistics
+
+[00:03:27] **Speaker**: and my interest in the in the
+
+[00:03:28] **Speaker**: mathematics of language and so Marco had
+
+[00:03:32] **Speaker**: that same interest as a as a a young man
+
+[00:03:35] **Speaker**: and he decrypted the equation for this
+
+[00:03:38] **Speaker**: name which is said in no uncertain terms
+
+[00:03:41] **Speaker**: if you ever read the writings of bahala
+
+[00:03:43] **Speaker**: who is who is the prophet of that faith
+
+[00:03:46] **Speaker**: and in no UNC terms he he says that if
+
+[00:03:49] **Speaker**: you understand this word if you
+understand the mathematics of this word 
+[00:03:53] **Speaker**: that it will give you the secret to
+
+[00:03:54] **Speaker**: every science that uh it will give you
+
+[00:03:57] **Speaker**: the secret to an energy
+
+[00:04:00] **Speaker**: with which and this was in the early
+
+[00:04:02] **Speaker**: 1800s when he was saying this he said uh
+
+[00:04:06] **Speaker**: you can tap into an energy that requires
+
+[00:04:08] **Speaker**: no fuel and produces no
+
+[00:04:10] **Speaker**: fumes um and essentially Marco came up
+
+[00:04:15] **Speaker**: with this equation because he wanted to
+
+[00:04:16] **Speaker**: figure out how to pronounce the name
+
+[00:04:19] **Speaker**: correctly how to actually intonate and
+
+[00:04:21] **Speaker**: say the name and his reason for being
+
+[00:04:23] **Speaker**: interested in that is because he
+
+[00:04:25] **Speaker**: believed that it's actually the sounds
+
+[00:04:27] **Speaker**: the language that we speak and the the
+
+[00:04:29] **Speaker**: sounds that we make that create our
+
+[00:04:32] **Speaker**: intelligence and so he believed that
+
+[00:04:35] **Speaker**: this making the sound in the correct way
+
+[00:04:37] **Speaker**: would be the secret of intelligence and
+
+[00:04:39] **Speaker**: it would give him the answers to
+
+[00:04:42] **Speaker**: understanding uh the the secret hidden
+
+[00:04:46] **Speaker**: protected energy of of the
+
+[00:04:48] **Speaker**: universe and so he developed this
+
+[00:04:50] **Speaker**: equation now let me go forward past the
+
+[00:04:52] **Speaker**: animation a little bit here you can see
+
+[00:04:54] **Speaker**: it with the numbers now this word if you
+add all the numbers together the 
+[00:04:58] **Speaker**: equation for the word is
+
+[00:05:00] **Speaker**: 1251 I'm going to say a lot of things
+
+[00:05:02] **Speaker**: today that you're not going to retain
+
+[00:05:03] **Speaker**: and it's okay don't try to understand it
+
+[00:05:06] **Speaker**: cuz that'll make it harder you just
+
+[00:05:07] **Speaker**: listen to it and then of course we're
+taping all this so you can go back over 
+[00:05:11] **Speaker**: it but I'm going to talk a little fast
+
+[00:05:12] **Speaker**: because the time is limited normally I
+
+[00:05:15] **Speaker**: go in and try to explain the math I'm
+
+[00:05:16] **Speaker**: not going to do much of that today
+
+[00:05:19] **Speaker**: because it's uh just gets a little
+
+[00:05:21] **Speaker**: complex but you can see the simple
+
+[00:05:23] **Speaker**: aspect like many of our great
+
+[00:05:25] **Speaker**: mathematical equations over the ages
+
+[00:05:28] **Speaker**: this is simply a cross-section of a
+
+[00:05:30] **Speaker**: circle like Pi or or many others it has
+
+[00:05:34] **Speaker**: nine points on it because 1 2 5 one if
+
+[00:05:36] **Speaker**: you add them together they equal nine
+
+[00:05:38] **Speaker**: and it was said that nine was what
+
+[00:05:41] **Speaker**: represented this energy so Marco put
+
+[00:05:44] **Speaker**: nine at the top and he drew the numbers
+
+[00:05:46] **Speaker**: around a circle 1 2 3 4 5 6 7 8 9 right
+
+[00:05:49] **Speaker**: according to the right hand rule and he
+
+[00:05:52] **Speaker**: knew because of the way the equation was
+
+[00:05:54] **Speaker**: I won't go into the linguistic argument
+
+[00:05:56] **Speaker**: for why this is but he knew that the two
+
+[00:05:59] **Speaker**: and the five were connected to the one
+
+[00:06:01] **Speaker**: so what he did is he drew a line from
+
+[00:06:02] **Speaker**: the one to the two and from the one to
+
+[00:06:04] **Speaker**: the five and every other line that you
+
+[00:06:07] **Speaker**: see here is simply a parallel line to
+
+[00:06:10] **Speaker**: one of those lines if you take that line
+
+[00:06:11] **Speaker**: from 1 to two you got 9 to 3 8 to 4 7 to
+
+[00:06:15] **Speaker**: 5 and then you end on six if you take
+
+[00:06:17] **Speaker**: the line from 1 to 5 you have 8 to 7 9
+
+[00:06:20] **Speaker**: to six of course the 1 to 5 2 to four
+
+[00:06:22] **Speaker**: and you end on three so all this is is
+
+[00:06:24] **Speaker**: simply two sets of parallel lines okay
+
+[00:06:28] **Speaker**: and when when you see it immediately you
+
+[00:06:31] **Speaker**: realize well even without the coloring
+
+[00:06:34] **Speaker**: which has been added in you realize that
+
+[00:06:37] **Speaker**: there's there's two separate
+
+[00:06:38] **Speaker**: intersecting systems here one is this
+
+[00:06:43] **Speaker**: what they call the lazy 8 or the
+
+[00:06:44] **Speaker**: infinity symbol or you could call it the
+
+[00:06:46] **Speaker**: VW right everybody's familiar with that
+
+[00:06:50] **Speaker**: a lot of hippies here I know um uh so uh
+
+[00:06:56] **Speaker**: that circuit is essentially it's a
+
+[00:06:59] **Speaker**: waveform that's what it is it's modeling
+
+[00:07:02] **Speaker**: a closed loop it has no beginning or end
+
+[00:07:05] **Speaker**: it you could start it anywhere and ended
+
+[00:07:07] **Speaker**: anywhere but it's simply a closed loop
+
+[00:07:10] **Speaker**: it's continuous and what that uh what we
+
+[00:07:13] **Speaker**: came to learn about that many many years
+
+[00:07:16] **Speaker**: later is that this sequence of numbers
+
+[00:07:20] **Speaker**: represents the physical world of matter
+
+[00:07:23] **Speaker**: in motion 3D space okay U somebody asked
+
+[00:07:28] **Speaker**: me the other day well what is matter
+
+[00:07:30] **Speaker**: what is
+
+[00:07:31] **Speaker**: mass and we could go into lots of
+
+[00:07:33] **Speaker**: different thoughts about that but
+
+[00:07:35] **Speaker**: essentially it's a boundary condition
+
+[00:07:37] **Speaker**: okay it's a dividing line between one
+
+[00:07:39] **Speaker**: thing and another and it always has a
+
+[00:07:42] **Speaker**: center which is what this is and this is
+
+[00:07:44] **Speaker**: the zero point right here but we'll come
+
+[00:07:46] **Speaker**: back to that so if you follow this
+
+[00:07:48] **Speaker**: sequence just to give you a little brief
+
+[00:07:50] **Speaker**: on the math it makes a doubling pattern
+
+[00:07:52] **Speaker**: one doubled is two two doubled is four
+
+[00:07:54] **Speaker**: four doubled is eight eight doubled well
+
+[00:07:57] **Speaker**: that's not seven but eight doubled is 16
+
+[00:07:59] **Speaker**: so do we have seven well we're simply
+
+[00:08:01] **Speaker**: doing the age-old numerological or if
+
+[00:08:03] **Speaker**: you want to be techno about it you can
+
+[00:08:05] **Speaker**: call it digital root math or decimal
+
+[00:08:07] **Speaker**: parity or whatever um if you want to be
+
+[00:08:10] **Speaker**: a new age you can call it numerology uh
+
+[00:08:13] **Speaker**: you add the numbers together it's called
+
+[00:08:15] **Speaker**: cross addition 6 and one is 7even right
+
+[00:08:18] **Speaker**: 16 doubled is 32 3 + 2 is 5 32 doubled
+
+[00:08:22] **Speaker**: then is 64 6 and 4 is 10 and 1 and Zer
+
+[00:08:24] **Speaker**: is 1 I'm just going to say this quickly
+
+[00:08:27] **Speaker**: 64 128 which comes back to equal 2 256
+
+[00:08:31] **Speaker**: which equal 4 512 which equal 8 in other
+
+[00:08:34] **Speaker**: words you can do that forever and it
+
+[00:08:37] **Speaker**: will never break that pattern 124875 1
+
+[00:08:40] **Speaker**: 124875 means the doubling which
+
+[00:08:43] **Speaker**: underlies so many uh process not only in
+
+[00:08:46] **Speaker**: in mathematics but in physics chain
+
+[00:08:48] **Speaker**: reactions our our our cells double at
+
+[00:08:52] **Speaker**: conception which is how we've all come
+
+[00:08:54] **Speaker**: to be here so it doesn't really get any
+
+[00:08:56] **Speaker**: more intimate or personal than that
+
+[00:08:58] **Speaker**: every single one of you you came here
+
+[00:09:00] **Speaker**: today through a doubling process okay
+
+[00:09:03] **Speaker**: interestingly though you could say well
+is it doubling or is it halfing I don't 
+[00:09:06] **Speaker**: know is it dividing is it multiplying
+
+[00:09:08] **Speaker**: the truth is all the functions of math
+
+[00:09:10] **Speaker**: are really one and the same I'll give
+
+[00:09:11] **Speaker**: you an example if you take if you start
+
+[00:09:14] **Speaker**: with the one half of one is 0.5 right
+
+[00:09:16] **Speaker**: half of 05 is 0.25 which equals 7 half
+
+[00:09:19] **Speaker**: of 025 is 0.125 which equals 8 Etc you
+
+[00:09:23] **Speaker**: can do that forever and it will never
+
+[00:09:25] **Speaker**: stop because it's all one and the same
+
+[00:09:27] **Speaker**: it's a closed loop circuit it's because
+
+[00:09:30] **Speaker**: Infinity in our physical world of mass
+
+[00:09:33] **Speaker**: is not in a straight line okay neither
+
+[00:09:36] **Speaker**: time nor space or anything in the
+
+[00:09:37] **Speaker**: physical world moves in a straight line
+
+[00:09:40] **Speaker**: it's all warp and a curve right and this
+
+[00:09:43] **Speaker**: intersects with a lot of other theories
+
+[00:09:44] **Speaker**: like relativity and people may have
+
+[00:09:46] **Speaker**: their different thoughts about that but
+
+[00:09:48] **Speaker**: essentially this is defining a pathway
+
+[00:09:51] **Speaker**: for matter and motion the path of least
+
+[00:09:53] **Speaker**: resistance and numerically that's
+
+[00:09:55] **Speaker**: defined by doubling okay so that's one
+
+[00:09:58] **Speaker**: aspect of what this equation is it's
+
+[00:10:00] **Speaker**: defining a doubling sequence now then we
+have this 
+[00:10:04] **Speaker**: 396 what's the
+
+[00:10:06] **Speaker**: 396 well if you look into studying
+
+[00:10:10] **Speaker**: physics you know there's really only two
+
+[00:10:12] **Speaker**: things you can study right if you look
+
+[00:10:14] **Speaker**: up the definition of physics it's
+
+[00:10:16] **Speaker**: defined as the study of matter and
+
+[00:10:17] **Speaker**: motion of course then what is putting
+
+[00:10:19] **Speaker**: matter in motion what what is causing
+
+[00:10:21] **Speaker**: the matter to move what is the source of
+
+[00:10:23] **Speaker**: time motion and vibration and that's
+
+[00:10:26] **Speaker**: where you get to the number nine okay
+but before before I go to the number 
+[00:10:30] **Speaker**: nine I want to talk about three and six
+
+[00:10:31] **Speaker**: what are three and six okay three and
+
+[00:10:34] **Speaker**: six represent the absolute extremes they
+
+[00:10:37] **Speaker**: end in the middle of nowhere and as an
+
+[00:10:39] **Speaker**: engineer friend of our says nothing
+
+[00:10:40] **Speaker**: mechanical does that okay everything
+
+[00:10:43] **Speaker**: mechanical connects to something else uh
+
+[00:10:46] **Speaker**: nothing mechanical ends in the middle of
+
+[00:10:47] **Speaker**: nowhere the three and the six do that
+
+[00:10:50] **Speaker**: interestingly three doubled if you
+
+[00:10:52] **Speaker**: double three uh following the same
+
+[00:10:53] **Speaker**: process is six six doubl is 12 2 and 1
+
+[00:10:56] **Speaker**: is three 12 double is 24 which equals 6
+
+[00:10:59] **Speaker**: 24 doubled is 48 which equals three
+
+[00:11:01] **Speaker**: right they oscillate back and forth now
+
+[00:11:05] **Speaker**: the only thing that we know that
+
+[00:11:06] **Speaker**: oscillates is magnetism and that is
+
+[00:11:09] **Speaker**: really essentially what this is defining
+
+[00:11:11] **Speaker**: the other aspect of physics other than
+
+[00:11:13] **Speaker**: matter and motion are what we call
+
+[00:11:15] **Speaker**: fields which are a lot more mysterious
+
+[00:11:17] **Speaker**: you know they have these properties like
+
+[00:11:19] **Speaker**: non-locality perhaps um they they seem
+
+[00:11:23] **Speaker**: to in many ways defy a lot of the
+
+[00:11:26] **Speaker**: boundaries we've set around what matters
+
+[00:11:29] **Speaker**: can actually do Fields seem to be um to
+
+[00:11:33] **Speaker**: have different properties and so and the
+
+[00:11:37] **Speaker**: nine what the nine is is a flux we call
+
+[00:11:40] **Speaker**: it the etheron okay we've uh postulated
+
+[00:11:44] **Speaker**: that as an ultimate fundamental particle
+
+[00:11:46] **Speaker**: called the etheron why do we call it the
+
+[00:11:48] **Speaker**: etheron well traditionally you know up
+
+[00:11:51] **Speaker**: until the mikkelson Morley experiment
+
+[00:11:53] **Speaker**: which many people can test anyway where
+
+[00:11:56] **Speaker**: they tried to measure the drag of the
+earth through space and they found there 
+[00:11:59] **Speaker**: was was no resistance so they said well
+
+[00:12:00] **Speaker**: there's no need to postulate an ether
+
+[00:12:02] **Speaker**: all our grandparents and
+
+[00:12:04] **Speaker**: great-grandparents and and so on and so
+
+[00:12:06] **Speaker**: forth they all believed in what they
+
+[00:12:07] **Speaker**: called The lumious Ether which was
+
+[00:12:09] **Speaker**: supposed to be this substrate of energy
+
+[00:12:11] **Speaker**: distributed throughout the Universe some
+people are referred to it as a 
+[00:12:14] **Speaker**: loquacious
+
+[00:12:16] **Speaker**: Jello which I don't know what that means
+
+[00:12:18] **Speaker**: really but uh anyway uh a loquacious
+
+[00:12:20] **Speaker**: Jello well it's not a Jello it's not a
+
+[00:12:22] **Speaker**: media what it is it's a pulse it's a
+
+[00:12:25] **Speaker**: surge moves from the center of mass
+
+[00:12:27] **Speaker**: outwards in all directions
+
+[00:12:30] **Speaker**: and it is characterized by the fact that
+
+[00:12:32] **Speaker**: it's linear and if you look at this
+
+[00:12:34] **Speaker**: pyramid shape this triangle that's what
+
+[00:12:36] **Speaker**: it is it's a vector okay it is it is the
+
+[00:12:41] **Speaker**: linear geom geometric structure which is
+
+[00:12:44] **Speaker**: underline the warp and curve of space
+
+[00:12:48] **Speaker**: and time which is not linear as I said
+
+[00:12:51] **Speaker**: before so it is not a static or
+
+[00:12:54] **Speaker**: stationary ether it's a pulse it sets
+
+[00:12:57] **Speaker**: the pace for everything else and it is
+
+[00:12:59] **Speaker**: the fastest thing in the universe very
+
+[00:13:02] **Speaker**: similar to a lot of descriptions that
+
+[00:13:03] **Speaker**: were given this morning um by the
+
+[00:13:05] **Speaker**: gentleman who is who was talking here
+
+[00:13:07] **Speaker**: about uh neutral magnetic fields same
+
+[00:13:10] **Speaker**: thing it penetrates everything nothing
+
+[00:13:13] **Speaker**: can resist it um and there's so many
+
+[00:13:17] **Speaker**: things it has every attribute that you
+
+[00:13:19] **Speaker**: can imagine and the interesting thing
+
+[00:13:22] **Speaker**: about the number nine is no matter what
+
+[00:13:23] **Speaker**: you do to it if you multiply the number
+
+[00:13:25] **Speaker**: nine for instance 9 * 2 is 18 9 * 3 is
+
+[00:13:29] **Speaker**: 27 all the numbers always equal nine
+
+[00:13:32] **Speaker**: it's the never changing number nine and
+
+[00:13:34] **Speaker**: it's the only number that has that
+
+[00:13:36] **Speaker**: characteristic now if you happen to be a
+
+[00:13:38] **Speaker**: mathematician you might make an argument
+
+[00:13:40] **Speaker**: with me about different base systems and
+
+[00:13:42] **Speaker**: if you are a mathematician we can get
+
+[00:13:43] **Speaker**: into that after I'm not going to melt
+
+[00:13:45] **Speaker**: everybody's head with that you know crap
+
+[00:13:48] **Speaker**: so uh so what we're claiming is totally
+opposite and reverse of everything 
+[00:13:54] **Speaker**: that's taught in the University I'll
+
+[00:13:55] **Speaker**: give you a couple examples and and if
+you go to university if you study 
+[00:13:59] **Speaker**: mathematics they say well base systems
+
+[00:14:01] **Speaker**: are arbitrary You Can Count according to
+
+[00:14:02] **Speaker**: any system you could use base 15 you
+
+[00:14:05] **Speaker**: could use base 5 you could use base 100
+
+[00:14:07] **Speaker**: doesn't really matter um they say we use
+
+[00:14:10] **Speaker**: base 10 because we have 10 fingers
+
+[00:14:12] **Speaker**: actually we don't even have 10 fingers
+
+[00:14:14] **Speaker**: can you believe that what we have is 05
+
+[00:14:17] **Speaker**: which is half of 100% And they're mirror
+
+[00:14:19] **Speaker**: images based on an axis okay it's all
+
+[00:14:22] **Speaker**: optical illusions if we had 10 fingers
+
+[00:14:24] **Speaker**: your thumb would be on the other side or
+
+[00:14:26] **Speaker**: on this side right but because they're
+
+[00:14:27] **Speaker**: mirror images there that's not how you
+
+[00:14:30] **Speaker**: actually look at it so that's a process
+
+[00:14:33] **Speaker**: of halfing okay the number nine is
+
+[00:14:36] **Speaker**: forming an axis it's the only thing that
+
+[00:14:39] **Speaker**: aligns with the zero which is the hole
+
+[00:14:41] **Speaker**: at the center of the donut as uh Daniel
+
+[00:14:44] **Speaker**: and Erica were demonstrating before all
+
+[00:14:47] **Speaker**: right and I'm going to get to this shape
+
+[00:14:48] **Speaker**: and how we came to it because this is my
+
+[00:14:50] **Speaker**: little baby okay um so Marco developed
+
+[00:14:55] **Speaker**: this equation he started to notice a lot
+
+[00:14:56] **Speaker**: of interesting properties about it here
+
+[00:14:58] **Speaker**: you can see another picture of the
+
+[00:14:59] **Speaker**: animation showing how it moves if I was
+
+[00:15:02] **Speaker**: to go back then you can get a sense of
+
+[00:15:04] **Speaker**: what's going on here now you've got a
+
+[00:15:06] **Speaker**: pulse moving out expansion and
+
+[00:15:10] **Speaker**: contraction and this here is defining in
+
+[00:15:13] **Speaker**: two Dimensions The Vortex okay here I'm
+
+[00:15:17] **Speaker**: not going to go over these numbers you
+
+[00:15:19] **Speaker**: you know I've got tons of videos online
+and you can look up all this stuff but 
+[00:15:22] **Speaker**: essentially it's just showing how the
+
+[00:15:23] **Speaker**: regular multiplication tables that we
+
+[00:15:25] **Speaker**: learned as kids could be the division
+
+[00:15:28] **Speaker**: tables as well or addition or
+
+[00:15:30] **Speaker**: subtraction because Vortex based
+
+[00:15:32] **Speaker**: mathematics is the unification of all
+
+[00:15:34] **Speaker**: the functions of math we're doing every
+
+[00:15:36] **Speaker**: function of math possible
+
+[00:15:38] **Speaker**: instantaneously times divide plus and
+
+[00:15:40] **Speaker**: minus okay but what you see here is that
+
+[00:15:44] **Speaker**: everything on opposite sides of the nine
+
+[00:15:47] **Speaker**: forms bilateral symmetry okay I'll just
+
+[00:15:50] **Speaker**: say one example if you do multiples of
+
+[00:15:52] **Speaker**: one it goes 1 2 3 4 5 6 7 8 9 of course
+
+[00:15:54] **Speaker**: 10 reduces to 1 11 to 2 12 to 3 and so
+
+[00:15:57] **Speaker**: on now you say Eight's not a mirror of
+
+[00:16:00] **Speaker**: one well we do notice that 1 and 8 equal
+
+[00:16:02] **Speaker**: 9 if you add them together as well as 2
+
+[00:16:03] **Speaker**: and 7 four and five always equal 9 as
+
+[00:16:06] **Speaker**: well as three and six okay um eight if
+
+[00:16:11] **Speaker**: one is going up in multiples of one that
+
+[00:16:12] **Speaker**: means Eight's going to go down in in in
+
+[00:16:15] **Speaker**: groups of one so 8 * 2 is 16 6 and 1 is
+
+[00:16:18] **Speaker**: 7 8 * 3 is 24 which equal 6 32 which
+
+[00:16:21] **Speaker**: equal 5 40 which is 4 and so on that
+
+[00:16:24] **Speaker**: works for every multiplication series
+
+[00:16:27] **Speaker**: that's because numbers are not flat
+
+[00:16:30] **Speaker**: they're not dead they're not inert
+
+[00:16:33] **Speaker**: numbers are real so when you go to
+
+[00:16:35] **Speaker**: school and they teach you that Bas
+
+[00:16:36] **Speaker**: systems are arbitrary or that numbers
+
+[00:16:38] **Speaker**: are arbitrary conventions made up by
+
+[00:16:41] **Speaker**: human beings that's false we're saying
+
+[00:16:43] **Speaker**: that numbers are real and what does that
+
+[00:16:46] **Speaker**: mean that means that numbers aren't
+
+[00:16:47] **Speaker**: modeling geometry numbers are geometry
+
+[00:16:51] **Speaker**: numbers are geometric they define space
+
+[00:16:54] **Speaker**: and time
+
+[00:16:56] **Speaker**: literally okay so this is showing how we
+
+[00:16:59] **Speaker**: start to get symmetry
+
+[00:17:02] **Speaker**: okay uh I threw this in there because
+
+[00:17:05] **Speaker**: this is a very clear example of where
+
+[00:17:06] **Speaker**: you can see this shape this lazy Ator
+
+[00:17:10] **Speaker**: this VW uh again doesn't get more
+
+[00:17:12] **Speaker**: intimate than your very own DNA which
+
+[00:17:15] **Speaker**: you'll see right pictures of DNA and
+
+[00:17:17] **Speaker**: wrong pictures of DNA the wrong pictures
+
+[00:17:19] **Speaker**: of DNA are perfectly symmetrical which
+
+[00:17:22] **Speaker**: is not how it actually is it's actually
+
+[00:17:24] **Speaker**: offset okay and you can see that shape
+
+[00:17:26] **Speaker**: right there 1 2 4 8 7 five because this
+
+[00:17:32] **Speaker**: is the secret of why your DNA is in a
+
+[00:17:34] **Speaker**: double helic helical spiral and it's
+
+[00:17:39] **Speaker**: also the secret to the missing component
+
+[00:17:41] **Speaker**: that the geneticists haven't fully
+
+[00:17:43] **Speaker**: identified yet though they kind of know
+
+[00:17:45] **Speaker**: it's there which is that in this Gap
+
+[00:17:48] **Speaker**: space here which is called the major
+
+[00:17:50] **Speaker**: Groove in genetics is uh a flux field a
+
+[00:17:54] **Speaker**: magnetic field and that field which they
+
+[00:17:57] **Speaker**: do know is there their explanation is
+
+[00:17:59] **Speaker**: that DNA is made up of phosphates which
+
+[00:18:00] **Speaker**: have a negative electric charge and
+
+[00:18:02] **Speaker**: Associated magnetic field but the truth
+
+[00:18:04] **Speaker**: is that magnetic field is controlling
+
+[00:18:07] **Speaker**: the switching the expression of the
+
+[00:18:09] **Speaker**: genes and I believe it's a conscious
+
+[00:18:11] **Speaker**: field okay here it gets more into the
+
+[00:18:14] **Speaker**: quantum level of the work we've done on
+
+[00:18:16] **Speaker**: DNA I won't go through that too much but
+here is in the red is where you can see 
+[00:18:20] **Speaker**: this
+
+[00:18:21] **Speaker**: 396 and that by the way the we had no
+
+[00:18:24] **Speaker**: idea Marco had no idea that there was a
+
+[00:18:26] **Speaker**: magnetic field in the major groove of
+
+[00:18:28] **Speaker**: DNA he simply predicted it
+
+[00:18:30] **Speaker**: mathematically and he contacted the
+
+[00:18:32] **Speaker**: experts in the field and they confirmed
+
+[00:18:34] **Speaker**: it so um that was a successful
+
+[00:18:36] **Speaker**: prediction made by the math this was the
+next step uh that happened and I'm 
+[00:18:41] **Speaker**: talking you through things that have
+
+[00:18:42] **Speaker**: happened over many many years this is
+
+[00:18:44] **Speaker**: where the numbers become quantizer we
+
+[00:18:47] **Speaker**: take it to the quantum the discret level
+
+[00:18:51] **Speaker**: and now what this is uh it's been
+
+[00:18:53] **Speaker**: referred to by a lot of names uh Mark
+
+[00:18:54] **Speaker**: Alex call it the mathematical
+
+[00:18:56] **Speaker**: fingerprint of God um you know know you
+
+[00:18:59] **Speaker**: can you can call it what you want uh but
+
+[00:19:02] **Speaker**: essentially it is now starting to give
+
+[00:19:06] **Speaker**: the numbers of shape I should mention
+
+[00:19:08] **Speaker**: there are three shapes really that are
+
+[00:19:10] **Speaker**: specifically defined in this math um and
+
+[00:19:14] **Speaker**: they're pretty easy okay the the three
+
+[00:19:16] **Speaker**: does anybody have a guess triangle all
+
+[00:19:19] **Speaker**: right I gave it to you the
+
+[00:19:22] **Speaker**: six hexagon all right if you didn't get
+
+[00:19:25] **Speaker**: that one you're all right and the nine a
+little bit more difficult but you you 
+[00:19:28] **Speaker**: can see it right here between the zero
+
+[00:19:30] **Speaker**: and the nine is a diamond okay it just
+
+[00:19:33] **Speaker**: so happens that those are the only
+
+[00:19:35] **Speaker**: shapes that by themselves you can fully
+
+[00:19:37] **Speaker**: map and tile a 3D surface topology
+
+[00:19:40] **Speaker**: without any breaks okay and and that's
+
+[00:19:43] **Speaker**: very
+
+[00:19:44] **Speaker**: significant so when coming up with this
+
+[00:19:47] **Speaker**: what we call the diamond grain crystal
+
+[00:19:49] **Speaker**: lce structure which is seen in in a lot
+
+[00:19:52] **Speaker**: of uh natural things and I'll show you
+
+[00:19:55] **Speaker**: some images here in a few minutes um
+
+[00:19:58] **Speaker**: this map contains every mathematical
+
+[00:20:03] **Speaker**: function possible now I said function
+
+[00:20:07] **Speaker**: and this is another place where vbm or
+
+[00:20:10] **Speaker**: Vortex based mathematics I'll say vbm
+
+[00:20:12] **Speaker**: from now on you know what it is um this
+
+[00:20:15] **Speaker**: is a place another place where vbm is a
+
+[00:20:17] **Speaker**: total 180 mirror image of conventional
+
+[00:20:20] **Speaker**: mathematics because in conventional
+
+[00:20:22] **Speaker**: mathematics you have functions the
+
+[00:20:24] **Speaker**: functions are held still they're the
+
+[00:20:26] **Speaker**: placeholders right and the number
+
+[00:20:28] **Speaker**: numbers move they change the truth is
+
+[00:20:31] **Speaker**: numbers don't ever change they're fixed
+
+[00:20:33] **Speaker**: and they're fixed in relationship to one
+
+[00:20:36] **Speaker**: another they are what we call stationary
+
+[00:20:38] **Speaker**: Vector interstices which is just a real
+
+[00:20:41] **Speaker**: nerdy way of saying that they're noal
+
+[00:20:43] **Speaker**: points because every wave has to have a
+
+[00:20:45] **Speaker**: point where it stops going up and starts
+
+[00:20:47] **Speaker**: going down or stops going left and
+
+[00:20:48] **Speaker**: starts going right for in order for
+
+[00:20:50] **Speaker**: something to curve there have to be
+
+[00:20:52] **Speaker**: those noal points there and that is
+
+[00:20:54] **Speaker**: essentially what the numbers are
+
+[00:20:55] **Speaker**: defining if you look at that equation at
+
+[00:20:57] **Speaker**: each noal point is a number the numbers
+
+[00:21:01] **Speaker**: are still and the functions move through
+
+[00:21:03] **Speaker**: the numbers okay which is actually more
+
+[00:21:06] **Speaker**: what a function is it's a movement it's
+
+[00:21:07] **Speaker**: an activity and so you can actually
+
+[00:21:11] **Speaker**: model every principle of physics every
+
+[00:21:13] **Speaker**: type of waveform can be done here and
+
+[00:21:16] **Speaker**: what this is showing is that it's a
+
+[00:21:18] **Speaker**: positive and negative dual coordinate
+
+[00:21:21] **Speaker**: system um which means that on every axis
+
+[00:21:25] **Speaker**: X Y and Z even though you can't see the
+
+[00:21:27] **Speaker**: z- axis
+
+[00:21:29] **Speaker**: here you can see the xaxis vertical you
+
+[00:21:31] **Speaker**: can see the Y AIS horizontal okay they
+
+[00:21:34] **Speaker**: each are defined by a different
+
+[00:21:35] **Speaker**: multiplication series and you can always
+
+[00:21:37] **Speaker**: see that you have doubling at an angle
+
+[00:21:40] **Speaker**: flowing at an angle which is how things
+
+[00:21:42] **Speaker**: move at an angle nothing moves perfectly
+
+[00:21:44] **Speaker**: left or right up or down everything
+
+[00:21:47] **Speaker**: moves at an angle along that pathway of
+
+[00:21:51] **Speaker**: positive to negative positive negative
+
+[00:21:52] **Speaker**: positive and negative okay um the z-axis
+
+[00:21:57] **Speaker**: the reason that you can't see here is
+
+[00:21:59] **Speaker**: because it's coming from the inside
+
+[00:22:01] **Speaker**: out this etheron energy moves from the
+
+[00:22:04] **Speaker**: center of mass doesn't matter if it's an
+
+[00:22:06] **Speaker**: atom or or a Galaxy or the whole
+
+[00:22:09] **Speaker**: universe itself which I believe is in
+
+[00:22:11] **Speaker**: the shape of a Taurus which is what
+
+[00:22:13] **Speaker**: we're going to get to next it moves from
+
+[00:22:15] **Speaker**: the center of mass out in all directions
+
+[00:22:18] **Speaker**: linearly as I said before and so you
+
+[00:22:22] **Speaker**: you're you're not seeing it as an X or Y
+
+[00:22:26] **Speaker**: AIS and it took I I guess over 30 years
+
+[00:22:30] **Speaker**: before I really came along and and
+
+[00:22:32] **Speaker**: actually figured out how
+
+[00:22:33] **Speaker**: to calculate this in a 3D to take it out
+
+[00:22:36] **Speaker**: of this but when you do it you get this
+
+[00:22:39] **Speaker**: shape and this is my baby girl that I
+
+[00:22:42] **Speaker**: love so much and she's very beautiful um
+
+[00:22:46] **Speaker**: because here we're now warping the
+
+[00:22:49] **Speaker**: axises to be
+
+[00:22:51] **Speaker**: circular and this is the first
+
+[00:22:54] **Speaker**: mathematics okay I'll give you a place
+
+[00:22:56] **Speaker**: why this is significant
+
+[00:22:58] **Speaker**: uh for instance there's uh something
+
+[00:23:00] **Speaker**: postulated in physics called black holes
+
+[00:23:02] **Speaker**: you all familiar with that um which is
+
+[00:23:04] **Speaker**: postulated being infinitely dense they
+don't even know what it is because it 
+[00:23:07] **Speaker**: doesn't even make any sense what is
+
+[00:23:09] **Speaker**: infinite density um and there's so much
+
+[00:23:11] **Speaker**: debate about it and you can read endless
+
+[00:23:14] **Speaker**: uh Hey books about it but um the reason
+
+[00:23:17] **Speaker**: is the reason that uh the black Hol is
+thought to be infinite and they don't really know what's happening to the 
+[00:23:24] **Speaker**: information or to the matter know
+
+[00:23:26] **Speaker**: Stephen Hawking and uh what's susin had
+
+[00:23:29] **Speaker**: a big famous debate about what happens
+
+[00:23:31] **Speaker**: to the information well the truth is
+
+[00:23:33] **Speaker**: what happens is it comes out the other
+
+[00:23:35] **Speaker**: side because calculus is unable to go
+
+[00:23:38] **Speaker**: through the center of the dut and invert
+
+[00:23:41] **Speaker**: on its axis and come out the other side
+
+[00:23:44] **Speaker**: it's unable to do that it self-destructs
+
+[00:23:46] **Speaker**: it just goes to Infinity but BBM is the
+
+[00:23:49] **Speaker**: first mathematics that's been able to do
+
+[00:23:51] **Speaker**: that to actually model a full 3d that
+
+[00:23:55] **Speaker**: can implode at the top as we were
+
+[00:23:58] **Speaker**: referring to in the last talk about the
+
+[00:24:00] **Speaker**: magnetic fields collapsing at the top
+
+[00:24:02] **Speaker**: and to explode at the bottom so if the
+
+[00:24:05] **Speaker**: Big Bang is in fact true it would just
+
+[00:24:07] **Speaker**: simply be one of these explosions coming
+
+[00:24:10] **Speaker**: out the bottom when it comes out the
+
+[00:24:12] **Speaker**: bottom it expands and cools off which is
+
+[00:24:15] **Speaker**: what's happening in the universe right
+
+[00:24:17] **Speaker**: now as we are perceiving it because I
+
+[00:24:19] **Speaker**: believe we're on the southern half of
+
+[00:24:20] **Speaker**: the universe eventually it will warp up
+
+[00:24:24] **Speaker**: because it is displaced moved by this
+
+[00:24:26] **Speaker**: etheron energy by the magnetic fields
+
+[00:24:29] **Speaker**: and cooled off and then eventually it
+
+[00:24:31] **Speaker**: will collapse in at the top it will be
+
+[00:24:33] **Speaker**: accelerated it will be heated and
+
+[00:24:36] **Speaker**: eventually it will be condensed to an
+
+[00:24:39] **Speaker**: extreme density now when we talk about
+
+[00:24:43] **Speaker**: all all of these devices tapping in all
+
+[00:24:45] **Speaker**: this energy we're always referring to
+
+[00:24:47] **Speaker**: sound and I got into this because of my
+
+[00:24:49] **Speaker**: interest in sound and because I'm a
+
+[00:24:51] **Speaker**: musician and and many of us are and
+
+[00:24:54] **Speaker**: because I knew that sound was really
+
+[00:24:56] **Speaker**: behind uh the
+
+[00:24:58] **Speaker**: GE geometry of nature it was the force
+
+[00:25:01] **Speaker**: that's that's symmetrizing everything
+
+[00:25:03] **Speaker**: now conventionally it's taught that the
+
+[00:25:05] **Speaker**: fastest thing traveling in the universe
+
+[00:25:07] **Speaker**: is light through the vacuum of space um
+
+[00:25:11] **Speaker**: and what I believe is actually when you
+
+[00:25:13] **Speaker**: go and and and some other scientists
+
+[00:25:15] **Speaker**: have postulated this as well um when you
+
+[00:25:18] **Speaker**: go into the density exotic density of
+
+[00:25:21] **Speaker**: matter where it's being compressed to
+
+[00:25:22] **Speaker**: the point that the escape velocity of
+
+[00:25:25] **Speaker**: light is no longer fast enough to escape
+
+[00:25:27] **Speaker**: that matter which is why it's called a
+
+[00:25:29] **Speaker**: black hole that sound which has the
+
+[00:25:32] **Speaker**: complete opposite property right light
+
+[00:25:34] **Speaker**: slows down in media uh sound travels
+
+[00:25:37] **Speaker**: faster the more dense the media is so
+
+[00:25:40] **Speaker**: sound penetrating matter near the core
+
+[00:25:42] **Speaker**: of a black hole I believe is actually
+
+[00:25:45] **Speaker**: transcending the speed of light and it
+
+[00:25:47] **Speaker**: creates what's called a quasi particle
+
+[00:25:49] **Speaker**: is what they refer to it in quantum
+
+[00:25:51] **Speaker**: mechanics as a quasi Mass particle I
+
+[00:25:54] **Speaker**: believe is how they refer to it uh some
+
+[00:25:56] **Speaker**: people call it hypers sound all right
+
+[00:25:58] **Speaker**: and that is where that energy is emitted
+
+[00:26:01] **Speaker**: from it's literally rung out of the
+
+[00:26:03] **Speaker**: matter like squeezing juice out of an
+
+[00:26:06] **Speaker**: orange okay um and and then it
+
+[00:26:09] **Speaker**: redistributes itself it reanimates
+
+[00:26:11] **Speaker**: everything it re enlivens recreates okay
+
+[00:26:14] **Speaker**: it is the
+
+[00:26:16] **Speaker**: anti-entropic force it is the organizing
+
+[00:26:19] **Speaker**: principle okay here's some more pictures
+
+[00:26:21] **Speaker**: of this Taurus uh you wouldn't believe I
+
+[00:26:25] **Speaker**: know it looks you wouldn't believe uh
+
+[00:26:28] **Speaker**: what it took to to actually do this
+
+[00:26:30] **Speaker**: because now we're so fortunate this was
+
+[00:26:32] **Speaker**: an image done by my friend Tom Barnett
+
+[00:26:34] **Speaker**: the last one was done by a friend of
+
+[00:26:36] **Speaker**: mine Scott Graham I never had any of
+
+[00:26:38] **Speaker**: these computers or anything I had to do
+
+[00:26:40] **Speaker**: this all in my head and uh it it really
+
+[00:26:44] **Speaker**: was kind of a a feat in the sense that
+
+[00:26:48] **Speaker**: I'm lucky that I didn't die trying to do
+
+[00:26:50] **Speaker**: it but uh um or my head didn't explode
+
+[00:26:55] **Speaker**: or something uh but it
+
+[00:26:59] **Speaker**: this is showing actually the southern
+
+[00:27:01] **Speaker**: half which is decompressing out the
+
+[00:27:03] **Speaker**: bottom okay so that would be your your
+
+[00:27:06] **Speaker**: big bang here's another one you can
+
+[00:27:09] **Speaker**: scale this up and down to Infinity which
+
+[00:27:11] **Speaker**: is what makes it fractal numbers
+
+[00:27:14] **Speaker**: themselves are a fractal a 3D fractal so
+
+[00:27:18] **Speaker**: you can look at simpler versions this is
+
+[00:27:20] **Speaker**: the most basic model right here right it
+
+[00:27:25] **Speaker**: or you can scale it you can divide it to
+
+[00:27:27] **Speaker**: Infinity but you never reach the zero
+
+[00:27:30] **Speaker**: because the zero is the whole you never
+
+[00:27:33] **Speaker**: this is why absolute zero I don't
+
+[00:27:34] **Speaker**: believe really exists because you're
+
+[00:27:36] **Speaker**: always decreasing in partial increments
+
+[00:27:39] **Speaker**: from your initial hole so you can go
+
+[00:27:41] **Speaker**: colder and colder and colder and colder
+
+[00:27:43] **Speaker**: right but eventually and and this was
+
+[00:27:46] **Speaker**: actually proven recently where they um
+
+[00:27:48] **Speaker**: were showing how there was a um they
+
+[00:27:51] **Speaker**: they thought that they went beyond
+
+[00:27:53] **Speaker**: absolute zero and then showed that there
+
+[00:27:55] **Speaker**: was an anti-entropic Force present I
+
+[00:27:57] **Speaker**: don't know if anybody else read about
+
+[00:27:59] **Speaker**: that but it was uh it was talked about
+
+[00:28:01] **Speaker**: in in the universities and everything
+
+[00:28:04] **Speaker**: this shape the Taurus which comes out of
+
+[00:28:06] **Speaker**: uh that equation I believe is the
+
+[00:28:08] **Speaker**: ultimate fundamental shape for energy
+
+[00:28:11] **Speaker**: transformation and that's what these
+
+[00:28:12] **Speaker**: coils are based on though we still have
+
+[00:28:14] **Speaker**: so much to learn not only about what
+
+[00:28:16] **Speaker**: kind of media to use in order to harness
+
+[00:28:19] **Speaker**: this and and and copper wire is just you
+
+[00:28:21] **Speaker**: know a a primitive first step not
+
+[00:28:24] **Speaker**: knocking anybody's work their work is
+
+[00:28:26] **Speaker**: absolutely excellent and uh and provide
+
+[00:28:28] **Speaker**: so much you know most people would think
+
+[00:28:30] **Speaker**: I was totally insane if it wasn't for
+
+[00:28:32] **Speaker**: people like Daniel and and Erica who are
+
+[00:28:35] **Speaker**: uh showing proof of concept that because
+
+[00:28:38] **Speaker**: there's nothing about electrical
+
+[00:28:39] **Speaker**: engineering that says the geometry of
+
+[00:28:41] **Speaker**: the wire would affect the output at all
+
+[00:28:44] **Speaker**: certainly not double it with no core and
+
+[00:28:46] **Speaker**: and half the material you know it's
+
+[00:28:49] **Speaker**: insane I mean what all this you know I
+
+[00:28:52] **Speaker**: I'm not an engineer thank God but
+
+[00:28:55] **Speaker**: uh so that energy is coming from the
+
+[00:28:58] **Speaker**: inside out and it creates this lattice
+
+[00:29:00] **Speaker**: structure as it penetrates the matter
+
+[00:29:02] **Speaker**: and that creates the pathway of least
+
+[00:29:05] **Speaker**: resistance as they said before I'll show
+
+[00:29:07] **Speaker**: you some examples here this is actually
+
+[00:29:10] **Speaker**: out of a medical journal it took me a
+
+[00:29:11] **Speaker**: while to find this luckily now somebody
+
+[00:29:13] **Speaker**: must have gotten this off me because uh
+
+[00:29:16] **Speaker**: now if you search uh my name or like AA
+
+[00:29:18] **Speaker**: Taurus on Google you can actually find
+
+[00:29:20] **Speaker**: this image took me years to find it it
+
+[00:29:22] **Speaker**: was out of a medical journal and these
+
+[00:29:24] **Speaker**: are actually images of DNA taking the
+
+[00:29:27] **Speaker**: shape of a taus okay so it doesn't just
+
+[00:29:29] **Speaker**: end in the middle of nowhere um in fact
+
+[00:29:33] **Speaker**: DNA even can warp and curve back into
+
+[00:29:36] **Speaker**: itself and create this toal shape
+because it is the way that it's 
+[00:29:40] **Speaker**: transforming energy here's an image of
+
+[00:29:42] **Speaker**: blood cells again the tural shape uh
+
+[00:29:46] **Speaker**: this is a cavitation bubble uh where
+
+[00:29:49] **Speaker**: they've measured uh if you read the
+
+[00:29:50] **Speaker**: journal articles which were up on my
+
+[00:29:52] **Speaker**: website though I don't have a website up
+
+[00:29:54] **Speaker**: at the moment um that's extreme lack of
+
+[00:29:56] **Speaker**: funding uh I didn't have the $7 a month
+
+[00:29:59] **Speaker**: or whatever it costs inside that jet
+
+[00:30:03] **Speaker**: that hole that zero point have been
+
+[00:30:05] **Speaker**: measured up to 5,000 de CI okay which is
+
+[00:30:08] **Speaker**: like the surface of the Sun and it's
+
+[00:30:10] **Speaker**: cool on the
+
+[00:30:12] **Speaker**: outside right that is the core principle
+
+[00:30:15] **Speaker**: that unifies our problem and solution to
+
+[00:30:18] **Speaker**: every single technology out there which
+
+[00:30:21] **Speaker**: is temperature regulation in fact if we
+
+[00:30:24] **Speaker**: don't have temperature regulation we die
+
+[00:30:26] **Speaker**: very quickly okay or we burn up the same
+
+[00:30:29] **Speaker**: thing is true for the planet the same
+
+[00:30:31] **Speaker**: thing is true for the Galaxy for
+
+[00:30:34] **Speaker**: everything the tus is how temperature is
+
+[00:30:37] **Speaker**: regulated it concentrates all the heat
+
+[00:30:39] **Speaker**: and energy into the center and then it
+
+[00:30:41] **Speaker**: uses the magnetic fields to redistribute
+
+[00:30:44] **Speaker**: it and cool it down okay now this is
+
+[00:30:46] **Speaker**: something we postulated years ago and I
+
+[00:30:48] **Speaker**: was fortunate recently that some
+
+[00:30:50] **Speaker**: Japanese scientists confirmed this
+
+[00:30:53] **Speaker**: because they're actually making magnetic
+
+[00:30:54] **Speaker**: refrigerators now they claim that they
+
+[00:30:56] **Speaker**: actually don't even know how it's
+
+[00:30:58] **Speaker**: working but when you oscillate magnetic
+
+[00:31:00] **Speaker**: fields uh you can you can regulate
+
+[00:31:03] **Speaker**: temperature so that has actually uh
+
+[00:31:05] **Speaker**: proven to be true there's one and
+
+[00:31:08] **Speaker**: weather systems we're all familiar with
+
+[00:31:11] **Speaker**: uh there's the Galaxy uh in the shape of
+
+[00:31:14] **Speaker**: a
+
+[00:31:14] **Speaker**: Taurus another one okay there's uh
+
+[00:31:18] **Speaker**: Dolphins uh who've been observed to use
+
+[00:31:21] **Speaker**: using their uh sonar again using the
+
+[00:31:24] **Speaker**: sound creating these toroidal rings that
+
+[00:31:27] **Speaker**: they they then expand and contract play
+
+[00:31:29] **Speaker**: around with and just another place where
+
+[00:31:31] **Speaker**: you see it in nature there's the
+
+[00:31:33] **Speaker**: sunflower again utilizing the hexagonal
+
+[00:31:36] **Speaker**: geometry and creating a toid okay here
+
+[00:31:40] **Speaker**: you can see the toid where you can see
+
+[00:31:42] **Speaker**: the numbers a little better there's so
+
+[00:31:44] **Speaker**: many things I could say about this this
+
+[00:31:46] **Speaker**: was done by my friend Chuck midah uh and
+
+[00:31:51] **Speaker**: you can uh see here that there are
+
+[00:31:53] **Speaker**: numbers overlaying the other numbers
+
+[00:31:55] **Speaker**: demonstrating how some of these fractal
+
+[00:31:57] **Speaker**: patterns work
+
+[00:31:58] **Speaker**: what these numbers over the numbers are
+
+[00:32:00] **Speaker**: actually defining uh which is the key to
+
+[00:32:03] **Speaker**: harnessing this technology and I believe
+this is the part that we really haven't 
+[00:32:07] **Speaker**: and somebody was asking me about this
+
+[00:32:08] **Speaker**: earlier this is the part that we really
+
+[00:32:10] **Speaker**: haven't totally tapped into yet fully
+
+[00:32:13] **Speaker**: which I call Marco originally I think
+
+[00:32:16] **Speaker**: coined the term underpinning nested
+
+[00:32:18] **Speaker**: vortices they're like coriolis forces
+
+[00:32:21] **Speaker**: vortexes within vortexes uh a good
+
+[00:32:23] **Speaker**: example are dimples on a golf ball okay
+
+[00:32:26] **Speaker**: if anybody here rememb I don't really
+
+[00:32:28] **Speaker**: but if you remember back in in the old
+
+[00:32:31] **Speaker**: days when the golf balls used to be
+
+[00:32:32] **Speaker**: smooth anybody remember that golf balls
+
+[00:32:35] **Speaker**: didn't have dimples on them they used to
+
+[00:32:36] **Speaker**: be smooth and then uh it was some
+
+[00:32:39] **Speaker**: mathematician or scientist based on
+
+[00:32:40] **Speaker**: tetrahedron thing they figured out if
+
+[00:32:42] **Speaker**: you put these dimples in it it would
+
+[00:32:44] **Speaker**: control the flight properties the lifts
+
+[00:32:47] **Speaker**: of of the golf ball it would give it
+
+[00:32:49] **Speaker**: better slice everything like that and
+
+[00:32:52] **Speaker**: and and indeed it would accelerate it
+
+[00:32:53] **Speaker**: and cause it to go higher and further
+
+[00:32:56] **Speaker**: and and that is what that principle is
+
+[00:32:59] **Speaker**: if you can tap into the under pinning
+
+[00:33:01] **Speaker**: nested vortices they work as
+
+[00:33:03] **Speaker**: accelerators okay and that's when you
+
+[00:33:05] **Speaker**: can really start to tap into the etheron
+
+[00:33:09] **Speaker**: I believe um let's see what else we got
+
+[00:33:11] **Speaker**: here more beautiful images of this
+
+[00:33:13] **Speaker**: Taurus I wish I had all day to really
+
+[00:33:15] **Speaker**: explain to you the beauty and complexity
+
+[00:33:18] **Speaker**: of what these numbers Define how you can
+
+[00:33:20] **Speaker**: make waveforms that Ripple out and make
+
+[00:33:23] **Speaker**: perfect calculations that come back and
+
+[00:33:25] **Speaker**: condense either where they started or an
+
+[00:33:28] **Speaker**: opposite symmetrical node anything like
+
+[00:33:31] **Speaker**: Newton's Cradle is an example that you
+
+[00:33:33] **Speaker**: can Define uh with these type of systems
+
+[00:33:37] **Speaker**: um here's another image showing uh this
+
+[00:33:40] **Speaker**: is one I handrew showing the underpin
+
+[00:33:43] **Speaker**: anded bores some of them are compressing
+
+[00:33:45] **Speaker**: some of them are decompressing and you
+
+[00:33:47] **Speaker**: always have at the center an upright
+
+[00:33:50] **Speaker**: vertical axis another way of defining
+
+[00:33:53] **Speaker**: what is mass it is a frame of reference
+
+[00:33:55] **Speaker**: if anybody is familiar with that ter
+
+[00:33:57] **Speaker**: term it defines the space and time that
+
+[00:34:00] **Speaker**: we're living in and and it is the really
+
+[00:34:03] **Speaker**: the source of of Relativity and why that
+
+[00:34:06] **Speaker**: is important for why we're here for
+
+[00:34:08] **Speaker**: energy and ultimately uh you know one of
+
+[00:34:12] **Speaker**: my interests big interest which is
+
+[00:34:14] **Speaker**: travel for flight because this is the
+
+[00:34:17] **Speaker**: secret to vertical axis propulsion okay
+
+[00:34:21] **Speaker**: implode explode close system and it
+
+[00:34:25] **Speaker**: harnesses the secret of the vertical
+
+[00:34:27] **Speaker**: axis which which goes back to that
+
+[00:34:28] **Speaker**: number nine which is at the apex of the
+
+[00:34:30] **Speaker**: vector okay the etheron is always
+
+[00:34:34] **Speaker**: ascending which is why we have gravity
+
+[00:34:37] **Speaker**: it's why matter collapses in on itself
+
+[00:34:39] **Speaker**: because it's being deflected by the
+
+[00:34:42] **Speaker**: ascending etheron particle okay another
+
+[00:34:46] **Speaker**: uh showing of one half of the NES bores
+
+[00:34:50] **Speaker**: at work different uh patterns this gets
+
+[00:34:53] **Speaker**: into a little bit more of the complex
+
+[00:34:55] **Speaker**: side of the Bas H math uh I don't really
+
+[00:34:58] **Speaker**: have time to Define all that for you but
+
+[00:35:00] **Speaker**: it's showing how different what we call
+
+[00:35:02] **Speaker**: Family number groups are interrelating
+
+[00:35:05] **Speaker**: to form very specific geometric shapes
+
+[00:35:07] **Speaker**: in fact Within These Tauruses you can
+
+[00:35:10] **Speaker**: Define every single geometry that exists
+
+[00:35:13] **Speaker**: in a whole lot that people are probably
+
+[00:35:15] **Speaker**: unaware of um here is H one example of
+
+[00:35:18] **Speaker**: showing uh this was again done by Tom
+
+[00:35:20] **Speaker**: Barnett showing that uh where this
+
+[00:35:25] **Speaker**: pathway of the z-axis these m& are
+
+[00:35:28] **Speaker**: intersecting and it's a very it's a very
+
+[00:35:31] **Speaker**: interesting uh point because if you can
+
+[00:35:34] **Speaker**: see this on another tours I'll show you
+
+[00:35:36] **Speaker**: exactly where that's been observed which
+
+[00:35:39] **Speaker**: was in the famous uh eye of God
+
+[00:35:41] **Speaker**: Supernova you can see that exact same
+
+[00:35:44] **Speaker**: and along those white lines pathway and
+I had no idea when we did this I mean I had no idea that it was going to come 
+[00:35:49] **Speaker**: out into that shape it simply did the
+
+[00:35:51] **Speaker**: math we created the shape and uh you can
+
+[00:35:54] **Speaker**: see that eyeball kind of intersection at
+
+[00:35:57] **Speaker**: the middle okay those are actually the
+
+[00:36:00] **Speaker**: end of my slides um I didn't I I really
+
+[00:36:03] **Speaker**: condensed this down because I knew we
+
+[00:36:04] **Speaker**: were at limited time and I wanted to
+
+[00:36:07] **Speaker**: introduce these Concepts ultimately I
+
+[00:36:10] **Speaker**: believe that if the etheron is
+
+[00:36:12] **Speaker**: understood tapped into I'm very
+
+[00:36:14] **Speaker**: interested in transforming these like uh
+
+[00:36:16] **Speaker**: plasma coils uh a little more higher-end
+
+[00:36:19] **Speaker**: technology if if the funding becomes
+
+[00:36:22] **Speaker**: available uh I believe that it you can
+
+[00:36:25] **Speaker**: tap into literally Limitless
+
+[00:36:29] **Speaker**: inexhaustible energy that is is truly
+
+[00:36:32] **Speaker**: free is truly um at the source of of
+
+[00:36:37] **Speaker**: even free free will itself
+
+[00:36:39] **Speaker**: self-determination a self-enclosed frame
+
+[00:36:42] **Speaker**: of reference this is essentially the
+
+[00:36:45] **Speaker**: explanation as far as I'm concerned of
+
+[00:36:47] **Speaker**: what the famous Flying Saucer is why it
+
+[00:36:51] **Speaker**: is in this shape and why it moves like
+
+[00:36:52] **Speaker**: it does and understanding those nested
+
+[00:36:55] **Speaker**: vortices is the key to how to steer it
+
+[00:36:58] **Speaker**: how to move it okay so um I think I'll
+
+[00:37:03] **Speaker**: stop there and let people ask questions
+
+[00:37:05] **Speaker**: and then we can just sort of see where
+
+[00:37:07] **Speaker**: it goes
+
+[00:37:09] **Speaker**: sure you mention that numbers are
+
+[00:37:12] **Speaker**: AA could you explain more about that
+
+[00:37:14] **Speaker**: concept sure so you know we we learn
+
+[00:37:18] **Speaker**: about numbers traditionally in
+
+[00:37:19] **Speaker**: multiplication series as if they exist
+
+[00:37:22] **Speaker**: in in an abstract realm we learn about
+
+[00:37:24] **Speaker**: three apples and two oranges and and all
+
+[00:37:27] **Speaker**: that
+
+[00:37:28] **Speaker**: that is the uh what is called numbers as
+
+[00:37:31] **Speaker**: quantity okay and and and many people
+
+[00:37:33] **Speaker**: talk about quantity versus quality in
+
+[00:37:35] **Speaker**: all aspects of life well numbers are the
+
+[00:37:37] **Speaker**: same way they do have quantities but the
+
+[00:37:40] **Speaker**: quantities of numbers as they express
+
+[00:37:43] **Speaker**: themselves are a an expression or a
+
+[00:37:46] **Speaker**: result of the qualities of numbers so
+
+[00:37:48] **Speaker**: the quantitative
+
+[00:37:50] **Speaker**: doubling within a system is an
+
+[00:37:52] **Speaker**: expression of the qualitative doubling
+
+[00:37:54] **Speaker**: and that means that quantitatively as a
+
+[00:37:57] **Speaker**: sublink it's actually moving as well
+
+[00:38:00] **Speaker**: it's actually creating geometric lce
+
+[00:38:03] **Speaker**: structures um and so you can't separate
+
+[00:38:06] **Speaker**: mathematics from 3D space there's lots
+
+[00:38:08] **Speaker**: of different theories in mathematics you
+
+[00:38:09] **Speaker**: can read about String Theory uh you know
+
+[00:38:12] **Speaker**: I did this Ted Talk where um you know I
+
+[00:38:15] **Speaker**: was after some years kind of sparked
+
+[00:38:17] **Speaker**: this censorship mode of of Ted that
+
+[00:38:20] **Speaker**: they've gone into uh I I like to were
+
+[00:38:23] **Speaker**: you the first I as far as I know myself
+
+[00:38:25] **Speaker**: and uh there was an economist who was
+
+[00:38:27] **Speaker**: answered by them uh yeah and we were the
+
+[00:38:30] **Speaker**: first two that I think got it so so I
+
+[00:38:33] **Speaker**: was I was excited you know I love
+
+[00:38:35] **Speaker**: confrontation I'm totally all about it
+
+[00:38:38] **Speaker**: so I I went and I said all right this is
+
+[00:38:40] **Speaker**: great I said let's have a debate I got I
+got them to bring all their people we 
+[00:38:44] **Speaker**: got this huge conference call with all
+
+[00:38:45] **Speaker**: the head people from Ted and and there
+
+[00:38:47] **Speaker**: was all these witnesses there who
+
+[00:38:49] **Speaker**: organized the Ted that I spoke at and
+
+[00:38:52] **Speaker**: man they had nothing they couldn't
+
+[00:38:54] **Speaker**: answer a single question and they they
+
+[00:38:56] **Speaker**: had no reason for censoring why I bring
+
+[00:38:58] **Speaker**: this up is because one so one of the
+
+[00:38:59] **Speaker**: things they said they said well we can't
+
+[00:39:01] **Speaker**: put this out there because there's no
+
+[00:39:02] **Speaker**: empirical evidence to support it well I
+
+[00:39:05] **Speaker**: said actually indeed there is and now I
+
+[00:39:07] **Speaker**: even have confirmations from
+
+[00:39:08] **Speaker**: universities in Europe who are putting
+
+[00:39:10] **Speaker**: together now a technical manual for us
+
+[00:39:13] **Speaker**: to show that these even these simple
+
+[00:39:15] **Speaker**: primitive devices are drawing energy
+
+[00:39:18] **Speaker**: from an unknown unexplainable source
+
+[00:39:20] **Speaker**: that can't there's no explanation for
+
+[00:39:21] **Speaker**: where it's coming from they're also able
+
+[00:39:23] **Speaker**: to do things like produce rare noble
+
+[00:39:25] **Speaker**: gases at extremely low voltage is which
+
+[00:39:27] **Speaker**: is according to them very unheard of um
+
+[00:39:30] **Speaker**: things like Argon gas um the uh so I
+said well there is actually empirical evidence but I'm okay with that but I 
+[00:39:37] **Speaker**: said if if that's the reason you're
+
+[00:39:38] **Speaker**: censoring me then you need to take down
+
+[00:39:41] **Speaker**: like for example Brian Green's talk on
+
+[00:39:42] **Speaker**: string theory because not only is there
+
+[00:39:45] **Speaker**: no empirical evidence there's not even
+
+[00:39:46] **Speaker**: any way to even get at how you would
+
+[00:39:48] **Speaker**: figure out how to test
+
+[00:39:51] **Speaker**: that well they said well but he's famous
+
+[00:39:54] **Speaker**: you know and I well so you know he's
+
+[00:39:57] **Speaker**: well he teaches at a university I said
+
+[00:39:59] **Speaker**: well so is that what it is I'm not
+
+[00:40:00] **Speaker**: famous enough to say this you know um
+
+[00:40:03] **Speaker**: and that was just one of about 100
+
+[00:40:05] **Speaker**: points and and I'm I'm very proud of the
+
+[00:40:07] **Speaker**: fact that some of my friends uh quit and
+
+[00:40:09] **Speaker**: left that organization over the um
+
+[00:40:12] **Speaker**: complete humiliation that was
+
+[00:40:14] **Speaker**: experienced uh by their
+
+[00:40:17] **Speaker**: uh by their closed-mindedness so thank
+
+[00:40:20] **Speaker**: you uh but um one last thing who
+
+[00:40:23] **Speaker**: somebody somewhere had to instigate that
+
+[00:40:25] **Speaker**: did they did that ever come out yeah it
+
+[00:40:27] **Speaker**: was a group of science bloggers online
+
+[00:40:30] **Speaker**: and if you read the blogs they sent me
+
+[00:40:32] **Speaker**: the blogs I said well let me read them
+
+[00:40:34] **Speaker**: they sent them to me there's not one
+
+[00:40:36] **Speaker**: criticism of anything that I said it's a
+
+[00:40:38] **Speaker**: total ad homonym that just quote me and
+
+[00:40:40] **Speaker**: go this guy's crazy you know I was like
+
+[00:40:43] **Speaker**: that's scientific discourse you know
+
+[00:40:45] **Speaker**: like I mean and I told them I said let's
+
+[00:40:47] **Speaker**: have a public debate I'm open I said
+
+[00:40:49] **Speaker**: I'll debate anybody and Rupert sheld did
+
+[00:40:52] **Speaker**: this too he he got censored much later
+
+[00:40:53] **Speaker**: but you know they they won't engage yeah
+
+[00:40:56] **Speaker**: they they won't engage on level I said
+
+[00:40:58] **Speaker**: you know if I'm so fallacious then you
+
+[00:41:00] **Speaker**: should expose me to the public and let's
+
+[00:41:01] **Speaker**: just squash this once and for all but
+
+[00:41:03] **Speaker**: they didn't they didn't they were a
+
+[00:41:05] **Speaker**: little intimidated by that I guess um um
+
+[00:41:14] **Speaker**: sure somebody have a microphone you can
+
+[00:41:17] **Speaker**: give oh yeah I think there was there one
+
+[00:41:19] **Speaker**: up here there used to be another one
+
+[00:41:21] **Speaker**: it's coming oh here it comes here comes
+
+[00:41:23] **Speaker**: the microphone
+
+[00:41:29] **Speaker**: was seems like everything in the in the
+material everything in the universe is 
+[00:41:33] **Speaker**: spinning it's verticular like the Earth
+
+[00:41:34] **Speaker**: is spinning the sun is spinning the
+
+[00:41:37] **Speaker**: solar system Galaxy and who knows about
+
+[00:41:39] **Speaker**: the universe is it spinning as well um
+
+[00:41:42] **Speaker**: what's causing it um does every material
+
+[00:41:44] **Speaker**: object have like an in and out like
+
+[00:41:46] **Speaker**: energy flowing in through the ether and
+
+[00:41:48] **Speaker**: then it's also I believe it's been
+
+[00:41:50] **Speaker**: demonstrated that matter even that
+
+[00:41:53] **Speaker**: matter or energy coming out of matter
+
+[00:41:55] **Speaker**: like a like photonic energy or whatever
+
+[00:41:57] **Speaker**: so yeah there's a there's a radiation
+
+[00:42:00] **Speaker**: side to it and there's an yeah there's
+
+[00:42:02] **Speaker**: an implosion and an explosion as many
+
+[00:42:04] **Speaker**: people say at these conferences um uh
+
+[00:42:09] **Speaker**: you know we we're good at tapping into
+
+[00:42:11] **Speaker**: the explosion side it's a lot easier the
+
+[00:42:13] **Speaker**: implosion side is much more difficult
+
+[00:42:15] **Speaker**: for people to tap into or at least at
+
+[00:42:17] **Speaker**: the approach that they're taking but the
+
+[00:42:19] **Speaker**: truth is everything has to implode
+
+[00:42:20] **Speaker**: before it explodes now as far as
+
+[00:42:23] **Speaker**: rotation and spin I believe that this uh
+
+[00:42:26] **Speaker**: what we call these flux Fields flux
+
+[00:42:28] **Speaker**: magnetic fields are at the source of as
+
+[00:42:31] **Speaker**: I said before time motion and vibration
+
+[00:42:34] **Speaker**: so what's happening is that the linear
+
+[00:42:35] **Speaker**: pathway the penetration of this energy
+
+[00:42:38] **Speaker**: is deflecting matter where this energy
+
+[00:42:41] **Speaker**: is matter cannot be okay that's why
+
+[00:42:43] **Speaker**: there's a hole at the center if you
+
+[00:42:45] **Speaker**: didn't have a hole everything would be
+
+[00:42:47] **Speaker**: log jammed things wouldn't be able to
+
+[00:42:49] **Speaker**: move it's because things aren't really
+
+[00:42:51] **Speaker**: based on a duality or a polarity like we
+
+[00:42:53] **Speaker**: think it's always a trary there's always
+
+[00:42:56] **Speaker**: three parts to the system and that three
+
+[00:42:58] **Speaker**: is the minimum that you can have to
+
+[00:43:00] **Speaker**: create a living Moving System what which
+
+[00:43:04] **Speaker**: are the three well the numerically we
+
+[00:43:08] **Speaker**: Define them by the three n and six
+
+[00:43:10] **Speaker**: though there are other what we that's
+
+[00:43:12] **Speaker**: how we Define what we call Family number
+
+[00:43:13] **Speaker**: groups which I go into in a lot of my
+
+[00:43:15] **Speaker**: work um they're 39647 and 25 and 8 uh
+
+[00:43:19] **Speaker**: but essentially the 396 which was
+
+[00:43:21] **Speaker**: referred to by Nicola Tesla famously he
+
+[00:43:23] **Speaker**: said I probably misquoted a little bit
+
+[00:43:25] **Speaker**: but something to the effect of if
+
+[00:43:27] **Speaker**: Humanity could understand the 39 and six
+
+[00:43:29] **Speaker**: they would understand the secrets of the
+
+[00:43:31] **Speaker**: universe and that's indeed what we found
+
+[00:43:33] **Speaker**: is that the 39 and six are a separate
+
+[00:43:36] **Speaker**: system they're not a
+
+[00:43:38] **Speaker**: physical uh they're not they don't have
+
+[00:43:40] **Speaker**: physical mass and so they they are
+
+[00:43:43] **Speaker**: defining what is deflecting and causing
+
+[00:43:46] **Speaker**: everything to curve and warp back in on
+
+[00:43:48] **Speaker**: itself and then eventually to explode
+
+[00:43:51] **Speaker**: and expand back out the other
+
+[00:43:56] **Speaker**: side he said an in and out in the center
+yeah an in and out in Center yeah 
+[00:44:00] **Speaker**: exactly you could think of it that way
+
+[00:44:01] **Speaker**: that there's there's always that there's
+
+[00:44:03] **Speaker**: always the the the whole the zero or the
+
+[00:44:06] **Speaker**: nine yeah yes um okay sure um you were
+
+[00:44:10] **Speaker**: talking about uh the importance of 36
+
+[00:44:12] **Speaker**: and nine um just curious uh with the um
+
+[00:44:16] **Speaker**: the idea of shearing in these Roden
+
+[00:44:17] **Speaker**: coils where you can have uninsulated
+
+[00:44:20] **Speaker**: copper touching themselves and the nodes
+
+[00:44:22] **Speaker**: and anti noes are canceling out much
+
+[00:44:23] **Speaker**: like the Nik Tesla hair pin experiment
+
+[00:44:26] **Speaker**: he was doing with high frequencies
+
+[00:44:28] **Speaker**: that's yeah great great point and I
+
+[00:44:30] **Speaker**: didn't mention that uh in the talk I'll
+
+[00:44:32] **Speaker**: show you uh some images so what we get
+
+[00:44:36] **Speaker**: um he he asked about he he he used the
+
+[00:44:38] **Speaker**: word shearing there's a term that's been
+
+[00:44:41] **Speaker**: coined within vbm Marco coin it called
+
+[00:44:44] **Speaker**: harmonic shearing okay and it's not
+
+[00:44:47] **Speaker**: understood at all in terms of electrical
+
+[00:44:49] **Speaker**: engineering these coils are very unique
+
+[00:44:52] **Speaker**: because we claim you can actually have
+
+[00:44:53] **Speaker**: two conductors side by side touching one
+
+[00:44:56] **Speaker**: another and their resonance is so
+
+[00:44:58] **Speaker**: perfect that they won't short out okay
+
+[00:45:01] **Speaker**: because this thing is not all on at one
+
+[00:45:04] **Speaker**: time okay it has a phasing it has a
+
+[00:45:08] **Speaker**: sequencing okay so when when one circuit
+
+[00:45:11] **Speaker**: is on flowing in the other ones are off
+
+[00:45:14] **Speaker**: then that one is off then there's
+
+[00:45:15] **Speaker**: another path blowing outward
+
+[00:45:17] **Speaker**: decompressing and then they're both off
+
+[00:45:19] **Speaker**: and that's when the flux field is active
+
+[00:45:22] **Speaker**: what that does and
+
+[00:45:24] **Speaker**: mathematically well I I shouldn't get
+
+[00:45:27] **Speaker**: too far into how it works numerically
+
+[00:45:29] **Speaker**: but what we're able to see in these
+
+[00:45:31] **Speaker**: thick black lines here um is what we
+
+[00:45:34] **Speaker**: call a harmonic Shear which means
+
+[00:45:36] **Speaker**: there's always a constant value there
+
+[00:45:38] **Speaker**: and it means that uh there's a boundary
+
+[00:45:41] **Speaker**: condition there these underpinning
+
+[00:45:43] **Speaker**: nested bores Shear against one another
+
+[00:45:46] **Speaker**: it's very important when you look at
+
+[00:45:47] **Speaker**: this image that the bores do not line up
+
+[00:45:50] **Speaker**: they are staggered like the teeth of a
+
+[00:45:52] **Speaker**: shark which G which is what makes it
+
+[00:45:55] **Speaker**: grip it's what holds things together and
+
+[00:45:57] **Speaker**: that is essentially what the etheron
+
+[00:45:59] **Speaker**: energy is it is the glue that holds the
+
+[00:46:02] **Speaker**: universe together and it creates these
+
+[00:46:05] **Speaker**: World boundary condition shears and
+
+[00:46:07] **Speaker**: those shears create extreme amounts of
+
+[00:46:09] **Speaker**: power in a small space yes
+
+[00:46:14] **Speaker**: siry is is there an importance to the
+
+[00:46:17] **Speaker**: size of the hole the ratio of the hole
+
+[00:46:19] **Speaker**: the center
+
+[00:46:22] **Speaker**: to absolutely
+
+[00:46:24] **Speaker**: yeah of
+
+[00:46:28] **Speaker**: well experimentally we haven't fully
+
+[00:46:30] **Speaker**: determined that so but I'll tell you
+
+[00:46:32] **Speaker**: about it mathematically it's very
+
+[00:46:34] **Speaker**: important and it's a and and you know
+
+[00:46:36] **Speaker**: you're going to write to the advanced
+
+[00:46:38] **Speaker**: part of the math now these are primitive
+
+[00:46:40] **Speaker**: handdrawn handdrawn images that are not
+
+[00:46:44] **Speaker**: precise geometrically um even the ones
+
+[00:46:47] **Speaker**: that are out there on uh the computer
+
+[00:46:50] **Speaker**: generated images that we have now uh
+
+[00:46:52] **Speaker**: because you know half the guys I've been
+
+[00:46:54] **Speaker**: working with for years here this is the
+
+[00:46:56] **Speaker**: first time we've met in person because
+
+[00:46:58] **Speaker**: there's no uh finding apparatus around
+
+[00:47:01] **Speaker**: this project in that sense uh I do know
+
+[00:47:04] **Speaker**: how to define that and it depends on it
+
+[00:47:07] **Speaker**: depends on the type of tourist the the
+
+[00:47:09] **Speaker**: discovery that I made showed that
+
+[00:47:11] **Speaker**: there's an extreme amount of variation
+
+[00:47:13] **Speaker**: in this which is what we wanted to find
+
+[00:47:15] **Speaker**: because obviously going from a donut to
+
+[00:47:17] **Speaker**: all of this there's a lot of variation
+
+[00:47:20] **Speaker**: involved so really the size of that hole
+
+[00:47:23] **Speaker**: can vary and we see that in nature you
+
+[00:47:25] **Speaker**: can have a hole like in that cavitation
+
+[00:47:27] **Speaker**: bubble that's roughly one10 the size of
+
+[00:47:30] **Speaker**: the outer diameter or you can have a
+
+[00:47:33] **Speaker**: like a black hole type system where it's
+
+[00:47:35] **Speaker**: h you know a seep trillion or whatever a
+
+[00:47:39] **Speaker**: tiny tiny tiny hole with a huge huge
+
+[00:47:42] **Speaker**: outer radius and I believe that that
+
+[00:47:44] **Speaker**: absolutely increases the power of the
+
+[00:47:47] **Speaker**: system you know when you're talking to
+
+[00:47:49] **Speaker**: uh the Practical people out there are
+
+[00:47:51] **Speaker**: trying to wind coils though they're not
+
+[00:47:53] **Speaker**: too keen on that tiny hole so um so but
+
+[00:47:57] **Speaker**: when we get into 3D printing when we get
+
+[00:47:58] **Speaker**: into other types of engineering that's
+
+[00:48:01] **Speaker**: going to become easier to do and
+
+[00:48:03] **Speaker**: ultimately I believe that is the key to
+
+[00:48:05] **Speaker**: hot Fusion because it controls the
+
+[00:48:07] **Speaker**: temperature it regulates it and it
+
+[00:48:09] **Speaker**: concentrates it at the center and it
+
+[00:48:11] **Speaker**: keeps the outside cool um probably have
+
+[00:48:14] **Speaker**: time for one more just what are your
+thoughts on 
+[00:48:22] **Speaker**: Daniel
+
+[00:48:24] **Speaker**: men on about the powder that gets
+
+[00:48:32] **Speaker**: collected
+
+[00:48:34] **Speaker**: yeah I I don't specifically but there
+
+[00:48:36] **Speaker**: there's so many interesting effects that
+
+[00:48:38] **Speaker**: we've seen out of these that you know
+
+[00:48:40] **Speaker**: and and asan as this is and this is
+
+[00:48:42] **Speaker**: again very basic I've gone so far into
+
+[00:48:45] **Speaker**: this mathematically as far as prime
+
+[00:48:47] **Speaker**: numbers and which I really wanted to
+
+[00:48:49] **Speaker**: talk about today but there's just no
+
+[00:48:50] **Speaker**: time for it um there there's so much
+
+[00:48:52] **Speaker**: advanced work in the math and yet at the
+
+[00:48:55] **Speaker**: same time we're barely even scratching
+
+[00:48:57] **Speaker**: the surface of what we know and
+
+[00:48:58] **Speaker**: understand about this our goal is to
+
+[00:49:00] **Speaker**: really create a community around this I
+I'll just say this one thing and I'll 
+[00:49:03] **Speaker**: take uh this one last question and then
+
+[00:49:05] **Speaker**: we'll probably have to wrap up um we are
+
+[00:49:07] **Speaker**: uh producing a film that we're going to
+
+[00:49:09] **Speaker**: be releasing online uh it's called ry's
+
+[00:49:12] **Speaker**: donuts I didn't give it that name but uh
+
+[00:49:14] **Speaker**: there's a big joke around that if if
+
+[00:49:16] **Speaker**: you're from La you know what I'm talking
+
+[00:49:17] **Speaker**: about yeah yeah it rolled across the
+
+[00:49:19] **Speaker**: screen in the 2012 film and everybody
+
+[00:49:21] **Speaker**: was real excited and then Iron Man had
+
+[00:49:24] **Speaker**: his coil that it was messed up and I got
+
+[00:49:27] **Speaker**: so many emails like you got to go see
+
+[00:49:28] **Speaker**: Iron Man so I went and saw it and it
+
+[00:49:30] **Speaker**: goes and sits in the ry's donuts and
+
+[00:49:32] **Speaker**: everybody got a big kick out of that so
+
+[00:49:34] **Speaker**: the film's called ry's donuts um
+
+[00:49:36] **Speaker**: actually I believe today or tomorrow
+this in the next couple days is the last days we're going to have for the 
+[00:49:40] **Speaker**: crowdfunding but you guys can look that
+
+[00:49:42] **Speaker**: up online or or check me out on Facebook
+
+[00:49:44] **Speaker**: and and all that information is on there
+
+[00:49:47] **Speaker**: if you're interested being a part this
+
+[00:49:49] **Speaker**: project is like no other because we are
+
+[00:49:51] **Speaker**: a truly open- source project we are as
+
+[00:49:54] **Speaker**: destitute as you could possibly be I'm
+
+[00:49:56] **Speaker**: not proud of it it just is what it is
+
+[00:49:58] **Speaker**: but um it's because we're really
+
+[00:50:00] **Speaker**: committed as my friend Michael here is
+
+[00:50:03] **Speaker**: as well we were very committed to the
+
+[00:50:06] **Speaker**: operative word which is free energy
+
+[00:50:08] **Speaker**: we're committed to the community to the
+
+[00:50:10] **Speaker**: sharing we're committed to doing
+
+[00:50:12] **Speaker**: something from the heart that's true and
+real and genuine because that's the only 
+[00:50:15] **Speaker**: way I believe that we can all come
+
+[00:50:17] **Speaker**: together get over all the ego junk and
+
+[00:50:20] **Speaker**: get together and make it happen you
+
+[00:50:23] **Speaker**: know thank
+
+[00:50:24] **Speaker**: you I just have this one last here and
+
+[00:50:27] **Speaker**: I'd be happy to take yours two after if
+
+[00:50:29] **Speaker**: we're out of time okay go ahead and
+
+[00:50:31] **Speaker**: we'll do these two and then can I get
+
+[00:50:33] **Speaker**: time to do two okay what did you you
+
+[00:50:35] **Speaker**: said that 3D reality is a a tri a trary
+
+[00:50:38] **Speaker**: system and it it maps to the surface of
+
+[00:50:40] **Speaker**: the Taurus other dimensions of time in
+
+[00:50:42] **Speaker**: space do they also map to the surface
+
+[00:50:45] **Speaker**: and are they also a trary or something
+
+[00:50:47] **Speaker**: else yeah that was what I was getting to
+and the the point I was making earlier about String Theory you know there's a 
+[00:50:52] **Speaker**: lot of thoughts about different
+
+[00:50:53] **Speaker**: dimensions I'm a little bit uh maybe I'm
+
+[00:50:56] **Speaker**: old school or whatever I actually don't
+
+[00:50:58] **Speaker**: believe in all these extra dimensions in
+
+[00:51:00] **Speaker**: fact I don't believe that you can
+
+[00:51:02] **Speaker**: actually logically postulate something
+
+[00:51:03] **Speaker**: that you cannot conceive you know you
+
+[00:51:05] **Speaker**: can postulate something that you maybe
+
+[00:51:07] **Speaker**: haven't perceived but you can conceive
+
+[00:51:09] **Speaker**: of it but if you can't conceive of it
+
+[00:51:11] **Speaker**: which no one has ever conceived of five
+
+[00:51:13] **Speaker**: Dimensions or you know they make these
+
+[00:51:15] **Speaker**: tesseracts and things but they're all
+
+[00:51:16] **Speaker**: threedimensional and and and the point
+
+[00:51:18] **Speaker**: is you have 3D and the higher Dimension
+
+[00:51:21] **Speaker**: defined by the 396 is what we call the
+
+[00:51:23] **Speaker**: Omni Dimension but it it it it is not an
+
+[00:51:26] **Speaker**: any way akin to you know it is a it it
+
+[00:51:31] **Speaker**: is non-local in that sense so you have
+
+[00:51:33] **Speaker**: 3D which is the physical reality or any
+
+[00:51:36] **Speaker**: sort of even if it's a some some people
+when they say Dimensions maybe they mean 
+[00:51:39] **Speaker**: a higher frequency or something that's
+
+[00:51:41] **Speaker**: invisible to us uh but to me that's
+
+[00:51:43] **Speaker**: still a part of a 3D reality any sort of
+
+[00:51:46] **Speaker**: bounded reality to me the the the three
+
+[00:51:49] **Speaker**: and this I can get into the hardcore
+
+[00:51:51] **Speaker**: math arguments about why this is and why
+
+[00:51:53] **Speaker**: three is the sole unique prime number
+
+[00:51:56] **Speaker**: that defines why we use base 10 because
+
+[00:51:59] **Speaker**: it's the first true Prime squared which
+
+[00:52:01] **Speaker**: is nine right modular nine math uh but
+
+[00:52:04] **Speaker**: but essentially yes every you have 3D
+which is the physical world and then you 
+[00:52:07] **Speaker**: have the Omni Dimension which is the
+
+[00:52:09] **Speaker**: energetic world and that that Omni
+
+[00:52:11] **Speaker**: Dimension is only dimensional Lies per
+
+[00:52:14] **Speaker**: se where it intersects with the third
+
+[00:52:17] **Speaker**: dimension I hope that's pretty decent
+
+[00:52:20] **Speaker**: answer TV and radio it's all in the same
+
+[00:52:22] **Speaker**: space just different frequency bands
+
+[00:52:24] **Speaker**: right right okay one last one uh you
+
+[00:52:26] **Speaker**: brought up conventional plasma reactors
+
+[00:52:29] **Speaker**: um and I'm curious about your thoughts
+
+[00:52:31] **Speaker**: about uh the perceived enhancements that
+
+[00:52:35] **Speaker**: uh vbm could could provide to current
+reactors and the changes and your 
+[00:52:40] **Speaker**: thoughts on the changes you said you're
+
+[00:52:41] **Speaker**: not an engineer yourself uh but just to
+
+[00:52:44] **Speaker**: complement you know some ideas that you
+
+[00:52:45] **Speaker**: may have about enhancing current plasma
+
+[00:52:48] **Speaker**: reactors as the Plasma's rotating in the
+
+[00:52:50] **Speaker**: center of the Taurus inside the Taurus
+
+[00:52:53] **Speaker**: and in current plasma reactors whereas
+
+[00:52:55] **Speaker**: we had it seems like magic inside the
+
+[00:52:57] **Speaker**: center of the tourus and so well it's
+
+[00:53:00] **Speaker**: somewhat similar and obviously I'm not
+
+[00:53:02] **Speaker**: an expert on plasma reactors for those
+
+[00:53:04] **Speaker**: of you who don't know this isn't totally
+
+[00:53:06] **Speaker**: an obscure idea because tal reactors are
+
+[00:53:08] **Speaker**: all over the place I mean uh there's a
+
+[00:53:11] **Speaker**: big huge one up at the University of
+
+[00:53:12] **Speaker**: Wisconsin there is uh the toac all these
+
+[00:53:15] **Speaker**: different types of toal fusion reactors
+
+[00:53:18] **Speaker**: so this is something that mainstream
+
+[00:53:20] **Speaker**: science is is somewhat onto and uh um
+
+[00:53:25] **Speaker**: you know but they're doing similar to
+
+[00:53:27] **Speaker**: how things are done in in electrical
+
+[00:53:29] **Speaker**: engineering could make the analogy where
+
+[00:53:30] **Speaker**: they're using magnets to push the energy
+
+[00:53:34] **Speaker**: to push the plasma or to push the
+
+[00:53:36] **Speaker**: electricity through the medium so in in
+
+[00:53:38] **Speaker**: a case of a coil you're using the magnet
+
+[00:53:40] **Speaker**: to push it through the wire and what we
+
+[00:53:44] **Speaker**: discovered in this and what many people
+
+[00:53:45] **Speaker**: know or uh even if you're do martial
+
+[00:53:48] **Speaker**: arts or something pull is always
+
+[00:53:50] **Speaker**: stronger than push no one likes to be
+
+[00:53:52] **Speaker**: pushed you know the pulling the coercion
+
+[00:53:55] **Speaker**: side is much stronger stronger force and
+
+[00:53:58] **Speaker**: uh the ability to tap into that is
+
+[00:54:00] **Speaker**: largely uh a matter of geomet geometric
+
+[00:54:03] **Speaker**: pathway that's moved in so most of these
+
+[00:54:05] **Speaker**: Fusion reactors they get so hot so quick
+
+[00:54:07] **Speaker**: I mean they can only activate them for a
+
+[00:54:09] **Speaker**: very small uh frame of time and it's
+
+[00:54:12] **Speaker**: because they're using magnets moving
+
+[00:54:15] **Speaker**: vertically and horizontally to excite
+
+[00:54:17] **Speaker**: and move the plasma and that's causing
+
+[00:54:19] **Speaker**: it to move in a way that creates a lot
+
+[00:54:21] **Speaker**: of friction a lot of heat a lot of heat
+
+[00:54:23] **Speaker**: loss okay if you uh can move the and I I
+
+[00:54:28] **Speaker**: don't know how you would necessarily
+
+[00:54:29] **Speaker**: enhance the current design but if you
+
+[00:54:32] **Speaker**: started building building off of these
+
+[00:54:35] **Speaker**: principles to begin with moving the
+
+[00:54:37] **Speaker**: plasma along the pathway that it
+
+[00:54:39] **Speaker**: actually is seeking to go naturally will
+
+[00:54:42] **Speaker**: eliminate random collisions of particles
+
+[00:54:44] **Speaker**: will eliminate the friction and will
+
+[00:54:46] **Speaker**: concentrate the heat to the center and
+
+[00:54:48] **Speaker**: then regulate the temperature and so
+
+[00:54:51] **Speaker**: it's it's just the same essential
+
+[00:54:52] **Speaker**: principle of how it would be used in
+that uh 
+[00:54:56] **Speaker**: thank you all very much I really
+
+[00:54:58] **Speaker**: appreciate your time and attention
+
+[00:55:03] **Speaker**: [Applause]
+
+[00:55:08] **Speaker**: [Music]
+
+================================================================================
+END OF TRANSCRIPT
+================================================================================

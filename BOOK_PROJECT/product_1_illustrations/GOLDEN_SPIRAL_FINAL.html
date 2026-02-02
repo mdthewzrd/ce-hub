@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Spiral - Final</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #e5e5e5;
+            font-family: 'Jost', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .showcase {
+            max-width: 900px;
+            background: #111;
+            border-radius: 20px;
+            padding: 50px;
+            border: 3px solid #d97706;
+            box-shadow: 0 0 60px rgba(217, 119, 6, 0.2);
+        }
+
+        h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: 36px;
+            color: #e5e5e5;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #d97706;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="showcase">
+        <h1>The Golden Spiral</h1>
+        <p class="subtitle">φ = 1.6180339887...</p>
+
+        <svg viewBox="0 0 800 800" width="800" height="800" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="spiralGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#d97706;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0.8" />
+                </linearGradient>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <!-- Fibonacci squares grid -->
+            <g fill="none" stroke="#2a2a2a" stroke-width="1.5">
+                <rect x="50" y="50" width="50" height="50"/>
+                <rect x="100" y="50" width="50" height="50"/>
+                <rect x="50" y="100" width="100" height="100"/>
+                <rect x="150" y="50" width="150" height="150"/>
+                <rect x="50" y="250" width="250" height="250"/>
+                <rect x="300" y="50" width="400" height="400"/>
+                <rect x="50" y="500" width="650" height="250"/>
+            </g>
+
+            <!-- Fibonacci numbers -->
+            <g font-family="JetBrains Mono" font-size="11" fill="#666" text-anchor="middle">
+                <text x="75" y="82">1</text>
+                <text x="125" y="82">1</text>
+                <text x="100" y="155">2</text>
+                <text x="225" y="130">3</text>
+                <text x="175" y="380">5</text>
+                <text x="500" y="255">8</text>
+                <text x="375" y="630">13</text>
+            </g>
+
+            <!-- Golden Spiral - using arc approximation with many segments for smoothness -->
+            <path fill="none"
+                  stroke="url(#spiralGrad)"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  filter="url(#glow)"
+                  d="M 50 100
+                  Q 75 50 100 50
+                  Q 150 50 150 100
+                  Q 150 200 50 200
+                  Q 50 150 50 100"/>
+        </svg>
+
+        <div style="text-align: center; margin-top: 30px; padding-top: 30px; border-top: 1px solid #1a1a1a;">
+            <p style="color: #999; font-size: 14px; font-family: 'Jost', sans-serif;">The golden spiral formed from Fibonacci squares</p>
+            <p style="color: #666; font-size: 12px; font-family: 'JetBrains Mono', monospace; margin-top: 10px;">Each quarter-turn uses a larger radius (1, 1, 2, 3, 5, 8, 13...)</p>
+        </div>
+    </div>
+</body>
+</html>

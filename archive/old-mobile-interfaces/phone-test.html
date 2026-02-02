@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phone Connectivity Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(45deg, #2196F3, #21CBF3);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .status {
+            background: rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+        .time {
+            font-size: 1.5em;
+            color: #FFD700;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .info {
+            font-size: 0.9em;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+        .success {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+        .next-step {
+            background: rgba(255,193,7,0.3);
+            border: 2px solid #FFC107;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 30px;
+        }
+        .link {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            margin: 10px 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉</h1>
+        <div class="success">
+            <h2>CONNECTIVITY SUCCESS!</h2>
+            <p>Your phone is connected to CE-Hub</p>
+        </div>
+
+        <div class="status">
+            <div class="time" id="time"></div>
+            <div class="info">
+                Server: 100.95.223.19:8105<br>
+                Port: Open ✅<br>
+                Tailscale: Connected ✅<br>
+                Mobile Ready: ✅
+            </div>
+        </div>
+
+        <div class="next-step">
+            <h3>🚀 Ready to Code!</h3>
+            <p>Click below to open the full mobile development interface:</p>
+
+            <a href="/mobile-pro-v2.html" class="button">
+                📱 Open Mobile IDE
+            </a>
+
+            <div style="margin-top: 15px;">
+                <small>Features: File Explorer • Code Editor • Terminal • AI Models</small>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; opacity: 0.7; font-size: 0.8em;">
+            <p>If this page loaded, your connectivity is perfect!</p>
+            <p>The CE-Hub mobile interface will work flawlessly.</p>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            document.getElementById('time').textContent = new Date().toLocaleTimeString();
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

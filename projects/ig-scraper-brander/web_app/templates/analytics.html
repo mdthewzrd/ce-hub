@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Harmonatica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a1;
+            --accent: #6366f1;
+            --border: #262626;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding-top: 64px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar-brand .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 48px;
+        }
+
+        .navbar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .navbar-nav a:hover { background: rgba(99, 102, 241, 0.1); }
+        .navbar-nav a.active { background: rgba(99, 102, 241, 0.2); color: var(--accent); }
+
+        .glass {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/main" class="navbar-brand">
+            <div class="logo"><i class="fas fa-infinity text-white"></i></div>
+            <div><h1>Harmonatica</h1><p>Content Studio</p></div>
+        </a>
+        <div class="navbar-nav">
+            <a href="/main"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="/browse"><i class="fas fa-search"></i> Browse <span style="background: linear-gradient(135deg, #8b5cf6, #6366f1);" class="badge">New</span></a>
+            <a href="/scrape"><i class="fas fa-video"></i> Scraper</a>
+            <a href="/library"><i class="fas fa-folder"></i> Production</a>
+            <a href="/brand-voice"><i class="fas fa-microphone"></i> Brand Voice</a>
+            <a href="/settings"><i class="fas fa-cog"></i> Settings</a>
+        </div>
+    </nav>
+
+    <div style="padding: 24px;">
+        <div class="glass rounded-xl p-6 mb-6">
+            <h1 class="text-2xl font-bold mb-2">Analytics Dashboard</h1>
+            <p class="text-gray-400">Track your content performance</p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="glass rounded-xl p-6 text-center">
+                <div class="text-3xl font-bold gradient-text" id="statScraped">0</div>
+                <div class="text-sm text-gray-400">Scraped Videos</div>
+            </div>
+            <div class="glass rounded-xl p-6 text-center">
+                <div class="text-3xl font-bold gradient-text" id="statPrepared">0</div>
+                <div class="text-sm text-gray-400">Prepared</div>
+            </div>
+            <div class="glass rounded-xl p-6 text-center">
+                <div class="text-3xl font-bold gradient-text" id="statScheduled">0</div>
+                <div class="text-sm text-gray-400">Scheduled</div>
+            </div>
+            <div class="glass rounded-xl p-6 text-center">
+                <div class="text-3xl font-bold gradient-text" id="statPosted">0</div>
+                <div class="text-sm text-gray-400">Posted</div>
+            </div>
+        </div>
+
+        <!-- Engagement Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="glass rounded-xl p-6">
+                <h2 class="text-lg font-bold mb-4">Scraped Content Engagement</h2>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-pink-500" id="statLikes">0</div>
+                        <div class="text-xs text-gray-400">Total Likes</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-blue-500" id="statViews">0</div>
+                        <div class="text-xs text-gray-400">Total Views</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-green-500" id="statSize">0 MB</div>
+                        <div class="text-xs text-gray-400">Total Size</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass rounded-xl p-6">
+                <h2 class="text-lg font-bold mb-4">Workflow Stats</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-yellow-500" id="statPending">0</div>
+                        <div class="text-xs text-gray-400">Pending</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-purple-500" id="statNotifications">0</div>
+                        <div class="text-xs text-gray-400">Unread Notifications</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance -->
+        <div class="glass rounded-xl p-6">
+            <h2 class="text-lg font-bold mb-4">Top Performing Content</h2>
+            <div id="topPerforming" class="space-y-3">
+                <p class="text-gray-400">Posted content will appear here...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function loadAnalytics() {
+            try {
+                const response = await fetch('/api/analytics');
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('statScraped').textContent = data.scraped_videos || 0;
+                    document.getElementById('statPrepared').textContent = data.pending_source || 0;
+                    document.getElementById('statScheduled').textContent = data.scheduled_content || 0;
+                    document.getElementById('statPosted').textContent = data.posted_content || 0;
+                    document.getElementById('statLikes').textContent = formatNumber(data.scraped_likes || 0);
+                    document.getElementById('statViews').textContent = formatNumber(data.scraped_views || 0);
+                    document.getElementById('statSize').textContent = (data.scraped_size_mb || 0).toFixed(1) + ' MB';
+                    document.getElementById('statPending').textContent = data.pending_source || 0;
+                    document.getElementById('statNotifications').textContent = data.notifications?.unread || 0;
+                }
+            } catch (error) {
+                console.error('Error loading analytics:', error);
+            }
+
+            // Load performance data
+            try {
+                const response = await fetch('/api/analytics/performance');
+                const data = await response.json();
+
+                if (data.success && data.top_performing.length > 0) {
+                    const container = document.getElementById('topPerforming');
+                    container.innerHTML = data.top_performing.map((item, i) => `
+                        <div class="flex items-center gap-4 p-3 rounded-lg" style="background: var(--bg-secondary);">
+                            <span class="text-2xl font-bold gradient-text">#${i + 1}</span>
+                            <div class="flex-1">
+                                <p class="text-sm mb-1">${item.caption}</p>
+                                <div class="flex gap-4 text-xs text-gray-400">
+                                    <span><i class="fas fa-heart mr-1"></i>${formatNumber(item.likes)}</span>
+                                    <span><i class="fas fa-eye mr-1"></i>${formatNumber(item.views)}</span>
+                                    <span>@${item.account}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading performance:', error);
+            }
+        }
+
+        function formatNumber(num) {
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num.toString();
+        }
+
+        document.addEventListener('DOMContentLoaded', loadAnalytics);
+
+        // Auto-refresh every 30 seconds
+        setInterval(loadAnalytics, 30000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden in Plain Sight - Page Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #e5e5e5;
+            font-family: 'Jost', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #d97706;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+
+        .book-page {
+            background: #111;
+            border-radius: 8px;
+            padding: 60px 50px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            border: 1px solid #1a1a1a;
+            position: relative;
+        }
+
+        .book-page::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, #d97706 10%, #d97706 90%, transparent);
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 12px;
+            color: #d97706;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Chapter Page Styles */
+        .chapter-number {
+            font-family: 'EB Garamond', serif;
+            font-size: 120px;
+            font-weight: 700;
+            color: #d97706;
+            line-height: 1;
+            text-align: center;
+            margin-bottom: 20px;
+            opacity: 0.15;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .chapter-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 48px;
+            font-weight: 600;
+            color: #e5e5e5;
+            text-align: center;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .chapter-subtitle {
+            font-family: 'Jost', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: #999;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .drop-cap {
+            float: left;
+            font-family: 'EB Garamond', serif;
+            font-size: 68px;
+            font-weight: 700;
+            color: #d97706;
+            line-height: 0.8;
+            margin-right: 12px;
+            margin-top: 4px;
+        }
+
+        .body-text {
+            font-family: 'Jost', sans-serif;
+            font-size: 15px;
+            color: #ccc;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .body-text p {
+            margin-bottom: 16px;
+        }
+
+        .section-heading {
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #e5e5e5;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .technical-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #d97706;
+            background: rgba(217, 119, 6, 0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 5px 5px 5px 0;
+        }
+
+        .highlight-box {
+            background: rgba(217, 119, 6, 0.05);
+            border-left: 3px solid #d97706;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            color: #e5e5e5;
+            font-style: italic;
+        }
+
+        .diagram-placeholder {
+            background: #0a0a0a;
+            border: 2px dashed #1a1a1a;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .diagram-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #d97706;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .diagram-circle span {
+            font-family: 'EB Garamond', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #0a0a0a;
+        }
+
+        .page-label {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .quote {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            font-style: italic;
+            color: #999;
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 2px solid #d97706;
+            border-right: 2px solid #d97706;
+        }
+
+        @media (max-width: 1000px) {
+            .pages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .book-page {
+                padding: 40px 30px;
+            }
+            .chapter-number {
+                font-size: 80px;
+            }
+            .chapter-title {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📖 Page Preview</h1>
+        <p class="subtitle">Hidden in Plain Sight - Dark Academia Font System</p>
+
+        <div class="pages-grid">
+            <!-- PAGE 1: Chapter Opening -->
+            <div class="book-page">
+                <div class="page-label">Chapter Opening</div>
+                <div class="chapter-number">1</div>
+                <div class="chapter-title">Pattern Recognition</div>
+                <div class="chapter-subtitle">The Architecture of Nature</div>
+
+                <div class="body-text">
+                    <p><span class="drop-cap">O</span>nce you see the patterns, you can't unsee them. They appear everywhere in nature, from the smallest flower to the largest galaxy. These aren't coincidences—they're the fundamental architecture of reality.</p>
+
+                    <p>The golden ratio, represented by the Greek letter phi (φ), equals approximately 1.6180339887. This number appears so consistently in natural systems that it cannot be random.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p>"Nature uses only the longest threads to weave her patterns, so each small piece of her fabric reveals the organization of the entire tapestry."</p>
+                    <p style="font-size: 11px; margin-top: 10px; color: #666;">— Richard Feynman</p>
+                </div>
+
+                <div class="page-number">3</div>
+            </div>
+
+            <!-- PAGE 2: Content with Technical Labels -->
+            <div class="book-page">
+                <div class="page-label">Content Page</div>
+
+                <div class="section-heading">The Fibonacci Sequence</div>
+
+                <div class="body-text">
+                    <p>Perhaps the most famous example of nature's code is the Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34... Each number is the sum of the two preceding ones.</p>
+
+                    <p>This sequence generates the golden spiral, visible in:</p>
+                </div>
+
+                <div style="margin: 20px 0;">
+                    <span class="technical-label">NAUTILUS_SHELLS</span>
+                    <span class="technical-label">GALAXY_ARMS</span>
+                    <span class="technical-label">HURRICANE_SPIRALS</span>
+                    <span class="technical-label">PINE_CONES</span>
+                    <span class="technical-label">SUNFLOWERS</span>
+                </div>
+
+                <div class="body-text">
+                    <p>The ratio between consecutive Fibonacci numbers approaches φ (phi) as the sequence grows larger. This is not mere mathematics—it's the fingerprint of creation itself.</p>
+
+                    <p style="text-align: center; margin: 25px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #d97706;">
+                        φ = (1 + √5) / 2 = 1.6180339887...
+                    </p>
+                </div>
+
+                <div class="page-number">4</div>
+            </div>
+
+            <!-- PAGE 3: With Diagram -->
+            <div class="book-page">
+                <div class="page-label">Illustration Page</div>
+
+                <div class="section-heading">Hidden in Plain Sight</div>
+
+                <div class="body-text">
+                    <p>The same spiral that governs the shape of a hurricane also dictates the arrangement of seeds in a sunflower. This universality suggests a single underlying principle.</p>
+                </div>
+
+                <div class="diagram-placeholder">
+                    <div class="diagram-circle">
+                        <span>φ</span>
+                    </div>
+                    <p style="font-family: 'Jost', sans-serif; font-size: 12px; color: #666;">Golden Ratio Visual</p>
+                </div>
+
+                <div class="quote">
+                    The mathematical patterns of nature are hidden in plain sight, waiting for those with eyes to see.
+                </div>
+
+                <div class="body-text">
+                    <p>From the DNA molecule to the spiral arms of the Milky Way, the same geometric principles repeat at every scale. This is the hidden language of the universe.</p>
+                </div>
+
+                <div class="page-number">5</div>
+            </div>
+
+            <!-- PAGE 4: Technical Content -->
+            <div class="book-page">
+                <div class="page-label">Technical Section</div>
+
+                <div class="section-heading">The Mathematics of Beauty</div>
+
+                <div class="body-text">
+                    <p>Why do we find certain proportions beautiful? The answer may lie in our brain's pattern recognition systems.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p style="margin-bottom: 10px;"><strong>Key Formula:</strong></p>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #d97706; font-style: normal;">
+                        a/b = (a+b)/a = φ ≈ 1.618
+                    </p>
+                </div>
+
+                <div class="body-text">
+                    <p>When presented with rectangles of varying proportions, humans consistently prefer those closest to the golden ratio. This preference appears across cultures and time periods.</p>
+
+                    <p style="margin-top: 20px; font-size: 13px; color: #999;">
+                        <span style="color: #d97706;">◆</span> Applications in architecture<br>
+                        <span style="color: #d97706;">◆</span> Role in facial attractiveness<br>
+                        <span style="color: #d97706;">◆</span> Presence in music composition
+                    </p>
+                </div>
+
+                <div class="page-number">6</div>
+            </div>
+        </div>
+
+        <!-- Font Legend -->
+        <div style="background: #111; border-radius: 12px; padding: 30px; margin-top: 50px; border: 2px solid #d97706;">
+            <h3 style="text-align: center; font-family: 'EB Garamond', serif; font-size: 24px; margin-bottom: 30px; color: #e5e5e5;">Dark Academia Font System</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                <div style="text-align: center; padding: 20px; background: #0a0a0a; border-radius: 8px;">
+                    <div style="font-family: 'EB Garamond', serif; font-size: 28px; font-weight: 600; color: #e5e5e5; margin-bottom: 10px;">EB Garamond</div>
+                    <div style="font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px;">Headings & Display</div>
+                    <div style="font-family: 'EB Garamond', serif; font-size: 14px; color: #999; margin-top: 10px;">Chapter titles, section headers, drop caps, quotes</div>
+                </div>
+                <div style="text-align: center; padding: 20px; background: #0a0a0a; border-radius: 8px;">
+                    <div style="font-family: 'Jost', sans-serif; font-size: 28px; font-weight: 400; color: #e5e5e5; margin-bottom: 10px;">Jost</div>
+                    <div style="font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px;">Body Text</div>
+                    <div style="font-family: 'Jost', sans-serif; font-size: 14px; color: #999; margin-top: 10px;">Paragraphs, captions, subtitles</div>
+                </div>
+                <div style="text-align: center; padding: 20px; background: #0a0a0a; border-radius: 8px;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 28px; color: #e5e5e5; margin-bottom: 10px;">JetBrains Mono</div>
+                    <div style="font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px;">Technical</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #999; margin-top: 10px;">Labels, formulas, page numbers, code</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

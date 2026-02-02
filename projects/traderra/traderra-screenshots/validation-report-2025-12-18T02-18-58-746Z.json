@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-12-18T02:18:58.746Z",
+  "summary": {
+    "totalTests": 21,
+    "totalPassed": 3,
+    "overallPercentage": "14.29"
+  },
+  "results": [
+    {
+      "category": "Custom Date Ranges",
+      "passed": 0,
+      "total": 5,
+      "percentage": "0.0"
+    },
+    {
+      "category": "Basic Date Ranges",
+      "passed": 0,
+      "total": 7,
+      "percentage": "0.0"
+    },
+    {
+      "category": "Display Modes",
+      "passed": 0,
+      "total": 5,
+      "percentage": "0.0"
+    },
+    {
+      "category": "Navigation",
+      "passed": 3,
+      "total": 4,
+      "percentage": "75.0"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "scanner_name": "BacksideBScanner",
+  "scanner_type": "backside_b_para",
+  "formatted_class_name": "UltraFastRenataBacksideBScanner",
+  "description": "Backside B Para Scanner with 2-stage architecture",
+  "parameters": {
+    "price_min": {
+      "value": 8.0,
+      "type": "float",
+      "description": "Minimum stock price in USD",
+      "category": "liquidity_filter"
+    },
+    "adv20_min_usd": {
+      "value": 30000000,
+      "type": "int",
+      "description": "Minimum 20-day average daily dollar volume ($30M)",
+      "category": "liquidity_filter"
+    },
+    "abs_lookback_days": {
+      "value": 1000,
+      "type": "int",
+      "description": "Lookback period for absolute high calculation",
+      "category": "calculation"
+    },
+    "abs_exclude_days": {
+      "value": 10,
+      "type": "int",
+      "description": "Exclude days near absolute high",
+      "category": "calculation"
+    },
+    "pos_abs_max": {
+      "value": 0.75,
+      "type": "float",
+      "description": "Maximum position relative to absolute high",
+      "category": "filter"
+    },
+    "trigger_mode": {
+      "value": "D1_or_D2",
+      "type": "string",
+      "description": "Trigger mode: D1 only, D2 only, or either",
+      "category": "logic",
+      "options": ["D1_only", "D2_only", "D1_or_D2"]
+    },
+    "atr_mult": {
+      "value": 0.9,
+      "type": "float",
+      "description": "ATR multiplier for trigger calculation",
+      "category": "trigger"
+    },
+    "vol_mult": {
+      "value": 0.9,
+      "type": "float",
+      "description": "Volume multiplier for trigger calculation",
+      "category": "trigger"
+    },
+    "d1_vol_mult_min": {
+      "value": null,
+      "type": "null",
+      "description": "Minimum D1 volume multiplier (optional)",
+      "category": "trigger"
+    },
+    "d1_volume_min": {
+      "value": 15000000,
+      "type": "int",
+      "description": "Minimum D1 volume in shares (15M)",
+      "category": "liquidity_filter"
+    },
+    "slope5d_min": {
+      "value": 3.0,
+      "type": "float",
+      "description": "Minimum 5-day slope (trend strength)",
+      "category": "trend_filter"
+    },
+    "high_ema9_mult": {
+      "value": 1.05,
+      "type": "float",
+      "description": "High price vs EMA9 multiplier",
+      "category": "trigger"
+    },
+    "gap_div_atr_min": {
+      "value": 0.75,
+      "type": "float",
+      "description": "Minimum gap/dividend as ATR multiple",
+      "category": "trigger"
+    },
+    "open_over_ema9_min": {
+      "value": 0.9,
+      "type": "float",
+      "description": "Opening price minimum above EMA9",
+      "category": "trigger"
+    },
+    "d1_green_atr_min": {
+      "value": 0.30,
+      "type": "float",
+      "description": "Minimum D1 green candle ATR",
+      "category": "trigger"
+    },
+    "require_open_gt_prev_high": {
+      "value": true,
+      "type": "bool",
+      "description": "Require opening price > previous high",
+      "category": "filter"
+    },
+    "enforce_d1_above_d2": {
+      "value": true,
+      "type": "bool",
+      "description": "Enforce D1 close > D2 close",
+      "category": "filter"
+    }
+  },
+  "date_ranges": {
+    "d0_start": "2025-01-01",
+    "d0_end": "2025-11-01",
+    "scan_start": "2020-01-01",
+    "scan_end": "2025-11-01",
+    "description": "D0 is signal output range, scan_start is historical data for indicators"
+  },
+  "threading": {
+    "stage1_workers": "min(128, cpu_cores * 8)",
+    "stage2_workers": "min(96, cpu_cores * 6)",
+    "batch_size": 200
+  },
+  "api": {
+    "base_url": "https://api.polygon.io",
+    "snapshot_endpoint": "/v2/snapshot/locale/us/markets/stocks/tickers",
+    "grouped_endpoint": "/v2/aggs/grouped/locale/us/market/stocks/{date}",
+    "api_key": "Fm7brz4s23eSocDErnL68cE7wspz2K1I"
+  },
+  "optimization": {
+    "session_pooling": "HTTPAdapter(pool_connections=100, pool_maxsize=100, max_retries=2)",
+    "timeout": 15,
+    "market_universe_target": "12,000+ tickers"
+  }
+}

@@ -1,0 +1,347 @@
+{
+  "agent": {
+    "name": "Trading Pattern Analyzer",
+    "description": "Analyzes stock market patterns and generates actionable trading signals with risk assessments",
+    "type": "simple",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 7,
+    "capabilities": {
+      "role": "trading_analyst",
+      "skills": [
+        "pattern_detection",
+        "technical_analysis",
+        "risk_assessment",
+        "signal_generation",
+        "volume_analysis",
+        "trend_identification",
+        "alert_generation"
+      ],
+      "complexity": "moderate",
+      "output_format": "json"
+    },
+    "system_prompt": {
+      "role": "You are a Trading Pattern Analysis Specialist with 15 years of experience in quantitative trading and technical analysis. You identify high-probability trading opportunities by analyzing price action, volume patterns, and technical indicators.",
+      "responsibilities": [
+        "Analyze market patterns using technical indicators (RSI, MACD, EMA, gaps, volume)",
+        "Identify trading opportunities with clear entry/exit points and stop losses",
+        "Assess risk levels for each potential trade using position sizing and volatility",
+        "Provide evidence-based recommendations with specific data citations",
+        "Generate actionable alerts in real-time as patterns develop"
+      ],
+      "guidelines": [
+        "Always provide data citations for pattern detections (specific prices, dates, indicators)",
+        "Include risk assessment with every signal (stop loss, position size, risk/reward ratio)",
+        "Use confidence scores (0-100) for all predictions based on pattern strength",
+        "Prioritize quality over quantity - Only report high-confidence setups (>70%)",
+        "Explain reasoning behind each recommendation with specific technical justifications",
+        "Consider market context - Overall trend, sector performance, market conditions",
+        "Never guarantee returns - Always use probabilistic language"
+      ],
+      "constraints": [
+        "NEVER provide financial advice without appropriate risk disclaimers",
+        "DON'T predict with 100% certainty - Always use confidence ranges",
+        "AVOID analyzing more than 20 symbols simultaneously - Quality degrades with volume",
+        "DON'T recommend positions >10% of portfolio - Proper diversification required",
+        "NEVER ignore risk management - Stop losses and position sizing are mandatory",
+        "DON'T trade against the trend unless there's a compelling reversal signal",
+        "AVOID illiquid stocks - Average daily volume must be >1M shares"
+      ],
+      "tone": "professional"
+    },
+    "tools": [
+      {
+        "name": "detect_gap",
+        "description": "Detects price gaps in market data where opening price is significantly different from previous close",
+        "type": "analysis",
+        "parameters": {
+          "symbol": {
+            "type": "string",
+            "description": "Stock ticker symbol (e.g., 'AAPL')",
+            "required": true
+          },
+          "timeframe": {
+            "type": "string",
+            "description": "Timeframe for analysis (1m, 5m, 15m, 1H, 4H, 1D)",
+            "required": false,
+            "default": "1D",
+            "enum": ["1m", "5m", "15m", "1H", "4H", "1D"]
+          },
+          "threshold": {
+            "type": "float",
+            "description": "Minimum gap size to consider (default: 0.02 = 2%)",
+            "required": false,
+            "default": 0.02,
+            "minimum": 0.01,
+            "maximum": 0.10
+          }
+        },
+        "return_type": "GapPattern",
+        "example": "detect_gap('AAPL', timeframe='1D', threshold=0.02)"
+      },
+      {
+        "name": "analyze_volume",
+        "description": "Analyzes trading volume patterns to identify accumulation, distribution, or breakout activity",
+        "type": "analysis",
+        "parameters": {
+          "symbol": {
+            "type": "string",
+            "description": "Stock ticker symbol",
+            "required": true
+          },
+          "periods": {
+            "type": "integer",
+            "description": "Number of periods to average",
+            "required": false,
+            "default": 20,
+            "minimum": 5,
+            "maximum": 50
+          }
+        },
+        "return_type": "VolumeAnalysis",
+        "example": "analyze_volume('AAPL', periods=20)"
+      },
+      {
+        "name": "calculate_rsi",
+        "description": "Calculates Relative Strength Index (RSI) to identify overbought/oversold conditions",
+        "type": "calculation",
+        "parameters": {
+          "symbol": {
+            "type": "string",
+            "description": "Stock ticker symbol",
+            "required": true
+          },
+          "periods": {
+            "type": "integer",
+            "description": "RSI calculation period (typically 14 or 21)",
+            "required": false,
+            "default": 14,
+            "minimum": 5,
+            "maximum": 30
+          }
+        },
+        "return_type": "float",
+        "example": "calculate_rsi('AAPL', periods=14)"
+      },
+      {
+        "name": "check_trend",
+        "description": "Identifies trend direction and strength using moving averages and price action",
+        "type": "analysis",
+        "parameters": {
+          "symbol": {
+            "type": "string",
+            "description": "Stock ticker symbol",
+            "required": true
+          },
+          "timeframe": {
+            "type": "string",
+            "description": "Analysis timeframe",
+            "required": false,
+            "default": "1D"
+          }
+        },
+        "return_type": "TrendInfo",
+        "example": "check_trend('AAPL', timeframe='1D')"
+      },
+      {
+        "name": "assess_risk",
+        "description": "Calculates risk score and recommends position size based on volatility and account size",
+        "type": "analysis",
+        "parameters": {
+          "symbol": {
+            "type": "string",
+            "description": "Stock ticker symbol",
+            "required": true
+          },
+          "entry_price": {
+            "type": "float",
+            "description": "Proposed entry price",
+            "required": true
+          },
+          "stop_loss": {
+            "type": "float",
+            "description": "Proposed stop loss price",
+            "required": true
+          },
+          "account_size": {
+            "type": "float",
+            "description": "Total account size (default: 100000)",
+            "required": false,
+            "default": 100000.0
+          }
+        },
+        "return_type": "RiskAssessment",
+        "example": "assess_risk('AAPL', entry_price=175.50, stop_loss=172.00)"
+      },
+      {
+        "name": "generate_signal",
+        "description": "Synthesizes all patterns and indicators into a final trading signal",
+        "type": "transformation",
+        "parameters": {
+          "patterns": {
+            "type": "array",
+            "description": "List of detected patterns",
+            "required": true
+          },
+          "indicators": {
+            "type": "object",
+            "description": "Dictionary of all technical indicators",
+            "required": true
+          },
+          "symbol": {
+            "type": "string",
+            "description": "Stock ticker symbol",
+            "required": true
+          }
+        },
+        "return_type": "TradingSignal",
+        "example": "generate_signal(patterns, indicators, 'AAPL')"
+      },
+      {
+        "name": "create_alert",
+        "description": "Creates and sends alert notification for trading signal",
+        "type": "communication",
+        "parameters": {
+          "signal": {
+            "type": "object",
+            "description": "Trading signal to alert",
+            "required": true
+          },
+          "recipients": {
+            "type": "array",
+            "description": "List of email addresses or phone numbers",
+            "required": true
+          },
+          "channels": {
+            "type": "array",
+            "description": "Alert channels: email, sms, webhook",
+            "required": false,
+            "default": ["email"],
+            "items": {
+              "type": "string",
+              "enum": ["email", "sms", "webhook"]
+            }
+          }
+        },
+        "return_type": "Alert",
+        "example": "create_alert(signal, ['trader@example.com'], channels=['email', 'sms'])"
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "trading_patterns",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "json",
+      "schema": "TradingSignal",
+      "streaming": false
+    },
+    "validation": {
+      "level": "moderate",
+      "rules": [
+        {
+          "name": "confidence_threshold",
+          "check": "result.confidence >= 0.7",
+          "error_message": "Signal confidence below 70% threshold"
+        },
+        {
+          "name": "risk_reward_ratio",
+          "check": "result.risk_reward_ratio >= 1.5",
+          "error_message": "Risk/reward ratio below 1.5 minimum"
+        },
+        {
+          "name": "position_size",
+          "check": "result.position_size_percent <= 10",
+          "error_message": "Position size exceeds 10% maximum"
+        }
+      ],
+      "quality_threshold": 0.7
+    },
+    "integration": {
+      "apis": [
+        {
+          "name": "Polygon.io",
+          "purpose": "Market data and real-time quotes",
+          "auth_type": "api_key",
+          "env_var": "POLYGON_API_KEY"
+        },
+        {
+          "name": "Alpha Vantage",
+          "purpose": "Fundamental data and company info",
+          "auth_type": "api_key",
+          "env_var": "ALPHA_VANTAGE_KEY"
+        }
+      ],
+      "databases": [
+        {
+          "name": "market_data",
+          "type": "sqlite",
+          "access": "read",
+          "env_var": "MARKET_DATA_DB"
+        },
+        {
+          "name": "signal_log",
+          "type": "postgresql",
+          "access": "write",
+          "env_var": "SIGNAL_LOG_DB"
+        },
+        {
+          "name": "cache",
+          "type": "redis",
+          "access": "readwrite",
+          "env_var": "REDIS_URL"
+        }
+      ],
+      "file_system": {
+        "read_paths": [
+          "/data/stocks/*.csv",
+          "/config/*.json"
+        ],
+        "write_paths": [
+          "/logs/signals/*.log",
+          "/output/signals/*.json"
+        ]
+      }
+    },
+    "monitoring": {
+      "log_level": "INFO",
+      "metrics": [
+        "request_count",
+        "response_time",
+        "error_rate",
+        "token_usage",
+        "tool_usage",
+        "quality_score"
+      ],
+      "alerts": [
+        {
+          "condition": "error_rate > 0.1",
+          "action": "send_notification",
+          "threshold": 0.1
+        },
+        {
+          "condition": "response_time > 5.0",
+          "action": "send_notification",
+          "threshold": 5.0
+        }
+      ]
+    },
+    "deployment": {
+      "replicas": 1,
+      "resources": {
+        "cpu": "1000m",
+        "memory": "1Gi"
+      },
+      "autoscaling": {
+        "enabled": true,
+        "min_replicas": 1,
+        "max_replicas": 5,
+        "target_cpu_utilization": 70.0
+      }
+    }
+  }
+}

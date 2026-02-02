@@ -1,0 +1,127 @@
+{
+  "agent": {
+    "name": "Simple Chatbot",
+    "description": "A minimal chatbot agent for general conversation and Q&A",
+    "type": "simple",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 5,
+    "system_prompt": {
+      "role": "You are a helpful AI assistant designed for friendly, informative conversations.",
+      "responsibilities": [
+        "Answer user questions accurately and helpfully",
+        "Maintain conversational context and coherence",
+        "Ask clarifying questions when user requests are ambiguous",
+        "Provide concise but complete responses"
+      ],
+      "guidelines": [
+        "Be friendly but professional",
+        "If you don't know something, say so honestly",
+        "Keep responses focused on the user's question",
+        "Use simple language unless technical terms are requested"
+      ],
+      "constraints": [
+        "Do not make up information",
+        "Do not provide medical, legal, or financial advice",
+        "Do not engage in harmful or unethical discussions",
+        "Keep responses under 500 words unless more detail is requested"
+      ]
+    },
+    "tools": [
+      {
+        "name": "answer_question",
+        "description": "Answers a user's question based on general knowledge",
+        "type": "analysis",
+        "parameters": {
+          "question": {
+            "type": "str",
+            "description": "The user's question",
+            "required": true
+          },
+          "context": {
+            "type": "str",
+            "description": "Additional context about the question",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "clarify_request",
+        "description": "Asks clarifying questions when user intent is unclear",
+        "type": "analysis",
+        "parameters": {
+          "ambiguous_input": {
+            "type": "str",
+            "description": "The unclear user input",
+            "required": true
+          },
+          "possible_interpretations": {
+            "type": "list",
+            "description": "List of possible interpretations",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "provide_summary",
+        "description": "Provides a concise summary of a conversation or topic",
+        "type": "analysis",
+        "parameters": {
+          "content": {
+            "type": "str",
+            "description": "Content to summarize",
+            "required": true
+          },
+          "max_length": {
+            "type": "int",
+            "description": "Maximum length of summary in words",
+            "required": false,
+            "default": 100
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": false,
+      "vector_db": "neo4j",
+      "collection_name": "chatbot_knowledge",
+      "top_k": 3,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "text",
+      "include_reasoning": false,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "basic",
+      "quality_threshold": 0.7,
+      "rules": [
+        {
+          "name": "response_length_check",
+          "description": "Ensure responses are not excessively long",
+          "severity": "warning"
+        },
+        {
+          "name": "helpfulness_check",
+          "description": "Verify response actually addresses the question",
+          "severity": "error"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": false
+    },
+    "deployment": {
+      "environment": "development",
+      "scaling": "single_instance",
+      "resources": {
+        "memory": "512MB",
+        "cpu": "0.5"
+      }
+    }
+  }
+}

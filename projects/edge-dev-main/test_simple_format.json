@@ -1,0 +1,9 @@
+{
+  "code": "print(\"hello world\")",
+  "filename": "test.py",
+  "useEnhancedService": true,
+  "validateOutput": true,
+  "maxRetries": 2,
+  "aiProvider": "openrouter",
+  "model": "qwen/qwen-2.5-coder-32b-instruct"
+}

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CE-Hub Mobile Status Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .status-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-item:last-child {
+            border-bottom: none;
+        }
+
+        .status-indicator {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .online { background: #00d4aa; color: white; }
+        .offline { background: #ff4757; color: white; }
+        .warning { background: #ffa502; color: white; }
+
+        .links-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .links-section h3 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .link-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .link-item:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .link-item a {
+            color: #4fc3f7;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+        }
+
+        .link-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .troubleshooting {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .troubleshooting h4 {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+
+        .troubleshooting ul {
+            color: rgba(255, 255, 255, 0.9);
+            padding-left: 20px;
+        }
+
+        .troubleshooting li {
+            margin: 5px 0;
+        }
+
+        .refresh-btn {
+            background: #4fc3f7;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 24px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .refresh-btn:hover {
+            background: #29b6f6;
+            transform: translateY(-2px);
+        }
+
+        .timestamp {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 CE-Hub Mobile Status</h1>
+            <p>Real-time development environment monitoring</p>
+        </div>
+
+        <div class="status-grid">
+            <div class="status-card">
+                <h3>📱 Mobile Interface</h3>
+                <div class="status-item">
+                    <span>Production Server</span>
+                    <span class="status-indicator" id="mobile-status">Checking...</span>
+                </div>
+                <div class="status-item">
+                    <span>API Endpoints</span>
+                    <span class="status-indicator" id="api-status">Checking...</span>
+                </div>
+                <div class="status-item">
+                    <span>File System Access</span>
+                    <span class="status-indicator" id="files-status">Checking...</span>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <h3>💻 VS Code Server</h3>
+                <div class="status-item">
+                    <span>Code Server</span>
+                    <span class="status-indicator" id="vscode-status">Checking...</span>
+                </div>
+                <div class="status-item">
+                    <span>Authentication</span>
+                    <span class="status-indicator" id="auth-status">Checking...</span>
+                </div>
+                <div class="status-item">
+                    <span>Workspace Access</span>
+                    <span class="status-indicator" id="workspace-status">Checking...</span>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <h3>🤖 AI Models</h3>
+                <div class="status-item">
+                    <span>Claude API</span>
+                    <span class="status-indicator" id="claude-api-status">Checking...</span>
+                </div>
+                <div class="status-item">
+                    <span>GLM Models</span>
+                    <span class="status-indicator" id="glm-status">Checking...</span>
+                </div>
+                <div class="status-item">
+                    <span>Model Launcher</span>
+                    <span class="status-indicator" id="launcher-status">Checking...</span>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <h3>🌐 Network</h3>
+                <div class="status-item">
+                    <span>Tailscale IP</span>
+                    <span class="status-indicator" id="tailscale-status">100.95.223.19</span>
+                </div>
+                <div class="status-item">
+                    <span>Mobile Port</span>
+                    <span class="status-indicator" id="mobile-port-status">8105</span>
+                </div>
+                <div class="status-item">
+                    <span>VS Code Port</span>
+                    <span class="status-indicator" id="vscode-port-status">8080</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="links-section">
+            <h3>🔗 Quick Access Links</h3>
+
+            <div class="link-item">
+                <a href="http://100.95.223.19:8105/mobile-pro-v2.html" target="_blank">
+                    📱 Mobile Development Interface
+                </a>
+                <div class="link-description">
+                    Production-ready mobile interface with file explorer, editor, and AI model selection
+                </div>
+            </div>
+
+            <div class="link-item">
+                <a href="http://100.95.223.19:8080/" target="_blank">
+                    💻 VS Code Web Interface
+                </a>
+                <div class="link-description">
+                    Full VS Code in browser - Password: 9c7516c8dba7b2328e081e31
+                </div>
+            </div>
+
+            <div class="link-item">
+                <a href="http://100.95.223.19:8105/api/status" target="_blank">
+                    📊 API Status Endpoint
+                </a>
+                <div class="link-description">
+                    JSON status endpoint for system monitoring
+                </div>
+            </div>
+
+            <div class="link-item">
+                <a href="http://100.95.223.19:8105/test.html" target="_blank">
+                    🧪 Connection Test Page
+                </a>
+                <div class="link-description">
+                    Simple connectivity test with live timestamp
+                </div>
+            </div>
+        </div>
+
+        <div class="troubleshooting">
+            <h4>⚠️ Troubleshooting Steps</h4>
+            <ul>
+                <li>Verify you're connected to Tailscale network</li>
+                <li>Check if device can ping 100.95.223.19</li>
+                <li>Try accessing http://100.95.223.19:8105/test.html first</li>
+                <li>Clear browser cache and disable any VPN/proxy</li>
+                <li>On mobile, try both WiFi and cellular data</li>
+                <li>Ensure no firewall blocking Tailscale traffic</li>
+            </ul>
+        </div>
+
+        <button class="refresh-btn" onclick="checkAllStatus()">🔄 Refresh Status</button>
+
+        <div class="timestamp" id="timestamp">
+            Last updated: <span id="last-updated"></span>
+        </div>
+    </div>
+
+    <script>
+        async function checkStatus(url, timeoutMs = 5000) {
+            try {
+                const controller = new AbortController();
+                const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+                const response = await fetch(url, {
+                    method: 'GET',
+                    signal: controller.signal
+                });
+
+                clearTimeout(timeout);
+                return response.ok;
+            } catch (error) {
+                console.log('Status check failed for', url, ':', error.message);
+                return false;
+            }
+        }
+
+        async function checkAPIStatus() {
+            try {
+                const response = await fetch('http://100.95.223.19:8105/api/status');
+                if (response.ok) {
+                    return await response.json();
+                }
+                return null;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        async function checkAllStatus() {
+            document.getElementById('last-updated').textContent = new Date().toLocaleString();
+
+            // Reset all to checking
+            const indicators = document.querySelectorAll('.status-indicator');
+            indicators.forEach(ind => {
+                if (!ind.id.includes('status') || ind.textContent.includes('.') || ind.textContent.includes('8')) return;
+                ind.textContent = 'Checking...';
+                ind.className = 'status-indicator warning';
+            });
+
+            // Check mobile interface
+            const mobileOK = await checkStatus('http://100.95.223.19:8105/mobile-pro-v2.html');
+            document.getElementById('mobile-status').textContent = mobileOK ? 'Online' : 'Offline';
+            document.getElementById('mobile-status').className = 'status-indicator ' + (mobileOK ? 'online' : 'offline');
+
+            // Check API
+            const apiStatus = await checkAPIStatus();
+            const apiOK = apiStatus !== null;
+            document.getElementById('api-status').textContent = apiOK ? 'Online' : 'Offline';
+            document.getElementById('api-status').className = 'status-indicator ' + (apiOK ? 'online' : 'offline');
+
+            // Check files access
+            if (apiStatus) {
+                const filesOK = apiStatus.files_accessible;
+                document.getElementById('files-status').textContent = filesOK ? 'Accessible' : 'Error';
+                document.getElementById('files-status').className = 'status-indicator ' + (filesOK ? 'online' : 'offline');
+            }
+
+            // Check VS Code
+            const vscodeOK = await checkStatus('http://100.95.223.19:8080/');
+            document.getElementById('vscode-status').textContent = vscodeOK ? 'Online' : 'Offline';
+            document.getElementById('vscode-status').className = 'status-indicator ' + (vscodeOK ? 'online' : 'offline');
+
+            // Auth status
+            document.getElementById('auth-status').textContent = vscodeOK ? 'Password' : 'N/A';
+            document.getElementById('auth-status').className = 'status-indicator ' + (vscodeOK ? 'warning' : 'offline');
+
+            // Workspace access
+            document.getElementById('workspace-status').textContent = vscodeOK ? 'CE-Hub' : 'N/A';
+            document.getElementById('workspace-status').className = 'status-indicator ' + (vscodeOK ? 'online' : 'offline');
+
+            // AI Models - based on our previous setup
+            document.getElementById('claude-api-status').textContent = 'Subscription';
+            document.getElementById('claude-api-status').className = 'status-indicator warning';
+
+            document.getElementById('glm-status').textContent = 'Configured';
+            document.getElementById('glm-status').className = 'status-indicator online';
+
+            document.getElementById('launcher-status').textContent = apiOK ? 'Ready' : 'Offline';
+            document.getElementById('launcher-status').className = 'status-indicator ' + (apiOK ? 'online' : 'offline');
+        }
+
+        // Initial check
+        checkAllStatus();
+
+        // Auto-refresh every 30 seconds
+        setInterval(checkAllStatus, 30000);
+    </script>
+</body>
+</html>

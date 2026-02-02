@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibration Healing Dashboard - Track Your Journey</title>
+  <meta name="description" content="Track your progress through 7 transformative videos on vibration healing, sound therapy, and energy medicine.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="theme-dashboard.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Header -->
+    <header class="dashboard-header">
+      <div class="header-left">
+        <div class="header-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v6m0 6v6"/>
+            <path d="m5.6 5.6 4.2 4.2m4.4 4.4 4.2 4.2"/>
+            <path d="M1 12h6m6 0h6"/>
+            <path d="m5.6 18.4 4.2-4.2m4.4-4.4 4.2-4.2"/>
+          </svg>
+          <span class="header-title">Vibration Healing Dashboard</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.3-4.3"/>
+          </svg>
+          <input type="text" placeholder="Search videos, tools, topics..." id="searchInput">
+        </div>
+
+        <div class="header-actions">
+          <button class="icon-btn" title="Notifications" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+            </svg>
+          </button>
+          <button class="icon-btn" title="Settings" aria-label="Settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v6m0 6v6"/>
+              <path d="m5.6 5.6 4.2 4.2m4.4 4.4 4.2 4.2"/>
+              <path d="M1 12h6m6 0h6"/>
+              <path d="m5.6 18.4 4.2-4.2m4.4-4.4 4.2-4.2"/>
+            </svg>
+          </button>
+          <button class="icon-btn" title="Profile" aria-label="Profile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <nav class="sidebar-section">
+        <div class="sidebar-section-title">Navigation</div>
+        <div class="sidebar-nav">
+          <a href="#" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            </svg>
+            <span class="sidebar-link-text">Dashboard</span>
+          </a>
+          <a href="#videos" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m22 8-6 4 6 4V8Z"/>
+              <rect x="2" y="6" width="14" height="12" rx="2" ry="2"/>
+            </svg>
+            <span class="sidebar-link-text">Videos</span>
+            <span class="sidebar-link-badge">7</span>
+          </a>
+          <a href="#tools" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+            <span class="sidebar-link-text">Tools</span>
+            <span class="sidebar-link-badge">8</span>
+          </a>
+          <a href="#resources" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+            </svg>
+            <span class="sidebar-link-text">Resources</span>
+          </a>
+        </div>
+      </nav>
+
+      <nav class="sidebar-section">
+        <div class="sidebar-section-title">Your Progress</div>
+        <div class="sidebar-nav" id="videoProgressList">
+          <!-- Populated by JavaScript -->
+        </div>
+      </nav>
+
+      <nav class="sidebar-section">
+        <div class="sidebar-section-title">Quick Actions</div>
+        <div class="sidebar-nav">
+          <a href="#" class="sidebar-link" id="resetProgressBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+              <path d="M3 3v5h5"/>
+            </svg>
+            <span class="sidebar-link-text">Reset Progress</span>
+          </a>
+          <a href="#" class="sidebar-link" id="exportDataBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" x2="12" y1="15" y2="3"/>
+            </svg>
+            <span class="sidebar-link-text">Export Data</span>
+          </a>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <!-- Welcome Section -->
+      <section class="content-section fade-in">
+        <div class="welcome-card">
+          <div class="welcome-card-content">
+            <h2>Welcome to Your Vibration Healing Journey</h2>
+            <p>Track your progress through 7 transformative videos exploring sound healing, frequency therapy, and energy medicine. Each video builds upon the last, creating a comprehensive understanding of vibrational wellness.</p>
+
+            <div class="progress-container">
+              <div class="progress-header">
+                <span class="progress-label">Overall Progress</span>
+                <span class="progress-percentage" id="overallProgressText">0% complete</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="overallProgressBar" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Stats -->
+      <section class="content-section fade-in-delay-1">
+        <div class="quick-stats">
+          <div class="stat-card">
+            <div class="stat-icon teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m22 8-6 4 6 4V8Z"/>
+                <rect x="2" y="6" width="14" height="12" rx="2" ry="2"/>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-label">Videos Watched</div>
+              <div class="stat-value" id="videosWatched">0</div>
+              <div class="stat-description">of 7 videos</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-label">Wishlist Items</div>
+              <div class="stat-value" id="wishlistCount">0</div>
+              <div class="stat-description">tools saved</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-label">Watch Time</div>
+              <div class="stat-value" id="watchTime">0</div>
+              <div class="stat-description">minutes total</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-label">Completed</div>
+              <div class="stat-value" id="completedVideos">0</div>
+              <div class="stat-description">videos finished</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Continue Watching -->
+      <section class="content-section fade-in-delay-2" id="continueWatchingSection" style="display: none;">
+        <div class="continue-watching-card">
+          <div class="continue-watching-header">
+            <h3 class="continue-watching-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                <path d="m22 8-6 4 6 4V8Z"/>
+                <rect x="2" y="6" width="14" height="12" rx="2" ry="2"/>
+              </svg>
+              Continue Watching
+            </h3>
+            <span class="badge badge-teal">In Progress</span>
+          </div>
+          <div class="continue-watching-content" id="continueWatchingContent">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- All Videos Section -->
+      <section class="content-section fade-in-delay-3" id="videos">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">All Videos</h2>
+            <p class="section-subtitle">Watch in order for the best learning experience</p>
+          </div>
+          <div class="header-actions">
+            <button class="icon-btn" title="Grid view" aria-label="Grid view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"/>
+                <rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/>
+              </svg>
+            </button>
+            <button class="icon-btn" title="List view" aria-label="List view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="8" y1="6" x2="21" y2="6"/>
+                <line x1="8" y1="12" x2="21" y2="12"/>
+                <line x1="8" y1="18" x2="21" y2="18"/>
+                <line x1="3" y1="6" x2="3.01" y2="6"/>
+                <line x1="3" y1="12" x2="3.01" y2="12"/>
+                <line x1="3" y1="18" x2="3.01" y2="18"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="video-grid" id="videoGrid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Recommended Tools Section -->
+      <section class="content-section fade-in-delay-4" id="tools">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Recommended Tools</h2>
+            <p class="section-subtitle">Enhance your practice with these vibration healing tools</p>
+          </div>
+          <button class="btn btn-secondary" id="filterToolsBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+            </svg>
+            Filter
+          </button>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Cheat Sheet Section -->
+      <section class="content-section fade-in-delay-5">
+        <div class="cheat-sheet-card">
+          <div class="cheat-sheet-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+          </div>
+          <div class="cheat-sheet-content">
+            <h3>Vibration Healing Cheat Sheet</h3>
+            <p>Download our comprehensive PDF guide with all the key frequencies, techniques, and practices from the videos. Perfect for quick reference!</p>
+            <button class="btn" id="downloadCheatSheetBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" x2="12" y1="15" y2="3"/>
+              </svg>
+              Download Free PDF
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Book Section -->
+      <section class="content-section" id="resources">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Deepen Your Practice</h2>
+            <p class="section-subtitle">Explore our comprehensive book on vibration healing</p>
+          </div>
+        </div>
+
+        <div class="card" style="display: flex; gap: var(--space-6); padding: var(--space-6);">
+          <div style="flex: 0 0 200px;">
+            <img src="flower-of-life-cover.webp" alt="The Universal Pattern - Book Cover" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="margin-bottom: var(--space-2);">The Universal Pattern: Foundations of Vibration Healing</h3>
+            <p style="margin-bottom: var(--space-4);">Discover the sacred geometry and mathematical principles underlying all vibration healing practices. This comprehensive guide explores the Fibonacci sequence, golden ratio, and how these patterns manifest in sound therapy, energy medicine, and consciousness expansion.</p>
+            <div style="display: flex; gap: var(--space-3); margin-top: auto;">
+              <button class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+                Read Sample Chapter
+              </button>
+              <button class="btn btn-secondary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                  <path d="M3 21h18"/>
+                  <path d="m5 21 7-18 7 18"/>
+                  <path d="M8 9h8"/>
+                </svg>
+                Buy on Amazon
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Video Modal -->
+  <div id="videoModal" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9); z-index: 10000; align-items: center; justify-content: center; padding: var(--space-8);">
+    <div style="position: relative; width: 100%; max-width: 1000px; background: var(--bg-card); border-radius: var(--radius-2xl); overflow: hidden;">
+      <button id="closeModalBtn" style="position: absolute; top: var(--space-4); right: var(--space-4); background: rgba(0, 0, 0, 0.5); border: none; color: white; padding: var(--space-2); border-radius: var(--radius-lg); cursor: pointer; z-index: 10;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+      <div id="videoModalContent" style="padding: var(--space-6);">
+        <!-- Video content loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Video Data
+    const videos = [
+      {
+        id: 1,
+        title: "432Hz vs 440Hz: The Healing Frequency Difference",
+        description: "Explore the controversy around musical tuning standards and discover why 432Hz is considered more harmonious with nature and human biology.",
+        duration: "8:00",
+        category: "Sound Healing",
+        thumbnail: "https://img.youtube.com/vi/your_video_id_1/maxresdefault.jpg",
+        watchProgress: 0,
+        completed: false,
+        lastWatched: null
+      },
+      {
+        id: 2,
+        title: "Solfeggio Frequencies Explained: Ancient Tones for Modern Healing",
+        description: "Learn about the 7 powerful Solfeggio frequencies, their historical significance, and how each frequency targets specific physical and emotional issues.",
+        duration: "12:00",
+        category: "Frequency Therapy",
+        thumbnail: "https://img.youtube.com/vi/your_video_id_2/maxresdefault.jpg",
+        watchProgress: 0,
+        completed: false,
+        lastWatched: null
+      },
+      {
+        id: 3,
+        title: "Sound Healing: Scientific Proof and Research",
+        description: "Dive into the science behind sound healing with cymatics demonstrations, research studies, and medical evidence supporting frequency therapy.",
+        duration: "10:00",
+        category: "Science",
+        thumbnail: "https://img.youtube.com/vi/your_video_id_3/maxresdefault.jpg",
+        watchProgress: 0,
+        completed: false,
+        lastWatched: null
+      },
+      {
+        id: 4,
+        title: "Tuning Forks for Beginners: Complete Guide",
+        description: "Master the art of using tuning forks for healing. Learn weighted vs unweighted forks, proper technique, and body placement for maximum benefit.",
+        duration: "9:00",
+        category: "Practice",
+        thumbnail: "https://img.youtube.com/vi/your_video_id_4/maxresdefault.jpg",
+        watchProgress: 0,
+        completed: false,
+        lastWatched: null
+      },
+      {
+        id: 5,
+        title: "The Bio-Field: Your Electromagnetic Energy System",
+        description: "Understand the human bio-field - the electromagnetic field that surrounds and permeates your body - and how it affects health and healing.",
+        duration: "8:00",
+        category: "Energy Medicine",
+        thumbnail: "https://img.youtube.com/vi/your_video_id_5/maxresdefault.jpg",
+        watchProgress: 0,
+        completed: false,
+        lastWatched: null
+      },
+      {
+        id: 6,
+        title: "Water Memory and Structuring: Dr. Emoto's Research",
+        description: "Explore Dr. Masaru Emoto's groundbreaking research on water memory, see crystal photography, and learn practical water structuring techniques.",
+        duration: "7:00",
+        category: "Water Therapy",
+        thumbnail: "https://img.youtube.com/vi/your_video_id_6/maxresdefault.jpg",
+        watchProgress: 0,
+        completed: false,
+        lastWatched: null
+      },
+      {
+        id: 7,
+        title: "Heart Coherence Practice: HeartMath Technique",
+        description: "Learn the powerful HeartMath coherence technique to regulate your heart rate variability, reduce stress, and elevate your emotional state.",
+        duration: "11:00",
+        category: "Practice",
+        thumbnail: "https://img.youtube.com/vi/your_video_id_7/maxresdefault.jpg",
+        watchProgress: 0,
+        completed: false,
+        lastWatched: null
+      }
+    ];
+
+    // Product Data
+    const products = [
+      {
+        id: 1,
+        name: "MAYU Water Structuring Device",
+        description: "Revitalize your water with vortex technology. Mimics natural water flow to structure and energize your drinking water.",
+        price: "$299-399",
+        category: "Water",
+        icon: "💧",
+        color: "linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)",
+        wishlist: false
+      },
+      {
+        id: 2,
+        name: "Joovv Red Light Therapy Panel",
+        description: "Professional-grade red and near-infrared light therapy for cellular energy, skin health, and recovery.",
+        price: "$595-1195",
+        category: "Light",
+        icon: "💡",
+        color: "linear-gradient(135deg, #ef4444 0%, #f97316 100%)",
+        wishlist: false
+      },
+      {
+        id: 3,
+        name: "Otto 128Hz Tuning Fork",
+        description: "Weighted tuning fork for direct body application. Promotes relaxation, pain relief, and grounding.",
+        price: "$45-65",
+        category: "Sound",
+        icon: "🎵",
+        color: "linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%)",
+        wishlist: false
+      },
+      {
+        id: 4,
+        name: "PEMF Therapy Mat",
+        description: "Pulsed Electromagnetic Field therapy mat for improving circulation, reducing inflammation, and enhancing recovery.",
+        price: "$800-2500",
+        category: "PEMF",
+        icon: "🧲",
+        color: "linear-gradient(135deg, #14b8a6 0%, #2dd4bf 100%)",
+        wishlist: false
+      },
+      {
+        id: 5,
+        name: "Crystal Singing Bowl Set",
+        description: "Quartz crystal singing bowls tuned to Solfeggio frequencies. Perfect for sound baths and meditation.",
+        price: "$150-400",
+        category: "Sound",
+        icon: "🔔",
+        color: "linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)",
+        wishlist: false
+      },
+      {
+        id: 6,
+        name: "Somavedic Harmonizer",
+        description: "EMF protection and space harmonization device. Creates a coherent field in your home or office.",
+        price: "$580-1500",
+        category: "EMF",
+        icon: "📡",
+        color: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
+        wishlist: false
+      },
+      {
+        id: 7,
+        name: "Leela Quantum Technology",
+        description: "Advanced quantum energy products for personal and environmental harmonization.",
+        price: "$150-500",
+        category: "Quantum",
+        icon: "⚡",
+        color: "linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%)",
+        wishlist: false
+      },
+      {
+        id: 8,
+        name: "Healing Sounds Audio Collection",
+        description: "Complete library of Solfeggio frequencies, binaural beats, and healing soundscapes for daily practice.",
+        price: "$47-97",
+        category: "Audio",
+        icon: "🎧",
+        color: "linear-gradient(135deg, #ec4899 0%, #f43f5e 100%)",
+        wishlist: false
+      }
+    ];
+
+    // State Management
+    let state = {
+      videos: videos,
+      products: products,
+      watchTime: 0,
+      totalVideosWatched: 0,
+      completedVideos: 0
+    };
+
+    // Load state from localStorage
+    function loadState() {
+      const savedState = localStorage.getItem('vibrationDashboardState');
+      if (savedState) {
+        const parsed = JSON.parse(savedState);
+        state = { ...state, ...parsed };
+      }
+    }
+
+    // Save state to localStorage
+    function saveState() {
+      localStorage.setItem('vibrationDashboardState', JSON.stringify(state));
+    }
+
+    // Calculate statistics
+    function updateStats() {
+      const watchedVideos = state.videos.filter(v => v.watchProgress > 0);
+      const completedVideos = state.videos.filter(v => v.completed);
+      const wishlistCount = state.products.filter(p => p.wishlist).length;
+
+      state.totalVideosWatched = watchedVideos.length;
+      state.completedVideos = completedVideos.length;
+
+      // Update DOM
+      document.getElementById('videosWatched').textContent = `${state.totalVideosWatched}/7`;
+      document.getElementById('wishlistCount').textContent = wishlistCount;
+      document.getElementById('watchTime').textContent = state.watchTime;
+      document.getElementById('completedVideos').textContent = state.completedVideos;
+
+      // Update overall progress
+      const totalProgress = state.videos.reduce((acc, v) => acc + v.watchProgress, 0);
+      const percentage = Math.round((totalProgress / (state.videos.length * 100)) * 100);
+      document.getElementById('overallProgressBar').style.width = `${percentage}%`;
+      document.getElementById('overallProgressText').textContent = `${percentage}% complete`;
+
+      // Update continue watching section
+      updateContinueWatching();
+    }
+
+    // Update sidebar video progress
+    function updateSidebarProgress() {
+      const container = document.getElementById('videoProgressList');
+      container.innerHTML = state.videos.map((video, index) => `
+        <a href="#video-${video.id}" class="sidebar-link" data-video-id="${video.id}">
+          <div class="checkmark ${video.completed ? 'checked' : ''}">
+            ${video.completed ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>' : ''}
+          </div>
+          <span class="sidebar-link-text">Video ${index + 1}</span>
+        </a>
+      `).join('');
+    }
+
+    // Update continue watching section
+    function updateContinueWatching() {
+      const inProgressVideos = state.videos.filter(v => v.watchProgress > 0 && v.watchProgress < 100);
+      const section = document.getElementById('continueWatchingSection');
+      const content = document.getElementById('continueWatchingContent');
+
+      if (inProgressVideos.length === 0) {
+        section.style.display = 'none';
+        return;
+      }
+
+      section.style.display = 'block';
+      const lastVideo = inProgressVideos.sort((a, b) => new Date(b.lastWatched) - new Date(a.lastWatched))[0];
+
+      content.innerHTML = `
+        <div class="video-thumbnail" onclick="openVideoModal(${lastVideo.id})">
+          <img src="${lastVideo.thumbnail}" alt="${lastVideo.title}">
+          <div class="video-thumbnail-overlay">
+            <div class="play-button">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="video-progress-bar">
+            <div class="video-progress-fill" style="width: ${lastVideo.watchProgress}%"></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3>${lastVideo.title}</h3>
+          <div class="video-meta">
+            <div class="video-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              ${lastVideo.duration}
+            </div>
+            <div class="video-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m22 8-6 4 6 4V8Z"/>
+                <rect x="2" y="6" width="14" height="12" rx="2" ry="2"/>
+              </svg>
+              ${Math.round(lastVideo.watchProgress)}% complete
+            </div>
+          </div>
+          <p class="video-description">${lastVideo.description}</p>
+          <div class="video-actions">
+            <button class="btn btn-primary" onclick="openVideoModal(${lastVideo.id})">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              Continue Watching
+            </button>
+            <button class="btn btn-secondary" onclick="markVideoComplete(${lastVideo.id})">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              Mark Complete
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Render video grid
+    function renderVideoGrid() {
+      const container = document.getElementById('videoGrid');
+      container.innerHTML = state.videos.map((video, index) => `
+        <div class="video-card ${video.completed ? 'video-card-watched' : ''}" id="video-${video.id}" onclick="openVideoModal(${video.id})">
+          <div class="video-card-thumbnail">
+            <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='https://via.placeholder.com/400x225/161b22/14b8a6?text=Video+${index + 1}'">
+            <div class="video-card-duration">${video.duration}</div>
+          </div>
+          <div class="video-card-content">
+            <h4 class="video-card-title">${video.title}</h4>
+            <p class="video-card-description">${video.description}</p>
+            <div class="video-card-meta">
+              <div class="video-card-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                </svg>
+                ${video.category}
+              </div>
+              <div class="video-card-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                ${video.duration}
+              </div>
+            </div>
+            ${video.watchProgress > 0 && !video.completed ? `
+              <div class="video-card-progress">
+                <div class="video-card-progress-fill" style="width: ${video.watchProgress}%"></div>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Render product grid
+    function renderProductGrid() {
+      const container = document.getElementById('productGrid');
+      container.innerHTML = state.products.map(product => `
+        <div class="product-card">
+          <button class="product-card-wishlist ${product.wishlist ? 'active' : ''}" onclick="toggleWishlist(${product.id})">
+            <svg viewBox="0 0 24 24" fill="${product.wishlist ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+            </svg>
+          </button>
+          <div class="product-card-icon" style="background: ${product.color}">
+            ${product.icon}
+          </div>
+          <span class="product-card-category">${product.category}</span>
+          <h4 class="product-card-title">${product.name}</h4>
+          <p class="product-card-description">${product.description}</p>
+          <div class="product-card-price">${product.price}</div>
+          <div class="product-card-actions">
+            <button class="btn btn-primary" onclick="viewProductDetails(${product.id})">View Details</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Open video modal
+    function openVideoModal(videoId) {
+      const video = state.videos.find(v => v.id === videoId);
+      if (!video) return;
+
+      const modal = document.getElementById('videoModal');
+      const content = document.getElementById('videoModalContent');
+
+      content.innerHTML = `
+        <div style="max-width: 800px; margin: 0 auto;">
+          <h2 style="margin-bottom: var(--space-4);">${video.title}</h2>
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">${video.description}</p>
+          <div style="position: relative; padding-bottom: 56.25%; height: 0; background: var(--bg-darkest); border-radius: var(--radius-xl); overflow: hidden;">
+            <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: var(--space-4);">
+              <svg viewBox="0 0 24 24" fill="var(--accent-teal)" stroke="none" style="width: 80px; height: 80px; opacity: 0.5;">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              <p style="color: var(--text-muted); text-align: center;">Video player would be embedded here</p>
+              <p style="color: var(--text-muted); font-size: 0.875rem;">Duration: ${video.duration}</p>
+            </div>
+          </div>
+          <div style="margin-top: var(--space-6); display: flex; gap: var(--space-3);">
+            <button class="btn btn-primary" onclick="markVideoProgress(${video.id}, 25)">
+              Mark 25% Complete
+            </button>
+            <button class="btn btn-secondary" onclick="markVideoProgress(${video.id}, 50)">
+              Mark 50% Complete
+            </button>
+            <button class="btn btn-secondary" onclick="markVideoProgress(${video.id}, 75)">
+              Mark 75% Complete
+            </button>
+            <button class="btn btn-secondary" onclick="markVideoComplete(${video.id})">
+              Mark Complete
+            </button>
+          </div>
+        </div>
+      `;
+
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close video modal
+    document.getElementById('closeModalBtn').addEventListener('click', () => {
+      const modal = document.getElementById('videoModal');
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    });
+
+    // Mark video progress
+    function markVideoProgress(videoId, progress) {
+      const video = state.videos.find(v => v.id === videoId);
+      if (video) {
+        video.watchProgress = progress;
+        video.lastWatched = new Date().toISOString();
+        video.completed = progress >= 100;
+
+        // Update watch time (rough estimate)
+        const durationMinutes = parseInt(video.duration.split(':')[0]);
+        if (progress > 0 && progress <= 100) {
+          state.watchTime += Math.round(durationMinutes * (progress / 100));
+        }
+
+        saveState();
+        updateStats();
+        updateSidebarProgress();
+        renderVideoGrid();
+      }
+    }
+
+    // Mark video as complete
+    function markVideoComplete(videoId) {
+      markVideoProgress(videoId, 100);
+
+      const modal = document.getElementById('videoModal');
+      if (modal.style.display === 'flex') {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Toggle wishlist
+    function toggleWishlist(productId) {
+      const product = state.products.find(p => p.id === productId);
+      if (product) {
+        product.wishlist = !product.wishlist;
+        saveState();
+        updateStats();
+        renderProductGrid();
+      }
+    }
+
+    // View product details
+    function viewProductDetails(productId) {
+      const product = state.products.find(p => p.id === productId);
+      if (product) {
+        alert(`Viewing details for: ${product.name}\n\nThis would open a detailed product page with:\n- More images\n- Full specifications\n- Customer reviews\n- Purchase options`);
+      }
+    }
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      const videoCards = document.querySelectorAll('.video-card');
+      const productCards = document.querySelectorAll('.product-card');
+
+      videoCards.forEach(card => {
+        const title = card.querySelector('.video-card-title').textContent.toLowerCase();
+        const description = card.querySelector('.video-card-description').textContent.toLowerCase();
+        if (title.includes(query) || description.includes(query)) {
+          card.style.display = '';
+        } else {
+          card.style.display = query ? 'none' : '';
+        }
+      });
+
+      productCards.forEach(card => {
+        const title = card.querySelector('.product-card-title').textContent.toLowerCase();
+        const description = card.querySelector('.product-card-description').textContent.toLowerCase();
+        if (title.includes(query) || description.includes(query)) {
+          card.style.display = '';
+        } else {
+          card.style.display = query ? 'none' : '';
+        }
+      });
+    });
+
+    // Reset progress
+    document.getElementById('resetProgressBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      if (confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
+        state.videos.forEach(video => {
+          video.watchProgress = 0;
+          video.completed = false;
+          video.lastWatched = null;
+        });
+        state.watchTime = 0;
+        saveState();
+        updateStats();
+        updateSidebarProgress();
+        renderVideoGrid();
+      }
+    });
+
+    // Export data
+    document.getElementById('exportDataBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      const dataStr = JSON.stringify(state, null, 2);
+      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'vibration-dashboard-data.json';
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Download cheat sheet
+    document.getElementById('downloadCheatSheetBtn').addEventListener('click', () => {
+      alert('Cheat sheet download would be triggered here.\n\nThis would download a comprehensive PDF with:\n- All frequency charts\n- Quick reference guides\n- Practice worksheets\n- Resource lists');
+    });
+
+    // Filter tools
+    document.getElementById('filterToolsBtn').addEventListener('click', () => {
+      alert('Filter options would appear here:\n\n- Water Therapy\n- Light Therapy\n- Sound Healing\n- PEMF\n- EMF Protection\n- Quantum Technology\n- Audio Programs');
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('videoModal');
+        if (modal.style.display === 'flex') {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      }
+    });
+
+    // Initialize
+    function init() {
+      loadState();
+      updateStats();
+      updateSidebarProgress();
+      renderVideoGrid();
+      renderProductGrid();
+    }
+
+    init();
+  </script>
+</body>
+</html>

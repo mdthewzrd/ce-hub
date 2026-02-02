@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>CE-Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            height: 100vh;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid #e5e5e7;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: #86868b;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover, .icon-btn.active {
+            background: #f5f5f7;
+            color: #007aff;
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            background: #fff;
+            display: flex;
+            border-bottom: 1px solid #e5e5e7;
+            flex-shrink: 0;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 500;
+            color: #86868b;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .tab.active {
+            color: #007aff;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background: #007aff;
+            border-radius: 1px;
+        }
+
+        /* Content Area */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f5f5f7;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .project-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .project-date {
+            font-size: 13px;
+            color: #86868b;
+        }
+
+        .project-description {
+            font-size: 14px;
+            color: #515154;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #f0f0f2;
+            color: #515154;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* File Explorer */
+        .file-explorer {
+            display: none;
+        }
+
+        .breadcrumb {
+            background: #fff;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #007aff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .file-list {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f0f2;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .file-item:hover {
+            background: #f5f5f7;
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-icon {
+            margin-right: 12px;
+            font-size: 20px;
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-size: 16px;
+            color: #1d1d1f;
+            font-weight: 500;
+        }
+
+        .file-meta {
+            font-size: 13px;
+            color: #86868b;
+            margin-top: 2px;
+        }
+
+        /* Agents Section */
+        .agents-section {
+            display: none;
+        }
+
+        .agent-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .agent-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .agent-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .agent-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 4px;
+        }
+
+        .agent-description {
+            font-size: 12px;
+            color: #86868b;
+            line-height: 1.3;
+        }
+
+        /* Settings Section */
+        .settings-section {
+            display: none;
+        }
+
+        .setting-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .setting-label {
+            font-size: 16px;
+            color: #1d1d1f;
+        }
+
+        .toggle {
+            position: relative;
+            width: 51px;
+            height: 31px;
+            background: #e5e5e7;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle.active {
+            background: #34c759;
+        }
+
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 27px;
+            height: 27px;
+            background: #fff;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .toggle.active::after {
+            transform: translateX(20px);
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #86868b;
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Active section */
+        .active-section {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="title">CE-Hub</div>
+        <div class="header-icons">
+            <button class="icon-btn" onclick="refreshContent()">🔄</button>
+            <button class="icon-btn" onclick="showNotifications()">🔔</button>
+            <button class="icon-btn" onclick="showProfile()">👤</button>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('explore')">Explore</button>
+        <button class="tab" onclick="switchTab('archive')">Archive</button>
+        <button class="tab" onclick="switchTab('agents')">Agents</button>
+        <button class="tab" onclick="switchTab('settings')">Settings</button>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+        <!-- Explore Section (Projects) -->
+        <div id="explore-section" class="active-section">
+            <div class="loading">Loading projects...</div>
+        </div>
+
+        <!-- Archive Section (File Explorer) -->
+        <div id="archive-section" class="file-explorer">
+            <div class="breadcrumb">
+                <span>📁</span>
+                <span id="breadcrumb-path">/</span>
+            </div>
+            <div class="file-list">
+                <div class="loading">Loading files...</div>
+            </div>
+        </div>
+
+        <!-- Agents Section -->
+        <div id="agents-section" class="agents-section">
+            <div class="agent-grid">
+                <div class="loading">Loading agents...</div>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="settings-section" class="settings-section">
+            <div class="setting-item">
+                <div class="setting-label">Dark Mode</div>
+                <div class="toggle" onclick="toggleSetting(this)"></div>
+            </div>
+            <div class="setting-item">
+                <div class="setting-label">Notifications</div>
+                <div class="toggle active" onclick="toggleSetting(this)"></div>
+            </div>
+            <div class="setting-item">
+                <div class="setting-label">Auto-sync</div>
+                <div class="toggle active" onclick="toggleSetting(this)"></div>
+            </div>
+            <div class="setting-item">
+                <div class="setting-label">Debug Mode</div>
+                <div class="toggle" onclick="toggleSetting(this)"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://100.95.223.19:8109';
+        let currentPath = '';
+        let currentTab = 'explore';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProjects();
+            loadAgents();
+        });
+
+        // Tab switching
+        function switchTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`.tab:nth-child(${getTabIndex(tab)})`).classList.add('active');
+
+            // Update content sections
+            document.querySelectorAll('.content > div').forEach(section => {
+                section.classList.remove('active-section');
+            });
+            document.getElementById(`${tab}-section`).classList.add('active-section');
+
+            currentTab = tab;
+
+            // Load content for tab
+            if (tab === 'explore') {
+                loadProjects();
+            } else if (tab === 'archive') {
+                loadFiles('');
+            } else if (tab === 'agents') {
+                loadAgents();
+            }
+        }
+
+        function getTabIndex(tab) {
+            const tabs = ['explore', 'archive', 'agents', 'settings'];
+            return tabs.indexOf(tab) + 1;
+        }
+
+        // Load projects
+        async function loadProjects() {
+            const section = document.getElementById('explore-section');
+
+            try {
+                // For demo, create sample projects
+                const projects = [
+                    {
+                        title: 'Mobile Platform Development',
+                        description: 'Enhanced mobile interface for CE-Hub with improved navigation and file management capabilities.',
+                        date: '2025-11-24',
+                        tags: ['mobile', 'ui', 'frontend']
+                    },
+                    {
+                        title: 'AI Integration Pipeline',
+                        description: 'Seamless integration of multiple AI agents for task automation and intelligent processing.',
+                        date: '2025-11-23',
+                        tags: ['ai', 'automation', 'pipeline']
+                    },
+                    {
+                        title: 'API Gateway Configuration',
+                        description: 'Centralized API management with authentication, rate limiting, and monitoring.',
+                        date: '2025-11-22',
+                        tags: ['api', 'backend', 'security']
+                    }
+                ];
+
+                let html = '';
+                projects.forEach(project => {
+                    html += `
+                        <div class="project-card" onclick="openProject('${project.title}')">
+                            <div class="project-header">
+                                <div class="project-title">${project.title}</div>
+                                <div class="project-date">${formatDate(project.date)}</div>
+                            </div>
+                            <div class="project-description">${project.description}</div>
+                            <div class="project-tags">
+                                ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                section.innerHTML = html;
+
+            } catch (error) {
+                section.innerHTML = '<div class="loading">Error loading projects</div>';
+            }
+        }
+
+        // Load files for file explorer
+        async function loadFiles(path = '') {
+            currentPath = path;
+            const fileList = document.querySelector('.file-list');
+            const breadcrumb = document.getElementById('breadcrumb-path');
+
+            breadcrumb.textContent = path || '/';
+
+            try {
+                const url = `${API_BASE}/files-api?path=${encodeURIComponent(path)}`;
+                const response = await fetch(url);
+
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                const data = await response.json();
+
+                if (!data.success) throw new Error(data.error || 'Failed to load files');
+
+                const items = data.items || [];
+
+                if (items.length === 0) {
+                    fileList.innerHTML = '<div class="loading">No files found</div>';
+                    return;
+                }
+
+                let html = '';
+
+                // Add parent directory if not at root
+                if (path) {
+                    const parentPath = path.split('/').slice(0, -1).join('/');
+                    html += `
+                        <div class="file-item" onclick="loadFiles('${parentPath}')">
+                            <div class="file-icon">📁</div>
+                            <div class="file-info">
+                                <div class="file-name">..</div>
+                                <div class="file-meta">Parent directory</div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Sort: directories first, then files
+                items.sort((a, b) => {
+                    if (a.type !== b.type) {
+                        return a.type === 'directory' ? -1 : 1;
+                    }
+                    return a.name.localeCompare(b.name);
+                });
+
+                items.forEach(item => {
+                    const isDirectory = item.type === 'directory';
+                    const icon = isDirectory ? '📁' : '📄';
+                    const meta = isDirectory ? 'Directory' : formatFileSize(item.size);
+
+                    html += `
+                        <div class="file-item" onclick="handleFileClick('${item.name}', '${item.type}')">
+                            <div class="file-icon">${icon}</div>
+                            <div class="file-info">
+                                <div class="file-name">${item.name}</div>
+                                <div class="file-meta">${meta}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                fileList.innerHTML = html;
+
+            } catch (error) {
+                fileList.innerHTML = '<div class="loading">Error loading files</div>';
+            }
+        }
+
+        // Load agents
+        async function loadAgents() {
+            const agentGrid = document.querySelector('.agent-grid');
+
+            try {
+                const response = await fetch(`${API_BASE}/agents`);
+
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                const data = await response.json();
+
+                if (!data.success) throw new Error('Failed to load agents');
+
+                const agents = data.agents || [];
+
+                // Define icons for different agents
+                const agentIcons = {
+                    'ce-hub-orchestrator': '🎯',
+                    'research-intelligence-specialist': '🔍',
+                    'ce-hub-engineer': '⚙️',
+                    'ce-hub-gui-specialist': '🎨',
+                    'qa-tester': '✅'
+                };
+
+                let html = '';
+                agents.forEach(agent => {
+                    const icon = agentIcons[agent.id] || '🤖';
+                    html += `
+                        <div class="agent-card" onclick="selectAgent('${agent.id}')">
+                            <div class="agent-icon">${icon}</div>
+                            <div class="agent-name">${agent.name}</div>
+                            <div class="agent-description">${agent.description}</div>
+                        </div>
+                    `;
+                });
+
+                agentGrid.innerHTML = html;
+
+            } catch (error) {
+                agentGrid.innerHTML = '<div class="loading">Error loading agents</div>';
+            }
+        }
+
+        // File handling
+        function handleFileClick(name, type) {
+            if (type === 'directory') {
+                const newPath = currentPath ? `${currentPath}/${name}` : name;
+                loadFiles(newPath);
+            } else {
+                const filePath = currentPath ? `${currentPath}/${name}` : name;
+                viewFile(filePath);
+            }
+        }
+
+        async function viewFile(filePath) {
+            try {
+                const response = await fetch(`${API_BASE}/read-file?path=${encodeURIComponent(filePath)}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    alert(`File: ${data.name}\nSize: ${formatFileSize(data.size)}\n\nContent preview:\n${data.content.substring(0, 500)}...`);
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            } catch (error) {
+                alert('Error reading file: ' + error.message);
+            }
+        }
+
+        // Utility functions
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+
+        // Event handlers
+        function openProject(title) {
+            alert(`Opening project: ${title}`);
+        }
+
+        function selectAgent(agentId) {
+            alert(`Selected agent: ${agentId}`);
+        }
+
+        function toggleSetting(element) {
+            element.classList.toggle('active');
+        }
+
+        function refreshContent() {
+            if (currentTab === 'explore') {
+                loadProjects();
+            } else if (currentTab === 'archive') {
+                loadFiles(currentPath);
+            } else if (currentTab === 'agents') {
+                loadAgents();
+            }
+        }
+
+        function showNotifications() {
+            alert('No new notifications');
+        }
+
+        function showProfile() {
+            alert('User profile: CE-Hub Administrator');
+        }
+    </script>
+</body>
+</html>

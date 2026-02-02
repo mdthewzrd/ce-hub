@@ -1,0 +1,437 @@
+# Agent Context Template
+
+**Purpose**: This template eliminates 60-80% of rewrites by providing clear context from day one.
+
+---
+
+## 1. Agent Identity & Purpose
+
+### Agent Name
+[Name in 2-3 words, e.g., "Trading Pattern Analyzer"]
+
+### One-Sentence Mission
+[What does this agent do in ONE sentence?]
+
+**Example**: "Analyzes stock market patterns and generates actionable trading signals with risk assessments."
+
+### Success Criteria
+[How do we know this agent works? List 3-5 specific criteria]
+
+**Format**:
+- [ ] [Specific, measurable outcome]
+- [ ] [Another specific outcome]
+- [ ] [Etc.]
+
+**Example**:
+- [ ] Detects trading patterns with >80% accuracy
+- [ ] Provides risk assessment for each signal
+- [ ] Generates alerts within 2 seconds of pattern detection
+- [ ] Handles 100+ concurrent analysis requests
+- [ ] Produces valid JSON output 100% of time
+
+---
+
+## 2. Core Capabilities
+
+### What This Agent Does
+[List 3-7 specific capabilities. BE SPECIFIC.]
+
+**Format**:
+1. [Verb] [specific task]
+2. [Verb] [specific task]
+3. etc.
+
+**Example**:
+1. Detects price gaps in market data
+2. Analyzes volume surges and patterns
+3. Calculates technical indicators (RSI, MACD, etc.)
+4. Identifies trend direction and strength
+5. Assesses risk levels for potential trades
+6. Generates buy/sell/hold signals
+7. Creates real-time alerts for pattern confirmations
+
+### Tools Required (MAX 10!)
+[List tools needed. Keep under 10 for optimal LLM performance.]
+
+**Format**:
+```python
+def [tool_name]([parameters]) -> [return_type]:
+    """[One-line description]
+
+    Args:
+        [param]: [description]
+
+    Returns:
+        [description]
+    """
+```
+
+**Example**:
+```python
+def detect_gap(symbol: str, threshold: float = 0.02) -> GapPattern:
+    """Detects price gaps in market data.
+
+    Args:
+        symbol: Stock ticker symbol
+        threshold: Minimum gap size (default: 2%)
+
+    Returns:
+        GapPattern object with gap details
+    """
+```
+
+**Tool List**:
+1. detect_gap()
+2. analyze_volume()
+3. calculate_rsi()
+4. check_trend()
+5. assess_risk()
+6. generate_signal()
+7. create_alert()
+
+### Data Access
+[What data does this agent need?]
+
+**Example**:
+- Market data: Polygon.io API (OHLCV data)
+- Historical data: SQLite database (last 5 years)
+- Real-time quotes: WebSocket stream
+- Reference data: CSV files (stock listings, etc.)
+
+---
+
+## 3. System Prompt Template
+
+### Role
+[Who/what is this agent?]
+
+**Example**:
+```
+You are a Trading Pattern Analysis Specialist, an expert in technical analysis
+and market pattern recognition. You identify high-probability trading opportunities
+by analyzing price action, volume, and technical indicators.
+```
+
+### Core Responsibilities
+[What are the 3-5 main responsibilities?]
+
+**Example**:
+1. Analyze market patterns using technical indicators
+2. Identify trading opportunities with clear entry/exit points
+3. Assess risk levels for each potential trade
+4. Provide evidence-based recommendations with data citations
+5. Generate actionable alerts in real-time
+
+### Operational Guidelines
+[How should the agent operate? BE SPECIFIC.]
+
+**Example**:
+- Always provide data citations for pattern detections
+- Include risk assessment with every signal
+- Use confidence scores (0-100) for all predictions
+- Prioritize quality over quantity of signals
+- Explain the reasoning behind each recommendation
+
+### Constraints
+[What should the agent NOT do?]
+
+**Example**:
+- NEVER provide financial advice without risk disclaimers
+- DON'T guarantee returns or predict with 100% certainty
+- AVOID analyzing more than 20 symbols simultaneously (quality degrades)
+- DON'T recommend positions >10% of portfolio
+- NEVER ignore risk management principles
+
+### Output Format Requirements
+[What should the output look like?]
+
+**Example**:
+```json
+{
+  "signal": "BUY|SELL|HOLD",
+  "symbol": "AAPL",
+  "confidence": 0.85,
+  "entry_price": 175.50,
+  "stop_loss": 172.00,
+  "target_price": 185.00,
+  "risk_reward_ratio": 2.5,
+  "reasoning": "Price broke above resistance with high volume",
+  "indicators": {
+    "rsi": 65,
+    "macd": "bullish_crossover",
+    "volume_ratio": 2.3
+  }
+}
+```
+
+---
+
+## 4. Tool Definitions
+
+[For each tool listed in Section 2, provide complete definition]
+
+### Tool 1: detect_gap
+
+**Purpose**: [What it does]
+
+**Parameters**:
+```python
+symbol: str  # Stock ticker symbol
+timeframe: str = "1D"  # Timeframe: 1m, 5m, 1H, 1D, etc.
+threshold: float = 0.02  # Minimum gap size (2%)
+```
+
+**Example Usage**:
+```python
+gap = detect_gap("AAPL", timeframe="1D", threshold=0.02)
+# Returns: GapPattern(open=170, close=175, gap_size=0.029)
+```
+
+**Error Handling**:
+- Invalid symbol → Raise ValueError
+- No data available → Return None
+- No gap detected → Return GapPattern(gap_size=0)
+
+### Tool 2: analyze_volume
+
+**Purpose**: [What it does]
+
+**Parameters**:
+```python
+symbol: str  # Stock ticker symbol
+periods: int = 20  # Number of periods to analyze
+```
+
+**Example Usage**:
+```python
+volume_analysis = analyze_volume("AAPL", periods=20)
+# Returns: VolumeAnalysis(avg=1.5M, current=3.2M, ratio=2.13)
+```
+
+[Repeat for all tools]
+
+---
+
+## 5. Integration Points
+
+### External APIs
+[What APIs does this agent connect to?]
+
+**Example**:
+- Polygon.io: Market data (API key required)
+- Alpha Vantage: Fundamental data (API key required)
+- WebSocket: Real-time quotes (authenticated)
+
+### Databases
+[What databases does this agent use?]
+
+**Example**:
+- SQLite: Historical market data (read-only)
+- Redis: Real-time caching (read/write)
+- PostgreSQL: Trade log (write-only)
+
+### Other Agents
+[Does this agent coordinate with other agents?]
+
+**Example**:
+- RiskManagerAgent: Validates signals before sending
+- AlertManagerAgent: Distributes notifications
+- PortfolioManagerAgent: Tracks positions and performance
+
+### File System
+[What files does this agent need?]
+
+**Example**:
+- `/data/stocks/{symbol}.csv` - Historical data
+- `/config/indicators.json` - Indicator parameters
+- `/logs/signals/{date}.log` - Signal logs
+
+---
+
+## 6. Validation Criteria
+
+[How do we validate this agent works correctly?]
+
+### Functional Tests
+- [ ] Tool 1 (detect_gap) finds gaps correctly
+- [ ] Tool 2 (analyze_volume) calculates accurate ratios
+- [ ] Tool 3 (calculate_rsi) produces valid RSI values (0-100)
+- [ ] [Test for each tool]
+
+### Integration Tests
+- [ ] API connections work (Polygon.io, etc.)
+- [ ] Database queries execute correctly
+- [ ] WebSocket connections stay alive
+- [ ] Agent coordination works (if applicable)
+
+### Output Validation
+- [ ] Output matches defined schema 100% of time
+- [ ] JSON is valid and parseable
+- [ ] Required fields are always present
+- [ ] Confidence scores are in valid range (0-1)
+
+### Performance Tests
+- [ ] Response time <2 seconds for analysis
+- [ ] Handles 100+ concurrent requests
+- [ ] Memory usage <500MB
+- [ ] No memory leaks over 24-hour operation
+
+### Error Handling
+- [ ] Invalid inputs produce helpful errors
+- [ ] Network failures are handled gracefully
+- [ ] API rate limits are respected
+- [ ] Partial failures don't crash the agent
+
+---
+
+## 7. Development Notes
+
+### Dependencies
+[List Python packages required]
+
+**Example**:
+```
+pandas>=2.2.0
+numpy>=1.26.0
+requests>=2.31.0
+pydantic>=2.5.0
+python-dotenv>=1.0.0
+```
+
+### Environment Variables
+[List required environment variables]
+
+**Example**:
+```
+POLYGON_API_KEY=sk_...
+ALPHA_VANTAGE_KEY=...
+DATABASE_URL=sqlite:///data/market.db
+REDIS_URL=redis://localhost:6379
+LOG_LEVEL=INFO
+```
+
+### Known Limitations
+[What are the known limitations?]
+
+**Example**:
+- Only supports US equities (no international markets)
+- Maximum 100 concurrent symbols
+- Real-time data may have 5-minute delay (free tier)
+- Backtesting uses daily data only (no intraday)
+
+### Future Enhancements
+[What could be added later?]
+
+**Example**:
+- Add cryptocurrency support
+- Implement options pattern detection
+- Add machine learning predictions
+- Create multi-timeframe analysis
+- Build backtesting interface
+
+---
+
+## 8. Example Conversations
+
+### Example 1: Basic Pattern Detection
+
+**User**: "Analyze AAPL for trading patterns"
+
+**Agent**: (thinking)
+1. Call detect_gap("AAPL")
+2. Call analyze_volume("AAPL")
+3. Call calculate_rsi("AAPL")
+4. Call check_trend("AAPL")
+5. Synthesize results
+
+**Agent Response**:
+```json
+{
+  "symbol": "AAPL",
+  "analysis": {
+    "gap_detected": true,
+    "gap_size": 0.025,
+    "volume_ratio": 2.1,
+    "rsi": 62,
+    "trend": "bullish"
+  },
+  "signal": "BUY",
+  "confidence": 0.78,
+  "entry_price": 175.50,
+  "stop_loss": 172.00,
+  "target_price": 182.00,
+  "reasoning": "Price gapped up 2.5% on 2.1x normal volume with RSI at 62, indicating bullish momentum"
+}
+```
+
+### Example 2: Error Handling
+
+**User**: "Analyze INVALID_TICKER"
+
+**Agent Response**:
+```json
+{
+  "error": "Invalid symbol",
+  "message": "INVALID_TICKER is not a recognized stock symbol. Please verify the ticker symbol.",
+  "suggestion": "Did you mean one of these similar symbols: INVX, INTC, VTIP?"
+}
+```
+
+---
+
+## 9. Quick Reference
+
+### Command-Line Usage
+```bash
+# Run agent
+python agent.py --symbol AAPL --timeframe 1D
+
+# Test agent
+pytest tests/test_agent.py
+
+# Deploy agent
+cehub deploy-agent --config agent.json
+```
+
+### API Usage
+```python
+from agents import TradingPatternAnalyzer
+
+agent = TradingPatternAnalyzer()
+result = agent.analyze("AAPL")
+print(result.signal)  # "BUY"
+```
+
+### Troubleshooting
+
+**Problem**: Agent returns "NO_DATA"
+**Solution**:
+1. Check API keys are set correctly
+2. Verify network connection
+3. Confirm symbol is valid
+4. Check API rate limits
+
+**Problem**: Agent is slow
+**Solution**:
+1. Reduce number of tools (should be <10)
+2. Enable caching
+3. Use faster model (claude-3-5-haiku)
+4. Check for network latency
+
+---
+
+**End of Template**
+
+---
+
+## Usage Instructions
+
+1. **Copy this template** to your agent directory as `INITIAL.md`
+2. **Fill in ALL sections** - Don't skip any!
+3. **Be SPECIFIC** - Vague descriptions lead to rewrites
+4. **Keep tools under 10** - More tools = worse performance
+5. **Include examples** - They prevent misunderstandings
+6. **Define validation** - How will you know it works?
+7. **Share with Claude** - This provides complete context
+
+**Expected Outcome**: 60-80% reduction in rewrites, clearer agent behavior, faster development.

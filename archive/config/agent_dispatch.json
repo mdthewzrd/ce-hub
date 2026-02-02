@@ -1,0 +1,68 @@
+{
+  "auto_dispatch": {
+    "enabled": true,
+    "rules": {
+      "research-intelligence-specialist": {
+        "triggers": [
+          "how to",
+          "what's the best",
+          "help me understand",
+          "analyze",
+          "research",
+          "investigate"
+        ],
+        "pre_implementation": true
+      },
+      "engineer-agent": {
+        "triggers": [
+          "implement",
+          "build",
+          "create",
+          "fix",
+          "add feature",
+          "develop",
+          "code",
+          "program"
+        ]
+      },
+      "gui-specialist": {
+        "triggers": [
+          "UI",
+          "frontend",
+          "design",
+          "layout",
+          "styling",
+          "React",
+          "component",
+          "interface"
+        ],
+        "screenshot_context": true
+      },
+      "quality-assurance-tester": {
+        "triggers": [
+          "test",
+          "validate",
+          "check",
+          "verify",
+          "debug"
+        ],
+        "post_implementation": true
+      },
+      "documenter-specialist": {
+        "triggers": [
+          "document",
+          "docs",
+          "documentation",
+          "explain"
+        ],
+        "end_of_cycle": true
+      }
+    }
+  },
+  "context_management": {
+    "auto_save": true,
+    "session_tracking": true,
+    "decision_logging": true,
+    "screenshot_analysis": true
+  }
+}

@@ -1,0 +1,8 @@
+{viewMode === 'table' ? (
+  <>
+    <div>Split view</div>
+    <div>Chart section</div>
+  </>
+) : (
+  <div>Chart mode</div>
+)}

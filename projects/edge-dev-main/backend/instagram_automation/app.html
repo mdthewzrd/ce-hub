@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Automation Platform</title>
+    <link rel="stylesheet" href=".superdesign/design_iterations/instagram_platform_theme.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); background: var(--background); }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--spacing-lg);
+            z-index: 100;
+        }
+
+        .header-logo {
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 240px;
+            background: var(--card);
+            border-right: 1px solid var(--border);
+            padding: var(--spacing-md);
+            padding-top: 80px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .nav-section {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .nav-section-title {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--muted-foreground);
+            padding: var(--spacing-sm) var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+            margin-bottom: 2px;
+            border-radius: var(--radius-md);
+            color: var(--foreground);
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .nav-item:hover {
+            background: var(--muted);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(45deg, #405DE6, #5851DB);
+            color: white;
+        }
+
+        .nav-item i {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 80px var(--spacing-xl) var(--spacing-xl);
+            overflow-y: auto;
+            margin-left: 0;
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn var(--transition-normal);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Page Header */
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #833AB4, #C13584);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--muted-foreground);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: var(--spacing-sm);
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .content-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            transition: all var(--transition-normal);
+        }
+
+        .content-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .content-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .content-card-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(45deg, #833AB4, #C13584);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .content-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .content-card-subtitle {
+            font-size: 12px;
+            color: var(--muted-foreground);
+        }
+
+        .content-card-body {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .content-card-caption {
+            font-size: 13px;
+            color: var(--foreground);
+            line-height: 1.5;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .content-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .content-card-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        /* Table */
+        .table-wrapper {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: var(--muted);
+        }
+
+        th {
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--muted-foreground);
+        }
+
+        td {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: var(--muted);
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-size: 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--card);
+            color: var(--foreground);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(225, 48, 108, 0.1);
+        }
+
+        textarea.form-input {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        /* Calendar */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .calendar-day-header {
+            background: var(--muted);
+            padding: var(--spacing-sm);
+            text-align: center;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .calendar-day {
+            background: var(--card);
+            min-height: 80px;
+            padding: var(--spacing-sm);
+            position: relative;
+        }
+
+        .calendar-day-number {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .calendar-event {
+            background: linear-gradient(45deg, #833AB4, #C13584);
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Loading */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-xl);
+            color: var(--muted-foreground);
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: var(--spacing-md);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: var(--spacing-xl);
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .empty-state-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .empty-state-description {
+            font-size: 14px;
+            color: var(--muted-foreground);
+        }
+
+        /* Brand Voice Buttons */
+        .category-btn, .tone-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--card);
+            color: var(--foreground);
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .category-btn:hover, .tone-btn:hover {
+            border-color: var(--primary);
+            background: var(--muted);
+            transform: translateY(-2px);
+        }
+
+        .category-btn.selected, .tone-btn.selected {
+            border-color: #833AB4;
+            background: linear-gradient(45deg, rgba(131, 58, 180, 0.1), rgba(193, 53, 132, 0.1));
+            color: #833AB4;
+            font-weight: 600;
+        }
+
+        .category-btn span:first-child, .tone-btn span:first-child {
+            font-size: 18px;
+        }
+
+        /* Persona Buttons */
+        .persona-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--card);
+            color: var(--foreground);
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .persona-btn:hover {
+            border-color: var(--primary);
+            background: var(--muted);
+            transform: translateY(-2px);
+        }
+
+        .persona-btn.selected {
+            border-color: #C13584;
+            background: linear-gradient(45deg, rgba(193, 53, 132, 0.15), rgba(131, 58, 180, 0.15));
+            color: #C13584;
+            font-weight: 600;
+        }
+
+        .persona-btn span:first-child {
+            font-size: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: -240px;
+                top: 60px;
+                bottom: 0;
+                z-index: 99;
+                transition: left var(--transition-normal);
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 80px var(--spacing-md) var(--spacing-md);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-logo">
+            ═══ Instagram Automation ═══
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-sm btn-outline" onclick="refreshData()">
+                <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i>
+            </button>
+            <button class="btn btn-sm btn-outline">
+                <i data-lucide="settings" style="width: 14px; height: 14px;"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="nav-section">
+                <div class="nav-section-title">Content Management</div>
+                <div class="nav-item active" data-page="scraper">
+                    <i data-lucide="search"></i>
+                    <span>Scraper</span>
+                </div>
+                <div class="nav-item" data-page="database">
+                    <i data-lucide="database"></i>
+                    <span>Database</span>
+                </div>
+                <div class="nav-item" data-page="library">
+                    <i data-lucide="library"></i>
+                    <span>Library</span>
+                </div>
+                <div class="nav-item" data-page="prepare">
+                    <i data-lucide="sparkles"></i>
+                    <span>Prepare</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Scheduling & Posting</div>
+                <div class="nav-item" data-page="schedule">
+                    <i data-lucide="calendar"></i>
+                    <span>Schedule</span>
+                </div>
+                <div class="nav-item" data-page="delivery">
+                    <i data-lucide="send"></i>
+                    <span>Delivery</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Analytics</div>
+                <div class="nav-item" data-page="analytics">
+                    <i data-lucide="bar-chart-2"></i>
+                    <span>Analytics</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Scraper Page -->
+            <div class="page active" id="page-scraper">
+                <div class="page-header">
+                    <h1 class="page-title">🔍 Content Scraper</h1>
+                    <button class="btn btn-primary" onclick="startScraper()">
+                        <i data-lucide="play" style="width: 16px; height: 16px;"></i>
+                        Start Scraping
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="scraper-targets">3</div>
+                        <div class="stat-label">Target Accounts</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="scraper-scraped">47</div>
+                        <div class="stat-label">Items Scraped</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="scraper-success">94%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="scraper-last-run">Dec 28</div>
+                        <div class="stat-label">Last Run</div>
+                    </div>
+                </div>
+
+                <div class="card-grid" style="grid-template-columns: repeat(2, 1fr); gap: var(--spacing-lg);">
+                    <div class="content-card">
+                        <div class="content-card-header">
+                            <h3>Target Accounts</h3>
+                        </div>
+                        <div class="content-card-body">
+                            <div id="scraper-targets-list" style="display: flex; flex-direction: column; gap: var(--spacing-sm);">
+                                <!-- Populated by JS -->
+                            </div>
+                            <button class="btn btn-outline btn-sm mt-md" style="width: 100%;">
+                                <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+                                Add Account
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="content-card-header">
+                            <h3>Scraper Settings</h3>
+                        </div>
+                        <div class="content-card-body">
+                            <div class="form-group">
+                                <label class="form-label">Max Items Per Scrape</label>
+                                <input type="number" class="form-input" value="50">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Min Engagement Rate (%)</label>
+                                <input type="number" class="form-input" value="5">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Days to Look Back</label>
+                                <select class="form-input">
+                                    <option>7</option>
+                                    <option>14</option>
+                                    <option selected>30</option>
+                                    <option>60</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card mt-lg">
+                    <div class="content-card-header">
+                        <h3>Recent Scrapes</h3>
+                    </div>
+                    <div class="table-wrapper" style="border: none; border-radius: 0;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Account</th>
+                                    <th>Items</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scraper-history">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Database Page -->
+            <div class="page" id="page-database">
+                <div class="page-header">
+                    <h1 class="page-title">🗄️ Database Viewer</h1>
+                    <div style="display: flex; gap: var(--spacing-sm);">
+                        <button class="btn btn-outline">
+                            <i data-lucide="download" style="width: 16px; height: 16px;"></i>
+                            Export
+                        </button>
+                        <button class="btn btn-outline" onclick="refreshDatabase()">
+                            <i data-lucide="refresh-cw" style="width: 16px; height: 16px;"></i>
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="content-card mb-md">
+                    <div class="content-card-header">
+                        <h3>Tables</h3>
+                        <span class="badge badge-ready">26 tables</span>
+                    </div>
+                    <div class="content-card-body">
+                        <div id="database-tables" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--spacing-sm);">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h3 id="table-view-title">Table: source_content</h3>
+                        <div class="content-card-actions">
+                            <button class="btn btn-sm btn-outline">
+                                <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+                                Add Row
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-wrapper" style="border: none; border-radius: 0;">
+                        <table id="database-table">
+                            <thead>
+                                <tr id="table-headers">
+                                    <!-- Populated by JS -->
+                                </tr>
+                            </thead>
+                            <tbody id="table-rows">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library Page -->
+            <div class="page" id="page-library">
+                <div class="page-header">
+                    <h1 class="page-title">📚 Content Library</h1>
+                    <button class="btn btn-primary">
+                        <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
+                        Add Content
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Source</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Ready</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Scheduled</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">1</div>
+                        <div class="stat-label">Posted</div>
+                    </div>
+                </div>
+
+                <div class="content-card mb-md">
+                    <div class="content-card-body" style="display: flex; gap: var(--spacing-md); align-items: center;">
+                        <select class="form-input" style="width: auto;">
+                            <option>All Status</option>
+                            <option>Pending</option>
+                            <option>Ready</option>
+                            <option>Scheduled</option>
+                            <option>Posted</option>
+                        </select>
+                        <select class="form-input" style="width: auto;">
+                            <option>Newest First</option>
+                            <option>Oldest First</option>
+                            <option>By Account</option>
+                        </select>
+                        <div style="flex: 1;"></div>
+                        <input type="text" class="form-input" placeholder="Search..." style="width: 200px;">
+                    </div>
+                </div>
+
+                <div class="card-grid" id="library-content">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Prepare Page -->
+            <div class="page" id="page-prepare">
+                <div class="page-header">
+                    <h1 class="page-title">✨ Prepare Content</h1>
+                </div>
+
+                <div class="card-grid" style="grid-template-columns: repeat(2, 1fr); gap: var(--spacing-lg);">
+                    <div class="content-card">
+                        <div class="content-card-header">
+                            <h3>Select Source Content</h3>
+                        </div>
+                        <div class="content-card-body">
+                            <div id="prepare-source-list" style="display: flex; flex-direction: column; gap: var(--spacing-sm);">
+                                <!-- Populated by JS -->
+                            </div>
+                            <button class="btn btn-outline mt-md" style="width: 100%;">
+                                <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+                                Add New Source
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="content-card-header">
+                            <h3>AI Caption Generation</h3>
+                            <button class="btn btn-sm btn-outline" id="regenerate-btn" onclick="regenerateCaption()">
+                                <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i>
+                                Regenerate
+                            </button>
+                        </div>
+                        <div class="content-card-body">
+                            <!-- Brand Voice: Category Selector -->
+                            <div class="form-group">
+                                <label class="form-label">📁 Content Category</label>
+                                <div id="category-selector" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                                    <button class="category-btn" data-category="general" onclick="selectCategory('general')">
+                                        <span>🎯</span>
+                                        <span>General</span>
+                                    </button>
+                                    <button class="category-btn" data-category="motivation" onclick="selectCategory('motivation')">
+                                        <span>💪</span>
+                                        <span>Motivation</span>
+                                    </button>
+                                    <button class="category-btn" data-category="fitness" onclick="selectCategory('fitness')">
+                                        <span>🏋️</span>
+                                        <span>Fitness</span>
+                                    </button>
+                                    <button class="category-btn" data-category="business" onclick="selectCategory('business')">
+                                        <span>💼</span>
+                                        <span>Business</span>
+                                    </button>
+                                    <button class="category-btn" data-category="lifestyle" onclick="selectCategory('lifestyle')">
+                                        <span>✨</span>
+                                        <span>Lifestyle</span>
+                                    </button>
+                                    <button class="category-btn" data-category="education" onclick="selectCategory('education')">
+                                        <span>📚</span>
+                                        <span>Education</span>
+                                    </button>
+                                    <button class="category-btn" data-category="entertainment" onclick="selectCategory('entertainment')">
+                                        <span>🎭</span>
+                                        <span>Entertainment</span>
+                                    </button>
+                                    <button class="category-btn" data-category="travel" onclick="selectCategory('travel')">
+                                        <span>✈️</span>
+                                        <span>Travel</span>
+                                    </button>
+                                    <button class="category-btn" data-category="food" onclick="selectCategory('food')">
+                                        <span>🍕</span>
+                                        <span>Food</span>
+                                    </button>
+                                    <button class="category-btn" data-category="fashion" onclick="selectCategory('fashion')">
+                                        <span>👗</span>
+                                        <span>Fashion</span>
+                                    </button>
+                                </div>
+                                <input type="hidden" id="selected-category" value="general">
+                            </div>
+
+                            <!-- Brand Voice: Tone Selector -->
+                            <div class="form-group">
+                                <label class="form-label">🎨 Caption Tone</label>
+                                <div id="tone-selector" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                                    <button class="tone-btn" data-tone="engaging" onclick="selectTone('engaging')">
+                                        <span>⚡</span>
+                                        <span>Engaging</span>
+                                    </button>
+                                    <button class="tone-btn" data-tone="informative" onclick="selectTone('informative')">
+                                        <span>📖</span>
+                                        <span>Informative</span>
+                                    </button>
+                                    <button class="tone-btn" data-tone="casual" onclick="selectTone('casual')">
+                                        <span>😊</span>
+                                        <span>Casual</span>
+                                    </button>
+                                    <button class="tone-btn" data-tone="professional" onclick="selectTone('professional')">
+                                        <span>🎩</span>
+                                        <span>Professional</span>
+                                    </button>
+                                    <button class="tone-btn" data-tone="inspiring" onclick="selectTone('inspiring')">
+                                        <span>🌟</span>
+                                        <span>Inspiring</span>
+                                    </button>
+                                    <button class="tone-btn" data-tone="playful" onclick="selectTone('playful')">
+                                        <span>🎮</span>
+                                        <span>Playful</span>
+                                    </button>
+                                    <button class="tone-btn" data-tone="urgent" onclick="selectTone('urgent')">
+                                        <span>🚨</span>
+                                        <span>Urgent</span>
+                                    </button>
+                                    <button class="tone-btn" data-tone="emotional" onclick="selectTone('emotional')">
+                                        <span>💭</span>
+                                        <span>Emotional</span>
+                                    </button>
+                                </div>
+                                <input type="hidden" id="selected-tone" value="engaging">
+                            </div>
+
+                            <!-- Brand Voice: Persona Selector -->
+                            <div class="form-group">
+                                <label class="form-label">👤 Brand Persona</label>
+                                <div id="persona-selector" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                                    <button class="persona-btn" data-persona="expert" onclick="selectPersona('expert')">
+                                        <span>🧠</span>
+                                        <span>Helpful Expert</span>
+                                    </button>
+                                    <button class="persona-btn" data-persona="friend" onclick="selectPersona('friend')">
+                                        <span>😄</span>
+                                        <span>Fun Friend</span>
+                                    </button>
+                                    <button class="persona-btn" data-persona="luxury" onclick="selectPersona('luxury')">
+                                        <span>💎</span>
+                                        <span>Luxury Brand</span>
+                                    </button>
+                                    <button class="persona-btn" data-persona="leader" onclick="selectPersona('leader')">
+                                        <span>👑</span>
+                                        <span>Inspirational Leader</span>
+                                    </button>
+                                    <button class="persona-btn" data-persona="relatable" onclick="selectPersona('relatable')">
+                                        <span>🤗</span>
+                                        <span>Casual & Relatable</span>
+                                    </button>
+                                    <button class="persona-btn" data-persona="edgy" onclick="selectPersona('edgy')">
+                                        <span>🔥</span>
+                                        <span>Bold & Edgy</span>
+                                    </button>
+                                    <button class="persona-btn" data-persona="professional" onclick="selectPersona('professional')">
+                                        <span>🎯</span>
+                                        <span>Professional Authority</span>
+                                    </button>
+                                    <button class="persona-btn" data-persona="creative" onclick="selectPersona('creative')">
+                                        <span>🎨</span>
+                                        <span>Playful & Creative</span>
+                                    </button>
+                                    <button class="persona-btn" data-persona="authentic" onclick="selectPersona('authentic')">
+                                        <span>💯</span>
+                                        <span>Authentic & Raw</span>
+                                    </button>
+                                </div>
+                                <input type="hidden" id="selected-persona" value="expert">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Generated Caption</label>
+                                <textarea class="form-input" id="generated-caption" rows="4" placeholder="Select a source content to generate AI caption..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Hashtags</label>
+                                <input type="text" class="form-input" id="generated-hashtags" value="#fitness #workout #gym #legday #health #motivation">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Audio Track</label>
+                                <select class="form-input" id="audio-track">
+                                    <option value="">No audio</option>
+                                    <option value="1">🔊 "Push Your Luck" - Trending 🔥</option>
+                                    <option value="2">🎵 "Motivation Beat" - Popular</option>
+                                    <option value="3">🎵 "Gym Flow" - Rising</option>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Schedule Date</label>
+                                    <input type="date" class="form-input" id="schedule-date">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Schedule Time</label>
+                                    <input type="time" class="form-input" id="schedule-time" value="14:00">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-card-footer">
+                            <button class="btn btn-secondary" onclick="navigateTo('library')">Cancel</button>
+                            <div style="display: flex; gap: var(--spacing-sm);">
+                                <button class="btn btn-outline" onclick="alert('Draft saved! (Feature coming soon)')">Save Draft</button>
+                                <button class="btn btn-primary" onclick="saveToLibrary()">Save & Schedule</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Page -->
+            <div class="page" id="page-schedule">
+                <div class="page-header">
+                    <h1 class="page-title">📅 Content Schedule</h1>
+                    <div style="display: flex; gap: var(--spacing-sm);">
+                        <button class="btn btn-outline">Week</button>
+                        <button class="btn btn-outline">Month</button>
+                    </div>
+                </div>
+
+                <div class="content-card mb-md">
+                    <div class="content-card-header">
+                        <h3>January 2026</h3>
+                        <div style="display: flex; gap: var(--spacing-sm);">
+                            <button class="btn btn-sm btn-outline">
+                                <i data-lucide="chevron-left" style="width: 14px; height: 14px;"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline">
+                                <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="calendar-grid">
+                        <!-- Headers -->
+                        <div class="calendar-day-header">Sun</div>
+                        <div class="calendar-day-header">Mon</div>
+                        <div class="calendar-day-header">Tue</div>
+                        <div class="calendar-day-header">Wed</div>
+                        <div class="calendar-day-header">Thu</div>
+                        <div class="calendar-day-header">Fri</div>
+                        <div class="calendar-day-header">Sat</div>
+
+                        <!-- Days -->
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">1</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">2</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">3</div>
+                            <div class="calendar-event">⏰ @fitness_pro</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">4</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">5</div>
+                            <div class="calendar-event">📱 @motivation</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">6</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">7</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">8</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">9</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">10</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">11</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">12</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">13</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">14</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">15</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">16</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">17</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">18</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">19</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">20</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">21</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">22</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">23</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">24</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">25</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">26</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">27</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">28</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">29</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">30</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="calendar-day-number">31</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h3>Upcoming Posts</h3>
+                    </div>
+                    <div class="content-card-body">
+                        <div class="content-card" style="border: 1px solid var(--border);">
+                            <div class="content-card-header" style="border: none; padding: 0;">
+                                <div class="content-card-avatar">@FP</div>
+                                <div>
+                                    <div class="content-card-title">Jan 3, 2026 @ 2:00 PM</div>
+                                    <div class="content-card-subtitle">@fitness_pro - "Never skip leg day!"</div>
+                                </div>
+                                <div class="content-card-actions">
+                                    <button class="btn btn-sm btn-outline">Edit</button>
+                                    <button class="btn btn-sm btn-outline">View</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-card mt-sm" style="border: 1px solid var(--border);">
+                            <div class="content-card-header" style="border: none; padding: 0;">
+                                <div class="content-card-avatar">@MD</div>
+                                <div>
+                                    <div class="content-card-title">Jan 5, 2026 @ 10:00 AM</div>
+                                    <div class="content-card-subtitle">@motivation_daily - "Transform your mindset!"</div>
+                                </div>
+                                <div class="content-card-actions">
+                                    <button class="btn btn-sm btn-outline">Edit</button>
+                                    <button class="btn btn-sm btn-outline">View</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delivery Page -->
+            <div class="page" id="page-delivery">
+                <div class="page-header">
+                    <h1 class="page-title">📤 Content Delivery</h1>
+                    <button class="btn btn-outline" onclick="refreshNotifications()">
+                        <i data-lucide="refresh-cw" style="width: 16px; height: 16px;"></i>
+                        Refresh
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="delivery-pending">2</div>
+                        <div class="stat-label">Pending</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="delivery-posted">1</div>
+                        <div class="stat-label">Posted Today</div>
+                    </div>
+                </div>
+
+                <div id="delivery-notifications">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Analytics Page -->
+            <div class="page" id="page-analytics">
+                <div class="page-header">
+                    <h1 class="page-title">📈 Performance Analytics</h1>
+                    <select class="form-input" style="width: auto;">
+                        <option>Last 30 Days</option>
+                        <option>Last 7 Days</option>
+                        <option>Last 90 Days</option>
+                        <option>This Year</option>
+                    </select>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">Posts</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">4.2%</div>
+                        <div class="stat-label">Avg Engagement</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">1.2K</div>
+                        <div class="stat-label">Avg Likes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">@fit_pro</div>
+                        <div class="stat-label">Top Performing</div>
+                    </div>
+                </div>
+
+                <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="content-card">
+                        <div class="content-card-header">
+                            <h3>Performance by Account</h3>
+                        </div>
+                        <div class="content-card-body">
+                            <div style="margin-bottom: var(--spacing-md);">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span style="font-size: 13px;">@fitness_pro</span>
+                                    <span style="font-size: 13px; font-weight: 600;">8 posts | 5.1%</span>
+                                </div>
+                                <div style="height: 8px; background: var(--border); border-radius: var(--radius-sm); overflow: hidden;">
+                                    <div style="width: 80%; height: 100%; background: linear-gradient(45deg, #833AB4, #C13584);"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: var(--spacing-md);">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span style="font-size: 13px;">@motivation_daily</span>
+                                    <span style="font-size: 13px; font-weight: 600;">6 posts | 3.8%</span>
+                                </div>
+                                <div style="height: 8px; background: var(--border); border-radius: var(--radius-sm); overflow: hidden;">
+                                    <div style="width: 60%; height: 100%; background: linear-gradient(45deg, #833AB4, #C13584);"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span style="font-size: 13px;">@business_guru</span>
+                                    <span style="font-size: 13px; font-weight: 600;">4 posts | 6.0%</span>
+                                </div>
+                                <div style="height: 8px; background: var(--border); border-radius: var(--radius-sm); overflow: hidden;">
+                                    <div style="width: 70%; height: 100%; background: linear-gradient(45deg, #833AB4, #C13584);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="content-card-header">
+                            <h3>Top Performing Content</h3>
+                        </div>
+                        <div class="content-card-body">
+                            <div class="content-card" style="border: 1px solid var(--border); padding: var(--spacing-md); margin-bottom: var(--spacing-sm);">
+                                <div style="font-size: 13px; font-weight: 600;">"Stop trading time for money"</div>
+                                <div style="font-size: 11px; color: var(--muted-foreground);">@business_guru</div>
+                                <div style="font-size: 12px; margin-top: 4px;">
+                                    <span style="background: var(--success-light); color: var(--success); padding: 2px 6px; border-radius: var(--radius-sm); font-size: 11px;">6.0% engagement</span>
+                                </div>
+                            </div>
+                            <div class="content-card" style="border: 1px solid var(--border); padding: var(--spacing-md); margin-bottom: var(--spacing-sm);">
+                                <div style="font-size: 13px; font-weight: 600;">"Transform your mindset today!"</div>
+                                <div style="font-size: 11px; color: var(--muted-foreground);">@motivation_daily</div>
+                                <div style="font-size: 12px; margin-top: 4px;">
+                                    <span style="background: var(--success-light); color: var(--success); padding: 2px 6px; border-radius: var(--radius-sm); font-size: 11px;">5.2% engagement</span>
+                                </div>
+                            </div>
+                            <div class="content-card" style="border: 1px solid var(--border); padding: var(--spacing-md);">
+                                <div style="font-size: 13px; font-weight: 600;">"Never skip leg day!"</div>
+                                <div style="font-size: 11px; color: var(--muted-foreground);">@fitness_pro</div>
+                                <div style="font-size: 12px; margin-top: 4px;">
+                                    <span style="background: var(--success-light); color: var(--success); padding: 2px 6px; border-radius: var(--radius-sm); font-size: 11px;">4.8% engagement</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:4400';
+
+        // Track current prepared content
+        let currentReadyContentId = null;
+        let currentSourceId = null;
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const page = item.dataset.page;
+                navigateTo(page);
+            });
+        });
+
+        function navigateTo(page) {
+            // Update nav items
+            document.querySelectorAll('.nav-item').forEach(nav => {
+                nav.classList.remove('active');
+                if (nav.dataset.page === page) {
+                    nav.classList.add('active');
+                }
+            });
+
+            // Update pages
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+            });
+            document.getElementById('page-' + page).classList.add('active');
+
+            // Load page data
+            loadPageData(page);
+        }
+
+        async function loadPageData(page) {
+            switch(page) {
+                case 'scraper':
+                    loadScraperData();
+                    break;
+                case 'database':
+                    loadDatabaseTables();
+                    break;
+                case 'library':
+                    loadLibrary();
+                    break;
+                case 'prepare':
+                    loadPreparePage();
+                    break;
+                case 'delivery':
+                    loadNotifications();
+                    break;
+            }
+        }
+
+        // Scraper Data
+        async function loadScraperData() {
+            try {
+                // Load scraper status
+                const statusRes = await fetch(`${API_BASE}/api/scraper/status`);
+                const statusData = await statusRes.json();
+
+                document.getElementById('scraper-targets').textContent = statusData.active_targets || 0;
+                document.getElementById('scraper-scraped').textContent = statusData.total_scraped || 0;
+                document.getElementById('scraper-success').textContent = '100%';
+                document.getElementById('scraper-last-run').textContent = statusData.latest_run ?
+                    new Date(statusData.latest_run.started_at).toLocaleDateString() : 'Never';
+
+                // Load targets
+                const targetsRes = await fetch(`${API_BASE}/api/scraper/targets`);
+                const targetsData = await targetsRes.json();
+
+                if (targetsData.targets && targetsData.targets.length > 0) {
+                    const targetsHtml = targetsData.targets.map(t => `
+                        <div class="content-card" style="border: 1px solid var(--border); padding: var(--spacing-sm);">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <span style="font-weight: 500;">@${t.account_username}</span>
+                                    ${t.is_active ? '<span class="badge badge-posted" style="margin-left: 8px;">Active</span>' :
+                                    '<span class="badge badge-skipped" style="margin-left: 8px;">Inactive</span>'}
+                                </div>
+                                <div style="display: flex; gap: 4px;">
+                                    <button class="btn btn-sm btn-outline" onclick="toggleTarget(${t.id})" style="padding: 4px 8px;">
+                                        ${t.is_active ? 'Disable' : 'Enable'}
+                                    </button>
+                                    <button class="btn btn-sm btn-outline" onclick="deleteTarget(${t.id})" style="padding: 4px 8px;">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                    document.getElementById('scraper-targets-list').innerHTML = targetsHtml;
+                } else {
+                    document.getElementById('scraper-targets-list').innerHTML = `
+                        <div style="text-align: center; padding: var(--spacing-md); color: var(--muted-foreground);">
+                            No scraper targets configured
+                        </div>
+                    `;
+                }
+
+                // Load runs history
+                const runsRes = await fetch(`${API_BASE}/api/scraper/runs`);
+                const runsData = await runsRes.json();
+
+                if (runsData.runs && runsData.runs.length > 0) {
+                    const historyHtml = runsData.runs.map(r => `
+                        <tr>
+                            <td>${new Date(r.started_at).toLocaleDateString()}</td>
+                            <td>${r.total_targets || 0} targets</td>
+                            <td>${r.total_scraped || 0}</td>
+                            <td>
+                                <span class="badge ${r.status === 'completed' ? 'badge-posted' : r.status === 'running' ? 'badge-ready' : 'badge-skipped'}">
+                                    ${r.status === 'completed' ? '✅ Success' : r.status === 'running' ? '🔄 Running' : '⚠️ ' + r.status}
+                                </span>
+                            </td>
+                        </tr>
+                    `).join('');
+                    document.getElementById('scraper-history').innerHTML = historyHtml;
+                } else {
+                    document.getElementById('scraper-history').innerHTML = `
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted-foreground);">No scraper runs yet</td></tr>
+                    `;
+                }
+            } catch (error) {
+                console.error('Failed to load scraper data:', error);
+            }
+        }
+
+        // Database Tables
+        async function loadDatabaseTables() {
+            try {
+                const response = await fetch(`${API_BASE}/api/database/tables`);
+                const data = await response.json();
+
+                if (data.tables && data.tables.length > 0) {
+                    const tablesHtml = data.tables.map(t => `
+                        <div class="content-card" style="border: 1px solid var(--border); padding: var(--spacing-sm); cursor: pointer;" onclick="loadTable('${t.name}')">
+                            <div style="font-weight: 500; margin-bottom: 2px;">📋 ${t.name}</div>
+                            <div style="font-size: 11px; color: var(--muted-foreground);">${t.rows} rows</div>
+                        </div>
+                    `).join('');
+                    document.getElementById('database-tables').innerHTML = tablesHtml;
+
+                    // Load first table by default
+                    if (data.tables[0]) {
+                        loadTable(data.tables[0].name);
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to load database tables:', error);
+            }
+        }
+
+        async function loadTable(tableName) {
+            document.getElementById('table-view-title').textContent = 'Table: ' + tableName;
+
+            try {
+                const response = await fetch(`${API_BASE}/api/database/table/${tableName}`);
+                const data = await response.json();
+
+                if (data.columns && data.rows) {
+                    // Headers
+                    const headersHtml = data.columns.map(col => `<th>${col}</th>`).join('');
+                    document.getElementById('table-headers').innerHTML = headersHtml;
+
+                    // Rows
+                    const rowsHtml = data.rows.map(row => `
+                        <tr>
+                            ${data.columns.map(col => `<td>${row[col] || ''}</td>`).join('')}
+                        </tr>
+                    `).join('');
+                    document.getElementById('table-rows').innerHTML = rowsHtml;
+                }
+            } catch (error) {
+                console.error('Failed to load table:', error);
+            }
+        }
+
+        // Library
+        async function loadLibrary() {
+            try {
+                const response = await fetch(`${API_BASE}/api/library`);
+                const data = await response.json();
+
+                if (data.items && data.items.length > 0) {
+                    const html = data.items.map(item => `
+                        <div class="content-card">
+                            <div class="content-card-header">
+                                <div class="content-card-avatar">${item.account ? item.account.substring(0, 2).toUpperCase() : '??'}</div>
+                                <div>
+                                    <div class="content-card-title">@${item.account || 'Unknown'}</div>
+                                    <div class="content-card-subtitle">${item.description || 'No description'}</div>
+                                </div>
+                                <span class="badge badge-${item.status || 'pending'}">${item.status || 'pending'}</span>
+                            </div>
+                            <div class="content-card-body">
+                                <div class="content-card-caption">${item.caption || 'No caption'}</div>
+                            </div>
+                            <div class="content-card-footer">
+                                <span style="font-size: 11px; color: var(--muted-foreground);">${item.created_at || ''}</span>
+                                <div class="content-card-actions">
+                                    <button class="btn btn-sm btn-outline">Edit</button>
+                                    <button class="btn btn-sm btn-primary">Schedule</button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                    document.getElementById('library-content').innerHTML = html;
+                } else {
+                    document.getElementById('library-content').innerHTML = `
+                        <div class="empty-state" style="grid-column: 1/-1;">
+                            <div class="empty-state-icon">📚</div>
+                            <div class="empty-state-title">No content yet</div>
+                            <div class="empty-state-description">Add your first source content to get started</div>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Failed to load library:', error);
+            }
+        }
+
+        // Prepare Page
+        async function loadPreparePage() {
+            try {
+                const response = await fetch(`${API_BASE}/api/source?status=pending`);
+                const data = await response.json();
+
+                if (data.items && data.items.length > 0) {
+                    const html = data.items.map(item => `
+                        <div class="content-card" style="border: 1px solid var(--border); padding: var(--spacing-md); cursor: pointer;" onclick="selectSource(${item.id})">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 500;">@${item.account || 'Unknown'}</div>
+                                    <div style="font-size: 12px; color: var(--muted-foreground);">${item.description || 'No description'}</div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-size: 12px; font-weight: 600;">${item.engagement_rate || 0}%</div>
+                                    <div style="font-size: 11px; color: var(--muted-foreground);">engagement</div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                    document.getElementById('prepare-source-list').innerHTML = html;
+                } else {
+                    document.getElementById('prepare-source-list').innerHTML = `
+                        <div style="text-align: center; padding: var(--spacing-md); color: var(--muted-foreground);">
+                            No pending source content
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Failed to load prepare page:', error);
+            }
+        }
+
+        // Notifications (Delivery page)
+        async function loadNotifications() {
+            try {
+                const response = await fetch(`${API_BASE}/api/notifications`);
+                const data = await response.json();
+
+                if (data.items && data.items.length > 0) {
+                    const html = data.items.map(notification => `
+                        <div class="content-card">
+                            <div class="content-card-header">
+                                <div class="content-card-avatar">${notification.account ? notification.account.substring(0, 2).toUpperCase() : '??'}</div>
+                                <div style="flex: 1;">
+                                    <div class="content-card-title">${notification.title || 'Time to Post!'}</div>
+                                    <div class="content-card-subtitle">@${notification.account || 'Unknown'} • ${formatTime(notification.created_at)}</div>
+                                </div>
+                                <span class="badge badge-ready">🔔 Pending</span>
+                            </div>
+                            <div class="content-card-body">
+                                <div style="background: var(--muted); padding: var(--spacing-md); border-radius: var(--radius-md); margin-bottom: var(--spacing-sm);">
+                                    <div style="font-size: 12px; font-weight: 600; margin-bottom: 4px;">Caption:</div>
+                                    <div style="font-size: 13px;">${notification.caption || 'No caption'}</div>
+                                </div>
+                                <div style="font-size: 12px; color: var(--primary);">${notification.hashtags || ''}</div>
+                            </div>
+                            <div class="content-card-footer">
+                                ${notification.video_path ? `
+                                    <button class="btn btn-sm btn-primary" onclick="downloadVideo(${notification.ready_content_id})">
+                                        <i data-lucide="download" style="width: 14px; height: 14px;"></i>
+                                        Download
+                                    </button>
+                                ` : ''}
+                                <div class="content-card-actions">
+                                    <button class="btn btn-sm btn-outline" onclick="copyCaption('${(notification.caption || '').replace(/'/g, "\\'")}')">
+                                        <i data-lucide="copy" style="width: 14px; height: 14px;"></i>
+                                        Caption
+                                    </button>
+                                    <button class="btn btn-sm btn-outline" onclick="copyHashtags('${(notification.hashtags || '').replace(/'/g, "\\'")}')">
+                                        <i data-lucide="hash" style="width: 14px; height: 14px;"></i>
+                                        Tags
+                                    </button>
+                                    <button class="btn btn-sm btn-success" onclick="markAsPosted(${notification.id})">
+                                        <i data-lucide="check" style="width: 14px; height: 14px;"></i>
+                                        Posted!
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                    document.getElementById('delivery-notifications').innerHTML = html;
+                } else {
+                    document.getElementById('delivery-notifications').innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📤</div>
+                            <div class="empty-state-title">All caught up!</div>
+                            <div class="empty-state-description">No pending notifications right now</div>
+                        </div>
+                    `;
+                }
+
+                lucide.createIcons();
+            } catch (error) {
+                console.error('Failed to load notifications:', error);
+            }
+        }
+
+        // Actions
+        async function startScraper() {
+            try {
+                const response = await fetch(`${API_BASE}/api/scraper/run`, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    alert(`Scraper started! Run ID: ${data.run_id}`);
+                    loadScraperData();
+                } else {
+                    alert(data.message || 'Failed to start scraper');
+                }
+            } catch (error) {
+                alert('Failed to start scraper: ' + error);
+            }
+        }
+
+        async function toggleTarget(targetId) {
+            try {
+                const response = await fetch(`${API_BASE}/api/scraper/targets/${targetId}/toggle`, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    loadScraperData();
+                }
+            } catch (error) {
+                alert('Failed to toggle target');
+            }
+        }
+
+        async function deleteTarget(targetId) {
+            if (!confirm('Are you sure you want to remove this target?')) return;
+
+            try {
+                const response = await fetch(`${API_BASE}/api/scraper/targets/${targetId}`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    loadScraperData();
+                }
+            } catch (error) {
+                alert('Failed to remove target');
+            }
+        }
+
+        // Brand Voice Selection Functions
+        function selectCategory(category) {
+            // Update hidden input
+            document.getElementById('selected-category').value = category;
+
+            // Update visual selection
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('selected');
+                }
+            });
+
+            console.log('Selected category:', category);
+
+            // If there's a selected source, regenerate caption with new category
+            if (currentSourceId && currentReadyContentId) {
+                regenerateCaption();
+            }
+        }
+
+        function selectTone(tone) {
+            // Update hidden input
+            document.getElementById('selected-tone').value = tone;
+
+            // Update visual selection
+            document.querySelectorAll('.tone-btn').forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.dataset.tone === tone) {
+                    btn.classList.add('selected');
+                }
+            });
+
+            console.log('Selected tone:', tone);
+
+            // If there's a selected source, regenerate caption with new tone
+            if (currentSourceId && currentReadyContentId) {
+                regenerateCaption();
+            }
+        }
+
+        function selectPersona(persona) {
+            // Update hidden input
+            document.getElementById('selected-persona').value = persona;
+
+            // Update visual selection
+            document.querySelectorAll('.persona-btn').forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.dataset.persona === persona) {
+                    btn.classList.add('selected');
+                }
+            });
+
+            console.log('Selected persona:', persona);
+
+            // If there's a selected source, regenerate caption with new persona
+            if (currentSourceId && currentReadyContentId) {
+                regenerateCaption();
+            }
+        }
+
+        async function regenerateCaption() {
+            if (!currentSourceId) {
+                alert('Please select a source content first');
+                return;
+            }
+
+            // Get selected category, tone, and persona
+            const category = document.getElementById('selected-category').value || 'general';
+            const tone = document.getElementById('selected-tone').value || 'engaging';
+            const persona = document.getElementById('selected-persona').value || 'expert';
+
+            // Show loading state
+            document.getElementById('generated-caption').value = 'Regenerating AI caption...';
+            document.getElementById('generated-hashtags').value = 'Regenerating hashtags...';
+
+            try {
+                const response = await fetch(`${API_BASE}/api/prepare`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        source_id: currentSourceId,
+                        category: category,
+                        tone: tone,
+                        persona: persona
+                    })
+                });
+                const data = await response.json();
+
+                if (data.success || data.ready_content_id) {
+                    // Store the ready content ID
+                    currentReadyContentId = data.ready_content_id;
+
+                    // Populate form with AI-generated content
+                    document.getElementById('generated-caption').value = data.caption || '';
+                    document.getElementById('generated-hashtags').value = data.hashtags || '';
+
+                    // Show success feedback
+                    console.log('AI Caption Regenerated:', data.caption);
+                    console.log('Hashtags:', data.hashtags);
+                } else {
+                    alert('Failed to regenerate caption');
+                    document.getElementById('generated-caption').value = '';
+                    document.getElementById('generated-hashtags').value = '';
+                }
+            } catch (error) {
+                console.error('Failed to regenerate caption:', error);
+                alert('Failed to regenerate caption: ' + error.message);
+                document.getElementById('generated-caption').value = '';
+                document.getElementById('generated-hashtags').value = '';
+            }
+        }
+
+        async function selectSource(sourceId) {
+            // Load source details and generate AI caption
+            try {
+                currentSourceId = sourceId;
+                currentReadyContentId = null;
+
+                // Get selected category, tone, and persona
+                const category = document.getElementById('selected-category').value || 'general';
+                const tone = document.getElementById('selected-tone').value || 'engaging';
+                const persona = document.getElementById('selected-persona').value || 'expert';
+
+                // Show loading state
+                document.getElementById('generated-caption').value = 'Generating AI caption...';
+                document.getElementById('generated-hashtags').value = 'Generating hashtags...';
+
+                const response = await fetch(`${API_BASE}/api/prepare`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        source_id: sourceId,
+                        category: category,
+                        tone: tone,
+                        persona: persona
+                    })
+                });
+                const data = await response.json();
+
+                if (data.success || data.ready_content_id) {
+                    // Store the ready content ID
+                    currentReadyContentId = data.ready_content_id;
+
+                    // Populate form with AI-generated content
+                    document.getElementById('generated-caption').value = data.caption || '';
+                    document.getElementById('generated-hashtags').value = data.hashtags || '';
+
+                    // Set default schedule date to tomorrow
+                    const tomorrow = new Date();
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    document.getElementById('schedule-date').value = tomorrow.toISOString().split('T')[0];
+
+                    // Show success feedback
+                    console.log('AI Caption Generated:', data.caption);
+                    console.log('Hashtags:', data.hashtags);
+                    console.log('Category:', category, 'Tone:', tone, 'Persona:', persona);
+                } else {
+                    alert('Failed to generate caption');
+                    document.getElementById('generated-caption').value = '';
+                    document.getElementById('generated-hashtags').value = '';
+                }
+            } catch (error) {
+                console.error('Failed to prepare content:', error);
+                alert('Failed to prepare content: ' + error.message);
+                document.getElementById('generated-caption').value = '';
+                document.getElementById('generated-hashtags').value = '';
+            }
+        }
+
+        async function saveToLibrary() {
+            // Save the edited content to library and schedule it
+            if (!currentReadyContentId) {
+                alert('Please select a source first to generate AI caption');
+                return;
+            }
+
+            try {
+                const caption = document.getElementById('generated-caption').value;
+                const hashtags = document.getElementById('generated-hashtags').value;
+                const audioTrack = document.getElementById('audio-track').value;
+                const scheduleDate = document.getElementById('schedule-date').value;
+                const scheduleTime = document.getElementById('schedule-time').value;
+
+                // Combine date and time
+                const scheduledFor = new Date(`${scheduleDate}T${scheduleTime}`);
+
+                // Schedule the content
+                const response = await fetch(`${API_BASE}/api/library/${currentReadyContentId}/schedule`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        scheduled_for: scheduledFor.toISOString(),
+                        timezone: 'America/New_York'
+                    })
+                });
+
+                if (response.ok) {
+                    alert('Content saved to library and scheduled successfully!');
+
+                    // Reset form
+                    currentReadyContentId = null;
+                    currentSourceId = null;
+                    document.getElementById('generated-caption').value = '';
+                    document.getElementById('generated-hashtags').value = '';
+
+                    // Navigate to library page
+                    navigateTo('library');
+                } else {
+                    alert('Failed to save content');
+                }
+            } catch (error) {
+                console.error('Failed to save to library:', error);
+                alert('Failed to save content: ' + error.message);
+            }
+        }
+
+        async function markAsPosted(notificationId) {
+            try {
+                const response = await fetch(`${API_BASE}/api/notifications/${notificationId}/complete`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action_type: 'posted' })
+                });
+
+                if (response.ok) {
+                    loadNotifications();
+                }
+            } catch (error) {
+                console.error('Failed to mark as posted:', error);
+            }
+        }
+
+        async function copyCaption(caption) {
+            try {
+                await navigator.clipboard.writeText(caption);
+                alert('Caption copied!');
+            } catch (error) {
+                alert('Failed to copy');
+            }
+        }
+
+        async function copyHashtags(hashtags) {
+            try {
+                await navigator.clipboard.writeText(hashtags);
+                alert('Hashtags copied!');
+            } catch (error) {
+                alert('Failed to copy');
+            }
+        }
+
+        function downloadVideo(readyId) {
+            window.open(`${API_BASE}/api/deliver/${readyId}/download`, '_blank');
+        }
+
+        function refreshNotifications() {
+            loadNotifications();
+        }
+
+        function refreshDatabase() {
+            loadDatabaseTables();
+        }
+
+        function refreshData() {
+            const activePage = document.querySelector('.page.active');
+            if (activePage) {
+                const pageName = activePage.id.replace('page-', '');
+                loadPageData(pageName);
+            }
+        }
+
+        function formatTime(timeString) {
+            const date = new Date(timeString);
+            const now = new Date();
+            const diff = now - date;
+
+            if (diff < 60000) return 'Just now';
+            if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
+            if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
+            return date.toLocaleDateString();
+        }
+
+        // Initial load
+        // Wait for DOM to be ready before initializing brand voice selections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize brand voice selections after DOM is ready
+            selectCategory('general');
+            selectTone('engaging');
+            selectPersona('expert');
+        });
+
+        loadScraperData();
+        loadPreparePage();
+    </script>
+</body>
+</html>

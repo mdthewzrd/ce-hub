@@ -1,0 +1,198 @@
+{
+  "agent": {
+    "name": "Parameter Optimizer",
+    "description": "Specialized agent for optimizing trading scanner parameters to maximize performance",
+    "type": "optimization",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 5,
+    "system_prompt": {
+      "role": "You are a Parameter Optimizer specialized in finding the best parameter combinations for trading scanners.",
+      "responsibilities": [
+        "Design efficient optimization strategies",
+        "Search parameter space intelligently",
+        "Avoid overfitting to historical data",
+        "Validate results on out-of-sample data",
+        "Identify robust parameter sets",
+        "Quantify parameter sensitivity"
+      ],
+      "guidelines": [
+        "Always use train/test split to avoid overfitting",
+        "Start with grid search for coarse optimization",
+        "Use random search or Bayesian methods for fine-tuning",
+        "Monitor multiple objectives (returns, drawdown, Sharpe, etc.)",
+        "Test parameter stability across different time periods",
+        "Prefer simpler parameter sets when performance is similar"
+      ],
+      "constraints": [
+        "Maximum 5 tools - focus only on optimization",
+        "Do not create scanners (use scan creator agent)",
+        "Do not run backtests (use backtest agent for execution)",
+        "Always validate on out-of-sample data",
+        "Limit optimization iterations to prevent overfitting"
+      ]
+    },
+    "tools": [
+      {
+        "name": "design_optimization_strategy",
+        "description": "Designs the optimization approach (grid search, random search, Bayesian, etc.)",
+        "type": "planning",
+        "parameters": {
+          "parameter_space": {
+            "type": "dict",
+            "description": "Parameter definitions with ranges and types",
+            "required": true
+          },
+          "optimization_goal": {
+            "type": "str",
+            "description": "Primary metric to optimize",
+            "required": true
+          },
+          "constraints": {
+            "type": "dict",
+            "description": "Constraints on optimization (time, iterations, etc.)",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "execute_optimization",
+        "description": "Runs the optimization process using specified strategy",
+        "type": "calculation",
+        "parameters": {
+          "scanner_config": {
+            "type": "dict",
+            "description": "Base scanner configuration",
+            "required": true
+          },
+          "parameter_space": {
+            "type": "dict",
+            "description": "Parameters to optimize with ranges",
+            "required": true
+          },
+          "strategy": {
+            "type": "str",
+            "description": "Optimization strategy: 'grid', 'random', 'bayesian'",
+            "required": true
+          },
+          "max_iterations": {
+            "type": "int",
+            "description": "Maximum optimization iterations",
+            "required": false,
+            "default": 100
+          }
+        }
+      },
+      {
+        "name": "validate_parameters",
+        "description": "Validates optimized parameters on out-of-sample data",
+        "type": "validation",
+        "parameters": {
+          "optimized_params": {
+            "type": "dict",
+            "description": "Optimized parameter set",
+            "required": true
+          },
+          "validation_data": {
+            "type": "dict",
+            "description": "Out-of-sample validation data",
+            "required": true
+          },
+          "performance_threshold": {
+            "type": "float",
+            "description": "Minimum acceptable performance on validation data",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "analyze_parameter_sensitivity",
+        "description": "Analyzes how sensitive performance is to parameter changes",
+        "type": "analysis",
+        "parameters": {
+          "base_params": {
+            "type": "dict",
+            "description": "Base parameter set",
+            "required": true
+          },
+          "sensitivity_ranges": {
+            "type": "dict",
+            "description": "Ranges to test for each parameter",
+            "required": true
+          }
+        }
+      },
+      {
+        "name": "generate_optimization_report",
+        "description": "Creates comprehensive report with optimization results and recommendations",
+        "type": "creation",
+        "parameters": {
+          "optimization_results": {
+            "type": "dict",
+            "description": "Complete optimization results",
+            "required": true
+          },
+          "include_validation": {
+            "type": "bool",
+            "description": "Include out-of-sample validation results",
+            "required": false,
+            "default": true
+          },
+          "recommendation_level": {
+            "type": "str",
+            "description": "Detail level of recommendations",
+            "required": false,
+            "default": "detailed"
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "optimization_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "strict",
+      "quality_threshold": 0.85,
+      "rules": [
+        {
+          "name": "out_of_sample_validation",
+          "description": "Must validate on out-of-sample data",
+          "severity": "error"
+        },
+        {
+          "name": "overfitting_check",
+          "description": "Check for overfitting (train vs test performance gap)",
+          "severity": "error"
+        },
+        {
+          "name": "parameter_stability",
+          "description": "Parameters should be stable across time periods",
+          "severity": "warning"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "production",
+      "scaling": "horizontal",
+      "resources": {
+        "memory": "2GB",
+        "cpu": "2.0"
+      }
+    }
+  }
+}

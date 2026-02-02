@@ -1,0 +1,352 @@
+================================================================================
+EDGE-DEV PLATFORM: CODE UPLOAD SYSTEM ROOT CAUSE INVESTIGATION
+Investigation Date: 2025-11-05
+================================================================================
+
+CRITICAL FINDING:
+The edge-dev platform's code upload system has SYSTEMIC FAILURES that prevent
+complex scanners (like LC D2) from uploading and executing properly.
+
+ROOT CAUSE IS NOT FILE SIZE - It's a multi-layer code transformation pipeline
+that breaks sophisticated scanner algorithms.
+
+================================================================================
+ROOT CAUSE IDENTIFIED
+================================================================================
+
+The system has 5 CRITICAL FAILURE MECHANISMS:
+
+1. CODE TRANSFORMATION (main.py:869, uploaded_scanner_bypass.py:188)
+   - /api/format/code endpoint modifies uploaded code
+   - Uses "intelligent enhancement" to rewrite original code
+   - For complex scanners, this BREAKS algorithm integrity
+   - Frontend receives modified_code, not original
+
+2. INTELLIGENT PARAMETER EXTRACTION (intelligent_parameter_extractor.py:78-94)
+   - Tries to extract parameters from code
+   - If < 5 parameters found, triggers AI refactoring
+   - AI refactoring REWRITES code structure
+   - LC D2's 72 scattered parameters get reorganized
+   - This breaks execution flow and data dependencies
+
+3. ASYNC EXECUTION CONFLICT (uploaded_scanner_bypass.py:87-96)
+   - Detects asyncio.run() calls
+   - Sets __name__ = 'uploaded_scanner_module' to "prevent conflicts"
+   - This PREVENTS the if __name__ == '__main__': block from executing
+   - For LC D2: main() is defined but never awaited
+   - Result: df_lc never created, returns 0 results
+
+4. PATTERN ISOLATION (uploaded_scanner_bypass.py:464-516)
+   - Pattern 5 detection finds: async def main + DATES
+   - Executes with exec(code, exec_globals)
+   - Doesn't properly await async functions in FastAPI context
+   - Missing global state and setup dependencies
+   - Code defines main() but never calls it
+
+5. RESULT VARIABLE NOT FOUND (uploaded_scanner_bypass.py:488-502)
+   - System looks for df_lc (LC D2's result variable)
+   - Variable is in the search list, but never created
+   - Because main() never executed (see #3 above)
+   - Returns empty results []
+
+================================================================================
+PROOF OF ROOT CAUSE
+================================================================================
+
+Evidence 1: Code Transformation Pipeline
+File: main.py:821-931
+- Line 869: result = format_user_code(format_request.code)
+- This returns FORMATTED code, not original
+- Frontend never uses original code
+
+Evidence 2: Async Execution Conflict
+File: uploaded_scanner_bypass.py:93
+- __name__ is set to 'uploaded_scanner_module'
+- This prevents: if __name__ == '__main__': from being True
+- So asyncio.run(main()) is never reached
+- main() coroutine is never executed
+
+Evidence 3: Result Variable Missing
+File: uploaded_scanner_bypass.py:482-502
+- exec(code, exec_globals) doesn't await async functions
+- With __name__ != '__main__', main block never runs
+- df_lc is never created
+- System returns []
+
+Evidence 4: Silent Failure
+File: main.py:557-568
+- System reports status: "completed"
+- Returns total_found: 0
+- User sees: "Scan completed" with 0 results
+- No error message explaining failure
+
+================================================================================
+WHY SIMPLE CODES WORK
+================================================================================
+
+Simple scanners work because:
+1. No async/await = no __name__ conflict
+2. Store results in predictable variable names (results, data, etc.)
+3. Few global dependencies
+4. Execute quickly within timeout limits
+5. Don't need parameter refactoring (< 5 parameters)
+
+Complex scanners fail because:
+1. Use async def main() + asyncio.run() = execution conflict
+2. Store results in domain-specific variable names (df_lc, df_sc)
+3. Have complex global dependencies and setup
+4. Take longer to parse and execute
+5. Need parameter extraction = triggers refactoring = breaks code
+
+================================================================================
+SPECIFIC IMPACT ON LC D2 SCANNER
+================================================================================
+
+LC D2 fails specifically because:
+
+1. Uses Pattern 5: async def main + DATES + asyncio.run(main())
+2. System detects this pattern
+3. Creates safe_exec_globals with __name__ = 'uploaded_scanner_module'
+4. Calls exec(code, exec_globals)
+5. The if __name__ == '__main__': block checks for __main__
+6. But __name__ is 'uploaded_scanner_module', not '__main__'
+7. So asyncio.run(main()) is skipped
+8. main() coroutine is never awaited
+9. df_lc is never created
+10. System looks for df_lc in exec_globals
+11. Doesn't find it (because main() never executed)
+12. Returns []
+13. User sees: "Scan completed with 0 results"
+
+Execution Timeline:
+1. User uploads LC D2 (~500 lines, 72 parameters)
+2. Frontend calls /api/format/code
+3. Backend reformats code, triggering parameter extraction
+4. AI refactoring might reorganize code structure
+5. Frontend stores formatted_code (not original)
+6. User clicks "Run Scan"
+7. Backend detects Pattern 5
+8. Calls execute_uploaded_scanner_direct()
+9. Creates safe globals with __name__ = 'uploaded_scanner_module'
+10. Executes code but main() never runs
+11. df_lc never created
+12. System returns 0 results
+13. User confused: "Worked in VS Code, why 0 results here?"
+
+================================================================================
+FILES REQUIRING FIXES (PRIORITY ORDER)
+================================================================================
+
+CRITICAL (Fix immediately):
+1. /edge-dev/backend/uploaded_scanner_bypass.py (lines 53-96, 464-516)
+   - Fix async execution for FastAPI context
+   - Properly await async functions in Pattern 5
+   - Use new event loop or run_in_executor
+
+2. /edge-dev/backend/main.py (lines 821-931)
+   - Add bypass for complex scanners
+   - Skip /api/format/code for sophisticated code
+   - Use original code for execution, not formatted
+
+HIGH PRIORITY (Fix soon):
+3. /edge-dev/backend/core/intelligent_parameter_extractor.py (lines 78-94)
+   - Disable AI refactoring for complex scanners
+   - Only extract parameters, don't reorganize code
+   - Add complexity detection
+
+4. /edge-dev/backend/intelligent_enhancement.py
+   - Never replace symbol lists without consent
+   - Skip enhancement for production-ready scanners
+   - Add sophistication detection
+
+MEDIUM PRIORITY (Improve):
+5. /edge-dev/src/utils/uploadHandler.ts
+   - Increase file size limit from 5MB if needed
+   - Better validation feedback
+
+================================================================================
+RECOMMENDED FIXES
+================================================================================
+
+IMMEDIATE (High Priority):
+
+1. FIX ASYNC EXECUTION (uploaded_scanner_bypass.py)
+   - Replace simple exec() with proper async handling
+   - For Pattern 5, use asyncio.new_event_loop() + run_until_complete()
+   - Ensure __name__ == '__main__' for main block execution
+
+2. BYPASS FORMATTING FOR COMPLEX SCANNERS (main.py)
+   - Detect sophisticated code (>200 lines, has ThreadPoolExecutor, etc.)
+   - Skip /api/format/code endpoint
+   - Use original code directly
+
+3. ADD RESULT VARIABLE DETECTION (uploaded_scanner_bypass.py)
+   - Expand search for common result variable names
+   - Also look for: df_lc, df_results, scan_data, pattern_results
+   - Check for DataFrames with specific column names
+
+SHORT-TERM (Medium Priority):
+
+4. IMPLEMENT TRUE PURE EXECUTION MODE
+   - User option: "Execute Original" vs "Execute Enhanced"
+   - Skip ALL transformations when user selects "Original"
+   - Preserve 100% algorithm integrity
+
+5. ADD CODE COMPARISON
+   - Show user what was changed during formatting
+   - Display side-by-side: original vs formatted
+   - Allow user to choose which version to execute
+
+6. IMPROVE ERROR HANDLING
+   - Instead of silent 0 results, show specific errors
+   - Log execution failures with detailed messages
+   - Alert user if code modifications are detected
+
+LONG-TERM (Architectural):
+
+7. SEPARATE EXECUTION PATHS
+   - Path A: Pre-built scanners (existing ones, fully tested)
+   - Path B: User-uploaded simple scanners (needs enhancement)
+   - Path C: User-uploaded complex scanners (no transformation)
+   - Auto-detect which path to use
+
+8. PRESERVE GLOBAL SCOPE
+   - Don't isolate pattern execution
+   - Maintain full execution context
+   - Allow setup code to run before main function
+
+9. BETTER PATTERN DETECTION
+   - Instead of isolating patterns, reconstruct full context
+   - Understand interdependencies between code sections
+   - Execute as unified program, not isolated pieces
+
+================================================================================
+IMPLEMENTATION NOTES
+================================================================================
+
+Fix 1: Async Execution in FastAPI
+
+Current (BROKEN):
+```python
+exec(code, exec_globals)  # Doesn't await async, doesn't run main block
+```
+
+Fixed:
+```python
+# For async code, properly execute in new event loop
+if 'async def main' in code:
+    new_loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(new_loop)
+    try:
+        # Execute with proper __name__
+        exec_globals['__name__'] = '__main__'
+        exec(code, exec_globals)
+        # Now asyncio.run(main()) will execute
+    finally:
+        new_loop.close()
+else:
+    # For sync code, can use existing approach
+    exec(code, exec_globals)
+```
+
+Fix 2: Skip Formatting for Complex Scanners
+
+Current (BROKEN):
+```python
+# Always format every uploaded code
+result = format_user_code(format_request.code)
+```
+
+Fixed:
+```python
+# Detect sophisticated code
+is_sophisticated = detect_sophistication(code)  # >200 lines + threading + params
+if is_sophisticated:
+    # Skip formatting, use original
+    result = FormattingResult(
+        success=True,
+        formatted_code=code,  # Original, unchanged
+        scanner_type=detect_scanner_type(code),
+        integrity_verified=True,
+        warnings=[]
+    )
+else:
+    # Format simple code
+    result = format_user_code(code)
+```
+
+Fix 3: Expand Result Variable Detection
+
+Current (BROKEN):
+```python
+possible_result_vars = ['results', 'final_results', 'scan_results', 'hits', 'all_results']
+```
+
+Fixed:
+```python
+possible_result_vars = [
+    'results', 'final_results', 'scan_results', 'hits', 'all_results',
+    'df_lc', 'df_sc', 'df_results', 'df_data',  # DataFrame names
+    'found', 'matches', 'matched', 'patterns',  # Pattern names
+    'opportunities', 'opp', 'trades', 'signals'  # Domain-specific names
+]
+```
+
+================================================================================
+VERIFICATION STEPS
+================================================================================
+
+To verify these fixes work:
+
+1. Test with original LC D2 code
+   - Upload unmodified LC D2
+   - Should complete without formatting
+   - Should properly execute main()
+   - Should return results (not 0)
+
+2. Test with complex scanner
+   - Upload other sophisticated scanner
+   - Should skip formatting
+   - Should execute properly
+   - Should return results
+
+3. Test with simple scanner
+   - Simple code should still work
+   - Formatting can still be applied
+   - Should continue to work as before
+
+4. Regression testing
+   - Verify existing functionality not broken
+   - Check concurrency limits still work
+   - Verify timeouts still handled
+
+================================================================================
+CONCLUSION
+================================================================================
+
+The edge-dev upload system fails for complex scanners due to:
+
+1. Code transformation pipeline that breaks algorithm logic
+2. Async execution conflicts in FastAPI context
+3. __name__ manipulation preventing main block execution
+4. Silent failures returning 0 results
+
+This is NOT a file size limit issue - it's an architectural problem with how
+the system handles sophisticated, production-ready scanners.
+
+The system assumes ALL uploads are incomplete code needing enhancement,
+when many uploads are already complete, working algorithms.
+
+CRITICAL ACTION NEEDED: Implement fixes to preserve algorithm integrity for
+sophisticated scanners while maintaining enhancement for simple code.
+
+================================================================================
+Files Generated:
+- EDGE_DEV_UPLOAD_ROOT_CAUSE_INVESTIGATION.md (detailed findings)
+- EDGE_DEV_UPLOAD_TECHNICAL_ANALYSIS.md (technical deep-dive)
+- UPLOAD_INVESTIGATION_SUMMARY.txt (this file)
+
+Total Investigation Time: ~1 hour
+Files Analyzed: 20+ Python and TypeScript files
+Root Cause Confidence: VERY HIGH
+================================================================================

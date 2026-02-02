@@ -1,0 +1,237 @@
+/* MOBILE LAYOUT OVERRIDE - FORCE MOBILE OPTIMIZED LAYOUT */
+/* FORCE BOTTOM LAYOUT FOR ALL SCREEN SIZES */
+.monaco-workbench {
+  flex-direction: column !important;
+}
+
+/* Force titlebar to top */
+.monaco-workbench .part.titlebar {
+  order: 1 !important;
+}
+
+/* Force editor to main area */
+.monaco-workbench .part.editor {
+  order: 2 !important;
+  flex: 1 !important;
+  flex-direction: column !important;
+}
+
+/* FORCE SIDEBAR TO BOTTOM AS HORIZONTAL BAR */
+.monaco-workbench .part.sidebar {
+  order: 3 !important;
+  width: 100% !important;
+  max-height: 200px !important;
+  min-height: 150px !important;
+  flex-direction: row !important;
+  overflow-y: auto !important;
+  position: relative !important;
+  bottom: 0 !important;
+}
+
+/* FORCE PANEL TO BOTTOM */
+.monaco-workbench .part.panel {
+  order: 4 !important;
+  width: 100% !important;
+  max-height: 250px !important;
+  min-height: 150px !important;
+  position: relative !important;
+  bottom: 0 !important;
+}
+
+/* Force statusbar to bottom */
+.monaco-workbench .part.statusbar {
+  order: 5 !important;
+}
+
+/* Hide activity bar completely */
+.monaco-workbench .part.activitybar {
+  display: none !important;
+}
+
+/* Make explorer horizontal */
+.explorer-folders-view {
+  flex-direction: row !important;
+}
+
+/* Force mobile layout regardless of screen size */
+@media (max-width: 2000px) {
+  /* Force mobile-friendly file explorer */
+  .explorer-viewlet .monaco-list .monaco-list-row {
+    min-height: 44px !important;
+    font-size: 16px !important;
+    padding: 8px 12px !important;
+  }
+
+  /* Make tree items touch-friendly */
+  .monaco-tree .monaco-tree-row {
+    min-height: 44px !important;
+    font-size: 16px !important;
+    padding: 8px 12px !important;
+  }
+
+  /* Larger touch targets for mobile */
+  .monaco-button, .monaco-dropdown, .monaco-inputbox {
+    min-height: 44px !important;
+    font-size: 16px !important;
+  }
+}
+
+/* Mobile Dark Mode CSS Overrides - Force Dark Mode */
+body,
+.monaco-workbench,
+.monaco-editor,
+.monaco-editor-background {
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important;
+}
+
+/* Force Dark Activity Bar */
+.monaco-workbench .part.activitybar {
+  background-color: #1e1e1e !important;
+  border-right: 1px solid #2d2d30 !important;
+}
+
+.monaco-workbench .part.activitybar .composite-bar .action-item {
+  color: #cccccc !important;
+}
+
+.monaco-workbench .part.activitybar .composite-bar .action-item.active {
+  background-color: #007acc !important;
+  color: #ffffff !important;
+}
+
+/* Force Dark Sidebar */
+.monaco-workbench .part.sidebar {
+  background-color: #252526 !important;
+  color: #cccccc !important;
+}
+
+/* Force Dark Editor */
+.monaco-editor,
+.monaco-editor .margin,
+.monaco-editor .monaco-editor-background {
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important;
+}
+
+/* Force Dark Panel */
+.monaco-workbench .part.panel {
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important;
+}
+
+/* Force Dark Status Bar */
+.monaco-workbench .part.statusbar {
+  background-color: #007acc !important;
+  color: #ffffff !important;
+}
+
+/* Force Dark Title Bar */
+.monaco-workbench .part.titlebar {
+  background-color: #3c3c3c !important;
+  color: #cccccc !important;
+}
+
+/* Force Dark Tabs */
+.monaco-workbench .part.editor .content .tab {
+  background-color: #2d2d30 !important;
+  color: #ffffff !important;
+}
+
+.monaco-workbench .part.editor .content .tab.active {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+/* Mobile Specific Optimizations for Portrait Mode */
+@media (max-width: 768px) and (orientation: portrait) {
+  /* Larger touch targets */
+  .monaco-workbench .part.activitybar .composite-bar .action-item {
+    min-width: 48px !important;
+    min-height: 48px !important;
+    padding: 8px !important;
+  }
+
+  /* Larger font sizes for mobile */
+  .monaco-editor {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+
+  .monaco-workbench .part.sidebar {
+    font-size: 14px !important;
+  }
+
+  /* Hide minimap on mobile portrait */
+  .monaco-editor .minimap {
+    display: none !important;
+  }
+
+  /* Adjust tab sizing for mobile */
+  .monaco-workbench .part.editor .content .tab {
+    min-width: 120px !important;
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+  }
+
+  /* Larger scrollbars for touch */
+  .monaco-scrollable-element > .scrollbar {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  /* Adjust panels for mobile portrait */
+  .monaco-workbench .part.panel .content {
+    padding: 8px !important;
+  }
+
+  /* Optimize terminal for mobile */
+  .xterm {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+}
+
+/* Dark Theme Terminal */
+.xterm {
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important;
+}
+
+.xterm .xterm-viewport {
+  background-color: #1e1e1e !important;
+}
+
+/* Dark Menu and Context Menus */
+.monaco-menu {
+  background-color: #2d2d30 !important;
+  color: #cccccc !important;
+  border: 1px solid #464647 !important;
+}
+
+.monaco-menu .monaco-action-bar .action-item .action-label {
+  color: #cccccc !important;
+}
+
+.monaco-menu .monaco-action-bar .action-item .action-label:hover {
+  background-color: #094771 !important;
+  color: #ffffff !important;
+}
+
+/* Dark Dropdown and Input Elements */
+.monaco-dropdown {
+  background-color: #3c3c3c !important;
+  color: #cccccc !important;
+  border: 1px solid #464647 !important;
+}
+
+.monaco-inputbox {
+  background-color: #3c3c3c !important;
+  color: #cccccc !important;
+  border: 1px solid #464647 !important;
+}
+
+/* Force all borders to be dark */
+* {
+  border-color: #464647 !important;
+}

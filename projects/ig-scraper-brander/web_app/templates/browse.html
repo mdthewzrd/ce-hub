@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse & Scrape - Harmonatica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a1;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --border: #262626;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding-top: 64px;
+        }
+
+        .glass {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+        }
+
+        .post-card {
+            aspect-ratio: 1;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .post-card:hover {
+            transform: scale(1.02);
+        }
+
+        .post-card.selected {
+            ring: 3px solid var(--accent);
+        }
+
+        .post-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-card .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .post-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .post-card .stats {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            right: 8px;
+            display: flex;
+            justify-content: space-around;
+            color: white;
+            font-size: 12px;
+        }
+
+        .post-card .checkbox {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1));
+            border: 1px solid var(--border);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(99, 102, 241, 0.3);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .filter-chip {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid var(--border);
+            background: var(--bg-secondary);
+        }
+
+        .filter-chip:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .filter-chip.active {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .selection-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border);
+            padding: 16px 24px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+
+        .selection-bar.visible {
+            transform: translateY(0);
+        }
+
+        /* Video modal */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-backdrop.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .checkbox-custom {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .checkbox-custom.checked {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .checkbox-custom.checked::after {
+            content: '✓';
+            color: white;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" style="position: fixed; top: 0; left: 0; right: 0; height: 64px; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 1000; display: flex; align-items: center; padding: 0 24px;">
+        <div style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+            <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #6366f1, #8b5cf6); display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-play text-white"></i>
+            </div>
+            <div>
+                <h1 style="font-size: 18px; font-weight: 700; color: white;">Harmonatica</h1>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px; margin-left: 48px;">
+            <a href="/scrape" style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 8px; text-decoration: none; color: var(--text-secondary); font-size: 14px; transition: all 0.2s;">
+                <i class="fas fa-video"></i>
+                <span>Scraper</span>
+            </a>
+            <a href="/browse" style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 8px; text-decoration: none; background: rgba(99, 102, 241, 0.2); color: var(--accent); font-size: 14px;">
+                <i class="fas fa-search"></i>
+                <span>Browse & Scrape</span>
+            </a>
+            <a href="/library" style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 8px; text-decoration: none; color: var(--text-secondary); font-size: 14px; transition: all 0.2s;">
+                <i class="fas fa-folder"></i>
+                <span>Production</span>
+            </a>
+            <a href="/brand-voice" style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 8px; text-decoration: none; color: var(--text-secondary); font-size: 14px; transition: all 0.2s;">
+                <i class="fas fa-microphone"></i>
+                <span>Brand Voice</span>
+            </a>
+        </div>
+
+        <div style="margin-left: auto; display: flex; align-items: center; gap: 16px;">
+            <a href="/settings" style="color: var(--text-secondary); font-size: 20px;">
+                <i class="fas fa-cog"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div style="padding: 32px; max-width: 1400px; margin: 0 auto;">
+        <!-- Search Section -->
+        <div class="glass rounded-xl p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Browse Instagram Profiles</h2>
+            <p class="text-gray-400 mb-6">Search for an Instagram account to browse their content and select videos to scrape</p>
+
+            <div class="flex gap-4">
+                <div class="flex-1 relative">
+                    <i class="fas fa-at absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                    <input type="text" id="usernameInput" placeholder="Enter Instagram username (e.g. harmonatica)"
+                           class="w-full bg-black/50 border border-gray-700 rounded-xl py-3 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+                           onkeypress="if(event.key === 'Enter') loadProfile()">
+                </div>
+                <button onclick="loadProfile()" class="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl font-semibold hover:opacity-90 transition-opacity">
+                    <i class="fas fa-search mr-2"></i>Browse
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="hidden flex flex-col items-center justify-center py-20">
+            <div class="loading-spinner mb-4"></div>
+            <p class="text-gray-400">Loading profile...</p>
+        </div>
+
+        <!-- Profile Header -->
+        <div id="profileHeader" class="hidden profile-header rounded-xl p-8 mb-8">
+            <div class="flex items-start gap-8">
+                <img id="profilePic" src="" alt="Profile" class="w-32 h-32 rounded-full border-4 border-gray-800">
+                <div class="flex-1">
+                    <div class="flex items-center gap-4 mb-4">
+                        <h2 id="profileUsername" class="text-2xl font-bold"></h2>
+                        <span id="verifiedBadge" class="hidden text-blue-400"><i class="fas fa-check-circle"></i></span>
+                        <span id="privateBadge" class="hidden px-3 py-1 rounded-full bg-gray-700 text-gray-300 text-xs">Private</span>
+                    </div>
+                    <p id="profileBio" class="text-gray-300 mb-4"></p>
+                    <div id="profileUrl" class="text-indigo-400 mb-4"></div>
+
+                    <div class="flex gap-8">
+                        <div class="text-center">
+                            <div id="postsCount" class="text-2xl font-bold">0</div>
+                            <div class="text-xs text-gray-500">Posts</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="followersCount" class="text-2xl font-bold">0</div>
+                            <div class="text-xs text-gray-500">Followers</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="followingCount" class="text-2xl font-bold">0</div>
+                            <div class="text-xs text-gray-500">Following</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div id="filterSection" class="hidden mb-6">
+            <div class="flex items-center gap-4 flex-wrap">
+                <span class="text-sm text-gray-400">Filter:</span>
+                <button onclick="setFilter('all')" class="filter-chip active" data-filter="all">All Posts</button>
+                <button onclick="setFilter('videos')" class="filter-chip" data-filter="videos">Videos Only</button>
+                <button onclick="setFilter('high_engagement')" class="filter-chip" data-filter="high_engagement">High Engagement</button>
+                <button onclick="setFilter('recent')" class="filter-chip" data-filter="recent">Most Recent</button>
+            </div>
+        </div>
+
+        <!-- Posts Grid -->
+        <div id="postsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="text-center py-20">
+            <i class="fas fa-search text-6xl text-gray-700 mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Browse Instagram Content</h3>
+            <p class="text-gray-500">Enter a username above to explore their posts and select videos to download</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="errorState" class="hidden text-center py-20">
+            <i class="fas fa-exclamation-triangle text-6xl text-red-900 mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Error Loading Profile</h3>
+            <p id="errorMessage" class="text-gray-500"></p>
+        </div>
+    </div>
+
+    <!-- Selection Bar -->
+    <div id="selectionBar" class="selection-bar">
+        <div class="flex items-center justify-between max-w-6xl mx-auto">
+            <div class="flex items-center gap-4">
+                <span class="text-lg"><span id="selectedCount">0</span> posts selected</span>
+                <button onclick="clearSelection()" class="text-sm text-gray-400 hover:text-white">Clear all</button>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="selectAllVisible()" class="px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700">Select All Visible</button>
+                <button onclick="downloadSelected()" class="px-6 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg font-semibold hover:opacity-90">
+                    <i class="fas fa-download mr-2"></i>Download Selected
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal-backdrop">
+        <div class="modal-content">
+            <div class="relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70">
+                    <i class="fas fa-times"></i>
+                </button>
+                <video id="modalVideo" class="w-full max-h-[70vh] bg-black" controls autoplay loop></video>
+            </div>
+            <div class="p-6">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="flex-1">
+                        <p id="modalCaption" class="text-gray-300 mb-4"></p>
+                        <div class="flex gap-6 text-sm text-gray-500">
+                            <span><i class="fas fa-heart text-red-500 mr-1"></i><span id="modalLikes"></span></span>
+                            <span><i class="fas fa-comment text-blue-500 mr-1"></i><span id="modalComments"></span></span>
+                            <span><i class="fas fa-play text-green-500 mr-1"></i><span id="modalViews"></span></span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <a id="modalLink" href="" target="_blank" class="text-indigo-400 hover:text-indigo-300">
+                            <i class="fab fa-instagram mr-1"></i>View on Instagram
+                        </a>
+                        <button id="modalSelectBtn" onclick="toggleModalSelection()" class="px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700">
+                            Select
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allPosts = [];
+        let selectedPosts = new Set();
+        let currentFilter = 'all';
+        let currentProfile = '';
+        let currentModalPost = null;
+
+        async function loadProfile() {
+            const username = document.getElementById('usernameInput').value.trim().replace('@', '');
+
+            if (!username) {
+                alert('Please enter a username');
+                return;
+            }
+
+            currentProfile = username;
+
+            // Show loading
+            document.getElementById('loadingState').classList.remove('hidden');
+            document.getElementById('profileHeader').classList.add('hidden');
+            document.getElementById('filterSection').classList.add('hidden');
+            document.getElementById('postsGrid').innerHTML = '';
+            document.getElementById('emptyState').classList.add('hidden');
+            document.getElementById('errorState').classList.add('hidden');
+
+            try {
+                // Fetch profile
+                const profileRes = await fetch(`/api/ig/profile?username=${username}`);
+                const profileData = await profileRes.json();
+
+                if (!profileData.success) {
+                    throw new Error(profileData.error || 'Failed to load profile');
+                }
+
+                // Display profile
+                displayProfile(profileData);
+
+                // Fetch posts
+                const postsRes = await fetch(`/api/ig/posts?username=${username}&limit=50`);
+                const postsData = await postsRes.json();
+
+                if (postsData.success) {
+                    allPosts = postsData.posts;
+                    displayPosts(allPosts);
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('errorMessage').textContent = error.message;
+                document.getElementById('errorState').classList.remove('hidden');
+            } finally {
+                document.getElementById('loadingState').classList.add('hidden');
+            }
+        }
+
+        function displayProfile(profile) {
+            document.getElementById('profilePic').src = profile.profile_pic_url;
+            document.getElementById('profileUsername').textContent = '@' + profile.username;
+            document.getElementById('profileBio').textContent = profile.biography || '';
+            document.getElementById('postsCount').textContent = profile.posts_count.toLocaleString();
+            document.getElementById('followersCount').textContent = formatNumber(profile.followers);
+            document.getElementById('followingCount').textContent = formatNumber(profile.following);
+
+            // Verified badge
+            if (profile.is_verified) {
+                document.getElementById('verifiedBadge').classList.remove('hidden');
+            } else {
+                document.getElementById('verifiedBadge').classList.add('hidden');
+            }
+
+            // Private badge
+            if (profile.is_private) {
+                document.getElementById('privateBadge').classList.remove('hidden');
+            } else {
+                document.getElementById('privateBadge').classList.add('hidden');
+            }
+
+            // External URL
+            if (profile.external_url) {
+                document.getElementById('profileUrl').innerHTML = `<a href="${profile.external_url}" target="_blank" class="text-indigo-400 hover:text-indigo-300"><i class="fas fa-external-link-alt mr-1"></i>${profile.external_url}</a>`;
+            } else {
+                document.getElementById('profileUrl').innerHTML = '';
+            }
+
+            document.getElementById('profileHeader').classList.remove('hidden');
+            document.getElementById('filterSection').classList.remove('hidden');
+        }
+
+        function displayPosts(posts) {
+            const grid = document.getElementById('postsGrid');
+
+            if (posts.length === 0) {
+                document.getElementById('emptyState').classList.remove('hidden');
+                document.getElementById('emptyState').innerHTML = `
+                    <i class="fas fa-video-slash text-6xl text-gray-700 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">No Videos Found</h3>
+                    <p class="text-gray-500">This profile doesn't have any public videos</p>
+                `;
+                return;
+            }
+
+            document.getElementById('emptyState').classList.add('hidden');
+
+            grid.innerHTML = posts.map(post => {
+                const isSelected = selectedPosts.has(post.shortcode);
+                const isVideo = post.is_video;
+
+                return `
+                    <div class="post-card ${isSelected ? 'ring-3 ring-indigo-500' : ''}" onclick="openPost('${post.shortcode}')">
+                        ${isVideo ? `
+                            <video src="${post.video_url}" muted
+                                   onmouseover="this.play().catch(() => {})"
+                                   onmouseout="this.pause(); this.currentTime = 0;"
+                                   class="w-full h-full object-cover"></video>
+                        ` : `
+                            <img src="${post.display_url}" class="w-full h-full object-cover">
+                        `}
+
+                        <div class="overlay"></div>
+
+                        <div class="checkbox" onclick="event.stopPropagation(); toggleSelection('${post.shortcode}')">
+                            <div class="checkbox-custom ${isSelected ? 'checked' : ''}"></div>
+                        </div>
+
+                        <div class="stats">
+                            <span><i class="fas fa-play"></i> ${formatNumber(post.view_count || post.likes)}</span>
+                            <span><i class="fas fa-heart"></i> ${formatNumber(post.likes)}</span>
+                        </div>
+
+                        ${!isVideo ? '<div class="absolute top-2 right-2 text-xs px-2 py-1 bg-black/50 rounded">Photo</div>' : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openPost(shortcode) {
+            currentModalPost = allPosts.find(p => p.shortcode === shortcode);
+
+            if (!currentModalPost) return;
+
+            const modal = document.getElementById('videoModal');
+
+            if (currentModalPost.is_video) {
+                document.getElementById('modalVideo').src = currentModalPost.video_url;
+                document.getElementById('modalVideo').style.display = 'block';
+            } else {
+                document.getElementById('modalVideo').style.display = 'none';
+            }
+
+            document.getElementById('modalCaption').textContent = currentModalPost.caption || '';
+            document.getElementById('modalLikes').textContent = formatNumber(currentModalPost.likes);
+            document.getElementById('modalComments').textContent = formatNumber(currentModalPost.comments);
+            document.getElementById('modalViews').textContent = formatNumber(currentModalPost.view_count || 0);
+            document.getElementById('modalLink').href = currentModalPost.url;
+
+            updateModalSelectButton();
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+
+            video.pause();
+            video.src = '';
+            modal.classList.remove('active');
+            currentModalPost = null;
+        }
+
+        function toggleModalSelection() {
+            if (!currentModalPost) return;
+
+            toggleSelection(currentModalPost.shortcode);
+            updateModalSelectButton();
+        }
+
+        function updateModalSelectButton() {
+            if (!currentModalPost) return;
+
+            const btn = document.getElementById('modalSelectBtn');
+            const isSelected = selectedPosts.has(currentModalPost.shortcode);
+
+            if (isSelected) {
+                btn.textContent = 'Selected';
+                btn.className = 'px-4 py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700';
+            } else {
+                btn.textContent = 'Select';
+                btn.className = 'px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700';
+            }
+        }
+
+        function toggleSelection(shortcode) {
+            if (selectedPosts.has(shortcode)) {
+                selectedPosts.delete(shortcode);
+            } else {
+                selectedPosts.add(shortcode);
+            }
+
+            updateSelectedCount();
+            displayPosts(getFilteredPosts());
+        }
+
+        function clearSelection() {
+            selectedPosts.clear();
+            updateSelectedCount();
+            displayPosts(getFilteredPosts());
+
+            if (currentModalPost) {
+                updateModalSelectButton();
+            }
+        }
+
+        function selectAllVisible() {
+            const filtered = getFilteredPosts();
+            filtered.forEach(post => selectedPosts.add(post.shortcode));
+            updateSelectedCount();
+            displayPosts(filtered);
+
+            if (currentModalPost) {
+                updateModalSelectButton();
+            }
+        }
+
+        function updateSelectedCount() {
+            document.getElementById('selectedCount').textContent = selectedPosts.size;
+
+            const bar = document.getElementById('selectionBar');
+            if (selectedPosts.size > 0) {
+                bar.classList.add('visible');
+            } else {
+                bar.classList.remove('visible');
+            }
+        }
+
+        function setFilter(filter) {
+            currentFilter = filter;
+
+            // Update chip styles
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.classList.remove('active');
+                if (chip.dataset.filter === filter) {
+                    chip.classList.add('active');
+                }
+            });
+
+            displayPosts(getFilteredPosts());
+        }
+
+        function getFilteredPosts() {
+            let filtered = [...allPosts];
+
+            switch (currentFilter) {
+                case 'videos':
+                    filtered = filtered.filter(p => p.is_video);
+                    break;
+                case 'high_engagement':
+                    filtered = filtered.filter(p => p.likes > 1000 || (p.view_count && p.view_count > 5000));
+                    break;
+                case 'recent':
+                    filtered = filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    break;
+            }
+
+            return filtered;
+        }
+
+        async function downloadSelected() {
+            if (selectedPosts.size === 0) {
+                alert('No posts selected');
+                return;
+            }
+
+            const shortcodes = Array.from(selectedPosts);
+
+            if (!confirm(`Download ${shortcodes.length} selected posts to your library?`)) {
+                return;
+            }
+
+            const btn = event.target;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Downloading...';
+
+            try {
+                const response = await fetch('/api/ig/download-selected', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        shortcodes: shortcodes,
+                        account: currentProfile
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert(`Downloaded ${data.downloaded.length} posts successfully!${data.failed.length > 0 ? `\n\nFailed: ${data.failed.length}` : ''}`);
+
+                    if (data.failed.length > 0) {
+                        console.error('Failed downloads:', data.failed);
+                    }
+
+                    // Clear selection and redirect to library
+                    selectedPosts.clear();
+                    updateSelectedCount();
+                    window.location.href = '/scrape';
+                } else {
+                    alert('Download failed: ' + data.error);
+                }
+            } catch (error) {
+                alert('Error downloading: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-download mr-2"></i>Download Selected';
+            }
+        }
+
+        function formatNumber(num) {
+            if (!num) return '0';
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            } else if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num.toLocaleString();
+        }
+
+        // Close modal on backdrop click
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

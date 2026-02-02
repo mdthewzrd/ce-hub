@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Renata Chat Pattern Matching</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #1a1a1a; color: #fff; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #333; }
+        .result { margin: 10px 0; padding: 10px; }
+        .match { background: #2d5a2d; }
+        .nomatch { background: #5a2d2d; }
+        button { padding: 10px 20px; margin: 5px; background: #333; color: #fff; border: none; cursor: pointer; }
+        button:hover { background: #555; }
+        .debug { font-size: 12px; opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <h1>Renata Chat Pattern Matching Test</h1>
+
+    <div class="test-section">
+        <h3>Test Message: "go to the dashboard and look at the last 90 days in R"</h3>
+        <button onclick="testPatternMatching()">Run Pattern Test</button>
+        <div id="results"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Manual Test</h3>
+        <input type="text" id="testInput" value="go to the dashboard and look at the last 90 days in R" style="width: 400px; padding: 5px;">
+        <button onclick="testCustomMessage()">Test Custom Message</button>
+        <div id="customResults"></div>
+    </div>
+
+    <script>
+        // Simulate the pattern matching logic from standalone-renata-chat.tsx
+        function processUserCommand(userMessage) {
+            console.log(`🚀 Processing AI command: "${userMessage}"`);
+
+            const lowerMessage = userMessage.toLowerCase().trim();
+
+            // DEBUG: Log the message processing
+            console.log('🔍 DEBUG: Processing message:', lowerMessage);
+            console.log('🔍 DEBUG: Contains dashboard?', lowerMessage.includes('dashboard'));
+            console.log('🔍 DEBUG: Contains 90 days?', lowerMessage.includes('90 days') || lowerMessage.includes('last 90 days'));
+            console.log('🔍 DEBUG: Contains R?', lowerMessage.includes(' in r') || lowerMessage.includes('r-multiple') || lowerMessage.includes('r multiples'));
+
+            // Dashboard + 90 days + R pattern (from line 197 in standalone-renata-chat.tsx)
+            if (lowerMessage.includes('dashboard') &&
+                (lowerMessage.includes('last 90 days') || lowerMessage.includes('90 days')) &&
+                (lowerMessage.includes(' in r') || lowerMessage.includes('r-multiple') || lowerMessage.includes('r multiples'))) {
+                console.log('🧪 Simulating multi-command: dashboard + 90 days + R');
+                const mockUIAction = {
+                    action_type: 'multi_command',
+                    parameters: {
+                        commands: [
+                            { action_type: 'navigation', parameters: { page: '/dashboard' } },
+                            { action_type: 'date_range', parameters: { date_range: 'last_90_days' } },
+                            { action_type: 'display_mode', parameters: { mode: 'r' } }
+                        ]
+                    }
+                };
+                return {
+                    success: true,
+                    pattern: 'dashboard + 90 days + R',
+                    action: mockUIAction,
+                    response: '🧠 Understanding: Navigate to dashboard and show last 90 days in R-multiples. I\'ve navigated to your dashboard, set the date range to the last 90 days, and switched to R-multiples display mode.'
+                };
+            }
+
+            // Test other patterns
+            if (lowerMessage.includes('stats') && (lowerMessage.includes('year to date') || lowerMessage.includes('ytd')) && lowerMessage.includes('in r')) {
+                console.log('🧪 Simulating multi-command: stats + year to date + R mode');
+                return {
+                    success: true,
+                    pattern: 'stats + ytd + R',
+                    response: 'Stats YTD R pattern matched!'
+                };
+            }
+
+            if (lowerMessage.includes('trades') && (lowerMessage.includes('last 90 days') || lowerMessage.includes('90 days')) && lowerMessage.includes('percent')) {
+                console.log('🧪 Simulating multi-command: trades + 90 days + percent');
+                return {
+                    success: true,
+                    pattern: 'trades + 90 days + percent',
+                    response: 'Trades 90 days percent pattern matched!'
+                };
+            }
+
+            // Simple navigation commands as fallback
+            if (lowerMessage.includes('dashboard') || lowerMessage.includes('main page')) {
+                return {
+                    success: true,
+                    pattern: 'dashboard only',
+                    response: '🧭 Navigating to dashboard...'
+                };
+            }
+
+            return {
+                success: false,
+                pattern: 'none',
+                response: 'No pattern matched'
+            };
+        }
+
+        function testPatternMatching() {
+            const testMessage = "go to the dashboard and look at the last 90 days in R";
+            const results = document.getElementById('results');
+            results.innerHTML = '';
+
+            const debug = [
+                `Original: "${testMessage}"`,
+                `Lowercase: "${testMessage.toLowerCase()}"`,
+                `Includes 'dashboard': ${testMessage.toLowerCase().includes('dashboard')}`,
+                `Includes '90 days': ${testMessage.toLowerCase().includes('90 days')}`,
+                `Includes 'last 90 days': ${testMessage.toLowerCase().includes('last 90 days')}`,
+                `Includes ' in r': ${testMessage.toLowerCase().includes(' in r')}`,
+                `Includes 'r-multiple': ${testMessage.toLowerCase().includes('r-multiple')}`,
+                `Includes 'r multiples': ${testMessage.toLowerCase().includes('r multiples')}`,
+                `All three conditions: ${
+                    testMessage.toLowerCase().includes('dashboard') &&
+                    (testMessage.toLowerCase().includes('last 90 days') || testMessage.toLowerCase().includes('90 days')) &&
+                    (testMessage.toLowerCase().includes(' in r') || testMessage.toLowerCase().includes('r-multiple') || testMessage.toLowerCase().includes('r multiples'))
+                }`
+            ];
+
+            debug.forEach(log => {
+                const div = document.createElement('div');
+                div.className = 'debug';
+                div.textContent = log;
+                results.appendChild(div);
+            });
+
+            const result = processUserCommand(testMessage);
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `result ${result.success ? 'match' : 'nomatch'}`;
+            resultDiv.innerHTML = `
+                <strong>Pattern: ${result.pattern}</strong><br>
+                Success: ${result.success}<br>
+                Response: ${result.response}
+            `;
+            results.appendChild(resultDiv);
+        }
+
+        function testCustomMessage() {
+            const testMessage = document.getElementById('testInput').value;
+            const results = document.getElementById('customResults');
+            results.innerHTML = '';
+
+            const debug = [
+                `Original: "${testMessage}"`,
+                `Lowercase: "${testMessage.toLowerCase()}"`,
+                `Includes 'dashboard': ${testMessage.toLowerCase().includes('dashboard')}`,
+                `Includes '90 days': ${testMessage.toLowerCase().includes('90 days')}`,
+                `Includes 'last 90 days': ${testMessage.toLowerCase().includes('last 90 days')}`,
+                `Includes ' in r': ${testMessage.toLowerCase().includes(' in r')}`,
+                `Includes 'r-multiple': ${testMessage.toLowerCase().includes('r-multiple')}`,
+                `Includes 'r multiples': ${testMessage.toLowerCase().includes('r multiples')}`
+            ];
+
+            debug.forEach(log => {
+                const div = document.createElement('div');
+                div.className = 'debug';
+                div.textContent = log;
+                results.appendChild(div);
+            });
+
+            const result = processUserCommand(testMessage);
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `result ${result.success ? 'match' : 'nomatch'}`;
+            resultDiv.innerHTML = `
+                <strong>Pattern: ${result.pattern}</strong><br>
+                Success: ${result.success}<br>
+                Response: ${result.response}
+            `;
+            results.appendChild(resultDiv);
+        }
+
+        // Auto-run test on page load
+        window.onload = function() {
+            testPatternMatching();
+        };
+    </script>
+</body>
+</html>

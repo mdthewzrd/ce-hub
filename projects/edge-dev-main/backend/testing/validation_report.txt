@@ -1,0 +1,91 @@
+
+🧪 COMPREHENSIVE END-TO-END VALIDATION REPORT
+============================================
+Generated: 2025-11-11 09:54:03
+Test File: /Users/michaeldurante/Downloads/lc d2 scan - oct 25 new ideas (2).py
+Output Directory: /Users/michaeldurante/ai dev/ce-hub/edge-dev/generated_scanners
+
+
+🧪 END-TO-END VALIDATION SUMMARY
+================================
+
+Overall Success: ❌ FAILED
+Total Score: 90.91%
+Execution Time: 0.59s
+
+Test Results: 9 passed, 2 failed
+
+Phase Breakdown:
+  input_validation: ✅ 100.0% (2 tests)
+  boundary_detection: ✅ 100.0% (2 tests)
+  parameter_isolation: ❌ 75.0% (2 tests)
+  template_generation: ✅ 100.0% (2 tests)
+  scanner_execution: ✅ 100.0% (1 tests)
+  performance: ✅ 100.0% (1 tests)
+  workflow_integration: ❌ 50.0% (1 tests)
+
+
+📊 DETAILED TEST RESULTS:
+========================
+
+
+📋 INPUT VALIDATION:
+--------------------------------------------------
+✅ file_accessibility: 100.0% (0.00s)
+   Test file accessible: 64219 characters
+
+✅ python_syntax: 100.0% (0.02s)
+   Valid Python syntax
+
+
+📋 BOUNDARY DETECTION:
+--------------------------------------------------
+✅ scanner_detection_accuracy: 100.0% (0.04s)
+   Detected 3 scanners, expected 3
+
+✅ boundary_line_accuracy: 100.0% (0.03s)
+   Boundary lines validated for 3 scanners
+
+
+📋 PARAMETER ISOLATION:
+--------------------------------------------------
+✅ parameter_extraction: 100.0% (0.04s)
+   Extracted parameters for 3 scanners, total 123 parameters
+
+❌ contamination_validation: 50.0% (0.04s)
+   Contamination validation: FAILED (8 contamination sources found)
+   Details: {'contamination_free': False, 'contamination_count': 8, 'isolation_verified': False}
+
+
+📋 TEMPLATE GENERATION:
+--------------------------------------------------
+✅ generation_success: 100.0% (0.05s)
+   Generated 3 templates, expected 3
+
+✅ file_validation: 100.0% (0.00s)
+   Validated 3/3 generated files
+
+
+📋 SCANNER EXECUTION:
+--------------------------------------------------
+✅ python_execution: 100.0% (0.19s)
+   Executable scanners: 3/3
+
+
+📋 PERFORMANCE:
+--------------------------------------------------
+✅ pipeline_performance: 100.0% (0.07s)
+   Pipeline performance: 0.07s total (0 issues)
+
+
+📋 WORKFLOW INTEGRATION:
+--------------------------------------------------
+❌ complete_workflow: 50.0% (0.10s)
+   Complete workflow: PARTIAL (0.10s)
+   Details: {'boundaries_detected': 3, 'parameters_extracted': 3, 'templates_generated': 3, 'contamination_free': False, 'all_executable': True, 'workflow_time': 0.09928321838378906, 'expected_scanners': 3}
+
+
+💡 RECOMMENDATIONS:
+==================================================
+1. Fix parameter_isolation.contamination_validation: Contamination validation: FAILED (8 contamination sources found)
+2. Fix workflow_integration.complete_workflow: Complete workflow: PARTIAL (0.10s)

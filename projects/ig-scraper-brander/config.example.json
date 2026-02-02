@@ -1,0 +1,77 @@
+{
+  "instagram": {
+    "burner_username": "YOUR_BURNER_USERNAME",
+    "burner_password": "YOUR_BURNER_PASSWORD",
+    "target_accounts": [
+      "example_account1",
+      "example_account2",
+      "example_account3"
+    ],
+    "download_videos_only": true,
+    "download_stories": false,
+    "download_highlights": false
+  },
+  "processing": {
+    "blur_username": true,
+    "blur_intensity": 20,
+    "overlay_logo": true,
+    "logo_path": "assets/your_logo.png",
+    "logo_position": "bottom_right",
+    "logo_size": 80
+  },
+  "watermark_regions": {
+    "top_left": {
+      "x": 20,
+      "y": 20,
+      "width": 400,
+      "height": 100,
+      "enabled": false
+    },
+    "top_right": {
+      "x": "70%",
+      "y": 20,
+      "width": 400,
+      "height": 100,
+      "enabled": false
+    },
+    "bottom_left": {
+      "x": 20,
+      "y": "85%",
+      "width": 350,
+      "height": 80,
+      "enabled": false
+    },
+    "bottom_right": {
+      "x": "70%",
+      "y": "85%",
+      "width": 350,
+      "height": 80,
+      "enabled": false
+    },
+    "bottom_center": {
+      "x": null,
+      "y": "85%",
+      "width": 600,
+      "height": 120,
+      "enabled": true
+    }
+  },
+  "output": {
+    "base_directory": "output",
+    "organize_by_account": true,
+    "keep_originals": true,
+    "processed_folder": "processed",
+    "originals_folder": "originals"
+  },
+  "rate_limiting": {
+    "delay_between_requests": 15,
+    "delay_between_accounts": 60,
+    "max_downloads_per_session": 50,
+    "session_break_duration": 300
+  },
+  "logging": {
+    "enabled": true,
+    "log_file": "scraper.log",
+    "log_level": "INFO"
+  }
+}

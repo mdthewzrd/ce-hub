@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Library - Harmonatica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a1;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --border: #262626;
+            --success: #22c55e;
+            --warning: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding-top: 64px;
+        }
+
+        /* Top Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar-brand .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-brand h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .navbar-brand p {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 48px;
+        }
+
+        .navbar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .navbar-nav a:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: white;
+        }
+
+        .navbar-nav a.active {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent);
+        }
+
+        .navbar-nav .badge {
+            background: var(--accent);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        .glass {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+        }
+
+        .video-card {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tag {
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-ready { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+        .tag-scheduled { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+        .tag-posted { background: rgba(99, 102, 241, 0.2); color: #818cf8; }
+        .tag-processing { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+        .tag-error { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
+        }
+
+        .processing-indicator {
+            animation: pulse-glow 2s infinite;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active { display: flex; }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .caption-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        select, input, textarea {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        select:focus, input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: var(--accent-hover); }
+        .btn-secondary { background: var(--border); color: white; }
+        .btn-secondary:hover { background: #333; }
+        .btn-danger { background: #ef4444; color: white; }
+        .btn-danger:hover { background: #dc2626; }
+
+        .view-toggle {
+            display: flex;
+            gap: 2px;
+            background: var(--bg-tertiary);
+            padding: 4px;
+            border-radius: 12px;
+        }
+
+        .view-toggle button {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .view-toggle button.active {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent);
+        }
+
+        .loading-spinner {
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="navbar">
+        <a href="/main" class="navbar-brand">
+            <div class="logo">
+                <i class="fas fa-infinity text-white"></i>
+            </div>
+            <div>
+                <h1>Harmonatica</h1>
+                <p>Content Studio</p>
+            </div>
+        </a>
+
+        <div class="navbar-nav">
+            <a href="/main">
+                <i class="fas fa-th-large"></i>
+                Dashboard
+            </a>
+            <a href="/browse">
+                <i class="fas fa-search"></i>
+                Browse
+                <span class="badge" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);">New</span>
+            </a>
+            <a href="/scrape">
+                <i class="fas fa-video"></i>
+                Scraper
+            </a>
+            <a href="/library" class="active">
+                <i class="fas fa-folder"></i>
+                Production
+                <span class="badge" id="libraryBadge">0</span>
+            </a>
+            <a href="/brand-voice">
+                <i class="fas fa-microphone"></i>
+                Brand Voice
+            </a>
+            <a href="/offers">
+                <i class="fas fa-gift"></i>
+                Offers
+                <span class="badge" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">New</span>
+            </a>
+            <a href="/settings">
+                <i class="fas fa-cog"></i>
+                Settings
+            </a>
+        </div>
+
+        <div class="navbar-right">
+            <button class="btn btn-secondary" onclick="window.location.reload()">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-[1800px] mx-auto px-6 py-8">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h1 class="text-3xl font-bold gradient-text">Content Library</h1>
+                <p class="text-gray-400 mt-1">Your prepared and ready-to-post content</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <select id="statusFilter" onchange="loadLibrary()" class="w-40">
+                    <option value="">All Status</option>
+                    <option value="error">Error</option>
+                    <option value="processing">Processing</option>
+                    <option value="ready">Ready</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="posted">Posted</option>
+                </select>
+                <select id="accountFilter" onchange="filterByAccount()" class="w-48">
+                    <option value="">All Accounts</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
+            <div class="glass rounded-xl p-5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm">Total Content</p>
+                        <p class="text-2xl font-bold text-white mt-1" id="statTotal">0</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center">
+                        <i class="fas fa-folder text-indigo-400 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="glass rounded-xl p-5 processing-indicator">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm">Processing</p>
+                        <p class="text-2xl font-bold text-purple-400 mt-1" id="statProcessing">0</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                        <i id="statProcessingIcon" class="fas fa-robot text-purple-400 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="glass rounded-xl p-5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm">Ready to Post</p>
+                        <p class="text-2xl font-bold text-green-400 mt-1" id="statReady">0</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
+                        <i class="fas fa-check-circle text-green-400 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="glass rounded-xl p-5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm">Scheduled</p>
+                        <p class="text-2xl font-bold text-yellow-400 mt-1" id="statScheduled">0</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center">
+                        <i class="fas fa-clock text-yellow-400 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="glass rounded-xl p-5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm">Posted</p>
+                        <p class="text-2xl font-bold text-blue-400 mt-1" id="statPosted">0</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                        <i class="fas fa-paper-plane text-blue-400 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Toggle -->
+        <div class="flex items-center justify-between mb-6">
+            <div class="view-toggle">
+                <button id="gridViewBtn" onclick="switchView('grid')" class="active">
+                    <i class="fas fa-th-large mr-2"></i>Grid
+                </button>
+                <button id="listViewBtn" onclick="switchView('list')">
+                    <i class="fas fa-list mr-2"></i>List
+                </button>
+            </div>
+            <input type="text" id="searchInput" placeholder="Search captions..."
+                   onkeyup="filterContent()" class="w-64">
+        </div>
+
+        <!-- Grid View -->
+        <div id="gridView" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        </div>
+
+        <!-- List View -->
+        <div id="listView" class="hidden space-y-3">
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden text-center py-20">
+            <i class="fas fa-folder-open text-6xl text-gray-700 mb-4"></i>
+            <p class="text-gray-500 text-lg">No content found</p>
+            <p class="text-gray-600 text-sm mt-2">Prepare some content from the scraper page</p>
+            <a href="/scrape" class="inline-block mt-4 btn btn-primary">
+                <i class="fas fa-download mr-2"></i>Go to Scraper
+            </a>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="text-center py-20">
+            <div class="loading-spinner"></div>
+            <p class="text-gray-500 mt-4">Loading content...</p>
+        </div>
+    </div>
+
+    <!-- Video Preview Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content" style="max-width: 900px; width: 95%;">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold" id="videoModalTitle">Content Preview</h2>
+                <button onclick="closeVideoModal()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="videoModalContent">
+                <!-- Content will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Modal -->
+    <div id="scheduleModal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold">Schedule Content</h2>
+                <button onclick="closeScheduleModal()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">Date & Time</label>
+                    <input type="datetime-local" id="scheduleDateTime" class="w-full">
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="closeScheduleModal()" class="btn btn-secondary flex-1">Cancel</button>
+                    <button onclick="confirmSchedule()" class="btn btn-primary flex-1">Schedule</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Caption Editor Modal -->
+    <div id="captionEditorModal" class="modal">
+        <div class="modal-content" style="max-width: 1200px; max-height: 90vh; overflow-y: auto;">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold"><i class="fas fa-edit mr-2"></i>Edit Caption</h2>
+                <button onclick="closeCaptionEditor()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- LEFT: Caption Editor -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-sm text-gray-400">Caption</label>
+                        <div class="flex gap-2">
+                            <span id="wordCount" class="text-xs text-gray-500">0 words</span>
+                            <span id="charCount" class="text-xs text-gray-500">0 chars</span>
+                        </div>
+                    </div>
+                    <textarea id="captionEditor"
+                              class="w-full h-96 bg-gray-800 border border-gray-700 rounded-lg p-4 text-white text-sm focus:outline-none focus:border-purple-500 resize-none"
+                              placeholder="Your caption will appear here..."
+                              oninput="updateCaptionStats()"></textarea>
+
+                    <div class="flex gap-2 mt-3">
+                        <button onclick="saveCaption()" class="flex-1 py-2 px-4 rounded-lg font-medium bg-green-600 hover:bg-green-700 text-white">
+                            <i class="fas fa-save mr-2"></i>Save
+                        </button>
+                        <button onclick="cancelCaptionEdit()" class="flex-1 py-2 px-4 rounded-lg font-medium bg-gray-600 hover:bg-gray-700 text-white">
+                            <i class="fas fa-times mr-2"></i>Cancel
+                        </button>
+                        <button onclick="restoreOriginal()" class="py-2 px-4 rounded-lg font-medium bg-yellow-600 hover:bg-yellow-700 text-white">
+                            <i class="fas fa-undo mr-2"></i>Restore
+                        </button>
+                    </div>
+                </div>
+
+                <!-- RIGHT: AI Refine Tools -->
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">AI Refine</label>
+
+                    <!-- Quick Actions -->
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 mb-2">Quick Actions:</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="quickRefine('make_story')" class="col-span-2 py-2 px-3 rounded-lg text-sm bg-purple-600 hover:bg-purple-700 text-white font-semibold">
+                                <i class="fas fa-book-open mr-1"></i>Make it Story Length (750+ words)
+                            </button>
+                            <button onclick="quickRefine('shorter')" class="py-2 px-3 rounded-lg text-sm bg-gray-700 hover:bg-gray-600 text-white">
+                                <i class="fas fa-compress-alt mr-1"></i>Shorter
+                            </button>
+                            <button onclick="quickRefine('longer')" class="py-2 px-3 rounded-lg text-sm bg-gray-700 hover:bg-gray-600 text-white">
+                                <i class="fas fa-expand-alt mr-1"></i>Longer
+                            </button>
+                            <button onclick="quickRefine('casual')" class="py-2 px-3 rounded-lg text-sm bg-gray-700 hover:bg-gray-600 text-white">
+                                <i class="fas fa-smile mr-1"></i>More Casual
+                            </button>
+                            <button onclick="quickRefine('formal')" class="py-2 px-3 rounded-lg text-sm bg-gray-700 hover:bg-gray-600 text-white">
+                                <i class="fas fa-user-tie mr-1"></i>More Formal
+                            </button>
+                            <button onclick="quickRefine('fix_hook')" class="py-2 px-3 rounded-lg text-sm bg-gray-700 hover:bg-gray-600 text-white">
+                                <i class="fas fa-fish mr-1"></i>Fix Hook
+                            </button>
+                            <button onclick="quickRefine('remove_cta')" class="py-2 px-3 rounded-lg text-sm bg-gray-700 hover:bg-gray-600 text-white">
+                                <i class="fas fa-ban mr-1"></i>Remove CTA
+                            </button>
+                            <button onclick="quickRefine('add_emojis')" class="py-2 px-3 rounded-lg text-sm bg-gray-700 hover:bg-gray-600 text-white">
+                                <i class="fas fa-icons mr-1"></i>Add Emojis
+                            </button>
+                            <button onclick="quickRefine('remove_emojis')" class="py-2 px-3 rounded-lg text-sm bg-gray-700 hover:bg-gray-600 text-white">
+                                <i class="fas fa-eraser mr-1"></i>Remove Emojis
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Custom Instruction -->
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 mb-2">Custom Instruction:</p>
+                        <div class="flex gap-2">
+                            <input type="text" id="customRefineInput"
+                                   class="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-purple-500"
+                                   placeholder="e.g., Make it punchier, Add a question...">
+                            <button onclick="customRefine()" class="py-2 px-4 rounded-lg font-medium bg-purple-600 hover:bg-purple-700 text-white">
+                                <i class="fas fa-magic mr-1"></i>Go
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chat History -->
+                    <div>
+                        <p class="text-xs text-gray-500 mb-2">Refinement History:</p>
+                        <div id="refineHistory" class="bg-gray-800 border border-gray-700 rounded-lg p-3 h-48 overflow-y-auto text-sm">
+                            <p class="text-gray-500 italic">Your refinement history will appear here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let libraryContent = [];
+        let allFinishedContent = [];
+        let filteredContent = [];
+        let currentView = 'grid';
+        let schedulingContentId = null;
+
+        // Load library on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM Content Loaded');
+            loadLibrary();
+
+            // Auto-refresh every 10 seconds if there are processing items
+            setInterval(() => {
+                const processingCount = libraryContent.filter(c => c.status === 'processing').length;
+                if (processingCount > 0) {
+                    console.log('Auto-refreshing...', processingCount, 'items processing');
+                    loadLibrary();
+                }
+            }, 10000);
+        });
+
+        async function loadLibrary() {
+            const status = document.getElementById('statusFilter').value;
+            showLoading(true);
+            console.log('Loading library with status:', status);
+
+            // FAILSAFE: Force hide loading after 10 seconds
+            const loadingTimeout = setTimeout(() => {
+                console.warn('⚠️ Loading timeout - forcing hide');
+                showLoading(false);
+            }, 10000);
+
+            try {
+                // Fetch both ready_content and source_content
+                let allItems = [];
+                let sourceItemsCount = 0;
+
+                // Fetch ready_content (ready, scheduled, posted)
+                let libraryUrl = '/api/library';
+                if (status && status !== 'processing') {
+                    libraryUrl = `/api/library?status=${status}`;
+                }
+
+                const libraryResponse = await fetch(libraryUrl);
+                const libraryData = await libraryResponse.json();
+
+                if (libraryData.success && libraryData.items) {
+                    allItems = allItems.concat(libraryData.items.map(item => ({
+                        ...item,
+                        itemType: 'ready'
+                    })));
+                }
+
+                // Fetch source_content (processing items)
+                if (!status || status === 'processing') {
+                    const sourceResponse = await fetch('/api/source?status=pending');
+                    const sourceData = await sourceResponse.json();
+
+                    if (sourceData.success && sourceData.items) {
+                        sourceItemsCount = sourceData.items.length;
+                        allItems = allItems.concat(sourceData.items.map(item => {
+                            const processingStatus = item.processing_status || 'pending';
+                            const hasError = processingStatus === 'failed';
+                            const isProcessing = processingStatus === 'processing';
+                            const isCompleted = processingStatus === 'completed';
+
+                            // Determine display status
+                            let displayStatus = 'processing';
+                            let displayCaption = 'AI is generating caption...';
+
+                            if (hasError) {
+                                displayStatus = 'error';
+                                displayCaption = item.processing_error || 'Processing failed - try again';
+                            } else if (isCompleted) {
+                                displayStatus = 'ready';
+                                displayCaption = 'Ready! Check the Ready tab.';
+                            } else if (item.status === 'prepared') {
+                                displayStatus = 'ready';
+                                displayCaption = 'Already prepared';
+                            }
+
+                            return {
+                                ...item,
+                                itemType: 'source',
+                                status: displayStatus,
+                                processing_status: processingStatus,
+                                caption: displayCaption,
+                                processing_error: item.processing_error,
+                                video_path: item.video_path
+                            };
+                        }));
+                    }
+                }
+
+                libraryContent = allItems;
+                filteredContent = allItems;
+
+                console.log('Total items loaded:', filteredContent.length, '(', libraryData.items?.length || 0, 'ready +', sourceItemsCount, 'processing )');
+
+                renderContent();
+                updateStats();
+                populateAccountFilter();
+            } catch (error) {
+                console.error('Error loading library:', error);
+                alert('Failed to load library: ' + error.message);
+            } finally {
+                clearTimeout(loadingTimeout);
+                showLoading(false);
+            }
+        }
+
+        function renderContent() {
+            console.log('renderContent called, filteredContent.length:', filteredContent.length);
+            console.log('Current view:', currentView);
+
+            if (!filteredContent || filteredContent.length === 0) {
+                document.getElementById('gridView').classList.add('hidden');
+                document.getElementById('listView').classList.add('hidden');
+                document.getElementById('emptyState').classList.remove('hidden');
+                document.getElementById('loadingState').classList.add('hidden');
+                console.log('Showing empty state');
+                return;
+            }
+
+            document.getElementById('emptyState').classList.add('hidden');
+
+            if (currentView === 'grid') {
+                document.getElementById('gridView').classList.remove('hidden');
+                document.getElementById('listView').classList.add('hidden');
+                console.log('Rendering grid view');
+                renderGrid();
+            } else {
+                document.getElementById('gridView').classList.add('hidden');
+                document.getElementById('listView').classList.remove('hidden');
+                console.log('Rendering list view');
+                renderList();
+            }
+        }
+
+        function getFilenameFromPath(videoPath) {
+            if (!videoPath) return null;
+            // Split on both forward slash and unicode slash
+            const parts = videoPath.split(/[\/\u2215]/);
+            const lastPart = parts[parts.length - 1];
+            // Remove .mp4 extension if present
+            return lastPart.replace(/\.mp4$/, '');
+        }
+
+        function renderGrid() {
+            const grid = document.getElementById('gridView');
+            console.log('Rendering grid with', filteredContent.length, 'items');
+
+            grid.innerHTML = filteredContent.map(item => {
+                const filename = getFilenameFromPath(item.video_path);
+                const account = item.account || 'unknown';
+                const statusClass = item.status === 'processing' ? 'tag-processing' : item.status === 'error' ? 'tag-error' : item.status === 'ready' ? 'tag-ready' : item.status === 'scheduled' ? 'tag-scheduled' : 'tag-posted';
+
+                console.log('Rendering item:', item.id, 'filename:', filename);
+
+                return `
+                    <div class="video-card glass rounded-xl overflow-hidden" onclick="openVideoModal(${item.id})">
+                        <div class="relative aspect-video bg-black">
+                            ${filename ? `
+                                <video src="/video/${filename}.mp4?raw=1"
+                                       class="w-full h-full object-cover"
+                                       muted
+                                       preload="metadata"
+                                       onmouseover="this.play().catch(() => {})"
+                                       onmouseout="this.pause(); this.currentTime = 0;">
+                                </video>
+                            ` : '<div class="w-full h-full flex items-center justify-center text-gray-600"><i class="fas fa-video-slash text-4xl"></i></div>'}
+
+                            <div class="absolute top-2 right-2">
+                                <span class="tag ${statusClass}">${item.status}</span>
+                            </div>
+
+                            ${item.manychat_keyword ? `
+                                <div class="absolute top-2 left-2">
+                                    <span class="tag" style="background:rgba(99,102,241,0.3);color:#a78bfa;">
+                                        <i class="fas fa-comment-dots mr-1"></i>${item.manychat_keyword}
+                                    </span>
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        <div class="p-4">
+                            <div class="text-xs text-gray-500 mb-2">
+                                <i class="fas fa-user mr-1"></i>@${account}
+                            </div>
+                            ${item.caption ? `<div class="caption-text mb-3">${item.caption}</div>` : ''}
+
+                            <div class="flex items-center gap-2 text-xs text-gray-600">
+                                ${item.posting_schedule ? `
+                                    <span class="flex items-center gap-1">
+                                        <i class="fas fa-calendar text-yellow-500"></i>
+                                        ${new Date(item.posting_schedule).toLocaleDateString()}
+                                    </span>
+                                ` : ''}
+                            </div>
+
+                            <div class="flex gap-2 mt-3">
+                                ${item.status === 'error' ? `
+                                    <button onclick="event.stopPropagation(); retryCaptionGeneration(${item.id})"
+                                            class="flex-1 py-2 px-3 rounded-lg text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white">
+                                        <i class="fas fa-redo mr-1"></i>Retry
+                                    </button>
+                                ` : `
+                                    <button onclick="event.stopPropagation(); openScheduleModal(${item.id})"
+                                            class="flex-1 py-2 px-3 rounded-lg text-sm font-medium bg-yellow-600 hover:bg-yellow-700 text-white"
+                                            ${item.status === 'posted' ? 'disabled style="opacity:0.5"' : ''}>
+                                        <i class="fas fa-calendar-plus mr-1"></i>Schedule
+                                    </button>
+                                `}
+                                <button onclick="event.stopPropagation(); deleteContent(${item.id}, '${item.itemType}')"
+                                        class="py-2 px-3 rounded-lg text-sm font-medium bg-red-600 hover:bg-red-700 text-white">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            console.log('Grid HTML updated');
+        }
+
+        function renderList() {
+            const list = document.getElementById('listView');
+            console.log('Rendering list with', filteredContent.length, 'items');
+
+            list.innerHTML = filteredContent.map(item => {
+                const filename = getFilenameFromPath(item.video_path);
+                const account = item.account || 'unknown';
+                const statusClass = item.status === 'processing' ? 'tag-processing' : item.status === 'error' ? 'tag-error' : item.status === 'ready' ? 'tag-ready' : item.status === 'scheduled' ? 'tag-scheduled' : 'tag-posted';
+
+                return `
+                    <div class="video-card glass rounded-xl p-4 flex gap-4" onclick="openVideoModal(${item.id})">
+                        <div class="w-48 flex-shrink-0">
+                            <div class="relative aspect-video bg-black rounded-lg overflow-hidden">
+                                ${filename ? `
+                                    <video src="/video/${filename}.mp4?raw=1"
+                                           class="w-full h-full object-cover"
+                                           muted
+                                           preload="metadata"
+                                           onmouseover="this.play().catch(() => {})"
+                                           onmouseout="this.pause(); this.currentTime = 0;">
+                                    </video>
+                                ` : '<div class="w-full h-full flex items-center justify-center text-gray-600"><i class="fas fa-video-slash"></i></div>'}
+                                <div class="absolute top-1 right-1">
+                                    <span class="tag ${statusClass}">${item.status}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-start justify-between mb-2">
+                                <div>
+                                    <div class="text-xs text-gray-500 mb-1">
+                                        <i class="fas fa-user mr-1"></i>@${account}
+                                    </div>
+                                    ${item.manychat_keyword ? `
+                                        <span class="tag" style="background:rgba(99,102,241,0.3);color:#a78bfa;">
+                                            <i class="fas fa-comment-dots mr-1"></i>${item.manychat_keyword}
+                                        </span>
+                                    ` : ''}
+                                </div>
+                                <div class="flex gap-2">
+                                    <button onclick="event.stopPropagation(); openScheduleModal(${item.id})"
+                                            class="btn btn-primary text-sm"
+                                            ${item.status === 'posted' ? 'disabled style="opacity:0.5"' : ''}>
+                                        <i class="fas fa-calendar-plus mr-1"></i>Schedule
+                                    </button>
+                                    <button onclick="event.stopPropagation(); deleteContent(${item.id}, '${item.itemType}')"
+                                            class="btn btn-danger text-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            ${item.caption ? `<div class="caption-text mb-2">${item.caption}</div>` : ''}
+                            ${item.posting_schedule ? `
+                                <div class="text-xs text-gray-500">
+                                    <i class="fas fa-calendar text-yellow-500 mr-1"></i>
+                                    Scheduled for: ${new Date(item.posting_schedule).toLocaleString()}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openVideoModal(contentId) {
+            const item = libraryContent.find(c => c.id === contentId);
+            if (!item) return;
+
+            const modal = document.getElementById('videoModal');
+            const content = document.getElementById('videoModalContent');
+            const title = document.getElementById('videoModalTitle');
+
+            const filename = getFilenameFromPath(item.video_path);
+            const account = item.account || 'unknown';
+
+            title.textContent = `@${account}`;
+
+            content.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- LEFT COLUMN: Video + Caption -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-black rounded-xl overflow-hidden mb-4">
+                            ${filename ? `
+                                <video src="/video/${filename}.mp4?raw=1" controls autoplay class="w-full" style="max-height: 50vh;">
+                                </video>
+                            ` : '<div class="p-8 text-center text-gray-500">Video not available</div>'}
+                        </div>
+
+                        ${item.caption ? `
+                            <div class="glass rounded-xl p-4 mb-4">
+                                <h3 class="text-sm font-semibold mb-2 text-gray-400">Caption</h3>
+                                <p class="text-sm text-gray-300 whitespace-pre-wrap">${item.caption}</p>
+                            </div>
+                        ` : ''}
+
+                        ${item.manychat_keyword ? `
+                            <div class="glass rounded-xl p-4">
+                                <h3 class="text-sm font-semibold mb-2 text-gray-400">ManyChat Keyword</h3>
+                                <span class="tag" style="background:rgba(99,102,241,0.3);color:#a78bfa;font-size:12px;">
+                                    ${item.manychat_keyword}
+                                </span>
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <!-- RIGHT COLUMN: Actions -->
+                    <div class="lg:col-span-1">
+                        <div class="glass rounded-xl p-4 sticky top-4">
+                            <h3 class="text-lg font-bold mb-4" style="color: #a78bfa;">
+                                <i class="fas fa-cog mr-2"></i>Actions
+                            </h3>
+
+                            <div class="space-y-3">
+                                ${item.caption ? `
+                                    <button onclick="openCaptionEditor(${item.id});"
+                                            class="w-full py-3 px-4 rounded-lg font-medium bg-purple-600 hover:bg-purple-700 text-white">
+                                        <i class="fas fa-edit mr-2"></i>Edit Caption
+                                    </button>
+                                ` : ''}
+
+                                <button onclick="openScheduleModal(${item.id}); closeVideoModal();"
+                                        class="w-full py-3 px-4 rounded-lg font-medium bg-yellow-600 hover:bg-yellow-700 text-white"
+                                        ${item.status === 'posted' ? 'disabled style="opacity:0.5"' : ''}>
+                                    <i class="fas fa-calendar-plus mr-2"></i>Schedule Post
+                                </button>
+
+                                ${item.posting_schedule ? `
+                                    <div class="text-center text-sm text-gray-400">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        ${new Date(item.posting_schedule).toLocaleString()}
+                                    </div>
+                                ` : ''}
+
+                                <hr class="border-gray-700">
+
+                                ${filename ? `
+                                    <a href="/video/${filename}.mp4" target="_blank" class="w-full py-2 px-4 rounded-lg font-medium bg-indigo-600 hover:bg-indigo-700 text-white block text-center">
+                                        <i class="fas fa-download mr-2"></i>Download Video
+                                    </a>
+                                ` : ''}
+
+                                <button onclick="deleteContent(${item.id}, '${item.itemType}'); closeVideoModal();" class="w-full py-2 px-4 rounded-lg font-medium bg-red-600 hover:bg-red-700 text-white">
+                                    <i class="fas fa-trash mr-2"></i>Delete
+                                </button>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-gray-700">
+                                <div class="text-xs text-gray-500 space-y-1">
+                                    <div><i class="fas fa-hashtag mr-2"></i>ID: ${item.id}</div>
+                                    <div><i class="fas fa-user mr-2"></i>@${account}</div>
+                                    ${item.original_likes ? `<div><i class="fas fa-heart mr-2"></i>${item.original_likes.toLocaleString()} likes</div>` : ''}
+                                    ${item.original_views ? `<div><i class="fas fa-eye mr-2"></i>${item.original_views.toLocaleString()} views</div>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function closeVideoModal() {
+            document.getElementById('videoModal').classList.remove('active');
+        }
+
+        function openScheduleModal(contentId) {
+            schedulingContentId = contentId;
+            const modal = document.getElementById('scheduleModal');
+            modal.classList.add('active');
+        }
+
+        function closeScheduleModal() {
+            document.getElementById('scheduleModal').classList.remove('active');
+            schedulingContentId = null;
+        }
+
+        async function confirmSchedule() {
+            const dateTime = document.getElementById('scheduleDateTime').value;
+            if (!dateTime) {
+                alert('Please select a date and time');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/library/${schedulingContentId}/schedule`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ scheduled_for: dateTime })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    closeScheduleModal();
+                    loadLibrary();
+                } else {
+                    alert('Failed to schedule: ' + data.error);
+                }
+            } catch (error) {
+                console.error('Error scheduling:', error);
+                alert('Failed to schedule content');
+            }
+        }
+
+        async function retryCaptionGeneration(contentId) {
+            if (!confirm('Retry AI caption generation for this content?')) return;
+
+            try {
+                // Reset processing status
+                const response = await fetch(`/api/source/${contentId}/retry`, {
+                    method: 'POST'
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    showToast('Caption generation restarted', 'success');
+                    loadLibrary();  // Refresh to show processing status
+                } else {
+                    alert('Failed to retry: ' + data.error);
+                }
+            } catch (error) {
+                console.error('Error retrying:', error);
+                alert('Failed to retry caption generation');
+            }
+        }
+
+        async function deleteContent(contentId, itemType) {
+            if (!confirm('Are you sure you want to delete this content?')) return;
+
+            try {
+                // Choose the correct endpoint based on item type
+                const endpoint = itemType === 'source'
+                    ? `/api/source/${contentId}`
+                    : `/api/library/${contentId}`;
+
+                const response = await fetch(endpoint, {
+                    method: 'DELETE'
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    loadLibrary();
+                } else {
+                    alert('Failed to delete: ' + data.error);
+                }
+            } catch (error) {
+                console.error('Error deleting:', error);
+                alert('Failed to delete content');
+            }
+        }
+
+        // Caption Editor Functions
+        let currentEditContentId = null;
+        let originalCaption = '';
+
+        function openCaptionEditor(contentId) {
+            const item = libraryContent.find(c => c.id === contentId);
+            if (!item || !item.caption) return;
+
+            currentEditContentId = contentId;
+            originalCaption = item.caption;
+
+            // Set the caption in editor
+            document.getElementById('captionEditor').value = item.caption;
+
+            // Update stats
+            updateCaptionStats();
+
+            // Clear history
+            document.getElementById('refineHistory').innerHTML = '<p class="text-gray-500 italic">Your refinement history will appear here...</p>';
+
+            // Close video modal and open editor
+            closeVideoModal();
+            document.getElementById('captionEditorModal').classList.add('active');
+        }
+
+        function closeCaptionEditor() {
+            document.getElementById('captionEditorModal').classList.remove('active');
+            currentEditContentId = null;
+            originalCaption = '';
+        }
+
+        function updateCaptionStats() {
+            const caption = document.getElementById('captionEditor').value;
+            const words = caption.trim() ? caption.trim().split(/\s+/).length : 0;
+            const chars = caption.length;
+
+            document.getElementById('wordCount').textContent = `${words} words`;
+            document.getElementById('charCount').textContent = `${chars} chars`;
+        }
+
+        function restoreOriginal() {
+            if (confirm('Restore original caption? All changes will be lost.')) {
+                document.getElementById('captionEditor').value = originalCaption;
+                updateCaptionStats();
+                addToHistory('Restored original caption');
+            }
+        }
+
+        function cancelCaptionEdit() {
+            closeCaptionEditor();
+        }
+
+        async function saveCaption() {
+            if (!currentEditContentId) return;
+
+            const newCaption = document.getElementById('captionEditor').value;
+
+            try {
+                const response = await fetch('/api/caption/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        content_id: currentEditContentId,
+                        caption: newCaption
+                    })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    addToHistory('Caption saved successfully');
+                    closeCaptionEditor();
+                    loadLibrary(); // Refresh to show updated caption
+                } else {
+                    alert('Failed to save: ' + data.error);
+                }
+            } catch (error) {
+                console.error('Error saving:', error);
+                alert('Failed to save caption');
+            }
+        }
+
+        async function quickRefine(action) {
+            const actions = {
+                'make_story': 'Rewrite this as a DEEP STORY narrative - 750-1000 words minimum with 5-7 chapters. Include personal stories, deep exploration of concepts, scientific backing, transformation journeys, and practical applications. Make it substantial and authoritative.',
+                'shorter': 'Make this caption about 30% shorter while keeping the main points',
+                'longer': 'Make this caption about 30% longer by adding more detail and depth',
+                'casual': 'Rewrite this to be more casual and conversational, like you\'re talking to a friend',
+                'formal': 'Rewrite this to be more professional and polished',
+                'fix_hook': 'Rewrite the first line (hook) to be more captivating - make it a statement that grabs attention',
+                'remove_cta': 'Remove any call-to-action language (like "comment below", "want to learn", etc.) and end naturally',
+                'add_emojis': 'Add 1-2 strategic emojis to break up the text (but NOT in the first line)',
+                'remove_emojis': 'Remove all emojis from the caption'
+            };
+
+            const instruction = actions[action];
+            if (instruction) {
+                await refineCaption(instruction);
+            }
+        }
+
+        async function customRefine() {
+            const input = document.getElementById('customRefineInput');
+            const instruction = input.value.trim();
+
+            if (!instruction) {
+                alert('Please enter a refinement instruction');
+                return;
+            }
+
+            await refineCaption(instruction);
+            input.value = '';
+        }
+
+        async function refineCaption(instruction) {
+            const currentCaption = document.getElementById('captionEditor').value;
+
+            if (!currentCaption.trim()) {
+                alert('No caption to refine');
+                return;
+            }
+
+            // Show loading
+            const editor = document.getElementById('captionEditor');
+            editor.disabled = true;
+            editor.value = 'Refining caption...';
+            addToHistory(`Requesting: ${instruction}`);
+
+            try {
+                const response = await fetch('/api/caption/refine', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        caption: currentCaption,
+                        instruction: instruction
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    editor.value = data.caption;
+                    updateCaptionStats();
+                    addToHistory(`✅ ${instruction}`);
+                } else {
+                    editor.value = currentCaption; // Restore on error
+                    addToHistory(`❌ Failed: ${data.error}`);
+                    alert('Refinement failed: ' + data.error);
+                }
+            } catch (error) {
+                editor.value = currentCaption; // Restore on error
+                addToHistory(`❌ Error: ${error.message}`);
+                alert('Failed to refine caption');
+            } finally {
+                editor.disabled = false;
+            }
+        }
+
+        function addToHistory(message) {
+            const history = document.getElementById('refineHistory');
+
+            // Clear placeholder if first message
+            if (history.querySelector('.italic')) {
+                history.innerHTML = '';
+            }
+
+            const timestamp = new Date().toLocaleTimeString();
+            const entry = document.createElement('div');
+            entry.className = 'mb-2 pb-2 border-b border-gray-700 last:border-0';
+            entry.innerHTML = `
+                <div class="flex items-start gap-2">
+                    <span class="text-xs text-gray-500">${timestamp}</span>
+                    <span class="text-sm text-gray-300">${message}</span>
+                </div>
+            `;
+
+            history.appendChild(entry);
+            history.scrollTop = history.scrollHeight;
+        }
+
+        function switchView(view) {
+            currentView = view;
+            document.getElementById('gridViewBtn').classList.toggle('active', view === 'grid');
+            document.getElementById('listViewBtn').classList.toggle('active', view === 'list');
+            renderContent();
+        }
+
+        function updateStats() {
+            const total = libraryContent.length;
+            const processing = libraryContent.filter(c => c.status === 'processing').length;
+            const ready = libraryContent.filter(c => c.status === 'ready').length;
+            const scheduled = libraryContent.filter(c => c.status === 'scheduled').length;
+            const posted = libraryContent.filter(c => c.status === 'posted').length;
+
+            document.getElementById('statTotal').textContent = total;
+            document.getElementById('statProcessing').textContent = processing;
+            document.getElementById('statReady').textContent = ready;
+            document.getElementById('statScheduled').textContent = scheduled;
+            document.getElementById('statPosted').textContent = posted;
+            document.getElementById('libraryBadge').textContent = total;
+
+            // Toggle spinning icon based on processing count
+            const processingIcon = document.getElementById('statProcessingIcon');
+            if (processing > 0) {
+                processingIcon.classList.add('fa-spin');
+            } else {
+                processingIcon.classList.remove('fa-spin');
+            }
+        }
+
+        function populateAccountFilter() {
+            const accounts = [...new Set(libraryContent.map(c => c.account).filter(Boolean))];
+            const select = document.getElementById('accountFilter');
+            select.innerHTML = '<option value="">All Accounts</option>' +
+                accounts.map(acc => `<option value="${acc}">@${acc}</option>`).join('');
+        }
+
+        function filterByAccount() {
+            const account = document.getElementById('accountFilter').value;
+            if (account) {
+                filteredContent = libraryContent.filter(c => c.account === account);
+            } else {
+                filteredContent = libraryContent;
+            }
+            filterContent();
+        }
+
+        function filterContent() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            if (search) {
+                filteredContent = filteredContent.filter(c =>
+                    (c.caption && c.caption.toLowerCase().includes(search)) ||
+                    (c.account && c.account.toLowerCase().includes(search)) ||
+                    (c.manychat_keyword && c.manychat_keyword.toLowerCase().includes(search))
+                );
+            } else {
+                const account = document.getElementById('accountFilter').value;
+                if (account) {
+                    filteredContent = libraryContent.filter(c => c.account === account);
+                } else {
+                    filteredContent = libraryContent;
+                }
+            }
+            renderContent();
+        }
+
+        function showLoading(show) {
+            document.getElementById('loadingState').classList.toggle('hidden', !show);
+            if (show) {
+                document.getElementById('gridView').classList.add('hidden');
+                document.getElementById('listView').classList.add('hidden');
+                document.getElementById('emptyState').classList.add('hidden');
+            }
+        }
+
+        // Close modals on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+                closeScheduleModal();
+            }
+        });
+
+        // Close modals on backdrop click
+        document.getElementById('videoModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeVideoModal();
+        });
+        document.getElementById('scheduleModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeScheduleModal();
+        });
+    </script>
+</body>
+</html>

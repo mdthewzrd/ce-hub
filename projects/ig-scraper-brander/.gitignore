@@ -1,0 +1,39 @@
+# Credentials
+config.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Output files
+output/
+*.mp4
+*.mov
+*.avi
+
+# Logs
+*.log
+
+# Results
+results_*.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*_temp.mp4
+*_backup.json

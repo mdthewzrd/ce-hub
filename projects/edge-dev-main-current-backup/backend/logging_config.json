@@ -1,0 +1,10 @@
+{
+  "access_log_file": "/var/log/edge-dev/access.log",
+  "error_log_file": "/var/log/edge-dev/error.log",
+  "audit_log_file": "/var/log/edge-dev/audit.log",
+  "log_level": "INFO",
+  "log_rotation": true,
+  "log_retention_days": 90,
+  "log_format": "json",
+  "monitoring_enabled": true
+}

@@ -1,0 +1,37 @@
+{
+  "taskId": "30bd7784-7667-448d-b084-71021122e4a5",
+  "version": {
+    "app": "1.0",
+    "promptPack": "v1.0",
+    "model": "gemini-2.5-flash-image",
+    "providerApi": "1.0.0"
+  },
+  "inputs": {
+    "subject": {
+      "assetId": "30bd7784-7667-448d-b084-71021122e4a5",
+      "w": 1024,
+      "h": 768
+    },
+    "glasses": [
+      "glasses_0",
+      "glasses_1",
+      "glasses_2"
+    ]
+  },
+  "generation": {
+    "guidance": 0.6,
+    "refStrength": 0.85,
+    "lightingWeight": 0.7,
+    "reflectionWeight": 0.8,
+    "colorMatchWeight": 0.15,
+    "seed": 629148,
+    "passes": 1,
+    "editRequest": "First of all, the glasses are not matching the source glasses, and as well, the aspect ratio is not what the original photo was. Please make sure to keep the original photo exact and also make the glasses exactly the same as the source images. "
+  },
+  "quality": {
+    "ssim": 0,
+    "faceDist": 0.1183051582119086,
+    "fit": "pass"
+  },
+  "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+}

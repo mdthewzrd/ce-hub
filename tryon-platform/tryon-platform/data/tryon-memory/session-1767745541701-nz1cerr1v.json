@@ -1,0 +1,99 @@
+{
+  "sessionId": "session-1767745541701-nz1cerr1v",
+  "task": "Generate virtual try-on image.\n\nIMPORTANT: Use these EXACT file paths and parameters:\n- Subject photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/91ad0b5c-bdbe-46ec-82df-cb9e5dda9b97/subject_0_547649680e1afa32cb008ff8bf925da5.jpg\n- Glasses photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/2e817d16-2b75-4222-8f9d-578c94312d84/glasses_2_716736982946_P00_2e5cc48a-8d4e-453d-bcc6-7e9ad0051257.webp\n- Task ID (REQUIRED for generate_tryon_image): f6f30c0b-b114-47f5-bcaa-cfb1c20057c6\n\nWhen calling generate_tryon_image, you MUST include these parameters:\n- subjectPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/91ad0b5c-bdbe-46ec-82df-cb9e5dda9b97/subject_0_547649680e1afa32cb008ff8bf925da5.jpg\"\n- glassesPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/2e817d16-2b75-4222-8f9d-578c94312d84/glasses_2_716736982946_P00_2e5cc48a-8d4e-453d-bcc6-7e9ad0051257.webp\"\n- taskId: \"f6f30c0b-b114-47f5-bcaa-cfb1c20057c6\" (this is REQUIRED!)\n\nDO NOT make up file paths. Use the paths provided above exactly as written.",
+  "results": [
+    {
+      "success": true,
+      "data": {
+        "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/91ad0b5c-bdbe-46ec-82df-cb9e5dda9b97/subject_0_547649680e1afa32cb008ff8bf925da5_result_f6f30c0b-b114-47f5-bcaa-cfb1c20057c6.jpg",
+        "report": {
+          "taskId": "f6f30c0b-b114-47f5-bcaa-cfb1c20057c6",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Gemini 2.0 Flash Exp",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "f6f30c0b-b114-47f5-bcaa-cfb1c20057c6",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767745544104,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.0 Flash Exp"
+        },
+        "generationMethod": "Gemini 2.0 Flash Exp"
+      }
+    }
+  ],
+  "evaluation": {
+    "score": 85,
+    "finalResult": {
+      "success": true,
+      "data": {
+        "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/91ad0b5c-bdbe-46ec-82df-cb9e5dda9b97/subject_0_547649680e1afa32cb008ff8bf925da5_result_f6f30c0b-b114-47f5-bcaa-cfb1c20057c6.jpg",
+        "report": {
+          "taskId": "f6f30c0b-b114-47f5-bcaa-cfb1c20057c6",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Gemini 2.0 Flash Exp",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "f6f30c0b-b114-47f5-bcaa-cfb1c20057c6",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767745544104,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.0 Flash Exp"
+        },
+        "generationMethod": "Gemini 2.0 Flash Exp"
+      }
+    },
+    "shouldRetry": false
+  },
+  "timestamp": "2026-01-07T00:25:50.467Z",
+  "toolsUsed": [
+    "generate_tryon_image",
+    "retry_generation",
+    "verify_quality",
+    "quick_quality_check"
+  ]
+}

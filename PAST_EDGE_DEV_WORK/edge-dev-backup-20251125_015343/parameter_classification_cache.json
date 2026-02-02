@@ -1,0 +1,662 @@
+{
+  "ec36c57cbf0f3fb800ea3b40ff14f21e": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.913569
+  },
+  "c6db55e48d3d6b0fac7a29628229219b": {
+    "classification": "config",
+    "confidence": 0.7,
+    "reasoning": "Configuration keywords detected (score: 1 vs 0)",
+    "timestamp": 1762375241.913593
+  },
+  "223b8086acc55af55a08c71f8df7a615": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.913606
+  },
+  "fb3039fe579c6dd0511eac554047f624": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 1, config: 1)",
+    "timestamp": 1762375241.913617
+  },
+  "7c7813f9ecbd92791c9651fd6a72a556": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.9136262
+  },
+  "3fb5c16d8d99a125ca553ed19be269e2": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.9136372
+  },
+  "325a14bb8940012656e23d9363b0fe84": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 1, config: 1)",
+    "timestamp": 1762375241.913646
+  },
+  "5ba3ed0816957466840092081dc300c3": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.913655
+  },
+  "bbe319b380bf9761ac8161d8931f0906": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.913664
+  },
+  "a4e57187476a0cc1df1be17528549f52": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 6 vs 0)",
+    "timestamp": 1762375241.913675
+  },
+  "1b4fe08e3093071b1b09efef06c3dc6d": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 6 vs 0)",
+    "timestamp": 1762375241.914075
+  },
+  "ae048b169abe586991c5ea2167a91530": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.9140851
+  },
+  "038e43fd2cfcb6aa0eb78ac8b9eabafe": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 7 vs 0)",
+    "timestamp": 1762375241.9140952
+  },
+  "ce28d5109a9d5e59d77916f6a10edefb": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 6 vs 0)",
+    "timestamp": 1762375241.914104
+  },
+  "e2adeba0885319b56b651045c7dec929": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 7 vs 0)",
+    "timestamp": 1762375241.914113
+  },
+  "94e111b4d5830ef4c969a380f7737bbf": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 7 vs 0)",
+    "timestamp": 1762375241.914121
+  },
+  "1b4ba10fef56d4b09dfded33220cf42f": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 6 vs 0)",
+    "timestamp": 1762375241.914127
+  },
+  "d0d150a3cded3a7a1e96a617dcca9e29": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 7 vs 0)",
+    "timestamp": 1762375241.914134
+  },
+  "439bca4986e3ab0c508a0035509aa7ea": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 7 vs 0)",
+    "timestamp": 1762375241.9141388
+  },
+  "737965255c3a52078ff9e049eb78757f": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.9141471
+  },
+  "c31cd0fe6d88de282dece680351531af": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.9144
+  },
+  "42881ad922524cbc781328bd1cb53415": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.914409
+  },
+  "644d9c1f204ff51f2599017aecf4d2d6": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.9144168
+  },
+  "63c9b0915a3051b553a3bfb1e3630032": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 7 vs 0)",
+    "timestamp": 1762375241.9144251
+  },
+  "637b253abe5cba18c471a5bc0f0da766": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 6 vs 0)",
+    "timestamp": 1762375241.914437
+  },
+  "60a988d996d2e3eb2823b6d9288f9d14": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 7 vs 0)",
+    "timestamp": 1762375241.914443
+  },
+  "507485051495f4dbee04b6dff77bdae0": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 7 vs 0)",
+    "timestamp": 1762375241.91445
+  },
+  "cf815310df4e1018d62250b1a2989738": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.914458
+  },
+  "11e8d439e12e008b2eca866597d09a97": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.9144661
+  },
+  "4730112c97a1ea9bafd54f8b0d770ca2": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.914476
+  },
+  "62cd6fe7c45cca204c33ce5669e26080": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.9147148
+  },
+  "b0e0277d7e658bec60e7752ce6d27948": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.914724
+  },
+  "3579b8f50abe1bb5a3973e3892fa8ffa": {
+    "classification": "config",
+    "confidence": 0.7,
+    "reasoning": "Configuration keywords detected (score: 4 vs 0)",
+    "timestamp": 1762375241.9147332
+  },
+  "8facfdeff76b0ed6ec2c9a2b38c7e144": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.914742
+  },
+  "0d5dfa99a41a93b91eb87e18953b61ae": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.914751
+  },
+  "e8f26388de1b92dcf95beafa177d3a40": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.9147599
+  },
+  "2dd8c6eef04fcd850859d696c612a150": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.914769
+  },
+  "f21003239d319cd49771c6874b244694": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.914778
+  },
+  "71fb48972bf62b8a7429236e82064a9f": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.914787
+  },
+  "2474a09065afeb403dd9e08095118acd": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.914796
+  },
+  "3b8f4b037fd8c546178476243cddd3cf": {
+    "classification": "config",
+    "confidence": 0.7,
+    "reasoning": "Configuration keywords detected (score: 2 vs 0)",
+    "timestamp": 1762375241.915118
+  },
+  "7cb2cdeee8029012d95ecb4a7f001d47": {
+    "classification": "config",
+    "confidence": 0.7,
+    "reasoning": "Configuration keywords detected (score: 2 vs 0)",
+    "timestamp": 1762375241.915127
+  },
+  "8847d3f6a6989b75be46d866db883739": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 1, config: 1)",
+    "timestamp": 1762375241.915135
+  },
+  "505b6356ff5f089658ea799b7081acf8": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.915145
+  },
+  "8c642690027c7ad432e3b9d6cef6fd12": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.9151528
+  },
+  "9588566d31e28b634c9271f2ba065d37": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.915162
+  },
+  "aae26802759588534824b66442946f04": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.9151711
+  },
+  "b42b9f235ec95453820ac4d1b75a0ea5": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.91518
+  },
+  "472a632ef0fa39fe4ceaa0843b9818a9": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.915188
+  },
+  "968feda9963fb8fc5f2cf6f14ba0c9d7": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.915197
+  },
+  "15bc3dae074fee4d75e169b36f1541d2": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.915554
+  },
+  "1e59872335bf6b0877f574adbf89cf90": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.915564
+  },
+  "61beafd90f0c62ea5538ce2b38009279": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.915572
+  },
+  "8d7aa6bfea0ee0ab157547b7f05d9835": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.915581
+  },
+  "1e098d47fb181a77b66d3c58d28baa68": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.9155898
+  },
+  "8684873a694ec57b9afe2ae7b50b09b7": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.915599
+  },
+  "44e7fa8e93e79caee3a364b1e29e9435": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.915607
+  },
+  "5a04697b395b60b78bf2324822318843": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.915616
+  },
+  "3fd14df18e0b98947eb0dc21b09bdc18": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.915624
+  },
+  "fd28d0bdf24f3ecfd2cde7fc4dc2d709": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.915632
+  },
+  "ea9a1812b26ec21474c6f97653bf6761": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.916126
+  },
+  "61d0ce38a09449def94461e19a66e9e9": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.9161339
+  },
+  "7f2692def5615b88e0099700a9cb2517": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.9161432
+  },
+  "a036cce7916e57a91cda7b2f19b46faf": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.916151
+  },
+  "3b6300c5742978bf9f7215d349ccae49": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.916161
+  },
+  "ab3828505b5d2ba84293b67352535c52": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.91617
+  },
+  "4fb28f8d46031b57235fc2392823b7f0": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.916178
+  },
+  "dcfb842c796ee3c26830a214849e65fd": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.9161868
+  },
+  "3bdf7a5b53cfdfced3f4fb0a0aed1b1e": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.9161952
+  },
+  "723919b61228f8c21896164d9ed2f549": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 1, config: 1)",
+    "timestamp": 1762375241.916204
+  },
+  "b232f42233f05ea2fb1ca11eaff75e1b": {
+    "classification": "config",
+    "confidence": 0.7,
+    "reasoning": "Configuration keywords detected (score: 4 vs 0)",
+    "timestamp": 1762375241.916715
+  },
+  "0c0327fd6c14601213ff7f5472c5b594": {
+    "classification": "config",
+    "confidence": 0.7,
+    "reasoning": "Configuration keywords detected (score: 2 vs 0)",
+    "timestamp": 1762375241.916724
+  },
+  "d0d492345761b307c83ec08ae55a5657": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 5 vs 0)",
+    "timestamp": 1762375241.921199
+  },
+  "d2fd5f6454dd6573d5a7917a850a8e39": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.92121
+  },
+  "b8bc6f1e048655817d1c6f5164d02e04": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.921219
+  },
+  "592d0255d72d1f97c502f4af90baf5a1": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.921228
+  },
+  "85b00958eb96e90d5b9614819c3763da": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 4 vs 0)",
+    "timestamp": 1762375241.921236
+  },
+  "2a9941b75c3a7b505b9afe945f1df90d": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.9212449
+  },
+  "7dbc996322b335eab766940ade434c38": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 5 vs 0)",
+    "timestamp": 1762375241.921252
+  },
+  "088f295cf64ed90193d35e60088a344c": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 5 vs 0)",
+    "timestamp": 1762375241.921259
+  },
+  "c4239e6fd05fddd86f6e4665289007a0": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 4 vs 0)",
+    "timestamp": 1762375241.921704
+  },
+  "c91d23f4f1368b18ed5d50e165977956": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 5 vs 0)",
+    "timestamp": 1762375241.9217129
+  },
+  "6049530f5b65c3c26fd938a9d2ecbb61": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 6 vs 0)",
+    "timestamp": 1762375241.92172
+  },
+  "eb1e11f6dcb7fa27b986bb68e295bea5": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 6 vs 0)",
+    "timestamp": 1762375241.921728
+  },
+  "9609e7118d276ad617e74a1e18771758": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 5 vs 0)",
+    "timestamp": 1762375241.9217348
+  },
+  "4194fa9341a977be224ca4fc55b4295f": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 5 vs 0)",
+    "timestamp": 1762375241.9217439
+  },
+  "f556b9dfef70dee31e3969bb57764eb0": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.9217548
+  },
+  "7f5dde155d8f940f74e384fbb266d505": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.9217641
+  },
+  "5473d9111c50a4db5126c43544a11971": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.9217741
+  },
+  "546f81e8ae0bf759c684ce481e1b063b": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.921783
+  },
+  "4d4415bb84ece5943066eeaf5fc259f0": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.92223
+  },
+  "ba580e1474fbfa2d871308839a1b789e": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 1, config: 1)",
+    "timestamp": 1762375241.922241
+  },
+  "0e12fa2b769611715154d5c29e6e6ac7": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.922249
+  },
+  "b1cd84f0e42e2c768f96c9d8ffa9cdac": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.9222558
+  },
+  "5deec7826c43c06de8a5f970eddef282": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.922264
+  },
+  "92247456ffa0dcbe691c14a155df475f": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.922271
+  },
+  "39c0c78570edd9871aefb6e1e27f55fc": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.922278
+  },
+  "6744c4585cec3a7574ed8d3923175dd0": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.922291
+  },
+  "9f13f0446c64862d95998673fb01988e": {
+    "classification": "trading_filter",
+    "confidence": 0.7,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.9222999
+  },
+  "252fb83b37b01130ec623b011b9c48c9": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.9223082
+  },
+  "0ac29074a667aefc944c499668ef1350": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.922806
+  },
+  "15ebcf1d343b4e2f3cc06097150fcfe8": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 1 vs 0)",
+    "timestamp": 1762375241.922813
+  },
+  "71a7c240f1e851b28ce51eb099e4cff4": {
+    "classification": "trading_filter",
+    "confidence": 0.8,
+    "reasoning": "Trading keywords/patterns detected (score: 2 vs 0)",
+    "timestamp": 1762375241.922822
+  },
+  "50ce25eb9ff236d71316e41d3a19a86f": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.92283
+  },
+  "8a4584325a9f1a26fc8d99ab46c5e1f4": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.922839
+  },
+  "13ddff6d96f02622c39fbb55801085c8": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.922847
+  },
+  "ed272f5289d71fae69b7603d264dfc51": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.9228559
+  },
+  "8e917aa56a70bfa2ddaf55021b4567c1": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.9228642
+  },
+  "58db693a6e907bcf3e38b3be869a03a4": {
+    "classification": "config",
+    "confidence": 0.7,
+    "reasoning": "Configuration keywords detected (score: 2 vs 1)",
+    "timestamp": 1762375241.922875
+  },
+  "0488fb9871bb2c34e7b170b2409714e2": {
+    "classification": "unknown",
+    "confidence": 0.5,
+    "reasoning": "Ambiguous classification (trading: 0, config: 0)",
+    "timestamp": 1762375241.9228852
+  }
+}

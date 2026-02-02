@@ -1,0 +1,3073 @@
+{
+  "timestamp": "2025-12-18T14:21:47.331Z",
+  "error": "Could not find \"Add to Project\" button",
+  "stack": "Error: Could not find \"Add to Project\" button\n    at runEnhancedTest (/Users/michaeldurante/ai dev/ce-hub/enhanced-add-to-project-test.js:354:19)",
+  "url": "http://localhost:5665/scan?cache_cleared=1",
+  "consoleMessages": [
+    {
+      "type": "log",
+      "text": "🔧 EDGE-DEV CACHE BUSTER ACTIVE: 2025-11-18-TRADERRA-STYLING-MIGRATION",
+      "timestamp": "2025-12-18T14:21:20.183Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 FRONTEND VERSION: EDGE_DEV_TRADERRA_v2.0",
+      "timestamp": "2025-12-18T14:21:20.184Z"
+    },
+    {
+      "type": "log",
+      "text": "  NEW VERSION DETECTED - CLEARING CACHE",
+      "timestamp": "2025-12-18T14:21:20.184Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 EDGE-DEV CACHE BUSTER ACTIVE: 2025-11-18-TRADERRA-STYLING-MIGRATION",
+      "timestamp": "2025-12-18T14:21:20.280Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 FRONTEND VERSION: EDGE_DEV_TRADERRA_v2.0",
+      "timestamp": "2025-12-18T14:21:20.280Z"
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "timestamp": "2025-12-18T14:21:20.346Z"
+    },
+    {
+      "type": "log",
+      "text": "[HMR] connected",
+      "timestamp": "2025-12-18T14:21:20.409Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:20.446Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.447Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:20.447Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.447Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.447Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.447Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:20.447Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:20.457Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.457Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:20.457Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.457Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.457Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.457Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:20.457Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 RenataChat: Component loaded with fixes",
+      "timestamp": "2025-12-18T14:21:20.553Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 Starting loadProjects function...",
+      "timestamp": "2025-12-18T14:21:20.553Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 projectApiService available: true",
+      "timestamp": "2025-12-18T14:21:20.553Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 projectApiService.getProjects type: function",
+      "timestamp": "2025-12-18T14:21:20.553Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 About to call projectApiService.getProjects()...",
+      "timestamp": "2025-12-18T14:21:20.553Z"
+    },
+    {
+      "type": "log",
+      "text": "🚀 Fast project API call to: http://localhost:5666/api/projects?_t=1766067680480",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 Loading saved scans for user: test_user_123",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "🚀 Scan page component mounted, loading saved scans...",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "🧹 Optimizing market data cache...",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "📊 Cache stats: {individualTickerCache: 0, scanResultsCache: 0, totalEntries: 0}",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "💾 Saved scans updated: 0 scans available",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY OFFSET DEBUG: dayOffset = 0",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "🚀 Running BULLETPROOF Trading Day Validation...",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "\n================================================================================",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "📊 BULLETPROOF TRADING DAY VALIDATION REPORT",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "================================================================================",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "  VALIDATING TRADING DAY LOGIC FOR 2024:",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "📅 Found 10 market holidays for 2024:",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   1. New Year's Day: Mon Jan 01 2024 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   2. Martin Luther King Jr. Day: Mon Jan 15 2024 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   3. Presidents' Day: Mon Feb 19 2024 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   4. Good Friday: Fri Mar 29 2024 (Friday)",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   5. Memorial Day: Mon May 27 2024 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   6. Juneteenth: Wed Jun 19 2024 (Wednesday)",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   7. Independence Day: Thu Jul 04 2024 (Thursday)",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   8. Labor Day: Mon Sep 02 2024 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   9. Thanksgiving: Thu Nov 28 2024 (Thursday)",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   10. Christmas Day: Wed Dec 25 2024 (Wednesday)",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "🚀 Weekend Detection Tests:",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   Saturday Sat Jan 06 2024: isWeekend=true, isTradingDay=false",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   Sunday Sun Jan 07 2024: isWeekend=true, isTradingDay=false",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "🚀 Trading Day Progression Test (first 30 days of 2024):",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   Mon Jan 01 2024 (Monday): NON-TRADING",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   Tue Jan 02 2024 (Tuesday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   Wed Jan 03 2024 (Wednesday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.554Z"
+    },
+    {
+      "type": "log",
+      "text": "   Thu Jan 04 2024 (Thursday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.567Z"
+    },
+    {
+      "type": "log",
+      "text": "   Fri Jan 05 2024 (Friday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.567Z"
+    },
+    {
+      "type": "log",
+      "text": "   Sat Jan 06 2024 (Saturday): NON-TRADING",
+      "timestamp": "2025-12-18T14:21:20.567Z"
+    },
+    {
+      "type": "log",
+      "text": "   Sun Jan 07 2024 (Sunday): NON-TRADING",
+      "timestamp": "2025-12-18T14:21:20.567Z"
+    },
+    {
+      "type": "log",
+      "text": "   Mon Jan 08 2024 (Monday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.567Z"
+    },
+    {
+      "type": "log",
+      "text": "   Tue Jan 09 2024 (Tuesday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   Wed Jan 10 2024 (Wednesday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "📊 Trading Day Stats (first 30 days): 20 trading days, max consecutive: 5",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "🚀 Trading Day Arithmetic Test:",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   Friday: Fri Jan 05 2024",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   +1 trading day: Mon Jan 08 2024 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   -1 trading day: Thu Jan 04 2024 (Thursday)",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "  ALL TESTS PASSED - Trading day logic is bulletproof!",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "================================================================================\n",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "\n================================================================================",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "📊 BULLETPROOF TRADING DAY VALIDATION REPORT",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "================================================================================",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "  VALIDATING TRADING DAY LOGIC FOR 2023:",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "📅 Found 10 market holidays for 2023:",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   1. New Year's Day: Mon Jan 02 2023 (Monday) [Original: Sun Jan 01 2023]",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   2. Martin Luther King Jr. Day: Mon Jan 16 2023 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   3. Presidents' Day: Mon Feb 20 2023 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   4. Good Friday: Fri Apr 07 2023 (Friday)",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   5. Memorial Day: Mon May 29 2023 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   6. Juneteenth: Mon Jun 19 2023 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   7. Independence Day: Tue Jul 04 2023 (Tuesday)",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   8. Labor Day: Mon Sep 04 2023 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   9. Thanksgiving: Thu Nov 23 2023 (Thursday)",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   10. Christmas Day: Mon Dec 25 2023 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "🚀 Weekend Detection Tests:",
+      "timestamp": "2025-12-18T14:21:20.568Z"
+    },
+    {
+      "type": "log",
+      "text": "   Saturday Sat Jan 07 2023: isWeekend=true, isTradingDay=false",
+      "timestamp": "2025-12-18T14:21:20.569Z"
+    },
+    {
+      "type": "log",
+      "text": "   Sunday Sun Jan 01 2023: isWeekend=true, isTradingDay=false",
+      "timestamp": "2025-12-18T14:21:20.569Z"
+    },
+    {
+      "type": "log",
+      "text": "🚀 Trading Day Progression Test (first 30 days of 2023):",
+      "timestamp": "2025-12-18T14:21:20.569Z"
+    },
+    {
+      "type": "log",
+      "text": "   Sun Jan 01 2023 (Sunday): NON-TRADING",
+      "timestamp": "2025-12-18T14:21:20.569Z"
+    },
+    {
+      "type": "log",
+      "text": "   Mon Jan 02 2023 (Monday): NON-TRADING",
+      "timestamp": "2025-12-18T14:21:20.569Z"
+    },
+    {
+      "type": "log",
+      "text": "   Tue Jan 03 2023 (Tuesday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.569Z"
+    },
+    {
+      "type": "log",
+      "text": "   Wed Jan 04 2023 (Wednesday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.569Z"
+    },
+    {
+      "type": "log",
+      "text": "   Thu Jan 05 2023 (Thursday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "   Fri Jan 06 2023 (Friday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "   Sat Jan 07 2023 (Saturday): NON-TRADING",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "   Sun Jan 08 2023 (Sunday): NON-TRADING",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "   Mon Jan 09 2023 (Monday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "   Tue Jan 10 2023 (Tuesday): TRADING",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "📊 Trading Day Stats (first 30 days): 19 trading days, max consecutive: 5",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "🚀 Trading Day Arithmetic Test:",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "   Friday: Fri Jan 06 2023",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "   +1 trading day: Mon Jan 09 2023 (Monday)",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "   -1 trading day: Thu Jan 05 2023 (Thursday)",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "  ALL TESTS PASSED - Trading day logic is bulletproof!",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "================================================================================\n",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 MOUNT EFFECT DEBUG: dayOffset = 0, selectedTicker = null",
+      "timestamp": "2025-12-18T14:21:20.573Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 MOUNT EFFECT: Set selectedTicker to SPY, dayOffset = 0",
+      "timestamp": "2025-12-18T14:21:20.574Z"
+    },
+    {
+      "type": "log",
+      "text": "⚠️ Historical results loading disabled - preventing override of user scans",
+      "timestamp": "2025-12-18T14:21:20.574Z"
+    },
+    {
+      "type": "log",
+      "text": "🧹 Skipping historical results to ensure user scans show properly",
+      "timestamp": "2025-12-18T14:21:20.574Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:20.574Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.574Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:20.574Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.574Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.574Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.574Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:20.586Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:20.586Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.586Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:20.586Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.586Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.586Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.586Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:20.586Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 EdgeChart dayNavigation prop: {dayOffset: 0, currentDay: Thu Dec 18 2025 09:21:20 GMT-0500 (Eastern Standard Time), hasOnQuickJump: true, canGoPrevious: true, canGoNext: true}",
+      "timestamp": "2025-12-18T14:21:20.586Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 day dynamic rangebreaks: 1 gaps hidden (data-driven)",
+      "timestamp": "2025-12-18T14:21:20.586Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 Layout generated for SPY day",
+      "timestamp": "2025-12-18T14:21:20.586Z"
+    },
+    {
+      "type": "log",
+      "text": "  SPY day Dynamic Chart Analysis:",
+      "timestamp": "2025-12-18T14:21:20.586Z"
+    },
+    {
+      "type": "log",
+      "text": "  Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: closest}",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   Data points: 0",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   Date range: undefined → undefined",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   X Range: undefined to undefined",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   Daily padding: 1 days padding",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   Traces: 2",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   Market session shapes: 0",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   Template: Daily candlestick chart (60 days) - Direct OHLC",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "     UNIFIED Global Template:  ",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 EDGECHART DATE DEBUG: {dayNavigationCurrentDay: Thu Dec 18 2025 09:21:20 GMT-0500 (Eastern Standard Time), toISOString: 2025-12-18T14:21:20.507Z, formatted: Dec 18}",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: D0 button - dayOffset=0, isActiveDay=true",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: +14D button - dayOffset=0, isActiveDay=false",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 EdgeChart dayNavigation prop: {dayOffset: 0, currentDay: Thu Dec 18 2025 09:21:20 GMT-0500 (Eastern Standard Time), hasOnQuickJump: true, canGoPrevious: true, canGoNext: true}",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 day dynamic rangebreaks: 1 gaps hidden (data-driven)",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 Layout generated for SPY day",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "  SPY day Dynamic Chart Analysis:",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "  Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: closest}",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   Data points: 0",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   Date range: undefined → undefined",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   X Range: undefined to undefined",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   Daily padding: 1 days padding",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   Traces: 2",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   Market session shapes: 0",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "   Template: Daily candlestick chart (60 days) - Direct OHLC",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "     UNIFIED Global Template:  ",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 EDGECHART DATE DEBUG: {dayNavigationCurrentDay: Thu Dec 18 2025 09:21:20 GMT-0500 (Eastern Standard Time), toISOString: 2025-12-18T14:21:20.507Z, formatted: Dec 18}",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: D0 button - dayOffset=0, isActiveDay=true",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: +14D button - dayOffset=0, isActiveDay=false",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day, dayOffset: 0}",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ LEGEND DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "  timeframe: day",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "  dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "  referenceDay: undefined",
+      "timestamp": "2025-12-18T14:21:20.587Z"
+    },
+    {
+      "type": "log",
+      "text": "  data.x.length: 0",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "  First 3 dates: []",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "  Last 3 dates: []",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ D0 (idle) - using last index: 0 date: undefined",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ Showing loading legend",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ ChartLegend render: {symbol: SPY, dataLength: 0, hoveredIndex: null, timeframe: day, dayOffset: 0}",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ LEGEND DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "  timeframe: day",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "  dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "  referenceDay: undefined",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "  data.x.length: 0",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "  First 3 dates: []",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "  Last 3 dates: []",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ D0 (idle) - using last index: 0 date: undefined",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ Showing loading legend",
+      "timestamp": "2025-12-18T14:21:20.588Z"
+    },
+    {
+      "type": "log",
+      "text": "  CHART DATA FETCH: SPY | Day 0 | Base: Thu Dec 18 2025 (Thursday)",
+      "timestamp": "2025-12-18T14:21:20.592Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 CHART DATA FETCH DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.592Z"
+    },
+    {
+      "type": "log",
+      "text": "  🔹 INPUT PARAMETERS:",
+      "timestamp": "2025-12-18T14:21:20.592Z"
+    },
+    {
+      "type": "log",
+      "text": "    - symbol: SPY",
+      "timestamp": "2025-12-18T14:21:20.592Z"
+    },
+    {
+      "type": "log",
+      "text": "    - timeframe: day",
+      "timestamp": "2025-12-18T14:21:20.592Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.592Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDate (raw): Thu Dec 18 2025 09:21:20 GMT-0500 (Eastern Standard Time)",
+      "timestamp": "2025-12-18T14:21:20.592Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDate (ISO): 2025-12-18T14:21:20.532Z",
+      "timestamp": "2025-12-18T14:21:20.592Z"
+    },
+    {
+      "type": "log",
+      "text": "  🔹 CALCULATIONS:",
+      "timestamp": "2025-12-18T14:21:20.592Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseTargetDate: Thu Dec 18 2025 09:21:20 GMT-0500 (Eastern Standard Time)",
+      "timestamp": "2025-12-18T14:21:20.592Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseTargetDate (ISO): 2025-12-18T14:21:20.532Z",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "    - startDate: 2025-10-19",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "    - endDate: 2025-12-18",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "  TRADING DAY NAVIGATION: Fetching data for SPY on Day 0",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "  BASE DATE: Thu Dec 18 2025 (Thursday)",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "  TARGET DATE: Thu Dec 18 2025 (Thursday) - 0 trading days",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "🌐 Cache miss for SPY day (2025-10-19 to 2025-12-18) - fetching...",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "🌐 Cache miss for SPY - fetching from chartDayNavigation",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 fetchChartDataForDay INPUT:",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "    - ticker: SPY",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "    - targetDate: Thu Dec 18 2025 09:21:20 GMT-0500 (Eastern Standard Time)",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "    - targetDate ISO: 2025-12-18T14:21:20.532Z",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "    - targetDate date: 2025-12-18",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "    - day of week: Thursday",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "    - isTradingDay: true",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "📊 Fetching SPY data for Day +0 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.597Z"
+    },
+    {
+      "type": "log",
+      "text": "📊 Loading daily chart ENDING on target date: 2025-12-18",
+      "timestamp": "2025-12-18T14:21:20.599Z"
+    },
+    {
+      "type": "log",
+      "text": "  Fetching 45 days of daily data ENDING on 2025-12-18",
+      "timestamp": "2025-12-18T14:21:20.599Z"
+    },
+    {
+      "type": "log",
+      "text": "  DAY NAVIGATION: Target date 2025-12-18 is LAST CANDLE. Range: 2025-11-03 to 2025-12-18 (filtered to target date)",
+      "timestamp": "2025-12-18T14:21:20.599Z"
+    },
+    {
+      "type": "log",
+      "text": "📊 Fetching SPY LC navigation data: 2025-11-03 to 2025-12-18 (LC anchor: 2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.599Z"
+    },
+    {
+      "type": "log",
+      "text": "Fetching daily data: SPY from 2025-11-03 to 2025-12-18",
+      "timestamp": "2025-12-18T14:21:20.599Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:20.599Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.599Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:20.599Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.599Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.599Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.599Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:20.599Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:20.600Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.600Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:20.600Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.600Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.600Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.600Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "✅ Project API successful: http://localhost:5666/api/projects?_t=1766067680480",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✅ API call completed, received data: true",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✅ Data type: object",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✅ Data length: 3",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✅ Processing projects...",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "  📋 Processing project 1: Validation Test Project",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "  📋 Processing project 2: Debug Test Project",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "  📋 Processing project 3: Test Project",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 About to setProjects with 3 items...",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "🎉 Successfully loaded and set 3 projects",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "🌐 Exposed projects to window.lastLoadedProjects",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 loadProjects function completed",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "📄 Saved scans response: [Object, Object, Object]",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "📊 Found 3 projects in backend, displaying as scans",
+      "timestamp": "2025-12-18T14:21:20.603Z"
+    },
+    {
+      "type": "log",
+      "text": "🗑️ Filtering out 0 deleted scan IDs",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "✅ Loaded 3 saved scans from backend projects (after filtering deleted scans)",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:20.604Z"
+    },
+    {
+      "type": "log",
+      "text": "💾 Saved scans updated: 3 scans available",
+      "timestamp": "2025-12-18T14:21:20.605Z"
+    },
+    {
+      "type": "log",
+      "text": "📋 Scan names: [Validation Test Project, Debug Test Project, Test Project]",
+      "timestamp": "2025-12-18T14:21:20.605Z"
+    },
+    {
+      "type": "log",
+      "text": "📋 Scan details: [Object, Object, Object]",
+      "timestamp": "2025-12-18T14:21:20.605Z"
+    },
+    {
+      "type": "log",
+      "text": "Received 32 daily bars",
+      "timestamp": "2025-12-18T14:21:20.733Z"
+    },
+    {
+      "type": "log",
+      "text": "Filtered to 32 bars (excluding data after 2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.734Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✓ Fetched 32 daily bars for SPY ending on target date 2025-12-18",
+      "timestamp": "2025-12-18T14:21:20.734Z"
+    },
+    {
+      "type": "log",
+      "text": "📊 Data range: 2025-11-03 to 2025-12-17 (32 bars)",
+      "timestamp": "2025-12-18T14:21:20.735Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 Day offset: 0, Requested end date: 2025-12-18",
+      "timestamp": "2025-12-18T14:21:20.736Z"
+    },
+    {
+      "type": "log",
+      "text": "Processing 32 bars for SPY day",
+      "timestamp": "2025-12-18T14:21:20.736Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:20.736Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.736Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:20.736Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.736Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.736Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.736Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:20.736Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:20.739Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.739Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:20.739Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.739Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:20.739Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.739Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:20.739Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 EdgeChart dayNavigation prop: {dayOffset: 0, currentDay: Thu Dec 18 2025 09:21:20 GMT-0500 (Eastern Standard Time), hasOnQuickJump: true, canGoPrevious: true, canGoNext: true}",
+      "timestamp": "2025-12-18T14:21:20.746Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 day dynamic rangebreaks: 1 gaps hidden (data-driven)",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 Layout generated for SPY day",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "  SPY day Dynamic Chart Analysis:",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "  Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: closest}",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "   Data points: 32",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "   Date range: 2025-11-03T05:00:00.000Z → 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "   X Range: 2025-11-03T05:00:00.000Z to 2025-12-18",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "   Daily padding: 1 days padding",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "   Traces: 2",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "   Market session shapes: 0",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "   Template: Daily candlestick chart (60 days) - Direct OHLC",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "     UNIFIED Global Template:  ",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 EDGECHART DATE DEBUG: {dayNavigationCurrentDay: Thu Dec 18 2025 09:21:20 GMT-0500 (Eastern Standard Time), toISOString: 2025-12-18T14:21:20.739Z, formatted: Dec 18}",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: D0 button - dayOffset=0, isActiveDay=true",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: +14D button - dayOffset=0, isActiveDay=false",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 EdgeChart dayNavigation prop: {dayOffset: 0, currentDay: Thu Dec 18 2025 09:21:20 GMT-0500 (Eastern Standard Time), hasOnQuickJump: true, canGoPrevious: true, canGoNext: true}",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 day dynamic rangebreaks: 1 gaps hidden (data-driven)",
+      "timestamp": "2025-12-18T14:21:20.747Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 Layout generated for SPY day",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "  SPY day Dynamic Chart Analysis:",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "  Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: closest}",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "   Data points: 32",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "   Date range: 2025-11-03T05:00:00.000Z → 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "   X Range: 2025-11-03T05:00:00.000Z to 2025-12-18",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "   Daily padding: 1 days padding",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "   Traces: 2",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "   Market session shapes: 0",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "   Template: Daily candlestick chart (60 days) - Direct OHLC",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "     UNIFIED Global Template:  ",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 EDGECHART DATE DEBUG: {dayNavigationCurrentDay: Thu Dec 18 2025 09:21:20 GMT-0500 (Eastern Standard Time), toISOString: 2025-12-18T14:21:20.739Z, formatted: Dec 18}",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: D0 button - dayOffset=0, isActiveDay=true",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: +14D button - dayOffset=0, isActiveDay=false",
+      "timestamp": "2025-12-18T14:21:20.748Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ ChartLegend render: {symbol: SPY, dataLength: 32, hoveredIndex: null, timeframe: day, dayOffset: 0}",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ LEGEND DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "  timeframe: day",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "  dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "  referenceDay: undefined",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "  data.x.length: 32",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "  First 3 dates: [2025-11-03T05:00:00.000Z, 2025-11-04T05:00:00.000Z, 2025-11-05T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "  Last 3 dates: [2025-12-15T05:00:00.000Z, 2025-12-16T05:00:00.000Z, 2025-12-17T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 LAST INDEX ANALYSIS:",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastIndex: 31",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDateStr (raw): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (UTC): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (ET): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (local): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ D0 (idle) - using last index: 31 date: 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:20.750Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ Showing data legend: {displayIndex: 31, barData: Object}",
+      "timestamp": "2025-12-18T14:21:20.751Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ ChartLegend render: {symbol: SPY, dataLength: 32, hoveredIndex: null, timeframe: day, dayOffset: 0}",
+      "timestamp": "2025-12-18T14:21:20.752Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ LEGEND DEBUG:",
+      "timestamp": "2025-12-18T14:21:20.752Z"
+    },
+    {
+      "type": "log",
+      "text": "  timeframe: day",
+      "timestamp": "2025-12-18T14:21:20.752Z"
+    },
+    {
+      "type": "log",
+      "text": "  dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:20.752Z"
+    },
+    {
+      "type": "log",
+      "text": "  referenceDay: undefined",
+      "timestamp": "2025-12-18T14:21:20.752Z"
+    },
+    {
+      "type": "log",
+      "text": "  data.x.length: 32",
+      "timestamp": "2025-12-18T14:21:20.752Z"
+    },
+    {
+      "type": "log",
+      "text": "  First 3 dates: [2025-11-03T05:00:00.000Z, 2025-11-04T05:00:00.000Z, 2025-11-05T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:20.753Z"
+    },
+    {
+      "type": "log",
+      "text": "  Last 3 dates: [2025-12-15T05:00:00.000Z, 2025-12-16T05:00:00.000Z, 2025-12-17T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:20.753Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 LAST INDEX ANALYSIS:",
+      "timestamp": "2025-12-18T14:21:20.753Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastIndex: 31",
+      "timestamp": "2025-12-18T14:21:20.753Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDateStr (raw): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:20.753Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (UTC): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:20.753Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (ET): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:20.753Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (local): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:20.753Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ D0 (idle) - using last index: 31 date: 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:20.753Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ Showing data legend: {displayIndex: 31, barData: Object}",
+      "timestamp": "2025-12-18T14:21:20.753Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 Adding native Plotly.js hover debugging for SPY day",
+      "timestamp": "2025-12-18T14:21:21.417Z"
+    },
+    {
+      "type": "log",
+      "text": "  Native Plotly.js event listeners attached",
+      "timestamp": "2025-12-18T14:21:21.417Z"
+    },
+    {
+      "type": "log",
+      "text": "  SPY day Chart Initialized: {tracesCount: 2, layoutDefined: true, globalTemplateApplied: true, timeframeConfig: Daily candlestick chart (60 days) - Direct OHLC}",
+      "timestamp": "2025-12-18T14:21:21.417Z"
+    },
+    {
+      "type": "log",
+      "text": "🔧 Adding native Plotly.js hover debugging for SPY day",
+      "timestamp": "2025-12-18T14:21:21.431Z"
+    },
+    {
+      "type": "log",
+      "text": "  Native Plotly.js event listeners attached",
+      "timestamp": "2025-12-18T14:21:21.431Z"
+    },
+    {
+      "type": "log",
+      "text": "  SPY day Chart Initialized: {tracesCount: 2, layoutDefined: true, globalTemplateApplied: true, timeframeConfig: Daily candlestick chart (60 days) - Direct OHLC}",
+      "timestamp": "2025-12-18T14:21:21.431Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:25.166Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:25.166Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:25.166Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:25.166Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:25.166Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:25.166Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:25.166Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:25.176Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:25.176Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:25.176Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:25.176Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:25.176Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:25.176Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:25.176Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 EdgeChart dayNavigation prop: {dayOffset: 0, currentDay: Thu Dec 18 2025 09:21:25 GMT-0500 (Eastern Standard Time), hasOnQuickJump: true, canGoPrevious: true, canGoNext: true}",
+      "timestamp": "2025-12-18T14:21:25.189Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 day dynamic rangebreaks: 1 gaps hidden (data-driven)",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 Layout generated for SPY day",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "  SPY day Dynamic Chart Analysis:",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "  Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: closest}",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "   Data points: 32",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "   Date range: 2025-11-03T05:00:00.000Z → 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "   X Range: 2025-11-03T05:00:00.000Z to 2025-12-18",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "   Daily padding: 1 days padding",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "   Traces: 2",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "   Market session shapes: 0",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "   Template: Daily candlestick chart (60 days) - Direct OHLC",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "     UNIFIED Global Template:  ",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 EDGECHART DATE DEBUG: {dayNavigationCurrentDay: Thu Dec 18 2025 09:21:25 GMT-0500 (Eastern Standard Time), toISOString: 2025-12-18T14:21:25.175Z, formatted: Dec 18}",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: D0 button - dayOffset=0, isActiveDay=true",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: +14D button - dayOffset=0, isActiveDay=false",
+      "timestamp": "2025-12-18T14:21:25.190Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 EdgeChart dayNavigation prop: {dayOffset: 0, currentDay: Thu Dec 18 2025 09:21:25 GMT-0500 (Eastern Standard Time), hasOnQuickJump: true, canGoPrevious: true, canGoNext: true}",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 day dynamic rangebreaks: 1 gaps hidden (data-driven)",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 Layout generated for SPY day",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "  SPY day Dynamic Chart Analysis:",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "  Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: closest}",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "   Data points: 32",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "   Date range: 2025-11-03T05:00:00.000Z → 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "   X Range: 2025-11-03T05:00:00.000Z to 2025-12-18",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "   Daily padding: 1 days padding",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "   Traces: 2",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "   Market session shapes: 0",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "   Template: Daily candlestick chart (60 days) - Direct OHLC",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "     UNIFIED Global Template:  ",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 EDGECHART DATE DEBUG: {dayNavigationCurrentDay: Thu Dec 18 2025 09:21:25 GMT-0500 (Eastern Standard Time), toISOString: 2025-12-18T14:21:25.175Z, formatted: Dec 18}",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: D0 button - dayOffset=0, isActiveDay=true",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: +14D button - dayOffset=0, isActiveDay=false",
+      "timestamp": "2025-12-18T14:21:25.191Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ ChartLegend render: {symbol: SPY, dataLength: 32, hoveredIndex: null, timeframe: day, dayOffset: 0}",
+      "timestamp": "2025-12-18T14:21:25.192Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ LEGEND DEBUG:",
+      "timestamp": "2025-12-18T14:21:25.192Z"
+    },
+    {
+      "type": "log",
+      "text": "  timeframe: day",
+      "timestamp": "2025-12-18T14:21:25.192Z"
+    },
+    {
+      "type": "log",
+      "text": "  dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:25.193Z"
+    },
+    {
+      "type": "log",
+      "text": "  referenceDay: undefined",
+      "timestamp": "2025-12-18T14:21:25.193Z"
+    },
+    {
+      "type": "log",
+      "text": "  data.x.length: 32",
+      "timestamp": "2025-12-18T14:21:25.193Z"
+    },
+    {
+      "type": "log",
+      "text": "  First 3 dates: [2025-11-03T05:00:00.000Z, 2025-11-04T05:00:00.000Z, 2025-11-05T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:25.193Z"
+    },
+    {
+      "type": "log",
+      "text": "  Last 3 dates: [2025-12-15T05:00:00.000Z, 2025-12-16T05:00:00.000Z, 2025-12-17T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:25.193Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 LAST INDEX ANALYSIS:",
+      "timestamp": "2025-12-18T14:21:25.193Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastIndex: 31",
+      "timestamp": "2025-12-18T14:21:25.194Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDateStr (raw): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:25.194Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (UTC): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:25.194Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (ET): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:25.194Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (local): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:25.194Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ D0 (idle) - using last index: 31 date: 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:25.194Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ Showing data legend: {displayIndex: 31, barData: Object}",
+      "timestamp": "2025-12-18T14:21:25.194Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ ChartLegend render: {symbol: SPY, dataLength: 32, hoveredIndex: null, timeframe: day, dayOffset: 0}",
+      "timestamp": "2025-12-18T14:21:25.194Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ LEGEND DEBUG:",
+      "timestamp": "2025-12-18T14:21:25.194Z"
+    },
+    {
+      "type": "log",
+      "text": "  timeframe: day",
+      "timestamp": "2025-12-18T14:21:25.194Z"
+    },
+    {
+      "type": "log",
+      "text": "  dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:25.194Z"
+    },
+    {
+      "type": "log",
+      "text": "  referenceDay: undefined",
+      "timestamp": "2025-12-18T14:21:25.194Z"
+    },
+    {
+      "type": "log",
+      "text": "  data.x.length: 32",
+      "timestamp": "2025-12-18T14:21:25.196Z"
+    },
+    {
+      "type": "log",
+      "text": "  First 3 dates: [2025-11-03T05:00:00.000Z, 2025-11-04T05:00:00.000Z, 2025-11-05T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:25.196Z"
+    },
+    {
+      "type": "log",
+      "text": "  Last 3 dates: [2025-12-15T05:00:00.000Z, 2025-12-16T05:00:00.000Z, 2025-12-17T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:25.196Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 LAST INDEX ANALYSIS:",
+      "timestamp": "2025-12-18T14:21:25.196Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastIndex: 31",
+      "timestamp": "2025-12-18T14:21:25.196Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDateStr (raw): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:25.196Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (UTC): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:25.196Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (ET): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:25.196Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (local): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:25.196Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ D0 (idle) - using last index: 31 date: 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:25.196Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ Showing data legend: {displayIndex: 31, barData: Object}",
+      "timestamp": "2025-12-18T14:21:25.196Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 Starting loadProjects function...",
+      "timestamp": "2025-12-18T14:21:30.484Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 projectApiService available: true",
+      "timestamp": "2025-12-18T14:21:30.485Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 projectApiService.getProjects type: function",
+      "timestamp": "2025-12-18T14:21:30.485Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 About to call projectApiService.getProjects()...",
+      "timestamp": "2025-12-18T14:21:30.485Z"
+    },
+    {
+      "type": "log",
+      "text": "🚀 Fast project API call to: http://localhost:5666/api/projects?_t=1766067690483",
+      "timestamp": "2025-12-18T14:21:30.485Z"
+    },
+    {
+      "type": "log",
+      "text": "✅ Project API successful: http://localhost:5666/api/projects?_t=1766067690483",
+      "timestamp": "2025-12-18T14:21:30.491Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✅ API call completed, received data: true",
+      "timestamp": "2025-12-18T14:21:30.491Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✅ Data type: object",
+      "timestamp": "2025-12-18T14:21:30.491Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✅ Data length: 3",
+      "timestamp": "2025-12-18T14:21:30.491Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✅ Processing projects...",
+      "timestamp": "2025-12-18T14:21:30.491Z"
+    },
+    {
+      "type": "log",
+      "text": "  📋 Processing project 1: Validation Test Project",
+      "timestamp": "2025-12-18T14:21:30.491Z"
+    },
+    {
+      "type": "log",
+      "text": "  📋 Processing project 2: Debug Test Project",
+      "timestamp": "2025-12-18T14:21:30.491Z"
+    },
+    {
+      "type": "log",
+      "text": "  📋 Processing project 3: Test Project",
+      "timestamp": "2025-12-18T14:21:30.491Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 About to setProjects with 3 items...",
+      "timestamp": "2025-12-18T14:21:30.491Z"
+    },
+    {
+      "type": "log",
+      "text": "🎉 Successfully loaded and set 3 projects",
+      "timestamp": "2025-12-18T14:21:30.491Z"
+    },
+    {
+      "type": "log",
+      "text": "🌐 Exposed projects to window.lastLoadedProjects",
+      "timestamp": "2025-12-18T14:21:30.491Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 loadProjects function completed",
+      "timestamp": "2025-12-18T14:21:30.491Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:30.492Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:30.492Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:30.492Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:30.492Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:30.492Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:30.492Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:30.492Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:30.501Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:30.501Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:30.501Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:30.501Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:30.501Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:30.501Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:30.501Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 EdgeChart dayNavigation prop: {dayOffset: 0, currentDay: Thu Dec 18 2025 09:21:30 GMT-0500 (Eastern Standard Time), hasOnQuickJump: true, canGoPrevious: true, canGoNext: true}",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 day dynamic rangebreaks: 1 gaps hidden (data-driven)",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 Layout generated for SPY day",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "  SPY day Dynamic Chart Analysis:",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "  Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: closest}",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "   Data points: 32",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "   Date range: 2025-11-03T05:00:00.000Z → 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "   X Range: 2025-11-03T05:00:00.000Z to 2025-12-18",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "   Daily padding: 1 days padding",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "   Traces: 2",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "   Market session shapes: 0",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "   Template: Daily candlestick chart (60 days) - Direct OHLC",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "     UNIFIED Global Template:  ",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 EDGECHART DATE DEBUG: {dayNavigationCurrentDay: Thu Dec 18 2025 09:21:30 GMT-0500 (Eastern Standard Time), toISOString: 2025-12-18T14:21:30.500Z, formatted: Dec 18}",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: D0 button - dayOffset=0, isActiveDay=true",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: +14D button - dayOffset=0, isActiveDay=false",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 EdgeChart dayNavigation prop: {dayOffset: 0, currentDay: Thu Dec 18 2025 09:21:30 GMT-0500 (Eastern Standard Time), hasOnQuickJump: true, canGoPrevious: true, canGoNext: true}",
+      "timestamp": "2025-12-18T14:21:30.516Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 day dynamic rangebreaks: 1 gaps hidden (data-driven)",
+      "timestamp": "2025-12-18T14:21:30.517Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 Layout generated for SPY day",
+      "timestamp": "2025-12-18T14:21:30.517Z"
+    },
+    {
+      "type": "log",
+      "text": "  SPY day Dynamic Chart Analysis:",
+      "timestamp": "2025-12-18T14:21:30.517Z"
+    },
+    {
+      "type": "log",
+      "text": "  Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: closest}",
+      "timestamp": "2025-12-18T14:21:30.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Data points: 32",
+      "timestamp": "2025-12-18T14:21:30.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Date range: 2025-11-03T05:00:00.000Z → 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:30.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   X Range: 2025-11-03T05:00:00.000Z to 2025-12-18",
+      "timestamp": "2025-12-18T14:21:30.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Daily padding: 1 days padding",
+      "timestamp": "2025-12-18T14:21:30.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Traces: 2",
+      "timestamp": "2025-12-18T14:21:30.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Market session shapes: 0",
+      "timestamp": "2025-12-18T14:21:30.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Template: Daily candlestick chart (60 days) - Direct OHLC",
+      "timestamp": "2025-12-18T14:21:30.517Z"
+    },
+    {
+      "type": "log",
+      "text": "     UNIFIED Global Template:  ",
+      "timestamp": "2025-12-18T14:21:30.517Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 EDGECHART DATE DEBUG: {dayNavigationCurrentDay: Thu Dec 18 2025 09:21:30 GMT-0500 (Eastern Standard Time), toISOString: 2025-12-18T14:21:30.500Z, formatted: Dec 18}",
+      "timestamp": "2025-12-18T14:21:30.518Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: D0 button - dayOffset=0, isActiveDay=true",
+      "timestamp": "2025-12-18T14:21:30.518Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: +14D button - dayOffset=0, isActiveDay=false",
+      "timestamp": "2025-12-18T14:21:30.518Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ ChartLegend render: {symbol: SPY, dataLength: 32, hoveredIndex: null, timeframe: day, dayOffset: 0}",
+      "timestamp": "2025-12-18T14:21:30.518Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ LEGEND DEBUG:",
+      "timestamp": "2025-12-18T14:21:30.519Z"
+    },
+    {
+      "type": "log",
+      "text": "  timeframe: day",
+      "timestamp": "2025-12-18T14:21:30.519Z"
+    },
+    {
+      "type": "log",
+      "text": "  dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:30.519Z"
+    },
+    {
+      "type": "log",
+      "text": "  referenceDay: undefined",
+      "timestamp": "2025-12-18T14:21:30.519Z"
+    },
+    {
+      "type": "log",
+      "text": "  data.x.length: 32",
+      "timestamp": "2025-12-18T14:21:30.519Z"
+    },
+    {
+      "type": "log",
+      "text": "  First 3 dates: [2025-11-03T05:00:00.000Z, 2025-11-04T05:00:00.000Z, 2025-11-05T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:30.519Z"
+    },
+    {
+      "type": "log",
+      "text": "  Last 3 dates: [2025-12-15T05:00:00.000Z, 2025-12-16T05:00:00.000Z, 2025-12-17T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:30.519Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 LAST INDEX ANALYSIS:",
+      "timestamp": "2025-12-18T14:21:30.519Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastIndex: 31",
+      "timestamp": "2025-12-18T14:21:30.519Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDateStr (raw): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:30.519Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (UTC): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:30.519Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (ET): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:30.520Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (local): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:30.520Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ D0 (idle) - using last index: 31 date: 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ Showing data legend: {displayIndex: 31, barData: Object}",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ ChartLegend render: {symbol: SPY, dataLength: 32, hoveredIndex: null, timeframe: day, dayOffset: 0}",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ LEGEND DEBUG:",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  timeframe: day",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  referenceDay: undefined",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  data.x.length: 32",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  First 3 dates: [2025-11-03T05:00:00.000Z, 2025-11-04T05:00:00.000Z, 2025-11-05T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  Last 3 dates: [2025-12-15T05:00:00.000Z, 2025-12-16T05:00:00.000Z, 2025-12-17T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 LAST INDEX ANALYSIS:",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastIndex: 31",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDateStr (raw): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (UTC): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:30.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (ET): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:30.522Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (local): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:30.522Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ D0 (idle) - using last index: 31 date: 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:30.522Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ Showing data legend: {displayIndex: 31, barData: Object}",
+      "timestamp": "2025-12-18T14:21:30.522Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 Starting loadProjects function...",
+      "timestamp": "2025-12-18T14:21:40.484Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 projectApiService available: true",
+      "timestamp": "2025-12-18T14:21:40.484Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 projectApiService.getProjects type: function",
+      "timestamp": "2025-12-18T14:21:40.484Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 About to call projectApiService.getProjects()...",
+      "timestamp": "2025-12-18T14:21:40.484Z"
+    },
+    {
+      "type": "log",
+      "text": "🚀 Fast project API call to: http://localhost:5666/api/projects?_t=1766067700483",
+      "timestamp": "2025-12-18T14:21:40.484Z"
+    },
+    {
+      "type": "log",
+      "text": "✅ Project API successful: http://localhost:5666/api/projects?_t=1766067700483",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✅ API call completed, received data: true",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✅ Data type: object",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✅ Data length: 3",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "  ✅ Processing projects...",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "  📋 Processing project 1: Validation Test Project",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "  📋 Processing project 2: Debug Test Project",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "  📋 Processing project 3: Test Project",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 About to setProjects with 3 items...",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "🎉 Successfully loaded and set 3 projects",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "🌐 Exposed projects to window.lastLoadedProjects",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "🔄 loadProjects function completed",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:40.496Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 getBaseDay(): Using today's date as fallback",
+      "timestamp": "2025-12-18T14:21:40.501Z"
+    },
+    {
+      "type": "log",
+      "text": "📍 NAVIGATION STATE DEBUG:",
+      "timestamp": "2025-12-18T14:21:40.501Z"
+    },
+    {
+      "type": "log",
+      "text": "    - selectedResult.date: undefined",
+      "timestamp": "2025-12-18T14:21:40.501Z"
+    },
+    {
+      "type": "log",
+      "text": "    - baseDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:40.501Z"
+    },
+    {
+      "type": "log",
+      "text": "    - currentDay: Thu Dec 18 2025 (2025-12-18)",
+      "timestamp": "2025-12-18T14:21:40.501Z"
+    },
+    {
+      "type": "log",
+      "text": "    - dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:40.501Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 DAY NAVIGATION DEBUG: dayOffset = 0, currentDay = Thu Dec 18 2025",
+      "timestamp": "2025-12-18T14:21:40.501Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 EdgeChart dayNavigation prop: {dayOffset: 0, currentDay: Thu Dec 18 2025 09:21:40 GMT-0500 (Eastern Standard Time), hasOnQuickJump: true, canGoPrevious: true, canGoNext: true}",
+      "timestamp": "2025-12-18T14:21:40.515Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 day dynamic rangebreaks: 1 gaps hidden (data-driven)",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 Layout generated for SPY day",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "  SPY day Dynamic Chart Analysis:",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "  Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: closest}",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Data points: 32",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Date range: 2025-11-03T05:00:00.000Z → 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   X Range: 2025-11-03T05:00:00.000Z to 2025-12-18",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Daily padding: 1 days padding",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Traces: 2",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Market session shapes: 0",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Template: Daily candlestick chart (60 days) - Direct OHLC",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "     UNIFIED Global Template:  ",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 EDGECHART DATE DEBUG: {dayNavigationCurrentDay: Thu Dec 18 2025 09:21:40 GMT-0500 (Eastern Standard Time), toISOString: 2025-12-18T14:21:40.500Z, formatted: Dec 18}",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: D0 button - dayOffset=0, isActiveDay=true",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: +14D button - dayOffset=0, isActiveDay=false",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 EdgeChart dayNavigation prop: {dayOffset: 0, currentDay: Thu Dec 18 2025 09:21:40 GMT-0500 (Eastern Standard Time), hasOnQuickJump: true, canGoPrevious: true, canGoNext: true}",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 day dynamic rangebreaks: 1 gaps hidden (data-driven)",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 Layout generated for SPY day",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "  SPY day Dynamic Chart Analysis:",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "  Crosshair spikeline config: {xaxis_showspikes: true, xaxis_spikemode: across, yaxis_showspikes: true, yaxis_spikemode: across, hovermode: closest}",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Data points: 32",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Date range: 2025-11-03T05:00:00.000Z → 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   X Range: 2025-11-03T05:00:00.000Z to 2025-12-18",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Daily padding: 1 days padding",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Traces: 2",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Market session shapes: 0",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "   Template: Daily candlestick chart (60 days) - Direct OHLC",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "     UNIFIED Global Template:  ",
+      "timestamp": "2025-12-18T14:21:40.517Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 EDGECHART DATE DEBUG: {dayNavigationCurrentDay: Thu Dec 18 2025 09:21:40 GMT-0500 (Eastern Standard Time), toISOString: 2025-12-18T14:21:40.500Z, formatted: Dec 18}",
+      "timestamp": "2025-12-18T14:21:40.518Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: D0 button - dayOffset=0, isActiveDay=true",
+      "timestamp": "2025-12-18T14:21:40.518Z"
+    },
+    {
+      "type": "log",
+      "text": "🎯 BUTTON DEBUG: +14D button - dayOffset=0, isActiveDay=false",
+      "timestamp": "2025-12-18T14:21:40.518Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ ChartLegend render: {symbol: SPY, dataLength: 32, hoveredIndex: null, timeframe: day, dayOffset: 0}",
+      "timestamp": "2025-12-18T14:21:40.518Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ LEGEND DEBUG:",
+      "timestamp": "2025-12-18T14:21:40.518Z"
+    },
+    {
+      "type": "log",
+      "text": "  timeframe: day",
+      "timestamp": "2025-12-18T14:21:40.518Z"
+    },
+    {
+      "type": "log",
+      "text": "  dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:40.520Z"
+    },
+    {
+      "type": "log",
+      "text": "  referenceDay: undefined",
+      "timestamp": "2025-12-18T14:21:40.520Z"
+    },
+    {
+      "type": "log",
+      "text": "  data.x.length: 32",
+      "timestamp": "2025-12-18T14:21:40.520Z"
+    },
+    {
+      "type": "log",
+      "text": "  First 3 dates: [2025-11-03T05:00:00.000Z, 2025-11-04T05:00:00.000Z, 2025-11-05T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:40.520Z"
+    },
+    {
+      "type": "log",
+      "text": "  Last 3 dates: [2025-12-15T05:00:00.000Z, 2025-12-16T05:00:00.000Z, 2025-12-17T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:40.520Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 LAST INDEX ANALYSIS:",
+      "timestamp": "2025-12-18T14:21:40.520Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastIndex: 31",
+      "timestamp": "2025-12-18T14:21:40.520Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDateStr (raw): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:40.520Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (UTC): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:40.520Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (ET): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (local): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ D0 (idle) - using last index: 31 date: 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ Showing data legend: {displayIndex: 31, barData: Object}",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ ChartLegend render: {symbol: SPY, dataLength: 32, hoveredIndex: null, timeframe: day, dayOffset: 0}",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ LEGEND DEBUG:",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  timeframe: day",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  dayOffset: 0",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  referenceDay: undefined",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  data.x.length: 32",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  First 3 dates: [2025-11-03T05:00:00.000Z, 2025-11-04T05:00:00.000Z, 2025-11-05T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  Last 3 dates: [2025-12-15T05:00:00.000Z, 2025-12-16T05:00:00.000Z, 2025-12-17T05:00:00.000Z]",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "🔍 LAST INDEX ANALYSIS:",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastIndex: 31",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDateStr (raw): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:40.521Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (UTC): 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:40.522Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (ET): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:40.522Z"
+    },
+    {
+      "type": "log",
+      "text": "  lastDate (local): 12/17/2025",
+      "timestamp": "2025-12-18T14:21:40.522Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ D0 (idle) - using last index: 31 date: 2025-12-17T05:00:00.000Z",
+      "timestamp": "2025-12-18T14:21:40.522Z"
+    },
+    {
+      "type": "log",
+      "text": "🏷️ Showing data legend: {displayIndex: 31, barData: Object}",
+      "timestamp": "2025-12-18T14:21:40.522Z"
+    }
+  ]
+}

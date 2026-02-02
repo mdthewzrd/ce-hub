@@ -1,0 +1,233 @@
+{
+  "id": "session-1767890690430-14zcwacb5",
+  "text": "Task: Generate virtual try-on image.\n\nIMPORTANT: Use these EXACT file paths and parameters:\n- Subject photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/d2a54b0c-50f1-4bb7-b58b-a4e9f068e78f/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg\n- Glasses photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_1_IMG_2109.jpg\n- Task ID (REQUIRED for generate_tryon_image): 482d8a34-a0cc-41cc-ae7f-42e49ffa9a6f\n\nWhen calling generate_tryon_image, you MUST include these parameters:\n- subjectPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/d2a54b0c-50f1-4bb7-b58b-a4e9f068e78f/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg\"\n- glassesPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_1_IMG_2109.jpg\"\n- taskId: \"482d8a34-a0cc-41cc-ae7f-42e49ffa9a6f\" (this is REQUIRED!)\n\nDO NOT make up file paths. Use the paths provided above exactly as written.\nResult: 85/100",
+  "metadata": {
+    "task": "Generate virtual try-on image.\n\nIMPORTANT: Use these EXACT file paths and parameters:\n- Subject photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/d2a54b0c-50f1-4bb7-b58b-a4e9f068e78f/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg\n- Glasses photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_1_IMG_2109.jpg\n- Task ID (REQUIRED for generate_tryon_image): 482d8a34-a0cc-41cc-ae7f-42e49ffa9a6f\n\nWhen calling generate_tryon_image, you MUST include these parameters:\n- subjectPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/d2a54b0c-50f1-4bb7-b58b-a4e9f068e78f/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg\"\n- glassesPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_1_IMG_2109.jpg\"\n- taskId: \"482d8a34-a0cc-41cc-ae7f-42e49ffa9a6f\" (this is REQUIRED!)\n\nDO NOT make up file paths. Use the paths provided above exactly as written.",
+    "results": [
+      {
+        "success": true,
+        "data": {
+          "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/d2a54b0c-50f1-4bb7-b58b-a4e9f068e78f/subject_0_fcbef6b69f6ae56a0f187a03a85aef87_result_482d8a34-a0cc-41cc-ae7f-42e49ffa9a6f.jpg",
+          "report": {
+            "taskId": "482d8a34-a0cc-41cc-ae7f-42e49ffa9a6f",
+            "version": {
+              "app": "1.0",
+              "promptPack": "v1.0",
+              "model": "Hybrid Canvas + AI (realistic blending)",
+              "providerApi": "1.0.0"
+            },
+            "inputs": {
+              "subject": {
+                "assetId": "482d8a34-a0cc-41cc-ae7f-42e49ffa9a6f",
+                "w": 1024,
+                "h": 768
+              },
+              "glasses": [
+                "glasses_0"
+              ]
+            },
+            "generation": {
+              "guidance": 0.7,
+              "refStrength": 0.8,
+              "lightingWeight": 0.5,
+              "reflectionWeight": 0.3,
+              "colorMatchWeight": 0.5,
+              "seed": 1767890692814,
+              "passes": 1
+            },
+            "quality": {
+              "ssim": 0.991,
+              "faceDist": 0.23,
+              "fit": "pass"
+            },
+            "notes": "Glasses successfully added using Hybrid Canvas + AI (realistic blending)"
+          },
+          "generationMethod": "Hybrid Canvas + AI (realistic blending)"
+        }
+      }
+    ],
+    "evaluation": {
+      "score": 85,
+      "finalResult": {
+        "success": true,
+        "data": {
+          "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/d2a54b0c-50f1-4bb7-b58b-a4e9f068e78f/subject_0_fcbef6b69f6ae56a0f187a03a85aef87_result_482d8a34-a0cc-41cc-ae7f-42e49ffa9a6f.jpg",
+          "report": {
+            "taskId": "482d8a34-a0cc-41cc-ae7f-42e49ffa9a6f",
+            "version": {
+              "app": "1.0",
+              "promptPack": "v1.0",
+              "model": "Hybrid Canvas + AI (realistic blending)",
+              "providerApi": "1.0.0"
+            },
+            "inputs": {
+              "subject": {
+                "assetId": "482d8a34-a0cc-41cc-ae7f-42e49ffa9a6f",
+                "w": 1024,
+                "h": 768
+              },
+              "glasses": [
+                "glasses_0"
+              ]
+            },
+            "generation": {
+              "guidance": 0.7,
+              "refStrength": 0.8,
+              "lightingWeight": 0.5,
+              "reflectionWeight": 0.3,
+              "colorMatchWeight": 0.5,
+              "seed": 1767890692814,
+              "passes": 1
+            },
+            "quality": {
+              "ssim": 0.991,
+              "faceDist": 0.23,
+              "fit": "pass"
+            },
+            "notes": "Glasses successfully added using Hybrid Canvas + AI (realistic blending)"
+          },
+          "generationMethod": "Hybrid Canvas + AI (realistic blending)"
+        }
+      },
+      "shouldRetry": false
+    },
+    "sessionId": "session-1767890690430-14zcwacb5",
+    "timestamp": "2026-01-08T16:44:55.704Z",
+    "toolsUsed": [
+      "generate_tryon_image",
+      "retry_generation",
+      "verify_quality",
+      "quick_quality_check"
+    ]
+  },
+  "embedding": [
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.03508771929824561,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.03508771929824561,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.03508771929824561,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.03508771929824561,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0,
+    0.03508771929824561,
+    0,
+    0.017543859649122806,
+    0.07017543859649122,
+    0.03508771929824561,
+    0.05263157894736842,
+    0.08771929824561403,
+    0,
+    0.05263157894736842,
+    0,
+    0,
+    0,
+    0.03508771929824561,
+    0.017543859649122806,
+    0,
+    0.14035087719298245,
+    0,
+    0.05263157894736842,
+    0.03508771929824561,
+    0.14035087719298245,
+    0.10526315789473684,
+    0.017543859649122806,
+    0.03508771929824561,
+    0
+  ]
+}

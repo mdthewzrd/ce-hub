@@ -1,0 +1,81 @@
+{
+  "startTime": "2025-12-03T18:30:58.823Z",
+  "steps": [
+    {
+      "step": "Launch browser",
+      "status": "IN_PROGRESS",
+      "timestamp": "2025-12-03T18:30:58.825Z",
+      "details": ""
+    },
+    {
+      "step": "Launch browser",
+      "status": "PASS",
+      "timestamp": "2025-12-03T18:30:59.685Z",
+      "details": "Browser launched successfully"
+    },
+    {
+      "step": "Navigate to platform",
+      "status": "IN_PROGRESS",
+      "timestamp": "2025-12-03T18:30:59.685Z",
+      "details": ""
+    },
+    {
+      "step": "Navigate to platform",
+      "status": "PASS",
+      "timestamp": "2025-12-03T18:31:04.373Z",
+      "details": "Title: edge.dev"
+    },
+    {
+      "step": "Open upload modal",
+      "status": "IN_PROGRESS",
+      "timestamp": "2025-12-03T18:31:04.373Z",
+      "details": ""
+    },
+    {
+      "step": "Open upload modal",
+      "status": "PASS",
+      "timestamp": "2025-12-03T18:31:06.772Z",
+      "details": "Upload modal opened successfully"
+    },
+    {
+      "step": "Select Format & Run mode",
+      "status": "IN_PROGRESS",
+      "timestamp": "2025-12-03T18:31:06.772Z",
+      "details": ""
+    },
+    {
+      "step": "Select Format & Run mode",
+      "status": "PASS",
+      "timestamp": "2025-12-03T18:32:09.408Z",
+      "details": "Format mode selected"
+    },
+    {
+      "step": "Switch to file upload mode",
+      "status": "IN_PROGRESS",
+      "timestamp": "2025-12-03T18:32:09.408Z",
+      "details": ""
+    },
+    {
+      "step": "Switch to file upload mode",
+      "status": "PASS",
+      "timestamp": "2025-12-03T18:32:10.416Z",
+      "details": "Switched to file upload"
+    },
+    {
+      "step": "Upload test file",
+      "status": "IN_PROGRESS",
+      "timestamp": "2025-12-03T18:32:10.416Z",
+      "details": ""
+    }
+  ],
+  "errors": [
+    {
+      "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('input[type=\"file\"]') to be visible\u001b[22m\n",
+      "context": "Main test execution",
+      "timestamp": "2025-12-03T18:32:20.418Z",
+      "stack": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('input[type=\"file\"]') to be visible\u001b[22m\n\n    at performTargetedTest (/Users/michaeldurante/ai dev/ce-hub/projects/targeted_workflow_test.js:235:38)"
+    }
+  ],
+  "success": false,
+  "duration": 81595
+}

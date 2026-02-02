@@ -1,0 +1,73 @@
+{
+  "project_id": "fc59c447-36c3-4dd8-8f56-40742044eedd",
+  "name": "Backside Para B Copy",
+  "description": "Daily scanner for A+ para backside pattern - V31 transformed with all optimizations",
+  "scanners": [
+    {
+      "scanner_id": "scanner_1767881029806",
+      "scanner_name": "backside_para_b_copy_3",
+      "scanner_file": "scanners/backside_para_b_copy_3.py",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 0
+    },
+    {
+      "scanner_id": "scanner_1767881493365",
+      "scanner_name": "backside_para_b_copy_3",
+      "scanner_file": "scanners/backside_para_b_copy_3.py",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 1
+    },
+    {
+      "scanner_id": "scanner_1767882219577",
+      "scanner_name": "backside_para_b_copy_3",
+      "scanner_file": "scanners/backside_para_b_copy_3.py",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 2
+    },
+    {
+      "scanner_id": "scanner_1767886173643",
+      "scanner_name": "backside_para_b_copy_3",
+      "scanner_file": "scanners/backside_para_b_copy_3.py",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 3
+    },
+    {
+      "scanner_id": "scanner_1767886364955",
+      "scanner_name": "backside_para_b_copy_3",
+      "scanner_file": "scanners/backside_para_b_copy_3.py",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 4
+    },
+    {
+      "scanner_id": "scanner_1767894139745",
+      "scanner_name": "backside_para_b_copy_3",
+      "scanner_file": "scanners/backside_para_b_copy_3.py",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 5
+    }
+  ],
+  "aggregation_method": "single",
+  "created_at": "2026-01-07T21:12:39.211264",
+  "updated_at": "2026-01-08T12:42:19.754167",
+  "version": 1,
+  "tags": [
+    "backside",
+    "para-b",
+    "scanner",
+    "python",
+    "trading",
+    "v31",
+    "renata-v2"
+  ],
+  "created_by": "renata-ai-upload",
+  "last_executed": null,
+  "execution_count": 0,
+  "function_name": "daily_para_backside_lite_scan",
+  "has_code": true
+}

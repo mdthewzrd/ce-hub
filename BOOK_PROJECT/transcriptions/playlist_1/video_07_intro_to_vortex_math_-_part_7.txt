@@ -1,0 +1,297 @@
+================================================================================
+VIDEO TRANSCRIPT: Intro to Vortex Math - Part 7
+================================================================================
+
+Source: Marko Rodin Vortex Based Mathematics Course
+Speaker: Randy Powell
+Format: Timestamped transcription with speaker diarization
+
+================================================================================
+
+[00:00:00] **Randy Powell**: So we showed our family number groups of 1, 4, 7, 2, 5, and 8, 3, 9, 6.
+
+[00:00:07] **Randy Powell**: We showed how they're separated by thirds or separated by six.
+
+[00:00:12] **Randy Powell**: They're never separated by anything else, by the way.
+
+[00:00:15] **Randy Powell**: We showed that they're represented by this geometry of triangulation,
+
+[00:00:19] **Randy Powell**: of the hexagon, even of the diamond.
+
+[00:00:24] **Randy Powell**: Why is it significant?
+
+[00:00:26] **Randy Powell**: And why are those numbers positive or negative at the same time?
+
+[00:00:34] **Randy Powell**: Well, one, I showed that it accounts for the geometric side of what we're going to do.
+
+[00:00:40] **Randy Powell**: In addition to that, those numbers being synchronized in such a way
+
+[00:00:46] **Randy Powell**: are being activated at the same moment.
+
+[00:00:50] **Randy Powell**: In engineering, we could call it a moment of activation, a pulse.
+
+[00:00:55] **Randy Powell**: That's what allows me to get a binary flip flop.
+
+[00:00:59] **Randy Powell**: Because we're working with something we're going to call a binary triplet.
+
+[00:01:03] **Randy Powell**: I'm going to explain what that is.
+
+[00:01:05] **Randy Powell**: Now, you notice I have these triplets in my family number groups.
+
+[00:01:10] **Randy Powell**: But I also have something binary here, which is my 1, 2, 4, 8, 7, 5.
+
+[00:01:15] **Randy Powell**: The repeating sequence underlying the binary code of computer science.
+
+[00:01:21] **Randy Powell**: And when my 1s, 4s, and 7 are all positive,
+
+[00:01:24] **Randy Powell**: let's say my 2, 5, and 8s are negative.
+
+[00:01:28] **Randy Powell**: I've got positive, negative, positive, negative, positive, negative, positive, negative.
+
+[00:01:38] **Randy Powell**: In other words, I have my binary flip flop from positive, negative, never being broken.
+
+[00:01:44] **Randy Powell**: Same with my 2, 5, and 8s.
+
+[00:01:45] **Randy Powell**: I have positive, negative, positive, negative, positive, negative.
+
+[00:01:50] **Randy Powell**: And what that means is ultimately, I don't need 9 now to represent my system.
+
+[00:01:56] **Randy Powell**: I really need 18 because there's a positive and negative for every number.
+
+[00:02:02] **Randy Powell**: Every number has the potential to be polarized.
+
+[00:02:06] **Randy Powell**: All right?
+
+[00:02:08] **Randy Powell**: How about my 396?
+
+[00:02:10] **Randy Powell**: Because this is weird.
+
+[00:02:11] **Randy Powell**: Now I've got this thing.
+
+[00:02:13] **Randy Powell**: I've got to come to my 9 before I can go back.
+
+[00:02:15] **Randy Powell**: So how to create that?
+
+[00:02:17] **Randy Powell**: In this system now, when my 9 is positive, which is the initial elimination, the projection,
+
+[00:02:24] **Randy Powell**: the initial will, the initial drive, the initial input of energy, my positive 9, my 9 is
+
+[00:02:32] **Randy Powell**: positive, my 3 and 6 are negative.
+
+[00:02:35] **Randy Powell**: So in other words, when this energy is coming out, magnetism is going in to the center.
+
+[00:02:43] **Randy Powell**: And this energy is absent, or when you could say when it's going in or when it's absent,
+
+[00:02:50] **Randy Powell**: when it creates a pivot, which is my negative 9, and my 3 and 6 are both positive coming
+
+[00:02:56] **Randy Powell**: out.
+
+[00:02:58] **Randy Powell**: And then what that does is it gives me, let's say my 3 is positive, positive, negative,
+
+[00:03:03] **Randy Powell**: positive.
+
+[00:03:04] **Randy Powell**: Whenever you end on a number in this system, you give it the reverse polarity, and you
+
+[00:03:09] **Randy Powell**: go in the other direction.
+
+[00:03:11] **Randy Powell**: So if I go positive, negative, positive, my next number is going to be negative 6, which
+
+[00:03:17] **Randy Powell**: is under here.
+
+[00:03:18] **Randy Powell**: And it's going to go negative, positive, negative, positive.
+
+[00:03:24] **Randy Powell**: So it's giving me a sequence here.
+
+[00:03:27] **Randy Powell**: It's 396, 693.
+
+[00:03:31] **Randy Powell**: Alternating back and forth.
+
+[00:03:33] **Randy Powell**: When we put this in a three-dimensional model, you're going to understand exactly what
+
+[00:03:37] **Randy Powell**: it might mean by that.
+
+[00:03:39] **Randy Powell**: So what I'm showing here is a pulse.
+
+[00:03:42] **Randy Powell**: The 9 is a surge.
+
+[00:03:44] **Randy Powell**: Sometimes you can refer to it as an inertia ether, which Einstein postulated during after
+
+[00:03:52] **Randy Powell**: the famous Mix and Morally experiment that supposedly disproved the existence of an
+
+[00:03:57] **Randy Powell**: ether.
+
+[00:03:58] **Randy Powell**: Einstein said, well, if it's not that, it must be an inertia ether.
+
+[00:04:02] **Randy Powell**: And that's what this is.
+
+[00:04:04] **Randy Powell**: It's a pulse, a surge, or a vector.
+
+[00:04:07] **Randy Powell**: It's driving everything.
+
+[00:04:09] **Randy Powell**: It's causing this doubling.
+
+[00:04:13] **Randy Powell**: So again, right now, I need 18 numbers to represent my system.
+
+[00:04:17] **Randy Powell**: Each number having a positive and negative, and each family number group, there's three
+
+[00:04:22] **Randy Powell**: of them.
+
+[00:04:23] **Randy Powell**: There are nothing smaller than groups of three in this system.
+
+[00:04:29] **Randy Powell**: There's three family number groups, and there are each activated at a moment.
+
+[00:04:33] **Randy Powell**: So if I have 18 numbers altogether to represent my system, and if only three of those numbers
+
+[00:04:39] **Randy Powell**: are ever positive at a time, that means only one six of my numbers are ever activated or
+
+[00:04:46] **Randy Powell**: positive at a time.
+
+[00:04:47] **Randy Powell**: And now, if you don't follow me there, just wait, because you will when we do the torus.
+
+[00:04:53] **Randy Powell**: Only one six of my numbers are ever positive.
+
+[00:04:55] **Randy Powell**: That's one positive family number group per 18 numbers.
+
+[00:05:00] **Randy Powell**: All right.
+
+[00:05:01] **Randy Powell**: That's clear.
+
+[00:05:02] **Randy Powell**: When you're saying 18 number, you say you have 18 around the, instead of 9.
+
+[00:05:08] **Randy Powell**: Not 18 around the circle, but 18 because there's, this is a, say, this is a positive 9.
+
+[00:05:13] **Randy Powell**: There's really a negative 9 behind it.
+
+[00:05:16] **Randy Powell**: This is a positive 1.
+
+[00:05:17] **Randy Powell**: There's really a negative 1 on the other side.
+
+[00:05:19] **Randy Powell**: So again, this is just a two-dimensional cross-section of a circle, but it's explaining
+
+[00:05:25] **Randy Powell**: what we're going to see in three dimensions.
+
+[00:05:30] **Randy Powell**: So I think I covered most of what I wanted to say there.
+
+[00:05:33] **Randy Powell**: The only thing that I wanted you to see now is what is this really doing?
+
+[00:05:37] **Randy Powell**: When we get to this in physical reality, well, if you look at this shape closely and I
+
+[00:05:41] **Randy Powell**: will show, it's actually the shape of your DNA spiral helix.
+
+[00:05:47] **Randy Powell**: Even that the DNA that you're life is operating on is based on this shape.
+
+[00:05:53] **Randy Powell**: It's a coil.
+
+[00:05:55] **Randy Powell**: Finding physical is a coil.
+
+[00:05:57] **Randy Powell**: It's conducting an energy, which is this.
+
+[00:06:01] **Randy Powell**: If the more high inductance it is, the better conducts this energy, the more alive it is.
+
+[00:06:08] **Randy Powell**: The number 9 is perfection, consciousness, the apex of consciousness, full 100% consciousness.
+
+[00:06:17] **Randy Powell**: And when we work with sound, when we work with numbers, that's what we're trying to do.
+
+[00:06:22] **Randy Powell**: 100% full efficiency.
+
+[00:06:26] **Randy Powell**: Whether it's our pathway of motion, or it's electrical efficiency, everything is interconnected.
+
+[00:06:33] **Randy Powell**: And it's connected from here, the zero point.
+
+[00:06:37] **Randy Powell**: Zero is not a number on any multiplication series.
+
+[00:06:41] **Randy Powell**: It's an absence.
+
+[00:06:42] **Randy Powell**: It's a hall in the center.
+
+[00:06:44] **Randy Powell**: And what this is is a vortex.
+
+[00:06:48] **Randy Powell**: It's compressing things, sucking them in at the top.
+
+[00:06:51] **Randy Powell**: Decompressing them, shooting them out at the bottom.
+
+[00:06:55] **Randy Powell**: Is a cosmic grinder.
+
+[00:06:56] **Randy Powell**: You could think of it as black hole to white hole, compression to decompression.
+
+[00:07:01] **Randy Powell**: Your own body, the human torso, the mortal coil, is based on this.
+
+[00:07:07] **Randy Powell**: It sucks things in at the top.
+
+[00:07:09] **Randy Powell**: Whips them around, demolecularizes them, shoots them out at the bottom.
+
+[00:07:14] **Randy Powell**: Everything is based on that.
+
+[00:07:16] **Randy Powell**: The earth's magnetic field.
+
+[00:07:17] **Randy Powell**: It's called a torus.
+
+[00:07:20] **Randy Powell**: The human aura is said to be a torus.
+
+[00:07:23] **Randy Powell**: The spiral galaxies are toruses.
+
+[00:07:26] **Randy Powell**: Your blood cells are a torus.
+
+[00:07:29] **Randy Powell**: You will get to know that very clearly.
+
+[00:07:31] **Randy Powell**: Let's look again here.
+
+[00:07:42] **Randy Powell**: If I take into account all these multiplication tables, and I look at them as a sequence,
+
+[00:07:47] **Randy Powell**: I'll notice something very interesting is happening here.
+
+[00:07:51] **Randy Powell**: Now here's my first control.
+
+[00:07:53] **Randy Powell**: I should say this, a very basic point.
+
+[00:07:56] **Randy Powell**: Multiplication tables, or as we've seen, similarly division tables, are two things.
+
+[00:08:09] **Randy Powell**: They can either be straight lines or circles.
+
+[00:08:12] **Randy Powell**: It doesn't get any more easy than that.
+
+[00:08:16] **Randy Powell**: Multiplication tables are straight lines or circles.
+
+[00:08:19] **Randy Powell**: It's pretty easy to see.
+
+[00:08:21] **Randy Powell**: We can see the straight lines here.
+
+[00:08:23] **Randy Powell**: I don't think anybody is having a problem there.
+
+[00:08:26] **Randy Powell**: Multiplication tables are modeling straight lines.
+
+[00:08:29] **Randy Powell**: Increments, straight lines.
+
+[00:08:34] **Randy Powell**: What do I mean?
+
+[00:08:35] **Randy Powell**: They're showing circles too.
+
+[00:08:37] **Randy Powell**: Well, my initial summary, remember I said one was my control.
+
+[00:08:40] **Randy Powell**: I've got one, two, three, four, five, six, seven, eight, nine around the circle.
+
+[00:08:45] **Randy Powell**: How about if I start with two?
+
+[00:08:47] **Randy Powell**: Two, four, six, eight, one, three, five, seven, nine, just like my multiple's of two.
+
+[00:08:56] **Randy Powell**: Three, six, nine, three, six, nine, three, six, nine, multiples of three.
+
+[00:09:03] **Randy Powell**: Four, eight, three, seven, two, six, one, five, nine, just the same is here.
+
+[00:09:13] **Randy Powell**: Four, eight, three, seven, two, six, one, five, nine.
+
+[00:09:15] **Randy Powell**: In other words, you can do it any way you want.
+
+[00:09:19] **Randy Powell**: There either going out in straight lines or they're going around in circles.
+
+[00:09:23] **Randy Powell**: Both those conditions must be met simultaneously in order to have a true system.
+
+[00:09:31] **Randy Powell**: This is why time cannot move backwards.
+
+[00:09:37] **Randy Powell**: This is why this system is creating a one-way, stomach-living flow.
+
+[00:09:43] **Randy Powell**: This is called a positive flow.
+
+[00:09:45] **Randy Powell**: The energy of the nine is a positive force.
+
+[00:09:49] **Randy Powell**: The reality of the higher world is a 100% positive reality.

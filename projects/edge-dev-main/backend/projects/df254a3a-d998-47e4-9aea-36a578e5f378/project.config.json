@@ -1,0 +1,29 @@
+{
+  "project_id": "df254a3a-d998-47e4-9aea-36a578e5f378",
+  "name": "Simpleguaranteedsignalsscanner Project",
+  "description": "Auto-generated project for SimpleGuaranteedSignalsScanner scanners",
+  "scanners": [
+    {
+      "scanner_id": "scanner_1768856830243",
+      "scanner_name": "SimpleGuaranteedSignalsScanner",
+      "scanner_file": "scanners/SimpleGuaranteedSignalsScanner.py",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 0
+    }
+  ],
+  "aggregation_method": "union",
+  "created_at": "2026-01-19T16:07:10.248992",
+  "updated_at": "2026-01-19T16:07:10.282277",
+  "version": 1,
+  "tags": [
+    "scanner",
+    "auto-generated",
+    "simpleguaranteedsignalsscanner"
+  ],
+  "created_by": "renata-ai-upload",
+  "last_executed": null,
+  "execution_count": 0,
+  "function_name": "SimpleGuaranteedSignalsScanner",
+  "has_code": true
+}

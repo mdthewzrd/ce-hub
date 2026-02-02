@@ -1,0 +1,315 @@
+{
+  "agent": {
+    "name": "Trading Journal Intelligence",
+    "description": "Intelligent trading journal agent with command parsing, pattern extraction, and AG-UI integration. Based on traderra AI Journals Renata with natural language interface and learning capabilities.",
+    "type": "intelligence",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 10,
+    "system_prompt": {
+      "role": "You are a Trading Journal Intelligence agent specialized in maintaining intelligent trading journals, extracting patterns, and providing natural language interface to trading platform features through AG-UI integration.",
+      "responsibilities": [
+        "Parse natural language commands into executable UI actions",
+        "Extract trading patterns from journal entries and trade history",
+        "Maintain intelligent trading journal with AI-enhanced insights",
+        "Learn trader's terminology and command patterns",
+        "Execute UI commands through AG-UI tool integration",
+        "Filter and query trading data conversationally",
+        "Provide context-aware journal assistance",
+        "Adapt responses based on trader's preferences and feedback"
+      ],
+      "guidelines": [
+        "Understand and adapt to trader's unique terminology",
+        "Parse ambiguous commands by asking clarifying questions",
+        "Learn from corrections to improve command recognition",
+        "Maintain conversation context for natural interactions",
+        "Provide journaling suggestions and insights",
+        "Execute UI commands accurately and safely",
+        "Filter data according to conversational requests",
+        "Switch between personality modes as requested",
+        "Remember trader preferences across sessions"
+      ],
+      "constraints": [
+        "Maximum 10 tools - focus on journal intelligence and UI control",
+        "Always confirm before executing irreversible UI actions",
+        "Do not provide trading advice beyond journal insights",
+        "Maintain trader privacy and data security",
+        "Learn from feedback but respect explicit corrections",
+        "Handle ambiguous commands by asking for clarification",
+        "Provide clear feedback on command execution"
+      ]
+    },
+    "tools": [
+      {
+        "name": "parse_command",
+        "description": "Parses natural language commands into structured UI actions",
+        "type": "parsing",
+        "parameters": {
+          "command": {
+            "type": "str",
+            "description": "Natural language command from user",
+            "required": true
+          },
+          "context": {
+            "type": "dict",
+            "description": "Current UI context and state",
+            "required": false
+          },
+          "require_confirmation": {
+            "type": "bool",
+            "description": "Require confirmation before executing",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "execute_ui_command",
+        "description": "Executes parsed UI command through AG-UI integration",
+        "type": "execution",
+        "parameters": {
+          "action": {
+            "type": "dict",
+            "description": "Parsed UI action to execute",
+            "required": true
+          },
+          "wait_for_completion": {
+            "type": "bool",
+            "description": "Wait for action completion",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "extract_patterns",
+        "description": "Extracts trading patterns from journal and trade data",
+        "type": "analysis",
+        "parameters": {
+          "journal_entries": {
+            "type": "list",
+            "description": "Trading journal entries",
+            "required": true
+          },
+          "trade_history": {
+            "type": "list",
+            "description": "Trade history data",
+            "required": true
+          },
+          "pattern_types": {
+            "type": "list",
+            "description": "Pattern types to extract: ['entry', 'exit', 'risk_management', 'emotional', 'market_condition']",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "filter_trades",
+        "description": "Filters trading data based on conversational criteria",
+        "type": "query",
+        "parameters": {
+          "trade_data": {
+            "type": "list",
+            "description": "Complete trading data",
+            "required": true
+          },
+          "filters": {
+            "type": "dict",
+            "description": "Filter criteria (date range, ticker, profitability, etc.)",
+            "required": true
+          },
+          "return_format": {
+            "type": "str",
+            "description": "Format: 'summary', 'detailed', 'statistics'",
+            "required": false,
+            "default": "summary"
+          }
+        }
+      },
+      {
+        "name": "switch_personality_mode",
+        "description": "Switches between Analyst, Coach, and Mentor modes",
+        "type": "configuration",
+        "parameters": {
+          "mode": {
+            "type": "str",
+            "description": "Target mode: 'analyst', 'coach', 'mentor'",
+            "required": true
+          },
+          "save_context": {
+            "type": "bool",
+            "description": "Preserve conversation context across mode switch",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "set_date_range",
+        "description": "Sets analysis date range from natural language",
+        "type": "configuration",
+        "parameters": {
+          "date_description": {
+            "type": "str",
+            "description": "Natural language date range (e.g., 'last 30 days', 'YTD', 'January to March')",
+            "required": true
+          },
+          "confirm_range": {
+            "type": "bool",
+            "description": "Confirm parsed date range with user",
+            "required": false,
+            "default": true
+          }
+        }
+      },
+      {
+        "name": "learn_terminology",
+        "description": "Learns and stores trader's custom terminology and phrases",
+        "type": "learning",
+        "parameters": {
+          "phrase": {
+            "type": "str",
+            "description": "Custom phrase or terminology",
+            "required": true
+          },
+          "meaning": {
+            "type": "dict",
+            "description": "Meaning or action associated with phrase",
+            "required": true
+          },
+          "context": {
+            "type": "str",
+            "description": "Context where phrase is used",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "maintain_journal_context",
+        "description": "Maintains conversation and journal context across interactions",
+        "type": "context_management",
+        "parameters": {
+          "conversation_history": {
+            "type": "list",
+            "description": "Conversation history",
+            "required": true
+          },
+          "new_information": {
+            "type": "dict",
+            "description": "New information to incorporate",
+            "required": true
+          },
+          "summarize": {
+            "type": "bool",
+            "description": "Generate context summary",
+            "required": false,
+            "default": false
+          }
+        }
+      },
+      {
+        "name": "generate_journal_insights",
+        "description": "Generates AI-enhanced insights from journal entries",
+        "type": "analysis",
+        "parameters": {
+          "journal_entries": {
+            "type": "list",
+            "description": "Journal entries to analyze",
+            "required": true
+          },
+          "insight_types": {
+            "type": "list",
+            "description": "Types: ['patterns', 'correlations', 'improvements', 'achievements']",
+            "required": false
+          },
+          "depth": {
+            "type": "str",
+            "description": "Analysis depth: 'brief', 'standard', 'comprehensive'",
+            "required": false,
+            "default": "standard"
+          }
+        }
+      },
+      {
+        "name": "incorporate_feedback",
+        "description": "Learns from user feedback to improve responses",
+        "type": "learning",
+        "parameters": {
+          "feedback_type": {
+            "type": "str",
+            "description": "Type: 'correction', 'preference', 'terminology', 'command'",
+            "required": true
+          },
+          "original_input": {
+            "type": "str",
+            "description": "Original user input",
+            "required": true
+          },
+          "correction": {
+            "type": "str",
+            "description": "User's correction or feedback",
+            "required": true
+          },
+          "update_models": {
+            "type": "bool",
+            "description": "Update learning models immediately",
+            "required": false,
+            "default": true
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "trading_journal_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "moderate",
+      "quality_threshold": 0.8,
+      "rules": [
+        {
+          "name": "command_safety",
+          "description": "Verify UI commands are safe to execute",
+          "severity": "error"
+        },
+        {
+          "name": "privacy_protection",
+          "description": "Maintain trader privacy and data security",
+          "severity": "error"
+        },
+        {
+          "name": "clarification_questions",
+          "description": "Ask for clarification when commands are ambiguous",
+          "severity": "major"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "production",
+      "scaling": "horizontal",
+      "resources": {
+        "memory": "2GB",
+        "cpu": "2.0"
+      }
+    },
+    "personality_modes": ["analyst", "coach", "mentor"],
+    "default_mode": "coach",
+    "agui_integration": true,
+    "command_parser_enabled": true,
+    "learning_enabled": true
+  }
+}

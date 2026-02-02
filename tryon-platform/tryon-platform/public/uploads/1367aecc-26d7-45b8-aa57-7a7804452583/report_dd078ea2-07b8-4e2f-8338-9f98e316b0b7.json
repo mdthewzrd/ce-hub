@@ -1,0 +1,37 @@
+{
+  "taskId": "dd078ea2-07b8-4e2f-8338-9f98e316b0b7",
+  "version": {
+    "app": "1.0",
+    "promptPack": "v1.0",
+    "model": "gemini-2.5-flash-image",
+    "providerApi": "1.0.0"
+  },
+  "inputs": {
+    "subject": {
+      "assetId": "dd078ea2-07b8-4e2f-8338-9f98e316b0b7",
+      "w": 1024,
+      "h": 768
+    },
+    "glasses": [
+      "glasses_0",
+      "glasses_1",
+      "glasses_2"
+    ]
+  },
+  "generation": {
+    "guidance": 0.6,
+    "refStrength": 0.85,
+    "lightingWeight": 0.7,
+    "reflectionWeight": 0.8,
+    "colorMatchWeight": 0.15,
+    "seed": 949018,
+    "passes": 1,
+    "editRequest": "the glasses arent 100% accurate here"
+  },
+  "quality": {
+    "ssim": 0,
+    "faceDist": 0.22524958421287322,
+    "fit": "pass"
+  },
+  "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+}

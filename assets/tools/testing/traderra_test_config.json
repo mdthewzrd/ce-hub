@@ -1,0 +1,56 @@
+{
+  "framework_version": "1.0.0",
+  "traderra_base_url": "http://localhost:6565",
+  "test_timeout_ms": 10000,
+  "validation_rules": {
+    "date_selector": {
+      "required_console_logs": [
+        "DateRangeContext: setSelectedRange updating",
+        "DateSelector: Rendering FUNCTIONAL buttons"
+      ],
+      "state_persistence": false,
+      "validation_timeout_ms": 2000
+    },
+    "display_mode": {
+      "toggle_validation": "visual_change_required",
+      "affected_metrics": [
+        "Total P&L",
+        "Expectancy",
+        "Max Drawdown",
+        "Avg Winner",
+        "Avg Loser"
+      ],
+      "state_persistence": false
+    },
+    "ai_mode": {
+      "mode_switch_validation": "ui_indicator_change",
+      "valid_transitions": "all_to_all",
+      "state_persistence": false
+    },
+    "navigation": {
+      "error_handling_required": true,
+      "404_detection": "automatic",
+      "working_routes": [
+        "/dashboard"
+      ],
+      "error_routes": [
+        "/journal",
+        "/trades",
+        "/statistics",
+        "/settings"
+      ]
+    }
+  },
+  "success_criteria": {
+    "minimum_success_rate": 95.0,
+    "critical_components": [
+      "date_selector",
+      "display_mode"
+    ],
+    "error_tolerance": {
+      "navigation_404s": "expected",
+      "console_warnings": "acceptable",
+      "console_errors_resource_404": "acceptable"
+    }
+  }
+}

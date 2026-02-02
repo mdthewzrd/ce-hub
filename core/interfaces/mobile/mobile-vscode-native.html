@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>📱 Mobile VS Code - Native</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', Arial, sans-serif;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Top Header */
+        .mobile-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(135deg, #007acc, #005a9e);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .header-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .header-btn:active {
+            background: rgba(255,255,255,0.4);
+            transform: scale(0.95);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-top: 60px;
+            height: calc(100vh - 140px);
+            overflow-y: auto;
+            background: #1e1e1e;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(135deg, #2d2d30, #1e1e1e);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-top: 1px solid #444;
+            z-index: 10000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 12px;
+            transition: all 0.2s;
+            min-width: 70px;
+            font-family: inherit;
+        }
+
+        .nav-tab.active {
+            color: #007acc;
+            background: rgba(0, 122, 204, 0.15);
+        }
+
+        .nav-tab:active {
+            transform: scale(0.95);
+        }
+
+        .nav-icon {
+            font-size: 24px;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* Page Views */
+        .page {
+            display: none;
+            height: 100%;
+            padding: 20px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Editor Page */
+        .editor-page {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .file-tabs {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .file-tab {
+            background: #2d2d30;
+            color: #cccccc;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            min-width: 120px;
+        }
+
+        .file-tab.active {
+            background: #007acc;
+            color: white;
+        }
+
+        .file-tab:active {
+            transform: scale(0.95);
+        }
+
+        .editor-tools {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tool-btn {
+            background: #2d2d30;
+            color: #cccccc;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 48px;
+        }
+
+        .tool-btn:active {
+            background: #007acc;
+            color: white;
+            transform: scale(0.95);
+        }
+
+        .code-preview {
+            background: #2d2d30;
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #d4d4d4;
+            min-height: 200px;
+            border: 2px solid #444;
+        }
+
+        .code-line {
+            padding: 4px 0;
+            border-left: 3px solid transparent;
+            padding-left: 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .code-line:hover {
+            background: rgba(86, 156, 214, 0.1);
+            border-left-color: #007acc;
+        }
+
+        /* Files Page */
+        .files-page {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .folder-path {
+            background: #2d2d30;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: monospace;
+            color: #cccccc;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .folder-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .file-list {
+            background: #2d2d30;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #444;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 64px;
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-item:active {
+            background: rgba(0, 122, 204, 0.2);
+        }
+
+        .file-icon {
+            font-size: 24px;
+            margin-right: 16px;
+            width: 32px;
+            text-align: center;
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .file-details {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            background: #007acc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn:active {
+            background: #005a9e;
+            transform: scale(0.95);
+        }
+
+        /* Terminal Page */
+        .terminal-page {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .terminal-window {
+            background: #0c0c0c;
+            border-radius: 12px;
+            overflow: hidden;
+            flex: 1;
+            min-height: 400px;
+            border: 2px solid #444;
+        }
+
+        .terminal-header {
+            background: #2d2d30;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #444;
+        }
+
+        .terminal-title {
+            color: #cccccc;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .terminal-content {
+            padding: 20px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            color: #00ff00;
+            height: calc(100% - 50px);
+            overflow-y: auto;
+        }
+
+        .terminal-line {
+            margin-bottom: 8px;
+            word-wrap: break-word;
+        }
+
+        .terminal-prompt {
+            color: #569cd6;
+        }
+
+        .command-shortcuts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .command-btn {
+            background: #2d2d30;
+            color: #cccccc;
+            border: none;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+            min-height: 60px;
+        }
+
+        .command-btn:active {
+            background: #007acc;
+            color: white;
+            transform: scale(0.95);
+        }
+
+        /* Search Page */
+        .search-page {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .search-input {
+            background: #2d2d30;
+            border: 2px solid #444;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 16px;
+            color: #d4d4d4;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: #007acc;
+            background: #3c3c3c;
+        }
+
+        .search-filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #2d2d30;
+            color: #cccccc;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: #007acc;
+            color: white;
+        }
+
+        .filter-btn:active {
+            transform: scale(0.95);
+        }
+
+        .search-results {
+            background: #2d2d30;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #444;
+        }
+
+        .search-result {
+            padding: 16px 20px;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .search-result:last-child {
+            border-bottom: none;
+        }
+
+        .search-result:active {
+            background: rgba(0, 122, 204, 0.2);
+        }
+
+        .result-file {
+            font-size: 14px;
+            color: #007acc;
+            margin-bottom: 4px;
+        }
+
+        .result-line {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .result-context {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Git Page */
+        .git-page {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .git-status {
+            background: #2d2d30;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #444;
+        }
+
+        .status-section {
+            margin-bottom: 20px;
+        }
+
+        .status-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #cccccc;
+        }
+
+        .status-files {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .status-file {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .status-file:active {
+            background: rgba(0, 122, 204, 0.1);
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-indicator.modified {
+            background: #ff9500;
+        }
+
+        .status-indicator.added {
+            background: #30d158;
+        }
+
+        .status-indicator.deleted {
+            background: #ff453a;
+        }
+
+        .git-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .git-btn {
+            background: #2d2d30;
+            color: #cccccc;
+            border: none;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .git-btn:active {
+            background: #007acc;
+            color: white;
+            transform: scale(0.95);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .mobile-header {
+                height: 55px;
+                padding: 0 15px;
+            }
+
+            .main-content {
+                margin-top: 55px;
+                height: calc(100vh - 130px);
+            }
+
+            .bottom-nav {
+                height: 75px;
+            }
+
+            .page {
+                padding: 15px;
+            }
+
+            .file-item {
+                min-height: 56px;
+                padding: 12px 16px;
+            }
+        }
+
+        /* Hide hidden iframe */
+        .vscode-hidden {
+            position: absolute;
+            top: -1000px;
+            left: -1000px;
+            width: 1px;
+            height: 1px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden VS Code for backend integration -->
+    <iframe id="vscodeFrame" class="vscode-hidden" src="http://100.95.223.19:8080/"></iframe>
+
+    <!-- Top Header -->
+    <div class="mobile-header">
+        <div class="header-title">
+            📱 <span id="pageTitle">Mobile VS Code</span>
+        </div>
+        <div class="header-actions">
+            <button class="header-btn" onclick="syncWithVSCode()">🔄 Sync</button>
+            <button class="header-btn" onclick="openFullVSCode()">🖥️ Desktop</button>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Editor Page -->
+        <div id="editor-page" class="page editor-page active">
+            <div class="file-tabs">
+                <button class="file-tab active" onclick="switchFile('README.md')">📄 README.md</button>
+                <button class="file-tab" onclick="switchFile('index.js')">📜 index.js</button>
+                <button class="file-tab" onclick="switchFile('package.json')">⚙️ package.json</button>
+            </div>
+
+            <div class="editor-tools">
+                <button class="tool-btn" onclick="saveFile()">💾 Save</button>
+                <button class="tool-btn" onclick="formatCode()">✨ Format</button>
+                <button class="tool-btn" onclick="findReplace()">🔍 Find</button>
+                <button class="tool-btn" onclick="newFile()">+ New File</button>
+            </div>
+
+            <div class="code-preview" id="codeContent">
+                <div class="code-line"># CE-Hub Mobile Development</div>
+                <div class="code-line"></div>
+                <div class="code-line">Welcome to the **mobile-native VS Code interface**!</div>
+                <div class="code-line"></div>
+                <div class="code-line">## Features</div>
+                <div class="code-line"></div>
+                <div class="code-line">- 📱 **Native mobile layout** - Each tab is its own optimized page</div>
+                <div class="code-line">- 🎯 **Touch-first design** - Large targets, mobile gestures</div>
+                <div class="code-line">- 🚀 **Fast navigation** - Dedicated views for each function</div>
+                <div class="code-line">- 🔄 **VS Code sync** - Connects to full VS Code when needed</div>
+                <div class="code-line"></div>
+                <div class="code-line">## Mobile Pages</div>
+                <div class="code-line"></div>
+                <div class="code-line">Each bottom tab has its own mobile-optimized layout:</div>
+                <div class="code-line">- **📝 Editor**: Mobile code editing with tools</div>
+                <div class="code-line">- **📁 Files**: Touch-friendly file browser</div>
+                <div class="code-line">- **💻 Terminal**: Mobile terminal with shortcuts</div>
+                <div class="code-line">- **🔍 Search**: Advanced search interface</div>
+                <div class="code-line">- **🔄 Git**: Visual git operations</div>
+            </div>
+        </div>
+
+        <!-- Files Page -->
+        <div id="files-page" class="page files-page">
+            <div class="folder-path">
+                📁 <span>/Users/michaeldurante/ai dev/ce-hub</span>
+            </div>
+
+            <div class="folder-actions">
+                <button class="tool-btn" onclick="newFolder()">📁 New Folder</button>
+                <button class="tool-btn" onclick="newFile()">📄 New File</button>
+                <button class="tool-btn" onclick="uploadFile()">⬆️ Upload</button>
+                <button class="tool-btn" onclick="refreshFiles()">🔄 Refresh</button>
+            </div>
+
+            <div class="file-list">
+                <div class="file-item" onclick="openFile('README.md')">
+                    <div class="file-icon">📄</div>
+                    <div class="file-info">
+                        <div class="file-name">README.md</div>
+                        <div class="file-details">Modified 2 hours ago • 2.1 KB</div>
+                    </div>
+                    <div class="file-actions">
+                        <button class="action-btn">Open</button>
+                    </div>
+                </div>
+
+                <div class="file-item" onclick="openFolder('src')">
+                    <div class="file-icon">📁</div>
+                    <div class="file-info">
+                        <div class="file-name">src</div>
+                        <div class="file-details">8 files • Updated 1 hour ago</div>
+                    </div>
+                    <div class="file-actions">
+                        <button class="action-btn">Open</button>
+                    </div>
+                </div>
+
+                <div class="file-item" onclick="openFile('package.json')">
+                    <div class="file-icon">⚙️</div>
+                    <div class="file-info">
+                        <div class="file-name">package.json</div>
+                        <div class="file-details">Modified yesterday • 1.5 KB</div>
+                    </div>
+                    <div class="file-actions">
+                        <button class="action-btn">Open</button>
+                    </div>
+                </div>
+
+                <div class="file-item" onclick="openFolder('mobile-web')">
+                    <div class="file-icon">📱</div>
+                    <div class="file-info">
+                        <div class="file-name">mobile-web</div>
+                        <div class="file-details">12 files • Updated 30 min ago</div>
+                    </div>
+                    <div class="file-actions">
+                        <button class="action-btn">Open</button>
+                    </div>
+                </div>
+
+                <div class="file-item" onclick="openFile('mobile.html')">
+                    <div class="file-icon">🌐</div>
+                    <div class="file-info">
+                        <div class="file-name">mobile.html</div>
+                        <div class="file-details">Modified 5 min ago • 8.2 KB</div>
+                    </div>
+                    <div class="file-actions">
+                        <button class="action-btn">Open</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terminal Page -->
+        <div id="terminal-page" class="page terminal-page">
+            <div class="terminal-controls">
+                <button class="tool-btn" onclick="newTerminal()">+ New Terminal</button>
+                <button class="tool-btn" onclick="clearTerminal()">🗑️ Clear</button>
+                <button class="tool-btn" onclick="splitTerminal()">⬆️⬇️ Split</button>
+            </div>
+
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-title">💻 Terminal 1</div>
+                    <button class="action-btn" onclick="closeTerminal()">✕</button>
+                </div>
+                <div class="terminal-content" id="terminalOutput">
+                    <div class="terminal-line"><span class="terminal-prompt">ce-hub@mobile:~$</span> ls -la</div>
+                    <div class="terminal-line">total 156</div>
+                    <div class="terminal-line">drwxr-xr-x  28 user user  4096 Nov 23 00:41 .</div>
+                    <div class="terminal-line">drwxr-xr-x   3 user user  4096 Nov 22 19:00 ..</div>
+                    <div class="terminal-line">-rw-r--r--   1 user user  2156 Nov 23 00:30 README.md</div>
+                    <div class="terminal-line">-rw-r--r--   1 user user  1543 Nov 22 19:15 package.json</div>
+                    <div class="terminal-line">drwxr-xr-x   8 user user  4096 Nov 22 19:20 src</div>
+                    <div class="terminal-line">drwxr-xr-x  12 user user  4096 Nov 22 19:25 mobile-web</div>
+                    <div class="terminal-line">-rw-r--r--   1 user user  8234 Nov 23 00:41 mobile.html</div>
+                    <div class="terminal-line"><span class="terminal-prompt">ce-hub@mobile:~$</span> <span style="background: #007acc;">█</span></div>
+                </div>
+            </div>
+
+            <div class="command-shortcuts">
+                <button class="command-btn" onclick="runCommand('npm install')">
+                    <strong>📦 npm install</strong><br>
+                    <small>Install dependencies</small>
+                </button>
+                <button class="command-btn" onclick="runCommand('npm start')">
+                    <strong>🚀 npm start</strong><br>
+                    <small>Start development server</small>
+                </button>
+                <button class="command-btn" onclick="runCommand('git status')">
+                    <strong>📋 git status</strong><br>
+                    <small>Check git status</small>
+                </button>
+                <button class="command-btn" onclick="runCommand('git add .')">
+                    <strong>➕ git add .</strong><br>
+                    <small>Stage all changes</small>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Page -->
+        <div id="search-page" class="page search-page">
+            <input type="text" class="search-input" placeholder="🔍 Search in files..."
+                   oninput="performSearch(this.value)">
+
+            <div class="search-filters">
+                <button class="filter-btn active" onclick="toggleFilter(this, 'all')">All Files</button>
+                <button class="filter-btn" onclick="toggleFilter(this, 'js')">JavaScript</button>
+                <button class="filter-btn" onclick="toggleFilter(this, 'html')">HTML</button>
+                <button class="filter-btn" onclick="toggleFilter(this, 'css')">CSS</button>
+                <button class="filter-btn" onclick="toggleFilter(this, 'md')">Markdown</button>
+            </div>
+
+            <div class="search-results" id="searchResults">
+                <div class="search-result" onclick="openSearchResult('README.md', 5)">
+                    <div class="result-file">📄 README.md:5</div>
+                    <div class="result-line">- **Touch-optimized interface**: Large touch targets</div>
+                    <div class="result-context">Found in features section</div>
+                </div>
+
+                <div class="search-result" onclick="openSearchResult('mobile.html', 42)">
+                    <div class="result-file">🌐 mobile.html:42</div>
+                    <div class="result-line">class="mobile-optimized navigation"</div>
+                    <div class="result-context">CSS class definition</div>
+                </div>
+
+                <div class="search-result" onclick="openSearchResult('package.json', 8)">
+                    <div class="result-file">⚙️ package.json:8</div>
+                    <div class="result-line">"mobile-dev": "node mobile-server.js"</div>
+                    <div class="result-context">NPM script configuration</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Git Page -->
+        <div id="git-page" class="page git-page">
+            <div class="git-status">
+                <div class="status-section">
+                    <div class="status-title">📝 Modified Files (3)</div>
+                    <div class="status-files">
+                        <div class="status-file">
+                            <div class="status-indicator modified"></div>
+                            <span>mobile.html</span>
+                        </div>
+                        <div class="status-file">
+                            <div class="status-indicator modified"></div>
+                            <span>README.md</span>
+                        </div>
+                        <div class="status-file">
+                            <div class="status-indicator modified"></div>
+                            <span>src/mobile-interface.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="status-section">
+                    <div class="status-title">➕ Untracked Files (2)</div>
+                    <div class="status-files">
+                        <div class="status-file">
+                            <div class="status-indicator added"></div>
+                            <span>mobile-vscode-native.html</span>
+                        </div>
+                        <div class="status-file">
+                            <div class="status-indicator added"></div>
+                            <span>docs/mobile-setup.md</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="git-actions">
+                <button class="git-btn" onclick="gitAction('add')">
+                    <span style="font-size: 20px;">➕</span>
+                    <span>Stage All</span>
+                </button>
+                <button class="git-btn" onclick="gitAction('commit')">
+                    <span style="font-size: 20px;">📝</span>
+                    <span>Commit</span>
+                </button>
+                <button class="git-btn" onclick="gitAction('push')">
+                    <span style="font-size: 20px;">⬆️</span>
+                    <span>Push</span>
+                </button>
+                <button class="git-btn" onclick="gitAction('pull')">
+                    <span style="font-size: 20px;">⬇️</span>
+                    <span>Pull</span>
+                </button>
+                <button class="git-btn" onclick="gitAction('branch')">
+                    <span style="font-size: 20px;">🌿</span>
+                    <span>Branches</span>
+                </button>
+                <button class="git-btn" onclick="gitAction('merge')">
+                    <span style="font-size: 20px;">🔀</span>
+                    <span>Merge</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <button class="nav-tab active" onclick="switchPage('editor', this)">
+            <div class="nav-icon">📝</div>
+            <div class="nav-label">Editor</div>
+        </button>
+        <button class="nav-tab" onclick="switchPage('files', this)">
+            <div class="nav-icon">📁</div>
+            <div class="nav-label">Files</div>
+        </button>
+        <button class="nav-tab" onclick="switchPage('terminal', this)">
+            <div class="nav-icon">💻</div>
+            <div class="nav-label">Terminal</div>
+        </button>
+        <button class="nav-tab" onclick="switchPage('search', this)">
+            <div class="nav-icon">🔍</div>
+            <div class="nav-label">Search</div>
+        </button>
+        <button class="nav-tab" onclick="switchPage('git', this)">
+            <div class="nav-icon">🔄</div>
+            <div class="nav-label">Git</div>
+        </button>
+    </div>
+
+    <script>
+        let currentPage = 'editor';
+        let currentFile = 'README.md';
+
+        // Page switching
+        function switchPage(page, element) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+            // Show selected page
+            document.getElementById(page + '-page').classList.add('active');
+
+            // Update nav
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            element.classList.add('active');
+
+            currentPage = page;
+
+            // Update header title
+            const titles = {
+                editor: '📝 Code Editor',
+                files: '📁 File Explorer',
+                terminal: '💻 Terminal',
+                search: '🔍 Search Files',
+                git: '🔄 Git Control'
+            };
+
+            document.getElementById('pageTitle').textContent = titles[page];
+
+            showToast(`📱 Switched to ${titles[page]}`);
+        }
+
+        // Editor functions
+        function switchFile(filename) {
+            currentFile = filename;
+
+            // Update tabs
+            document.querySelectorAll('.file-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.textContent.includes(filename)) {
+                    tab.classList.add('active');
+                }
+            });
+
+            // Update content based on file
+            updateCodeContent(filename);
+            showToast(`📄 Opened ${filename}`);
+        }
+
+        function updateCodeContent(filename) {
+            const codeContent = document.getElementById('codeContent');
+            const fileContents = {
+                'README.md': [
+                    '# CE-Hub Mobile Development',
+                    '',
+                    'Welcome to the **mobile-native VS Code interface**!',
+                    '',
+                    '## Features',
+                    '',
+                    '- 📱 **Native mobile layout** - Each tab is its own optimized page',
+                    '- 🎯 **Touch-first design** - Large targets, mobile gestures',
+                    '- 🚀 **Fast navigation** - Dedicated views for each function',
+                    '- 🔄 **VS Code sync** - Connects to full VS Code when needed'
+                ],
+                'index.js': [
+                    'const express = require("express");',
+                    'const path = require("path");',
+                    '',
+                    'const app = express();',
+                    'const PORT = process.env.PORT || 3000;',
+                    '',
+                    '// Mobile-optimized routes',
+                    'app.get("/mobile", (req, res) => {',
+                    '  res.sendFile(path.join(__dirname, "mobile-native.html"));',
+                    '});',
+                    '',
+                    'app.listen(PORT, () => {',
+                    '  console.log(`📱 Mobile VS Code server on port ${PORT}`);',
+                    '});'
+                ],
+                'package.json': [
+                    '{',
+                    '  "name": "ce-hub-mobile-native",',
+                    '  "version": "2.0.0",',
+                    '  "description": "Native mobile VS Code interface",',
+                    '  "main": "index.js",',
+                    '  "scripts": {',
+                    '    "start": "node index.js",',
+                    '    "dev": "nodemon index.js",',
+                    '    "mobile": "node mobile-server.js"',
+                    '  },',
+                    '  "dependencies": {',
+                    '    "express": "^4.18.0"',
+                    '  }',
+                    '}'
+                ]
+            };
+
+            const content = fileContents[filename] || ['// Loading file content...'];
+            codeContent.innerHTML = content.map((line, index) =>
+                `<div class="code-line">${line}</div>`
+            ).join('');
+        }
+
+        // File operations
+        function newFile() {
+            const filename = prompt('Enter filename:');
+            if (filename) {
+                showToast(`📄 Created ${filename}`);
+                switchFile(filename);
+            }
+        }
+
+        function saveFile() {
+            showToast(`💾 Saved ${currentFile}`);
+        }
+
+        function formatCode() {
+            showToast('✨ Code formatted');
+        }
+
+        function findReplace() {
+            showToast('🔍 Find & Replace opened');
+        }
+
+        function openFile(filename) {
+            switchPage('editor', document.querySelectorAll('.nav-tab')[0]);
+            switchFile(filename);
+        }
+
+        function openFolder(foldername) {
+            showToast(`📁 Opened folder ${foldername}`);
+        }
+
+        function newFolder() {
+            const name = prompt('Folder name:');
+            if (name) showToast(`📁 Created folder ${name}`);
+        }
+
+        function uploadFile() {
+            showToast('⬆️ File upload started');
+        }
+
+        function refreshFiles() {
+            showToast('🔄 Files refreshed');
+        }
+
+        // Terminal operations
+        function runCommand(cmd) {
+            const terminal = document.getElementById('terminalOutput');
+            const newLine = document.createElement('div');
+            newLine.className = 'terminal-line';
+            newLine.innerHTML = `<span class="terminal-prompt">ce-hub@mobile:~$</span> ${cmd}`;
+            terminal.appendChild(newLine);
+
+            // Simulate command output
+            setTimeout(() => {
+                const output = document.createElement('div');
+                output.className = 'terminal-line';
+                output.textContent = `✅ ${cmd} completed successfully`;
+                terminal.appendChild(output);
+                terminal.scrollTop = terminal.scrollHeight;
+            }, 500);
+
+            showToast(`💻 Running: ${cmd}`);
+        }
+
+        function newTerminal() {
+            showToast('💻 New terminal created');
+        }
+
+        function clearTerminal() {
+            document.getElementById('terminalOutput').innerHTML =
+                '<div class="terminal-line"><span class="terminal-prompt">ce-hub@mobile:~$</span> <span style="background: #007acc;">█</span></div>';
+            showToast('🗑️ Terminal cleared');
+        }
+
+        function splitTerminal() {
+            showToast('⬆️⬇️ Terminal split');
+        }
+
+        function closeTerminal() {
+            showToast('✕ Terminal closed');
+        }
+
+        // Search operations
+        function performSearch(query) {
+            if (query.length > 0) {
+                showToast(`🔍 Searching for "${query}"`);
+            }
+        }
+
+        function toggleFilter(element, type) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            showToast(`📋 Filter: ${type} files`);
+        }
+
+        function openSearchResult(file, line) {
+            showToast(`📍 Opening ${file} at line ${line}`);
+            switchPage('editor', document.querySelectorAll('.nav-tab')[0]);
+            switchFile(file);
+        }
+
+        // Git operations
+        function gitAction(action) {
+            const actions = {
+                add: '➕ Staged all files',
+                commit: '📝 Commit dialog opened',
+                push: '⬆️ Pushing to remote',
+                pull: '⬇️ Pulling from remote',
+                branch: '🌿 Branch list opened',
+                merge: '🔀 Merge dialog opened'
+            };
+            showToast(actions[action] || `🔄 Git ${action}`);
+        }
+
+        // System operations
+        function syncWithVSCode() {
+            showToast('🔄 Syncing with VS Code...');
+        }
+
+        function openFullVSCode() {
+            window.open('http://100.95.223.19:8080/', '_blank');
+            showToast('🖥️ Opening full VS Code');
+        }
+
+        // Toast notifications
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 80px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #007acc;
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                font-size: 14px;
+                z-index: 20000;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                transition: opacity 0.3s;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+
+        // Touch optimizations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Prevent zoom on double tap
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+
+            // Add haptic feedback
+            if ('vibrate' in navigator) {
+                document.querySelectorAll('.nav-tab, .file-item, .tool-btn, .command-btn, .git-btn, .action-btn').forEach(element => {
+                    element.addEventListener('touchstart', () => {
+                        navigator.vibrate(10);
+                    });
+                });
+            }
+
+            console.log('📱 Mobile-native VS Code interface loaded');
+            showToast('📱 Mobile VS Code ready!');
+        });
+    </script>
+</body>
+</html>

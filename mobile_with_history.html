@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>CE-Hub Mobile - With Chat History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #f0f0f0;
+            height: 100vh;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* Header */
+        .header {
+            background: #2d2d2d;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            border-bottom: 1px solid #404040;
+            box-shadow: 0 2px 8px rgba(255, 166, 87, 0.1);
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffa657;
+            text-shadow: 0 0 10px rgba(255, 166, 87, 0.3);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .header-btn {
+            background: #3d3d3d;
+            border: 1px solid #505050;
+            border-radius: 6px;
+            color: #ffa657;
+            padding: 6px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .header-btn:active {
+            background: #4d4d4d;
+            transform: scale(0.95);
+        }
+
+        /* Main Container */
+        .container {
+            height: calc(100vh - 50px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        /* Chat Output */
+        .chat-output {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .chat-output div {
+            margin-bottom: 12px;
+        }
+
+        /* Input Area */
+        .input-area {
+            background: #2d2d2d;
+            padding: 12px;
+            border-top: 1px solid #404040;
+            flex-shrink: 0;
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: #1a1a1a;
+            border: 1px solid #404040;
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: #f0f0f0;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: #ffa657;
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, #ffa657, #ff8c42);
+            border: none;
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: #1a1a1a;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            min-width: 60px;
+        }
+
+        .send-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Model Selector */
+        .model-bar {
+            background: #252525;
+            padding: 8px 12px;
+            border-bottom: 1px solid #404040;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            flex-shrink: 0;
+        }
+
+        .model-btn {
+            background: #3d3d3d;
+            border: 1px solid #505050;
+            border-radius: 6px;
+            padding: 6px 12px;
+            color: #ccc;
+            font-size: 11px;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .model-btn.active {
+            background: #ffa657;
+            border-color: #ffa657;
+            color: #1a1a1a;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #2d2d2d;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            padding: 16px;
+            border-bottom: 1px solid #404040;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffa657;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 24px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-body {
+            padding: 16px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .conversation-item {
+            background: #3d3d3d;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .conversation-item:active {
+            border-color: #ffa657;
+        }
+
+        .conversation-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 4px;
+        }
+
+        .conversation-meta {
+            font-size: 11px;
+            color: #999;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #999;
+            padding: 32px;
+        }
+
+        .save-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .save-input {
+            background: #1a1a1a;
+            border: 1px solid #404040;
+            border-radius: 8px;
+            padding: 12px;
+            color: #f0f0f0;
+            font-size: 14px;
+        }
+
+        .save-btn {
+            background: linear-gradient(135deg, #ffa657, #ff8c42);
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            color: #1a1a1a;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .save-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Loading indicator */
+        .thinking {
+            color: #ffa657;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="title">CE-Hub Mobile</div>
+        <div class="header-buttons">
+            <button class="header-btn" onclick="showHistory()">History</button>
+            <button class="header-btn" onclick="showSaveModal()">Save</button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Model Selector -->
+        <div class="model-bar" id="model-bar">
+            <button class="model-btn active" data-model="glm-4.6" data-provider="claude-code">GLM 4.6</button>
+        </div>
+
+        <!-- Chat Output -->
+        <div class="chat-output" id="chat-output">
+            <div style="color: #999;">Welcome to CE-Hub Mobile - GLM 4.6!</div>
+            <div style="color: #999;">Your conversations are automatically saved.</div>
+            <div style="color: #999;">Type a message to get started.</div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <div class="input-wrapper">
+                <input type="text" class="chat-input" id="chat-input" placeholder="Ask Claude anything..." />
+                <button class="send-btn" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div class="modal" id="history-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Chat History</div>
+                <button class="modal-close" onclick="closeHistory()">&times;</button>
+            </div>
+            <div class="modal-body" id="history-list">
+                <div class="empty-state">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Modal -->
+    <div class="modal" id="save-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Save Conversation</div>
+                <button class="modal-close" onclick="closeSaveModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="save-form">
+                    <input type="text" class="save-input" id="save-title" placeholder="Conversation title..." />
+                    <button class="save-btn" onclick="saveConversation()">Save Conversation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SERVER_URL = 'http://100.95.223.19:8115';
+        const PAGE_URL = window.location.href;
+        let selectedModel = document.querySelector('.model-btn.active');
+        let currentSessionId = 'mobile-session-' + Date.now();
+        let messageHistory = [];
+
+        // Model selection
+        document.querySelectorAll('.model-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedModel = btn;
+            });
+        });
+
+        // Send message on Enter
+        document.getElementById('chat-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        async function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const output = document.getElementById('chat-output');
+            const question = input.value.trim();
+
+            if (!question) return;
+
+            // Add user message to history
+            messageHistory.push({ role: 'user', content: question });
+            output.innerHTML += `<div style="color: #ccc;">> ${question}</div>`;
+            input.value = '';
+            output.scrollTop = output.scrollHeight;
+
+            // Show thinking indicator
+            const thinkingDiv = document.createElement('div');
+            thinkingDiv.id = 'thinking-indicator';
+            thinkingDiv.className = 'thinking';
+            thinkingDiv.textContent = 'Claude is thinking...';
+            output.appendChild(thinkingDiv);
+            output.scrollTop = output.scrollHeight;
+
+            try {
+                const response = await fetch(`${SERVER_URL}/claude-chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        question: question,
+                        model: selectedModel.dataset.model,
+                        provider: selectedModel.dataset.provider,
+                        session_id: currentSessionId
+                    })
+                });
+
+                const data = await response.json();
+                document.getElementById('thinking-indicator')?.remove();
+
+                if (data.error) {
+                    output.innerHTML += `<div style="color: #f85149;">Error: ${data.output || data.message}</div>`;
+                } else {
+                    output.innerHTML += `<div style="color: #ffa657;">${data.output}</div>`;
+                    messageHistory.push({ role: 'assistant', content: data.output });
+                }
+                output.scrollTop = output.scrollHeight;
+
+                // Auto-save after each message
+                autoSaveConversation();
+
+            } catch (error) {
+                document.getElementById('thinking-indicator')?.remove();
+                output.innerHTML += `<div style="color: #f85149;">Connection Error: ${error.message}</div>`;
+                output.innerHTML += `<div style="color: #999;">Make sure the server is running on port 8115</div>`;
+                output.scrollTop = output.scrollHeight;
+            }
+        }
+
+        // History Modal
+        async function showHistory() {
+            const modal = document.getElementById('history-modal');
+            const list = document.getElementById('history-list');
+            modal.classList.add('active');
+            list.innerHTML = '<div class="empty-state">Loading...</div>';
+
+            try {
+                const response = await fetch(`${SERVER_URL}/list-conversations`);
+                const data = await response.json();
+
+                if (data.success && data.conversations.length > 0) {
+                    list.innerHTML = data.conversations.map(conv => `
+                        <div class="conversation-item" onclick="loadConversation('${conv.id}')">
+                            <div class="conversation-title">${conv.title}</div>
+                            <div class="conversation-meta">
+                                ${conv.message_count} messages • ${new Date(conv.last_modified).toLocaleString()}
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    list.innerHTML = '<div class="empty-state">No saved conversations yet.<br><br>Start chatting and your conversations will be saved automatically!</div>';
+                }
+            } catch (error) {
+                list.innerHTML = `<div class="empty-state" style="color: #f85149;">Error loading history: ${error.message}</div>`;
+            }
+        }
+
+        function closeHistory() {
+            document.getElementById('history-modal').classList.remove('active');
+        }
+
+        // Save Modal
+        function showSaveModal() {
+            document.getElementById('save-modal').classList.add('active');
+            document.getElementById('save-title').focus();
+        }
+
+        function closeSaveModal() {
+            document.getElementById('save-modal').classList.remove('active');
+        }
+
+        async function saveConversation() {
+            const title = document.getElementById('save-title').value.trim() || 'Untitled Chat';
+            closeSaveModal();
+
+            try {
+                const response = await fetch(`${SERVER_URL}/save-conversation`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        session_id: currentSessionId,
+                        title: title,
+                        model: selectedModel.dataset.model
+                    })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    alert(`Conversation saved: ${title}`);
+                } else {
+                    alert(`Save failed: ${data.error}`);
+                }
+            } catch (error) {
+                alert(`Error saving: ${error.message}`);
+            }
+        }
+
+        // Auto-save with timestamp-based title
+        async function autoSaveConversation() {
+            const title = `Auto-saved ${new Date().toLocaleString()}`;
+            try {
+                await fetch(`${SERVER_URL}/save-conversation`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        session_id: currentSessionId,
+                        title: title,
+                        model: selectedModel.dataset.model
+                    })
+                });
+            } catch (error) {
+                console.log('Auto-save failed (non-critical):', error.message);
+            }
+        }
+
+        // Load Conversation
+        async function loadConversation(conversationId) {
+            closeHistory();
+
+            try {
+                const response = await fetch(`${SERVER_URL}/load-conversation?id=${conversationId}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    // Update session
+                    currentSessionId = conversationId;
+                    messageHistory = [];
+
+                    // Display conversation
+                    const output = document.getElementById('chat-output');
+                    output.innerHTML = '';
+
+                    const conv = data.conversation;
+                    conv.messages.forEach(msg => {
+                        if (msg.question) {
+                            output.innerHTML += `<div style="color: #ccc;">> ${msg.question}</div>`;
+                            messageHistory.push({ role: 'user', content: msg.question });
+                        }
+                        if (msg.response) {
+                            output.innerHTML += `<div style="color: #ffa657;">${msg.response}</div>`;
+                            messageHistory.push({ role: 'assistant', content: msg.response });
+                        }
+                    });
+
+                    output.scrollTop = output.scrollHeight;
+                    alert(`Loaded: ${conv.title}`);
+                } else {
+                    alert(`Failed to load: ${data.error}`);
+                }
+            } catch (error) {
+                alert(`Error loading conversation: ${error.message}`);
+            }
+        }
+
+        // Load previous session on start
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch(`${SERVER_URL}/list-conversations`);
+                const data = await response.json();
+                if (data.success && data.conversations.length > 0) {
+                    // Load the most recent conversation
+                    const latest = data.conversations[0];
+                    const loadResponse = await fetch(`${SERVER_URL}/load-conversation?id=${latest.id}`);
+                    const loadData = await loadResponse.json();
+                    if (loadData.success) {
+                        currentSessionId = latest.id;
+                        const output = document.getElementById('chat-output');
+                        output.innerHTML = `<div style="color: #999;">Loaded: ${latest.title}</div><br>`;
+                        loadData.conversation.messages.forEach(msg => {
+                            if (msg.question) {
+                                output.innerHTML += `<div style="color: #ccc;">> ${msg.question}</div>`;
+                            }
+                            if (msg.response) {
+                                output.innerHTML += `<div style="color: #ffa657;">${msg.response}</div>`;
+                            }
+                        });
+                        output.scrollTop = output.scrollHeight;
+                    }
+                }
+            } catch (error) {
+                console.log('No previous session to load');
+            }
+        });
+    </script>
+</body>
+</html>

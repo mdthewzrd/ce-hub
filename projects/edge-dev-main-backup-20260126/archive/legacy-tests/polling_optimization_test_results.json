@@ -1,0 +1,21 @@
+{
+  "summary": {
+    "total_tests": 1,
+    "passed_tests": 0,
+    "success_rate": "0.0%",
+    "test_timestamp": "2025-10-31T16:00:18.098Z"
+  },
+  "test_results": [
+    {
+      "test": "Real scan with optimized polling",
+      "expected": "Successful scan start",
+      "actual": "HTTP 429",
+      "passed": false,
+      "details": {
+        "detail": "Maximum concurrent scans (2) reached. Please wait for current scans to complete."
+      },
+      "timestamp": "2025-10-31T16:00:18.098Z"
+    }
+  ],
+  "polling_log": []
+}

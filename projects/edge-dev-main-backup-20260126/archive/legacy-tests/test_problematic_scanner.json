@@ -1,0 +1,7 @@
+{
+  "code": "import pandas as pd\nimport requests\nimport time\nimport numpy as np\nimport pandas_market_calendars as mcal\nimport aiohttp\nimport asyncio\nimport pandas as pd\nfrom multiprocessing import Pool, cpu_count\nfrom concurrent.futures import ProcessPoolExecutor\nfrom tabulate import tabulate\nimport webbrowser\nimport plotly.graph_objects as go\nimport sys\nfrom concurrent.futures import ThreadPoolExecutor\nimport dask\nfrom dask.distributed import Client, as_completed\nimport dask.dataframe as dd\nimport datetime\nimport logging\nimport backoff\n\nnyse = mcal.get_calendar('NYSE')\nexecutor = ThreadPoolExecutor() \n\nimport warnings\nwarnings.filterwarnings(\"ignore\")\n\nif sys.platform == 'win32':\n    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())\n\nDATE = \"2025-01-01\"\n\n# Replace with your Polygon API Key\nAPI_KEY = '4r6MZNWLy2ucmhVI7fY8MrvXfXTSmxpy'\nBASE_URL = \"https://api.polygon.io\"\n\ndef scan():\n    return []",
+  "options": {
+    "enableMultiprocessing": true,
+    "preserveParameterIntegrity": true
+  }
+}

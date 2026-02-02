@@ -1,0 +1,29 @@
+{
+  "project_id": "f1f13f02-f6a6-44a7-8256-3567167b546a",
+  "name": "Backside Para A Project",
+  "description": "Auto-generated project for backside_para_A scanners",
+  "scanners": [
+    {
+      "scanner_id": "scanner_1768928571073",
+      "scanner_name": "backside_para_A",
+      "scanner_file": "scanners/backside_para_A.py",
+      "enabled": true,
+      "weight": 1.0,
+      "order_index": 0
+    }
+  ],
+  "aggregation_method": "union",
+  "created_at": "2026-01-20T12:02:51.080172",
+  "updated_at": "2026-01-20T12:02:51.091885",
+  "version": 1,
+  "tags": [
+    "scanner",
+    "auto-generated",
+    "backside-para-a"
+  ],
+  "created_by": "renata-ai-upload",
+  "last_executed": null,
+  "execution_count": 0,
+  "function_name": "backside_para_A",
+  "has_code": true
+}

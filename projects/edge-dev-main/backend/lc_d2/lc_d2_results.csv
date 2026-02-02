@@ -1,0 +1,44 @@
+Ticker,Date,Scanner_Label
+NITO,2025-01-03,"lc_frontside_d2_extended, lc_frontside_d2_extended_1, lc_frontside_d3_extended_1"
+QNTM,2025-02-06,lc_frontside_d3_extended_1
+OKLO,2025-02-07,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"
+TEM,2025-02-11,lc_frontside_d2_extended
+AIFF,2025-02-12,"lc_frontside_d2_extended, lc_frontside_d3_extended_1"
+HIMS,2025-02-14,lc_frontside_d3_extended_1
+SMCI,2025-02-18,lc_frontside_d3_extended_1
+HIMS,2025-02-19,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"
+SMCI,2025-02-19,"lc_frontside_d2_extended, lc_frontside_d3_extended_1"
+UVIX,2025-04-04,lc_frontside_d3_extended_1
+CEP,2025-04-24,lc_frontside_d3_extended_1
+CEP,2025-04-30,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"
+CEP,2025-05-01,"lc_frontside_d2_extended, lc_frontside_d2_extended_1, lc_frontside_d3_extended_1"
+ASST,2025-05-08,"lc_frontside_d2_extended, lc_frontside_d2_extended_1, lc_frontside_d3_extended_1"
+HIMS,2025-05-13,lc_frontside_d2_extended
+CRWV,2025-05-16,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"
+CRWV,2025-05-21,"lc_frontside_d2_extended, lc_frontside_d2_extended_1, lc_frontside_d3_extended_1"
+OKLO,2025-05-27,lc_frontside_d3_extended_1
+SBET,2025-05-29,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"
+CRWV,2025-06-03,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"
+SRM,2025-06-20,lc_frontside_d2_extended
+NKTR,2025-06-25,"lc_frontside_d2_extended, lc_frontside_d2_extended_1, lc_frontside_d3_extended_1"
+BMNR,2025-07-03,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"
+SBET,2025-07-16,"lc_frontside_d2_extended, lc_frontside_d2_extended_1, lc_frontside_d3_extended_1"
+RKLB,2025-07-17,lc_frontside_d3_extended_1
+THAR,2025-08-25,lc_frontside_d2_extended
+SATS,2025-08-27,lc_frontside_d2_extended
+OPAD,2025-08-28,lc_frontside_d2_extended
+OKLO,2025-09-19,lc_frontside_d3_extended_1
+OKLO,2025-09-22,lc_frontside_d3_extended_1
+QURE,2025-09-25,lc_frontside_d3_extended_1
+BKKT,2025-10-02,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"
+DFLI,2025-10-03,"lc_frontside_d2_extended, lc_frontside_d2_extended_1, lc_frontside_d3_extended_1"
+OKLO,2025-10-10,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"
+RGTI,2025-10-13,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"
+CRML,2025-10-13,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"
+USAR,2025-10-13,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"
+UAMY,2025-10-13,lc_frontside_d3_extended_1
+GWH,2025-10-13,"lc_frontside_d2_extended, lc_frontside_d2_extended_1, lc_frontside_d3_extended_1"
+AQMS,2025-10-14,lc_frontside_d3_extended_1
+TMQ,2025-10-14,lc_frontside_d2_extended
+RGTZ,2025-11-13,lc_frontside_d3_extended_1
+AGQ,2025-12-26,"lc_frontside_d2_extended, lc_frontside_d2_extended_1"

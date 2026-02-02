@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CE-Hub - React Flow Workflow Map</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;510;590;600;680;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- React Flow -->
+    <script src="https://unpkg.com/reactflow@11.10.1/dist/umd/index.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/reactflow@11.10.1/dist/style.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        :root {
+            --bg-level-0: #08090a;
+            --bg-level-1: #0f1011;
+            --bg-level-2: #141516;
+            --bg-level-3: #191a1b;
+            --bg-level-4: #1c1c1f;
+            --bg-level-5: #232326;
+
+            --text-primary: #f7f8f8;
+            --text-secondary: #d0d6e0;
+            --text-tertiary: #8a8f98;
+            --text-muted: #4a4f55;
+
+            --border-primary: #23252a;
+            --border-secondary: #34343a;
+            --border-tertiary: rgba(255, 255, 255, 0.08);
+
+            --accent-primary: #7170ff;
+            --accent-success: #4cb782;
+            --accent-warning: #f2c94c;
+
+            --shadow-glow: 0 0 40px rgba(113, 112, 255, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-level-0);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+        }
+
+        .react-flow__node {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .react-flow__edge-path {
+            stroke-width: 2;
+        }
+
+        .react-flow__attribution {
+            display: none;
+        }
+
+        /* Custom node styles */
+        .phase-node {
+            padding: 0;
+            border-radius: 8px;
+            min-width: 280px;
+            background: var(--bg-level-2);
+            border: 1px solid var(--border-primary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .phase-node.completed {
+            border-color: var(--accent-success);
+            background: linear-gradient(135deg, rgba(76, 183, 130, 0.1) 0%, var(--bg-level-2) 100%);
+        }
+
+        .phase-node.active {
+            border-color: var(--accent-primary);
+            border-width: 2px;
+            box-shadow: var(--shadow-glow);
+            background: linear-gradient(135deg, rgba(113, 112, 255, 0.15) 0%, var(--bg-level-2) 100%);
+        }
+
+        .phase-node.pending {
+            border-style: dashed;
+            border-color: var(--border-secondary);
+            opacity: 0.6;
+        }
+
+        .phase-node-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-tertiary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .phase-node-content {
+            padding: 12px 16px;
+        }
+
+        .task-item {
+            padding: 8px 12px;
+            margin-bottom: 4px;
+            border-radius: 6px;
+            background: var(--bg-level-3);
+            border: 1px solid var(--border-tertiary);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .task-item.done {
+            background: rgba(76, 183, 130, 0.1);
+            border-color: rgba(76, 183, 130, 0.2);
+        }
+
+        .task-item.current {
+            background: rgba(113, 112, 255, 0.15);
+            border-color: rgba(113, 112, 255, 0.3);
+        }
+
+        /* Controls */
+        .workflow-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            display: flex;
+            gap: 8px;
+        }
+
+        .control-btn {
+            padding: 8px 12px;
+            background: var(--bg-level-3);
+            border: 1px solid var(--border-primary);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .control-btn:hover {
+            background: var(--bg-level-4);
+            border-color: var(--border-secondary);
+        }
+
+        /* Stats panel */
+        .stats-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--bg-level-1);
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Integration indicator */
+        .integration-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(113, 112, 255, 0.1);
+            border: 1px solid rgba(113, 112, 255, 0.3);
+            border-radius: 20px;
+            font-size: 11px;
+            color: var(--accent-primary);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+
+        /* Custom edge styles */
+        .edge-completed .react-flow__edge-path {
+            stroke: var(--accent-success);
+        }
+
+        .edge-active .react-flow__edge-path {
+            stroke: var(--accent-primary);
+            stroke-dasharray: 5 5;
+            animation: dash 1s linear infinite;
+        }
+
+        .edge-pending .react-flow__edge-path {
+            stroke: var(--border-secondary);
+            stroke-dasharray: 4;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -10;
+            }
+        }
+
+        .react-flow__controls-button {
+            background: var(--bg-level-3);
+            border-color: var(--border-primary);
+            fill: var(--text-secondary);
+        }
+
+        .react-flow__controls-button:hover {
+            background: var(--bg-level-4);
+            border-color: var(--border-secondary);
+        }
+
+        .react-flow__minimap {
+            background: var(--bg-level-2);
+            border-color: var(--border-primary);
+        }
+
+        .react-flow__minimap-mask {
+            fill: rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useCallback, useEffect, useMemo } = React;
+        const ReactFlow = window.ReactFlow;
+        const {
+            ReactFlow: ReactFlowComponent,
+            Controls,
+            MiniMap,
+            Background,
+            MarkerType,
+            Position
+        } = ReactFlow;
+
+        // =============================================================================
+        // ARCHON INTEGRATION DATA - This would come from MCP calls
+        // =============================================================================
+
+        const ARCHON_DATA = {
+            projectId: "ce-hub-platform",
+            projectName: "CE-Hub Platform Development",
+            currentPhase: "produce",
+            currentTask: "guardian-ui",
+            phases: [
+                {
+                    id: "plan",
+                    name: "PLAN",
+                    status: "completed",
+                    tasks: [
+                        { id: "plan-1", title: "Define project scope", status: "done", assignee: "User" },
+                        { id: "plan-2", title: "Set success criteria", status: "done", assignee: "User" },
+                        { id: "plan-3", title: "Create implementation plan", status: "done", assignee: "Claude" }
+                    ],
+                    completedAt: "2025-01-10T14:30:00Z"
+                },
+                {
+                    id: "research",
+                    name: "RESEARCH",
+                    status: "completed",
+                    tasks: [
+                        { id: "research-1", title: "Explore AG-UI patterns", status: "done", assignee: "Researcher Agent" },
+                        { id: "research-2", title: "Analyze React Flow", status: "done", assignee: "Researcher Agent" },
+                        { id: "research-3", title: "Study CopilotKit", status: "done", assignee: "Researcher Agent" },
+                        { id: "research-4", title: "Synthesize findings", status: "done", assignee: "Documenter Agent" }
+                    ],
+                    completedAt: "2025-01-12T16:45:00Z"
+                },
+                {
+                    id: "produce",
+                    name: "PRODUCE",
+                    status: "active",
+                    tasks: [
+                        { id: "produce-1", title: "Build state transitions", status: "done", assignee: "Engineer Agent" },
+                        { id: "produce-2", title: "Create Guardian UI", status: "active", assignee: "Engineer Agent" },
+                        { id: "produce-3", title: "Implement phase gates", status: "pending", assignee: "Engineer Agent" },
+                        { id: "produce-4", title: "Build workflow canvas", status: "pending", assignee: "Engine Agent" },
+                        { id: "produce-5", title: "Add progress tracking", status: "pending", assignee: "Engineer Agent" },
+                        { id: "produce-6", title: "Integrate with Archon", status: "pending", assignee: "Engineer Agent" }
+                    ],
+                    startedAt: "2025-01-13T09:00:00Z"
+                },
+                {
+                    id: "ingest",
+                    name: "INGEST",
+                    status: "pending",
+                    tasks: [
+                        { id: "ingest-1", title: "Prepare artifacts", status: "pending", assignee: "Documenter" },
+                        { id: "ingest-2", title: "Tag knowledge", status: "pending", assignee: "Documenter" },
+                        { id: "ingest-3", title: "Update graph", status: "pending", assignee: "Archon" }
+                    ]
+                }
+            ],
+            metadata: {
+                totalTasks: 27,
+                completedTasks: 15,
+                activeTasks: 1,
+                pendingTasks: 11,
+                overallProgress: 55
+            }
+        };
+
+        // =============================================================================
+        // CUSTOM PHASE NODE COMPONENT
+        // =============================================================================
+
+        const PhaseNode = ({ data }) => {
+            const { phase, isCurrent } = data;
+            const statusClass = phase.status === 'completed' ? 'completed' :
+                               phase.status === 'active' ? 'active' : 'pending';
+
+            const taskStatusIcon = (taskStatus) => {
+                if (taskStatus === 'done') return '✓';
+                if (taskStatus === 'active') return '→';
+                return '○';
+            };
+
+            const taskStatusClass = (taskStatus) => {
+                if (taskStatus === 'done') return 'done';
+                if (taskStatus === 'active') return 'current';
+                return '';
+            };
+
+            return (
+                <div className={`phase-node ${statusClass}`}>
+                    <div className="phase-node-header">
+                        <div className="flex items-center gap-2">
+                            <span className="text-sm font-semibold" style={{ color: 'var(--text-secondary)' }}>
+                                {phase.name}
+                            </span>
+                            {isCurrent && (
+                                <div className="integration-badge">
+                                    <div className="pulse-dot"></div>
+                                    <span>YOU ARE HERE</span>
+                                </div>
+                            )}
+                        </div>
+                        <span className="text-xs px-2 py-1 rounded" style={{
+                            background: phase.status === 'completed' ? 'rgba(76, 183, 130, 0.2)' :
+                                       phase.status === 'active' ? 'rgba(113, 112, 255, 0.2)' :
+                                       'rgba(255, 255, 255, 0.05)',
+                            color: phase.status === 'completed' ? 'var(--accent-success)' :
+                                   phase.status === 'active' ? 'var(--accent-primary)' :
+                                   'var(--text-muted)'
+                        }}>
+                            {phase.status === 'completed' ? '✓ Done' :
+                             phase.status === 'active' ? 'In Progress' : 'Locked'}
+                        </span>
+                    </div>
+                    <div className="phase-node-content">
+                        <div className="space-y-1">
+                            {phase.tasks.slice(0, 4).map(task => (
+                                <div key={task.id} className={`task-item ${taskStatusClass(task.status)}`}>
+                                    <span style={{
+                                        color: task.status === 'done' ? 'var(--accent-success)' :
+                                               task.status === 'active' ? 'var(--accent-primary)' :
+                                               'var(--text-muted)',
+                                        fontWeight: task.status === 'active' ? '600' : '400'
+                                    }}>
+                                        {taskStatusIcon(task.status)}
+                                    </span>
+                                    <span style={{ color: 'var(--text-tertiary)', flex: 1 }}>
+                                        {task.title}
+                                    </span>
+                                </div>
+                            ))}
+                            {phase.tasks.length > 4 && (
+                                <div className="text-xs mt-2" style={{ color: 'var(--text-muted)' }}>
+                                    +{phase.tasks.length - 4} more tasks
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // =============================================================================
+        // MAIN WORKFLOW COMPONENT
+        // =============================================================================
+
+        const WorkflowMap = () => {
+            const [nodes, setNodes] = useState([]);
+            const [edges, setEdges] = useState([]);
+
+            // Initialize nodes and edges from Archon data
+            useEffect(() => {
+                const phaseSpacing = { x: 400, y: 0 };
+                const startX = 50;
+                const startY = 200;
+
+                // Create phase nodes
+                const newNodes = ARCHON_DATA.phases.map((phase, index) => ({
+                    id: phase.id,
+                    type: 'custom',
+                    data: {
+                        label: phase.name,
+                        phase,
+                        isCurrent: phase.id === ARCHON_DATA.currentPhase
+                    },
+                    position: { x: startX + (index * phaseSpacing.x), y: startY },
+                    className: `phase-node ${phase.status === 'completed' ? 'completed' :
+                                  phase.status === 'active' ? 'active' : 'pending'}`,
+                    sourcePosition: Position.Right,
+                    targetPosition: Position.Left,
+                }));
+
+                // Create edges
+                const newEdges = [];
+                for (let i = 0; i < ARCHON_DATA.phases.length - 1; i++) {
+                    const currentPhase = ARCHON_DATA.phases[i];
+                    const nextPhase = ARCHON_DATA.phases[i + 1];
+                    const edgeClass = currentPhase.status === 'completed' ? 'edge-completed' :
+                                     currentPhase.status === 'active' ? 'edge-active' : 'edge-pending';
+                    const edgeColor = currentPhase.status === 'completed' ? '#4cb782' :
+                                    currentPhase.status === 'active' ? '#7170ff' : '#34343a';
+                    const isAnimated = currentPhase.status === 'active';
+
+                    newEdges.push({
+                        id: `edge-${currentPhase.id}-${nextPhase.id}`,
+                        source: currentPhase.id,
+                        target: nextPhase.id,
+                        type: 'smoothstep',
+                        animated: isAnimated,
+                        className: edgeClass,
+                        style: { stroke: edgeColor, strokeWidth: 2 },
+                        markerEnd: {
+                            type: MarkerType.ArrowClosed,
+                            color: edgeColor
+                        },
+                    });
+                }
+
+                setNodes(newNodes);
+                setEdges(newEdges);
+            }, []);
+
+            const onNodesChange = useCallback((changes) => {
+                setNodes((nds) => {
+                    const updated = changes.reduce((acc, change) => {
+                        const index = acc.findIndex((n) => n.id === change.id);
+                        if (index !== -1) {
+                            const newNodes = [...acc];
+                            newNodes[index] = { ...newNodes[index], ...change };
+                            return newNodes;
+                        }
+                        return acc;
+                    }, nds);
+                    return updated;
+                });
+            }, []);
+
+            const onEdgesChange = useCallback((changes) => {
+                setEdges((eds) => {
+                    return changes.reduce((acc, change) => {
+                        const index = acc.findIndex((e) => e.id === change.id);
+                        if (index !== -1) {
+                            const newEdges = [...acc];
+                            newEdges[index] = { ...newEdges[index], ...change };
+                            return newEdges;
+                        }
+                        return acc;
+                    }, eds);
+                });
+            }, []);
+
+            const onConnect = useCallback((params) => {
+                setEdges((eds) => [...eds, { ...params, type: 'smoothstep' }]);
+            }, []);
+
+            const nodeTypes = useMemo(() => ({
+                custom: PhaseNode,
+            }), []);
+
+            return (
+                <div style={{ width: '100vw', height: '100vh', position: 'relative', background: 'var(--bg-level-0)' }}>
+                    {/* Header */}
+                    <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '64px',
+                        background: 'var(--bg-level-1)',
+                        borderBottom: '1px solid var(--border-primary)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '0 24px',
+                        zIndex: 10,
+                    }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                            <h1 style={{ fontSize: '18px', fontWeight: 600, color: 'var(--text-secondary)', margin: 0 }}>
+                                {ARCHON_DATA.projectName}
+                            </h1>
+                            <div className="integration-badge">
+                                <div className="pulse-dot"></div>
+                                <span>Connected to Archon MCP</span>
+                            </div>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+                            <div>
+                                <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: 2 }}>
+                                    Current Phase
+                                </div>
+                                <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--text-secondary)' }}>
+                                    {ARCHON_DATA.currentPhase.toUpperCase()}
+                                </div>
+                            </div>
+                            <div>
+                                <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: 2 }}>
+                                    Progress
+                                </div>
+                                <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--text-secondary)' }}>
+                                    {ARCHON_DATA.metadata.overallProgress}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* React Flow Canvas */}
+                    <div style={{ width: '100%', height: '100%', paddingTop: '64px', paddingBottom: '80px' }}>
+                        <ReactFlowComponent
+                            nodes={nodes}
+                            edges={edges}
+                            onNodesChange={onNodesChange}
+                            onEdgesChange={onEdgesChange}
+                            onConnect={onConnect}
+                            nodeTypes={nodeTypes}
+                            fitView
+                            style={{ background: 'transparent' }}
+                        >
+                            <Background
+                                color="var(--border-tertiary)"
+                                gap={20}
+                                style={{ opacity: 0.3 }}
+                            />
+                            <Controls />
+                            <MiniMap
+                                nodeColor={(node) => {
+                                    if (node.data.phase.status === 'completed') return '#4cb782';
+                                    if (node.data.phase.status === 'active') return '#7170ff';
+                                    return '#34343a';
+                                }}
+                                style={{
+                                    background: 'var(--bg-level-2)',
+                                    border: '1px solid var(--border-primary)',
+                                }}
+                            />
+                        </ReactFlowComponent>
+                    </div>
+
+                    {/* Stats Panel */}
+                    <div className="stats-panel">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 48 }}>
+                            <div>
+                                <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: 4 }}>
+                                    Total Progress
+                                </div>
+                                <div style={{ fontSize: '28px', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1 }}>
+                                    {ARCHON_DATA.metadata.overallProgress}%
+                                </div>
+                            </div>
+                            <div>
+                                <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: 4 }}>
+                                    Tasks Completed
+                                </div>
+                                <div style={{ fontSize: '28px', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1 }}>
+                                    {ARCHON_DATA.metadata.completedTasks}
+                                    <span style={{ fontSize: '18px', color: 'var(--text-muted)', fontWeight: 400 }}>
+                                        /{ARCHON_DATA.metadata.totalTasks}
+                                    </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: 4 }}>
+                                    Current Task
+                                </div>
+                                <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--accent-primary)', maxWidth: 200 }}>
+                                    {ARCHON_DATA.phases.find(p => p.id === ARCHON_DATA.currentPhase)
+                                        ?.tasks.find(t => t.status === 'active')?.title || 'No active task'}
+                                </div>
+                            </div>
+                            <div>
+                                <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: 4 }}>
+                                    Working On
+                                </div>
+                                <div style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>
+                                    {ARCHON_DATA.phases.find(p => p.id === ARCHON_DATA.currentPhase)
+                                        ?.tasks.find(t => t.status === 'active')?.assignee || 'Unassigned'}
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                            <div style={{ width: '240px', height: '8px', background: 'var(--bg-level-3)', borderRadius: '4px', overflow: 'hidden' }}>
+                                <div style={{
+                                    width: `${ARCHON_DATA.metadata.overallProgress}%`,
+                                    height: '100%',
+                                    background: 'linear-gradient(90deg, var(--accent-success) 0%, var(--accent-primary) 100%)',
+                                    borderRadius: '4px'
+                                }} />
+                            </div>
+                            <span style={{ fontSize: '13px', color: 'var(--text-tertiary)' }}>
+                                {ARCHON_DATA.metadata.pendingTasks} tasks remaining
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Workflow Controls */}
+                    <div className="workflow-controls">
+                        <button className="control-btn" onClick={() => alert('Would open Archon MCP interface')}>
+                            📊 Open Archon
+                        </button>
+                        <button className="control-btn" onClick={() => alert('Would show detailed task breakdown')}>
+                            📋 Task Details
+                        </button>
+                        <button className="control-btn" onClick={() => alert('Would export workflow as image/PDF')}>
+                            📥 Export
+                        </button>
+                    </div>
+
+                    {/* Info Panel */}
+                    <div style={{
+                        position: 'absolute',
+                        top: '80px',
+                        left: '24px',
+                        background: 'var(--bg-level-2)',
+                        border: '1px solid var(--border-primary)',
+                        borderRadius: '8px',
+                        padding: '16px',
+                        maxWidth: '340px',
+                        zIndex: 5,
+                    }}>
+                        <h3 style={{ fontSize: '14px', fontWeight: 600, marginBottom: 12, color: 'var(--text-secondary)', margin: '0 0 12px 0' }}>
+                            🤖 Archon Integration
+                        </h3>
+                        <div style={{ fontSize: '12px', color: 'var(--text-tertiary)', lineHeight: 1.6 }}>
+                            <div style={{ marginBottom: 8 }}>✓ Real-time task synchronization</div>
+                            <div style={{ marginBottom: 8 }}>✓ Agent assignment tracking</div>
+                            <div style={{ marginBottom: 8 }}>✓ Progress auto-calculations</div>
+                            <div style={{ marginBottom: 8 }}>✓ Phase gate validations</div>
+                            <div style={{
+                                marginTop: 16,
+                                padding: 12,
+                                borderRadius: '6px',
+                                background: 'rgba(113, 112, 255, 0.1)',
+                                border: '1px solid rgba(113, 112, 255, 0.2)'
+                            }}>
+                                <strong style={{ color: 'var(--accent-primary)', display: 'block', marginBottom: 8 }}>
+                                    How it works:
+                                </strong>
+                                1. Claude creates plans via Archon MCP<br/>
+                                2. Tasks stored in knowledge graph<br/>
+                                3. React Flow visualizes in real-time<br/>
+                                4. Progress updates sync automatically
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<WorkflowMap />);
+    </script>
+</body>
+</html>

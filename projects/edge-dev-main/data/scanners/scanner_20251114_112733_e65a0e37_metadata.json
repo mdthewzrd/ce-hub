@@ -1,0 +1,10 @@
+{
+  "scanner_id": "scanner_20251114_112733_e65a0e37",
+  "scanner_name": "lc frontside d2 extended new_formatted",
+  "user_id": "default_user",
+  "created_at": "2025-11-14T11:27:33.508938",
+  "parameters_count": 31,
+  "code_length": 21599,
+  "status": "ready",
+  "extraction_method": "multi_scanner_separation"
+}

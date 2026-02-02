@@ -1,0 +1,239 @@
+================================================================================
+CHART DATA BACKEND API - FINDINGS SUMMARY
+================================================================================
+
+EXECUTIVE SUMMARY
+================================================================================
+The backend chart API has a bug where DAILY charts extend beyond the LC pattern 
+date, while INTRADAY charts (5min, hour) correctly end on it. This is caused by:
+1. A +5 day buffer added only to daily charts in get_trading_date_range()
+2. Daily charts skip the date filtering that intraday charts apply
+
+
+KEY FINDINGS
+================================================================================
+
+ISSUE #1: Daily Charts Extend Beyond LC Date
+Location: /Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/main.py
+Line:     1821 in get_trading_date_range()
+Severity: HIGH - Affects user experience and data accuracy
+
+Problem Code:
+  if timeframe == 'day':
+      end_date = target_date + timedelta(days=5)  # ❌ ADDS 5 DAYS
+
+Example:
+  Input:  lc_date=2025-02-18, timeframe=day
+  Fetches from Polygon: 2025-02-18 + 5 days = 2025-02-23
+  Returns data for: 2025-02-19, 2025-02-20, 2025-02-21, 2025-02-24
+  Expected: Should end on 2025-02-18
+
+
+ISSUE #2: Daily Charts Skip LC Date Filtering
+Location: /Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/main.py
+Line:     1862 in fetch_polygon_data()
+Severity: HIGH - Provides additional safeguard
+
+Problem Code:
+  if timeframe != 'day':  # ❌ SKIPS FILTERING FOR DAILY CHARTS
+      # Filter bars to end on target date
+
+Explanation:
+  Intraday charts (5min, hour) apply filtering to end on target date
+  Daily charts completely skip this filtering due to the condition
+
+
+WHY THE DIVERGENCE EXISTS
+================================================================================
+
+Intraday Charts (Working Correctly):
+  1. get_trading_date_range(): end_date = target_date (no buffer)
+  2. fetch_polygon_data(): if timeframe != 'day': filters to target date
+  3. Result: Data ends precisely on LC date ✓
+
+Daily Charts (Broken):
+  1. get_trading_date_range(): end_date = target_date + 5 days (buffer added)
+  2. fetch_polygon_data(): if timeframe != 'day': SKIPS filtering for daily
+  3. Result: Data extends 5 days beyond LC date ✗
+
+
+DATA FLOW DIAGRAM
+================================================================================
+
+GET /api/chart/AAPL?timeframe=day&lc_date=2025-02-18
+  ↓
+[get_chart_data] - Line 1950
+  ↓
+[get_trading_date_range] - Line 1811
+  └─ For daily: start=2025-01-04, end=2025-02-23 ❌ OVERSHOOTS BY 5 DAYS
+  └─ For intraday: start=2025-02-06, end=2025-02-18 ✓
+  ↓
+[fetch_polygon_data] - Line 1827
+  └─ Calls Polygon API with end_date
+  ↓
+[Filter to target date] - Lines 1862-1880
+  └─ For intraday: ✓ Filters to 2025-02-18
+  └─ For daily: ✗ Skips filtering (if timeframe != 'day')
+  ↓
+[Convert to chart format] - Lines 2015-2017
+  ↓
+[Market calendar filtering] - Lines 2020-2023
+  └─ Only removes weekends/holidays, NOT dates after LC date
+  ↓
+[Return ChartResponse]
+  └─ Daily: Includes 2025-02-19, 2025-02-20, 2025-02-21, 2025-02-24 ❌
+  └─ Intraday: Ends on 2025-02-18 ✓
+
+
+FILES INVOLVED
+================================================================================
+
+PRIMARY:
+  /Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/main.py
+    - Lines 1811-1826: get_trading_date_range() [ROOT CAUSE #1]
+    - Lines 1827-1887: fetch_polygon_data() [ROOT CAUSE #2]
+    - Line 1950: get_chart_data() [Main endpoint]
+
+SECONDARY:
+  /Users/michaeldurante/ai dev/ce-hub/edge-dev/backend/market_calendar.py
+    - Lines 137-168: validate_chart_data_for_trading_days()
+    - Line 40: is_market_holiday()
+    - Line 65: is_trading_day()
+
+
+EXACT CODE LOCATIONS
+================================================================================
+
+Line 1811: Function definition
+  def get_trading_date_range(target_date_str: str, days_back: int, timeframe: str):
+
+Line 1817-1821: Problem location #1
+  if timeframe == 'day':
+      start_date = target_date - timedelta(days=days_back * 2)
+      end_date = target_date + timedelta(days=5)  # ❌ PROBLEM
+
+Line 1862: Problem location #2
+  if timeframe != 'day':  # ❌ PROBLEM - Skips daily charts
+
+Line 1950: API endpoint
+  @app.get("/api/chart/{ticker}", response_model=ChartResponse)
+
+Line 1989: Calls fetch_polygon_data
+  bars = await fetch_polygon_data(ticker, timeframe, days_back, target_date_str)
+
+Line 2020: Calls market calendar filtering
+  chart_data = validate_chart_data_for_trading_days(chart_data)
+
+
+VALIDATION EVIDENCE
+================================================================================
+
+The issue manifests in two timeframes for the same LC date:
+
+Daily Charts:
+  Query: GET /api/chart/AAPL?timeframe=day&lc_date=2025-02-18&day_offset=0
+  Expected: chartData.x ends with 2025-02-18
+  Actual: chartData.x extends to 2025-02-21 or 2025-02-24
+
+Intraday (5min) Charts:
+  Query: GET /api/chart/AAPL?timeframe=5min&lc_date=2025-02-18&day_offset=0
+  Expected: chartData.x ends with 2025-02-18T... ✓ CORRECT
+  Actual: chartData.x ends with 2025-02-18T... ✓ CORRECT
+
+Intraday (Hour) Charts:
+  Query: GET /api/chart/AAPL?timeframe=hour&lc_date=2025-02-18&day_offset=0
+  Expected: chartData.x ends with 2025-02-18T... ✓ CORRECT
+  Actual: chartData.x ends with 2025-02-18T... ✓ CORRECT
+
+
+ROOT CAUSE ANALYSIS
+================================================================================
+
+Why does get_trading_date_range() add +5 days for daily charts?
+
+Likely reason: To ensure Polygon API returns data even if the request date
+             falls on a weekend (the buffer would push request to next trading day)
+
+Problem: The buffer ALWAYS gets added, regardless of whether the target_date
+        falls on a weekend or not. This causes overshooting for weekday dates.
+
+Why don't daily charts get filtered?
+
+Likely reason: Daily bars are at day-level granularity, so filtering by
+             date seemed unnecessary. The +5 day buffer was supposed to 
+             handle it, but the buffer was TOO LARGE.
+
+Result: Defensive filtering in fetch_polygon_data() only applies to intraday
+       timeframes, leaving daily charts vulnerable.
+
+
+RECOMMENDED FIXES
+================================================================================
+
+FIX #1 (PRIMARY): Remove +5 day buffer from daily charts
+  Location: main.py, line 1821
+  Change:   end_date = target_date  # From: end_date = target_date + timedelta(days=5)
+  Impact:   HIGH - Directly fixes the overshoot issue
+
+FIX #2 (DEFENSIVE): Apply LC date filtering to daily charts
+  Location: main.py, line 1862
+  Change:   Remove condition or extend it to include 'day'
+            From: if timeframe != 'day':
+            To:   if timeframe in ['5min', 'hour', 'day']:
+  Impact:   MEDIUM - Provides safeguard in case Fix #1 isn't sufficient
+
+
+RELATED CODE PATTERNS
+================================================================================
+
+Why intraday charts work:
+  1. No buffer is added: end_date = target_date
+  2. Filtering is applied: if timeframe != 'day': ... filters to target_date
+  3. Result: Data ends precisely on target date
+
+Why this filtering should apply to daily charts too:
+  Polygon API may return data beyond the requested end_date due to API timing
+  The defensive filter ensures ALL timeframes respect the LC date boundary
+
+
+TESTING STRATEGY
+================================================================================
+
+Test 1: Daily chart endpoint
+  curl "http://localhost:8000/api/chart/AAPL?timeframe=day&lc_date=2025-02-18&day_offset=0"
+  Check: chartData.x[-1] === "2025-02-18" or "2025-02-18T..."
+
+Test 2: 5min chart endpoint (sanity check)
+  curl "http://localhost:8000/api/chart/AAPL?timeframe=5min&lc_date=2025-02-18&day_offset=0"
+  Check: chartData.x[-1] contains "2025-02-18" (with time component)
+
+Test 3: Hour chart endpoint (sanity check)
+  curl "http://localhost:8000/api/chart/AAPL?timeframe=hour&lc_date=2025-02-18&day_offset=0"
+  Check: chartData.x[-1] contains "2025-02-18" (with time component)
+
+Test 4: Verify no dates after LC date
+  curl "http://localhost:8000/api/chart/AAPL?timeframe=day&lc_date=2025-02-18&day_offset=0" | jq '.chartData.x'
+  Check: No entries for 2025-02-19, 2025-02-20, 2025-02-21, 2025-02-24
+
+
+DOCUMENTATION GENERATED
+================================================================================
+
+1. CHART_DATA_ENDPOINT_ANALYSIS.md - Complete technical analysis
+2. CHART_API_QUICK_REFERENCE.md - Quick lookup reference
+3. CHART_API_FIX_IMPLEMENTATION.md - Step-by-step implementation guide
+4. CHART_API_FINDINGS_SUMMARY.txt - This file (executive summary)
+
+
+CONCLUSION
+================================================================================
+
+The bug is clearly identified with exact line numbers and code locations.
+The fix is straightforward and low-risk:
+  1. Remove +5 day buffer from daily chart date range (1 line change)
+  2. Extend LC date filtering to daily charts (1 condition modification)
+
+Both fixes are defensive and won't affect intraday charts which already work.
+
+Estimated effort: <15 minutes to implement and test
+Risk level: LOW - isolated changes to date handling logic

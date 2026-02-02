@@ -1,0 +1,99 @@
+{
+  "sessionId": "session-1767788751145-x8tilk8ri",
+  "task": "Generate virtual try-on image.\n\nIMPORTANT: Use these EXACT file paths and parameters:\n- Subject photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/b4fe36cb-83f8-420a-9693-c0d7c25083aa/subject_2_547649680e1afa32cb008ff8bf925da5.jpg\n- Glasses photo: /Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_1_IMG_2109.jpg\n- Task ID (REQUIRED for generate_tryon_image): db6935af-4cf4-422c-ab60-63005fb26d97\n\nWhen calling generate_tryon_image, you MUST include these parameters:\n- subjectPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/b4fe36cb-83f8-420a-9693-c0d7c25083aa/subject_2_547649680e1afa32cb008ff8bf925da5.jpg\"\n- glassesPath: \"/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_1_IMG_2109.jpg\"\n- taskId: \"db6935af-4cf4-422c-ab60-63005fb26d97\" (this is REQUIRED!)\n\nDO NOT make up file paths. Use the paths provided above exactly as written.",
+  "results": [
+    {
+      "success": true,
+      "data": {
+        "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/b4fe36cb-83f8-420a-9693-c0d7c25083aa/subject_2_547649680e1afa32cb008ff8bf925da5_result_db6935af-4cf4-422c-ab60-63005fb26d97.jpg",
+        "report": {
+          "taskId": "db6935af-4cf4-422c-ab60-63005fb26d97",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Gemini 2.0 Flash Exp",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "db6935af-4cf4-422c-ab60-63005fb26d97",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767788753374,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.0 Flash Exp"
+        },
+        "generationMethod": "Gemini 2.0 Flash Exp"
+      }
+    }
+  ],
+  "evaluation": {
+    "score": 85,
+    "finalResult": {
+      "success": true,
+      "data": {
+        "resultImagePath": "/Users/michaeldurante/ai dev/ce-hub/tryon-platform/tryon-platform/public/uploads/b4fe36cb-83f8-420a-9693-c0d7c25083aa/subject_2_547649680e1afa32cb008ff8bf925da5_result_db6935af-4cf4-422c-ab60-63005fb26d97.jpg",
+        "report": {
+          "taskId": "db6935af-4cf4-422c-ab60-63005fb26d97",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Gemini 2.0 Flash Exp",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "db6935af-4cf4-422c-ab60-63005fb26d97",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767788753374,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.0 Flash Exp"
+        },
+        "generationMethod": "Gemini 2.0 Flash Exp"
+      }
+    },
+    "shouldRetry": false
+  },
+  "timestamp": "2026-01-07T12:25:59.314Z",
+  "toolsUsed": [
+    "generate_tryon_image",
+    "retry_generation",
+    "verify_quality",
+    "quick_quality_check"
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "agent": {
+    "name": "Trading Orchestrator",
+    "description": "Orchestrates specialized trading sub-agents for comprehensive market analysis and strategy development",
+    "type": "orchestrator",
+    "version": "1.0.0",
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tools": 6,
+    "system_prompt": {
+      "role": "You are a Trading Orchestrator responsible for coordinating specialized trading sub-agents to accomplish complex trading tasks efficiently.",
+      "responsibilities": [
+        "Break down complex trading requests into appropriate sub-tasks",
+        "Delegate each sub-task to the most appropriate specialized agent",
+        "Aggregate results from multiple sub-agents into coherent insights",
+        "Manage dependencies between sub-agent tasks",
+        "Ensure all sub-agents stay within their tool limits (≤10 tools)",
+        "Validate that sub-agent outputs meet quality standards"
+      ],
+      "guidelines": [
+        "Always analyze the request first to determine which sub-agents are needed",
+        "Use parallel execution when sub-tasks are independent",
+        "Use sequential execution when sub-tasks have dependencies",
+        "Each sub-agent should handle only their area of expertise",
+        "Aggregate results with clear attribution to each sub-agent",
+        "If a sub-agent fails, attempt recovery or provide clear error explanation"
+      ],
+      "constraints": [
+        "Do not attempt to perform specialized tasks yourself - delegate to sub-agents",
+        "Never give a sub-agent more than 10 tools",
+        "Each sub-agent must have a clear, focused responsibility",
+        "Limit concurrent sub-agent calls to 5 to maintain quality",
+        "Always validate sub-agent outputs before aggregating"
+      ]
+    },
+    "tools": [
+      {
+        "name": "delegate_to_scan_creator",
+        "description": "Delegates scanner creation task to the Scan Creator sub-agent",
+        "type": "delegation",
+        "parameters": {
+          "task_description": {
+            "type": "str",
+            "description": "Description of the scanner to create",
+            "required": true
+          },
+          "pattern_type": {
+            "type": "str",
+            "description": "Type of pattern: 'gap', 'breakout', 'reversal', etc.",
+            "required": true
+          },
+          "market_conditions": {
+            "type": "dict",
+            "description": "Market context and conditions",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "delegate_to_backtest_generator",
+        "description": "Delegates backtest generation task to the Backtest Generator sub-agent",
+        "type": "delegation",
+        "parameters": {
+          "scanner_config": {
+            "type": "dict",
+            "description": "Scanner configuration to backtest",
+            "required": true
+          },
+          "date_range": {
+            "type": "dict",
+            "description": "Date range for backtest with 'start' and 'end' keys",
+            "required": true
+          },
+          "universe": {
+            "type": "list",
+            "description": "List of tickers to test",
+            "required": true
+          }
+        }
+      },
+      {
+        "name": "delegate_to_parameter_optimizer",
+        "description": "Delegates parameter optimization task to the Parameter Optimizer sub-agent",
+        "type": "delegation",
+        "parameters": {
+          "scanner_config": {
+            "type": "dict",
+            "description": "Scanner configuration to optimize",
+            "required": true
+          },
+          "optimization_goal": {
+            "type": "str",
+            "description": "Goal: 'maximize_sharpe', 'maximize_win_rate', 'minimize_drawdown'",
+            "required": true
+          },
+          "constraints": {
+            "type": "dict",
+            "description": "Optimization constraints (min/max values for parameters)",
+            "required": false
+          }
+        }
+      },
+      {
+        "name": "delegate_to_pattern_analyzer",
+        "description": "Delegates pattern analysis task to the Pattern Analyzer sub-agent",
+        "type": "delegation",
+        "parameters": {
+          "market_data": {
+            "type": "dict",
+            "description": "Market data to analyze",
+            "required": true
+          },
+          "pattern_types": {
+            "type": "list",
+            "description": "Types of patterns to look for",
+            "required": true
+          },
+          "timeframe": {
+            "type": "str",
+            "description": "Timeframe for analysis (daily, hourly, etc.)",
+            "required": false,
+            "default": "daily"
+          }
+        }
+      },
+      {
+        "name": "aggregate_results",
+        "description": "Aggregates results from multiple sub-agents into coherent insights",
+        "type": "analysis",
+        "parameters": {
+          "sub_agent_results": {
+            "type": "list",
+            "description": "List of results from sub-agents",
+            "required": true
+          },
+          "synthesis_goal": {
+            "type": "str",
+            "description": "Goal for synthesis: 'trading_strategy', 'risk_assessment', 'performance_summary'",
+            "required": true
+          }
+        }
+      },
+      {
+        "name": "validate_sub_agent_output",
+        "description": "Validates that sub-agent output meets quality standards before aggregation",
+        "type": "validation",
+        "parameters": {
+          "agent_name": {
+            "type": "str",
+            "description": "Name of the sub-agent",
+            "required": true
+          },
+          "output": {
+            "type": "dict",
+            "description": "Output from the sub-agent to validate",
+            "required": true
+          },
+          "validation_criteria": {
+            "type": "list",
+            "description": "List of criteria to validate against",
+            "required": false
+          }
+        }
+      }
+    ],
+    "rag": {
+      "enabled": true,
+      "vector_db": "neo4j",
+      "collection_name": "orchestrator_knowledge",
+      "top_k": 5,
+      "chunk_size": 512,
+      "chunk_overlap": 50
+    },
+    "output": {
+      "format": "structured",
+      "include_reasoning": true,
+      "include_tool_calls": true
+    },
+    "validation": {
+      "level": "strict",
+      "quality_threshold": 0.85,
+      "rules": [
+        {
+          "name": "sub_agent_tool_limit_check",
+          "description": "Verify no sub-agent has more than 10 tools",
+          "severity": "error"
+        },
+        {
+          "name": "delegation_quality_check",
+          "description": "Ensure tasks are delegated to appropriate specialists",
+          "severity": "error"
+        },
+        {
+          "name": "result_aggregation_clarity",
+          "description": "Aggregated results must be clear and actionable",
+          "severity": "warning"
+        }
+      ]
+    },
+    "monitoring": {
+      "log_requests": true,
+      "track_performance": true,
+      "enable_debugging": true
+    },
+    "deployment": {
+      "environment": "production",
+      "scaling": "horizontal",
+      "resources": {
+        "memory": "2GB",
+        "cpu": "2.0"
+      }
+    },
+    "sub_agents": {
+      "scan_creator": {
+        "name": "Scan Creator",
+        "config_file": "examples/scan_creator.json",
+        "responsibilities": ["Create trading scanners", "Define scan parameters", "Test scanner logic"],
+        "max_tools": 7
+      },
+      "backtest_generator": {
+        "name": "Backtest Generator",
+        "config_file": "examples/backtest_generator.json",
+        "responsibilities": ["Run backtests", "Calculate performance metrics", "Generate equity curves"],
+        "max_tools": 6
+      },
+      "parameter_optimizer": {
+        "name": "Parameter Optimizer",
+        "config_file": "examples/parameter_optimizer.json",
+        "responsibilities": ["Optimize scanner parameters", "Find best parameter combinations", "Validate improvements"],
+        "max_tools": 5
+      },
+      "pattern_analyzer": {
+        "name": "Pattern Analyzer",
+        "config_file": "examples/trading_pattern_analyzer.json",
+        "responsibilities": ["Detect market patterns", "Analyze trend conditions", "Identify trading signals"],
+        "max_tools": 7
+      }
+    }
+  }
+}

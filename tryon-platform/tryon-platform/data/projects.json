@@ -1,0 +1,2237 @@
+[
+  {
+    "id": "a62d4df7-0068-442f-937f-f4561c0114f4",
+    "name": "Ra Popp Daylight",
+    "glassesFiles": [
+      {
+        "id": "main-glasses-1160875504",
+        "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504.jpg",
+        "type": "glasses",
+        "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_main.jpg",
+        "size": 17381,
+        "width": 0,
+        "height": 0
+      }
+    ],
+    "createdAt": "2025-12-28T17:12:11.714Z",
+    "updatedAt": "2026-01-09T17:28:46.819Z",
+    "sizingInfo": {
+      "brand": "Ra Popp Daylight",
+      "sizeChartUrl": "",
+      "exact": {
+        "model": "Popp Daylight",
+        "frame": "51-16-145",
+        "lensWidth": "51",
+        "lensHeight": "36",
+        "bridge": "16",
+        "temple": "145",
+        "frameWidth": "118"
+      },
+      "sizes": {
+        "small": {
+          "lensWidth": "48-50mm",
+          "bridge": "16-18mm",
+          "temple": "135-140mm",
+          "faceWidth": "<130mm"
+        },
+        "medium": {
+          "lensWidth": "51-53mm",
+          "bridge": "17-19mm",
+          "temple": "140-145mm",
+          "faceWidth": "130-140mm"
+        },
+        "large": {
+          "lensWidth": "54-56mm",
+          "bridge": "18-20mm",
+          "temple": "145-150mm",
+          "faceWidth": ">140mm"
+        }
+      },
+      "fittingGuide": "Frame width should equal face width at temples, extending 5-10mm past widest point. Eyes must be centered in lens frames."
+    },
+    "results": [
+      {
+        "taskId": "4deca035-04cc-4a67-a47b-46874b4c59d4",
+        "jobId": "c38c0c30-455a-422b-9d98-1a11073be9ca",
+        "subjectFile": {
+          "id": "d7a9b5aa-c0af-4117-9cd9-fe01791bd118",
+          "name": "SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+          "type": "subject",
+          "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/4deca035-04cc-4a67-a47b-46874b4c59d4.jpg",
+          "size": 179493,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "0d4dfe72-a7fe-4077-8663-7d9f228840f0",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_3_popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "size": 17570,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "a946b185-722c-4f68-8a96-e52f12959b26",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_0_popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "size": 5568,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "ac278c88-ea58-430c-b555-612bafeb3662",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_1_popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "size": 4960,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/c38c0c30-455a-422b-9d98-1a11073be9ca/result_4deca035-04cc-4a67-a47b-46874b4c59d4.jpg",
+        "editReport": {
+          "taskId": "4deca035-04cc-4a67-a47b-46874b4c59d4",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "4deca035-04cc-4a67-a47b-46874b4c59d4",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 374672,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.11541575716544908,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "completedAt": "2025-12-29T17:12:53.768Z"
+      },
+      {
+        "taskId": "9cb45b81-0bd1-41dc-90c8-19cf563653c1",
+        "jobId": "c38c0c30-455a-422b-9d98-1a11073be9ca",
+        "subjectFile": {
+          "id": "49f47be8-8c2c-4d12-96cb-93b09e77b19b",
+          "name": "SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+          "type": "subject",
+          "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/9cb45b81-0bd1-41dc-90c8-19cf563653c1.jpg",
+          "size": 174217,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "0d4dfe72-a7fe-4077-8663-7d9f228840f0",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_3_popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "size": 17570,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "a946b185-722c-4f68-8a96-e52f12959b26",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_0_popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "size": 5568,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "ac278c88-ea58-430c-b555-612bafeb3662",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_1_popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "size": 4960,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/c38c0c30-455a-422b-9d98-1a11073be9ca/result_9cb45b81-0bd1-41dc-90c8-19cf563653c1.jpg",
+        "editReport": {
+          "taskId": "9cb45b81-0bd1-41dc-90c8-19cf563653c1",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "9cb45b81-0bd1-41dc-90c8-19cf563653c1",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 914042,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.21694854263465435,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "completedAt": "2025-12-29T17:12:53.763Z"
+      },
+      {
+        "taskId": "de9ebd44-1a2f-4c75-86b4-ef8f40dd5e82",
+        "jobId": "c38c0c30-455a-422b-9d98-1a11073be9ca",
+        "subjectFile": {
+          "id": "5d7b9097-afa0-4dcb-a919-b4de738008c3",
+          "name": "SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+          "type": "subject",
+          "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/de9ebd44-1a2f-4c75-86b4-ef8f40dd5e82.jpg",
+          "size": 191148,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "0d4dfe72-a7fe-4077-8663-7d9f228840f0",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_3_popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "size": 17570,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "a946b185-722c-4f68-8a96-e52f12959b26",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_0_popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "size": 5568,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "ac278c88-ea58-430c-b555-612bafeb3662",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_1_popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "size": 4960,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/c38c0c30-455a-422b-9d98-1a11073be9ca/result_de9ebd44-1a2f-4c75-86b4-ef8f40dd5e82.jpg",
+        "editReport": {
+          "taskId": "de9ebd44-1a2f-4c75-86b4-ef8f40dd5e82",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "de9ebd44-1a2f-4c75-86b4-ef8f40dd5e82",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 16800,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.2805054982484403,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "completedAt": "2025-12-29T17:12:53.779Z"
+      },
+      {
+        "taskId": "e3e183c2-d5fb-4b8f-8ab0-20f77dd722d5",
+        "jobId": "c38c0c30-455a-422b-9d98-1a11073be9ca",
+        "subjectFile": {
+          "id": "b3b093b5-cae2-4bae-be07-90814a5f6c7a",
+          "name": "SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+          "type": "subject",
+          "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/e3e183c2-d5fb-4b8f-8ab0-20f77dd722d5.jpg",
+          "size": 187481,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "0d4dfe72-a7fe-4077-8663-7d9f228840f0",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_3_popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "size": 17570,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "a946b185-722c-4f68-8a96-e52f12959b26",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_0_popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "size": 5568,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "ac278c88-ea58-430c-b555-612bafeb3662",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_1_popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "size": 4960,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/c38c0c30-455a-422b-9d98-1a11073be9ca/result_e3e183c2-d5fb-4b8f-8ab0-20f77dd722d5.jpg",
+        "editReport": {
+          "taskId": "e3e183c2-d5fb-4b8f-8ab0-20f77dd722d5",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "e3e183c2-d5fb-4b8f-8ab0-20f77dd722d5",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 514109,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.15978570337287867,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "completedAt": "2025-12-29T17:12:53.783Z"
+      },
+      {
+        "taskId": "2d5de4d0-c8bd-407c-a008-8e688f26078e",
+        "jobId": "c0d6deae-850e-4b34-922b-e8dc283de872",
+        "subjectFile": {
+          "id": "ae50cbd3-621e-46e7-8cf4-00c7a3ddbc8e",
+          "name": "SnapInsta.to_501771765_17959239635943917_287569964774662546_n.jpg",
+          "type": "subject",
+          "url": "/uploads/c0d6deae-850e-4b34-922b-e8dc283de872/subject_0_SnapInsta.to_501771765_17959239635943917_287569964774662546_n.jpg",
+          "size": 157432,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "0d4dfe72-a7fe-4077-8663-7d9f228840f0",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_3_popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "size": 17570,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "a946b185-722c-4f68-8a96-e52f12959b26",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_0_popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "size": 5568,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "ac278c88-ea58-430c-b555-612bafeb3662",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_1_popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "size": 4960,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/c0d6deae-850e-4b34-922b-e8dc283de872/result_2d5de4d0-c8bd-407c-a008-8e688f26078e.jpg",
+        "editReport": {
+          "taskId": "2d5de4d0-c8bd-407c-a008-8e688f26078e",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "2d5de4d0-c8bd-407c-a008-8e688f26078e",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 609533,
+            "passes": 1,
+            "editRequest": "the glasses look nothing like our ra popp daylights"
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.28198621516007516,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "params": {
+          "guidance": 0.6,
+          "refStrength": 0.85,
+          "lightingWeight": 0.7,
+          "reflectionWeight": 0.8,
+          "colorMatchWeight": 0.15,
+          "seed": 609533,
+          "passes": 1,
+          "editRequest": "the glasses look nothing like our ra popp daylights"
+        },
+        "completedAt": "2025-12-30T15:07:24.292Z"
+      },
+      {
+        "taskId": "8e15157d-e7dc-4413-a842-54a3016d63e5",
+        "jobId": "092bfc88-a439-4bd0-879e-e06d60d11245",
+        "subjectFile": {
+          "id": "4a9c4760-9e52-40e2-978b-002cbba92960",
+          "name": "SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+          "type": "subject",
+          "url": "/uploads/092bfc88-a439-4bd0-879e-e06d60d11245/subject_0_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+          "size": 176088,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "0d4dfe72-a7fe-4077-8663-7d9f228840f0",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_3_popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "size": 17570,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "a946b185-722c-4f68-8a96-e52f12959b26",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_0_popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "size": 5568,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "ac278c88-ea58-430c-b555-612bafeb3662",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_1_popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "size": 4960,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/092bfc88-a439-4bd0-879e-e06d60d11245/result_8e15157d-e7dc-4413-a842-54a3016d63e5.jpg",
+        "editReport": {
+          "taskId": "8e15157d-e7dc-4413-a842-54a3016d63e5",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "8e15157d-e7dc-4413-a842-54a3016d63e5",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 833327,
+            "passes": 1,
+            "editRequest": "still not a 100% face match"
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.25295859987342306,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "params": {
+          "guidance": 0.6,
+          "refStrength": 0.85,
+          "lightingWeight": 0.7,
+          "reflectionWeight": 0.8,
+          "colorMatchWeight": 0.15,
+          "seed": 833327,
+          "passes": 1,
+          "editRequest": "still not a 100% face match"
+        },
+        "completedAt": "2025-12-30T15:08:01.054Z"
+      },
+      {
+        "taskId": "0550bef2-7e12-451e-9783-7865933e4574",
+        "jobId": "2b02dac0-fc0c-4968-bbea-02b0145c50e7",
+        "subjectFile": {
+          "id": "272ce103-5fc4-47dc-8171-09f610279f77",
+          "name": "fcbef6b69f6ae56a0f187a03a85aef87.jpg",
+          "type": "subject",
+          "url": "/uploads/2b02dac0-fc0c-4968-bbea-02b0145c50e7/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg",
+          "size": 166492,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "0d4dfe72-a7fe-4077-8663-7d9f228840f0",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_3_popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "size": 17570,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "a946b185-722c-4f68-8a96-e52f12959b26",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_0_popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "size": 5568,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "ac278c88-ea58-430c-b555-612bafeb3662",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_1_popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "size": 4960,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/2b02dac0-fc0c-4968-bbea-02b0145c50e7/result_0550bef2-7e12-451e-9783-7865933e4574.jpg",
+        "editReport": {
+          "taskId": "0550bef2-7e12-451e-9783-7865933e4574",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Hybrid Canvas + AI (realistic blending)",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "0550bef2-7e12-451e-9783-7865933e4574",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767967863962,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Hybrid Canvas + AI (realistic blending)"
+        },
+        "completedAt": "2026-01-09T14:13:46.187Z"
+      },
+      {
+        "taskId": "5cd1e987-70e4-43fb-a186-ab6fdfce782d",
+        "jobId": "2b02dac0-fc0c-4968-bbea-02b0145c50e7",
+        "subjectFile": {
+          "id": "00f5cea8-faf1-4a10-946e-78a7c192307c",
+          "name": "cb1837cb2b5177c2ce5805665279d3fc.jpg",
+          "type": "subject",
+          "url": "/uploads/2b02dac0-fc0c-4968-bbea-02b0145c50e7/subject_1_cb1837cb2b5177c2ce5805665279d3fc.jpg",
+          "size": 38865,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "0d4dfe72-a7fe-4077-8663-7d9f228840f0",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_3_popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "size": 17570,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "a946b185-722c-4f68-8a96-e52f12959b26",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_0_popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "size": 5568,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "ac278c88-ea58-430c-b555-612bafeb3662",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_1_popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "size": 4960,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/2b02dac0-fc0c-4968-bbea-02b0145c50e7/result_5cd1e987-70e4-43fb-a186-ab6fdfce782d.jpg",
+        "editReport": {
+          "taskId": "5cd1e987-70e4-43fb-a186-ab6fdfce782d",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Hybrid Canvas + AI (realistic blending)",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "5cd1e987-70e4-43fb-a186-ab6fdfce782d",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767967920416,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Hybrid Canvas + AI (realistic blending)"
+        },
+        "completedAt": "2026-01-09T14:13:46.192Z"
+      },
+      {
+        "taskId": "a2127696-d770-48f2-ae27-5a5a17fb3353",
+        "jobId": "69315d55-1e7b-4c6a-8c70-645fa818c2b6",
+        "subjectFile": {
+          "id": "30b5e15f-7e2e-4150-89c2-574a69fe4ed4",
+          "name": "547649680e1afa32cb008ff8bf925da5.jpg",
+          "type": "subject",
+          "url": "/uploads/69315d55-1e7b-4c6a-8c70-645fa818c2b6/subject_0_547649680e1afa32cb008ff8bf925da5.jpg",
+          "size": 89285,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "0d4dfe72-a7fe-4077-8663-7d9f228840f0",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_3_popp-daylight-raoptics-blueblockers-visual-eyes-1160875505.webp",
+            "size": 17570,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "a946b185-722c-4f68-8a96-e52f12959b26",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_0_popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_460x.webp",
+            "size": 5568,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "ac278c88-ea58-430c-b555-612bafeb3662",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_1_popp-daylight-raoptics-blueblockers-visual-eyes-1160875504_460x.webp",
+            "size": 4960,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/69315d55-1e7b-4c6a-8c70-645fa818c2b6/result_a2127696-d770-48f2-ae27-5a5a17fb3353.jpg",
+        "editReport": {
+          "taskId": "a2127696-d770-48f2-ae27-5a5a17fb3353",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Hybrid Canvas + AI (realistic blending)",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "a2127696-d770-48f2-ae27-5a5a17fb3353",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767968183473,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Hybrid Canvas + AI (realistic blending)"
+        },
+        "completedAt": "2026-01-09T14:17:06.212Z"
+      },
+      {
+        "taskId": "7448ae9d-68ad-4989-a7fe-6d253c0ea851",
+        "jobId": "efb62fd5-56bd-4ff8-ac46-640183a90e43",
+        "subjectFile": {
+          "id": "b6d8dbb6-79f2-4cbb-9dc8-acd797a91850",
+          "name": "fcbef6b69f6ae56a0f187a03a85aef87.jpg",
+          "type": "subject",
+          "url": "/uploads/efb62fd5-56bd-4ff8-ac46-640183a90e43/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg",
+          "size": 166492,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "main-glasses-1160875504",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_main.jpg",
+            "size": 17381,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/efb62fd5-56bd-4ff8-ac46-640183a90e43/result_7448ae9d-68ad-4989-a7fe-6d253c0ea851.jpg",
+        "editReport": {
+          "taskId": "7448ae9d-68ad-4989-a7fe-6d253c0ea851",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Hybrid Canvas + AI (realistic blending)",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "7448ae9d-68ad-4989-a7fe-6d253c0ea851",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767976926895,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Hybrid Canvas + AI (realistic blending)"
+        },
+        "completedAt": "2026-01-09T16:43:23.885Z"
+      },
+      {
+        "taskId": "db7583a2-a144-4d5e-986b-3fe7b03e4f50",
+        "jobId": "09aa2b38-9f19-4220-849f-d7a83f0ad602",
+        "subjectFile": {
+          "id": "d250987e-1fd3-4bc9-9131-f46db7690b8f",
+          "name": "SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+          "type": "subject",
+          "url": "/uploads/09aa2b38-9f19-4220-849f-d7a83f0ad602/subject_0_SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+          "size": 174217,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "main-glasses-1160875504",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/a62d4df7-0068-442f-937f-f4561c0114f4/glasses_main.jpg",
+            "size": 17381,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/09aa2b38-9f19-4220-849f-d7a83f0ad602/result_db7583a2-a144-4d5e-986b-3fe7b03e4f50.jpg",
+        "editReport": {
+          "taskId": "db7583a2-a144-4d5e-986b-3fe7b03e4f50",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Hybrid Canvas + AI (realistic blending)",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "db7583a2-a144-4d5e-986b-3fe7b03e4f50",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767979668931,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.991,
+            "faceDist": 0.23,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Hybrid Canvas + AI (realistic blending)"
+        },
+        "completedAt": "2026-01-09T17:28:46.819Z"
+      }
+    ],
+    "subjectPhotos": [
+      {
+        "id": "d2c18d24-bcdc-4eb5-9829-b40fad89c8bd",
+        "name": "SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+        "type": "subject",
+        "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/d2c18d24-bcdc-4eb5-9829-b40fad89c8bd.jpg",
+        "sourceUrl": "/uploads/d07d8697-d811-4202-841c-2fc85cb89270/subject_0_SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+        "addedAt": "2025-12-30T13:40:15.367Z",
+        "size": 179493
+      },
+      {
+        "id": "91404533-e922-410c-8bc9-1f2130343629",
+        "name": "SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+        "type": "subject",
+        "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/91404533-e922-410c-8bc9-1f2130343629.jpg",
+        "sourceUrl": "/uploads/d07d8697-d811-4202-841c-2fc85cb89270/subject_1_SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+        "addedAt": "2025-12-30T13:40:15.370Z",
+        "size": 174217
+      },
+      {
+        "id": "bed16965-4057-48ab-83bd-26f81e8e5d41",
+        "name": "SnapInsta.to_501771765_17959239635943917_287569964774662546_n.jpg",
+        "type": "subject",
+        "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/bed16965-4057-48ab-83bd-26f81e8e5d41.jpg",
+        "sourceUrl": "/uploads/d07d8697-d811-4202-841c-2fc85cb89270/subject_2_SnapInsta.to_501771765_17959239635943917_287569964774662546_n.jpg",
+        "addedAt": "2025-12-30T13:40:15.371Z",
+        "size": 157432
+      },
+      {
+        "id": "b334cb1b-a348-414a-bca3-2ce9e16412c6",
+        "name": "SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+        "type": "subject",
+        "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/b334cb1b-a348-414a-bca3-2ce9e16412c6.jpg",
+        "sourceUrl": "/uploads/d07d8697-d811-4202-841c-2fc85cb89270/subject_3_SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+        "addedAt": "2025-12-30T13:40:15.372Z",
+        "size": 191148
+      },
+      {
+        "id": "8a9a8581-26c3-47a2-8dd9-991c92438f53",
+        "name": "SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+        "type": "subject",
+        "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/8a9a8581-26c3-47a2-8dd9-991c92438f53.jpg",
+        "sourceUrl": "/uploads/d07d8697-d811-4202-841c-2fc85cb89270/subject_4_SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+        "addedAt": "2025-12-30T13:40:15.373Z",
+        "size": 187481
+      },
+      {
+        "id": "bf69babd-20c0-4a29-b8df-87fc6fc2b73e",
+        "name": "SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "type": "subject",
+        "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/bf69babd-20c0-4a29-b8df-87fc6fc2b73e.jpg",
+        "sourceUrl": "/uploads/d07d8697-d811-4202-841c-2fc85cb89270/subject_5_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "addedAt": "2025-12-30T13:40:15.374Z",
+        "size": 176088
+      },
+      {
+        "id": "4deca035-04cc-4a67-a47b-46874b4c59d4",
+        "name": "SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+        "type": "subject",
+        "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/4deca035-04cc-4a67-a47b-46874b4c59d4.jpg",
+        "sourceUrl": "/uploads/c38c0c30-455a-422b-9d98-1a11073be9ca/subject_0_SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+        "addedAt": "2025-12-30T13:40:15.376Z",
+        "size": 179493
+      },
+      {
+        "id": "9cb45b81-0bd1-41dc-90c8-19cf563653c1",
+        "name": "SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+        "type": "subject",
+        "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/9cb45b81-0bd1-41dc-90c8-19cf563653c1.jpg",
+        "sourceUrl": "/uploads/c38c0c30-455a-422b-9d98-1a11073be9ca/subject_1_SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+        "addedAt": "2025-12-30T13:40:15.377Z",
+        "size": 174217
+      },
+      {
+        "id": "e2c81c15-2279-4f22-a428-1d67058f3f2d",
+        "name": "SnapInsta.to_501771765_17959239635943917_287569964774662546_n.jpg",
+        "type": "subject",
+        "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/e2c81c15-2279-4f22-a428-1d67058f3f2d.jpg",
+        "sourceUrl": "/uploads/c38c0c30-455a-422b-9d98-1a11073be9ca/subject_2_SnapInsta.to_501771765_17959239635943917_287569964774662546_n.jpg",
+        "addedAt": "2025-12-30T13:40:15.378Z",
+        "size": 157432
+      },
+      {
+        "id": "de9ebd44-1a2f-4c75-86b4-ef8f40dd5e82",
+        "name": "SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+        "type": "subject",
+        "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/de9ebd44-1a2f-4c75-86b4-ef8f40dd5e82.jpg",
+        "sourceUrl": "/uploads/c38c0c30-455a-422b-9d98-1a11073be9ca/subject_3_SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+        "addedAt": "2025-12-30T13:40:15.379Z",
+        "size": 191148
+      },
+      {
+        "id": "e3e183c2-d5fb-4b8f-8ab0-20f77dd722d5",
+        "name": "SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+        "type": "subject",
+        "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/e3e183c2-d5fb-4b8f-8ab0-20f77dd722d5.jpg",
+        "sourceUrl": "/uploads/c38c0c30-455a-422b-9d98-1a11073be9ca/subject_4_SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+        "addedAt": "2025-12-30T13:40:15.380Z",
+        "size": 187481
+      },
+      {
+        "id": "b11d8b82-a2f6-408a-a093-448cabd090b6",
+        "name": "SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "type": "subject",
+        "url": "/project-subjects/a62d4df7-0068-442f-937f-f4561c0114f4/b11d8b82-a2f6-408a-a093-448cabd090b6.jpg",
+        "sourceUrl": "/uploads/c38c0c30-455a-422b-9d98-1a11073be9ca/subject_5_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "addedAt": "2025-12-30T13:40:15.381Z",
+        "size": 176088
+      },
+      {
+        "id": "2d5de4d0-c8bd-407c-a008-8e688f26078e",
+        "name": "SnapInsta.to_501771765_17959239635943917_287569964774662546_n.jpg",
+        "type": "subject",
+        "url": "/uploads/c0d6deae-850e-4b34-922b-e8dc283de872/subject_0_SnapInsta.to_501771765_17959239635943917_287569964774662546_n.jpg",
+        "sourceUrl": "/uploads/c0d6deae-850e-4b34-922b-e8dc283de872/subject_0_SnapInsta.to_501771765_17959239635943917_287569964774662546_n.jpg",
+        "addedAt": "2025-12-30T15:07:24.292Z",
+        "size": 157432
+      },
+      {
+        "id": "8e15157d-e7dc-4413-a842-54a3016d63e5",
+        "name": "SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "type": "subject",
+        "url": "/uploads/092bfc88-a439-4bd0-879e-e06d60d11245/subject_0_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "sourceUrl": "/uploads/092bfc88-a439-4bd0-879e-e06d60d11245/subject_0_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "addedAt": "2025-12-30T15:08:01.054Z",
+        "size": 176088
+      }
+    ]
+  },
+  {
+    "id": "82b64325-a2b9-4c70-8488-4cf052732295",
+    "name": "Prada Honey Metal",
+    "glassesFiles": [
+      {
+        "id": "346fb8ae-5b7c-41fd-93d1-73701d46fdc7",
+        "name": "cq5dam.web.hebebed.2400.2400 (1).avif",
+        "type": "glasses",
+        "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_2_cq5dam.web.hebebed.2400.2400 (1).avif",
+        "size": 12298,
+        "width": 0,
+        "height": 0
+      },
+      {
+        "id": "61188e4d-a9a7-4bb5-9f0e-4b6c1207f6e2",
+        "name": "cq5dam.web.hebebed.2400.2400.avif",
+        "type": "glasses",
+        "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_0_cq5dam.web.hebebed.2400.2400.avif",
+        "size": 11759,
+        "width": 0,
+        "height": 0
+      },
+      {
+        "id": "52054b6a-7f17-4dc2-954a-60e938841e7c",
+        "name": "cq5dam.web.hebebed.2400.2400 (2).avif",
+        "type": "glasses",
+        "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_1_cq5dam.web.hebebed.2400.2400 (2).avif",
+        "size": 22904,
+        "width": 0,
+        "height": 0
+      }
+    ],
+    "createdAt": "2025-12-30T02:13:53.034Z",
+    "updatedAt": "2025-12-30T15:05:54.374Z",
+    "sizingInfo": {
+      "brand": "Prada Honey Metal",
+      "sizeChartUrl": "",
+      "exact": {
+        "model": "Prada Honey Metal",
+        "frame": "54-20-145",
+        "lensWidth": "54",
+        "lensHeight": "N/A",
+        "bridge": "20",
+        "temple": "145",
+        "frameWidth": "N/A"
+      },
+      "sizes": {
+        "small": {
+          "lensWidth": "48-50mm",
+          "bridge": "16-18mm",
+          "temple": "135-140mm",
+          "faceWidth": "<130mm"
+        },
+        "medium": {
+          "lensWidth": "51-53mm",
+          "bridge": "17-19mm",
+          "temple": "140-145mm",
+          "faceWidth": "130-140mm"
+        },
+        "large": {
+          "lensWidth": "54-56mm",
+          "bridge": "18-20mm",
+          "temple": "145-150mm",
+          "faceWidth": ">140mm"
+        }
+      },
+      "fittingGuide": "Frame width should equal face width at temples, extending 5-10mm past widest point. Eyes must be centered in lens frames."
+    },
+    "results": [
+      {
+        "taskId": "4cc6a7b3-d260-471e-bb1f-16bef3b0d63d",
+        "jobId": "c63d567e-2329-438e-9f15-e9886aee8ec5",
+        "subjectFile": {
+          "id": "bcf040f9-7d65-4c51-a068-c851dfbbc940",
+          "name": "SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+          "type": "subject",
+          "url": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/subject_0_SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+          "size": 179493,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "346fb8ae-5b7c-41fd-93d1-73701d46fdc7",
+            "name": "cq5dam.web.hebebed.2400.2400 (1).avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_2_cq5dam.web.hebebed.2400.2400 (1).avif",
+            "size": 12298,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "61188e4d-a9a7-4bb5-9f0e-4b6c1207f6e2",
+            "name": "cq5dam.web.hebebed.2400.2400.avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_0_cq5dam.web.hebebed.2400.2400.avif",
+            "size": 11759,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "52054b6a-7f17-4dc2-954a-60e938841e7c",
+            "name": "cq5dam.web.hebebed.2400.2400 (2).avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_1_cq5dam.web.hebebed.2400.2400 (2).avif",
+            "size": 22904,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/result_4cc6a7b3-d260-471e-bb1f-16bef3b0d63d.jpg",
+        "editReport": {
+          "taskId": "4cc6a7b3-d260-471e-bb1f-16bef3b0d63d",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "4cc6a7b3-d260-471e-bb1f-16bef3b0d63d",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 650316,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.2123378401972763,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "completedAt": "2025-12-30T02:15:43.292Z"
+      },
+      {
+        "taskId": "11441b96-6a52-4cf7-86e4-11250a80002e",
+        "jobId": "c63d567e-2329-438e-9f15-e9886aee8ec5",
+        "subjectFile": {
+          "id": "94a14219-1eae-4580-805c-325407bdd73d",
+          "name": "SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+          "type": "subject",
+          "url": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/subject_1_SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+          "size": 174217,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "346fb8ae-5b7c-41fd-93d1-73701d46fdc7",
+            "name": "cq5dam.web.hebebed.2400.2400 (1).avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_2_cq5dam.web.hebebed.2400.2400 (1).avif",
+            "size": 12298,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "61188e4d-a9a7-4bb5-9f0e-4b6c1207f6e2",
+            "name": "cq5dam.web.hebebed.2400.2400.avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_0_cq5dam.web.hebebed.2400.2400.avif",
+            "size": 11759,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "52054b6a-7f17-4dc2-954a-60e938841e7c",
+            "name": "cq5dam.web.hebebed.2400.2400 (2).avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_1_cq5dam.web.hebebed.2400.2400 (2).avif",
+            "size": 22904,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/result_11441b96-6a52-4cf7-86e4-11250a80002e.jpg",
+        "editReport": {
+          "taskId": "11441b96-6a52-4cf7-86e4-11250a80002e",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "11441b96-6a52-4cf7-86e4-11250a80002e",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 909300,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.21525381549236008,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "completedAt": "2025-12-30T02:15:43.297Z"
+      },
+      {
+        "taskId": "3f17e9c2-7a16-4e61-8d6a-87b98749a2a0",
+        "jobId": "c63d567e-2329-438e-9f15-e9886aee8ec5",
+        "subjectFile": {
+          "id": "c1d5c8f2-6a22-4b4b-b570-94e3734f13f8",
+          "name": "SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+          "type": "subject",
+          "url": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/subject_4_SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+          "size": 187481,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "346fb8ae-5b7c-41fd-93d1-73701d46fdc7",
+            "name": "cq5dam.web.hebebed.2400.2400 (1).avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_2_cq5dam.web.hebebed.2400.2400 (1).avif",
+            "size": 12298,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "61188e4d-a9a7-4bb5-9f0e-4b6c1207f6e2",
+            "name": "cq5dam.web.hebebed.2400.2400.avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_0_cq5dam.web.hebebed.2400.2400.avif",
+            "size": 11759,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "52054b6a-7f17-4dc2-954a-60e938841e7c",
+            "name": "cq5dam.web.hebebed.2400.2400 (2).avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_1_cq5dam.web.hebebed.2400.2400 (2).avif",
+            "size": 22904,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/result_3f17e9c2-7a16-4e61-8d6a-87b98749a2a0.jpg",
+        "editReport": {
+          "taskId": "3f17e9c2-7a16-4e61-8d6a-87b98749a2a0",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "3f17e9c2-7a16-4e61-8d6a-87b98749a2a0",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 28276,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.16539705207212074,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "completedAt": "2025-12-30T02:15:43.315Z"
+      },
+      {
+        "taskId": "ba9c292b-5e2c-4229-bf9c-7aad03b28bff",
+        "jobId": "c63d567e-2329-438e-9f15-e9886aee8ec5",
+        "subjectFile": {
+          "id": "1c77b3bc-84bb-493a-90c2-1cc6d5da0c8f",
+          "name": "SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+          "type": "subject",
+          "url": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/subject_5_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+          "size": 176088,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "346fb8ae-5b7c-41fd-93d1-73701d46fdc7",
+            "name": "cq5dam.web.hebebed.2400.2400 (1).avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_2_cq5dam.web.hebebed.2400.2400 (1).avif",
+            "size": 12298,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "61188e4d-a9a7-4bb5-9f0e-4b6c1207f6e2",
+            "name": "cq5dam.web.hebebed.2400.2400.avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_0_cq5dam.web.hebebed.2400.2400.avif",
+            "size": 11759,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "52054b6a-7f17-4dc2-954a-60e938841e7c",
+            "name": "cq5dam.web.hebebed.2400.2400 (2).avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_1_cq5dam.web.hebebed.2400.2400 (2).avif",
+            "size": 22904,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/result_ba9c292b-5e2c-4229-bf9c-7aad03b28bff.jpg",
+        "editReport": {
+          "taskId": "ba9c292b-5e2c-4229-bf9c-7aad03b28bff",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "ba9c292b-5e2c-4229-bf9c-7aad03b28bff",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 877536,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.1376964009481444,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "completedAt": "2025-12-30T02:15:43.325Z"
+      },
+      {
+        "taskId": "5c1259e7-99f9-4c38-9d68-5d83d656addb",
+        "jobId": "7c563bad-081b-4fb5-b2aa-cc8e1e4fd72a",
+        "subjectFile": {
+          "id": "269add5b-b434-4922-b331-c14167f220b2",
+          "name": "SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+          "type": "subject",
+          "url": "/uploads/7c563bad-081b-4fb5-b2aa-cc8e1e4fd72a/subject_0_SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+          "size": 191148,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "346fb8ae-5b7c-41fd-93d1-73701d46fdc7",
+            "name": "cq5dam.web.hebebed.2400.2400 (1).avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_2_cq5dam.web.hebebed.2400.2400 (1).avif",
+            "size": 12298,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "61188e4d-a9a7-4bb5-9f0e-4b6c1207f6e2",
+            "name": "cq5dam.web.hebebed.2400.2400.avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_0_cq5dam.web.hebebed.2400.2400.avif",
+            "size": 11759,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "52054b6a-7f17-4dc2-954a-60e938841e7c",
+            "name": "cq5dam.web.hebebed.2400.2400 (2).avif",
+            "type": "glasses",
+            "url": "/uploads/projects/82b64325-a2b9-4c70-8488-4cf052732295/glasses_1_cq5dam.web.hebebed.2400.2400 (2).avif",
+            "size": 22904,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/7c563bad-081b-4fb5-b2aa-cc8e1e4fd72a/result_5c1259e7-99f9-4c38-9d68-5d83d656addb.jpg",
+        "editReport": {
+          "taskId": "5c1259e7-99f9-4c38-9d68-5d83d656addb",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "5c1259e7-99f9-4c38-9d68-5d83d656addb",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 969856,
+            "passes": 1,
+            "editRequest": "the frames sides arent accurate\n"
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.14569627873448557,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "params": {
+          "guidance": 0.6,
+          "refStrength": 0.85,
+          "lightingWeight": 0.7,
+          "reflectionWeight": 0.8,
+          "colorMatchWeight": 0.15,
+          "seed": 969856,
+          "passes": 1,
+          "editRequest": "the frames sides arent accurate\n"
+        },
+        "completedAt": "2025-12-30T15:03:53.792Z"
+      }
+    ],
+    "subjectPhotos": [
+      {
+        "id": "4cc6a7b3-d260-471e-bb1f-16bef3b0d63d",
+        "name": "SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+        "type": "subject",
+        "url": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/subject_0_SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+        "sourceUrl": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/subject_0_SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+        "addedAt": "2025-12-30T02:15:43.292Z",
+        "size": 179493
+      },
+      {
+        "id": "11441b96-6a52-4cf7-86e4-11250a80002e",
+        "name": "SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+        "type": "subject",
+        "url": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/subject_1_SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+        "sourceUrl": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/subject_1_SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+        "addedAt": "2025-12-30T02:15:43.297Z",
+        "size": 174217
+      },
+      {
+        "id": "3f17e9c2-7a16-4e61-8d6a-87b98749a2a0",
+        "name": "SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+        "type": "subject",
+        "url": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/subject_4_SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+        "sourceUrl": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/subject_4_SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+        "addedAt": "2025-12-30T02:15:43.315Z",
+        "size": 187481
+      },
+      {
+        "id": "ba9c292b-5e2c-4229-bf9c-7aad03b28bff",
+        "name": "SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "type": "subject",
+        "url": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/subject_5_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "sourceUrl": "/uploads/c63d567e-2329-438e-9f15-e9886aee8ec5/subject_5_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "addedAt": "2025-12-30T02:15:43.325Z",
+        "size": 176088
+      },
+      {
+        "id": "5c1259e7-99f9-4c38-9d68-5d83d656addb",
+        "name": "SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+        "type": "subject",
+        "url": "/uploads/7c563bad-081b-4fb5-b2aa-cc8e1e4fd72a/subject_0_SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+        "sourceUrl": "/uploads/7c563bad-081b-4fb5-b2aa-cc8e1e4fd72a/subject_0_SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+        "addedAt": "2025-12-30T15:03:53.792Z",
+        "size": 191148
+      }
+    ]
+  },
+  {
+    "id": "2e817d16-2b75-4222-8f9d-578c94312d84",
+    "name": "Carrera 1069/S",
+    "glassesFiles": [
+      {
+        "id": "8cd60d9a-e96b-4abf-8834-12794af581f9",
+        "name": "716736982946_P00_2e5cc48a-8d4e-453d-bcc6-7e9ad0051257.webp",
+        "type": "glasses",
+        "url": "/uploads/projects/2e817d16-2b75-4222-8f9d-578c94312d84/glasses_2_716736982946_P00_2e5cc48a-8d4e-453d-bcc6-7e9ad0051257.webp",
+        "size": 73918,
+        "width": 0,
+        "height": 0
+      },
+      {
+        "id": "6de35156-3ad9-4fe6-96af-03513ae99243",
+        "name": "716736982946_P02_8d960774-bdb2-4b75-9f12-e6fe80bd2fa2.webp",
+        "type": "glasses",
+        "url": "/uploads/projects/2e817d16-2b75-4222-8f9d-578c94312d84/glasses_0_716736982946_P02_8d960774-bdb2-4b75-9f12-e6fe80bd2fa2.webp",
+        "size": 71212,
+        "width": 0,
+        "height": 0
+      },
+      {
+        "id": "6030924d-84e2-40c6-91e6-473df688c737",
+        "name": "716736982946_P01_65b46a08-8789-44bb-87d6-d27c8ef30aa1.webp",
+        "type": "glasses",
+        "url": "/uploads/projects/2e817d16-2b75-4222-8f9d-578c94312d84/glasses_1_716736982946_P01_65b46a08-8789-44bb-87d6-d27c8ef30aa1.webp",
+        "size": 73422,
+        "width": 0,
+        "height": 0
+      }
+    ],
+    "createdAt": "2025-12-30T15:21:36.012Z",
+    "updatedAt": "2026-01-01T17:35:08.811Z",
+    "sizingInfo": {
+      "brand": "Carrera 1069/S",
+      "sizeChartUrl": "",
+      "exact": {
+        "model": "Carrera 1069/S",
+        "frame": "58-19-145",
+        "lensWidth": "58",
+        "lensHeight": "46",
+        "bridge": "19",
+        "temple": "145",
+        "frameWidth": "N/A"
+      },
+      "sizes": {
+        "small": {
+          "lensWidth": "48-50mm",
+          "bridge": "16-18mm",
+          "temple": "135-140mm",
+          "faceWidth": "<130mm"
+        },
+        "medium": {
+          "lensWidth": "51-53mm",
+          "bridge": "17-19mm",
+          "temple": "140-145mm",
+          "faceWidth": "130-140mm"
+        },
+        "large": {
+          "lensWidth": "54-56mm",
+          "bridge": "18-20mm",
+          "temple": "145-150mm",
+          "faceWidth": ">140mm"
+        }
+      },
+      "fittingGuide": "Frame width should equal face width at temples, extending 5-10mm past widest point. Eyes must be centered in lens frames."
+    },
+    "results": [],
+    "subjectPhotos": [
+      {
+        "id": "c318fb51-ba1b-4a46-9d97-ad3a0c126573",
+        "name": "SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+        "type": "subject",
+        "url": "/uploads/6761bb39-17d6-4387-96a4-3371db21cbbd/subject_0_SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+        "sourceUrl": "/uploads/6761bb39-17d6-4387-96a4-3371db21cbbd/subject_0_SnapInsta.to_502730113_17959239659943917_8586743988601789785_n.jpg",
+        "addedAt": "2025-12-30T15:23:37.490Z",
+        "size": 179493
+      },
+      {
+        "id": "412fdc9c-29f2-4b84-8563-b0a821991d8b",
+        "name": "SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+        "type": "subject",
+        "url": "/uploads/6761bb39-17d6-4387-96a4-3371db21cbbd/subject_1_SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+        "sourceUrl": "/uploads/6761bb39-17d6-4387-96a4-3371db21cbbd/subject_1_SnapInsta.to_501888221_17959239644943917_3491794573655015200_n.jpg",
+        "addedAt": "2025-12-30T15:23:37.496Z",
+        "size": 174217
+      },
+      {
+        "id": "b8e977e0-135b-4683-ac40-9c0e214f22e0",
+        "name": "SnapInsta.to_501771765_17959239635943917_287569964774662546_n.jpg",
+        "type": "subject",
+        "url": "/uploads/6761bb39-17d6-4387-96a4-3371db21cbbd/subject_2_SnapInsta.to_501771765_17959239635943917_287569964774662546_n.jpg",
+        "sourceUrl": "/uploads/6761bb39-17d6-4387-96a4-3371db21cbbd/subject_2_SnapInsta.to_501771765_17959239635943917_287569964774662546_n.jpg",
+        "addedAt": "2025-12-30T15:23:37.506Z",
+        "size": 157432
+      },
+      {
+        "id": "5442916a-47af-4742-bdba-8d33830a573e",
+        "name": "SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+        "type": "subject",
+        "url": "/uploads/6761bb39-17d6-4387-96a4-3371db21cbbd/subject_3_SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+        "sourceUrl": "/uploads/6761bb39-17d6-4387-96a4-3371db21cbbd/subject_3_SnapInsta.to_502217171_17959239626943917_1936394192877299698_n.jpg",
+        "addedAt": "2025-12-30T15:23:37.515Z",
+        "size": 191148
+      },
+      {
+        "id": "77d722c5-0316-4469-8a02-62596b68aeab",
+        "name": "SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+        "type": "subject",
+        "url": "/uploads/6761bb39-17d6-4387-96a4-3371db21cbbd/subject_4_SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+        "sourceUrl": "/uploads/6761bb39-17d6-4387-96a4-3371db21cbbd/subject_4_SnapInsta.to_501483713_17959239605943917_5270934600249621485_n.jpg",
+        "addedAt": "2025-12-30T15:23:37.522Z",
+        "size": 187481
+      },
+      {
+        "id": "0ba806c8-5199-4f44-b43f-72d180e9baf0",
+        "name": "SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "type": "subject",
+        "url": "/uploads/6761bb39-17d6-4387-96a4-3371db21cbbd/subject_5_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "sourceUrl": "/uploads/6761bb39-17d6-4387-96a4-3371db21cbbd/subject_5_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "addedAt": "2025-12-30T15:23:37.527Z",
+        "size": 176088
+      },
+      {
+        "id": "b0dcf84b-eeab-4502-ad4d-823fa2dcf20e",
+        "name": "SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "type": "subject",
+        "url": "/uploads/88ba97c6-3a6b-4280-8bd5-a71038e8f7b9/subject_0_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "sourceUrl": "/uploads/88ba97c6-3a6b-4280-8bd5-a71038e8f7b9/subject_0_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "addedAt": "2025-12-30T15:25:43.147Z",
+        "size": 176088
+      },
+      {
+        "id": "5e9e1167-b948-43a3-8f74-851e4d132538",
+        "name": "SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "type": "subject",
+        "url": "/uploads/76711d35-bfbe-45a2-8216-8cab3e18b2a7/subject_0_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "sourceUrl": "/uploads/76711d35-bfbe-45a2-8216-8cab3e18b2a7/subject_0_SnapInsta.to_501164083_17959239593943917_3742289706627119932_n.jpg",
+        "addedAt": "2025-12-30T15:26:24.193Z",
+        "size": 176088
+      }
+    ]
+  },
+  {
+    "id": "d9b31988-1ee8-473b-9486-160088cd8bdb",
+    "name": "Cinematic Edge 1990",
+    "glassesFiles": [
+      {
+        "id": "fb5761d6-4ae3-4ead-b583-acdde18599b9",
+        "name": "IMG_2109.jpg",
+        "type": "glasses",
+        "url": "/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_1_IMG_2109.jpg",
+        "size": 107911,
+        "width": 0,
+        "height": 0
+      },
+      {
+        "id": "b98aea4e-d926-4a4c-ad33-b7024b650d7f",
+        "name": "IMG_2110.jpg",
+        "type": "glasses",
+        "url": "/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_0_IMG_2110.jpg",
+        "size": 109953,
+        "width": 0,
+        "height": 0
+      },
+      {
+        "id": "8eff4534-d7e4-472c-9695-876535788855",
+        "name": "IMG_2111.jpg",
+        "type": "glasses",
+        "url": "/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_2_IMG_2111.jpg",
+        "size": 105223,
+        "width": 0,
+        "height": 0
+      }
+    ],
+    "createdAt": "2026-01-05T02:07:37.600Z",
+    "updatedAt": "2026-01-07T13:15:41.436Z",
+    "results": [
+      {
+        "taskId": "a8ec0795-baef-411e-8de9-fc25b44b682b",
+        "jobId": "763252d7-ec7a-4c49-a9ee-8b87403f1a20",
+        "subjectFile": {
+          "id": "9d7165d1-e99f-43e2-a5f9-a626c12d479d",
+          "name": "fcbef6b69f6ae56a0f187a03a85aef87.jpg",
+          "type": "subject",
+          "url": "/uploads/763252d7-ec7a-4c49-a9ee-8b87403f1a20/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg",
+          "size": 166492,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "fb5761d6-4ae3-4ead-b583-acdde18599b9",
+            "name": "IMG_2109.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_1_IMG_2109.jpg",
+            "size": 107911,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "b98aea4e-d926-4a4c-ad33-b7024b650d7f",
+            "name": "IMG_2110.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_0_IMG_2110.jpg",
+            "size": 109953,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "8eff4534-d7e4-472c-9695-876535788855",
+            "name": "IMG_2111.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_2_IMG_2111.jpg",
+            "size": 105223,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/763252d7-ec7a-4c49-a9ee-8b87403f1a20/result_a8ec0795-baef-411e-8de9-fc25b44b682b.jpg",
+        "editReport": {
+          "taskId": "a8ec0795-baef-411e-8de9-fc25b44b682b",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "a8ec0795-baef-411e-8de9-fc25b44b682b",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 672088,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.2951412567151529,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "completedAt": "2026-01-05T17:09:20.804Z"
+      },
+      {
+        "taskId": "9da83ac9-9457-4df9-8db3-6a057c0f49a9",
+        "jobId": "763252d7-ec7a-4c49-a9ee-8b87403f1a20",
+        "subjectFile": {
+          "id": "0a9f2596-2710-44eb-b2b8-65d56922e331",
+          "name": "cb1837cb2b5177c2ce5805665279d3fc.jpg",
+          "type": "subject",
+          "url": "/uploads/763252d7-ec7a-4c49-a9ee-8b87403f1a20/subject_1_cb1837cb2b5177c2ce5805665279d3fc.jpg",
+          "size": 38865,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "fb5761d6-4ae3-4ead-b583-acdde18599b9",
+            "name": "IMG_2109.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_1_IMG_2109.jpg",
+            "size": 107911,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "b98aea4e-d926-4a4c-ad33-b7024b650d7f",
+            "name": "IMG_2110.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_0_IMG_2110.jpg",
+            "size": 109953,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "8eff4534-d7e4-472c-9695-876535788855",
+            "name": "IMG_2111.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_2_IMG_2111.jpg",
+            "size": 105223,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/763252d7-ec7a-4c49-a9ee-8b87403f1a20/result_9da83ac9-9457-4df9-8db3-6a057c0f49a9.jpg",
+        "editReport": {
+          "taskId": "9da83ac9-9457-4df9-8db3-6a057c0f49a9",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "9da83ac9-9457-4df9-8db3-6a057c0f49a9",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 784046,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.2454226500975158,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "completedAt": "2026-01-05T17:09:20.808Z"
+      },
+      {
+        "taskId": "aad86dca-b59b-4395-9b56-f65cd7457ee3",
+        "jobId": "763252d7-ec7a-4c49-a9ee-8b87403f1a20",
+        "subjectFile": {
+          "id": "44b89248-41cd-45d9-8b1b-8bf9982475ef",
+          "name": "547649680e1afa32cb008ff8bf925da5.jpg",
+          "type": "subject",
+          "url": "/uploads/763252d7-ec7a-4c49-a9ee-8b87403f1a20/subject_2_547649680e1afa32cb008ff8bf925da5.jpg",
+          "size": 89285,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "fb5761d6-4ae3-4ead-b583-acdde18599b9",
+            "name": "IMG_2109.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_1_IMG_2109.jpg",
+            "size": 107911,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "b98aea4e-d926-4a4c-ad33-b7024b650d7f",
+            "name": "IMG_2110.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_0_IMG_2110.jpg",
+            "size": 109953,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "8eff4534-d7e4-472c-9695-876535788855",
+            "name": "IMG_2111.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/d9b31988-1ee8-473b-9486-160088cd8bdb/glasses_2_IMG_2111.jpg",
+            "size": 105223,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/763252d7-ec7a-4c49-a9ee-8b87403f1a20/result_aad86dca-b59b-4395-9b56-f65cd7457ee3.jpg",
+        "editReport": {
+          "taskId": "aad86dca-b59b-4395-9b56-f65cd7457ee3",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "gemini-2.5-flash-image",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "aad86dca-b59b-4395-9b56-f65cd7457ee3",
+              "w": 1024,
+              "h": 768
+            },
+            "glasses": [
+              "glasses_0",
+              "glasses_1",
+              "glasses_2"
+            ]
+          },
+          "generation": {
+            "guidance": 0.6,
+            "refStrength": 0.85,
+            "lightingWeight": 0.7,
+            "reflectionWeight": 0.8,
+            "colorMatchWeight": 0.15,
+            "seed": 803764,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0,
+            "faceDist": 0.19483354989157917,
+            "fit": "pass"
+          },
+          "notes": "Glasses successfully added using Gemini 2.5 Flash Image (Nano Banana)"
+        },
+        "completedAt": "2026-01-05T17:09:20.814Z"
+      }
+    ]
+  },
+  {
+    "id": "fc405d7d-4553-4d88-92c8-968f7597a229",
+    "name": "Ra Popp Daylight lens",
+    "glassesFiles": [
+      {
+        "id": "1803eeed-845d-46e8-bd1a-caeca7f2b1ef",
+        "name": "51MW03oVN+L._AC_UY1000_.jpg",
+        "type": "glasses",
+        "url": "/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_2_51MW03oVN+L._AC_UY1000_.jpg",
+        "size": 59639,
+        "width": 0,
+        "height": 0
+      },
+      {
+        "id": "a74df2f5-7d96-47fb-87fe-02c7283acfe1",
+        "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504.jpg",
+        "type": "glasses",
+        "url": "/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_0_popp-daylight-raoptics-blueblockers-visual-eyes-1160875504.jpg",
+        "size": 17381,
+        "width": 0,
+        "height": 0
+      },
+      {
+        "id": "97bd4cd6-e483-4e91-b0b9-cb464199ada2",
+        "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_1024x1024.webp",
+        "type": "glasses",
+        "url": "/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_1_popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_1024x1024.webp",
+        "size": 12218,
+        "width": 0,
+        "height": 0
+      }
+    ],
+    "createdAt": "2026-01-09T18:10:37.969Z",
+    "updatedAt": "2026-01-09T19:52:59.725Z",
+    "sizingInfo": {
+      "brand": "Ra Popp Daylight lens",
+      "sizeChartUrl": "",
+      "exact": {
+        "model": "popp daylight",
+        "frame": "51-16-146",
+        "lensWidth": "51",
+        "lensHeight": "36",
+        "bridge": "16",
+        "temple": "145",
+        "frameWidth": "118"
+      },
+      "sizes": {
+        "small": {
+          "lensWidth": "48-50mm",
+          "bridge": "16-18mm",
+          "temple": "135-140mm",
+          "faceWidth": "<130mm"
+        },
+        "medium": {
+          "lensWidth": "51-53mm",
+          "bridge": "17-19mm",
+          "temple": "140-145mm",
+          "faceWidth": "130-140mm"
+        },
+        "large": {
+          "lensWidth": "54-56mm",
+          "bridge": "18-20mm",
+          "temple": "145-150mm",
+          "faceWidth": ">140mm"
+        }
+      },
+      "fittingGuide": "Frame width should equal face width at temples, extending 5-10mm past widest point. Eyes must be centered in lens frames."
+    },
+    "results": [
+      {
+        "taskId": "b31abbb3-4b93-4520-b0a6-bbac5de53fbb",
+        "jobId": "d77087ec-68c4-430e-b247-e16f250097e4",
+        "subjectFile": {
+          "id": "13fa2cc0-bdde-4410-b666-d33a68b32bf0",
+          "name": "fcbef6b69f6ae56a0f187a03a85aef87.jpg",
+          "type": "subject",
+          "url": "/uploads/d77087ec-68c4-430e-b247-e16f250097e4/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg",
+          "size": 166492,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "1803eeed-845d-46e8-bd1a-caeca7f2b1ef",
+            "name": "51MW03oVN+L._AC_UY1000_.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_2_51MW03oVN+L._AC_UY1000_.jpg",
+            "size": 59639,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "a74df2f5-7d96-47fb-87fe-02c7283acfe1",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_0_popp-daylight-raoptics-blueblockers-visual-eyes-1160875504.jpg",
+            "size": 17381,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "97bd4cd6-e483-4e91-b0b9-cb464199ada2",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_1024x1024.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_1_popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_1024x1024.webp",
+            "size": 12218,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/d77087ec-68c4-430e-b247-e16f250097e4/result_b31abbb3-4b93-4520-b0a6-bbac5de53fbb.jpg",
+        "editReport": {
+          "taskId": "b31abbb3-4b93-4520-b0a6-bbac5de53fbb",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Canvas-first (preserves original 100%)",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "b31abbb3-4b93-4520-b0a6-bbac5de53fbb",
+              "w": 736,
+              "h": 1308
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767982262045,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.995,
+            "faceDist": 135,
+            "fit": "pass"
+          },
+          "notes": "Glasses added using Canvas-first (preserves original 100%) - original photo preserved 100%"
+        },
+        "completedAt": "2026-01-09T18:11:30.911Z"
+      },
+      {
+        "taskId": "e7f13bef-27aa-438b-98b3-6ca7bb3a7860",
+        "jobId": "342db001-4a24-4965-b4fe-1afa9a6090e5",
+        "subjectFile": {
+          "id": "c31aa0d9-d415-4f39-bed0-17c4bcda66aa",
+          "name": "fcbef6b69f6ae56a0f187a03a85aef87.jpg",
+          "type": "subject",
+          "url": "/uploads/342db001-4a24-4965-b4fe-1afa9a6090e5/subject_0_fcbef6b69f6ae56a0f187a03a85aef87.jpg",
+          "size": 166492,
+          "width": 0,
+          "height": 0,
+          "permanent": true
+        },
+        "glassesFiles": [
+          {
+            "id": "1803eeed-845d-46e8-bd1a-caeca7f2b1ef",
+            "name": "51MW03oVN+L._AC_UY1000_.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_2_51MW03oVN+L._AC_UY1000_.jpg",
+            "size": 59639,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "a74df2f5-7d96-47fb-87fe-02c7283acfe1",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875504.jpg",
+            "type": "glasses",
+            "url": "/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_0_popp-daylight-raoptics-blueblockers-visual-eyes-1160875504.jpg",
+            "size": 17381,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "id": "97bd4cd6-e483-4e91-b0b9-cb464199ada2",
+            "name": "popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_1024x1024.webp",
+            "type": "glasses",
+            "url": "/uploads/projects/fc405d7d-4553-4d88-92c8-968f7597a229/glasses_1_popp-daylight-raoptics-blueblockers-visual-eyes-1160875506_1024x1024.webp",
+            "size": 12218,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "imageUrl": "/uploads/342db001-4a24-4965-b4fe-1afa9a6090e5/result_e7f13bef-27aa-438b-98b3-6ca7bb3a7860.jpg",
+        "editReport": {
+          "taskId": "e7f13bef-27aa-438b-98b3-6ca7bb3a7860",
+          "version": {
+            "app": "1.0",
+            "promptPack": "v1.0",
+            "model": "Canvas-first (preserves original 100%)",
+            "providerApi": "1.0.0"
+          },
+          "inputs": {
+            "subject": {
+              "assetId": "e7f13bef-27aa-438b-98b3-6ca7bb3a7860",
+              "w": 736,
+              "h": 1308
+            },
+            "glasses": [
+              "glasses_0"
+            ]
+          },
+          "generation": {
+            "guidance": 0.7,
+            "refStrength": 0.8,
+            "lightingWeight": 0.5,
+            "reflectionWeight": 0.3,
+            "colorMatchWeight": 0.5,
+            "seed": 1767988365138,
+            "passes": 1
+          },
+          "quality": {
+            "ssim": 0.995,
+            "faceDist": 0,
+            "fit": "pass"
+          },
+          "notes": "Glasses added using Canvas-first (preserves original 100%) - original photo preserved 100%"
+        },
+        "completedAt": "2026-01-09T19:52:59.725Z"
+      }
+    ]
+  }
+]

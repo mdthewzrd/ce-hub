@@ -1,0 +1,16 @@
+{
+  "max_payload_size": "10MB",
+  "allowed_file_types": [
+    ".py",
+    ".txt",
+    ".json",
+    ".csv"
+  ],
+  "max_file_count": 10,
+  "scan_uploads": true,
+  "sanitize_inputs": true,
+  "validate_patterns": [
+    "^[a-zA-Z0-9_.-]+$",
+    "^[\\w\\-\\s,.\\(\\)\\[\\]]+$"
+  ]
+}

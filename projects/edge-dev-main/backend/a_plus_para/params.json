@@ -1,0 +1,156 @@
+{
+  "scanner_name": "APlusParaScanner",
+  "scanner_type": "a_plus_para",
+  "formatted_class_name": "UltraFastRenataAPlusParaScanner",
+  "description": "A+ Parabolic pattern scanner with multi-slope momentum detection",
+  "parameters": {
+    "atr_mult": {
+      "value": 4,
+      "type": "int",
+      "description": "True Range >= 4x ATR",
+      "category": "volatility"
+    },
+    "vol_mult": {
+      "value": 2.0,
+      "type": "float",
+      "description": "Volume >= 2x average (current and previous day)",
+      "category": "liquidity_filter"
+    },
+    "slope3d_min": {
+      "value": 10,
+      "type": "float",
+      "description": "3-day EMA9 slope >= 10%",
+      "category": "momentum"
+    },
+    "slope5d_min": {
+      "value": 20,
+      "type": "float",
+      "description": "5-day EMA9 slope >= 20%",
+      "category": "momentum"
+    },
+    "slope15d_min": {
+      "value": 50,
+      "type": "float",
+      "description": "15-day EMA9 slope >= 50%",
+      "category": "momentum"
+    },
+    "slope50d_min": {
+      "value": 60,
+      "type": "float",
+      "description": "50-day EMA9 slope >= 60% (optional long-trend filter)",
+      "category": "momentum"
+    },
+    "high_ema9_mult": {
+      "value": 4,
+      "type": "int",
+      "description": "High >= 4x ATR above EMA9",
+      "category": "position"
+    },
+    "high_ema20_mult": {
+      "value": 5,
+      "type": "int",
+      "description": "High >= 5x ATR above EMA20",
+      "category": "position"
+    },
+    "pct7d_low_div_atr_min": {
+      "value": 0.5,
+      "type": "float",
+      "description": "7-day low move >= 0.5 ATR",
+      "category": "position"
+    },
+    "pct14d_low_div_atr_min": {
+      "value": 1.5,
+      "type": "float",
+      "description": "14-day low move >= 1.5 ATR",
+      "category": "position"
+    },
+    "gap_div_atr_min": {
+      "value": 0.5,
+      "type": "float",
+      "description": "Gap >= 0.5 ATR",
+      "category": "gap"
+    },
+    "open_over_ema9_min": {
+      "value": 1.0,
+      "type": "float",
+      "description": "Open >= 1.0x EMA9",
+      "category": "position"
+    },
+    "atr_pct_change_min": {
+      "value": 5,
+      "type": "float",
+      "description": "ATR percent change >= 5%",
+      "category": "volatility_expansion"
+    },
+    "atr_abs_min": {
+      "value": 3.0,
+      "type": "float",
+      "description": "Absolute ATR >= $3 (excludes small caps)",
+      "category": "large_cap_filter"
+    },
+    "prev_close_min": {
+      "value": 10.0,
+      "type": "float",
+      "description": "Previous close >= $10",
+      "category": "liquidity_filter"
+    },
+    "prev_gain_pct_min": {
+      "value": 0.25,
+      "type": "float",
+      "description": "Previous day gain >= 0.25% (new trigger threshold)",
+      "category": "momentum"
+    },
+    "pct2d_div_atr_min": {
+      "value": 2,
+      "type": "float",
+      "description": "2-day move >= 2 ATR",
+      "category": "move"
+    },
+    "pct3d_div_atr_min": {
+      "value": 3,
+      "type": "float",
+      "description": "3-day move >= 3 ATR",
+      "category": "move"
+    }
+  },
+  "date_ranges": {
+    "d0_start": "2024-01-01",
+    "d0_end": "2025-12-26",
+    "scan_start": "2019-01-01",
+    "scan_end": "2025-12-26",
+    "description": "D0 is signal output range (2024-2025), scan_start is historical data for slope calculations (50+ days needed)"
+  },
+  "threading": {
+    "stage1_workers": "min(128, cpu_cores * 8)",
+    "stage2_workers": "min(96, cpu_cores * 6)",
+    "batch_size": 200
+  },
+  "api": {
+    "base_url": "https://api.polygon.io",
+    "snapshot_endpoint": "/v2/snapshot/locale/us/markets/stocks/tickers",
+    "api_key": "Fm7brz4s23eSocDErnL68cE7wspz2K1I"
+  },
+  "smart_filters": {
+    "description": "A+ Para specific 9-parameter smart filtering",
+    "filters": [
+      "prev_close_min: Previous close >= $10",
+      "vol_mult: Volume 2x+ average",
+      "atr_mult: Range 4x+ ATR",
+      "atr_abs_min: Absolute ATR >= $3 (excludes small caps)",
+      "slope3d_min: 3-day slope >= 10%",
+      "gap_div_atr_min: Gap >= 0.5 ATR",
+      "open_over_ema9_min: Open >= 1.0x EMA9",
+      "pct7d_low_div_atr_min: 7-day low move >= 0.5 ATR",
+      "prev_gain_pct_min: Previous day gain >= 0.25%"
+    ]
+  },
+  "notes": {
+    "pattern_type": "A+ Parabolic - Rare parabolic uptrend pattern",
+    "rarity": "Very rare - expect few results",
+    "key_indicators": "Multi-slope momentum (3d, 5d, 15d), gap-up, ATR expansion",
+    "price_filter": "$10+ minimum (higher than other scanners)",
+    "atr_filter": "ATR >= $3 (excludes small caps - large cap filter)",
+    "date_range": "2024-2025 (focused 2-year range)",
+    "volume_check": "Both current AND previous day must be 2x+ average"
+  }
+}

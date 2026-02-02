@@ -1,0 +1,60 @@
+AI Version Results (3 days)\nTime: 2.8s\nOutput:\nRunning AI-formatted scanner...
+🚀 Starting Backside B scan...
+📥 Fetching data for 1 trading days...
+📥 Stage 1 complete: 1 successful, 0 failed
+📊 Stage 1 complete: 10870 records fetched
+📈 Stage 2 complete: 5058 records after filtering
+🔍 Detecting patterns for 5058 unique tickers...
+🔍 Progress: 100/5058 tickers processed
+🔍 Progress: 200/5058 tickers processed
+🔍 Progress: 300/5058 tickers processed
+🔍 Progress: 400/5058 tickers processed
+🔍 Progress: 500/5058 tickers processed
+🔍 Progress: 600/5058 tickers processed
+🔍 Progress: 700/5058 tickers processed
+🔍 Progress: 800/5058 tickers processed
+🔍 Progress: 900/5058 tickers processed
+🔍 Progress: 1000/5058 tickers processed
+🔍 Progress: 1100/5058 tickers processed
+🔍 Progress: 1200/5058 tickers processed
+🔍 Progress: 1300/5058 tickers processed
+🔍 Progress: 1400/5058 tickers processed
+🔍 Progress: 1500/5058 tickers processed
+🔍 Progress: 1600/5058 tickers processed
+🔍 Progress: 1700/5058 tickers processed
+🔍 Progress: 1800/5058 tickers processed
+🔍 Progress: 1900/5058 tickers processed
+🔍 Progress: 2000/5058 tickers processed
+🔍 Progress: 2100/5058 tickers processed
+🔍 Progress: 2200/5058 tickers processed
+🔍 Progress: 2300/5058 tickers processed
+🔍 Progress: 2400/5058 tickers processed
+🔍 Progress: 2500/5058 tickers processed
+🔍 Progress: 2600/5058 tickers processed
+🔍 Progress: 2700/5058 tickers processed
+🔍 Progress: 2800/5058 tickers processed
+🔍 Progress: 2900/5058 tickers processed
+🔍 Progress: 3000/5058 tickers processed
+🔍 Progress: 3100/5058 tickers processed
+🔍 Progress: 3200/5058 tickers processed
+🔍 Progress: 3300/5058 tickers processed
+🔍 Progress: 3400/5058 tickers processed
+🔍 Progress: 3500/5058 tickers processed
+🔍 Progress: 3600/5058 tickers processed
+🔍 Progress: 3700/5058 tickers processed
+🔍 Progress: 3800/5058 tickers processed
+🔍 Progress: 3900/5058 tickers processed
+🔍 Progress: 4000/5058 tickers processed
+🔍 Progress: 4100/5058 tickers processed
+🔍 Progress: 4200/5058 tickers processed
+🔍 Progress: 4300/5058 tickers processed
+🔍 Progress: 4400/5058 tickers processed
+🔍 Progress: 4500/5058 tickers processed
+🔍 Progress: 4600/5058 tickers processed
+🔍 Progress: 4700/5058 tickers processed
+🔍 Progress: 4800/5058 tickers processed
+🔍 Progress: 4900/5058 tickers processed
+🔍 Progress: 5000/5058 tickers processed
+✅ Scan complete: Found 0 signals
+No signals found
+\n

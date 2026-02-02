@@ -1,0 +1,105 @@
+{
+  "timestamp": "2025-12-02T08:29:07.013350",
+  "tests": {
+    "service_health": {
+      "backend": {
+        "status": "healthy",
+        "response_code": 200,
+        "response_time": 0.0448
+      },
+      "archon": {
+        "status": "healthy",
+        "response_code": 200,
+        "response_time": 0.007706
+      },
+      "frontend": {
+        "status": "healthy",
+        "response_code": 200,
+        "response_time": 0.161224
+      }
+    },
+    "archon_integration": {
+      "knowledge_search": {
+        "status": "working",
+        "response_time": 0.012942,
+        "results_count": 1,
+        "success": true
+      },
+      "code_search": {
+        "status": "working",
+        "response_time": 0.004033,
+        "results_count": 2,
+        "success": true
+      }
+    },
+    "backend_ai_endpoints": {
+      "ai_status": {
+        "status": "working",
+        "connected": true,
+        "archon_healthy": true,
+        "project_id": "7816e33d-2c75-41ab-b232-c40e3ffc2c19"
+      },
+      "chat_endpoint": {
+        "status": "working",
+        "response_time": 0.026992,
+        "has_response": true,
+        "has_required_fields": true
+      }
+    },
+    "ai_chat_functionality": {
+      "general_trading": {
+        "status": "working",
+        "response_time": 0.02698,
+        "response_length": 117,
+        "has_meaningful_content": true,
+        "ai_confidence": 0.8,
+        "intent_detected": true
+      },
+      "trading_psychology": {
+        "status": "working",
+        "response_time": 0.063851,
+        "response_length": 157,
+        "has_meaningful_content": true,
+        "ai_confidence": 0.8,
+        "intent_detected": true
+      }
+    },
+    "ai_modes": {
+      "analyst": {
+        "status": "working",
+        "response_time": 0.029612,
+        "response_length": 117,
+        "mode_specific_content": true,
+        "confidence": 0.8,
+        "learning_applied": true
+      },
+      "coach": {
+        "status": "working",
+        "response_time": 0.033153,
+        "response_length": 157,
+        "mode_specific_content": true,
+        "confidence": 0.8,
+        "learning_applied": true
+      },
+      "mentor": {
+        "status": "working",
+        "response_time": 0.041676,
+        "response_length": 138,
+        "mode_specific_content": true,
+        "confidence": 0.8,
+        "learning_applied": true
+      }
+    },
+    "frontend_integration": {
+      "frontend_backend_connection": {
+        "status": "working",
+        "response_code": 200,
+        "cors_headers": true
+      }
+    }
+  },
+  "overall_status": "good",
+  "success_rate": 76.92307692307693,
+  "total_tests": 13,
+  "passed_tests": 10
+}

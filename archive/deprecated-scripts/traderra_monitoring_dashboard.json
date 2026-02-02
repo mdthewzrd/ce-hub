@@ -1,0 +1,80 @@
+{
+  "dashboard_config": {
+    "title": "Traderra State Management Monitoring",
+    "refresh_interval_ms": 5000,
+    "components": [
+      {
+        "type": "success_rate_gauge",
+        "title": "Overall Success Rate",
+        "current_value": 100.0,
+        "target": 100.0,
+        "warning_threshold": 98.0,
+        "critical_threshold": 95.0
+      },
+      {
+        "type": "response_time_chart",
+        "title": "State Change Response Times",
+        "time_window": "1h",
+        "metrics": [
+          "date_selector",
+          "display_mode",
+          "ai_mode",
+          "navigation"
+        ]
+      },
+      {
+        "type": "error_log",
+        "title": "Real-time Error Detection",
+        "max_entries": 100,
+        "auto_scroll": true
+      },
+      {
+        "type": "test_matrix",
+        "title": "Test Scenario Status Matrix",
+        "scenarios": [
+          "date_selector_all_ranges",
+          "display_mode_toggle_cycle",
+          "ai_mode_all_personalities",
+          "navigation_error_handling",
+          "multi_step_workflows"
+        ]
+      }
+    ]
+  },
+  "automated_testing": {
+    "enabled": true,
+    "interval_minutes": 15,
+    "test_sequences": [
+      {
+        "name": "complete_state_cycle",
+        "description": "Full cycle through all state changes",
+        "steps": [
+          {
+            "action": "navigate_to_dashboard",
+            "timeout": 3000
+          },
+          {
+            "action": "cycle_date_ranges",
+            "timeout": 5000
+          },
+          {
+            "action": "toggle_display_modes",
+            "timeout": 2000
+          },
+          {
+            "action": "cycle_ai_modes",
+            "timeout": 3000
+          },
+          {
+            "action": "test_navigation_errors",
+            "timeout": 5000
+          },
+          {
+            "action": "validate_state_persistence",
+            "timeout": 2000
+          }
+        ]
+      }
+    ]
+  }
+}

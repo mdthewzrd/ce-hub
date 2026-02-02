@@ -1,0 +1,132 @@
+{
+  "scanner_name": "ExtendedGapScanner",
+  "scanner_type": "extended_gap",
+  "formatted_class_name": "UltraFastRenataExtendedGapScanner",
+  "description": "Extended Gap scanner with multi-period range expansion analysis",
+  "parameters": {
+    "day_minus_1_vol_min": {
+      "value": 20000000,
+      "type": "int",
+      "description": "Day -1 Volume >= 20M shares",
+      "category": "liquidity_filter"
+    },
+    "breakout_extension_min": {
+      "value": 1.0,
+      "type": "float",
+      "description": "14-Day Breakout Extension >= 1 ATR",
+      "category": "breakout"
+    },
+    "d1_high_to_ema10_div_atr_min": {
+      "value": 1.0,
+      "type": "float",
+      "description": "Day -1 High to 10 EMA / ATR >= 1",
+      "category": "ema_positioning"
+    },
+    "d1_high_to_ema30_div_atr_min": {
+      "value": 1.0,
+      "type": "float",
+      "description": "Day -1 High to 30 EMA / ATR >= 1",
+      "category": "ema_positioning"
+    },
+    "d1_low_to_pmh_vs_atr_min": {
+      "value": 1.0,
+      "type": "float",
+      "description": "Day -1 Low to Day 0 PMH vs ATR >= 1",
+      "category": "pre_market"
+    },
+    "d1_low_to_pmh_vs_ema_min": {
+      "value": 1.0,
+      "type": "float",
+      "description": "Day -1 Low to Day 0 PMH vs D-1 EMA >= 1",
+      "category": "pre_market"
+    },
+    "pmh_pct_min": {
+      "value": 5.0,
+      "type": "float",
+      "description": "Day 0 PMH % >= 5%",
+      "category": "pre_market"
+    },
+    "d1_change_pct_min": {
+      "value": 2.0,
+      "type": "float",
+      "description": "Day -1 Change % >= 2%",
+      "category": "momentum"
+    },
+    "d0_open_above_d1_high": {
+      "value": true,
+      "type": "bool",
+      "description": "Day 0 Open >= Day -1 High",
+      "category": "gap_up"
+    },
+    "range_d1h_d2l_min": {
+      "value": 1.5,
+      "type": "float",
+      "description": "Range D-1 High/D-2 Low >= 1.5 ATR",
+      "category": "range_expansion"
+    },
+    "range_d1h_d3l_min": {
+      "value": 3.0,
+      "type": "float",
+      "description": "Range D-1 High/D-3 Low >= 3 ATR",
+      "category": "range_expansion"
+    },
+    "range_d1h_d8l_min": {
+      "value": 5.0,
+      "type": "float",
+      "description": "Range D-1 High/D-8 Low >= 5 ATR",
+      "category": "range_expansion"
+    },
+    "range_d1h_d15l_min": {
+      "value": 6.0,
+      "type": "float",
+      "description": "Range D-1 High/D-15 Low >= 6 ATR",
+      "category": "range_expansion"
+    },
+    "d0_open_above_x_atr_min": {
+      "value": 1.0,
+      "type": "float",
+      "description": "Day 0 Open >= 1 ATR above D-2 to D-14 High",
+      "category": "gap_up"
+    }
+  },
+  "date_ranges": {
+    "d0_start": "2024-01-01",
+    "d0_end": "2025-12-26",
+    "scan_start": "2023-01-01",
+    "scan_end": "2025-12-26",
+    "description": "D0 is signal output range (2024-2025), scan_start is historical data for EMA30 calculations (30+ days needed)"
+  },
+  "threading": {
+    "stage1_workers": "min(128, cpu_cores * 8)",
+    "stage2_workers": "min(96, cpu_cores * 6)",
+    "batch_size": 200
+  },
+  "api": {
+    "base_url": "https://api.polygon.io",
+    "snapshot_endpoint": "/v2/snapshot/locale/us/markets/stocks/tickers",
+    "api_key": "Fm7brz4s23eSocDErnL68cE7wspz2K1I"
+  },
+  "smart_filters": {
+    "description": "Extended Gap specific 8-parameter smart filtering",
+    "filters": [
+      "day_minus_1_vol_min: Day -1 Volume >= 20M",
+      "breakout_extension_min: 14-Day Breakout Extension >= 1 ATR",
+      "pmh_pct_min: Day 0 PMH % >= 5%",
+      "d1_change_pct_min: Day -1 Change % >= 2%",
+      "range_d1h_d2l_min: Range D-1 High/D-2 Low >= 1.5 ATR",
+      "d1_high_to_ema10_div_atr_min: Day -1 High to 10 EMA / ATR >= 1",
+      "d1_high_to_ema30_div_atr_min: Day -1 High to 30 EMA / ATR >= 1",
+      "range_d1h_d3l_min: Range D-1 High/D-3 Low >= 3 ATR"
+    ]
+  },
+  "notes": {
+    "pattern_type": "Extended Gap - Multi-period range expansion pattern",
+    "rarity": "Rare - complex 16-parameter pattern",
+    "key_indicators": "14-day breakout, EMA10/EMA30 positioning, pre-market high, multiple range expansion ratios",
+    "atr_period": "14-day ATR (vs 30-day in other scanners)",
+    "pmh_estimation": "PMH estimated as 7.5% above Day 0 High",
+    "range_expansion": "Checks 2, 3, 8, and 15-day lookback periods",
+    "volume_check": "Day -1 volume only (20M minimum)",
+    "date_range": "2024-2025 (focused 2-year range)"
+  }
+}

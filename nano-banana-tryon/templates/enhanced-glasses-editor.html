@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nano Banana Enhanced - Extreme Precision Glasses Editor</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Inter', -apple-system, sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .upload-zone {
+            border: 3px dashed #cbd5e1;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-zone:hover {
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .upload-zone.dragover {
+            border-color: #4f46e5;
+            background: rgba(79, 70, 229, 0.2);
+            transform: scale(1.02);
+        }
+
+        .upload-zone.paste-active {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            border-style: solid;
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #6366f1;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .style-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .style-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .style-card.selected {
+            border-color: #6366f1;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+        }
+
+        .precision-indicator {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .tab-button {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #6366f1;
+        }
+
+        .clipboard-paste-hint {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .success-animation {
+            animation: successPulse 0.6s ease;
+        }
+
+        @keyframes successPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .gradient-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+        }
+
+        .gradient-button:hover {
+            background: linear-gradient(135deg, #5a6fd8, #6a4190);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .nano-banner {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen p-4">
+        <!-- Nano Banana Banner -->
+        <div class="nano-banner rounded-xl p-4 mb-6 text-center">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">
+                <span class="text-5xl">🍌</span>
+                Nano Banana Enhanced
+            </h1>
+            <p class="text-xl text-gray-600 mb-2">
+                <span class="precision-indicator">
+                    <i class="fas fa-crosshairs mr-1"></i>
+                    100% Precision Mode
+                </span>
+            </p>
+            <p class="text-lg text-gray-600">Extreme accuracy glasses placement with custom image support</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+            <!-- Mode Selection Tabs -->
+            <div class="glass-card rounded-2xl p-6 mb-6">
+                <div class="flex justify-center mb-6">
+                    <div class="bg-gray-100 rounded-lg p-1 flex">
+                        <button id="quickModeTab" class="tab-button active px-6 py-3 rounded-lg font-semibold">
+                            <i class="fas fa-bolt mr-2"></i>Quick Mode
+                        </button>
+                        <button id="customModeTab" class="tab-button px-6 py-3 rounded-lg font-semibold">
+                            <i class="fas fa-upload mr-2"></i>Custom Glasses Mode
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Mode -->
+                <div id="quickMode">
+                    <div class="text-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">
+                            <i class="fas fa-magic mr-3 text-purple-600"></i>
+                            Quick Glasses Enhancement
+                        </h2>
+                        <p class="text-gray-600">Upload a photo and select from professional glasses styles</p>
+                    </div>
+
+                    <div id="quickUploadZone" class="upload-zone rounded-xl p-12 text-center cursor-pointer mb-6">
+                        <i class="fas fa-cloud-upload-alt text-7xl text-purple-400 mb-6"></i>
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-3">Upload Your Photo</h3>
+                        <p class="text-lg text-gray-500 mb-6">
+                            Drag & drop or click to browse<br>
+                            <span class="text-sm text-purple-600 font-semibold">
+                                <i class="fas fa-paste mr-1"></i>
+                                Or paste screenshot (Ctrl+V / Cmd+V)
+                            </span>
+                        </p>
+                        <button class="gradient-button text-white px-8 py-4 rounded-xl text-lg font-semibold">
+                            <i class="fas fa-folder-open mr-3"></i>Choose Photo
+                        </button>
+                        <input type="file" id="quickFileInput" accept="image/*" class="hidden">
+                    </div>
+
+                    <!-- Style Selection -->
+                    <div id="quickStyleSection" style="display: none;">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Choose Glasses Style</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="quickStylesContainer">
+                            <!-- Styles will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Mode -->
+                <div id="customMode" style="display: none;">
+                    <div class="text-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">
+                            <i class="fas fa-sliders-h mr-3 text-purple-600"></i>
+                            Custom Glasses Enhancement
+                        </h2>
+                        <p class="text-gray-600">Upload your photo + custom glasses image for perfect matching</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <!-- User Photo Upload -->
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-800 mb-3">
+                                <i class="fas fa-user mr-2"></i>Your Photo
+                            </h3>
+                            <div id="userPhotoZone" class="upload-zone rounded-xl p-8 text-center cursor-pointer">
+                                <i class="fas fa-user-circle text-5xl text-blue-400 mb-4"></i>
+                                <p class="text-lg font-semibold text-gray-700 mb-2">Upload Your Photo</p>
+                                <p class="text-sm text-gray-500 mb-4">Drag & drop, click, or paste (Ctrl+V)</p>
+                                <input type="file" id="userFileInput" accept="image/*" class="hidden">
+                                <img id="userPhotoPreview" class="image-preview mx-auto" style="display: none;">
+                            </div>
+                        </div>
+
+                        <!-- Glasses Upload -->
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-800 mb-3">
+                                <i class="fas fa-glasses mr-2"></i>Glasses Reference
+                            </h3>
+                            <div id="glassesZone" class="upload-zone rounded-xl p-8 text-center cursor-pointer">
+                                <i class="fas fa-glasses text-5xl text-purple-400 mb-4"></i>
+                                <p class="text-lg font-semibold text-gray-700 mb-2">Upload Glasses Image</p>
+                                <p class="text-sm text-gray-500 mb-4">Optional - for custom style matching</p>
+                                <input type="file" id="glassesFileInput" accept="image/*" class="hidden">
+                                <img id="glassesPreview" class="image-preview mx-auto" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Prompt -->
+                    <div class="mb-6" id="customPromptSection" style="display: none;">
+                        <h3 class="text-lg font-bold text-gray-800 mb-3">
+                            <i class="fas fa-edit mr-2"></i>Specific Requirements (Optional)
+                        </h3>
+                        <textarea id="customPrompt" class="w-full p-4 border border-gray-300 rounded-lg"
+                                  rows="3" placeholder="e.g., Make the glasses slightly smaller, adjust frame color to gold, etc."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Processing Section -->
+            <div class="glass-card rounded-2xl p-8 mb-6" id="processingSection" style="display: none;">
+                <div class="text-center">
+                    <div class="bg-purple-100 rounded-full p-6 inline-block mb-6">
+                        <i class="fas fa-cogs text-purple-600 text-4xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Nano Banana Processing...</h2>
+                    <p class="text-xl text-gray-600 mb-2">Applying extreme precision prompting</p>
+                    <p class="text-lg text-gray-500 mb-6">Maintaining 100% accuracy while adding glasses</p>
+                    <div class="loading-spinner mx-auto mb-4"></div>
+                    <div class="grid grid-cols-3 gap-4 max-w-md mx-auto text-sm text-gray-600">
+                        <div class="text-center">
+                            <i class="fas fa-shield-alt text-green-500 text-xl mb-1"></i>
+                            <p>100% Quality</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-crosshairs text-blue-500 text-xl mb-1"></i>
+                            <p>Perfect Position</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-palette text-purple-500 text-xl mb-1"></i>
+                            <p>Natural Blend</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="grid md:grid-cols-2 gap-6" id="resultsSection" style="display: none;">
+                <!-- Original Image -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-100 rounded-full p-2 mr-3">
+                            <i class="fas fa-image text-gray-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Original Photo</h3>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 min-h-[300px] flex items-center justify-center">
+                        <img id="originalImage" class="image-preview" alt="Original">
+                    </div>
+                </div>
+
+                <!-- Enhanced Image -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 rounded-full p-2 mr-3">
+                            <i class="fas fa-star text-green-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Nano Banana Enhanced</h3>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 min-h-[300px] flex items-center justify-center">
+                        <img id="enhancedImage" class="image-preview" alt="Enhanced" style="display: none;">
+                        <div id="enhancedPlaceholder" class="text-center">
+                            <i class="fas fa-sparkles text-6xl text-purple-300 mb-4"></i>
+                            <p class="text-gray-500">Enhanced image loading...</p>
+                        </div>
+                    </div>
+
+                    <!-- Download Button -->
+                    <div class="mt-6" id="downloadSection" style="display: none;">
+                        <button id="downloadBtn" class="w-full gradient-button text-white py-4 rounded-xl text-lg font-semibold">
+                            <i class="fas fa-download mr-3"></i>Download Enhanced Image
+                        </button>
+                    </div>
+
+                    <!-- Edit Request Button -->
+                    <div class="mt-4" id="editSection" style="display: none;">
+                        <button id="editBtn" class="w-full bg-gray-600 hover:bg-gray-700 text-white py-3 rounded-xl font-semibold transition">
+                            <i class="fas fa-edit mr-2"></i>Request Fine-Tuning
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="grid md:grid-cols-4 gap-4 mt-8">
+                <div class="glass-card rounded-xl p-6 text-center">
+                    <i class="fas fa-shield-alt text-4xl text-purple-600 mb-3"></i>
+                    <h4 class="font-bold text-lg mb-2">100% Accuracy</h4>
+                    <p class="text-sm text-gray-600">Perfect preservation of original photo</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 text-center">
+                    <i class="fas fa-upload text-4xl text-purple-600 mb-3"></i>
+                    <h4 class="font-bold text-lg mb-2">Custom Glasses</h4>
+                    <p class="text-sm text-gray-600">Upload any glasses reference image</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 text-center">
+                    <i class="fas fa-paste text-4xl text-purple-600 mb-3"></i>
+                    <h4 class="font-bold text-lg mb-2">Screenshot Paste</h4>
+                    <p class="text-sm text-gray-600">Ctrl+V / Cmd+V for quick uploads</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 text-center">
+                    <i class="fas fa-magic text-4xl text-purple-600 mb-3"></i>
+                    <h4 class="font-bold text-lg mb-2">Nano Banana AI</h4>
+                    <p class="text-sm text-gray-600">Extreme precision prompting</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="glass-card rounded-xl p-6 max-w-md mx-4">
+            <h3 class="text-xl font-bold mb-4">
+                <i class="fas fa-edit mr-2"></i>Request Fine-Tuning
+            </h3>
+            <p class="text-gray-600 mb-4">What would you like Nano Banana to adjust?</p>
+            <textarea id="editRequest" class="w-full p-3 border border-gray-300 rounded-lg"
+                      rows="4" placeholder="e.g., Make glasses slightly smaller, adjust color, etc."></textarea>
+            <div class="flex gap-3 mt-4">
+                <button id="submitEditBtn" class="flex-1 gradient-button text-white py-2 rounded-lg">
+                    Submit Request
+                </button>
+                <button id="cancelEditBtn" class="flex-1 bg-gray-200 hover:bg-gray-300 py-2 rounded-lg">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentMode = 'quick';
+        let selectedStyle = 'professional';
+        let userPhotoFile = null;
+        let glassesFile = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEventListeners();
+            loadGlassesStyles();
+        });
+
+        function setupEventListeners() {
+            // Tab switching
+            document.getElementById('quickModeTab').addEventListener('click', () => switchMode('quick'));
+            document.getElementById('customModeTab').addEventListener('click', () => switchMode('custom'));
+
+            // Quick mode
+            const quickUploadZone = document.getElementById('quickUploadZone');
+            const quickFileInput = document.getElementById('quickFileInput');
+
+            quickUploadZone.addEventListener('click', () => quickFileInput.click());
+            quickFileInput.addEventListener('change', (e) => handleQuickFileSelect(e.target.files[0]));
+            setupDropZone(quickUploadZone, handleQuickFileSelect);
+
+            // Custom mode
+            const userPhotoZone = document.getElementById('userPhotoZone');
+            const glassesZone = document.getElementById('glassesZone');
+            const userFileInput = document.getElementById('userFileInput');
+            const glassesFileInput = document.getElementById('glassesFileInput');
+
+            userPhotoZone.addEventListener('click', () => userFileInput.click());
+            glassesZone.addEventListener('click', () => glassesFileInput.click());
+
+            userFileInput.addEventListener('change', (e) => handleUserPhotoSelect(e.target.files[0]));
+            glassesFileInput.addEventListener('change', (e) => handleGlassesSelect(e.target.files[0]));
+
+            setupDropZone(userPhotoZone, handleUserPhotoSelect);
+            setupDropZone(glassesZone, handleGlassesSelect);
+
+            // Paste support
+            document.addEventListener('paste', handlePaste);
+
+            // Edit modal
+            document.getElementById('editBtn').addEventListener('click', () => {
+                document.getElementById('editModal').style.display = 'flex';
+            });
+
+            document.getElementById('cancelEditBtn').addEventListener('click', () => {
+                document.getElementById('editModal').style.display = 'none';
+            });
+
+            document.getElementById('submitEditBtn').addEventListener('click', submitEditRequest);
+        }
+
+        function switchMode(mode) {
+            currentMode = mode;
+
+            // Update tabs
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            if (mode === 'quick') {
+                document.getElementById('quickModeTab').classList.add('active');
+                document.getElementById('quickMode').style.display = 'block';
+                document.getElementById('customMode').style.display = 'none';
+            } else {
+                document.getElementById('customModeTab').classList.add('active');
+                document.getElementById('quickMode').style.display = 'none';
+                document.getElementById('customMode').style.display = 'block';
+            }
+        }
+
+        function setupDropZone(zone, handler) {
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                zone.classList.add('dragover');
+            });
+
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('dragover');
+            });
+
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    handler(files[0]);
+                }
+            });
+        }
+
+        function handlePaste(e) {
+            const items = e.clipboardData.items;
+            for (let item of items) {
+                if (item.type.indexOf('image') !== -1) {
+                    const blob = item.getAsFile();
+
+                    // Determine which upload zone is active
+                    if (currentMode === 'quick') {
+                        handleQuickFileSelect(blob);
+                    } else {
+                        // For custom mode, we need to determine which zone to use
+                        // For now, let's assume user photo
+                        handleUserPhotoSelect(blob);
+                    }
+                    break;
+                }
+            }
+        }
+
+        // Quick mode handlers
+        function handleQuickFileSelect(file) {
+            if (!file || !file.type.startsWith('image/')) {
+                alert('Please select a valid image file');
+                return;
+            }
+
+            userPhotoFile = file;
+            showOriginalPreview(file);
+            document.getElementById('quickStyleSection').style.display = 'block';
+        }
+
+        // Custom mode handlers
+        function handleUserPhotoSelect(file) {
+            if (!file || !file.type.startsWith('image/')) {
+                alert('Please select a valid image file');
+                return;
+            }
+
+            userPhotoFile = file;
+            const preview = document.getElementById('userPhotoPreview');
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = 'block';
+
+            // Hide upload icon
+            const zone = document.getElementById('userPhotoZone');
+            zone.querySelector('i').style.display = 'none';
+            zone.querySelector('p').style.display = 'none';
+
+            showOriginalPreview(file);
+            checkCustomReady();
+        }
+
+        function handleGlassesSelect(file) {
+            if (!file || !file.type.startsWith('image/')) {
+                alert('Please select a valid image file');
+                return;
+            }
+
+            glassesFile = file;
+            const preview = document.getElementById('glassesPreview');
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = 'block';
+
+            // Hide upload icon
+            const zone = document.getElementById('glassesZone');
+            zone.querySelector('i').style.display = 'none';
+            zone.querySelector('p').style.display = 'none';
+
+            checkCustomReady();
+        }
+
+        function checkCustomReady() {
+            if (userPhotoFile) {
+                document.getElementById('customPromptSection').style.display = 'block';
+                document.getElementById('resultsSection').style.display = 'block';
+                // Auto-process after 1 second
+                setTimeout(processCustomGlasses, 1000);
+            }
+        }
+
+        function showOriginalPreview(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.getElementById('originalImage').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Style selection
+        function loadGlassesStyles() {
+            const styles = [
+                { id: "aviator", name: "Aviator", icon: "✈️" },
+                { id: "wayfarer", name: "Wayfarer", icon: "🕶️" },
+                { id: "cat_eye", name: "Cat Eye", icon: "😺" },
+                { id: "round", name: "Round", icon: "⭕" },
+                { id: "professional", name: "Professional", icon: "💼" },
+                { id: "sport", name: "Sport", icon: "🏃" },
+                { id: "vintage", name: "Vintage", icon: "📻" },
+                { id: "minimalist", name: "Minimalist", icon: "➖" }
+            ];
+
+            const container = document.getElementById('quickStylesContainer');
+            container.innerHTML = '';
+
+            styles.forEach((style, index) => {
+                const card = document.createElement('div');
+                card.className = 'style-card glass-card rounded-lg p-4 text-center cursor-pointer';
+                card.innerHTML = `
+                    <div class="text-3xl mb-2">${style.icon}</div>
+                    <div class="font-bold text-sm mb-1">${style.name}</div>
+                `;
+                card.onclick = () => selectQuickStyle(style.id, card);
+
+                if (index === 0) {
+                    selectQuickStyle(style.id, card);
+                }
+
+                container.appendChild(card);
+            });
+        }
+
+        function selectQuickStyle(styleId, card) {
+            selectedStyle = styleId;
+
+            document.querySelectorAll('.style-card').forEach(c => {
+                c.classList.remove('selected');
+            });
+            card.classList.add('selected');
+
+            if (userPhotoFile) {
+                setTimeout(processQuickGlasses, 500);
+            }
+        }
+
+        // Processing functions
+        async function processQuickGlasses() {
+            if (!userPhotoFile) return;
+
+            showProcessing();
+
+            const formData = new FormData();
+            formData.append('user_photo', userPhotoFile);
+            formData.append('style', selectedStyle);
+
+            try {
+                const response = await fetch('/api/enhanced-glasses', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                handleProcessingResponse(data);
+            } catch (error) {
+                alert('Processing failed: ' + error.message);
+                hideProcessing();
+            }
+        }
+
+        async function processCustomGlasses() {
+            if (!userPhotoFile) return;
+
+            showProcessing();
+
+            const formData = new FormData();
+            formData.append('user_photo', userPhotoFile);
+
+            if (glassesFile) {
+                formData.append('glasses_image', glassesFile);
+            }
+
+            const customPrompt = document.getElementById('customPrompt').value;
+            if (customPrompt) {
+                formData.append('custom_prompt', customPrompt);
+            }
+
+            try {
+                const response = await fetch('/api/enhance-glasses', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                handleProcessingResponse(data);
+            } catch (error) {
+                alert('Processing failed: ' + error.message);
+                hideProcessing();
+            }
+        }
+
+        function handleProcessingResponse(data) {
+            if (data.success) {
+                const enhancedImg = document.getElementById('enhancedImage');
+                enhancedImg.src = `/api/get-enhanced/${data.image_path}`;
+                enhancedImg.style.display = 'block';
+                document.getElementById('enhancedPlaceholder').style.display = 'none';
+
+                document.getElementById('downloadSection').style.display = 'block';
+                document.getElementById('editSection').style.display = 'block';
+
+                document.getElementById('downloadBtn').onclick = () => {
+                    window.open(enhancedImg.src, '_blank');
+                };
+
+                hideProcessing();
+                document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+
+                // Add success animation
+                enhancedImg.parentElement.classList.add('success-animation');
+            } else {
+                alert('Processing failed: ' + data.error);
+                hideProcessing();
+            }
+        }
+
+        async function submitEditRequest() {
+            const editRequest = document.getElementById('editRequest').value;
+            if (!editRequest.trim()) {
+                alert('Please enter your edit request');
+                return;
+            }
+
+            document.getElementById('editModal').style.display = 'none';
+
+            // Process with edit request
+            if (currentMode === 'quick') {
+                // Add edit request to custom prompt
+                const customPrompt = `Fine-tuning request: ${editRequest}`;
+                document.getElementById('customPrompt').value = customPrompt;
+                switchMode('custom');
+                await processCustomGlasses();
+            } else {
+                document.getElementById('customPrompt').value = editRequest;
+                await processCustomGlasses();
+            }
+        }
+
+        function showProcessing() {
+            document.getElementById('processingSection').style.display = 'block';
+            document.getElementById('enhancedImage').style.display = 'none';
+            document.getElementById('enhancedPlaceholder').style.display = 'block';
+            document.getElementById('downloadSection').style.display = 'none';
+            document.getElementById('editSection').style.display = 'none';
+        }
+
+        function hideProcessing() {
+            document.getElementById('processingSection').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
