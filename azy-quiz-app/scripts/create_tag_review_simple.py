@@ -1146,6 +1146,10 @@ def create_html(products, tags):
                 f.write(f"        productImages['{handle}'] = {json.dumps(images)};\n")
 
         f.write("""
+        // DEBUG: Log when script starts
+        console.log('🟢 Script loaded, document.readyState:', document.readyState);
+        console.log('🟢 productTags entries:', Object.keys(productTags).length);
+
         // Image navigation function
         function navigateImage(event, handle, direction) {
             event.stopPropagation();
@@ -1183,19 +1187,30 @@ def create_html(products, tags):
 
         // Initialize selected state - runs immediately if DOM is ready, or waits for DOMContentLoaded
         function initializeSelectedState() {
+            console.log('🟢 initializeSelectedState() called, tags to initialize:', Object.keys(productTags).length);
             Object.keys(productTags).forEach(handle => {
                 const tags = productTags[handle];
 
                 // Frame style (single)
                 if (tags.style) {
                     const btn = document.querySelector(`[data-handle="${handle}"] .option-btn.style[data-value="${tags.style}"]`);
-                    if (btn) btn.classList.add('selected');
+                    if (btn) {
+                        btn.classList.add('selected');
+                        console.log(`   ✅ ${handle}: style=${tags.style}`);
+                    } else {
+                        console.warn(`   ❌ ${handle}: style=${tags.style} but button not found`);
+                    }
                 }
 
                 // Material (single)
                 if (tags.material) {
                     const btn = document.querySelector(`[data-handle="${handle}"] .option-btn.material[data-value="${tags.material}"]`);
-                    if (btn) btn.classList.add('selected');
+                    if (btn) {
+                        btn.classList.add('selected');
+                        console.log(`   ✅ ${handle}: material=${tags.material}`);
+                    } else {
+                        console.warn(`   ❌ ${handle}: material=${tags.material} but button not found`);
+                    }
                 }
 
                 // Face shapes (multi)
@@ -1225,10 +1240,13 @@ def create_html(products, tags):
         }
 
         // Call initialization immediately if DOM is ready, otherwise wait for DOMContentLoaded
+        console.log('🟢 Checking document.readyState:', document.readyState);
         if (document.readyState === 'loading') {
+            console.log('🟢 Waiting for DOMContentLoaded...');
             document.addEventListener('DOMContentLoaded', initializeSelectedState);
         } else {
             // DOM is already ready, initialize immediately
+            console.log('🟢 DOM already ready, initializing immediately!');
             initializeSelectedState();
         }
 

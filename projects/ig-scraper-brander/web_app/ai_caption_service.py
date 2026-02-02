@@ -906,8 +906,10 @@ class CaptionGenerator:
 
             # Step 6.5: Post-process caption - clean up formatting issues
             print("Post-processing caption...")
+            print(f"BEFORE filter (first 100 chars): {caption[:100]}")
             caption = remove_chapter_labels_and_headers(caption)
             caption = filter_shadowban_triggers(caption)
+            print(f"AFTER filter (first 100 chars): {caption[:100]}")
             caption = format_for_mobile_readability(caption)
             caption = improve_caption_spacing(caption)
             caption = add_emojis_if_needed(caption)

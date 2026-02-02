@@ -4,8 +4,9 @@ import { useEffect } from 'react';
 
 export default function ReviewPage() {
   useEffect(() => {
-    // Redirect to the static HTML file
-    window.location.href = '/review.html';
+    // Redirect to the static HTML file with cache-busting
+    const cacheBuster = `?v=${Date.now()}`;
+    window.location.href = `/review.html${cacheBuster}`;
   }, []);
 
   return (
