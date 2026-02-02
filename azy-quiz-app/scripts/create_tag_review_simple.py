@@ -410,12 +410,23 @@ def create_html(products, tags):
         .btn-info { background: #9c27b0; color: white; }
 
         .hidden { display: none; }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>👓 AZYR Product Tag Review</h1>
-        <p>Click options to select/deselect (orange = pending). Click "Save Changes" to confirm. Changes are saved in your browser - export regularly to share progress!</p>
+        <p>Click options to select/deselect (orange = pending). Click "Save Changes" to confirm. <strong>Changes auto-sync to cloud - you and teammates will see each other's updates!</strong></p>
     </div>
 
     <div class="stats">
@@ -592,10 +603,12 @@ def create_html(products, tags):
         <h3 style="margin-top: 0;">How to Import to Shopify</h3>
         <ol style="line-height: 1.8;">
             <li>Click <strong>Export Verified Tags</strong> to download the CSV</li>
-            <li>Email the CSV to: <strong>your-email@example.com</strong></li>
-            <li>We'll convert it to Shopify import format</li>
-            <li>Import the updated CSV in Shopify Admin</li>
+            <li>Run the conversion script: <code>python scripts/convert_to_shopify_import.py exported.csv products_export_1.csv shopify_import.csv</code></li>
+            <li>Import <code>shopify_import.csv</code> in Shopify Admin → Products → Import</li>
         </ol>
+        <p style="background: #e3f2fd; padding: 12px; border-radius: 6px; font-size: 13px;">
+            <strong>💡 Pro tip:</strong> Tags auto-sync between users! When you save, Maureen will see your updates within 10 seconds (and vice versa).
+        </p>
         <button onclick="document.getElementById('export-info').style.display='none'" style="padding: 10px 20px; background: #4caf50; color: white; border: none; border-radius: 6px; cursor: pointer;">Got it!</button>
     </div>
 
@@ -768,6 +781,18 @@ def create_html(products, tags):
                 // Save to localStorage for persistence
                 localStorage.setItem('azyrProductTags', JSON.stringify(productTags));
 
+                // Sync to cloud (API)
+                showSyncStatus('Syncing to cloud...');
+                saveTagsToAPI().then(success => {
+                    if (success) {
+                        showSyncStatus('Saved to cloud ✓');
+                        setTimeout(() => hideSyncStatus(), 2000);
+                    } else {
+                        showSyncStatus('Cloud save failed (saved locally)');
+                        setTimeout(() => hideSyncStatus(), 3000);
+                    }
+                });
+
                 console.log(`Saved changes for ${handle}`);
             }
         }
@@ -799,6 +824,137 @@ def create_html(products, tags):
 
         // Call loadSavedProgress on page load
         setTimeout(loadSavedProgress, 100);
+
+        // ========== REAL-TIME SYNC FUNCTIONS ==========
+
+        let lastSyncTime = Date.now();
+        const SYNC_INTERVAL = 10000; // Check for updates every 10 seconds
+
+        // Load tags from API (cloud sync)
+        async function loadTagsFromAPI() {
+            try {
+                showSyncStatus('Loading cloud tags...');
+                const response = await fetch('/api/tags');
+                if (response.ok) {
+                    const cloudTags = await response.json();
+
+                    // Merge cloud tags with local (cloud takes precedence for conflicts)
+                    let mergedCount = 0;
+                    Object.keys(cloudTags).forEach(handle => {
+                        if (cloudTags[handle]) {
+                            productTags[handle] = productTags[handle] || {};
+
+                            // Merge each category
+                            ['style', 'material', 'face_shapes', 'use_cases', 'lens_types'].forEach(cat => {
+                                if (cloudTags[handle][cat]) {
+                                    // Only update if different
+                                    const current = JSON.stringify(productTags[handle][cat]);
+                                    const incoming = JSON.stringify(cloudTags[handle][cat]);
+                                    if (current !== incoming) {
+                                        productTags[handle][cat] = cloudTags[handle][cat];
+                                        mergedCount++;
+                                        // Update UI for this product
+                                        updateUI(handle, cat);
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                    updateSavedCount();
+                    lastSyncTime = Date.now();
+
+                    if (mergedCount > 0) {
+                        showSyncStatus(`Synced ${mergedCount} updates from cloud ✓`);
+                        setTimeout(() => hideSyncStatus(), 3000);
+                    } else {
+                        showSyncStatus('All synced with cloud ✓');
+                        setTimeout(() => hideSyncStatus(), 2000);
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to load from API:', error);
+                showSyncStatus('Cloud sync unavailable');
+                setTimeout(() => hideSyncStatus(), 3000);
+            }
+        }
+
+        // Save tags to API (cloud sync)
+        async function saveTagsToAPI() {
+            try {
+                const response = await fetch('/api/tags', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(productTags)
+                });
+
+                if (response.ok) {
+                    lastSyncTime = Date.now();
+                    return true;
+                } else {
+                    console.error('Failed to save to API');
+                    return false;
+                }
+            } catch (error) {
+                console.error('Failed to save to API:', error);
+                return false;
+            }
+        }
+
+        // Check for updates from other users
+        async function checkForUpdates() {
+            try {
+                const response = await fetch('/api/tags');
+                if (response.ok) {
+                    const cloudTags = await response.json();
+                    const cloudHash = JSON.stringify(cloudTags);
+                    const localHash = JSON.stringify(productTags);
+
+                    if (cloudHash !== localHash) {
+                        // Updates available!
+                        showSyncStatus('🆕 New updates from team! Loading...');
+                        await loadTagsFromAPI();
+                    } else {
+                        showSyncStatus('All synced ✓');
+                        setTimeout(() => hideSyncStatus(), 1500);
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to check for updates:', error);
+            }
+        }
+
+        // Show sync status message
+        function showSyncStatus(message) {
+            let status = document.getElementById('sync-status');
+            if (!status) {
+                status = document.createElement('div');
+                status.id = 'sync-status';
+                status.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #4caf50; color: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000; font-size: 14px; animation: slideIn 0.3s ease-out;';
+                document.body.appendChild(status);
+            }
+            status.textContent = message;
+            status.style.display = 'block';
+        }
+
+        function hideSyncStatus() {
+            const status = document.getElementById('sync-status');
+            if (status) {
+                status.style.display = 'none';
+            }
+        }
+
+        // Start periodic sync
+        function startPeriodicSync() {
+            // Load from API on page load
+            loadTagsFromAPI();
+
+            // Check for updates periodically
+            setInterval(checkForUpdates, SYNC_INTERVAL);
+        }
+
+        // Initialize sync
+        setTimeout(startPeriodicSync, 500);
 
         function updateUI(handle, category) {
             if (category === 'face_shapes' || category === 'use_cases' || category === 'lens_types') {
