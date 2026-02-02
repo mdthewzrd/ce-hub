@@ -1,8 +1,3 @@
 {
-  "/api/copilotkit/route": "app/api/copilotkit/route.js",
-  "/api/trades/route": "app/api/trades/route.js",
-  "/api/agui/route": "app/api/agui/route.js",
-  "/api/trades/upsert/route": "app/api/trades/upsert/route.js",
-  "/page": "app/page.js",
-  "/dashboard/page": "app/dashboard/page.js"
+  "/api/renata/chat/route": "app/api/renata/chat/route.js"
 }

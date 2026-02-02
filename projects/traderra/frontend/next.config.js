@@ -20,6 +20,10 @@ const nextConfig = {
         source: '/api/backend/:path*',
         destination: 'http://localhost:6500/:path*',
       },
+      {
+        source: '/api/renata/:path*',
+        destination: 'http://localhost:6500/api/renata/:path*',
+      },
     ];
   },
   async headers() {

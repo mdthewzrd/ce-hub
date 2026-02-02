@@ -10,6 +10,8 @@ export default function ReviewV2Page() {
   const [error, setError] = useState<string | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'reviewed' | 'unreviewed'>('all');
   const reviewedProducts = useRef<Set<string>>(new Set());
+  const [showCustomLens, setShowCustomLens] = useState<Record<string, boolean>>({});
+  const [customLensValue, setCustomLensValue] = useState<Record<string, string>>({});
 
   useEffect(() => {
     loadProductData();
@@ -323,14 +325,22 @@ export default function ReviewV2Page() {
 
                 {/* Lens Types */}
                 <div className="mb-3">
-                  <label className="text-xs text-gray-500 uppercase">Lens Types</label>
+                  <label className="text-xs text-gray-500 uppercase">Lens Options</label>
                   <div className="flex flex-wrap gap-2 mt-1">
-                    {['tinted', 'gradient', 'polarized', 'mirror', 'photochromic', 'geometric', 'butterfly', 'rx'].map((lens) => {
-                      const state = getButtonState(product.handle, 'lens_types', lens);
+                    {[
+                      { value: 'polarized', label: '🕶️ Polarized' },
+                      { value: 'shield', label: '🛡️ Shield' },
+                      { value: 'butterfly', label: '🦋 Butterfly' },
+                      { value: 'geometric', label: '📐 Geometric' },
+                      { value: 'tinted', label: '🌈 Tinted' },
+                      { value: 'rx', label: '💊 Prescription' },
+                      { value: 'blue_light', label: '💡 Blue Light' },
+                    ].map((lens) => {
+                      const state = getButtonState(product.handle, 'lens_types', lens.value);
                       return (
                         <button
-                          key={lens}
-                          onClick={() => toggleMultiple(product.handle, 'lens_types', lens)}
+                          key={lens.value}
+                          onClick={() => toggleMultiple(product.handle, 'lens_types', lens.value)}
                           className={`px-2 py-1 text-xs rounded ${
                             state.pending
                               ? 'border-2 border-orange-500 bg-orange-500/20 text-orange-500'
@@ -339,11 +349,55 @@ export default function ReviewV2Page() {
                               : 'border border-[#2a2a3a] bg-[#13131a]'
                           }`}
                         >
-                          {lens === 'rx' ? '👓 Rx Ready' : lens.charAt(0).toUpperCase() + lens.slice(1)}
+                          {lens.label}
                         </button>
                       );
                     })}
+                    <button
+                      onClick={() => setShowCustomLens(prev => ({ ...prev, [product.handle]: true }))}
+                      className="px-2 py-1 text-xs rounded border-2 border-dashed border-amber-500 bg-amber-500/10 text-amber-500 hover:bg-amber-500/20"
+                    >
+                      + Custom
+                    </button>
                   </div>
+
+                  {/* Custom Lens Input */}
+                  {showCustomLens[product.handle] && (
+                    <div className="mt-2 p-2 bg-[#13131a] border-2 border-dashed border-amber-500 rounded">
+                      <input
+                        type="text"
+                        value={customLensValue[product.handle] || ''}
+                        onChange={(e) => setCustomLensValue(prev => ({ ...prev, [product.handle]: e.target.value }))}
+                        placeholder="Enter custom lens type/shape..."
+                        className="w-full px-3 py-2 bg-[#1a1a24] border border-[#2a2a3a] rounded text-white text-sm"
+                        autoFocus
+                      />
+                      <div className="flex gap-2 mt-2">
+                        <button
+                          onClick={() => {
+                            const value = customLensValue[product.handle]?.trim();
+                            if (value) {
+                            toggleMultiple(product.handle, 'lens_types', value);
+                            setCustomLensValue(prev => ({ ...prev, [product.handle]: '' }));
+                            setShowCustomLens(prev => ({ ...prev, [product.handle]: false }));
+                            }
+                          }}
+                          className="flex-1 px-3 py-1 bg-green-600 text-white rounded text-sm hover:bg-green-700"
+                        >
+                          Save
+                        </button>
+                        <button
+                          onClick={() => {
+                            setShowCustomLens(prev => ({ ...prev, [product.handle]: false }));
+                            setCustomLensValue(prev => ({ ...prev, [product.handle]: '' }));
+                          }}
+                          className="flex-1 px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Actions */}

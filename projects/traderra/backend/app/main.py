@@ -25,7 +25,7 @@ from fastapi.responses import JSONResponse
 from .core.config import settings
 from .core.archon_client import get_archon_client, close_archon_client
 from .core.database import init_database, close_connection_pool
-from .api.ai_endpoints import router as ai_router
+from .api.ai_endpoints import router as ai_router, api_router as renata_api_router
 from .api.folders import router as folders_router
 from .api.blocks import router as blocks_router
 from .api.scan_endpoints import router as scan_router
@@ -214,6 +214,7 @@ async def root():
 
 # Include routers
 app.include_router(ai_router)
+app.include_router(renata_api_router)  # /api/renata/* for frontend compatibility
 app.include_router(folders_router)
 app.include_router(blocks_router, prefix="/api/blocks", tags=["blocks"])
 app.include_router(scan_router)

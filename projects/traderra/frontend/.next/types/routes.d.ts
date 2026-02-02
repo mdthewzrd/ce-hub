@@ -6,7 +6,7 @@ type AppRouteHandlerRoutes = "/api/admin/store-correction" | "/api/ag-ui/tool" |
 type PageRoutes = never
 type LayoutRoutes = "/"
 type RedirectRoutes = never
-type RewriteRoutes = "/api/backend/[[...path]]"
+type RewriteRoutes = "/api/backend/[[...path]]" | "/api/renata/[[...path]]"
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes | AppRouteHandlerRoutes
 
 
@@ -35,6 +35,7 @@ interface ParamMap {
   "/api/health": {}
   "/api/market-data": {}
   "/api/openrouter-key": {}
+  "/api/renata/[[...path]]": { "path"?: string[]; }
   "/api/renata/chat": {}
   "/api/risk-management": {}
   "/api/settings/openrouter": {}

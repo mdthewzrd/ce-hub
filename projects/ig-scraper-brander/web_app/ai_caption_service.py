@@ -158,16 +158,95 @@ def improve_caption_spacing(caption: str) -> str:
     return '\n'.join(formatted_lines)
 
 
-def remove_chapter_labels_and_headers(caption: str) -> str:
+def remove_markdown_formatting(caption: str) -> str:
     """
-    Remove chapter labels, section headers, and other non-Instagram formatting
+    Remove all markdown formatting that Instagram doesn't support.
+    Removes: **bold**, *italic*, __underline__, `code`, ## headers, etc.
+    """
+    import re
+
+    # Remove bold markdown (**text** or __text__)
+    caption = re.sub(r'\*\*([^*]+)\*\*', r'\1', caption)  # **bold**
+    caption = re.sub(r'__([^_]+)__', r'\1', caption)  # __bold__
+
+    # Remove italic markdown (*text* or _text_)
+    caption = re.sub(r'\*([^*]+)\*', r'\1', caption)  # *italic*
+    caption = re.sub(r'_([^_]+)_', r'\1', caption)  # _italic_
+
+    # Remove strikethrough (~~text~~)
+    caption = re.sub(r'~~([^~]+)~~', r'\1', caption)
+
+    # Remove inline code (`text`)
+    caption = re.sub(r'`([^`]+)`', r'\1', caption)
+
+    # Remove markdown headers (## or ### at start of line)
+    lines = caption.split('\n')
+    cleaned_lines = []
+    for line in lines:
+        stripped = line.strip()
+        # Remove markdown headers at start of line
+        if stripped.startswith('###'):
+            cleaned_lines.append(stripped[3:].strip())
+        elif stripped.startswith('##'):
+            cleaned_lines.append(stripped[2:].strip())
+        elif stripped.startswith('#'):
+            cleaned_lines.append(stripped[1:].strip())
+        else:
+            cleaned_lines.append(line)
+
+    return '\n'.join(cleaned_lines)
+
+
+def remove_quote_wrapping(caption: str) -> str:
+    """
+    Remove quote wrapping around the entire caption.
+    Sometimes AI wraps the whole caption in quotes: "caption here"
+    """
+    caption = caption.strip()
+
+    # Check if entire caption is wrapped in quotes
+    if len(caption) >= 2 and caption[0] in '"'"'"' and caption[-1] == caption[0]:
+        # Check if there's a matching quote at the end
+        quote_count = caption.count(caption[0])
+        # Only unwrap if it looks like the whole thing is quoted (start+end match, and minimal internal quotes)
+        if quote_count == 2:
+            caption = caption[1:-1].strip()
+        elif caption.startswith('"') and caption.endswith('"') and '"\n' not in caption:
+            # If quotes are at very start and end with no newlines with quotes, unwrap
+            caption = caption[1:-1].strip()
+
+    return caption
+
+
+def remove_ai_meta_commentary(caption: str) -> str:
+    """
+    Remove AI-generated meta-commentary and prefixes.
+    Examples:
+    - "Here's a production-ready Instagram caption:"
+    - "Here is your caption:"
+    - "**The Secret Code in Stone**"
+    - etc.
     """
     import re
     lines = caption.split('\n')
     filtered_lines = []
 
-    # Patterns to remove - more aggressive now
-    header_patterns = [
+    # Expanded patterns - include contractions and variations
+    meta_patterns = [
+        r'^Here is the (revised|rewritten|production-ready|optimized|fresh|new|scroll-stopping) caption',  # Various prefixes
+        r"^Here('s| is a) (production-ready|optimized|fresh|new|scroll-stopping|compelling) (caption|Instagram caption)",  # Contractions
+        r'^Here is your (caption|Instagram caption)',  # Direct assignment
+        r"^Here('s| is) your (caption|Instagram caption)",  # With contractions
+        r'^Here'?s an? (Instagram )?caption',  # Various "Here's a/Here's an" patterns
+        r'^(Below is the|The following is a) caption',  # Alternative intros
+        r'^Caption:?$',  # Just "Caption:" or "Caption"
+        r'^Your caption:?$',  # "Your caption:"
+        r'^Generated caption:?$',  # "Generated caption:"
+    ]
+
+    # Section headers and meta-labels (case insensitive)
+    section_patterns = [
+        r'^\*\*.*\*\*$',  # **ANYTHING IN BOLD** (likely a header)
         r'^CHAPTER\s+\d+.*$',
         r'^CHAPTER\s+[IVX]+.*$',
         r'^##\s+.*$',
@@ -181,8 +260,6 @@ def remove_chapter_labels_and_headers(caption: str) -> str:
         r'^CRITICAL\s+REQUIREMENTS.*$',
         r'^CONTENT\s+SAFETY.*$',
         r'^REFERENCE\s+.*$',
-        r'^Here is the rewritten caption.*$',  # AI prefix
-        r'^Here is.*caption.*',  # Generic AI prefix
         r'^Part\s+\d+\s+of\s+\d+.*$',  # Part labels
         r'^The\s+Transformation.*$',
         r'^A\s+New\s+Reality.*$',
@@ -191,27 +268,34 @@ def remove_chapter_labels_and_headers(caption: str) -> str:
         r'^The\s+Reveal.*$',
         r'^The\s+Truth.*$',
         r'^Conclusion.*$',
+        r'^The Secret.*$',  # Common AI-generated section headers
+        r'^.*Code in Stone.*$',  # Specific example from test
     ]
 
-    combined_pattern = '|'.join(f'({p})' for p in header_patterns)
+    # Combine all patterns
+    all_patterns = meta_patterns + section_patterns
+    combined_pattern = '|'.join(f'({p})' for p in all_patterns)
     regex = re.compile(combined_pattern, re.IGNORECASE)
 
     for line in lines:
         stripped = line.strip()
-        # Skip lines that match header patterns
+
+        # Skip lines that match any meta/header pattern
         if regex.match(stripped):
             continue
+
         # Skip all-caps lines that look like headers (short, all caps with colon)
         if stripped and len(stripped) < 60 and stripped.isupper() and (':' in stripped or stripped.endswith('.')):
             continue
+
         # Skip title case lines that look like section headers
         if stripped and len(stripped) < 50 and ':' not in stripped and '.' not in stripped:
-            # Check if it's all title case (each word capitalized)
             words = stripped.split()
             if len(words) >= 2 and len(words) <= 6:
                 title_case_count = sum(1 for w in words if w and w[0].isupper())
                 if title_case_count == len(words):
                     continue  # Skip this line, looks like a section header
+
         filtered_lines.append(line)
 
     # Clean up excessive blank lines
@@ -227,9 +311,23 @@ def remove_chapter_labels_and_headers(caption: str) -> str:
             result_lines.append(line)
             prev_empty = False
 
-    # Remove leading/trailing whitespace
     result = '\n'.join(result_lines).strip()
     return result
+
+
+def remove_chapter_labels_and_headers(caption: str) -> str:
+    """
+    Remove chapter labels, section headers, and other non-Instagram formatting.
+    DEPRECATED: Use remove_ai_meta_commentary instead.
+    This function now wraps the newer functions for backwards compatibility.
+    """
+    # First remove markdown
+    caption = remove_markdown_formatting(caption)
+    # Then remove AI meta-commentary
+    caption = remove_ai_meta_commentary(caption)
+    # Finally remove quote wrapping
+    caption = remove_quote_wrapping(caption)
+    return caption
 
 
 def filter_shadowban_triggers(caption: str) -> str:

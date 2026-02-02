@@ -1054,3 +1054,95 @@ def _calculate_performance_from_trades(trades: List[Dict]) -> PerformanceData:
         max_drawdown=max_drawdown,
         profit_factor=profit_factor
     )
+
+
+# ============================================================================
+# Backward Compatibility Router - /api/renata prefix
+# ============================================================================
+
+# Create a second router for frontend compatibility
+api_router = APIRouter(prefix="/api/renata", tags=["Renata API"])
+
+
+@api_router.post("/chat", response_model=AIResponse)
+async def api_renata_chat(
+    request: dict,
+    ai_ctx: AIContext = Depends(get_ai_context)
+):
+    """
+    Renata chat endpoint with /api/renata prefix for frontend compatibility
+
+    This is an alias for /ai/renata/chat to maintain backward compatibility
+    with the frontend that expects /api/renata/chat
+    """
+    return await renata_chat(request, ai_ctx)
+
+
+@api_router.post("/chat-simple", response_model=AIResponse)
+async def api_renata_chat_simple(request: dict):
+    """
+    Simplified Renata chat endpoint with /api/renata prefix
+
+    This is an alias for /ai/renata/chat-simple
+    """
+    from ..core.archon_client import ArchonClient, ArchonConfig
+    from ..core.config import settings
+
+    query = request.get("query") or request.get("message", "")
+    mode = request.get("mode", "coach")
+    performance_data = request.get("performance_data", {})
+
+    # Convert to backend format
+    backend_performance = PerformanceData(
+        trades_count=int(performance_data.get("totalTrades", 50)),
+        win_rate=float(performance_data.get("winRate", 0.5)),
+        expectancy=float(performance_data.get("expectancy", 0.0)),
+        total_pnl=float(performance_data.get("totalPnL", 0.0)),
+        avg_winner=float(performance_data.get("avgWinner", 0.0)),
+        avg_loser=float(performance_data.get("avgLoser", 0.0)),
+        max_drawdown=float(performance_data.get("maxDrawdown", 0.0)),
+        profit_factor=performance_data.get("profitFactor")
+    )
+
+    archon_config = ArchonConfig(
+        base_url=settings.archon_base_url,
+        timeout=settings.archon_timeout,
+        project_id=settings.archon_project_id
+    )
+    archon_client = ArchonClient(archon_config)
+    renata = create_renata_agent(archon_client)
+
+    trading_ctx = TradingContext(
+        user_id="dev_user_123",
+        workspace_id="dev_workspace_123"
+    )
+
+    mode_mapping = {
+        'renata': 'coach',
+        'analyst': 'analyst',
+        'coach': 'coach',
+        'mentor': 'mentor'
+    }
+
+    backend_mode = mode_mapping.get(mode, 'coach')
+    user_prefs = UserPreferences(
+        ai_mode=RenataMode(backend_mode),
+        verbosity="normal"
+    )
+
+    result = await renata.analyze_performance(
+        performance_data=backend_performance,
+        trading_context=trading_ctx,
+        user_preferences=user_prefs,
+        prompt=query
+    )
+
+    return AIResponse(
+        response=result.text,
+        command_type="question",
+        intent="trading_analysis",
+        confidence=0.85,
+        ai_mode_change={"mode": result.mode_used.value if result.mode_used else mode},
+        learning_applied=bool(result.insights_generated and len(result.insights_generated) > 0),
+        suggested_learning=result.archon_sources[0] if result.archon_sources else None
+    )
