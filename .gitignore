@@ -106,4 +106,4 @@ yarn-error.log*
 # Package files
 *.tar.gz
 *.zip
-*.rar
+*.rar.next
