@@ -6,9 +6,8 @@
  */
 
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { formatDate, formatCurrency, truncate } from "@/lib/utils";
 
 type RequestStatus = "incoming" | "in_progress" | "review" | "completed";
@@ -89,16 +88,16 @@ const mockRequests: PressRequest[] = [
 ];
 
 const columns = [
-  { id: "incoming", title: "Incoming", color: "bg-blue-500" },
-  { id: "in_progress", title: "In Progress", color: "bg-yellow-500" },
-  { id: "review", title: "Review", color: "bg-purple-500" },
-  { id: "completed", title: "Completed", color: "bg-green-500" },
+  { id: "incoming", title: "Incoming" },
+  { id: "in_progress", title: "In Progress" },
+  { id: "review", title: "Review" },
+  { id: "completed", title: "Done" },
 ];
 
 const priorityColors = {
-  low: "bg-gray-100 text-gray-600",
-  medium: "bg-yellow-100 text-yellow-700",
-  high: "bg-red-100 text-red-700",
+  low: "bg-muted text-muted-foreground",
+  medium: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
+  high: "bg-red-500/10 text-red-500 border-red-500/20",
 };
 
 const statusLabels = {
@@ -115,12 +114,10 @@ export function RequestQueue({ onRequestClick }: RequestQueueProps) {
 
   const handleDragStart = (e: React.DragEvent, requestId: string) => {
     setDraggedRequest(requestId);
-    e.dataTransfer.effectAllowed = "move";
   };
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
-    e.dataTransfer.dropEffect = "move";
   };
 
   const handleDrop = (e: React.DragEvent, newStatus: RequestStatus) => {
@@ -142,12 +139,11 @@ export function RequestQueue({ onRequestClick }: RequestQueueProps) {
   return (
     <div className="h-full flex flex-col">
       {/* Header */}
-      <div className="border-b px-6 py-4 bg-muted/30">
+      <div className="border-b border-border px-6 py-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold">Request Queue</h2>
-          <div className="flex gap-2">
-            <Button variant="outline" size="sm">Filter</Button>
-            <Button variant="outline" size="sm">Sort</Button>
+          <h2 className="text-sm font-medium">Queue</h2>
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <span>{requests.length} requests</span>
           </div>
         </div>
       </div>
@@ -157,57 +153,50 @@ export function RequestQueue({ onRequestClick }: RequestQueueProps) {
         <div className="flex gap-4 min-w-max h-full">
           {columns.map((column) => {
             const columnRequests = getRequestsByStatus(column.id as RequestStatus);
+            const count = columnRequests.length;
 
             return (
               <div
                 key={column.id}
-                className="w-80 flex-shrink-0 flex flex-col"
+                className="w-72 flex-shrink-0 flex flex-col"
                 onDragOver={handleDragOver}
                 onDrop={(e) => handleDrop(e, column.id as RequestStatus)}
               >
                 {/* Column Header */}
                 <div className="flex items-center gap-2 mb-4">
-                  <div className={`w-3 h-3 rounded-full ${column.color}`} />
-                  <h3 className="font-semibold">{column.title}</h3>
-                  <span className="ml-auto text-sm text-muted-foreground">
-                    {columnRequests.length}
-                  </span>
+                  <span className="text-sm font-medium">{column.title}</span>
+                  <span className="text-xs text-muted-foreground">{count}</span>
                 </div>
 
                 {/* Request Cards */}
-                <div className="flex-1 space-y-3 overflow-y-auto">
+                <div className="flex-1 space-y-2 overflow-y-auto">
                   {columnRequests.map((request) => (
                     <Card
                       key={request.id}
                       draggable
                       onDragStart={(e) => handleDragStart(e, request.id)}
                       onClick={() => onRequestClick?.(request.id)}
-                      className="cursor-move hover:shadow-md transition-shadow"
+                      className="cursor-pointer border-glow card-elevated bg-card/50 hover:bg-card/80 transition-colors"
                     >
-                      <CardHeader className="pb-3">
-                        <div className="flex items-start justify-between">
-                          <div>
-                            <CardTitle className="text-sm font-medium">
-                              {request.company}
-                            </CardTitle>
-                            <p className="text-xs text-muted-foreground mt-0.5">
-                              {request.client_name}
-                            </p>
+                      <CardContent className="p-3 space-y-2">
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium truncate">{request.company}</p>
+                            <p className="text-xs text-muted-foreground truncate">{request.client_name}</p>
                           </div>
                           <Badge
                             variant="outline"
-                            className={priorityColors[request.priority]}
+                            className={`text-xs px-1.5 py-0.5 ${priorityColors[request.priority]}`}
                           >
                             {request.priority}
                           </Badge>
                         </div>
-                      </CardHeader>
-                      <CardContent className="space-y-2">
+
                         <Badge variant="secondary" className="text-xs">
                           {statusLabels[request.announcement_type as keyof typeof statusLabels] || request.announcement_type}
                         </Badge>
 
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-xs text-muted-foreground line-clamp-2">
                           {truncate(request.key_messages[0] || "", 60)}
                         </p>
 
@@ -220,8 +209,8 @@ export function RequestQueue({ onRequestClick }: RequestQueueProps) {
 
                         {request.selected_outlets.length > 0 && (
                           <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                            <span>{request.selected_outlets.length} outlet</span>
-                            {request.selected_outlets.length > 1 && <span>s</span>}
+                            <span>{request.selected_outlets.length}</span>
+                            <span>outlet{request.selected_outlets.length > 1 ? "s" : ""}</span>
                           </div>
                         )}
                       </CardContent>
@@ -229,8 +218,8 @@ export function RequestQueue({ onRequestClick }: RequestQueueProps) {
                   ))}
 
                   {columnRequests.length === 0 && (
-                    <div className="text-center py-8 text-sm text-muted-foreground">
-                      No requests
+                    <div className="text-center py-8">
+                      <p className="text-xs text-muted-foreground">No requests</p>
                     </div>
                   )}
                 </div>

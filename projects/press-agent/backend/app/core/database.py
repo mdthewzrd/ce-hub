@@ -1,6 +1,6 @@
 """
 Database Connection and Session Management
-Async PostgreSQL connection using SQLAlchemy and asyncpg
+Async database connection using SQLAlchemy (SQLite for local, PostgreSQL for production)
 """
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import declarative_base
@@ -8,9 +8,20 @@ from sqlalchemy.pool import NullPool
 from typing import AsyncGenerator
 from .config import settings
 
-# Create async engine
+# Convert database URL to async format
+# SQLite: sqlite:///./file.db -> sqlite+aiosqlite:///./file.db
+# PostgreSQL: postgresql://... -> postgresql+psycopg://async...
+def get_async_db_url(url: str) -> str:
+    if url.startswith("sqlite:///"):
+        return url.replace("sqlite:///", "sqlite+aiosqlite:///")
+    elif url.startswith("postgresql://"):
+        return url.replace("postgresql://", "postgresql+psycopg://async")
+    return url
+
+async_db_url = get_async_db_url(settings.DATABASE_URL)
+
 engine = create_async_engine(
-    settings.DATABASE_URL,
+    async_db_url,
     echo=settings.DEBUG,
     pool_pre_ping=True,
     poolclass=NullPool if settings.DEBUG else None,

@@ -138,7 +138,7 @@ async def parse_tradervue_csv(csv_content: str) -> List[TradeData]:
 
                 entry_price = safe_float(row['Entry Price'])
                 exit_price = safe_float(row['Exit Price'])
-                pnl = safe_float(row['Net P&L'])
+                pnl = safe_float(row['Gross P&L'])  # Use Gross P&L instead of Net P&L
 
                 # Parse quantity
                 try:

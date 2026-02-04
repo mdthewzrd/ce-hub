@@ -1,0 +1,25 @@
+[
+  {
+    "video_filename": "test_video.mp4",
+    "success": true,
+    "caption": "Most people get this wrong, but perfecting your squat form is not just about aesthetics - it's about preventing injuries and maximizing workout effectiveness. Think about it: when you're squatting, you're putting your joints through a tremendous amount of stress. But what if I told you that by mastering the right form, you can reduce your risk of injury and get more out of your workout?",
+    "quality_score": 0.7667701863354037,
+    "issues": [
+      "\u26a0\ufe0f  Hook length: 389 chars (exceeds 140)"
+    ]
+  },
+  {
+    "video_filename": "test_video.mp4",
+    "success": true,
+    "caption": "The Squat Mistake You've Been Making (And How to Fix It)",
+    "quality_score": 0.7792181069958848,
+    "issues": []
+  },
+  {
+    "video_filename": "test_video.mp4",
+    "success": true,
+    "caption": "Most people get this wrong...",
+    "quality_score": 0.778888888888889,
+    "issues": []
+  }
+]

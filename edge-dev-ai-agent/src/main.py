@@ -8,6 +8,11 @@ import asyncio
 import os
 from contextlib import asynccontextmanager
 from typing import Optional
+from pathlib import Path
+
+# Load environment variables from .env file
+from dotenv import load_dotenv
+load_dotenv()
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware

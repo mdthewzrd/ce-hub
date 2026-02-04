@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Voice Builder - Harmonatica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1a1a1a;
+            --bg-chat: #0f0f0f;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a1;
+            --text-muted: #737373;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --accent-soft: rgba(99, 102, 241, 0.15);
+            --border: #262626;
+            --border-light: #333333;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Main Dashboard Area */
+        .main-dashboard {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .top-nav {
+            height: 60px;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            gap: 16px;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            max-width: 400px;
+            height: 6px;
+            background: var(--bg-tertiary);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .dashboard-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+        }
+
+        /* Chat Sidebar */
+        .chat-sidebar {
+            width: 400px;
+            background: var(--bg-chat);
+            border-left: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .ai-avatar {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent), #8b5cf6);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .message {
+            display: flex;
+            gap: 12px;
+            animation: messageIn 0.3s ease;
+        }
+
+        @keyframes messageIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .message.ai .message-avatar {
+            background: linear-gradient(135deg, var(--accent), #8b5cf6);
+        }
+
+        .message.user .message-avatar {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
+
+        .message-content {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.ai .message-content {
+            background: var(--bg-tertiary);
+            border-top-left-radius: 4px;
+        }
+
+        .message.user .message-content {
+            background: var(--accent);
+            border-top-right-radius: 4px;
+        }
+
+        .chat-input-area {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-size: 14px;
+            resize: none;
+            min-height: 44px;
+            max-height: 120px;
+            font-family: inherit;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .send-btn {
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .send-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .send-btn:disabled {
+            background: var(--bg-tertiary);
+            color: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        /* Dashboard Cards */
+        .section-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-soft);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        /* Upload Area */
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .upload-area:hover {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        .reference-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .reference-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reference-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #333, #444);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .reference-info h4 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .reference-info p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Analysis Results */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .analysis-item {
+            background: var(--bg-tertiary);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .analysis-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .analysis-value {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Brand Voice Preview */
+        .brand-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .preview-field {
+            background: var(--bg-tertiary);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .preview-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .preview-value {
+            font-size: 14px;
+        }
+
+        /* Test Captions */
+        .test-caption-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .test-caption-card:hover {
+            border-color: var(--accent);
+        }
+
+        .test-caption-card.selected {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        .caption-variant {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .caption-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Action Buttons */
+        .btn {
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            filter: brightness(1.1);
+        }
+
+        /* Step Indicators */
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: var(--accent-soft);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .step-badge.completed {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--success);
+        }
+
+        /* Typing Indicator */
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-muted);
+            border-radius: 50%;
+            animation: typingBounce 1.4s ease-in-out infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-4px); }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* Hidden steps */
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Main Dashboard -->
+        <div class="main-dashboard">
+            <!-- Top Navigation -->
+            <div class="top-nav">
+                <div class="nav-brand">
+                    <i class="fas fa-wand-magic-sparkles" style="color: var(--accent);"></i>
+                    Brand Voice Builder
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+                </div>
+
+                <div class="step-badge" id="stepBadge">
+                    <i class="fas fa-circle-step"></i>
+                    Step 1 of 5: References
+                </div>
+
+                <div style="flex: 1;"></div>
+
+                <button class="btn btn-secondary" onclick="location.href='/library'">
+                    <i class="fas fa-times"></i>
+                    Cancel
+                </button>
+                <button class="btn btn-success" id="saveBtn" style="display: none;" onclick="saveBrandVoice()">
+                    <i class="fas fa-check"></i>
+                    Save Brand Voice
+                </button>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Step 1: Reference Collection -->
+                <div class="step-content active" id="step1">
+                    <div class="section-card">
+                        <div class="section-title">
+                            <div class="section-icon"><i class="fas fa-link"></i></div>
+                            Add Reference Profiles
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                            Add 3-5 Instagram profiles that represent the brand voice you want to emulate.
+                            The AI will analyze their posting style, captions, and engagement patterns.
+                        </p>
+
+                        <div class="upload-area" id="uploadArea" onclick="document.getElementById('profileInput').focus()">
+                            <i class="fas fa-plus-circle" style="font-size: 32px; color: var(--text-muted); margin-bottom: 12px;"></i>
+                            <p style="margin-bottom: 8px;"><strong>Add Instagram profile</strong></p>
+                            <p style="color: var(--text-secondary);">Enter @username or paste post URLs</p>
+                            <input type="text" id="profileInput" placeholder="@username or https://instagram.com/p/..."
+                                   style="margin-top: 16px; width: 300px; padding: 12px; background: var(--bg-primary);
+                                          border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary);"
+                                   onkeypress="if(event.key==='Enter')addReference()">
+                            <button class="btn btn-primary" style="margin-top: 12px;" onclick="addReference()">
+                                Add Reference
+                            </button>
+                        </div>
+
+                        <div class="reference-cards" id="referenceCards">
+                            <!-- Dynamic reference cards will appear here -->
+                        </div>
+
+                        <div style="margin-top: 24px; text-align: right;">
+                            <button class="btn btn-primary" id="analyzeBtn" onclick="analyzeReferences()" disabled>
+                                <i class="fas fa-magic"></i>
+                                Analyze References
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Analysis Results -->
+                <div class="step-content" id="step2">
+                    <div class="section-card">
+                        <div class="section-title">
+                            <div class="section-icon"><i class="fas fa-chart-bar"></i></div>
+                            Analysis Results
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                            Based on the reference profiles, here's what the AI discovered about their brand voice:
+                        </p>
+
+                        <div class="analysis-grid" id="analysisResults">
+                            <!-- Dynamic results will appear here -->
+                        </div>
+
+                        <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: flex-end;">
+                            <button class="btn btn-secondary" onclick="goToStep(1)">
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <button class="btn btn-primary" onclick="goToStep(3)">
+                                Continue to Q&A
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Q&A Refinement -->
+                <div class="step-content" id="step3">
+                    <div class="section-card">
+                        <div class="section-title">
+                            <div class="section-icon"><i class="fas fa-comments"></i></div>
+                            Refine Your Brand Voice
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                            Chat with the AI to refine the brand voice. It will ask you targeted questions based on the analysis.
+                        </p>
+
+                        <div style="background: var(--bg-tertiary); border-radius: 12px; padding: 20px; min-height: 200px;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                                <div class="ai-avatar" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 500;">AI Assistant</div>
+                                    <div style="font-size: 12px; color: var(--text-muted);">Online</div>
+                                </div>
+                            </div>
+                            <p style="color: var(--text-secondary); font-style: italic;">
+                                Use the chat panel on the right to interact with the AI. It will guide you through
+                                refining the brand voice based on the reference analysis.
+                            </p>
+                        </div>
+
+                        <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: flex-end;">
+                            <button class="btn btn-secondary" onclick="goToStep(2)">
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <button class="btn btn-primary" onclick="goToStep(4)" id="continueToTestBtn" disabled>
+                                Generate Test Captions
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Test Captions -->
+                <div class="step-content" id="step4">
+                    <div class="section-card">
+                        <div class="section-title">
+                            <div class="section-icon"><i class="fas fa-pen-fancy"></i></div>
+                            Test Caption Generation
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                            Select a sample video to generate test captions using your new brand voice profile.
+                        </p>
+
+                        <div id="videoSelector" style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">Select Sample Video:</label>
+                            <select id="videoSelect" style="width: 100%; padding: 12px; background: var(--bg-tertiary);
+                                   border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary);">
+                                <option value="">-- Select a video --</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="generateTestCaptions()" id="generateBtn" disabled>
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                            Generate Test Captions
+                        </button>
+
+                        <div id="testCaptionsArea" style="margin-top: 24px; display: none;">
+                            <h4 style="margin-bottom: 16px;">Generated Caption Variants:</h4>
+                            <div id="testCaptionCards" style="display: grid; gap: 12px;">
+                                <!-- Dynamic test captions -->
+                            </div>
+
+                            <div style="margin-top: 24px; padding: 16px; background: var(--bg-tertiary); border-radius: 10px;">
+                                <h5 style="margin-bottom: 8px;"><i class="fas fa-lightbulb" style="color: var(--warning);"></i>
+                                Your Feedback</h5>
+                                <textarea id="feedbackInput" placeholder="Tell the AI what to adjust... (e.g., 'Make hooks more aggressive', 'Add more emojis', 'Shorten the captions')"
+                                          style="width: 100%; min-height: 80px; padding: 12px; background: var(--bg-primary);
+                                                 border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary);
+                                                 resize: vertical; font-family: inherit;"></textarea>
+                                <button class="btn btn-secondary" style="margin-top: 12px;" onclick="submitFeedback()">
+                                    <i class="fas fa-refresh"></i>
+                                    Apply & Regenerate
+                                </button>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: flex-end;">
+                            <button class="btn btn-secondary" onclick="goToStep(3)">
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <button class="btn btn-primary" onclick="goToStep(5)" id="finalizeBtn" disabled>
+                                Finalize Brand Voice
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Final Review & Save -->
+                <div class="step-content" id="step5">
+                    <div class="section-card">
+                        <div class="section-title">
+                            <div class="section-icon"><i class="fas fa-check-circle" style="color: var(--success);"></i>
+                            Final Brand Voice Profile
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                            Review your brand voice profile before saving. You can make final adjustments here.
+                        </p>
+
+                        <div class="brand-preview-grid" id="brandPreviewGrid">
+                            <!-- Dynamic brand voice preview -->
+                        </div>
+
+                        <div style="margin-top: 24px; padding: 16px; background: var(--bg-tertiary); border-radius: 10px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">
+                                Profile Name
+                            </label>
+                            <input type="text" id="profileName" placeholder="e.g., My Brand Voice"
+                                   style="width: 100%; padding: 12px; background: var(--bg-primary);
+                                          border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary);">
+                        </div>
+
+                        <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: flex-end;">
+                            <button class="btn btn-secondary" onclick="goToStep(4)">
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <button class="btn btn-success" onclick="saveBrandVoice()">
+                                <i class="fas fa-save"></i>
+                                Save Brand Voice Profile
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Sidebar -->
+        <div class="chat-sidebar">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <div class="ai-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <span>Brand Voice Assistant</span>
+                </div>
+                <button onclick="clearChat()" style="background: none; border: none; color: var(--text-muted); cursor: pointer;">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <!-- Initial welcome message -->
+                <div class="message ai">
+                    <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="message-content">
+                        Hi! I'm here to help you build a detailed brand voice profile. Start by adding
+                        3-5 Instagram reference profiles, and I'll analyze their style to understand the
+                        brand voice you're looking for.
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="chat-input-wrapper">
+                    <textarea class="chat-input" id="chatInput" placeholder="Type your message..."
+                              onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+                    <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let currentStep = 1;
+        let references = [];
+        let analysisData = null;
+        let brandVoiceData = {};
+        let chatHistory = [];
+        let selectedCaption = null;
+
+        const totalSteps = 5;
+
+        // Step management
+        function goToStep(step) {
+            currentStep = step;
+
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+
+            // Show target step
+            document.getElementById(`step${step}`).classList.add('active');
+
+            // Update progress
+            const progress = (step / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+
+            // Update step badge
+            const stepNames = ['', 'References', 'Analysis', 'Q&A', 'Test', 'Finalize'];
+            document.getElementById('stepBadge').innerHTML =
+                `<i class="fas fa-circle-step"></i> Step ${step} of ${totalSteps}: ${stepNames[step]}`;
+
+            // Show save button on final step
+            document.getElementById('saveBtn').style.display = step === totalSteps ? 'inline-flex' : 'none';
+
+            // Trigger step-specific actions
+            if (step === 4) {
+                loadVideoOptions();
+            } else if (step === 5) {
+                renderBrandPreview();
+            }
+        }
+
+        // Reference management
+        function addReference() {
+            const input = document.getElementById('profileInput');
+            const value = input.value.trim();
+
+            if (!value) return;
+
+            // Extract username
+            let username = value;
+            if (value.includes('instagram.com/')) {
+                const match = value.match(/instagram\.com\/([^\/]+)/);
+                if (match) username = '@' + match[1];
+            } else if (!value.startsWith('@')) {
+                username = '@' + value;
+            }
+
+            if (references.find(r => r.username === username)) {
+                alert('This profile is already added');
+                return;
+            }
+
+            references.push({
+                username: username,
+                url: value.includes('http') ? value : `https://instagram.com/${username.replace('@', '')}`,
+                addedAt: new Date().toISOString()
+            });
+
+            input.value = '';
+            renderReferences();
+            updateAnalyzeButton();
+        }
+
+        function renderReferences() {
+            const container = document.getElementById('referenceCards');
+            container.innerHTML = references.map((ref, idx) => `
+                <div class="reference-card">
+                    <div class="reference-avatar">${ref.username.substring(1, 3).toUpperCase()}</div>
+                    <div class="reference-info">
+                        <h4>${ref.username}</h4>
+                        <p>Added just now</p>
+                    </div>
+                    <button onclick="removeReference(${idx})" style="margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function removeReference(idx) {
+            references.splice(idx, 1);
+            renderReferences();
+            updateAnalyzeButton();
+        }
+
+        function updateAnalyzeButton() {
+            const btn = document.getElementById('analyzeBtn');
+            btn.disabled = references.length < 3;
+            if (references.length < 3) {
+                btn.innerHTML = `<i class="fas fa-link"></i> Add ${3 - references.length} more reference${references.length === 2 ? '' : 's'}`;
+            } else {
+                btn.innerHTML = '<i class="fas fa-magic"></i> Analyze References';
+            }
+        }
+
+        // Analysis
+        async function analyzeReferences() {
+            const btn = document.getElementById('analyzeBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<div class="spinner"></div> Analyzing...';
+
+            addAIMessage("Great! I'm analyzing the reference profiles now. This will take just a moment...");
+
+            try {
+                const response = await fetch('/api/analyze-references', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ references })
+                });
+
+                const data = await response.json();
+                analysisData = data.analysis;
+
+                renderAnalysisResults();
+                addAIMessage("Analysis complete! I've identified the key patterns in these profiles. Take a look at the results and let's chat about any adjustments you'd like to make.");
+
+                goToStep(2);
+
+                // Enable Q&A step
+                setTimeout(() => {
+                    document.getElementById('continueToTestBtn').disabled = false;
+                    askFirstQuestion();
+                }, 500);
+
+            } catch (error) {
+                console.error('Analysis error:', error);
+                addAIMessage("I had trouble analyzing those profiles. Let's try with different profiles or URLs.");
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-magic"></i> Analyze References';
+            }
+        }
+
+        function renderAnalysisResults() {
+            if (!analysisData) return;
+
+            const container = document.getElementById('analysisResults');
+            const items = [
+                { label: 'Hook Style', value: analysisData.hook_style || 'Curiosity gaps + bold claims' },
+                { label: 'Sentence Rhythm', value: analysisData.sentence_rhythm || 'Short, punchy (6-10 words)' },
+                { label: 'Emoji Usage', value: analysisData.emoji_usage || 'Minimal (1-2 total)' },
+                { label: 'Tone', value: analysisData.tone || 'Authoritative yet friendly' },
+                { label: 'Power Words', value: analysisData.power_words?.slice(0, 3).join(', ') || 'discover, unlock, transform' },
+                { label: 'CTA Style', value: analysisData.cta_style || 'Direct & action-oriented' }
+            ];
+
+            container.innerHTML = items.map(item => `
+                <div class="analysis-item">
+                    <div class="analysis-label">${item.label}</div>
+                    <div class="analysis-value">${item.value}</div>
+                </div>
+            `).join('');
+
+            // Store for brand voice
+            brandVoiceData = { ...analysisData };
+        }
+
+        // Q&A
+        function askFirstQuestion() {
+            setTimeout(() => {
+                addAIMessage(`Based on my analysis, these profiles use a ${analysisData?.tone || 'direct, authoritative'} tone.
+
+Which positioning fits your brand best?
+• **Authority/Expert** - Leading the conversation
+• **Friendly Guide** - Helping along the way
+• **Peer/Friend** - Sharing discoveries together
+• **Mentor/Teacher** - Educating with experience
+
+Or describe your own approach in your own words!`);
+            }, 1000);
+        }
+
+        // Chat
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            addUserMessage(message);
+            input.value = '';
+
+            // Show typing indicator
+            showTyping();
+
+            // Send to backend
+            fetch('/api/brand-voice-chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    message,
+                    step: currentStep,
+                    brandVoiceData,
+                    references
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                hideTyping();
+                addAIMessage(data.response);
+
+                // Update brand voice data if provided
+                if (data.updatedBrandVoice) {
+                    brandVoiceData = { ...brandVoiceData, ...data.updatedBrandVoice };
+                }
+
+                // Enable continue button after sufficient Q&A
+                if (data.canContinue) {
+                    document.getElementById('continueToTestBtn').disabled = false;
+                }
+            })
+            .catch(err => {
+                hideTyping();
+                addAIMessage("I'm having trouble responding right now. Let's try again.");
+            });
+        }
+
+        function addUserMessage(text) {
+            const container = document.getElementById('chatMessages');
+            container.innerHTML += `
+                <div class="message user">
+                    <div class="message-avatar"><i class="fas fa-user"></i></div>
+                    <div class="message-content">${escapeHtml(text)}</div>
+                </div>
+            `;
+            scrollToBottom();
+        }
+
+        function addAIMessage(text) {
+            const container = document.getElementById('chatMessages');
+            container.innerHTML += `
+                <div class="message ai">
+                    <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="message-content">${formatMessage(text)}</div>
+                </div>
+            `;
+            scrollToBottom();
+        }
+
+        function showTyping() {
+            const container = document.getElementById('chatMessages');
+            container.innerHTML += `
+                <div class="message ai" id="typingIndicator">
+                    <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+            `;
+            scrollToBottom();
+        }
+
+        function hideTyping() {
+            const typing = document.getElementById('typingIndicator');
+            if (typing) typing.remove();
+        }
+
+        function scrollToBottom() {
+            const container = document.getElementById('chatMessages');
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function formatMessage(text) {
+            // Simple markdown-like formatting
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/\n/g, '<br>');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function clearChat() {
+            const container = document.getElementById('chatMessages');
+            container.innerHTML = `
+                <div class="message ai">
+                    <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="message-content">
+                        Chat cleared. Ready when you are!
+                    </div>
+                </div>
+            `;
+        }
+
+        // Test Captions
+        function loadVideoOptions() {
+            const select = document.getElementById('videoSelect');
+
+            fetch('/api/get-sample-videos')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.videos && data.videos.length > 0) {
+                        select.innerHTML = '<option value="">-- Select a video --</option>' +
+                            data.videos.map(v => `<option value="${v.id}">${v.name || v.id}</option>`).join('');
+                        select.disabled = false;
+                        document.getElementById('generateBtn').disabled = false;
+                    } else {
+                        select.innerHTML = '<option value="">No videos available</option>';
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading videos:', err);
+                    select.innerHTML = '<option value="">Error loading videos</option>';
+                });
+        }
+
+        async function generateTestCaptions() {
+            const videoId = document.getElementById('videoSelect').value;
+            if (!videoId) return;
+
+            const btn = document.getElementById('generateBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<div class="spinner"></div> Generating...';
+
+            addAIMessage("Generating test captions with your brand voice...");
+
+            try {
+                const response = await fetch('/api/generate-test-captions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        videoId,
+                        brandVoiceData
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.captions && data.captions.length > 0) {
+                    renderTestCaptions(data.captions);
+                    document.getElementById('testCaptionsArea').style.display = 'block';
+                    document.getElementById('finalizeBtn').disabled = false;
+                    addAIMessage("I've generated 3 caption variants. Review them and let me know what you think, or select your favorite to finalize!");
+                } else {
+                    addAIMessage("I had trouble generating captions. Let's try a different video or adjust the brand voice.");
+                }
+
+            } catch (error) {
+                console.error('Generation error:', error);
+                addAIMessage("Something went wrong. Let's try again.");
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-wand-magic-sparkles"></i> Generate Test Captions';
+            }
+        }
+
+        function renderTestCaptions(captions) {
+            const container = document.getElementById('testCaptionCards');
+            const variants = ['Variant A', 'Variant B', 'Variant C'];
+
+            container.innerHTML = captions.map((cap, idx) => `
+                <div class="test-caption-card ${selectedCaption === idx ? 'selected' : ''}"
+                     onclick="selectCaption(${idx})" id="captionCard${idx}">
+                    <div class="caption-variant">${variants[idx]}</div>
+                    <div class="caption-text">${escapeHtml(cap.substring(0, 300))}${cap.length > 300 ? '...' : ''}</div>
+                    ${selectedCaption === idx ? '<i class="fas fa-check-circle" style="color: var(--success); margin-top: 8px;"></i>' : ''}
+                </div>
+            `).join('');
+        }
+
+        function selectCaption(idx) {
+            selectedCaption = idx;
+            document.querySelectorAll('.test-caption-card').forEach((card, i) => {
+                card.classList.toggle('selected', i === idx);
+            });
+        }
+
+        async function submitFeedback() {
+            const feedback = document.getElementById('feedbackInput').value.trim();
+            if (!feedback) return;
+
+            addUserMessage(feedback);
+            document.getElementById('feedbackInput').value = '';
+
+            showTyping();
+
+            try {
+                const response = await fetch('/api/refine-brand-voice', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        feedback,
+                        brandVoiceData
+                    })
+                });
+
+                const data = await response.json();
+                hideTyping();
+
+                addAIMessage(data.response || "Got it! I've adjusted the brand voice. Let me regenerate those captions...");
+
+                if (data.updatedBrandVoice) {
+                    brandVoiceData = { ...brandVoiceData, ...data.updatedBrandVoice };
+                }
+
+                // Regenerate captions
+                if (data.regenerate) {
+                    setTimeout(() => generateTestCaptions(), 1000);
+                }
+
+            } catch (error) {
+                hideTyping();
+                addAIMessage("Let me process that feedback and try again.");
+            }
+        }
+
+        // Final Preview & Save
+        function renderBrandPreview() {
+            const container = document.getElementById('brandPreviewGrid');
+
+            const fields = [
+                { label: 'Tone', key: 'tone', default: 'Authentic and engaging' },
+                { label: 'Hook Style', key: 'hook_style', default: 'Curiosity gaps' },
+                { label: 'Sentence Rhythm', key: 'sentence_rhythm', default: 'Short, punchy' },
+                { label: 'Emoji Usage', key: 'emoji_usage', default: 'Minimal (1-2)' },
+                { label: 'Power Words', key: 'power_words', default: 'discover, transform' },
+                { label: 'CTA Style', key: 'cta_style', default: 'Direct action' },
+                { label: 'Caption Length', key: 'caption_length', default: 'Medium' },
+                { label: 'Hashtag Strategy', key: 'hashtag_strategy', default: '5-10 relevant' }
+            ];
+
+            container.innerHTML = fields.map(field => `
+                <div class="preview-field">
+                    <div class="preview-label">${field.label}</div>
+                    <div class="preview-value">${brandVoiceData[field.key] || field.default}</div>
+                </div>
+            `).join('');
+        }
+
+        async function saveBrandVoice() {
+            const profileName = document.getElementById('profileName').value.trim();
+            if (!profileName) {
+                alert('Please enter a name for this brand voice profile');
+                return;
+            }
+
+            const btn = document.querySelector('#step5 .btn-success');
+            btn.disabled = true;
+            btn.innerHTML = '<div class="spinner"></div> Saving...';
+
+            try {
+                const response = await fetch('/api/save-brand-voice', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: profileName,
+                        brandVoiceData,
+                        references
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    addAIMessage("Your brand voice profile has been saved! You can now use it when generating captions in the Library.");
+                    alert('Brand voice profile saved successfully!');
+
+                    setTimeout(() => {
+                        window.location.href = '/library';
+                    }, 1500);
+                } else {
+                    throw new Error(data.error || 'Failed to save');
+                }
+
+            } catch (error) {
+                console.error('Save error:', error);
+                alert('Failed to save brand voice profile. Please try again.');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-save"></i> Save Brand Voice Profile';
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            goToStep(1);
+        });
+    </script>
+</body>
+</html>

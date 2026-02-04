@@ -16,6 +16,16 @@ export default function ReviewV2Page() {
   const [customStyleValue, setCustomStyleValue] = useState<Record<string, string>>({});
   const [showReferenceModal, setShowReferenceModal] = useState(false);
 
+  // Frame style to use cases mapping
+  const styleToUseCases: Record<string, string[]> = {
+    aviator: ['day', 'going_out', 'sport'],
+    cat_eye: ['day', 'night', 'going_out', 'casual'],
+    round: ['night', 'casual', 'at_desk'],
+    rectangle: ['day', 'night', 'casual', 'at_desk'],
+    square: ['night', 'going_out', 'casual'],
+    wayfarer: ['day', 'night', 'going_out', 'casual', 'at_desk', 'sport'],
+  };
+
   useEffect(() => {
     loadProductData();
   }, []);
@@ -66,6 +76,12 @@ export default function ReviewV2Page() {
         delete newPending[handle][category];
       } else {
         newPending[handle][category] = value;
+      }
+
+      // Auto-select use cases based on frame style
+      if (category === 'style' && newPending[handle][category]) {
+        const style = newPending[handle][category];
+        newPending[handle].use_cases = styleToUseCases[style] || [];
       }
 
       return newPending;

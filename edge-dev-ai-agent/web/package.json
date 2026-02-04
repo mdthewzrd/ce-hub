@@ -6,18 +6,26 @@
     "dev": "next dev -p 7446",
     "build": "next build",
     "start": "next start -p 7446",
-    "lint": "next lint"
+    "start:production": "NODE_ENV=production next start -p 3000",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "build:production": "./build-production.sh",
+    "health-check": "curl -s http://localhost:7446/api/health | jq .",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
-    "next": "^14.1.0",
+    "@copilotkit/react-core": "^1.51.3",
+    "@copilotkit/react-ui": "^1.51.3",
+    "@copilotkit/runtime": "^1.51.3",
+    "axios": "^1.6.5",
+    "lucide-react": "^0.316.0",
+    "next": "^16.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^9.0.1",
-    "remark-gfm": "^4.0.0",
     "recharts": "^2.10.4",
-    "lucide-react": "^0.316.0",
-    "swr": "^2.2.4",
-    "axios": "^1.6.5"
+    "remark-gfm": "^4.0.0",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "@types/node": "^20.11.5",
@@ -25,7 +33,7 @@
     "@types/react-dom": "^18.2.18",
     "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
-    "eslint-config-next": "^14.1.0",
+    "eslint-config-next": "^15.0.0",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"

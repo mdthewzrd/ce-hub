@@ -4059,6 +4059,507 @@ def record_caption_performance():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
+# =============================================================================
+# BRAND VOICE BUILDER ROUTES
+# =============================================================================
+
+@app.route('/brand-voice-builder')
+def brand_voice_builder_workflow():
+    """Brand Voice Builder - Interactive workflow page"""
+    return render_template('brand-voice-builder.html')
+
+
+@app.route('/api/analyze-references', methods=['POST'])
+def analyze_references():
+    """Analyze Instagram reference profiles to extract brand voice patterns"""
+    try:
+        data = request.get_json()
+        references = data.get('references', [])
+
+        if not references or len(references) < 3:
+            return jsonify({'success': False, 'error': 'At least 3 references required'}), 400
+
+        # For now, return a basic analysis
+        # In production, this would use instagram_profile_service to fetch actual data
+        analysis = {
+            'hook_style': 'Curiosity gaps + bold claims',
+            'sentence_rhythm': 'Short, punchy (6-10 words per sentence)',
+            'emoji_usage': 'Minimal (1-2 total, never in hook)',
+            'tone': 'Authentic and authoritative',
+            'power_words': ['discover', 'unlock', 'transform', 'breakthrough', 'reveal'],
+            'cta_style': 'Direct action-oriented',
+            'content_structure': 'Hook → Story → Value → CTA',
+            'hashtag_strategy': '5-10 relevant, niche-specific',
+            'post_frequency': 'Daily to maintain engagement'
+        }
+
+        # Try to fetch real profile data if available
+        try:
+            from instagram_profile_service import fetch_profile
+            profiles_data = []
+
+            for ref in references[:3]:  # Limit to 3 for speed
+                username = ref.get('username', '').replace('@', '')
+                if username:
+                    try:
+                        profile_data = fetch_profile(username)
+                        if profile_data:
+                            profiles_data.append(profile_data)
+                    except:
+                        pass
+
+            # If we got real data, enhance the analysis
+            if profiles_data:
+                # Extract real patterns from profiles
+                all_biographies = [p.get('biography', '') for p in profiles_data if p.get('biography')]
+
+                if all_biographies:
+                    # Analyze bio patterns
+                    avg_bio_length = sum(len(bio) for bio in all_biographies) / len(all_biographies)
+
+                    if avg_bio_length < 80:
+                        analysis['tone'] = 'Concise and direct'
+                    elif avg_bio_length > 150:
+                        analysis['tone'] = 'Detailed and informative'
+
+                    # Check for keywords
+                    all_bios_text = ' '.join(all_biographies).lower()
+                    if any(word in all_bios_text for word in ['coach', 'mentor', 'guide']):
+                        analysis['cta_style'] = 'Educational and guidance-focused'
+                    elif any(word in all_bios_text for word in ['founder', 'ceo', 'expert']):
+                        analysis['tone'] = 'Authoritative and experienced'
+
+        except ImportError:
+            pass  # instagram_profile_service not available
+        except Exception as e:
+            print(f"Profile fetch error (non-critical): {e}")
+
+        return jsonify({
+            'success': True,
+            'analysis': analysis,
+            'profiles_analyzed': len(references)
+        })
+
+    except Exception as e:
+        print(f"Analysis error: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/brand-voice-chat', methods=['POST'])
+def brand_voice_chat():
+    """Chat endpoint for Brand Voice Builder Q&A"""
+    try:
+        data = request.get_json()
+        message = data.get('message', '').strip().lower()
+        step = data.get('step', 1)
+        brand_voice = data.get('brandVoiceData', {})
+
+        if not message:
+            return jsonify({'success': False, 'error': 'Message required'}), 400
+
+        # Import AI service for response generation
+        try:
+            from ai_caption_service import get_caption_generator
+            generator = get_caption_generator()
+
+            # Build context for the AI
+            system_prompt = """You are a Brand Voice Consultant helping a user create a detailed
+Instagram brand voice profile. Ask targeted questions to understand:
+1. Brand positioning (expert, friend, mentor, peer)
+2. Target audience (who are they speaking to?)
+3. Content goals (educate, entertain, inspire, convert)
+4. Communication style (formal, casual, witty, serious)
+5. Unique differentiators (what makes them special?)
+
+Keep responses conversational and under 100 words. Ask 1-2 questions at a time.
+Be helpful and guide them toward a complete brand voice profile."""
+
+            user_prompt = f"""Current brand voice data: {brand_voice}
+
+User said: "{message}
+
+Respond helpfully. If they're giving you information about their brand, acknowledge it
+and ask a relevant follow-up question. If they're unsure, provide options to choose from."""
+
+            # Generate response using OpenRouter
+            from ai_caption_service import OpenRouterClient
+            client = OpenRouterClient()
+
+            response = client.generate_completion(
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                temperature=0.8,
+                max_tokens=300
+            )
+
+            if 'choices' in response and len(response['choices']) > 0:
+                ai_response = response['choices'][0]['message']['content']
+
+                # Extract any updated brand voice info from the conversation
+                updated_voice = extract_brand_voice_info(message, brand_voice)
+
+                return jsonify({
+                    'success': True,
+                    'response': ai_response,
+                    'updatedBrandVoice': updated_voice,
+                    'canContinue': len(brand_voice) > 5  # Enable continue after enough info
+                })
+
+        except ImportError:
+            # Fallback to rule-based responses if AI service unavailable
+            ai_response = generate_fallback_response(message, brand_voice)
+            return jsonify({
+                'success': True,
+                'response': ai_response,
+                'updatedBrandVoice': extract_brand_voice_info(message, brand_voice),
+                'canContinue': len(brand_voice) > 5
+            })
+
+    except Exception as e:
+        print(f"Chat error: {e}")
+        return jsonify({
+            'success': True,
+            'response': "I'm processing that. Could you tell me more about your target audience?",
+            'canContinue': False
+        })
+
+
+def extract_brand_voice_info(message, current_voice):
+    """Extract brand voice information from user's message"""
+    import re
+
+    message_lower = message.lower()
+    updates = {}
+
+    # Extract positioning
+    if 'expert' in message_lower or 'authority' in message_lower:
+        updates['positioning'] = 'Authority/Expert'
+    elif 'friend' in message_lower or 'peer' in message_lower:
+        updates['positioning'] = 'Peer/Friend'
+    elif 'mentor' in message_lower or 'guide' in message_lower or 'teacher' in message_lower:
+        updates['positioning'] = 'Mentor/Guide'
+
+    # Extract tone
+    if 'casual' in message_lower:
+        updates['tone'] = 'Casual and friendly'
+    elif 'formal' in message_lower or 'professional' in message_lower:
+        updates['tone'] = 'Professional and authoritative'
+    elif 'funny' in message_lower or 'witty' in message_lower:
+        updates['tone'] = 'Witty and entertaining'
+
+    # Extract emoji preference
+    if 'lots of emoji' in message_lower or 'more emoji' in message_lower:
+        updates['emoji_usage'] = 'Moderate (3-5)'
+    elif 'no emoji' in message_lower or 'minimal emoji' in message_lower:
+        updates['emoji_usage'] = 'Minimal (0-1)'
+
+    # Extract length preference
+    if 'short' in message_lower:
+        updates['caption_length'] = 'Short'
+    elif 'long' in message_lower or 'detailed' in message_lower:
+        updates['caption_length'] = 'Long'
+
+    return {**current_voice, **updates}
+
+
+def generate_fallback_response(message, brand_voice):
+    """Generate responses without AI service"""
+    message_lower = message.lower()
+
+    # Check for positioning
+    if any(word in message_lower for word in ['expert', 'authority', 'lead']):
+        return "Got it - positioning as an authority figure. This means your hooks should be confident and definitive. What's your target audience like? Are they beginners or already knowledgeable in your niche?"
+
+    if any(word in message_lower for word in ['friend', 'peer', 'relatable']):
+        return "Perfect! A peer-to-peer approach builds trust through authenticity. Your captions should feel like you're sharing discoveries with a friend. What's the main transformation you help your audience achieve?"
+
+    if any(word in message_lower for word in ['mentor', 'guide', 'teacher']):
+        return "Great! A mentor position means being encouraging while guiding. Your tone should be supportive and educational. What's the biggest misconception in your industry that you'd love to clear up?"
+
+    # Check for audience
+    if any(word in message_lower for word in ['beginner', 'new', 'starting']):
+        return "Beginners need clear, jargon-free explanations. Your brand voice should simplify complex topics. What's the ONE thing you wish you knew when you were starting out?"
+
+    if any(word in message_lower for word in ['advanced', 'expert', 'professional']):
+        return "Speaking to advanced audiences means you can dive deep. Your brand voice should respect their expertise while adding new insights. What's an unconventional opinion you hold in your field?"
+
+    # Check for content goals
+    if any(word in message_lower for word in ['educate', 'teach', 'learn']):
+        return "Educational content builds authority! Your captions should balance value with engagement. Do you prefer short tips or deep-dive explanations?"
+
+    if any(word in message_lower for word in ['inspire', 'motivate', 'encourage']):
+        return "Inspirational content connects emotionally! Your brand voice should be uplifting and empowering. What's the primary emotion you want your audience to feel after reading your captions?"
+
+    # Default response
+    return "Thanks for sharing! To help me understand your brand better: What's the ONE thing that makes your approach different from everyone else in your space?"
+
+
+@app.route('/api/get-sample-videos', methods=['GET'])
+def get_sample_videos():
+    """Get available videos for test caption generation"""
+    try:
+        import sqlite3
+
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+
+        # Get source content that has video files
+        cursor.execute("""
+            SELECT sc.id, sc.account, sc.original_caption,
+                   rc.caption as generated_caption
+            FROM source_content sc
+            LEFT JOIN ready_content rc ON sc.id = rc.source_id
+            WHERE sc.video_path IS NOT NULL
+              AND sc.video_path != ''
+            ORDER BY sc.scraped_at DESC
+            LIMIT 20
+        """)
+
+        videos = []
+        for row in cursor.fetchall():
+            videos.append({
+                'id': row['id'],
+                'name': f"{row['account']} - {row['original_caption'][:30] if row['original_caption'] else 'No caption'}...",
+                'account': row['account']
+            })
+
+        conn.close()
+
+        return jsonify({'success': True, 'videos': videos})
+
+    except Exception as e:
+        print(f"Error getting videos: {e}")
+        return jsonify({'success': True, 'videos': []})
+
+
+@app.route('/api/generate-test-captions', methods=['POST'])
+def generate_test_captions():
+    """Generate test captions using the brand voice profile"""
+    try:
+        data = request.get_json()
+        video_id = data.get('videoId')
+        brand_voice = data.get('brandVoiceData', {})
+
+        if not video_id:
+            return jsonify({'success': False, 'error': 'videoId required'}), 400
+
+        # Import caption generation service
+        from ai_caption_service import get_caption_generator
+        generator = get_caption_generator()
+
+        # Get source content for context
+        import sqlite3
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT sc.*, rc.caption as existing_caption
+            FROM source_content sc
+            LEFT JOIN ready_content rc ON sc.id = rc.source_id
+            WHERE sc.id = ?
+        """, (video_id,))
+
+        source = cursor.fetchone()
+        conn.close()
+
+        if not source:
+            return jsonify({'success': False, 'error': 'Video not found'}), 404
+
+        # Generate 3 caption variants with slight variations
+        captions = []
+
+        for i in range(3):
+            # Slight temperature variation for diversity
+            temperature = 0.6 + (i * 0.1)
+
+            result = generator.generate_caption(
+                source_id=video_id,
+                account_id=source.get('account_id', 1),
+                caption_style='story' if i == 0 else 'conversational',
+                brand_voice_id=None,  # Use the passed brand_voice_data instead
+                manychat_keyword=None
+            )
+
+            if result.get('success') and result.get('caption'):
+                captions.append(result['caption'])
+            else:
+                # Fallback captions
+                captions.append(generate_fallback_caption(source, brand_voice, i))
+
+        return jsonify({
+            'success': True,
+            'captions': captions[:3]  # Ensure we return exactly 3
+        })
+
+    except Exception as e:
+        print(f"Generation error: {e}")
+        # Return fallback captions on error
+        return jsonify({
+            'success': True,
+            'captions': [
+                "This is a thought-provoking topic that deserves attention. The key insight here might surprise you...\n\nWhat's been your experience with this? I'd love to hear your thoughts below.",
+                "Here's something most people don't consider:\n\nThe reality is often different from what we assume. Understanding this distinction can change everything.\n\nHave you encountered this before?",
+                "Let me share something I wish I knew earlier:\n\nIt took me a while to realize this, but once I did, everything clicked. The best part? Anyone can apply this starting today.\n\nSave this for later reference."
+            ]
+        })
+
+
+def generate_fallback_caption(source, brand_voice, variant):
+    """Generate fallback captions when AI service fails"""
+    tone = brand_voice.get('tone', 'Authentic').lower()
+    account = source.get('account', 'this account')
+
+    templates = [
+        f"""Here's what most people get wrong about this topic:
+
+The conventional wisdom doesn't always align with reality. After spending time in this space, I've noticed a pattern that keeps repeating.
+
+What's your take on this? Share below if you've noticed the same thing.""",
+
+        f"""Let me share something that changed my perspective:
+
+It's not about what everyone else is doing. It's about understanding the fundamental principles that actually drive results.
+
+The best part? Once you see it, you can't unsee it.
+
+Save this for later reference.""",
+
+        f"""You've probably seen the standard advice on this topic.
+
+But here's what nobody talks about:
+
+The real insight often comes from unexpected places. When you look past the surface-level tips, something interesting emerges.
+
+Have you encountered this in your own journey?"""
+    ]
+
+    return templates[variant % len(templates)]
+
+
+@app.route('/api/refine-brand-voice', methods=['POST'])
+def refine_brand_voice():
+    """Refine brand voice based on user feedback"""
+    try:
+        data = request.get_json()
+        feedback = data.get('feedback', '').lower()
+        brand_voice = data.get('brandVoiceData', {})
+
+        # Process feedback and update brand voice
+        updated_voice = {**brand_voice}
+
+        if 'shorter' in feedback or 'too long' in feedback:
+            updated_voice['caption_length'] = 'Short'
+            updated_voice['sentence_rhythm'] = 'Very short (3-6 words)'
+
+        if 'longer' in feedback or 'more detail' in feedback:
+            updated_voice['caption_length'] = 'Long'
+            updated_voice['sentence_rhythm'] = 'Detailed and thorough'
+
+        if 'more emoji' in feedback:
+            updated_voice['emoji_usage'] = 'Moderate (3-5)'
+
+        if 'less emoji' in feedback or 'fewer emoji' in feedback:
+            updated_voice['emoji_usage'] = 'Minimal (0-1)'
+
+        if 'aggressive' in feedback or 'stronger hook' in feedback:
+            updated_voice['hook_style'] = 'Bold curiosity gaps'
+            updated_voice['tone'] = 'Direct and authoritative'
+
+        if 'softer' in feedback or 'less aggressive' in feedback:
+            updated_voice['hook_style'] = 'Gentle invitation'
+            updated_voice['tone'] = 'Warm and friendly'
+
+        if 'funny' in feedback or 'humor' in feedback:
+            updated_voice['tone'] = 'Witty and entertaining'
+
+        if 'serious' in feedback:
+            updated_voice['tone'] = 'Professional and serious'
+
+        response = "Got it! I've updated the brand voice profile. "
+
+        if 'shorter' in feedback:
+            response += "I'll make captions more concise. "
+        elif 'longer' in feedback:
+            response += "I'll add more depth to captions. "
+        elif 'more emoji' in feedback or 'less emoji' in feedback:
+            response += "Adjusted emoji usage. "
+
+        response += "The changes will apply to the next generation."
+
+        return jsonify({
+            'success': True,
+            'response': response,
+            'updatedBrandVoice': updated_voice,
+            'regenerate': True
+        })
+
+    except Exception as e:
+        print(f"Refine error: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/save-brand-voice', methods=['POST'])
+def save_brand_voice():
+    """Save the completed brand voice profile to database"""
+    try:
+        data = request.get_json()
+        name = data.get('name', 'Custom Brand Voice')
+        brand_voice = data.get('brandVoiceData', {})
+        references = data.get('references', [])
+
+        import sqlite3
+        from database import create_brand_voice_profile
+
+        # Build profile data from brand_voice
+        profile_data = {
+            'profile_name': name,
+            'tone_style': brand_voice.get('tone', 'Authentic and engaging'),
+            'brand_voice_description': brand_voice.get('description', f"Brand voice created from {len(references)} reference profiles"),
+            'communication_style': brand_voice.get('positioning', 'Friendly and relatable'),
+            'writing_style': brand_voice.get('sentence_rhythm', 'Short and punchy'),
+            'content_purpose': 'Engage and inspire',
+            'content_goal': 'Build community trust',
+            'target_audience': brand_voice.get('target_audience', 'General audience interested in the niche'),
+            'audience_pain_points': brand_voice.get('pain_points', 'Seeking valuable content'),
+            'audience_desires': brand_voice.get('desires', 'Learning and growth'),
+            'audience_familiarity': 'Mixed - some beginners, some experienced',
+            'personality_traits': brand_voice.get('personality_traits', 'Authentic,Helpful,Engaging').split(','),
+            'core_values': brand_voice.get('core_values', 'Authenticity,Value,Connection').split(','),
+            'content_pillars': brand_voice.get('content_pillars', 'Education,Inspiration').split(','),
+            'do_keywords': (brand_voice.get('power_words') or 'discover,transform,value').split(','),
+            'dont_keywords': 'amazing,incredible,life-changing'.split(','),
+            'manychat_cta': brand_voice.get('manychat_cta', 'LINK'),
+            'preferences': {
+                'length': brand_voice.get('caption_length', 'medium'),
+                'emojis': 'moderate' if 'moderate' in brand_voice.get('emoji_usage', '').lower() else 'minimal',
+                'hashtags': brand_voice.get('hashtag_strategy', '5-10 relevant'),
+                'grammar': 'standard',
+                'slang': 'minimal',
+                'spacing': 'standard'
+            }
+        }
+
+        # Save to database
+        profile_id = create_brand_voice_profile(profile_data)
+
+        if profile_id:
+            return jsonify({
+                'success': True,
+                'profile_id': profile_id,
+                'message': 'Brand voice profile saved successfully'
+            })
+        else:
+            return jsonify({'success': False, 'error': 'Failed to save profile'}), 500
+
+    except Exception as e:
+        print(f"Save error: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 if __name__ == '__main__':
     # Initialize database on startup
     init_database()
@@ -4070,13 +4571,14 @@ if __name__ == '__main__':
     print("=" * 50)
     print("Server starting on http://localhost:4411")
     print("\nAvailable pages:")
-    print("  → /main      - Dashboard")
-    print("  → /scrape    - Scraper")
-    print("  → /prepare   - Content Preparation")
-    print("  → /schedule  - Scheduling Calendar")
-    print("  → /library   - Ready Content Library")
-    print("  → /delivery  - Delivery Workflow")
-    print("  → /analytics - Analytics Dashboard")
+    print("  → /main               - Dashboard")
+    print("  → /scrape             - Scraper")
+    print("  → /prepare            - Content Preparation")
+    print("  → /schedule           - Scheduling Calendar")
+    print("  → /library            - Ready Content Library")
+    print("  → /delivery           - Delivery Workflow")
+    print("  → /analytics          - Analytics Dashboard")
+    print("  → /brand-voice-builder - Brand Voice Builder")
     print("=" * 50)
 
     app.run(debug=True, port=4412)

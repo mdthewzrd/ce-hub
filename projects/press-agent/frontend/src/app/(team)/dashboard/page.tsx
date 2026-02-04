@@ -11,25 +11,38 @@ export default function DashboardPage() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="h-screen flex flex-col bg-background">
       {/* Header */}
-      <header className="border-b bg-card">
-        <div className="container mx-auto px-4 py-4">
+      <header className="border-b border-border bg-card">
+        <div className="px-6 py-3">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold">Press Agent - Team Dashboard</h1>
-              <p className="text-sm text-muted-foreground">Manage press release production</p>
+            <div className="flex items-center gap-3">
+              <a
+                href="/"
+                className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1"
+              >
+                ← Press Agent
+              </a>
+              <span className="text-muted-foreground">/</span>
+              <span className="text-sm">Dashboard</span>
             </div>
-            <nav className="flex gap-4 text-sm">
-              <a href="/" className="text-muted-foreground hover:text-foreground">Exit Team View</a>
-            </nav>
+            <div className="flex items-center gap-3 text-xs">
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 status-pulse" />
+                <span className="text-muted-foreground">Live</span>
+              </div>
+            </div>
           </div>
         </div>
       </header>
 
       {/* Main content */}
-      <main className="h-[calc(100vh-73px)]">
-        <Suspense fallback={<div className="flex items-center justify-center h-full">Loading dashboard...</div>}>
+      <main className="flex-1 overflow-hidden">
+        <Suspense fallback={
+          <div className="flex items-center justify-center h-full text-sm text-muted-foreground">
+            Loading...
+          </div>
+        }>
           <RequestQueue
             onRequestClick={(requestId) => {
               router.push(`/production/${requestId}`);

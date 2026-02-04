@@ -67,37 +67,51 @@ def add_emojis_if_needed(caption: str) -> str:
             return _reduce_emojis(caption, desired_count)
         return caption
 
-    # Add minimal emojis strategically - NEVER to hook/first line
+    # Add minimal emojis strategically - NEVER to hook (first 2 non-empty lines)
     result_lines = []
     emojis_added = 0
     body_emoji = ['💡', '✓', '→']
     cta_emoji = ['👇', '↓']
+
+    # Track non-empty lines to avoid adding emojis to the hook
+    non_empty_count = 0
 
     for i, line in enumerate(lines):
         if not line.strip():
             result_lines.append(line)
             continue
 
-        # SKIP the hook/first line - NO emoji there
-        if i == 0:
+        non_empty_count += 1
+
+        # SKIP the first 2 non-empty lines (the hook) - NO emoji there
+        if non_empty_count <= 2:
             result_lines.append(line)
             continue
 
         # Add emoji to ONE key body paragraph (middle of caption)
-        elif line.strip() and emojis_added == 0 and len(line) > 40 and i > 2 and i < len(lines) - 3:
+        # Only add if we're past the hook AND there's enough content after this line
+        if line.strip() and emojis_added == 0 and len(line) > 40 and i < len(lines) - 3:
             line = line + ' ' + body_emoji[0]
             emoji_count += 1
             emojis_added += 1
 
         result_lines.append(line)
 
-    # Add emoji to CTA if needed (last non-empty line) - but ONLY if caption has 5+ lines
+    # Add emoji to CTA if needed (last non-empty line) - but ONLY if caption has 5+ non-empty lines
     # This avoids placing emoji right after the hook in short captions
-    if emojis_added < desired_count and len(result_lines) >= 5:
+    non_empty_lines_count = sum(1 for line in result_lines if line.strip())
+    if emojis_added < desired_count and non_empty_lines_count >= 5:
         for i in range(len(result_lines) - 1, -1, -1):
             if result_lines[i].strip() and emojis_added < desired_count:
-                # Make sure this isn't the hook (first non-empty line)
-                if i > 2:  # Only add to lines after the first few (hook + early content)
+                # Make sure this isn't in the hook (first 2 non-empty lines from the end)
+                # Count non-empty lines from the end to make sure we're not in the hook
+                lines_from_end = 0
+                for j in range(len(result_lines) - 1, -1, -1):
+                    if result_lines[j].strip():
+                        lines_from_end += 1
+                    if j == i:
+                        break
+                if lines_from_end > 2:  # Only add if we're at least 3 non-empty lines from the end
                     result_lines[i] = result_lines[i] + ' ' + cta_emoji[0]
                     emojis_added += 1
                     break
@@ -107,7 +121,7 @@ def add_emojis_if_needed(caption: str) -> str:
 
 def remove_emojis_from_first_line(caption: str) -> str:
     """
-    Remove ALL emojis from the first line/hook of the caption.
+    Remove ALL emojis from the first 2 non-empty lines (the hook).
     Instagram hooks should be clean text without emojis.
     """
     import re
@@ -116,15 +130,13 @@ def remove_emojis_from_first_line(caption: str) -> str:
     if not lines:
         return caption
 
-    # Get the first non-empty line (the hook)
-    first_line_idx = 0
+    # Get the first 2 non-empty lines (the hook)
+    hook_line_indices = []
     for i, line in enumerate(lines):
         if line.strip():
-            first_line_idx = i
+            hook_line_indices.append(i)
+        if len(hook_line_indices) >= 2:
             break
-
-    # Remove emojis from the first line
-    first_line = lines[first_line_idx]
 
     # Common emoji ranges and patterns
     emoji_ranges = [
@@ -142,35 +154,43 @@ def remove_emojis_from_first_line(caption: str) -> str:
         (0x2B50, 0x2B55),    # Stars
     ]
 
-    # Remove emojis
-    cleaned_line = ''
-    for char in first_line:
-        char_code = ord(char)
-        is_emoji = any(start <= char_code <= end for start, end in emoji_ranges)
-        # Also check for common arrow emojis and similar
-        if not is_emoji and char_code not in [0x27A1, 0x2B05, 0x2B06, 0x2B07, 0x25C0, 0x25B6, 0x23EC, 0x23EA]:
-            cleaned_line += char
+    # Remove emojis from the first 2 non-empty lines
+    for idx in hook_line_indices:
+        line = lines[idx]
 
-    # Clean up any trailing spaces after removing emoji
-    cleaned_line = cleaned_line.rstrip()
+        # Remove emojis
+        cleaned_line = ''
+        for char in line:
+            char_code = ord(char)
+            is_emoji = any(start <= char_code <= end for start, end in emoji_ranges)
+            # Also check for common arrow emojis and similar
+            if not is_emoji and char_code not in [0x27A1, 0x2B05, 0x2B06, 0x2B07, 0x25C0, 0x25B6, 0x23EC, 0x23EA]:
+                cleaned_line += char
 
-    # Also remove emoji-like text patterns (e.g., "👇" as text)
-    cleaned_line = re.sub(r'\s*[→👇↓⬇️📲]\s*$', '', cleaned_line)
+        # Clean up any trailing spaces after removing emoji
+        cleaned_line = cleaned_line.rstrip()
 
-    lines[first_line_idx] = cleaned_line
+        # Also remove emoji-like text patterns (e.g., "👇" as text)
+        cleaned_line = re.sub(r'\s*[→👇↓⬇️📲]\s*$', '', cleaned_line)
+
+        lines[idx] = cleaned_line
+
     return '\n'.join(lines)
 
 
 def enforce_hook_length_limit(caption: str, max_chars: int = 140) -> str:
     """
-    Enforce strict character limit for the first 2 lines (mobile preview).
+    Enforce strict character limit for the first 2 non-empty lines (mobile preview).
 
     Instagram shows first 2 lines before "more" button on mobile.
     This ensures the hook is fully visible without clicking.
 
+    Strategy: Keep ONLY the first line as the hook if it would exceed the limit.
+    This creates a single-line hook that's always visible without clicking "more".
+
     Args:
         caption: The full caption text
-        max_chars: Maximum characters for first 2 lines combined (default: 140)
+        max_chars: Maximum characters for first 2 non-empty lines combined (default: 140)
 
     Returns:
         Caption with truncated/shortened hook if needed
@@ -200,37 +220,9 @@ def enforce_hook_length_limit(caption: str, max_chars: int = 140) -> str:
     if preview_length <= max_chars:
         return caption
 
-    # Need to shorten the hook
-    first_line = lines[first_line_idx] if first_line_idx >= 0 else ""
-
-    # Strategy: Truncate first line to fit, ending with natural break
-    # Try to end at a complete word or phrase
-
-    # If first line alone exceeds limit, truncate it
-    if len(first_line) > max_chars:
-        # Find a good truncation point (ellipsis, question mark, or word boundary)
-        truncation_points = ['...', '?', '!', '.', ' -', ',']
-        best_truncate = max_chars - 10  # Leave room for "..." if needed
-
-        for i, point in enumerate(truncation_points):
-            idx = first_line.rfind(point, 0, best_truncate)
-            if idx > 10:  # Found a good break point
-                first_line = first_line[:idx + len(point)].rstrip()
-                break
-        else:
-            # No good break point, truncate at word boundary
-            words = first_line[:best_truncate].split()
-            first_line = ' '.join(words[:-1]) + '...'
-
-        lines[first_line_idx] = first_line
-
-        # Remove second line if it exists (hook should be single line now)
-        if second_line_idx >= 0 and second_line_idx > first_line_idx:
-            # Check if second line content should be kept
-            second_line = lines[second_line_idx].strip()
-            if len(first_line) + len(second_line) > max_chars:
-                # Remove second line, but keep rest of caption
-                lines.pop(second_line_idx)
+    # Need to shorten the hook - keep ONLY the first line
+    # This ensures the hook is always visible without clicking "more"
+    lines = lines[:first_line_idx + 1]
 
     return '\n'.join(lines)
 
@@ -402,8 +394,10 @@ def remove_ai_meta_commentary(caption: str) -> str:
         r"^Here('s| is) an? (Instagram )?caption with",  # Catch "Here's a caption with..."
         r'^Your (fresh|unique|powerful) caption',  # More variations
         r"^Here('s| is) a (fresh|unique|powerful) caption with",  # Specific: "Here's a fresh caption with..."
-        r"^Here's a (rewritten|production-ready|scroll-stopping) (Instagram )?caption(: | that |:).*$",  # Catch "Here's a rewritten caption that..."
+        r"^Here('s| is) a (rewritten|production-ready|scroll-stopping) (Instagram )?caption(: | that |:).*$",  # Catch "Here's a rewritten caption that..."
         r"^Here is a (rewritten|production-ready|scroll-stopping) (Instagram )?caption(: | that |:).*$",  # Catch "Here is a rewritten caption that..."
+        r'^Here is a long-form caption',  # Catch "Here is a long-form caption that meets..."
+        r"^Here('s| is) a long-form caption",  # Catch "Here's a long-form caption"
     ]
 
     # Section headers and meta-labels (case insensitive)
@@ -1175,6 +1169,7 @@ class CaptionGenerator:
             caption = improve_caption_spacing(caption)
             caption = add_emojis_if_needed(caption)
             caption = enforce_hook_length_limit(caption)  # Enforce mobile preview limit
+            caption = remove_emojis_from_first_line(caption)  # Final cleanup: remove any emojis from hook
             print(f"Caption post-processed (length: {len(caption)} chars)")
 
             # Step 7: Quality checking

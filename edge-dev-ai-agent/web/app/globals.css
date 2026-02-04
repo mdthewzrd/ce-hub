@@ -1,9 +1,9 @@
+/* Import Premium Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import Premium Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* Premium Design Tokens - Black & Gold Professional Theme */
 :root {
@@ -31,18 +31,18 @@
   --gold: #D4AF37;
   --gold-hover: #c9a432;
   --gold-light: rgba(212, 175, 55, 0.1);
-  --gold/20: rgba(212, 175, 55, 0.2);
-  --gold/30: rgba(212, 175, 55, 0.3);
-  --gold/40: rgba(212, 175, 55, 0.4);
-  --gold/50: rgba(212, 175, 55, 0.5);
-  --gold/60: rgba(212, 175, 55, 0.6);
-  --gold/70: rgba(212, 175, 55, 0.7);
-  --gold/80: rgba(212, 175, 55, 0.8);
-  --gold/15: rgba(212, 175, 55, 0.15);
-  --gold/8: rgba(212, 175, 55, 0.08);
-  --gold/5: rgba(212, 175, 55, 0.05);
-  --gold/3: rgba(212, 175, 55, 0.03);
-  --gold/10: rgba(212, 175, 55, 0.1);
+  --gold-20: rgba(212, 175, 55, 0.2);
+  --gold-30: rgba(212, 175, 55, 0.3);
+  --gold-40: rgba(212, 175, 55, 0.4);
+  --gold-50: rgba(212, 175, 55, 0.5);
+  --gold-60: rgba(212, 175, 55, 0.6);
+  --gold-70: rgba(212, 175, 55, 0.7);
+  --gold-80: rgba(212, 175, 55, 0.8);
+  --gold-15: rgba(212, 175, 55, 0.15);
+  --gold-8: rgba(212, 175, 55, 0.08);
+  --gold-5: rgba(212, 175, 55, 0.05);
+  --gold-3: rgba(212, 175, 55, 0.03);
+  --gold-10: rgba(212, 175, 55, 0.1);
 
   /* Text Colors - High Contrast */
   --text-primary: #fafafa;
@@ -689,4 +689,84 @@ code, pre {
 .hover-lift:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
+}
+
+/* CopilotKit Premium Styling */
+.copilot-popup {
+  --copilotkit-primary-color: #D4AF37;
+  --copilotkit-background-color: #0a0a0a;
+  --copilotkit-surface-color: #141414;
+  --copilotkit-border-color: rgba(212, 175, 55, 0.2);
+  --copilotkit-text-primary: #fafafa;
+  --copilotkit-text-secondary: #a1a1aa;
+  font-family: 'Inter', sans-serif;
+}
+
+.copilot-popup button {
+  background: linear-gradient(135deg, #D4AF37 0%, #c9a432 100%) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(212, 175, 55, 0.5) !important;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3), 0 0 16px rgba(212, 175, 55, 0.15) !important;
+  transition: all var(--transition-smooth) !important;
+}
+
+.copilot-popup button:hover {
+  background: linear-gradient(135deg, #c9a432 0%, #b8942d 100%) !important;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4), 0 0 24px rgba(212, 175, 55, 0.2) !important;
+  transform: translateY(-1px) !important;
+}
+
+.copilot-popup input,
+.copilot-popup textarea {
+  background: linear-gradient(145deg, #0f0f0f 0%, #0a0a0a 100%) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.copilot-popup input:focus,
+.copilot-popup textarea:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1), 0 0 16px rgba(212, 175, 55, 0.15) !important;
+  outline: none !important;
+}
+
+.copilot-popup .copokit-messages-container {
+  background: linear-gradient(145deg, #0f0f0f 0%, #0a0a0a 100%) !important;
+  border: 1px solid rgba(212, 175, 55, 0.15) !important;
+}
+
+.copilot-popup .copilotkit-message-user {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.1) 100%) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.copilot-popup .copilotkit-message-assistant {
+  background: linear-gradient(145deg, #141414 0%, #0f0f0f 100%) !important;
+  border: 1px solid rgba(212, 175, 55, 0.15) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.copilot-popup code {
+  background: #0a0a0a !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  color: var(--gold) !important;
+  padding: 0.125rem 0.375rem !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+.copilot-popup pre {
+  background: #0a0a0a !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--spacing-md) !important;
+  overflow-x: auto !important;
+}
+
+.copilot-popup pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
 }

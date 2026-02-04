@@ -1,19 +1,22 @@
-import type { Metadata } from 'next'
-import './globals.css'
+import type { Metadata } from 'next';
+import './globals.css';
+import CopilotWrapper from './components/CopilotWrapper';
 
 export const metadata: Metadata = {
   title: 'EdgeDev AI Agent',
   description: 'Archon-powered trading strategy development system',
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" className="dark">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <CopilotWrapper>{children}</CopilotWrapper>
+      </body>
     </html>
-  )
+  );
 }
