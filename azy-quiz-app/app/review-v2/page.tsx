@@ -343,7 +343,7 @@ export default function ReviewV2Page() {
                 <div className="mb-3">
                   <label className="text-xs text-gray-500 uppercase">Face Shapes</label>
                   <div className="flex flex-wrap gap-2 mt-1">
-                    {['heart', 'oval', 'round', 'square', 'diamond'].map((shape) => {
+                    {['heart', 'oval', 'round', 'square', 'rectangle', 'diamond'].map((shape) => {
                       const state = getButtonState(product.handle, 'face_shapes', shape);
                       return (
                         <button
@@ -357,38 +357,74 @@ export default function ReviewV2Page() {
                               : 'border border-[#2a2a3a] bg-[#13131a]'
                           }`}
                         >
-                          {shape === 'heart' ? '♥ Heart' : shape.charAt(0).toUpperCase() + shape.slice(1)}
+                          {shape === 'heart' ? '♥ Heart' :
+                           shape === 'rectangle' ? '▭ Rectangle' :
+                           shape.charAt(0).toUpperCase() + shape.slice(1)}
                         </button>
                       );
                     })}
                   </div>
                 </div>
 
-                {/* Use Cases */}
+                {/* Use Cases by Frame Style */}
                 <div className="mb-3">
-                  <label className="text-xs text-gray-500 uppercase">Use Cases</label>
-                  <div className="flex flex-wrap gap-2 mt-1">
-                    {['day', 'night', 'going_out', 'casual', 'sport', 'at_desk'].map((useCase) => {
-                      const state = getButtonState(product.handle, 'use_cases', useCase);
+                  <label className="text-xs text-gray-500 uppercase">Use Cases by Frame Style</label>
+                  <div className="mt-2">
+                    {[
+                      { style: 'aviator', icon: '✈️', label: 'Aviator' },
+                      { style: 'cat_eye', icon: '🐱', label: 'Cat Eye' },
+                      { style: 'round', icon: '⭕', label: 'Round' },
+                      { style: 'rectangle', icon: '▭', label: 'Rectangle' },
+                      { style: 'square', icon: '⬜', label: 'Square' },
+                      { style: 'wayfarer', icon: '🚧', label: 'Wayfarer' },
+                    ].map(({ style, icon, label }) => {
+                      const compatibleUseCases = styleToUseCases[style] || [];
+                      const isStyleSelected = pendingTags[product.handle]?.style === style || productTags[product.handle]?.style === style;
+
                       return (
-                        <button
-                          key={useCase}
-                          onClick={() => toggleMultiple(product.handle, 'use_cases', useCase)}
-                          className={`px-2 py-1 text-xs rounded ${
-                            state.pending
-                              ? 'border-2 border-orange-500 bg-orange-500/20 text-orange-500'
-                              : state.selected
-                              ? 'border-2 border-green-500 bg-green-500/20 text-green-500'
-                              : 'border border-[#2a2a3a] bg-[#13131a]'
+                        <div
+                          key={style}
+                          className={`mb-2 p-2 rounded border ${
+                            isStyleSelected
+                              ? 'border-amber-500/50 bg-amber-500/10'
+                              : 'border-[#2a2a3a] bg-[#13131a] opacity-60'
                           }`}
                         >
-                          {useCase === 'going_out' ? '🎉 Going Out' :
-                           useCase === 'at_desk' ? '💼 At Desk' :
-                           useCase === 'day' ? '☀️ Day' :
-                           useCase === 'night' ? '🌙 Night' :
-                           useCase === 'casual' ? '😌 Casual' :
-                           useCase === 'sport' ? '🏃 Sport' : useCase}
-                        </button>
+                          <div className="flex items-center justify-between mb-1.5">
+                            <div className="flex items-center gap-2">
+                              <span className="text-sm">{icon}</span>
+                              <span className="text-xs font-medium text-gray-400">{label}</span>
+                            </div>
+                            {isStyleSelected && (
+                              <span className="text-xs text-amber-400">Selected</span>
+                            )}
+                          </div>
+                          <div className="flex flex-wrap gap-1.5">
+                            {compatibleUseCases.map((useCase) => {
+                              const state = getButtonState(product.handle, 'use_cases', useCase);
+                              return (
+                                <button
+                                  key={useCase}
+                                  onClick={() => toggleMultiple(product.handle, 'use_cases', useCase)}
+                                  className={`px-2 py-0.5 text-xs rounded ${
+                                    state.pending
+                                      ? 'border-2 border-orange-500 bg-orange-500/20 text-orange-500'
+                                      : state.selected
+                                      ? 'border-2 border-green-500 bg-green-500/20 text-green-500'
+                                      : 'border border-[#2a2a3a] bg-[#1a1a24]'
+                                  }`}
+                                >
+                                  {useCase === 'going_out' ? '🎉' :
+                                   useCase === 'at_desk' ? '💼' :
+                                   useCase === 'day' ? '☀️' :
+                                   useCase === 'night' ? '🌙' :
+                                   useCase === 'casual' ? '😌' :
+                                   useCase === 'sport' ? '🏃' : ''}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
                       );
                     })}
                   </div>
